@@ -1,4 +1,4 @@
-package choliver.ipaapi
+package choliver.neapi
 
 import java.math.BigDecimal
 import java.net.URI

@@ -5,7 +5,7 @@ plugins {
   kotlin("jvm") version "1.3.72"
 }
 
-group = "choliver.ipaapi"
+group = "choliver.neapi"
 version = "0.0.0"
 
 repositories {
