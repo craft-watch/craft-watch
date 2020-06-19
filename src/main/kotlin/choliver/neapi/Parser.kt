@@ -1,4 +1,4 @@
-package choliver.ipaapi
+package choliver.neapi
 
 import org.jsoup.nodes.Document
 

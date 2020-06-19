@@ -1,4 +1,4 @@
-package choliver.ipaapi
+package choliver.neapi
 
 import org.jsoup.Jsoup
 import org.junit.jupiter.api.Assertions.assertEquals
