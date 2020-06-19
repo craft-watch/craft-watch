@@ -21,6 +21,7 @@ tasks.test {
 
 dependencies {
   implementation(kotlin("stdlib"))
+  implementation("org.jsoup:jsoup:1.13.1")
 
   testImplementation("org.junit.jupiter:junit-jupiter:5.5.2")
   testImplementation("org.hamcrest:hamcrest-library:2.2")
