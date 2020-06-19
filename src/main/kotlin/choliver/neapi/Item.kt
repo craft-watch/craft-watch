@@ -6,5 +6,6 @@ import java.net.URI
 data class Item(
   val name: String,
   val price: BigDecimal,
+  val available: Boolean,
   val url: URI
 )
