@@ -22,6 +22,7 @@ class HowlingHopsParserTest {
       Item(
         name = "NEW 12 Beer Mega Pack 24 x 440ml",
         price = "69.50".toBigDecimal(),
+        available = true,
         url = URI("https://www.howlinghops.co.uk/product/12-beer-mega-pack-24-x-440ml/")
       ) in items
     )
