@@ -15,6 +15,12 @@ class GipsyHillScraper : Scraper {
       val url = URI(a.attr("href").trim())
       val subText = request(url) { it.text() }
 
+      val result = "Sold as: ((\\d+) x )?(\\d+)ml".toRegex().find(subText)
+      if (result != null) {
+        println(result.groupValues)
+      }
+      val numCans = result?.let { it.groupValues[2].toIntOrNull() } ?: 1
+
       ParsedItem(
         thumbnailUrl = URI(a.selectFirst(".attachment-woocommerce_thumbnail").attr("src").trim()),
         url = url,
@@ -23,10 +29,8 @@ class GipsyHillScraper : Scraper {
         abv = "ABV: (.*?)%".toRegex().find(subText)?.let {
           it.groupValues[1].trim().toBigDecimal()
         },
-        sizeMl = "(\\d+)ml".toRegex().find(subText)?.let {
-          it.groupValues[1].trim().toInt()
-        },
-        pricePerCan = el.selectFirst(".woocommerce-Price-amount").ownText().toBigDecimal()
+        sizeMl = result?.let { it.groupValues[3].toInt() },
+        pricePerCan = el.selectFirst(".woocommerce-Price-amount").ownText().toBigDecimal() / numCans.toBigDecimal()
       )
     }
     .distinctBy { it.name }

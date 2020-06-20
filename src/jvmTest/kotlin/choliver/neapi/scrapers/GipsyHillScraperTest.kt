@@ -36,5 +36,13 @@ class GipsyHillScraperTest {
       ) in ITEMS
     )
   }
+
+  @Test
+  fun `normalises price for multi-pack`() {
+    assertEquals(
+      "4.83".toBigDecimal(),
+      ITEMS.find { it.name == "Specials Box – 12 pack" }!!.pricePerCan
+    )
+  }
 }
 
