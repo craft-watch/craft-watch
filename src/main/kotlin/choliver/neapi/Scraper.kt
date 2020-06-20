@@ -3,7 +3,8 @@ package choliver.neapi
 import org.jsoup.nodes.Document
 import java.net.URI
 
-interface Parser {
+interface Scraper {
+  val name: String
   val rootUrl: URI
-  fun parse(doc: Document): List<Item>
+  fun scrape(doc: Document): List<ParsedItem>
 }

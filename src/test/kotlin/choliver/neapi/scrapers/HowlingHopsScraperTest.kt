@@ -1,15 +1,16 @@
-package choliver.neapi
+package choliver.neapi.scrapers
 
+import choliver.neapi.ParsedItem
 import org.jsoup.Jsoup
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.net.URI
 
-class HowlingHopsParserTest {
-  private val raw = {}.javaClass.getResource("/howling-hops.html").readText()
+class HowlingHopsScraperTest {
+  private val raw = {}.javaClass.getResource("/samples/howling-hops.html").readText()
   private val doc = Jsoup.parse(raw)
-  private val items = HowlingHopsParser().parse(doc)
+  private val items = HowlingHopsScraper().scrape(doc)
 
   @Test
   fun `finds all the beers`() {
@@ -19,7 +20,7 @@ class HowlingHopsParserTest {
   @Test
   fun `extracts sale price not original price`() {
     assertTrue(
-      Item(
+      ParsedItem(
         name = "NEW 12 Beer Mega Pack 24 x 440ml",
         price = "69.50".toBigDecimal(),
         available = true,

@@ -1,15 +1,16 @@
-package choliver.neapi
+package choliver.neapi.scrapers
 
+import choliver.neapi.ParsedItem
 import org.jsoup.Jsoup
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.net.URI
 
-class BoxcarParserTest {
-  private val raw = {}.javaClass.getResource("/boxcar.html").readText()
+class BoxcarScraperTest {
+  private val raw = {}.javaClass.getResource("/samples/boxcar.html").readText()
   private val doc = Jsoup.parse(raw)
-  private val items = BoxcarParser().parse(doc)
+  private val items = BoxcarScraper().scrape(doc)
 
   @Test
   fun `finds all the beers`() {
@@ -19,7 +20,7 @@ class BoxcarParserTest {
   @Test
   fun `extracts available beers`() {
     assertTrue(
-      Item(
+      ParsedItem(
         name = "Dreamful // 6.5% IPA // 440ml",
         price = "4.95".toBigDecimal(),
         available = true,
@@ -31,7 +32,7 @@ class BoxcarParserTest {
   @Test
   fun `extracts unavailable beers`() {
     assertTrue(
-      Item(
+      ParsedItem(
         name = "Dark Mild // 3.6% // 440ml",
         price = "3.75".toBigDecimal(),
         available = false,

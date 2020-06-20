@@ -1,15 +1,18 @@
-package choliver.neapi
+package choliver.neapi.scrapers
 
+import choliver.neapi.ParsedItem
+import choliver.neapi.Scraper
 import org.jsoup.nodes.Document
 import java.net.URI
 
-class VillagesParser : Parser {
+class VillagesScraper : Scraper {
+  override val name = "Villages"
   override val rootUrl = URI("https://villagesbrewery.com/collections/buy-beer")
 
-  override fun parse(doc: Document) = doc
+  override fun scrape(doc: Document) = doc
     .select(".product-card")
     .map { el ->
-      Item(
+      ParsedItem(
         url = URI(el.selectFirst(".grid-view-item__link").attr("href").trim()),
         name = el.selectFirst(".product-card__title").text().trim(),
         available = "price--sold-out" !in el.selectFirst(".price").classNames(),
