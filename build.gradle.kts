@@ -38,9 +38,11 @@ kotlin {
     jvm().compilations["main"].defaultSourceSet {
       dependencies {
         implementation(kotlin("stdlib-jdk8"))
+        implementation("io.github.microutils:kotlin-logging:1.7.10")
         implementation("org.jsoup:jsoup:1.13.1")
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.0")
         implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0")
+        runtimeOnly("ch.qos.logback:logback-classic:1.2.3")
       }
     }
 

@@ -13,11 +13,11 @@ import java.io.File
 import java.net.URI
 
 class Executor(
-  private val getUrl: (URI) -> String
+  private val getter: HttpGetter
 ) {
   fun scrapeAll() = Inventory(
     items = SCRAPERS.flatMap { scraper ->
-      scraper.scrape(Jsoup.parse(getUrl(scraper.rootUrl)))
+      scraper.scrape(Jsoup.parse(getter.get(scraper.rootUrl)))
         .map {
           Item(
             brewery = scraper.name,
@@ -40,14 +40,12 @@ class Executor(
       VillagesScraper()
     )
 
+    private val CACHE_DIR = File("cache")
+
     @JvmStatic
     fun main(args: Array<String>) {
-      val samples = SCRAPERS.associate {
-        it.rootUrl to {}.javaClass.getResource("/samples/${it.name.toLowerCase().replace(" ", "-")}.html").readText()
-      }
-
-      val executor = Executor(getUrl = { samples[it] ?: error("Unknown URL ${it}") })
-
+      val getter = HttpGetter(CACHE_DIR)
+      val executor = Executor(getter)
       val mapper = jacksonObjectMapper().enable(INDENT_OUTPUT)
 
       File("src/jsMain/resources/inventory.json").outputStream().use { ostream ->
