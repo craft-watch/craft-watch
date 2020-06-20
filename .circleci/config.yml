@@ -15,7 +15,11 @@ jobs:
 
       - run:
           name: Run tests
-          command: ./gradlew test
+          command: ./gradlew check
+
+      - run:
+          name: Build frontend
+          command: ./gradlew browserProductionWebpack
 
       - save_cache:
           paths:

@@ -1,0 +1,301 @@
+[ {
+  "brewery" : "Boxcar",
+  "name" : "Dreamful // 6.5% IPA // 440ml",
+  "price" : 4.95,
+  "available" : true,
+  "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/dreamful-6-5-ipa-440ml"
+}, {
+  "brewery" : "Boxcar",
+  "name" : "Native Place // 4.6% Pale Ale // 440ml",
+  "price" : 4.25,
+  "available" : true,
+  "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/native-place-440ml"
+}, {
+  "brewery" : "Boxcar",
+  "name" : "Avatar State // 6.0% West Coast IPA // 440ml",
+  "price" : 4.75,
+  "available" : true,
+  "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/avatar-state"
+}, {
+  "brewery" : "Boxcar",
+  "name" : "Golden Ale // 4.2% English Pale Ale // 440ml",
+  "price" : 3.95,
+  "available" : true,
+  "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/golden-ale"
+}, {
+  "brewery" : "Boxcar",
+  "name" : "Dark Mild // 3.6% // 440ml",
+  "price" : 3.75,
+  "available" : false,
+  "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/dark-mild"
+}, {
+  "brewery" : "Boxcar",
+  "name" : "Table Beer // 3.6% Pale Ale // 440ml",
+  "price" : 4.00,
+  "available" : false,
+  "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/table-beer"
+}, {
+  "brewery" : "Boxcar",
+  "name" : "English Porter // 6.0% // 440ml",
+  "price" : 4.75,
+  "available" : false,
+  "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/english-porter-6-0-440ml"
+}, {
+  "brewery" : "Boxcar",
+  "name" : "Best Bitter with Mills Brewing // 4.6% // 440ml",
+  "price" : 3.85,
+  "available" : false,
+  "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/best-bitter"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Moneybags",
+  "price" : 6.00,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/moneybags/"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Blisco Dash",
+  "price" : 4.00,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/blisco-dash/"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Baller",
+  "price" : 2.70,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/baller/"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Carver",
+  "price" : 2.20,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/carver/"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Bandit",
+  "price" : 2.20,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/bandit/"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Hunter",
+  "price" : 2.30,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/hunter/"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Buy the NHS a pint!",
+  "price" : 5.00,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/buy-the-nhs-a-pint/"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Buy The NHS A Pint: New England IPA",
+  "price" : 4.00,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/nhs-new-england-ipa/"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Buy The NHS A Pint: Triple Fruited Sour",
+  "price" : 4.00,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/nhs-triple-fruited-sour/"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Buy The NHS A Pint: West Coast IPA",
+  "price" : 4.00,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/nhs-west-coast-ipa/"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Buy The NHS A Pint: Sour IPA",
+  "price" : 5.00,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/nhs-sour-ipa/"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Hitcher",
+  "price" : 4.00,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/hitcher/"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Naturalist",
+  "price" : 5.00,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/naturalist/"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Filungar",
+  "price" : 5.00,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/filungar/"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Outdoorsman",
+  "price" : 5.00,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/outdoorsman/"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Left Handed Giant: Making Planets DIPA",
+  "price" : 5.00,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/left-handed-giant-making-planets-dipa/"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Left Handed Giant: Opening Theme IPA",
+  "price" : 5.00,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/left-handed-giant-opening-theme-ipa/"
+}, {
+  "brewery" : "Gipsy Hill",
+  "name" : "Specials Box – 12 pack",
+  "price" : 58.00,
+  "available" : true,
+  "url" : "https://gipsyhillbrew.com/product/specials-box/"
+}, {
+  "brewery" : "Howling Hops",
+  "name" : "NEW 12 Beer Mega Pack 24 x 440ml",
+  "price" : 69.50,
+  "available" : true,
+  "url" : "https://www.howlinghops.co.uk/product/12-beer-mega-pack-24-x-440ml/"
+}, {
+  "brewery" : "Howling Hops",
+  "name" : "Passionfruit Gose 24 x 440ml",
+  "price" : 66.00,
+  "available" : true,
+  "url" : "https://www.howlinghops.co.uk/product/passionfruit-gose-24-x-440ml/"
+}, {
+  "brewery" : "Howling Hops",
+  "name" : "Tropical Deluxe 24 x 440ml",
+  "price" : 66.00,
+  "available" : true,
+  "url" : "https://www.howlinghops.co.uk/product/tropical-deluxe-pale-ale-3-8-24-x440ml-cans/"
+}, {
+  "brewery" : "Howling Hops",
+  "name" : "Passionfruit Gose 12 x 440ml",
+  "price" : 36.00,
+  "available" : true,
+  "url" : "https://www.howlinghops.co.uk/product/passionfruit-gose-12-x-440ml/"
+}, {
+  "brewery" : "Howling Hops",
+  "name" : "Tropical Deluxe 12 x 440ml",
+  "price" : 36.00,
+  "available" : true,
+  "url" : "https://www.howlinghops.co.uk/product/tropical-deluxe-12-x-440ml-cans/"
+}, {
+  "brewery" : "Howling Hops",
+  "name" : "Off Ramp DIPA 4 x 440ml",
+  "price" : 20.00,
+  "available" : true,
+  "url" : "https://www.howlinghops.co.uk/product/off-ramp-dipa-4-x-440ml/"
+}, {
+  "brewery" : "Howling Hops",
+  "name" : "Drag Race Johnny NEIPA 4 x 440ml",
+  "price" : 18.00,
+  "available" : true,
+  "url" : "https://www.howlinghops.co.uk/product/drag-race-johnny-4-x-440ml/"
+}, {
+  "brewery" : "Howling Hops",
+  "name" : "House IPA 4 x 440ml",
+  "price" : 18.00,
+  "available" : true,
+  "url" : "https://www.howlinghops.co.uk/product/house-ipa-4-x-440ml/"
+}, {
+  "brewery" : "Howling Hops",
+  "name" : "Flashpoint NEIPA 4 x 440ml",
+  "price" : 17.00,
+  "available" : true,
+  "url" : "https://www.howlinghops.co.uk/product/flashpoint-4-x-440ml/"
+}, {
+  "brewery" : "Howling Hops",
+  "name" : "Romans DDH Pale 4 x 440ml",
+  "price" : 16.00,
+  "available" : true,
+  "url" : "https://www.howlinghops.co.uk/product/romans-4-x-440ml/"
+}, {
+  "brewery" : "Howling Hops",
+  "name" : "Push Push DDH Pale 4 x 440ml",
+  "price" : 16.00,
+  "available" : true,
+  "url" : "https://www.howlinghops.co.uk/product/push-push-4-x-440ml/"
+}, {
+  "brewery" : "Howling Hops",
+  "name" : "Soft Top Sabro Stout 4 x 440ml",
+  "price" : 16.00,
+  "available" : true,
+  "url" : "https://www.howlinghops.co.uk/product/soft-top-sabro-stout-4-x-440ml/"
+}, {
+  "brewery" : "Howling Hops",
+  "name" : "Blankets Pale Ale 4 x 440ml",
+  "price" : 15.00,
+  "available" : true,
+  "url" : "https://www.howlinghops.co.uk/product/blankets-4-x-440ml/"
+}, {
+  "brewery" : "Howling Hops",
+  "name" : "Packets Keller Lager 4 x 440ml",
+  "price" : 14.00,
+  "available" : true,
+  "url" : "https://www.howlinghops.co.uk/product/packets-4-x-440ml/"
+}, {
+  "brewery" : "Howling Hops",
+  "name" : "Pocket Rocket Tiny IPA 4 x 440ml",
+  "price" : 14.00,
+  "available" : true,
+  "url" : "https://www.howlinghops.co.uk/product/pocket-rocket-4-x-440ml/"
+}, {
+  "brewery" : "Howling Hops",
+  "name" : "Passionfruit Gose 4 x 440ml",
+  "price" : 14.00,
+  "available" : true,
+  "url" : "https://www.howlinghops.co.uk/product/passionfruit-gose-4-x-440ml/"
+}, {
+  "brewery" : "Howling Hops",
+  "name" : "Tropical Deluxe 4 x 440ml",
+  "price" : 14.00,
+  "available" : true,
+  "url" : "https://www.howlinghops.co.uk/product/tropical-deluxe-4-x-440ml/"
+}, {
+  "brewery" : "Villages",
+  "name" : "RODEO Pale Ale 4.6%",
+  "price" : 25.60,
+  "available" : true,
+  "url" : "https://villagesbrewery.com/collections/buy-beer/products/rodeo-pale-ale"
+}, {
+  "brewery" : "Villages",
+  "name" : "WHISTLE Pilsner 4.4%",
+  "price" : 25.60,
+  "available" : true,
+  "url" : "https://villagesbrewery.com/collections/buy-beer/products/whistle-pilsner"
+}, {
+  "brewery" : "Villages",
+  "name" : "RAFIKI Session IPA 4.3%",
+  "price" : 25.60,
+  "available" : true,
+  "url" : "https://villagesbrewery.com/collections/buy-beer/products/rafiki-session-ipa"
+}, {
+  "brewery" : "Villages",
+  "name" : "ISOLATION IPA 5.4%",
+  "price" : 32.20,
+  "available" : true,
+  "url" : "https://villagesbrewery.com/collections/buy-beer/products/isolation-ipa"
+}, {
+  "brewery" : "Villages",
+  "name" : "VILLAGES Mixed Case (24 × cans)",
+  "price" : 52.50,
+  "available" : true,
+  "url" : "https://villagesbrewery.com/collections/buy-beer/products/villages-mixed-case"
+}, {
+  "brewery" : "Villages",
+  "name" : "ALES Mixed Case (24 × cans)",
+  "price" : 53.60,
+  "available" : true,
+  "url" : "https://villagesbrewery.com/collections/buy-beer/products/ales-mixed-case"
+}, {
+  "brewery" : "Villages",
+  "name" : "REGULARS Mixed Case (24 × cans)",
+  "price" : 49.20,
+  "available" : true,
+  "url" : "https://villagesbrewery.com/collections/buy-beer/products/regulars-mixed-case"
+} ]
