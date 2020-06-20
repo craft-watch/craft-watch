@@ -15,6 +15,7 @@ class HowlingHopsScraper : Scraper {
     .map { el ->
       val a = el.selectFirst(".wc-block-grid__product-link")
       ParsedItem(
+        thumbnailUrl = URI(a.selectFirst(".attachment-woocommerce_thumbnail").attr("src").trim()),
         url = URI(a.attr("href").trim()),
         name = a.selectFirst(".wc-block-grid__product-title").text().trim(),
         available = true, // TODO

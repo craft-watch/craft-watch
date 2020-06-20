@@ -20,7 +20,6 @@ fun main() {
 
 fun updateDom(inventory: Inventory) {
   document.body!!.append.div {
-    h1 { +"Welcome to NEAPI" }
     table {
       thead {
         tr {
@@ -40,7 +39,7 @@ fun updateDom(inventory: Inventory) {
                   img(src = item.thumbnailUrl) {
                     width = "100px"
                     height = "100px"
-                    style = "vertical-align: middle"
+                    style = "vertical-align: middle; margin-right: 10px"
                   }
                 }
               }

@@ -24,6 +24,7 @@ class HowlingHopsScraperTest {
         name = "NEW 12 Beer Mega Pack 24 x 440ml",
         price = "69.50".toBigDecimal(),
         available = true,
+        thumbnailUrl = URI("https://www.howlinghops.co.uk/wp-content/uploads/2020/06/12beers_june2-324x324.jpg"),
         url = URI("https://www.howlinghops.co.uk/product/12-beer-mega-pack-24-x-440ml/")
       ) in items
     )

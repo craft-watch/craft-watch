@@ -69,7 +69,7 @@
     "abv" : null,
     "price" : 6.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/02/Moneybags-1.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/moneybags/"
   }, {
     "brewery" : "Gipsy Hill",
@@ -77,7 +77,7 @@
     "abv" : null,
     "price" : 4.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Blisco-Dash.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/blisco-dash/"
   }, {
     "brewery" : "Gipsy Hill",
@@ -85,7 +85,7 @@
     "abv" : null,
     "price" : 2.7,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/BALLER.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/baller/"
   }, {
     "brewery" : "Gipsy Hill",
@@ -93,7 +93,7 @@
     "abv" : null,
     "price" : 2.2,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/CARVER.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/carver/"
   }, {
     "brewery" : "Gipsy Hill",
@@ -101,7 +101,7 @@
     "abv" : null,
     "price" : 2.2,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/BANDIT.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/bandit/"
   }, {
     "brewery" : "Gipsy Hill",
@@ -109,7 +109,7 @@
     "abv" : null,
     "price" : 2.3,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/HUNTER.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/hunter/"
   }, {
     "brewery" : "Gipsy Hill",
@@ -117,7 +117,7 @@
     "abv" : null,
     "price" : 5.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/03/Copy-of-Core-range-6-pack-17.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/buy-the-nhs-a-pint/"
   }, {
     "brewery" : "Gipsy Hill",
@@ -125,7 +125,7 @@
     "abv" : null,
     "price" : 4.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/5-1.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/nhs-new-england-ipa/"
   }, {
     "brewery" : "Gipsy Hill",
@@ -133,7 +133,7 @@
     "abv" : null,
     "price" : 4.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/4-1.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/nhs-triple-fruited-sour/"
   }, {
     "brewery" : "Gipsy Hill",
@@ -141,7 +141,7 @@
     "abv" : null,
     "price" : 4.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/1-2.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/nhs-west-coast-ipa/"
   }, {
     "brewery" : "Gipsy Hill",
@@ -149,7 +149,7 @@
     "abv" : null,
     "price" : 5.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/2-2.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/nhs-sour-ipa/"
   }, {
     "brewery" : "Gipsy Hill",
@@ -157,7 +157,7 @@
     "abv" : null,
     "price" : 4.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Hitcher.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/hitcher/"
   }, {
     "brewery" : "Gipsy Hill",
@@ -165,7 +165,7 @@
     "abv" : null,
     "price" : 5.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Naturalist.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/naturalist/"
   }, {
     "brewery" : "Gipsy Hill",
@@ -173,7 +173,7 @@
     "abv" : null,
     "price" : 5.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2019/04/Filungar.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/filungar/"
   }, {
     "brewery" : "Gipsy Hill",
@@ -181,7 +181,7 @@
     "abv" : null,
     "price" : 5.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Outdoorsman.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/outdoorsman/"
   }, {
     "brewery" : "Gipsy Hill",
@@ -189,7 +189,7 @@
     "abv" : null,
     "price" : 5.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2019/04/Copy-of-Core-range-6-pack-26.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/left-handed-giant-making-planets-dipa/"
   }, {
     "brewery" : "Gipsy Hill",
@@ -197,7 +197,7 @@
     "abv" : null,
     "price" : 5.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/01/OPENINGTHEMECANSOCIAL-1.jpg?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/left-handed-giant-opening-theme-ipa/"
   }, {
     "brewery" : "Gipsy Hill",
@@ -205,7 +205,7 @@
     "abv" : null,
     "price" : 58.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Specials-01.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/specials-box/"
   }, {
     "brewery" : "Howling Hops",
@@ -213,7 +213,7 @@
     "abv" : null,
     "price" : 69.5,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/12beers_june2-324x324.jpg",
     "url" : "https://www.howlinghops.co.uk/product/12-beer-mega-pack-24-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
@@ -221,7 +221,7 @@
     "abv" : null,
     "price" : 66.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/PFG-24-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/passionfruit-gose-24-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
@@ -229,7 +229,7 @@
     "abv" : null,
     "price" : 66.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/04/Tropical-24-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/tropical-deluxe-pale-ale-3-8-24-x440ml-cans/"
   }, {
     "brewery" : "Howling Hops",
@@ -237,7 +237,7 @@
     "abv" : null,
     "price" : 36.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/PFG-12-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/passionfruit-gose-12-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
@@ -245,7 +245,7 @@
     "abv" : null,
     "price" : 36.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/04/Tropical-12-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/tropical-deluxe-12-x-440ml-cans/"
   }, {
     "brewery" : "Howling Hops",
@@ -253,7 +253,7 @@
     "abv" : null,
     "price" : 20.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/offramp-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/off-ramp-dipa-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
@@ -261,7 +261,7 @@
     "abv" : null,
     "price" : 18.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/drag-race-johnny-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/drag-race-johnny-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
@@ -269,7 +269,7 @@
     "abv" : null,
     "price" : 18.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/05/house-ipa-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/house-ipa-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
@@ -277,7 +277,7 @@
     "abv" : null,
     "price" : 17.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/flashpoint-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/flashpoint-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
@@ -285,7 +285,7 @@
     "abv" : null,
     "price" : 16.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/HBC-romans-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/romans-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
@@ -293,7 +293,7 @@
     "abv" : null,
     "price" : 16.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/push-push-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
@@ -301,7 +301,7 @@
     "abv" : null,
     "price" : 16.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/05/soft-top-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/soft-top-sabro-stout-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
@@ -309,7 +309,7 @@
     "abv" : null,
     "price" : 15.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/blankets-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/blankets-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
@@ -317,7 +317,7 @@
     "abv" : null,
     "price" : 14.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/packets-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/packets-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
@@ -325,7 +325,7 @@
     "abv" : null,
     "price" : 14.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/pocket-rocket-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/pocket-rocket-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
@@ -333,7 +333,7 @@
     "abv" : null,
     "price" : 14.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2019/01/Passionfruit-Gose-324x324.jpg",
     "url" : "https://www.howlinghops.co.uk/product/passionfruit-gose-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
@@ -341,7 +341,7 @@
     "abv" : null,
     "price" : 14.0,
     "available" : true,
-    "thumbnailUrl" : null,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/04/tropical-deluxe-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/tropical-deluxe-4-x-440ml/"
   }, {
     "brewery" : "Villages",
@@ -349,7 +349,7 @@
     "abv" : 4.6,
     "price" : 25.6,
     "available" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345@2x.jpg?v=1587570539",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/rodeo-pale-ale"
   }, {
     "brewery" : "Villages",
@@ -357,7 +357,7 @@
     "abv" : 4.4,
     "price" : 25.6,
     "available" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_WHISTLE_PILSNER_330ML_CAN_345x345@2x.jpg?v=1587570801",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_WHISTLE_PILSNER_330ML_CAN_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/whistle-pilsner"
   }, {
     "brewery" : "Villages",
@@ -365,7 +365,7 @@
     "abv" : 4.3,
     "price" : 25.6,
     "available" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RAFIKI_SESSION_IPA_330ML_CAN_345x345@2x.jpg?v=1587570840",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RAFIKI_SESSION_IPA_330ML_CAN_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/rafiki-session-ipa"
   }, {
     "brewery" : "Villages",
@@ -373,7 +373,7 @@
     "abv" : 5.4,
     "price" : 32.2,
     "available" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_ISOLATION_IPA_NUMBER_3_330ML_CAN_345x345@2x.jpg?v=1592371532",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_ISOLATION_IPA_NUMBER_3_330ML_CAN_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/isolation-ipa"
   }, {
     "brewery" : "Villages",
@@ -381,7 +381,7 @@
     "abv" : null,
     "price" : 52.5,
     "available" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345@2x.jpg?v=1592396694",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/villages-mixed-case"
   }, {
     "brewery" : "Villages",
@@ -389,7 +389,7 @@
     "abv" : null,
     "price" : 53.6,
     "available" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_ALES_MIXED_CASE_73fc0f61-8232-4bef-b3ec-de9f85a44852_345x345@2x.jpg?v=1592372507",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_ALES_MIXED_CASE_73fc0f61-8232-4bef-b3ec-de9f85a44852_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/ales-mixed-case"
   }, {
     "brewery" : "Villages",
@@ -397,7 +397,7 @@
     "abv" : null,
     "price" : 49.2,
     "available" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_REGULARS_MIXED_CASE_345x345@2x.jpg?v=1587586624",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_REGULARS_MIXED_CASE_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/regulars-mixed-case"
   } ]
 }

@@ -14,6 +14,7 @@ class GipsyHillScraper : Scraper {
     .map { el ->
       val a = el.selectFirst(".woocommerce-LoopProduct-link")
       ParsedItem(
+        thumbnailUrl = URI(a.selectFirst(".attachment-woocommerce_thumbnail").attr("src").trim()),
         url = URI(a.attr("href").trim()),
         name = a.selectFirst(".woocommerce-loop-product__title").text().trim(),
         available = true, // TODO
