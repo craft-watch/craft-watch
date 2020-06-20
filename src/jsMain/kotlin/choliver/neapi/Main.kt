@@ -1,22 +1,12 @@
+package choliver.neapi
+
+import choliver.neapi.model.Inventory
 import kotlinx.html.*
 import kotlinx.html.dom.append
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.builtins.list
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 import kotlin.browser.document
 import kotlin.browser.window
-
-@Serializable
-data class Item(
-  val brewery: String,
-  val name: String,
-  val abv: Float?, // TODO
-  val price: Float, // TODO
-  val available: Boolean,
-  val url: String   // TODO
-)
-
 
 fun main() {
   window.fetch("/inventory.json")
@@ -24,11 +14,11 @@ fun main() {
     .then {
       val json = Json(JsonConfiguration.Stable)
       // TODO - error handling
-      updateDom(json.parse(Item.serializer().list, it))
+      updateDom(json.parse(Inventory.serializer(), it))
     }
 }
 
-fun updateDom(inventory: List<Item>) {
+fun updateDom(inventory: Inventory) {
   document.body!!.append.div {
     h1 { +"Welcome to NEAPI" }
     table {
@@ -41,7 +31,7 @@ fun updateDom(inventory: List<Item>) {
         }
       }
       tbody {
-        inventory.forEach { item ->
+        inventory.items.forEach { item ->
           tr {
             td { +item.brewery }
             td { a(item.url) { +item.name } }

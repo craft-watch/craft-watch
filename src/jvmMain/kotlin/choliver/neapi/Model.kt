@@ -10,12 +10,3 @@ data class ParsedItem(
   val available: Boolean,
   val url: URI
 )
-
-data class Item(
-  val brewery: String,
-  val name: String,
-  val abv: BigDecimal? = null,
-  val price: BigDecimal,
-  val available: Boolean,
-  val url: URI
-)
