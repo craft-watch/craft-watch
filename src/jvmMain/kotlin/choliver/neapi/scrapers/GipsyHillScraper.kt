@@ -26,7 +26,7 @@ class GipsyHillScraper : Scraper {
         sizeMl = "(\\d+)ml".toRegex().find(subText)?.let {
           it.groupValues[1].trim().toInt()
         },
-        price = el.selectFirst(".woocommerce-Price-amount").ownText().toBigDecimal()
+        pricePerCan = el.selectFirst(".woocommerce-Price-amount").ownText().toBigDecimal()
       )
     }
     .distinctBy { it.name }

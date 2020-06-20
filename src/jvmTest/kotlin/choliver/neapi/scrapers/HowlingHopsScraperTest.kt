@@ -22,7 +22,7 @@ class HowlingHopsScraperTest {
     assertTrue(
       ParsedItem(
         name = "Push Push DDH Pale",
-        price = "4.00".toBigDecimal(),
+        pricePerCan = "4.00".toBigDecimal(),
         abv = "5.8".toBigDecimal(),
         sizeMl = 440,
         available = true,
@@ -39,7 +39,7 @@ class HowlingHopsScraperTest {
       listOf("2.75".toBigDecimal()),
       ITEMS
         .filter { it.name == "Passionfruit Gose" }
-        .map { it.price }
+        .map { it.pricePerCan }
     )
   }
 

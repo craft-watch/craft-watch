@@ -31,7 +31,7 @@ class HowlingHopsScraper : Scraper {
         available = true, // TODO
         abv = abv,
         sizeMl = result.groupValues[3].toInt(),
-        price = el.select(".woocommerce-Price-amount")
+        pricePerCan = el.select(".woocommerce-Price-amount")
           .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
           .first()
           .ownText()
@@ -40,7 +40,7 @@ class HowlingHopsScraper : Scraper {
     }
     .groupBy { it.name }
     .values
-    .map { group -> group.minBy { it.price }!! }  // Find best price for this beer
+    .map { group -> group.minBy { it.pricePerCan }!! }  // Find best price for this beer
   }
 
   companion object {

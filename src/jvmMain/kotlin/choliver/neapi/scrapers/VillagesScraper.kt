@@ -30,7 +30,7 @@ class VillagesScraper : Scraper {
         },
         abv = if (result != null) result.groupValues[2].trim().toBigDecimal() else null,
         available = "price--sold-out" !in el.selectFirst(".price").classNames(),
-        price = "\\d+\\.\\d+".toRegex().find(el.selectFirst(".price-item--sale").text())!!.value.toBigDecimal()
+        pricePerCan = "\\d+\\.\\d+".toRegex().find(el.selectFirst(".price-item--sale").text())!!.value.toBigDecimal()
       )
     }
   }

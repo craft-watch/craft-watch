@@ -18,7 +18,7 @@ class Executor(private val getter: HttpGetter) {
               // TODO - validate sane range
               abv = it.abv?.toFloat(),
               // TODO - validate sane price
-              price = it.price.toFloat(),
+              pricePerCan = it.pricePerCan.toFloat(),
               available = it.available,
               // TODO - validate these are absolute URLs
               thumbnailUrl = it.thumbnailUrl?.toString(),

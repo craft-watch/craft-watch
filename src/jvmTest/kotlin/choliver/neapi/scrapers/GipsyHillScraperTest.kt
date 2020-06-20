@@ -27,7 +27,7 @@ class GipsyHillScraperTest {
     assertTrue(
       ParsedItem(
         name = "Carver",
-        price = "2.20".toBigDecimal(),
+        pricePerCan = "2.20".toBigDecimal(),
         abv = "2.8".toBigDecimal(),
         sizeMl = 330,
         available = true,

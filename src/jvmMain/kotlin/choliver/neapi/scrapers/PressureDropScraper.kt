@@ -28,7 +28,7 @@ class PressureDropScraper : Scraper {
           it.groupValues[1].trim().toInt()
         },
         available = true,
-        price = subDoc.selectFirst(".ProductPrice").text().trim().removePrefix("£").toBigDecimal()
+        pricePerCan = subDoc.selectFirst(".ProductPrice").text().trim().removePrefix("£").toBigDecimal()
       )
     }
   }

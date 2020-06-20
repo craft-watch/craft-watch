@@ -25,7 +25,7 @@ class BoxcarScraper : Scraper {
         abv = result.groupValues[2].trim().toBigDecimal(),
         sizeMl = result.groupValues[3].trim().toInt(),
         available = "price--sold-out" !in el.selectFirst(".price").classNames(),
-        price = el.selectFirst(".price-item--sale")
+        pricePerCan = el.selectFirst(".price-item--sale")
           .text()
           .trim()
           .removePrefix("£")

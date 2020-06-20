@@ -62,7 +62,7 @@ fun updateDom(inventory: Inventory) {
                 +"?"
               }
             }
-            td { +"£${item.price.asDynamic().toFixed(2)}" }
+            td { +"£${item.pricePerCan.asDynamic().toFixed(2)}" }
           }
         }
       }

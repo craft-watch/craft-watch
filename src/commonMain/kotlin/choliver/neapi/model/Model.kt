@@ -13,7 +13,7 @@ data class Item(
   val name: String,
   val sizeMl: Int?,
   val abv: Float?,
-  val price: Float,
+  val pricePerCan: Float,
   val available: Boolean,
   val thumbnailUrl: String?,
   val url: String
