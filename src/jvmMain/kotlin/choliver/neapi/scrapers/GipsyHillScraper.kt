@@ -2,14 +2,13 @@ package choliver.neapi.scrapers
 
 import choliver.neapi.ParsedItem
 import choliver.neapi.Scraper
-import org.jsoup.nodes.Document
+import choliver.neapi.Scraper.Context
 import java.net.URI
 
 class GipsyHillScraper : Scraper {
   override val name = "Gipsy Hill"
-  override val rootUrl = URI("https://gipsyhillbrew.com")
 
-  override fun scrape(doc: Document) = doc
+  override fun Context.scrape() = request(ROOT_URL) { doc -> doc
     .select(".product")
     .map { el ->
       val a = el.selectFirst(".woocommerce-LoopProduct-link")
@@ -22,4 +21,9 @@ class GipsyHillScraper : Scraper {
       )
     }
     .distinctBy { it.name }
+  }
+
+  companion object {
+    private val ROOT_URL = URI("https://gipsyhillbrew.com")
+  }
 }

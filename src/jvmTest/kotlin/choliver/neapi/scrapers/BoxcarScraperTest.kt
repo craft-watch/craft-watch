@@ -1,16 +1,18 @@
 package choliver.neapi.scrapers
 
+import choliver.neapi.CACHE_DIR
+import choliver.neapi.HttpGetter
 import choliver.neapi.ParsedItem
-import org.jsoup.Jsoup
+import choliver.neapi.RealScraperContext
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.net.URI
 
 class BoxcarScraperTest {
-  private val raw = {}.javaClass.getResource("/samples/boxcar.html").readText()
-  private val doc = Jsoup.parse(raw)
-  private val items = BoxcarScraper().scrape(doc)
+  private val getter = HttpGetter(CACHE_DIR)
+  private val ctx = RealScraperContext(getter)
+  private val items = with(BoxcarScraper()) { ctx.scrape() }
 
   @Test
   fun `finds all the beers`() {
@@ -25,8 +27,8 @@ class BoxcarScraperTest {
         abv = "6.5".toBigDecimal(),
         price = "4.95".toBigDecimal(),
         available = true,
-        thumbnailUrl = URI("//cdn.shopify.com/s/files/1/0358/6742/6953/products/IMG-20200604-WA0003_345x345.jpg"),
-        url = URI("/collections/beer/products/dreamful-6-5-ipa-440ml")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/IMG-20200604-WA0003_345x345.jpg"),
+        url = URI("https://shop.boxcarbrewery.co.uk/collections/beer/products/dreamful-6-5-ipa-440ml")
       ) in items
     )
   }
@@ -39,8 +41,8 @@ class BoxcarScraperTest {
         abv = "3.6".toBigDecimal(),
         price = "3.75".toBigDecimal(),
         available = false,
-        thumbnailUrl = URI("//cdn.shopify.com/s/files/1/0358/6742/6953/products/20200429_183043_345x345.jpg"),
-        url = URI("/collections/beer/products/dark-mild")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/20200429_183043_345x345.jpg"),
+        url = URI("https://shop.boxcarbrewery.co.uk/collections/beer/products/dark-mild")
       ) in items
     )
   }

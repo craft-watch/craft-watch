@@ -1,16 +1,18 @@
 package choliver.neapi.scrapers
 
+import choliver.neapi.CACHE_DIR
+import choliver.neapi.HttpGetter
 import choliver.neapi.ParsedItem
-import org.jsoup.Jsoup
+import choliver.neapi.RealScraperContext
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.net.URI
 
 class GipsyHillScraperTest {
-  private val raw = {}.javaClass.getResource("/samples/gipsy-hill.html").readText()
-  private val doc = Jsoup.parse(raw)
-  private val items = GipsyHillScraper().scrape(doc)
+  private val getter = HttpGetter(CACHE_DIR)
+  private val ctx = RealScraperContext(getter)
+  private val items = with(GipsyHillScraper()) { ctx.scrape() }
 
   @Test
   fun `finds all the beers`() {
