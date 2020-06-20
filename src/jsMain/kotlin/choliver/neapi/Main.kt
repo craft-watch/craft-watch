@@ -25,7 +25,7 @@ fun updateDom(inventory: Inventory) {
         tr {
           th { +"Brewery" }
           th { +"Name" }
-          th { +"Abv" }
+          th { +"ABV" }
           th { +"Price" }
         }
       }

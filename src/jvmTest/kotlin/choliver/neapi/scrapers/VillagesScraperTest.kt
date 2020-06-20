@@ -1,16 +1,14 @@
 package choliver.neapi.scrapers
 
 import choliver.neapi.ParsedItem
-import org.jsoup.Jsoup
+import choliver.neapi.executeScraper
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.net.URI
 
 class VillagesScraperTest {
-  private val raw = {}.javaClass.getResource("/samples/villages.html").readText()
-  private val doc = Jsoup.parse(raw)
-  private val items = VillagesScraper().scrape(doc)
+  private val items = executeScraper(VillagesScraper())
 
   @Test
   fun `finds all the beers`() {
@@ -25,8 +23,8 @@ class VillagesScraperTest {
         abv = "4.6".toBigDecimal(),
         price = "25.60".toBigDecimal(),
         available = true,
-        thumbnailUrl = URI("//cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345.jpg"),
-        url = URI("/collections/buy-beer/products/rodeo-pale-ale")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345.jpg"),
+        url = URI("https://villagesbrewery.com/collections/buy-beer/products/rodeo-pale-ale")
       ) in items
     )
   }
@@ -39,8 +37,8 @@ class VillagesScraperTest {
         abv = null,   // Can't find this!
         price = "52.50".toBigDecimal(),
         available = true,
-        thumbnailUrl = URI("//cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg"),
-        url = URI("/collections/buy-beer/products/villages-mixed-case")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg"),
+        url = URI("https://villagesbrewery.com/collections/buy-beer/products/villages-mixed-case")
       ) in items
     )
   }

@@ -5,6 +5,9 @@ import java.net.URI
 
 interface Scraper {
   val name: String
-  val rootUrl: URI
-  fun scrape(doc: Document): List<ParsedItem>
+  fun Context.scrape(): List<ParsedItem>
+
+  interface Context {
+    fun <R> request(url: URI, block: (Document) -> R): R
+  }
 }

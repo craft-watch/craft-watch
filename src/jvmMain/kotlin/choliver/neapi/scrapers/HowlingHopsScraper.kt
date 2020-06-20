@@ -2,14 +2,13 @@ package choliver.neapi.scrapers
 
 import choliver.neapi.ParsedItem
 import choliver.neapi.Scraper
-import org.jsoup.nodes.Document
+import choliver.neapi.Scraper.Context
 import java.net.URI
 
 class HowlingHopsScraper : Scraper {
   override val name = "Howling Hops"
-  override val rootUrl = URI("https://www.howlinghops.co.uk/shop")
 
-  override fun scrape(doc: Document) = doc
+  override fun Context.scrape() = request(ROOT_URL) { doc -> doc
     .selectFirst(".wc-block-handpicked-products") // Avoid apparel
     .select(".wc-block-grid__product")
     .map { el ->
@@ -26,4 +25,9 @@ class HowlingHopsScraper : Scraper {
           .toBigDecimal()
       )
     }
+  }
+
+  companion object {
+    private val ROOT_URL = URI("https://www.howlinghops.co.uk/shop")
+  }
 }

@@ -2,26 +2,25 @@ package choliver.neapi.scrapers
 
 import choliver.neapi.ParsedItem
 import choliver.neapi.Scraper
-import org.jsoup.nodes.Document
+import choliver.neapi.Scraper.Context
 import java.net.URI
 
 class BoxcarScraper : Scraper {
   override val name = "Boxcar"
-  override val rootUrl = URI("https://shop.boxcarbrewery.co.uk/collections/beer")
 
-  override fun scrape(doc: Document) = doc
+  override fun Context.scrape() = request(ROOT_URL) { doc -> doc
     .select(".product-card")
     .map { el ->
       val rawName = el.selectFirst(".product-card__title").text()
       val result = "^(.*) // (.*)%.*$".toRegex().find(rawName)!!
 
       ParsedItem(
-        thumbnailUrl = URI(
+        thumbnailUrl = ROOT_URL.resolve(
           el.selectFirst("noscript .grid-view-item__image").attr("src").trim()
             .replace("@2x", "")
             .replace("\\?.*".toRegex(), "")
         ),
-        url = URI(el.selectFirst(".grid-view-item__link").attr("href").trim()),
+        url = ROOT_URL.resolve(el.selectFirst(".grid-view-item__link").attr("href").trim()),
         name = result.groupValues[1].trim(),
         abv = result.groupValues[2].trim().toBigDecimal(),
         available = "price--sold-out" !in el.selectFirst(".price").classNames(),
@@ -32,4 +31,9 @@ class BoxcarScraper : Scraper {
           .toBigDecimal()
       )
     }
+  }
+
+  companion object {
+    private val ROOT_URL = URI("https://shop.boxcarbrewery.co.uk/collections/beer")
+  }
 }

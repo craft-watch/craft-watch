@@ -1,16 +1,14 @@
 package choliver.neapi.scrapers
 
 import choliver.neapi.ParsedItem
-import org.jsoup.Jsoup
+import choliver.neapi.executeScraper
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.net.URI
 
 class HowlingHopsScraperTest {
-  private val raw = {}.javaClass.getResource("/samples/howling-hops.html").readText()
-  private val doc = Jsoup.parse(raw)
-  private val items = HowlingHopsScraper().scrape(doc)
+  private val items = executeScraper(HowlingHopsScraper())
 
   @Test
   fun `finds all the beers`() {

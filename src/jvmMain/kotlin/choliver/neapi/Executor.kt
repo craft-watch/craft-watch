@@ -6,28 +6,27 @@ import choliver.neapi.scrapers.BoxcarScraper
 import choliver.neapi.scrapers.GipsyHillScraper
 import choliver.neapi.scrapers.HowlingHopsScraper
 import choliver.neapi.scrapers.VillagesScraper
-import com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import org.jsoup.Jsoup
-import java.net.URI
 
-class Executor(
-  private val getUrl: (URI) -> String
-) {
+class Executor(private val getter: HttpGetter) {
   fun scrapeAll() = Inventory(
     items = SCRAPERS.flatMap { scraper ->
-      scraper.scrape(Jsoup.parse(getUrl(scraper.rootUrl)))
-        .map {
-          Item(
-            brewery = scraper.name,
-            name = it.name,
-            abv = it.abv?.toFloat(),
-            price = it.price.toFloat(),
-            available = it.available,
-            thumbnailUrl = it.thumbnailUrl?.let { url -> scraper.rootUrl.resolve(url).toString() },
-            url = scraper.rootUrl.resolve(it.url).toString()
-          )
-        }
+      with(scraper) {
+        RealScraperContext(getter).scrape()
+          .map {
+            Item(
+              brewery = scraper.name,
+              name = it.name,
+              // TODO - validate sane range
+              abv = it.abv?.toFloat(),
+              // TODO - validate sane price
+              price = it.price.toFloat(),
+              available = it.available,
+              // TODO - validate these are absolute URLs
+              thumbnailUrl = it.thumbnailUrl?.toString(),
+              url = it.url.toString()
+            )
+          }
+      }
     }
   )
 
@@ -38,18 +37,5 @@ class Executor(
       HowlingHopsScraper(),
       VillagesScraper()
     )
-
-    @JvmStatic
-    fun main(args: Array<String>) {
-      val samples = SCRAPERS.associate {
-        it.rootUrl to {}.javaClass.getResource("/samples/${it.name.toLowerCase().replace(" ", "-")}.html").readText()
-      }
-
-      val executor = Executor(getUrl = { samples[it] ?: error("Unknown URL ${it}") })
-
-      val mapper = jacksonObjectMapper().enable(INDENT_OUTPUT)
-
-      println(mapper.writeValueAsString(executor.scrapeAll()))
-    }
   }
 }
