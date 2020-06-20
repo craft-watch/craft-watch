@@ -17,6 +17,9 @@ class VillagesScraper : Scraper {
       val url = ROOT_URL.resolve(el.selectFirst(".grid-view-item__link").attr("href").trim())
       val subText = request(url) { it.text() }
 
+      // TODO - this is a hack
+      val numCans = if (rawName.contains("Mixed Case")) 24 else 12
+
       ParsedItem(
         thumbnailUrl = ROOT_URL.resolve(
           el.selectFirst("noscript .grid-view-item__image").attr("src").trim()
@@ -30,7 +33,7 @@ class VillagesScraper : Scraper {
         },
         abv = if (result != null) result.groupValues[2].trim().toBigDecimal() else null,
         available = "price--sold-out" !in el.selectFirst(".price").classNames(),
-        price = "\\d+\\.\\d+".toRegex().find(el.selectFirst(".price-item--sale").text())!!.value.toBigDecimal()
+        pricePerCan = "\\d+\\.\\d+".toRegex().find(el.selectFirst(".price-item--sale").text())!!.value.toBigDecimal() / numCans.toBigDecimal()
       )
     }
   }

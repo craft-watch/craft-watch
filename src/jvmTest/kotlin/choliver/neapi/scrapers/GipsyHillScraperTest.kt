@@ -27,13 +27,21 @@ class GipsyHillScraperTest {
     assertTrue(
       ParsedItem(
         name = "Carver",
-        price = "2.20".toBigDecimal(),
+        pricePerCan = "2.20".toBigDecimal(),
         abv = "2.8".toBigDecimal(),
         sizeMl = 330,
         available = true,
         thumbnailUrl = URI("https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/CARVER.png?resize=300%2C300&ssl=1"),
         url = URI("https://gipsyhillbrew.com/product/carver/")
       ) in ITEMS
+    )
+  }
+
+  @Test
+  fun `normalises price for multi-pack`() {
+    assertEquals(
+      "4.83".toBigDecimal(),
+      ITEMS.find { it.name == "Specials Box – 12 pack" }!!.pricePerCan
     )
   }
 }

@@ -27,7 +27,7 @@ fun updateDom(inventory: Inventory) {
           th { +"Name" }
           th { +"ABV" }
           th { +"Can size" }
-          th { +"Price" }
+          th { +"Price per can" }
         }
       }
       tbody {
@@ -62,7 +62,7 @@ fun updateDom(inventory: Inventory) {
                 +"?"
               }
             }
-            td { +"£${item.price.asDynamic().toFixed(2)}" }
+            td { +"£${item.pricePerCan.asDynamic().toFixed(2)}" }
           }
         }
       }

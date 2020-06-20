@@ -24,7 +24,7 @@ class VillagesScraperTest {
         name = "RODEO Pale Ale",
         abv = "4.6".toBigDecimal(),
         sizeMl = 330,
-        price = "25.60".toBigDecimal(),
+        pricePerCan = "2.13".toBigDecimal(),
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345.jpg"),
         url = URI("https://villagesbrewery.com/collections/buy-beer/products/rodeo-pale-ale")
@@ -39,7 +39,7 @@ class VillagesScraperTest {
         name = "VILLAGES Mixed Case (24 × cans)",
         abv = null,   // Can't find this!
         sizeMl = 330,
-        price = "52.50".toBigDecimal(),
+        pricePerCan = "2.19".toBigDecimal(),
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg"),
         url = URI("https://villagesbrewery.com/collections/buy-beer/products/villages-mixed-case")

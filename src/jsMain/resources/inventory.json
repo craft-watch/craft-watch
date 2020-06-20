@@ -4,7 +4,7 @@
     "name" : "Dreamful",
     "sizeMl" : 440,
     "abv" : 6.5,
-    "price" : 4.95,
+    "pricePerCan" : 4.95,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/IMG-20200604-WA0003_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/dreamful-6-5-ipa-440ml"
@@ -13,7 +13,7 @@
     "name" : "Native Place",
     "sizeMl" : 440,
     "abv" : 4.6,
-    "price" : 4.25,
+    "pricePerCan" : 4.25,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/nativeplace_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/native-place-440ml"
@@ -22,7 +22,7 @@
     "name" : "Avatar State",
     "sizeMl" : 440,
     "abv" : 6.0,
-    "price" : 4.75,
+    "pricePerCan" : 4.75,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/Screenshot_20200520-165150_WhatsApp_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/avatar-state"
@@ -31,7 +31,7 @@
     "name" : "Golden Ale",
     "sizeMl" : 440,
     "abv" : 4.2,
-    "price" : 3.95,
+    "pricePerCan" : 3.95,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/Screenshot_20200520-164720_WhatsApp_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/golden-ale"
@@ -40,7 +40,7 @@
     "name" : "Dark Mild",
     "sizeMl" : 440,
     "abv" : 3.6,
-    "price" : 3.75,
+    "pricePerCan" : 3.75,
     "available" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/20200429_183043_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/dark-mild"
@@ -49,7 +49,7 @@
     "name" : "Table Beer",
     "sizeMl" : 440,
     "abv" : 3.6,
-    "price" : 4.0,
+    "pricePerCan" : 4.0,
     "available" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/20200407_100153_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/table-beer"
@@ -58,7 +58,7 @@
     "name" : "English Porter",
     "sizeMl" : 440,
     "abv" : 6.0,
-    "price" : 4.75,
+    "pricePerCan" : 4.75,
     "available" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/porter_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/english-porter-6-0-440ml"
@@ -67,7 +67,7 @@
     "name" : "Best Bitter with Mills Brewing",
     "sizeMl" : 440,
     "abv" : 4.6,
-    "price" : 3.85,
+    "pricePerCan" : 3.85,
     "available" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/bitter_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/best-bitter"
@@ -76,7 +76,7 @@
     "name" : "Moneybags",
     "sizeMl" : 440,
     "abv" : 9.9,
-    "price" : 6.0,
+    "pricePerCan" : 6.0,
     "available" : true,
     "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/02/Moneybags-1.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/moneybags/"
@@ -85,7 +85,7 @@
     "name" : "Blisco Dash",
     "sizeMl" : 440,
     "abv" : 4.8,
-    "price" : 4.0,
+    "pricePerCan" : 4.0,
     "available" : true,
     "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Blisco-Dash.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/blisco-dash/"
@@ -94,7 +94,7 @@
     "name" : "Baller",
     "sizeMl" : 330,
     "abv" : 5.4,
-    "price" : 2.7,
+    "pricePerCan" : 2.7,
     "available" : true,
     "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/BALLER.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/baller/"
@@ -103,7 +103,7 @@
     "name" : "Carver",
     "sizeMl" : 330,
     "abv" : 2.8,
-    "price" : 2.2,
+    "pricePerCan" : 2.2,
     "available" : true,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/CARVER.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/carver/"
@@ -112,7 +112,7 @@
     "name" : "Bandit",
     "sizeMl" : 330,
     "abv" : 3.8,
-    "price" : 2.2,
+    "pricePerCan" : 2.2,
     "available" : true,
     "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/BANDIT.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/bandit/"
@@ -121,7 +121,7 @@
     "name" : "Hunter",
     "sizeMl" : 330,
     "abv" : 4.8,
-    "price" : 2.3,
+    "pricePerCan" : 2.3,
     "available" : true,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/HUNTER.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/hunter/"
@@ -130,34 +130,34 @@
     "name" : "Buy the NHS a pint!",
     "sizeMl" : null,
     "abv" : null,
-    "price" : 5.0,
+    "pricePerCan" : 5.0,
     "available" : true,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/03/Copy-of-Core-range-6-pack-17.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/buy-the-nhs-a-pint/"
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: New England IPA",
-    "sizeMl" : 440,
+    "sizeMl" : null,
     "abv" : 6.5,
-    "price" : 4.0,
+    "pricePerCan" : 4.0,
     "available" : true,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/5-1.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/nhs-new-england-ipa/"
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: Triple Fruited Sour",
-    "sizeMl" : 440,
+    "sizeMl" : null,
     "abv" : 4.4,
-    "price" : 4.0,
+    "pricePerCan" : 4.0,
     "available" : true,
     "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/4-1.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/nhs-triple-fruited-sour/"
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: West Coast IPA",
-    "sizeMl" : 440,
+    "sizeMl" : null,
     "abv" : 7.2,
-    "price" : 4.0,
+    "pricePerCan" : 4.0,
     "available" : true,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/1-2.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/nhs-west-coast-ipa/"
@@ -166,7 +166,7 @@
     "name" : "Buy The NHS A Pint: Sour IPA",
     "sizeMl" : null,
     "abv" : 7.5,
-    "price" : 5.0,
+    "pricePerCan" : 5.0,
     "available" : true,
     "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/2-2.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/nhs-sour-ipa/"
@@ -175,7 +175,7 @@
     "name" : "Hitcher",
     "sizeMl" : 440,
     "abv" : 5.5,
-    "price" : 4.0,
+    "pricePerCan" : 4.0,
     "available" : true,
     "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Hitcher.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/hitcher/"
@@ -184,7 +184,7 @@
     "name" : "Naturalist",
     "sizeMl" : 440,
     "abv" : 6.5,
-    "price" : 5.0,
+    "pricePerCan" : 5.0,
     "available" : true,
     "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Naturalist.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/naturalist/"
@@ -193,7 +193,7 @@
     "name" : "Filungar",
     "sizeMl" : 440,
     "abv" : 5.5,
-    "price" : 5.0,
+    "pricePerCan" : 5.0,
     "available" : true,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2019/04/Filungar.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/filungar/"
@@ -202,25 +202,25 @@
     "name" : "Outdoorsman",
     "sizeMl" : 440,
     "abv" : 4.8,
-    "price" : 5.0,
+    "pricePerCan" : 5.0,
     "available" : true,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Outdoorsman.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/outdoorsman/"
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Left Handed Giant: Making Planets DIPA",
-    "sizeMl" : 440,
+    "sizeMl" : null,
     "abv" : 8.0,
-    "price" : 5.0,
+    "pricePerCan" : 5.0,
     "available" : true,
     "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2019/04/Copy-of-Core-range-6-pack-26.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/left-handed-giant-making-planets-dipa/"
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Left Handed Giant: Opening Theme IPA",
-    "sizeMl" : 440,
+    "sizeMl" : null,
     "abv" : 6.5,
-    "price" : 5.0,
+    "pricePerCan" : 5.0,
     "available" : true,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/01/OPENINGTHEMECANSOCIAL-1.jpg?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/left-handed-giant-opening-theme-ipa/"
@@ -229,169 +229,133 @@
     "name" : "Specials Box – 12 pack",
     "sizeMl" : 440,
     "abv" : 4.8,
-    "price" : 58.0,
+    "pricePerCan" : 4.83,
     "available" : true,
     "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Specials-01.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/specials-box/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "NEW 12 Beer Mega Pack 24 x 440ml",
+    "name" : "NEW 12 Beer Mega Pack",
     "sizeMl" : 440,
     "abv" : null,
-    "price" : 69.5,
+    "pricePerCan" : 2.9,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/12beers_june2-324x324.jpg",
     "url" : "https://www.howlinghops.co.uk/product/12-beer-mega-pack-24-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Passionfruit Gose 24 x 440ml",
+    "name" : "Passionfruit Gose",
     "sizeMl" : 440,
     "abv" : 4.5,
-    "price" : 66.0,
+    "pricePerCan" : 2.75,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/PFG-24-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/passionfruit-gose-24-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Tropical Deluxe 24 x 440ml",
+    "name" : "Tropical Deluxe",
     "sizeMl" : 440,
     "abv" : 3.8,
-    "price" : 66.0,
+    "pricePerCan" : 2.75,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/04/Tropical-24-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/tropical-deluxe-pale-ale-3-8-24-x440ml-cans/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Passionfruit Gose 12 x 440ml",
-    "sizeMl" : 440,
-    "abv" : 4.5,
-    "price" : 36.0,
-    "available" : true,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/PFG-12-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/passionfruit-gose-12-x-440ml/"
-  }, {
-    "brewery" : "Howling Hops",
-    "name" : "Tropical Deluxe 12 x 440ml",
-    "sizeMl" : 440,
-    "abv" : 3.8,
-    "price" : 36.0,
-    "available" : true,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/04/Tropical-12-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/tropical-deluxe-12-x-440ml-cans/"
-  }, {
-    "brewery" : "Howling Hops",
-    "name" : "Off Ramp DIPA 4 x 440ml",
+    "name" : "Off Ramp DIPA",
     "sizeMl" : 440,
     "abv" : 8.0,
-    "price" : 20.0,
+    "pricePerCan" : 5.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/offramp-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/off-ramp-dipa-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Drag Race Johnny NEIPA 4 x 440ml",
+    "name" : "Drag Race Johnny NEIPA",
     "sizeMl" : 440,
     "abv" : 6.7,
-    "price" : 18.0,
+    "pricePerCan" : 4.5,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/drag-race-johnny-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/drag-race-johnny-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "House IPA 4 x 440ml",
+    "name" : "House IPA",
     "sizeMl" : 440,
     "abv" : 6.9,
-    "price" : 18.0,
+    "pricePerCan" : 4.5,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/05/house-ipa-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/house-ipa-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Flashpoint NEIPA 4 x 440ml",
+    "name" : "Flashpoint NEIPA",
     "sizeMl" : 440,
     "abv" : 6.2,
-    "price" : 17.0,
+    "pricePerCan" : 4.25,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/flashpoint-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/flashpoint-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Romans DDH Pale 4 x 440ml",
+    "name" : "Romans DDH Pale",
     "sizeMl" : 440,
     "abv" : 5.5,
-    "price" : 16.0,
+    "pricePerCan" : 4.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/HBC-romans-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/romans-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Push Push DDH Pale 4 x 440ml",
+    "name" : "Push Push DDH Pale",
     "sizeMl" : 440,
     "abv" : 5.8,
-    "price" : 16.0,
+    "pricePerCan" : 4.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/push-push-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Soft Top Sabro Stout 4 x 440ml",
+    "name" : "Soft Top Sabro Stout",
     "sizeMl" : 440,
     "abv" : 6.5,
-    "price" : 16.0,
+    "pricePerCan" : 4.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/05/soft-top-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/soft-top-sabro-stout-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Blankets Pale Ale 4 x 440ml",
+    "name" : "Blankets Pale Ale",
     "sizeMl" : 440,
     "abv" : 4.5,
-    "price" : 15.0,
+    "pricePerCan" : 3.75,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/blankets-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/blankets-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Packets Keller Lager 4 x 440ml",
+    "name" : "Packets Keller Lager",
     "sizeMl" : 440,
     "abv" : 4.2,
-    "price" : 14.0,
+    "pricePerCan" : 3.5,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/packets-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/packets-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Pocket Rocket Tiny IPA 4 x 440ml",
+    "name" : "Pocket Rocket Tiny IPA",
     "sizeMl" : 440,
     "abv" : 2.7,
-    "price" : 14.0,
+    "pricePerCan" : 3.5,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/pocket-rocket-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/pocket-rocket-4-x-440ml/"
-  }, {
-    "brewery" : "Howling Hops",
-    "name" : "Passionfruit Gose 4 x 440ml",
-    "sizeMl" : 440,
-    "abv" : 4.5,
-    "price" : 14.0,
-    "available" : true,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2019/01/Passionfruit-Gose-324x324.jpg",
-    "url" : "https://www.howlinghops.co.uk/product/passionfruit-gose-4-x-440ml/"
-  }, {
-    "brewery" : "Howling Hops",
-    "name" : "Tropical Deluxe 4 x 440ml",
-    "sizeMl" : 440,
-    "abv" : 3.8,
-    "price" : 14.0,
-    "available" : true,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/04/tropical-deluxe-440ml-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/tropical-deluxe-4-x-440ml/"
   }, {
     "brewery" : "Pressure Drop",
     "name" : "Behind Door Number 3- Citra & Mosaic New England DIPA",
     "sizeMl" : 440,
     "abv" : 8.5,
-    "price" : 5.35,
+    "pricePerCan" : 5.35,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_8398_large.jpg?v=1576076300",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/behind-door-number-3"
@@ -400,7 +364,7 @@
     "name" : "Golden State- New England Pale",
     "sizeMl" : 440,
     "abv" : 5.2,
-    "price" : 4.05,
+    "pricePerCan" : 4.05,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9751_large.jpg?v=1592315629",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/golden-state-new-england-pale"
@@ -409,7 +373,7 @@
     "name" : "Perfect Life -New England Pale",
     "sizeMl" : null,
     "abv" : 4.6,
-    "price" : 4.1,
+    "pricePerCan" : 4.1,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9694_large.jpg?v=1591879961",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/perfect-life-new-england-pale"
@@ -418,7 +382,7 @@
     "name" : "Pallet Notes- Sabro, Mosaic & Simcoe NEIPA",
     "sizeMl" : 440,
     "abv" : 7.4,
-    "price" : 4.95,
+    "pricePerCan" : 4.95,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_8516_large.jpg?v=1579084092",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/pallet-notes-sabro-mosaic-simcoe-neipa"
@@ -427,7 +391,7 @@
     "name" : "Pale Fire - Mosaic & Amarillo Pale",
     "sizeMl" : 440,
     "abv" : 4.8,
-    "price" : 3.7,
+    "pricePerCan" : 3.7,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_7845_large.jpg?v=1588861254",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/pale-fire"
@@ -436,7 +400,7 @@
     "name" : "Great Heights- Unfiltered Pilsner",
     "sizeMl" : null,
     "abv" : 4.8,
-    "price" : 3.8,
+    "pricePerCan" : 3.8,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_8451_large.jpg?v=1578645917",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/great-heights-unfiltered-pilsner"
@@ -445,7 +409,7 @@
     "name" : "Future Sunshine- Peach, Pineapple & Passionfruit Sour",
     "sizeMl" : 440,
     "abv" : 6.5,
-    "price" : 4.25,
+    "pricePerCan" : 4.25,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9565_large.jpg?v=1589446938",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/future-sunshine-peach-pineapple-passionfruit-sour"
@@ -454,7 +418,7 @@
     "name" : "The Numbers - DDH New England Pale Ale",
     "sizeMl" : 440,
     "abv" : 5.2,
-    "price" : 4.2,
+    "pricePerCan" : 4.2,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/pour_large.jpg?v=1589448793",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/the-numbers-ddh-new-england-pale-ale"
@@ -463,7 +427,7 @@
     "name" : "Bosko- Mosaic & Amarillo West Coast IPA",
     "sizeMl" : 440,
     "abv" : 6.5,
-    "price" : 4.15,
+    "pricePerCan" : 4.15,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/imagejpg_large.png?v=1554993771",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/bosko-west-coast-ipa"
@@ -472,7 +436,7 @@
     "name" : "RODEO Pale Ale",
     "sizeMl" : 330,
     "abv" : 4.6,
-    "price" : 25.6,
+    "pricePerCan" : 2.13,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/rodeo-pale-ale"
@@ -481,7 +445,7 @@
     "name" : "WHISTLE Pilsner",
     "sizeMl" : 330,
     "abv" : 4.4,
-    "price" : 25.6,
+    "pricePerCan" : 2.13,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_WHISTLE_PILSNER_330ML_CAN_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/whistle-pilsner"
@@ -490,7 +454,7 @@
     "name" : "RAFIKI Session IPA",
     "sizeMl" : 330,
     "abv" : 4.3,
-    "price" : 25.6,
+    "pricePerCan" : 2.13,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RAFIKI_SESSION_IPA_330ML_CAN_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/rafiki-session-ipa"
@@ -499,7 +463,7 @@
     "name" : "ISOLATION IPA",
     "sizeMl" : 330,
     "abv" : 5.4,
-    "price" : 32.2,
+    "pricePerCan" : 2.68,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_ISOLATION_IPA_NUMBER_3_330ML_CAN_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/isolation-ipa"
@@ -508,7 +472,7 @@
     "name" : "VILLAGES Mixed Case (24 × cans)",
     "sizeMl" : 330,
     "abv" : null,
-    "price" : 52.5,
+    "pricePerCan" : 2.19,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/villages-mixed-case"
@@ -517,7 +481,7 @@
     "name" : "ALES Mixed Case (24 × cans)",
     "sizeMl" : 330,
     "abv" : null,
-    "price" : 53.6,
+    "pricePerCan" : 2.23,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_ALES_MIXED_CASE_73fc0f61-8232-4bef-b3ec-de9f85a44852_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/ales-mixed-case"
@@ -526,7 +490,7 @@
     "name" : "REGULARS Mixed Case (24 × cans)",
     "sizeMl" : 330,
     "abv" : null,
-    "price" : 49.2,
+    "pricePerCan" : 2.05,
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_REGULARS_MIXED_CASE_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/regulars-mixed-case"

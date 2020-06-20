@@ -24,7 +24,7 @@ class PressureDropScraperTest {
         name = "Golden State- New England Pale",
         sizeMl = 440,
         abv = "5.2".toBigDecimal(),
-        price = "4.05".toBigDecimal(),
+        pricePerCan = "4.05".toBigDecimal(),
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9751_large.jpg?v=1592315629"),
         url = URI("https://pressuredropbrewing.co.uk/collections/beers/products/golden-state-new-england-pale")
