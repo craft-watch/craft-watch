@@ -9,6 +9,7 @@ import choliver.neapi.scrapers.VillagesScraper
 import com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import org.jsoup.Jsoup
+import java.io.File
 import java.net.URI
 
 class Executor(
@@ -49,7 +50,9 @@ class Executor(
 
       val mapper = jacksonObjectMapper().enable(INDENT_OUTPUT)
 
-      println(mapper.writeValueAsString(executor.scrapeAll()))
+      File("src/jsMain/resources/inventory.json").outputStream().use { ostream ->
+        mapper.writeValue(ostream, executor.scrapeAll())
+      }
     }
   }
 }
