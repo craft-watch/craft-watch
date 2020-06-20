@@ -15,15 +15,19 @@ class Executor(private val getter: HttpGetter) {
               name = item.name,
               // TODO - validate sane size
               sizeMl = item.sizeMl,
-              // TODO - validate sane range
-              abv = item.abv?.toFloat(),
-              // TODO - validate sane price
-              pricePerCan = item.pricePerCan.toFloat()
+              abv = item.abv
+                ?.toFloat()
+                ?.validate("ABV unexpectedly high") { it < MAX_ABV },
+              pricePerCan = item.pricePerCan
+                .toFloat()
                 .validate("Price unexpectedly high") { it < MAX_PRICE_PER_CAN },
               available = item.available,
-              // TODO - validate these are absolute URLs
-              thumbnailUrl = item.thumbnailUrl?.toString(),
-              url = item.url.toString()
+              thumbnailUrl = item.thumbnailUrl
+                ?.validate("Not an absolute URL") { it.isAbsolute }
+                ?.toString(),
+              url = item.url
+                .validate("Not an absolute URL") { it.isAbsolute }
+                .toString()
             )
           }
       }
@@ -46,6 +50,7 @@ class Executor(private val getter: HttpGetter) {
       VillagesScraper()
     )
 
+    private const val MAX_ABV = 14.0
     private const val MAX_PRICE_PER_CAN = 8.00
   }
 }
