@@ -12,9 +12,13 @@ class VillagesScraper : Scraper {
   override fun scrape(doc: Document) = doc
     .select(".product-card")
     .map { el ->
+      val rawName = el.selectFirst(".product-card__title").text()
+      val result = "^(.*) (.*)%.*$".toRegex().find(rawName)
+
       ParsedItem(
         url = URI(el.selectFirst(".grid-view-item__link").attr("href").trim()),
-        name = el.selectFirst(".product-card__title").text().trim(),
+        name = (if (result != null) result.groupValues[1] else rawName).trim(),
+        abv = if (result != null) result.groupValues[2].trim().toBigDecimal() else null,
         available = "price--sold-out" !in el.selectFirst(".price").classNames(),
         price = "\\d+\\.\\d+".toRegex().find(el.selectFirst(".price-item--sale").text())!!.value.toBigDecimal()
       )

@@ -21,10 +21,24 @@ class VillagesScraperTest {
   fun `extracts beer details`() {
     assertTrue(
       ParsedItem(
-        name = "RODEO Pale Ale 4.6%",
+        name = "RODEO Pale Ale",
+        abv = "4.6".toBigDecimal(),
         price = "25.60".toBigDecimal(),
         available = true,
         url = URI("/collections/buy-beer/products/rodeo-pale-ale")
+      ) in items
+    )
+  }
+
+  @Test
+  fun `extracts case details`() {
+    assertTrue(
+      ParsedItem(
+        name = "VILLAGES Mixed Case (24 × cans)",
+        abv = null,   // Can't find this!
+        price = "52.50".toBigDecimal(),
+        available = true,
+        url = URI("/collections/buy-beer/products/villages-mixed-case")
       ) in items
     )
   }

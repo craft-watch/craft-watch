@@ -12,8 +12,8 @@ class BoxcarScraper : Scraper {
   override fun scrape(doc: Document) = doc
     .select(".product-card")
     .map { el ->
-      val result = "^(.*) // (.*)%.*$".toRegex()
-        .find(el.selectFirst(".product-card__title").text())!!
+      val rawName = el.selectFirst(".product-card__title").text()
+      val result = "^(.*) // (.*)%.*$".toRegex().find(rawName)!!
 
       ParsedItem(
         url = URI(el.selectFirst(".grid-view-item__link").attr("href").trim()),
