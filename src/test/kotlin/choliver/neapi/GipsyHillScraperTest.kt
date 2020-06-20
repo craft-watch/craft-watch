@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.net.URI
 
-class GipsyHillParserTest {
+class GipsyHillScraperTest {
   private val raw = {}.javaClass.getResource("/gipsy-hill.html").readText()
   private val doc = Jsoup.parse(raw)
-  private val items = GipsyHillParser().parse(doc)
+  private val items = GipsyHillScraper().scrape(doc)
 
   @Test
   fun `finds all the beers`() {
@@ -24,7 +24,7 @@ class GipsyHillParserTest {
   @Test
   fun `extracts beer details`() {
     assertTrue(
-      Item(
+      ParsedItem(
         name = "Carver",
         price = "2.20".toBigDecimal(),
         available = true,
