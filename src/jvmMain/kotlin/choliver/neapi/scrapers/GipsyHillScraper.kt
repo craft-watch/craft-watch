@@ -13,18 +13,19 @@ class GipsyHillScraper : Scraper {
     .map { el ->
       val a = el.selectFirst(".woocommerce-LoopProduct-link")
       val url = URI(a.attr("href").trim())
-
-      val abv = request(url) { subDoc ->
-        val result = "ABV: (.*?)%".toRegex().find(subDoc.text())
-        result?.let { it.groupValues[1].trim().toBigDecimal() }
-      }
+      val subText = request(url) { it.text() }
 
       ParsedItem(
         thumbnailUrl = URI(a.selectFirst(".attachment-woocommerce_thumbnail").attr("src").trim()),
         url = url,
         name = a.selectFirst(".woocommerce-loop-product__title").text().trim(),
         available = true, // TODO
-        abv = abv,
+        abv = "ABV: (.*?)%".toRegex().find(subText)?.let {
+          it.groupValues[1].trim().toBigDecimal()
+        },
+        sizeMl = "(\\d+)ml".toRegex().find(subText)?.let {
+          it.groupValues[1].trim().toInt()
+        },
         price = el.selectFirst(".woocommerce-Price-amount").ownText().toBigDecimal()
       )
     }

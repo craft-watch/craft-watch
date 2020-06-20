@@ -74,7 +74,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Moneybags",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 9.9,
     "price" : 6.0,
     "available" : true,
@@ -83,7 +83,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Blisco Dash",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 4.8,
     "price" : 4.0,
     "available" : true,
@@ -92,7 +92,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Baller",
-    "sizeMl" : null,
+    "sizeMl" : 330,
     "abv" : 5.4,
     "price" : 2.7,
     "available" : true,
@@ -101,7 +101,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Carver",
-    "sizeMl" : null,
+    "sizeMl" : 330,
     "abv" : 2.8,
     "price" : 2.2,
     "available" : true,
@@ -110,7 +110,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Bandit",
-    "sizeMl" : null,
+    "sizeMl" : 330,
     "abv" : 3.8,
     "price" : 2.2,
     "available" : true,
@@ -119,7 +119,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Hunter",
-    "sizeMl" : null,
+    "sizeMl" : 330,
     "abv" : 4.8,
     "price" : 2.3,
     "available" : true,
@@ -137,7 +137,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: New England IPA",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 6.5,
     "price" : 4.0,
     "available" : true,
@@ -146,7 +146,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: Triple Fruited Sour",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 4.4,
     "price" : 4.0,
     "available" : true,
@@ -155,7 +155,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: West Coast IPA",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 7.2,
     "price" : 4.0,
     "available" : true,
@@ -173,7 +173,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Hitcher",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 5.5,
     "price" : 4.0,
     "available" : true,
@@ -182,7 +182,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Naturalist",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 6.5,
     "price" : 5.0,
     "available" : true,
@@ -191,7 +191,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Filungar",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 5.5,
     "price" : 5.0,
     "available" : true,
@@ -200,7 +200,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Outdoorsman",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 4.8,
     "price" : 5.0,
     "available" : true,
@@ -209,7 +209,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Left Handed Giant: Making Planets DIPA",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 8.0,
     "price" : 5.0,
     "available" : true,
@@ -218,7 +218,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Left Handed Giant: Opening Theme IPA",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 6.5,
     "price" : 5.0,
     "available" : true,
@@ -227,7 +227,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Specials Box – 12 pack",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 4.8,
     "price" : 58.0,
     "available" : true,
@@ -236,7 +236,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "NEW 12 Beer Mega Pack 24 x 440ml",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : null,
     "price" : 69.5,
     "available" : true,
@@ -245,7 +245,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Passionfruit Gose 24 x 440ml",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 4.5,
     "price" : 66.0,
     "available" : true,
@@ -254,7 +254,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Tropical Deluxe 24 x 440ml",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 3.8,
     "price" : 66.0,
     "available" : true,
@@ -263,7 +263,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Passionfruit Gose 12 x 440ml",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 4.5,
     "price" : 36.0,
     "available" : true,
@@ -272,7 +272,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Tropical Deluxe 12 x 440ml",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 3.8,
     "price" : 36.0,
     "available" : true,
@@ -281,7 +281,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Off Ramp DIPA 4 x 440ml",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 8.0,
     "price" : 20.0,
     "available" : true,
@@ -290,7 +290,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Drag Race Johnny NEIPA 4 x 440ml",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 6.7,
     "price" : 18.0,
     "available" : true,
@@ -299,7 +299,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "House IPA 4 x 440ml",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 6.9,
     "price" : 18.0,
     "available" : true,
@@ -308,7 +308,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Flashpoint NEIPA 4 x 440ml",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 6.2,
     "price" : 17.0,
     "available" : true,
@@ -317,7 +317,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Romans DDH Pale 4 x 440ml",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 5.5,
     "price" : 16.0,
     "available" : true,
@@ -326,7 +326,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Push Push DDH Pale 4 x 440ml",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 5.8,
     "price" : 16.0,
     "available" : true,
@@ -335,7 +335,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Soft Top Sabro Stout 4 x 440ml",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 6.5,
     "price" : 16.0,
     "available" : true,
@@ -344,7 +344,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Blankets Pale Ale 4 x 440ml",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 4.5,
     "price" : 15.0,
     "available" : true,
@@ -353,7 +353,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Packets Keller Lager 4 x 440ml",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 4.2,
     "price" : 14.0,
     "available" : true,
@@ -362,7 +362,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Pocket Rocket Tiny IPA 4 x 440ml",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 2.7,
     "price" : 14.0,
     "available" : true,
@@ -371,7 +371,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Passionfruit Gose 4 x 440ml",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 4.5,
     "price" : 14.0,
     "available" : true,
@@ -380,7 +380,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Tropical Deluxe 4 x 440ml",
-    "sizeMl" : null,
+    "sizeMl" : 440,
     "abv" : 3.8,
     "price" : 14.0,
     "available" : true,
@@ -389,7 +389,7 @@
   }, {
     "brewery" : "Villages",
     "name" : "RODEO Pale Ale",
-    "sizeMl" : null,
+    "sizeMl" : 330,
     "abv" : 4.6,
     "price" : 25.6,
     "available" : true,
@@ -398,7 +398,7 @@
   }, {
     "brewery" : "Villages",
     "name" : "WHISTLE Pilsner",
-    "sizeMl" : null,
+    "sizeMl" : 330,
     "abv" : 4.4,
     "price" : 25.6,
     "available" : true,
@@ -407,7 +407,7 @@
   }, {
     "brewery" : "Villages",
     "name" : "RAFIKI Session IPA",
-    "sizeMl" : null,
+    "sizeMl" : 330,
     "abv" : 4.3,
     "price" : 25.6,
     "available" : true,
@@ -416,7 +416,7 @@
   }, {
     "brewery" : "Villages",
     "name" : "ISOLATION IPA",
-    "sizeMl" : null,
+    "sizeMl" : 330,
     "abv" : 5.4,
     "price" : 32.2,
     "available" : true,
@@ -425,7 +425,7 @@
   }, {
     "brewery" : "Villages",
     "name" : "VILLAGES Mixed Case (24 × cans)",
-    "sizeMl" : null,
+    "sizeMl" : 330,
     "abv" : null,
     "price" : 52.5,
     "available" : true,
@@ -434,7 +434,7 @@
   }, {
     "brewery" : "Villages",
     "name" : "ALES Mixed Case (24 × cans)",
-    "sizeMl" : null,
+    "sizeMl" : 330,
     "abv" : null,
     "price" : 53.6,
     "available" : true,
@@ -443,7 +443,7 @@
   }, {
     "brewery" : "Villages",
     "name" : "REGULARS Mixed Case (24 × cans)",
-    "sizeMl" : null,
+    "sizeMl" : 330,
     "abv" : null,
     "price" : 49.2,
     "available" : true,
