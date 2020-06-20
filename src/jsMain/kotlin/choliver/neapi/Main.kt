@@ -26,6 +26,7 @@ fun updateDom(inventory: Inventory) {
           th { +"Brewery" }
           th { +"Name" }
           th { +"ABV" }
+          th { +"Can size" }
           th { +"Price" }
         }
       }
@@ -50,6 +51,13 @@ fun updateDom(inventory: Inventory) {
             td {
               if (item.abv != null) {
                 +"${item.abv.asDynamic().toFixed(1)}%"
+              } else {
+                +"?"
+              }
+            }
+            td {
+              if (item.sizeMl != null) {
+                +"${item.sizeMl}ml"
               } else {
                 +"?"
               }

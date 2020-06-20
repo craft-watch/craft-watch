@@ -12,7 +12,7 @@ class BoxcarScraper : Scraper {
     .select(".product-card")
     .map { el ->
       val rawName = el.selectFirst(".product-card__title").text()
-      val result = "^(.*) // (.*)%.*$".toRegex().find(rawName)!!
+      val result = "^(.*?) // (.*?)%.*? // (.*?)ml$".toRegex().find(rawName)!!
 
       ParsedItem(
         thumbnailUrl = ROOT_URL.resolve(
@@ -23,6 +23,7 @@ class BoxcarScraper : Scraper {
         url = ROOT_URL.resolve(el.selectFirst(".grid-view-item__link").attr("href").trim()),
         name = result.groupValues[1].trim(),
         abv = result.groupValues[2].trim().toBigDecimal(),
+        sizeMl = result.groupValues[3].trim().toInt(),
         available = "price--sold-out" !in el.selectFirst(".price").classNames(),
         price = el.selectFirst(".price-item--sale")
           .text()
