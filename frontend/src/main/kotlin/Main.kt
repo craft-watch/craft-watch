@@ -11,6 +11,7 @@ import kotlin.browser.window
 data class Item(
   val brewery: String,
   val name: String,
+  val abv: Float?, // TODO
   val price: Float, // TODO
   val available: Boolean,
   val url: String   // TODO
@@ -35,6 +36,7 @@ fun updateDom(inventory: List<Item>) {
         tr {
           th { +"Brewery" }
           th { +"Name" }
+          th { +"Abv" }
           th { +"Price" }
         }
       }
@@ -43,6 +45,13 @@ fun updateDom(inventory: List<Item>) {
           tr {
             td { +item.brewery }
             td { a(item.url) { +item.name } }
+            td {
+              if (item.abv != null) {
+                +"${item.abv.asDynamic().toFixed(1)}%"
+              } else {
+                +"?"
+              }
+            }
             td { +"£${item.price.asDynamic().toFixed(2)}" }
           }
         }
