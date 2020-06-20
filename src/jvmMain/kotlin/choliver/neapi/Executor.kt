@@ -9,25 +9,33 @@ class Executor(private val getter: HttpGetter) {
     items = SCRAPERS.flatMap { scraper ->
       with(scraper) {
         RealScraperContext(getter).scrape()
-          .map {
+          .map { item ->
             Item(
               brewery = scraper.name,
-              name = it.name,
+              name = item.name,
               // TODO - validate sane size
-              sizeMl = it.sizeMl,
+              sizeMl = item.sizeMl,
               // TODO - validate sane range
-              abv = it.abv?.toFloat(),
+              abv = item.abv?.toFloat(),
               // TODO - validate sane price
-              pricePerCan = it.pricePerCan.toFloat(),
-              available = it.available,
+              pricePerCan = item.pricePerCan.toFloat()
+                .validate("Price unexpectedly high") { it < MAX_PRICE_PER_CAN },
+              available = item.available,
               // TODO - validate these are absolute URLs
-              thumbnailUrl = it.thumbnailUrl?.toString(),
-              url = it.url.toString()
+              thumbnailUrl = item.thumbnailUrl?.toString(),
+              url = item.url.toString()
             )
           }
       }
     }
   )
+
+  private fun <T> T.validate(message: String, predicate: (T) -> Boolean): T {
+    if (!predicate(this)) {
+      throw IllegalStateException("Validation failed for value (${this}): ${message}")
+    }
+    return this
+  }
 
   companion object {
     private val SCRAPERS = listOf(
@@ -37,5 +45,7 @@ class Executor(private val getter: HttpGetter) {
       PressureDropScraper(),
       VillagesScraper()
     )
+
+    private const val MAX_PRICE_PER_CAN = 8.00
   }
 }
