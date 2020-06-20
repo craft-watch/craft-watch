@@ -2,10 +2,7 @@ package choliver.neapi
 
 import choliver.neapi.model.Inventory
 import choliver.neapi.model.Item
-import choliver.neapi.scrapers.BoxcarScraper
-import choliver.neapi.scrapers.GipsyHillScraper
-import choliver.neapi.scrapers.HowlingHopsScraper
-import choliver.neapi.scrapers.VillagesScraper
+import choliver.neapi.scrapers.*
 
 class Executor(private val getter: HttpGetter) {
   fun scrapeAll() = Inventory(
@@ -37,6 +34,7 @@ class Executor(private val getter: HttpGetter) {
       BoxcarScraper(),
       GipsyHillScraper(),
       HowlingHopsScraper(),
+      PressureDropScraper(),
       VillagesScraper()
     )
   }
