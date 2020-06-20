@@ -25,6 +25,7 @@ class VillagesScraperTest {
         abv = "4.6".toBigDecimal(),
         price = "25.60".toBigDecimal(),
         available = true,
+        thumbnailUrl = URI("//cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345.jpg"),
         url = URI("/collections/buy-beer/products/rodeo-pale-ale")
       ) in items
     )
@@ -38,6 +39,7 @@ class VillagesScraperTest {
         abv = null,   // Can't find this!
         price = "52.50".toBigDecimal(),
         available = true,
+        thumbnailUrl = URI("//cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg"),
         url = URI("/collections/buy-beer/products/villages-mixed-case")
       ) in items
     )

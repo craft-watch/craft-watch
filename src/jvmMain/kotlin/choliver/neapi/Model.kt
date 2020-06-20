@@ -8,5 +8,6 @@ data class ParsedItem(
   val price: BigDecimal,
   val abv: BigDecimal? = null,
   val available: Boolean,
+  val thumbnailUrl: URI? = null,
   val url: URI
 )

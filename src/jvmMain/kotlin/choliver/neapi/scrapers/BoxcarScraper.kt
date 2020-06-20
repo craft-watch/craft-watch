@@ -16,6 +16,11 @@ class BoxcarScraper : Scraper {
       val result = "^(.*) // (.*)%.*$".toRegex().find(rawName)!!
 
       ParsedItem(
+        thumbnailUrl = URI(
+          el.selectFirst("noscript .grid-view-item__image").attr("src").trim()
+            .replace("@2x", "")
+            .replace("\\?.*".toRegex(), "")
+        ),
         url = URI(el.selectFirst(".grid-view-item__link").attr("href").trim()),
         name = result.groupValues[1].trim(),
         abv = result.groupValues[2].trim().toBigDecimal(),
