@@ -13,11 +13,19 @@ class HowlingHopsScraper : Scraper {
     .select(".wc-block-grid__product")
     .map { el ->
       val a = el.selectFirst(".wc-block-grid__product-link")
+      val url = URI(a.attr("href").trim())
+
+      val abv = request(url) { subDoc ->
+        val result = "/ (\\d+(\\.\\d+)?)% ABV".toRegex().find(subDoc.text())
+        result?.let { it.groupValues[1].trim().toBigDecimal() }
+      }
+
       ParsedItem(
         thumbnailUrl = URI(a.selectFirst(".attachment-woocommerce_thumbnail").attr("src").trim()),
-        url = URI(a.attr("href").trim()),
+        url = url,
         name = a.selectFirst(".wc-block-grid__product-title").text().trim(),
         available = true, // TODO
+        abv = abv,
         price = el.select(".woocommerce-Price-amount")
           .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
           .first()

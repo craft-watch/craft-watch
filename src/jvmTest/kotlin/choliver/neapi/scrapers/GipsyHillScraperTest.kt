@@ -8,16 +8,18 @@ import org.junit.jupiter.api.Test
 import java.net.URI
 
 class GipsyHillScraperTest {
-  private val items = executeScraper(GipsyHillScraper())
+  companion object {
+    private val ITEMS = executeScraper(GipsyHillScraper())
+  }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(18, items.size)
+    assertEquals(18, ITEMS.size)
   }
 
   @Test
   fun `eliminates duplicates`() {
-    assertEquals(1, items.filter { it.name == "Moneybags" }.size)
+    assertEquals(1, ITEMS.filter { it.name == "Moneybags" }.size)
   }
 
   @Test
@@ -26,10 +28,11 @@ class GipsyHillScraperTest {
       ParsedItem(
         name = "Carver",
         price = "2.20".toBigDecimal(),
+        abv = "2.8".toBigDecimal(),
         available = true,
         thumbnailUrl = URI("https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/CARVER.png?resize=300%2C300&ssl=1"),
         url = URI("https://gipsyhillbrew.com/product/carver/")
-      ) in items
+      ) in ITEMS
     )
   }
 }

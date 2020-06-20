@@ -8,30 +8,33 @@ import org.junit.jupiter.api.Test
 import java.net.URI
 
 class HowlingHopsScraperTest {
-  private val items = executeScraper(HowlingHopsScraper())
+  companion object {
+    private val ITEMS = executeScraper(HowlingHopsScraper())
+  }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(17, items.size)
+    assertEquals(17, ITEMS.size)
   }
 
   @Test
   fun `extracts sale price not original price`() {
     assertTrue(
       ParsedItem(
-        name = "NEW 12 Beer Mega Pack 24 x 440ml",
-        price = "69.50".toBigDecimal(),
+        name = "Push Push DDH Pale 4 x 440ml",
+        price = "16.00".toBigDecimal(),
+        abv = "5.8".toBigDecimal(),
         available = true,
-        thumbnailUrl = URI("https://www.howlinghops.co.uk/wp-content/uploads/2020/06/12beers_june2-324x324.jpg"),
-        url = URI("https://www.howlinghops.co.uk/product/12-beer-mega-pack-24-x-440ml/")
-      ) in items
+        thumbnailUrl = URI("https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png"),
+        url = URI("https://www.howlinghops.co.uk/product/push-push-4-x-440ml/")
+      ) in ITEMS
     )
   }
 
   @Test
   fun `doesn't extract apparel`() {
     assertTrue(
-      items.none { it.name.contains("various colours") }
+      ITEMS.none { it.name.contains("various colours") }
     )
   }
 }
