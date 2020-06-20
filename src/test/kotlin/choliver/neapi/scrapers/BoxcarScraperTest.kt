@@ -21,7 +21,8 @@ class BoxcarScraperTest {
   fun `extracts available beers`() {
     assertTrue(
       ParsedItem(
-        name = "Dreamful // 6.5% IPA // 440ml",
+        name = "Dreamful",
+        abv = "6.5".toBigDecimal(),
         price = "4.95".toBigDecimal(),
         available = true,
         url = URI("/collections/beer/products/dreamful-6-5-ipa-440ml")  // TODO - must normalise
@@ -33,7 +34,8 @@ class BoxcarScraperTest {
   fun `extracts unavailable beers`() {
     assertTrue(
       ParsedItem(
-        name = "Dark Mild // 3.6% // 440ml",
+        name = "Dark Mild",
+        abv = "3.6".toBigDecimal(),
         price = "3.75".toBigDecimal(),
         available = false,
         url = URI("/collections/beer/products/dark-mild")  // TODO - must normalise

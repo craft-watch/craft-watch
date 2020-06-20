@@ -12,9 +12,13 @@ class BoxcarScraper : Scraper {
   override fun scrape(doc: Document) = doc
     .select(".product-card")
     .map { el ->
+      val rawName = el.selectFirst(".product-card__title").text()
+      val result = "^(.*) // (.*)%.*$".toRegex().find(rawName)!!
+
       ParsedItem(
         url = URI(el.selectFirst(".grid-view-item__link").attr("href").trim()),
-        name = el.selectFirst(".product-card__title").text().trim(),
+        name = result.groupValues[1].trim(),
+        abv = result.groupValues[2].trim().toBigDecimal(),
         available = "price--sold-out" !in el.selectFirst(".price").classNames(),
         price = el.selectFirst(".price-item--sale")
           .text()

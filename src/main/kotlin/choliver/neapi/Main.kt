@@ -18,6 +18,7 @@ class Main(
         Item(
           brewery = scraper.name,
           name = it.name,
+          abv = it.abv,
           price = it.price,
           available = it.available,
           url = scraper.rootUrl.resolve(it.url)
