@@ -1,18 +1,14 @@
 package choliver.neapi.scrapers
 
-import choliver.neapi.CACHE_DIR
-import choliver.neapi.HttpGetter
 import choliver.neapi.ParsedItem
-import choliver.neapi.RealScraperContext
+import choliver.neapi.executeScraper
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.net.URI
 
 class HowlingHopsScraperTest {
-  private val getter = HttpGetter(CACHE_DIR)
-  private val ctx = RealScraperContext(getter)
-  private val items = with(HowlingHopsScraper()) { ctx.scrape() }
+  private val items = executeScraper(HowlingHopsScraper())
 
   @Test
   fun `finds all the beers`() {
