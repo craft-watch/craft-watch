@@ -25,7 +25,8 @@ class BoxcarScraperTest {
         abv = "6.5".toBigDecimal(),
         price = "4.95".toBigDecimal(),
         available = true,
-        url = URI("/collections/beer/products/dreamful-6-5-ipa-440ml")  // TODO - must normalise
+        thumbnailUrl = URI("//cdn.shopify.com/s/files/1/0358/6742/6953/products/IMG-20200604-WA0003_345x345.jpg"),
+        url = URI("/collections/beer/products/dreamful-6-5-ipa-440ml")
       ) in items
     )
   }
@@ -38,7 +39,8 @@ class BoxcarScraperTest {
         abv = "3.6".toBigDecimal(),
         price = "3.75".toBigDecimal(),
         available = false,
-        url = URI("/collections/beer/products/dark-mild")  // TODO - must normalise
+        thumbnailUrl = URI("//cdn.shopify.com/s/files/1/0358/6742/6953/products/20200429_183043_345x345.jpg"),
+        url = URI("/collections/beer/products/dark-mild")
       ) in items
     )
   }

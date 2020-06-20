@@ -14,5 +14,6 @@ data class Item(
   val abv: Float?, // TODO
   val price: Float, // TODO
   val available: Boolean,
+  val thumbnailUrl: String?,
   val url: String   // TODO
 )

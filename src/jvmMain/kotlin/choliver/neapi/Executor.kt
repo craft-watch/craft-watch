@@ -11,7 +11,7 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import org.jsoup.Jsoup
 import java.net.URI
 
-class Main(
+class Executor(
   private val getUrl: (URI) -> String
 ) {
   fun scrapeAll() = Inventory(
@@ -24,6 +24,7 @@ class Main(
             abv = it.abv?.toFloat(),
             price = it.price.toFloat(),
             available = it.available,
+            thumbnailUrl = it.thumbnailUrl?.let { url -> scraper.rootUrl.resolve(url).toString() },
             url = scraper.rootUrl.resolve(it.url).toString()
           )
         }
@@ -44,11 +45,11 @@ class Main(
         it.rootUrl to {}.javaClass.getResource("/samples/${it.name.toLowerCase().replace(" ", "-")}.html").readText()
       }
 
-      val main = Main(getUrl = { samples[it] ?: error("Unknown URL ${it}") })
+      val executor = Executor(getUrl = { samples[it] ?: error("Unknown URL ${it}") })
 
       val mapper = jacksonObjectMapper().enable(INDENT_OUTPUT)
 
-      println(mapper.writeValueAsString(main.scrapeAll()))
+      println(mapper.writeValueAsString(executor.scrapeAll()))
     }
   }
 }

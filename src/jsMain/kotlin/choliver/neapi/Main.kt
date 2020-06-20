@@ -20,7 +20,6 @@ fun main() {
 
 fun updateDom(inventory: Inventory) {
   document.body!!.append.div {
-    h1 { +"Welcome to NEAPI" }
     table {
       thead {
         tr {
@@ -34,7 +33,20 @@ fun updateDom(inventory: Inventory) {
         inventory.items.forEach { item ->
           tr {
             td { +item.brewery }
-            td { a(item.url) { +item.name } }
+            td {
+              if (item.thumbnailUrl != null) {
+                a(item.url) {
+                  img(src = item.thumbnailUrl) {
+                    width = "100px"
+                    height = "100px"
+                    style = "vertical-align: middle; margin-right: 10px"
+                  }
+                }
+              }
+              a(item.url) {
+                +item.name
+              }
+            }
             td {
               if (item.abv != null) {
                 +"${item.abv.asDynamic().toFixed(1)}%"
