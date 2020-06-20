@@ -1,5 +1,6 @@
-package choliver.neapi
+package choliver.neapi.scrapers
 
+import choliver.neapi.ParsedItem
 import org.jsoup.Jsoup
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -7,7 +8,7 @@ import org.junit.jupiter.api.Test
 import java.net.URI
 
 class GipsyHillScraperTest {
-  private val raw = {}.javaClass.getResource("/gipsy-hill.html").readText()
+  private val raw = {}.javaClass.getResource("/samples/gipsy-hill.html").readText()
   private val doc = Jsoup.parse(raw)
   private val items = GipsyHillScraper().scrape(doc)
 

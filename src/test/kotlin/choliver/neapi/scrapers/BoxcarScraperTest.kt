@@ -1,5 +1,6 @@
-package choliver.neapi
+package choliver.neapi.scrapers
 
+import choliver.neapi.ParsedItem
 import org.jsoup.Jsoup
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -7,7 +8,7 @@ import org.junit.jupiter.api.Test
 import java.net.URI
 
 class BoxcarScraperTest {
-  private val raw = {}.javaClass.getResource("/boxcar.html").readText()
+  private val raw = {}.javaClass.getResource("/samples/boxcar.html").readText()
   private val doc = Jsoup.parse(raw)
   private val items = BoxcarScraper().scrape(doc)
 

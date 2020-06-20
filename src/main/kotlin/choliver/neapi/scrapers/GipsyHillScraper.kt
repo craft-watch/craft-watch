@@ -1,5 +1,7 @@
-package choliver.neapi
+package choliver.neapi.scrapers
 
+import choliver.neapi.ParsedItem
+import choliver.neapi.Scraper
 import org.jsoup.nodes.Document
 import java.net.URI
 
