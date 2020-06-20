@@ -1,7 +1,6 @@
 import org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
 
 plugins {
-  base
   kotlin("jvm") version "1.3.72"
 }
 
