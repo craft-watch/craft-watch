@@ -16,9 +16,6 @@ class GipsyHillScraper : Scraper {
       val subText = request(url) { it.text() }
 
       val result = "Sold as: ((\\d+) x )?(\\d+)ml".toRegex().find(subText)
-      if (result != null) {
-        println(result.groupValues)
-      }
       val numCans = result?.let { it.groupValues[2].toIntOrNull() } ?: 1
 
       ParsedItem(
