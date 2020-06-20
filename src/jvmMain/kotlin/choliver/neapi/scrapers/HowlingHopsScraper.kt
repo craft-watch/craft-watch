@@ -20,12 +20,17 @@ class HowlingHopsScraper : Scraper {
         result?.let { it.groupValues[1].trim().toBigDecimal() }
       }
 
+      val name = a.selectFirst(".wc-block-grid__product-title").text().trim()
+
       ParsedItem(
         thumbnailUrl = URI(a.selectFirst(".attachment-woocommerce_thumbnail").attr("src").trim()),
         url = url,
-        name = a.selectFirst(".wc-block-grid__product-title").text().trim(),
+        name = name,
         available = true, // TODO
         abv = abv,
+        sizeMl = "(\\d+)ml".toRegex().find(name)?.let {
+          it.groupValues[1].trim().toInt()
+        },
         price = el.select(".woocommerce-Price-amount")
           .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
           .first()

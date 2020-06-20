@@ -22,6 +22,7 @@ class BoxcarScraperTest {
     assertTrue(
       ParsedItem(
         name = "Dreamful",
+        sizeMl = 440,
         abv = "6.5".toBigDecimal(),
         price = "4.95".toBigDecimal(),
         available = true,
@@ -36,6 +37,7 @@ class BoxcarScraperTest {
     assertTrue(
       ParsedItem(
         name = "Dark Mild",
+        sizeMl = 440,
         abv = "3.6".toBigDecimal(),
         price = "3.75".toBigDecimal(),
         available = false,

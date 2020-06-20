@@ -6,6 +6,7 @@ import java.net.URI
 data class ParsedItem(
   val name: String,
   val price: BigDecimal,
+  val sizeMl: Int? = null,
   val abv: BigDecimal? = null,
   val available: Boolean,
   val thumbnailUrl: URI? = null,

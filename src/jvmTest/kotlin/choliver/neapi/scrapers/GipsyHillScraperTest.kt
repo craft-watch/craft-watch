@@ -29,6 +29,7 @@ class GipsyHillScraperTest {
         name = "Carver",
         price = "2.20".toBigDecimal(),
         abv = "2.8".toBigDecimal(),
+        sizeMl = 330,
         available = true,
         thumbnailUrl = URI("https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/CARVER.png?resize=300%2C300&ssl=1"),
         url = URI("https://gipsyhillbrew.com/product/carver/")

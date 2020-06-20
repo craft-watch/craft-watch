@@ -11,9 +11,10 @@ data class Inventory(
 data class Item(
   val brewery: String,
   val name: String,
-  val abv: Float?, // TODO
-  val price: Float, // TODO
+  val sizeMl: Int?,
+  val abv: Float?,
+  val price: Float,
   val available: Boolean,
   val thumbnailUrl: String?,
-  val url: String   // TODO
+  val url: String
 )
