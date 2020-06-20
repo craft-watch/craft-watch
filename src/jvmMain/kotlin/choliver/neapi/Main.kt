@@ -1,5 +1,7 @@
 package choliver.neapi
 
+import choliver.neapi.model.Inventory
+import choliver.neapi.model.Item
 import choliver.neapi.scrapers.BoxcarScraper
 import choliver.neapi.scrapers.GipsyHillScraper
 import choliver.neapi.scrapers.HowlingHopsScraper
@@ -12,19 +14,21 @@ import java.net.URI
 class Main(
   private val getUrl: (URI) -> String
 ) {
-  fun scrapeAll() = SCRAPERS.flatMap { scraper ->
-    scraper.scrape(Jsoup.parse(getUrl(scraper.rootUrl)))
-      .map {
-        Item(
-          brewery = scraper.name,
-          name = it.name,
-          abv = it.abv,
-          price = it.price,
-          available = it.available,
-          url = scraper.rootUrl.resolve(it.url)
-        )
-      }
-  }
+  fun scrapeAll() = Inventory(
+    items = SCRAPERS.flatMap { scraper ->
+      scraper.scrape(Jsoup.parse(getUrl(scraper.rootUrl)))
+        .map {
+          Item(
+            brewery = scraper.name,
+            name = it.name,
+            abv = it.abv?.toFloat(),
+            price = it.price.toFloat(),
+            available = it.available,
+            url = scraper.rootUrl.resolve(it.url).toString()
+          )
+        }
+    }
+  )
 
   companion object {
     private val SCRAPERS = listOf(
