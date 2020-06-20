@@ -21,8 +21,8 @@ class HowlingHopsScraperTest {
   fun `extracts sale price not original price`() {
     assertTrue(
       ParsedItem(
-        name = "Push Push DDH Pale 4 x 440ml",
-        price = "16.00".toBigDecimal(),
+        name = "Push Push DDH Pale",
+        price = "4.00".toBigDecimal(),
         abv = "5.8".toBigDecimal(),
         sizeMl = 440,
         available = true,
