@@ -66,7 +66,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Moneybags",
-    "abv" : null,
+    "abv" : 9.9,
     "price" : 6.0,
     "available" : true,
     "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/02/Moneybags-1.png?resize=300%2C300&ssl=1",
@@ -74,7 +74,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Blisco Dash",
-    "abv" : null,
+    "abv" : 4.8,
     "price" : 4.0,
     "available" : true,
     "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Blisco-Dash.png?resize=300%2C300&ssl=1",
@@ -82,7 +82,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Baller",
-    "abv" : null,
+    "abv" : 5.4,
     "price" : 2.7,
     "available" : true,
     "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/BALLER.png?resize=300%2C300&ssl=1",
@@ -90,7 +90,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Carver",
-    "abv" : null,
+    "abv" : 2.8,
     "price" : 2.2,
     "available" : true,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/CARVER.png?resize=300%2C300&ssl=1",
@@ -98,7 +98,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Bandit",
-    "abv" : null,
+    "abv" : 3.8,
     "price" : 2.2,
     "available" : true,
     "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/BANDIT.png?resize=300%2C300&ssl=1",
@@ -106,7 +106,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Hunter",
-    "abv" : null,
+    "abv" : 4.8,
     "price" : 2.3,
     "available" : true,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/HUNTER.png?resize=300%2C300&ssl=1",
@@ -122,7 +122,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: New England IPA",
-    "abv" : null,
+    "abv" : 6.5,
     "price" : 4.0,
     "available" : true,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/5-1.png?resize=300%2C300&ssl=1",
@@ -130,7 +130,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: Triple Fruited Sour",
-    "abv" : null,
+    "abv" : 4.4,
     "price" : 4.0,
     "available" : true,
     "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/4-1.png?resize=300%2C300&ssl=1",
@@ -138,7 +138,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: West Coast IPA",
-    "abv" : null,
+    "abv" : 7.2,
     "price" : 4.0,
     "available" : true,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/1-2.png?resize=300%2C300&ssl=1",
@@ -146,7 +146,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: Sour IPA",
-    "abv" : null,
+    "abv" : 7.5,
     "price" : 5.0,
     "available" : true,
     "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/2-2.png?resize=300%2C300&ssl=1",
@@ -154,7 +154,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Hitcher",
-    "abv" : null,
+    "abv" : 5.5,
     "price" : 4.0,
     "available" : true,
     "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Hitcher.png?resize=300%2C300&ssl=1",
@@ -162,7 +162,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Naturalist",
-    "abv" : null,
+    "abv" : 6.5,
     "price" : 5.0,
     "available" : true,
     "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Naturalist.png?resize=300%2C300&ssl=1",
@@ -170,7 +170,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Filungar",
-    "abv" : null,
+    "abv" : 5.5,
     "price" : 5.0,
     "available" : true,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2019/04/Filungar.png?resize=300%2C300&ssl=1",
@@ -178,7 +178,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Outdoorsman",
-    "abv" : null,
+    "abv" : 4.8,
     "price" : 5.0,
     "available" : true,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Outdoorsman.png?resize=300%2C300&ssl=1",
@@ -186,7 +186,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Left Handed Giant: Making Planets DIPA",
-    "abv" : null,
+    "abv" : 8.0,
     "price" : 5.0,
     "available" : true,
     "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2019/04/Copy-of-Core-range-6-pack-26.png?resize=300%2C300&ssl=1",
@@ -194,7 +194,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Left Handed Giant: Opening Theme IPA",
-    "abv" : null,
+    "abv" : 6.5,
     "price" : 5.0,
     "available" : true,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/01/OPENINGTHEMECANSOCIAL-1.jpg?resize=300%2C300&ssl=1",
@@ -202,7 +202,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Specials Box – 12 pack",
-    "abv" : null,
+    "abv" : 4.8,
     "price" : 58.0,
     "available" : true,
     "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Specials-01.png?resize=300%2C300&ssl=1",
@@ -218,7 +218,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Passionfruit Gose 24 x 440ml",
-    "abv" : null,
+    "abv" : 4.5,
     "price" : 66.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/PFG-24-324x324.png",
@@ -226,7 +226,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Tropical Deluxe 24 x 440ml",
-    "abv" : null,
+    "abv" : 3.8,
     "price" : 66.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/04/Tropical-24-324x324.png",
@@ -234,7 +234,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Passionfruit Gose 12 x 440ml",
-    "abv" : null,
+    "abv" : 4.5,
     "price" : 36.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/PFG-12-324x324.png",
@@ -242,7 +242,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Tropical Deluxe 12 x 440ml",
-    "abv" : null,
+    "abv" : 3.8,
     "price" : 36.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/04/Tropical-12-324x324.png",
@@ -250,7 +250,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Off Ramp DIPA 4 x 440ml",
-    "abv" : null,
+    "abv" : 8.0,
     "price" : 20.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/offramp-440ml-324x324.png",
@@ -258,7 +258,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Drag Race Johnny NEIPA 4 x 440ml",
-    "abv" : null,
+    "abv" : 6.7,
     "price" : 18.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/drag-race-johnny-440ml-324x324.png",
@@ -266,7 +266,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "House IPA 4 x 440ml",
-    "abv" : null,
+    "abv" : 6.9,
     "price" : 18.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/05/house-ipa-440ml-324x324.png",
@@ -274,7 +274,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Flashpoint NEIPA 4 x 440ml",
-    "abv" : null,
+    "abv" : 6.2,
     "price" : 17.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/flashpoint-440ml-324x324.png",
@@ -282,7 +282,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Romans DDH Pale 4 x 440ml",
-    "abv" : null,
+    "abv" : 5.5,
     "price" : 16.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/HBC-romans-324x324.png",
@@ -290,7 +290,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Push Push DDH Pale 4 x 440ml",
-    "abv" : null,
+    "abv" : 5.8,
     "price" : 16.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png",
@@ -298,7 +298,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Soft Top Sabro Stout 4 x 440ml",
-    "abv" : null,
+    "abv" : 6.5,
     "price" : 16.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/05/soft-top-440ml-324x324.png",
@@ -306,7 +306,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Blankets Pale Ale 4 x 440ml",
-    "abv" : null,
+    "abv" : 4.5,
     "price" : 15.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/blankets-440ml-324x324.png",
@@ -314,7 +314,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Packets Keller Lager 4 x 440ml",
-    "abv" : null,
+    "abv" : 4.2,
     "price" : 14.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/packets-440ml-324x324.png",
@@ -322,7 +322,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Pocket Rocket Tiny IPA 4 x 440ml",
-    "abv" : null,
+    "abv" : 2.7,
     "price" : 14.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/pocket-rocket-440ml-324x324.png",
@@ -330,7 +330,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Passionfruit Gose 4 x 440ml",
-    "abv" : null,
+    "abv" : 4.5,
     "price" : 14.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2019/01/Passionfruit-Gose-324x324.jpg",
@@ -338,7 +338,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Tropical Deluxe 4 x 440ml",
-    "abv" : null,
+    "abv" : 3.8,
     "price" : 14.0,
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/04/tropical-deluxe-440ml-324x324.png",

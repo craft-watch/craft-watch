@@ -8,11 +8,13 @@ import org.junit.jupiter.api.Test
 import java.net.URI
 
 class VillagesScraperTest {
-  private val items = executeScraper(VillagesScraper())
+  companion object {
+    private val ITEMS = executeScraper(VillagesScraper())
+  }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(7, items.size)
+    assertEquals(7, ITEMS.size)
   }
 
   @Test
@@ -25,7 +27,7 @@ class VillagesScraperTest {
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345.jpg"),
         url = URI("https://villagesbrewery.com/collections/buy-beer/products/rodeo-pale-ale")
-      ) in items
+      ) in ITEMS
     )
   }
 
@@ -39,7 +41,7 @@ class VillagesScraperTest {
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg"),
         url = URI("https://villagesbrewery.com/collections/buy-beer/products/villages-mixed-case")
-      ) in items
+      ) in ITEMS
     )
   }
 }

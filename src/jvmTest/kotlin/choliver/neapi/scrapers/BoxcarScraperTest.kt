@@ -8,11 +8,13 @@ import org.junit.jupiter.api.Test
 import java.net.URI
 
 class BoxcarScraperTest {
-  private val items = executeScraper(BoxcarScraper())
+  companion object {
+    private val ITEMS = executeScraper(BoxcarScraper())
+  }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(8, items.size)
+    assertEquals(8, ITEMS.size)
   }
 
   @Test
@@ -25,7 +27,7 @@ class BoxcarScraperTest {
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/IMG-20200604-WA0003_345x345.jpg"),
         url = URI("https://shop.boxcarbrewery.co.uk/collections/beer/products/dreamful-6-5-ipa-440ml")
-      ) in items
+      ) in ITEMS
     )
   }
 
@@ -39,7 +41,7 @@ class BoxcarScraperTest {
         available = false,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/20200429_183043_345x345.jpg"),
         url = URI("https://shop.boxcarbrewery.co.uk/collections/beer/products/dark-mild")
-      ) in items
+      ) in ITEMS
     )
   }
 }

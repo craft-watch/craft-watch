@@ -4,24 +4,41 @@ import mu.KotlinLogging
 import java.io.File
 import java.net.URI
 import java.security.MessageDigest
+import java.util.zip.ZipEntry
+import java.util.zip.ZipInputStream
+import java.util.zip.ZipOutputStream
 
 class HttpGetter(private val cacheDir: File) {
   private val logger = KotlinLogging.logger {}
 
   fun get(url: URI): String {
-    // TODO - logging
     val hash = url.toString().sha1()
-    val file = File(cacheDir, "${hash}.html")
+    val zip = File(cacheDir, "${hash}.zip")
 
-    return if (file.exists()) {
-      logger.info("${url}: reading from cache: ${file}")
-      file.readText()
+    return if (zip.exists()) {
+      logger.info("${url}: reading from cache: ${zip}")
+      fromZip(zip)
     } else {
-      logger.info("${url}: writing to cache: ${file}")
+      logger.info("${url}: writing to cache: ${zip}")
       val text = url.toURL().readText()
-      file.parentFile.mkdirs()
-      file.writeText(text)
+      zip.parentFile.mkdirs()
+      toZip(zip, text)
       text
+    }
+  }
+
+  private fun toZip(zip: File, text: String) {
+    ZipOutputStream(zip.outputStream().buffered()).use { zos ->
+      zos.putNextEntry(ZipEntry("my.html"))
+      zos.write(text.toByteArray())
+      zos.closeEntry()
+    }
+  }
+
+  private fun fromZip(zip: File): String {
+    return ZipInputStream(zip.inputStream().buffered()).use { zis ->
+      zis.nextEntry
+      zis.reader().readText()
     }
   }
 
