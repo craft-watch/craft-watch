@@ -14,7 +14,7 @@ class HowlingHopsScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(17, ITEMS.size)
+    assertEquals(13, ITEMS.size)
   }
 
   @Test
@@ -29,6 +29,17 @@ class HowlingHopsScraperTest {
         thumbnailUrl = URI("https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png"),
         url = URI("https://www.howlinghops.co.uk/product/push-push-4-x-440ml/")
       ) in ITEMS
+    )
+  }
+
+  @Test
+  fun `finds best prices for beer`() {
+    // There are two raw prices available for this beer
+    assertEquals(
+      listOf("2.75".toBigDecimal()),
+      ITEMS
+        .filter { it.name == "Passionfruit Gose" }
+        .map { it.price }
     )
   }
 

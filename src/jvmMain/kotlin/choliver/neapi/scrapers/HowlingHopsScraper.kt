@@ -38,6 +38,9 @@ class HowlingHopsScraper : Scraper {
           .toBigDecimal() / numCans.toBigDecimal()
       )
     }
+    .groupBy { it.name }
+    .values
+    .map { group -> group.minBy { it.price }!! }  // Find best price for this beer
   }
 
   companion object {
