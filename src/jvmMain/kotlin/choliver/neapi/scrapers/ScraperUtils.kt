@@ -2,14 +2,15 @@ package choliver.neapi.scrapers
 
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
-import java.math.BigDecimal
 import java.net.URI
+import kotlin.math.nextTowards
+import kotlin.math.round
 
 data class ShopifyItemDetails(
   val title: String,
   val url: URI,
   val thumbnailUrl: URI,
-  val price: BigDecimal,
+  val price: Double,
   val available: Boolean
 )
 
@@ -27,7 +28,7 @@ fun Document.shopifyItems() = select(".product-card").map {
   )
 }
 
-fun Element.priceFrom(cssQuery: String = ":root") = extractFrom(cssQuery, "\\d+\\.\\d+")!![0].toBigDecimal()
+fun Element.priceFrom(cssQuery: String = ":root") = extractFrom(cssQuery, "\\d+\\.\\d+")!![0].toDouble()
 
 fun Element.extractFrom(cssQuery: String = ":root", regex: String) = textFrom(cssQuery).extract(regex)
 
@@ -43,4 +44,6 @@ fun String.extract(regex: String) = regex.toRegex().find(this)?.groupValues
 
 fun String.toTitleCase(): String = toLowerCase().split(" ").joinToString(" ") { it.capitalize() }
 
+// I *know* this doesn't really work for floating-point.  But it's good enough for our purposes.
+fun Double.divideAsPrice(denominator: Int) = round(100 * this / denominator) / 100
 

@@ -22,7 +22,7 @@ class FourpureScraper : Scraper {
         thumbnailUrl = ROOT_URL.resolve(a.srcFrom("img")),
         url = url,
         name = el.getName().extract("([^\\d]+)( \\d+ml)?")!![1],  // Strip size embedded in name
-        abv = itemDoc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+\\.\\d+)")!![1].toBigDecimal(),
+        abv = itemDoc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+\\.\\d+)")!![1].toDouble(),
         summary = null,
         sizeMl = itemDoc.extractFrom(".quickBuy", "(\\d+)ml")!![1].toInt(),
         available = true,

@@ -24,7 +24,7 @@ class VillagesScraper : Scraper {
           summary = "${numCans} cans",
           sizeMl = sizeMl,
           available = details.available,
-          pricePerCan = details.price / numCans.toBigDecimal()
+          pricePerCan = details.price.divideAsPrice(numCans)
         )
       } else {
         val parts = details.title.extract("^([^ ]*) (.*)? ((.*)%)?.*$")!!
@@ -34,9 +34,9 @@ class VillagesScraper : Scraper {
           name = parts[1].toTitleCase(),
           summary = parts[2],
           sizeMl = sizeMl,
-          abv = parts[4].toBigDecimal(),
+          abv = parts[4].toDouble(),
           available = details.available,
-          pricePerCan = details.price / 12.toBigDecimal()
+          pricePerCan = details.price.divideAsPrice(12)
         )
       }
     }

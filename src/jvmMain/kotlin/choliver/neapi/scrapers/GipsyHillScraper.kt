@@ -24,9 +24,9 @@ class GipsyHillScraper : Scraper {
         name = a.textFrom(".woocommerce-loop-product__title"),
         summary = rawSummary.extract("Style: (.*) ABV")?.get(1),
         available = true, // TODO
-        abv = rawSummary.extract("ABV: (.*?)%")?.get(1)?.toBigDecimal(),
+        abv = rawSummary.extract("ABV: (.*?)%")?.get(1)?.toDouble(),
         sizeMl = parts?.get(3)?.toInt(),
-        pricePerCan = el.ownTextFrom(".woocommerce-Price-amount").toBigDecimal() / numCans.toBigDecimal()
+        pricePerCan = el.ownTextFrom(".woocommerce-Price-amount").toDouble().divideAsPrice(numCans)
       )
     }
     .distinctBy { it.name }

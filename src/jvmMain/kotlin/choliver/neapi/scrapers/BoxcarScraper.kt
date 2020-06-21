@@ -17,7 +17,7 @@ class BoxcarScraper : Scraper {
         thumbnailUrl = details.thumbnailUrl,
         url = details.url,
         name = parts[1],
-        abv = parts[2].toBigDecimal(),
+        abv = parts[2].toDouble(),
         summary = parts[3].ifBlank { null },
         sizeMl = parts[4].toInt(),
         available = details.available,

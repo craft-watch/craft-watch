@@ -27,8 +27,8 @@ class GipsyHillScraperTest {
       ParsedItem(
         name = "Carver",
         summary = "Micro IPA",
-        pricePerCan = "2.20".toBigDecimal(),
-        abv = "2.8".toBigDecimal(),
+        pricePerCan = 2.20,
+        abv = 2.8,
         sizeMl = 330,
         available = true,
         thumbnailUrl = URI("https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/CARVER.png?resize=300%2C300&ssl=1"),
@@ -41,7 +41,7 @@ class GipsyHillScraperTest {
   @Test
   fun `normalises price for multi-pack`() {
     assertEquals(
-      "4.83".toBigDecimal(),
+      4.83,
       ITEMS.find { it.name == "Specials Box – 12 pack" }!!.pricePerCan
     )
   }

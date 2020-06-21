@@ -19,7 +19,7 @@ class HowlingHopsScraper : Scraper {
         .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
         .first()
         .ownText()
-        .toBigDecimal()
+        .toDouble()
 
       val shortDesc = request(url).textFrom(".woocommerce-product-details__short-description")
 
@@ -32,8 +32,8 @@ class HowlingHopsScraper : Scraper {
           summary = parts[2],
           available = true,   // TODO
           sizeMl = parts[4].toInt(),
-          abv = parts[5].toBigDecimal(),
-          pricePerCan = price / parts[3].toBigDecimal()
+          abv = parts[5].toDouble(),
+          pricePerCan = price.divideAsPrice(parts[3].toInt())
         )
       } else {
         with(shortDesc.extract("(.*?) (\\d+) x (\\d+)ml")!!) {
@@ -46,7 +46,7 @@ class HowlingHopsScraper : Scraper {
             available = true,   // TODO
             sizeMl = this[3].toInt(),
             abv = null,
-            pricePerCan = price / numCans.toBigDecimal()
+            pricePerCan = price.divideAsPrice(numCans)
           )
         }
       }

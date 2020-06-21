@@ -23,10 +23,8 @@ class Executor(private val getter: HttpGetter) {
               // TODO - validate sane size
               sizeMl = item.sizeMl,
               abv = item.abv
-                ?.toFloat()
                 ?.validate("ABV unexpectedly high") { it < MAX_ABV },
               pricePerCan = item.pricePerCan
-                .toFloat()
                 .validate("Price unexpectedly high") { it < MAX_PRICE_PER_CAN },
               available = item.available,
               thumbnailUrl = item.thumbnailUrl
