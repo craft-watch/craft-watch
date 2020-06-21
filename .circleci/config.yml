@@ -11,15 +11,15 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+          key: v2-gradle-{{ checksum "build.gradle.kts" }}
 
       - run:
           name: Run tests
-          command: ./gradlew check
+          command: ./gradlew --build-cache check
 
       - run:
           name: Build frontend
-          command: ./gradlew jsBrowserProductionWebpack
+          command: ./gradlew --build-cache jsBrowserProductionWebpack
 
       - add_ssh_keys:
           fingerprints:
@@ -37,8 +37,8 @@ jobs:
 
       - save_cache:
           paths:
-            - ~/.gradle/wrapper
-          key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+            - ~/.gradle
+          key: v2-gradle-{{ checksum "build.gradle.kts" }}
 
       - store_test_results:
           path: build/test-results/jvmTest
