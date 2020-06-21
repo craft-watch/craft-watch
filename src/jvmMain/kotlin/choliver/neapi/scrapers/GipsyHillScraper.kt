@@ -13,15 +13,15 @@ class GipsyHillScraper : Scraper {
     .map { el ->
       val a = el.selectFirst(".woocommerce-LoopProduct-link")
       val url = URI(a.attr("href").trim())
-      val rawSummary = request(url).selectFirst(".summary").text()
+      val rawSummary = request(url).textOf(".summary")
 
       val parts = rawSummary.extract("Sold as: ((\\d+) x )?(\\d+)ml")
       val numCans = parts?.get(2)?.toIntOrNull() ?: 1
 
       ParsedItem(
-        thumbnailUrl = URI(a.selectFirst(".attachment-woocommerce_thumbnail").attr("src").trim()),
+        thumbnailUrl = URI(a.srcOf(".attachment-woocommerce_thumbnail")),
         url = url,
-        name = a.selectFirst(".woocommerce-loop-product__title").text().trim(),
+        name = a.textOf(".woocommerce-loop-product__title"),
         summary = rawSummary.extract("Style: (.*) ABV")?.get(1)?.trim(),
         available = true, // TODO
         abv = rawSummary.extract("ABV: (.*?)%")?.get(1)?.toBigDecimal(),

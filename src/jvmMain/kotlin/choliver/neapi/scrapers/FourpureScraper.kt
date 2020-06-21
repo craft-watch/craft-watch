@@ -19,14 +19,12 @@ class FourpureScraper : Scraper {
       val itemDoc = request(url)
 
       ParsedItem(
-        thumbnailUrl = ROOT_URL.resolve(a.selectFirst("img").attr("src").trim()),
+        thumbnailUrl = ROOT_URL.resolve(a.srcOf("img")),
         url = url,
         name = el.getName().extract("([^\\d]+)( \\d+ml)?")!![1],  // Strip size embedded in name
-        abv = itemDoc.selectFirst(".brewSheet").text()
-          .extract("Alcohol By Volume: (\\d+\\.\\d+)")!![1].toBigDecimal(),
+        abv = itemDoc.textOf(".brewSheet").extract("Alcohol By Volume: (\\d+\\.\\d+)")!![1].toBigDecimal(),
         summary = null,
-        sizeMl = itemDoc.selectFirst(".quickBuy").text()
-          .extract("(\\d+)ml")!![1].toInt(),
+        sizeMl = itemDoc.textOf(".quickBuy").extract("(\\d+)ml")!![1].toInt(),
         available = true,
         pricePerCan = (el.selectFirst(".priceNow") ?: el.selectFirst(".priceStandard"))
           .selectFirst(".GBP").text().removePrefix("£").toBigDecimal()

@@ -16,9 +16,7 @@ class HowlingHopsScraper : Scraper {
       val a = el.selectFirst(".wc-block-grid__product-link")
       val url = URI(a.attr("href").trim())
 
-      val shortDesc = request(url)
-        .selectFirst(".woocommerce-product-details__short-description")
-        .text()
+      val shortDesc = request(url).textOf(".woocommerce-product-details__short-description")
 
       val parts = shortDesc.extract("([^/]*?) / ([^/]*?) / (\\d+) x (\\d+)ml / (\\d+(\\.\\d+)?)% ABV")
       val name: String
@@ -43,7 +41,7 @@ class HowlingHopsScraper : Scraper {
       }
 
       ParsedItem(
-        thumbnailUrl = URI(a.selectFirst(".attachment-woocommerce_thumbnail").attr("src").trim()),
+        thumbnailUrl = URI(a.srcOf(".attachment-woocommerce_thumbnail")),
         url = url,
         name = name,
         summary = summary,

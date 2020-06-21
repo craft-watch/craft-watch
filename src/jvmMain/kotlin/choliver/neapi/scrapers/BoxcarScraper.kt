@@ -17,21 +17,17 @@ class BoxcarScraper : Scraper {
 
       ParsedItem(
         thumbnailUrl = ROOT_URL.resolve(
-          el.selectFirst("noscript .grid-view-item__image").attr("src").trim()
+          el.srcOf("noscript .grid-view-item__image")
             .replace("@2x", "")
             .replace("\\?.*".toRegex(), "")
         ),
-        url = ROOT_URL.resolve(el.selectFirst(".grid-view-item__link").attr("href").trim()),
+        url = ROOT_URL.resolve(el.hrefOf(".grid-view-item__link")),
         name = parts[1].trim(),
         abv = parts[2].trim().toBigDecimal(),
         summary = parts[3].trim().ifEmpty { null },
         sizeMl = parts[4].trim().toInt(),
         available = "price--sold-out" !in el.selectFirst(".price").classNames(),
-        pricePerCan = el.selectFirst(".price-item--sale")
-          .text()
-          .trim()
-          .removePrefix("£")
-          .toBigDecimal()
+        pricePerCan = el.textOf(".price-item--sale").removePrefix("£").toBigDecimal()
       )
     }
 

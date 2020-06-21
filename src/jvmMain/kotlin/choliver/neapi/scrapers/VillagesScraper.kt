@@ -12,7 +12,7 @@ class VillagesScraper : Scraper {
   override fun Context.scrape() = request(ROOT_URL)
     .select(".product-card")
     .map { el ->
-      val rawName = el.selectFirst(".product-card__title").text()
+      val rawName = el.textOf(".product-card__title")
 
       val numCans: Int
       val name: String
@@ -32,12 +32,12 @@ class VillagesScraper : Scraper {
         numCans = 12
       }
 
-      val url = ROOT_URL.resolve(el.selectFirst(".grid-view-item__link").attr("href").trim())
+      val url = ROOT_URL.resolve(el.hrefOf(".grid-view-item__link"))
       val itemText = request(url).text()
 
       ParsedItem(
         thumbnailUrl = ROOT_URL.resolve(
-          el.selectFirst("noscript .grid-view-item__image").attr("src").trim()
+          el.srcOf("noscript .grid-view-item__image")
             .replace("@2x", "")
             .replace("\\?.*".toRegex(), "")
         ),
@@ -47,12 +47,10 @@ class VillagesScraper : Scraper {
         sizeMl = itemText.extract("(\\d+)ml")?.get(1)?.toInt(),
         abv = abv,
         available = "price--sold-out" !in el.selectFirst(".price").classNames(),
-        pricePerCan = el.selectFirst(".price-item--sale").text()
+        pricePerCan = el.textOf(".price-item--sale")
           .extract("\\d+\\.\\d+")!![0].toBigDecimal() / numCans.toBigDecimal()
       )
     }
-
-  private fun String.toTitleCase(): String = toLowerCase().split(" ").joinToString(" ") { it.capitalize() }
 
   companion object {
     private val ROOT_URL = URI("https://villagesbrewery.com/collections/buy-beer")
