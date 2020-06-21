@@ -2,6 +2,7 @@
   "items" : [ {
     "brewery" : "Boxcar",
     "name" : "Dreamful",
+    "summary" : "IPA",
     "sizeMl" : 440,
     "abv" : 6.5,
     "pricePerCan" : 4.95,
@@ -11,6 +12,7 @@
   }, {
     "brewery" : "Boxcar",
     "name" : "Native Place",
+    "summary" : "Pale Ale",
     "sizeMl" : 440,
     "abv" : 4.6,
     "pricePerCan" : 4.25,
@@ -20,6 +22,7 @@
   }, {
     "brewery" : "Boxcar",
     "name" : "Avatar State",
+    "summary" : "West Coast IPA",
     "sizeMl" : 440,
     "abv" : 6.0,
     "pricePerCan" : 4.75,
@@ -29,6 +32,7 @@
   }, {
     "brewery" : "Boxcar",
     "name" : "Golden Ale",
+    "summary" : "English Pale Ale",
     "sizeMl" : 440,
     "abv" : 4.2,
     "pricePerCan" : 3.95,
@@ -38,6 +42,7 @@
   }, {
     "brewery" : "Boxcar",
     "name" : "Dark Mild",
+    "summary" : null,
     "sizeMl" : 440,
     "abv" : 3.6,
     "pricePerCan" : 3.75,
@@ -47,6 +52,7 @@
   }, {
     "brewery" : "Boxcar",
     "name" : "Table Beer",
+    "summary" : "Pale Ale",
     "sizeMl" : 440,
     "abv" : 3.6,
     "pricePerCan" : 4.0,
@@ -56,6 +62,7 @@
   }, {
     "brewery" : "Boxcar",
     "name" : "English Porter",
+    "summary" : null,
     "sizeMl" : 440,
     "abv" : 6.0,
     "pricePerCan" : 4.75,
@@ -65,6 +72,7 @@
   }, {
     "brewery" : "Boxcar",
     "name" : "Best Bitter with Mills Brewing",
+    "summary" : null,
     "sizeMl" : 440,
     "abv" : 4.6,
     "pricePerCan" : 3.85,
@@ -74,6 +82,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Moneybags",
+    "summary" : "DIPA",
     "sizeMl" : 440,
     "abv" : 9.9,
     "pricePerCan" : 6.0,
@@ -83,6 +92,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Blisco Dash",
+    "summary" : "Kveik Pale Ale",
     "sizeMl" : 440,
     "abv" : 4.8,
     "pricePerCan" : 4.0,
@@ -92,6 +102,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Baller",
+    "summary" : "India Pale Ale",
     "sizeMl" : 330,
     "abv" : 5.4,
     "pricePerCan" : 2.7,
@@ -101,6 +112,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Carver",
+    "summary" : "Micro IPA",
     "sizeMl" : 330,
     "abv" : 2.8,
     "pricePerCan" : 2.2,
@@ -110,6 +122,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Bandit",
+    "summary" : "Gluten Free Pale Ale",
     "sizeMl" : 330,
     "abv" : 3.8,
     "pricePerCan" : 2.2,
@@ -119,6 +132,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Hunter",
+    "summary" : "Helles",
     "sizeMl" : 330,
     "abv" : 4.8,
     "pricePerCan" : 2.3,
@@ -128,6 +142,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy the NHS a pint!",
+    "summary" : null,
     "sizeMl" : null,
     "abv" : null,
     "pricePerCan" : 5.0,
@@ -137,6 +152,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: New England IPA",
+    "summary" : "NEIPA",
     "sizeMl" : null,
     "abv" : 6.5,
     "pricePerCan" : 4.0,
@@ -146,6 +162,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: Triple Fruited Sour",
+    "summary" : "Triple Fruited Sour",
     "sizeMl" : null,
     "abv" : 4.4,
     "pricePerCan" : 4.0,
@@ -155,6 +172,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: West Coast IPA",
+    "summary" : "West Coast IPA",
     "sizeMl" : null,
     "abv" : 7.2,
     "pricePerCan" : 4.0,
@@ -164,6 +182,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: Sour IPA",
+    "summary" : "Sour IPA",
     "sizeMl" : null,
     "abv" : 7.5,
     "pricePerCan" : 5.0,
@@ -173,6 +192,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Hitcher",
+    "summary" : "American Pale Ale",
     "sizeMl" : 440,
     "abv" : 5.5,
     "pricePerCan" : 4.0,
@@ -182,6 +202,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Naturalist",
+    "summary" : "IPA",
     "sizeMl" : 440,
     "abv" : 6.5,
     "pricePerCan" : 5.0,
@@ -191,6 +212,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Filungar",
+    "summary" : "Kveik IPA",
     "sizeMl" : 440,
     "abv" : 5.5,
     "pricePerCan" : 5.0,
@@ -200,6 +222,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Outdoorsman",
+    "summary" : "Triple Fruited Sour",
     "sizeMl" : 440,
     "abv" : 4.8,
     "pricePerCan" : 5.0,
@@ -209,6 +232,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Left Handed Giant: Making Planets DIPA",
+    "summary" : "Double IPA",
     "sizeMl" : null,
     "abv" : 8.0,
     "pricePerCan" : 5.0,
@@ -218,6 +242,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Left Handed Giant: Opening Theme IPA",
+    "summary" : "Opening Theme",
     "sizeMl" : null,
     "abv" : 6.5,
     "pricePerCan" : 5.0,
@@ -227,6 +252,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Specials Box – 12 pack",
+    "summary" : "Variety",
     "sizeMl" : 440,
     "abv" : 4.8,
     "pricePerCan" : 4.83,
@@ -236,6 +262,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "NEW 12 Beer Mega Pack",
+    "summary" : "24 cans",
     "sizeMl" : 440,
     "abv" : null,
     "pricePerCan" : 2.9,
@@ -245,6 +272,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Passionfruit Gose",
+    "summary" : "Fruit Sour",
     "sizeMl" : 440,
     "abv" : 4.5,
     "pricePerCan" : 2.75,
@@ -254,6 +282,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "Tropical Deluxe",
+    "summary" : "Pale Ale",
     "sizeMl" : 440,
     "abv" : 3.8,
     "pricePerCan" : 2.75,
@@ -262,7 +291,8 @@
     "url" : "https://www.howlinghops.co.uk/product/tropical-deluxe-pale-ale-3-8-24-x440ml-cans/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Off Ramp DIPA",
+    "name" : "Off Ramp",
+    "summary" : "DIPA",
     "sizeMl" : 440,
     "abv" : 8.0,
     "pricePerCan" : 5.0,
@@ -271,7 +301,8 @@
     "url" : "https://www.howlinghops.co.uk/product/off-ramp-dipa-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Drag Race Johnny NEIPA",
+    "name" : "Drag Race Johnny",
+    "summary" : "NEIPA",
     "sizeMl" : 440,
     "abv" : 6.7,
     "pricePerCan" : 4.5,
@@ -281,6 +312,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "House IPA",
+    "summary" : "India Pale Ale",
     "sizeMl" : 440,
     "abv" : 6.9,
     "pricePerCan" : 4.5,
@@ -289,7 +321,8 @@
     "url" : "https://www.howlinghops.co.uk/product/house-ipa-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Flashpoint NEIPA",
+    "name" : "Flashpoint",
+    "summary" : "NEIPA",
     "sizeMl" : 440,
     "abv" : 6.2,
     "pricePerCan" : 4.25,
@@ -298,7 +331,8 @@
     "url" : "https://www.howlinghops.co.uk/product/flashpoint-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Romans DDH Pale",
+    "name" : "Romans",
+    "summary" : "DDH Pale Ale",
     "sizeMl" : 440,
     "abv" : 5.5,
     "pricePerCan" : 4.0,
@@ -307,7 +341,8 @@
     "url" : "https://www.howlinghops.co.uk/product/romans-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Push Push DDH Pale",
+    "name" : "Push Push",
+    "summary" : "DDH Pale Ale",
     "sizeMl" : 440,
     "abv" : 5.8,
     "pricePerCan" : 4.0,
@@ -316,7 +351,8 @@
     "url" : "https://www.howlinghops.co.uk/product/push-push-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Soft Top Sabro Stout",
+    "name" : "Soft Top",
+    "summary" : "Sabro Stout",
     "sizeMl" : 440,
     "abv" : 6.5,
     "pricePerCan" : 4.0,
@@ -325,7 +361,8 @@
     "url" : "https://www.howlinghops.co.uk/product/soft-top-sabro-stout-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Blankets Pale Ale",
+    "name" : "Blankets",
+    "summary" : "Pale Ale",
     "sizeMl" : 440,
     "abv" : 4.5,
     "pricePerCan" : 3.75,
@@ -334,7 +371,8 @@
     "url" : "https://www.howlinghops.co.uk/product/blankets-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Packets Keller Lager",
+    "name" : "Packets",
+    "summary" : "Keller Lager",
     "sizeMl" : 440,
     "abv" : 4.2,
     "pricePerCan" : 3.5,
@@ -343,7 +381,8 @@
     "url" : "https://www.howlinghops.co.uk/product/packets-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Pocket Rocket Tiny IPA",
+    "name" : "Pocket Rocket",
+    "summary" : "Tiny IPA",
     "sizeMl" : 440,
     "abv" : 2.7,
     "pricePerCan" : 3.5,
@@ -352,7 +391,8 @@
     "url" : "https://www.howlinghops.co.uk/product/pocket-rocket-4-x-440ml/"
   }, {
     "brewery" : "Pressure Drop",
-    "name" : "Behind Door Number 3- Citra & Mosaic New England DIPA",
+    "name" : "Behind Door Number 3",
+    "summary" : "Citra & Mosaic New England DIPA",
     "sizeMl" : 440,
     "abv" : 8.5,
     "pricePerCan" : 5.35,
@@ -361,7 +401,8 @@
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/behind-door-number-3"
   }, {
     "brewery" : "Pressure Drop",
-    "name" : "Golden State- New England Pale",
+    "name" : "Golden State",
+    "summary" : "New England Pale",
     "sizeMl" : 440,
     "abv" : 5.2,
     "pricePerCan" : 4.05,
@@ -370,7 +411,8 @@
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/golden-state-new-england-pale"
   }, {
     "brewery" : "Pressure Drop",
-    "name" : "Perfect Life -New England Pale",
+    "name" : "Perfect Life",
+    "summary" : "New England Pale",
     "sizeMl" : null,
     "abv" : 4.6,
     "pricePerCan" : 4.1,
@@ -379,7 +421,8 @@
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/perfect-life-new-england-pale"
   }, {
     "brewery" : "Pressure Drop",
-    "name" : "Pallet Notes- Sabro, Mosaic & Simcoe NEIPA",
+    "name" : "Pallet Notes",
+    "summary" : "Sabro, Mosaic & Simcoe NEIPA",
     "sizeMl" : 440,
     "abv" : 7.4,
     "pricePerCan" : 4.95,
@@ -388,7 +431,8 @@
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/pallet-notes-sabro-mosaic-simcoe-neipa"
   }, {
     "brewery" : "Pressure Drop",
-    "name" : "Pale Fire - Mosaic & Amarillo Pale",
+    "name" : "Pale Fire",
+    "summary" : "Mosaic & Amarillo Pale",
     "sizeMl" : 440,
     "abv" : 4.8,
     "pricePerCan" : 3.7,
@@ -397,7 +441,8 @@
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/pale-fire"
   }, {
     "brewery" : "Pressure Drop",
-    "name" : "Great Heights- Unfiltered Pilsner",
+    "name" : "Great Heights",
+    "summary" : "Unfiltered Pilsner",
     "sizeMl" : null,
     "abv" : 4.8,
     "pricePerCan" : 3.8,
@@ -406,7 +451,8 @@
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/great-heights-unfiltered-pilsner"
   }, {
     "brewery" : "Pressure Drop",
-    "name" : "Future Sunshine- Peach, Pineapple & Passionfruit Sour",
+    "name" : "Future Sunshine",
+    "summary" : "Peach, Pineapple & Passionfruit Sour",
     "sizeMl" : 440,
     "abv" : 6.5,
     "pricePerCan" : 4.25,
@@ -415,7 +461,8 @@
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/future-sunshine-peach-pineapple-passionfruit-sour"
   }, {
     "brewery" : "Pressure Drop",
-    "name" : "The Numbers - DDH New England Pale Ale",
+    "name" : "The Numbers",
+    "summary" : "DDH New England Pale Ale",
     "sizeMl" : 440,
     "abv" : 5.2,
     "pricePerCan" : 4.2,
@@ -424,7 +471,8 @@
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/the-numbers-ddh-new-england-pale-ale"
   }, {
     "brewery" : "Pressure Drop",
-    "name" : "Bosko- Mosaic & Amarillo West Coast IPA",
+    "name" : "Bosko",
+    "summary" : "Mosaic & Amarillo West Coast IPA",
     "sizeMl" : 440,
     "abv" : 6.5,
     "pricePerCan" : 4.15,
@@ -433,7 +481,8 @@
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/bosko-west-coast-ipa"
   }, {
     "brewery" : "Villages",
-    "name" : "RODEO Pale Ale",
+    "name" : "Rodeo",
+    "summary" : "Pale Ale",
     "sizeMl" : 330,
     "abv" : 4.6,
     "pricePerCan" : 2.13,
@@ -442,7 +491,8 @@
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/rodeo-pale-ale"
   }, {
     "brewery" : "Villages",
-    "name" : "WHISTLE Pilsner",
+    "name" : "Whistle",
+    "summary" : "Pilsner",
     "sizeMl" : 330,
     "abv" : 4.4,
     "pricePerCan" : 2.13,
@@ -451,7 +501,8 @@
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/whistle-pilsner"
   }, {
     "brewery" : "Villages",
-    "name" : "RAFIKI Session IPA",
+    "name" : "Rafiki",
+    "summary" : "Session IPA",
     "sizeMl" : 330,
     "abv" : 4.3,
     "pricePerCan" : 2.13,
@@ -460,7 +511,8 @@
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/rafiki-session-ipa"
   }, {
     "brewery" : "Villages",
-    "name" : "ISOLATION IPA",
+    "name" : "Isolation",
+    "summary" : "IPA",
     "sizeMl" : 330,
     "abv" : 5.4,
     "pricePerCan" : 2.68,
@@ -469,7 +521,8 @@
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/isolation-ipa"
   }, {
     "brewery" : "Villages",
-    "name" : "VILLAGES Mixed Case (24 × cans)",
+    "name" : "Villages Mixed Case",
+    "summary" : "24 cans",
     "sizeMl" : 330,
     "abv" : null,
     "pricePerCan" : 2.19,
@@ -478,7 +531,8 @@
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/villages-mixed-case"
   }, {
     "brewery" : "Villages",
-    "name" : "ALES Mixed Case (24 × cans)",
+    "name" : "Ales Mixed Case",
+    "summary" : "24 cans",
     "sizeMl" : 330,
     "abv" : null,
     "pricePerCan" : 2.23,
@@ -487,7 +541,8 @@
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/ales-mixed-case"
   }, {
     "brewery" : "Villages",
-    "name" : "REGULARS Mixed Case (24 × cans)",
+    "name" : "Regulars Mixed Case",
+    "summary" : "24 cans",
     "sizeMl" : 330,
     "abv" : null,
     "pricePerCan" : 2.05,

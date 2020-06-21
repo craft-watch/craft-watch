@@ -13,6 +13,7 @@ class Executor(private val getter: HttpGetter) {
             Item(
               brewery = scraper.name,
               name = item.name,
+              summary = item.summary,
               // TODO - validate sane size
               sizeMl = item.sizeMl,
               abv = item.abv

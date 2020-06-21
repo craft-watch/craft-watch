@@ -3,7 +3,6 @@ package choliver.neapi.scrapers
 import choliver.neapi.ParsedItem
 import choliver.neapi.executeScraper
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.net.URI
 
@@ -19,31 +18,35 @@ class VillagesScraperTest {
 
   @Test
   fun `extracts beer details`() {
-    assertTrue(
+    assertEquals(
       ParsedItem(
-        name = "RODEO Pale Ale",
+        name = "Rodeo", // Normalised case,
+        summary = "Pale Ale",
         abv = "4.6".toBigDecimal(),
         sizeMl = 330,
         pricePerCan = "2.13".toBigDecimal(),
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345.jpg"),
         url = URI("https://villagesbrewery.com/collections/buy-beer/products/rodeo-pale-ale")
-      ) in ITEMS
+      ),
+      ITEMS.first { it.name == "Rodeo" }
     )
   }
 
   @Test
   fun `extracts case details`() {
-    assertTrue(
+    assertEquals(
       ParsedItem(
-        name = "VILLAGES Mixed Case (24 × cans)",
+        name = "Villages Mixed Case", // Normalised case
+        summary = "24 cans",  // Synthesised summary
         abv = null,   // Can't find this!
         sizeMl = 330,
         pricePerCan = "2.19".toBigDecimal(),
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg"),
         url = URI("https://villagesbrewery.com/collections/buy-beer/products/villages-mixed-case")
-      ) in ITEMS
+      ),
+      ITEMS.first { it.name == "Villages Mixed Case" }
     )
   }
 }

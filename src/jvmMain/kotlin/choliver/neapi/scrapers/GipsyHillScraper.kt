@@ -13,7 +13,7 @@ class GipsyHillScraper : Scraper {
     .map { el ->
       val a = el.selectFirst(".woocommerce-LoopProduct-link")
       val url = URI(a.attr("href").trim())
-      val subText = request(url) { it.text() }
+      val subText = request(url) { it.selectFirst(".summary").text() }
 
       val result = "Sold as: ((\\d+) x )?(\\d+)ml".toRegex().find(subText)
       val numCans = result?.let { it.groupValues[2].toIntOrNull() } ?: 1
@@ -22,6 +22,9 @@ class GipsyHillScraper : Scraper {
         thumbnailUrl = URI(a.selectFirst(".attachment-woocommerce_thumbnail").attr("src").trim()),
         url = url,
         name = a.selectFirst(".woocommerce-loop-product__title").text().trim(),
+        summary = "Style: (.*) ABV".toRegex().find(subText)?.let {
+          it.groupValues[1].trim()
+        },
         available = true, // TODO
         abv = "ABV: (.*?)%".toRegex().find(subText)?.let {
           it.groupValues[1].trim().toBigDecimal()

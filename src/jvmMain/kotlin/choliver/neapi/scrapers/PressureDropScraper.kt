@@ -17,10 +17,14 @@ class PressureDropScraper : Scraper {
       val subDoc = request(url) { it }
       val subtext = subDoc.text()
 
+      val rawName = subDoc.selectFirst(".product__title").text().trim()
+      val result = "^(.*?)\\s*-\\s*(.*?)$".toRegex().find(rawName)!!
+
       ParsedItem(
         thumbnailUrl = ROOT_URL.resolve(a.selectFirst("noscript img").attr("src").trim()),
         url = url,
-        name = subDoc.selectFirst(".product__title").text().trim(),
+        name = result.groupValues[1],
+        summary = result.groupValues[2],
         abv = "(\\d+(\\.\\d+)?)\\s*%".toRegex().find(subtext)?.let {
           it.groupValues[1].trim().toBigDecimal()
         },

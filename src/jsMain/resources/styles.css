@@ -54,6 +54,12 @@ a:hover {
   max-width: 300px;
 }
 
+.summary {
+  font-size: smaller;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 img {
   mix-blend-mode: multiply;
 }

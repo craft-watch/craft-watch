@@ -53,6 +53,12 @@ fun updateDom(inventory: Inventory) {
               a(item.url) {
                 +item.name
               }
+              if (item.summary != null) {
+                p {
+                  classes += "summary"
+                  +item.summary
+                }
+              }
             }
             td {
               if (item.abv != null) {
