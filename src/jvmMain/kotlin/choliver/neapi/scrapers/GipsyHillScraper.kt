@@ -22,7 +22,7 @@ class GipsyHillScraper : Scraper {
         thumbnailUrl = URI(a.srcOf(".attachment-woocommerce_thumbnail")),
         url = url,
         name = a.textOf(".woocommerce-loop-product__title"),
-        summary = rawSummary.extract("Style: (.*) ABV")?.get(1)?.trim(),
+        summary = rawSummary.extract("Style: (.*) ABV")?.get(1),
         available = true, // TODO
         abv = rawSummary.extract("ABV: (.*?)%")?.get(1)?.toBigDecimal(),
         sizeMl = parts?.get(3)?.toInt(),

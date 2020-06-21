@@ -11,9 +11,15 @@ class Executor(private val getter: HttpGetter) {
         RealScraperContext(getter).scrape()
           .map { item ->
             Item(
-              brewery = scraper.name,
-              name = item.name,
-              summary = item.summary,
+              brewery = scraper.name
+                .trim()
+                .validate("Brewery name unexpectedly blank") { it.isNotBlank() },
+              name = item.name
+                .trim()
+                .validate("Item name unexpectedly blank") { it.isNotBlank() },
+              summary = item.summary
+                ?.trim()
+                ?.validate("Summary unexpectedly blank") { it.isNotBlank() },
               // TODO - validate sane size
               sizeMl = item.sizeMl,
               abv = item.abv

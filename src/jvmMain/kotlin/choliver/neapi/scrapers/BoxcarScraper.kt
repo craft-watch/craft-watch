@@ -16,10 +16,10 @@ class BoxcarScraper : Scraper {
       ParsedItem(
         thumbnailUrl = details.thumbnailUrl,
         url = details.url,
-        name = parts[1].trim(),
-        abv = parts[2].trim().toBigDecimal(),
-        summary = parts[3].trim().ifEmpty { null },
-        sizeMl = parts[4].trim().toInt(),
+        name = parts[1],
+        abv = parts[2].toBigDecimal(),
+        summary = parts[3].ifBlank { null },
+        sizeMl = parts[4].toInt(),
         available = details.available,
         pricePerCan = details.price
       )

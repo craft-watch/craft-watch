@@ -28,8 +28,8 @@ class HowlingHopsScraper : Scraper {
         ParsedItem(
           thumbnailUrl = thumbnailUrl,
           url = url,
-          name = parts[1].trim(),
-          summary = parts[2].trim(),
+          name = parts[1],
+          summary = parts[2],
           available = true,   // TODO
           sizeMl = parts[4].toInt(),
           abv = parts[5].toBigDecimal(),
@@ -41,7 +41,7 @@ class HowlingHopsScraper : Scraper {
           ParsedItem(
             thumbnailUrl = thumbnailUrl,
             url = url,
-            name = this[1].trim(),
+            name = this[1],
             summary = "${numCans} cans",
             available = true,   // TODO
             sizeMl = this[3].toInt(),
