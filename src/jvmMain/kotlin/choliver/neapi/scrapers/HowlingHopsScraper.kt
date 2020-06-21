@@ -3,7 +3,6 @@ package choliver.neapi.scrapers
 import choliver.neapi.ParsedItem
 import choliver.neapi.Scraper
 import choliver.neapi.Scraper.Context
-import java.math.BigDecimal
 import java.net.URI
 
 class HowlingHopsScraper : Scraper {
@@ -15,45 +14,42 @@ class HowlingHopsScraper : Scraper {
     .map { el ->
       val a = el.selectFirst(".wc-block-grid__product-link")
       val url = URI(a.attr("href").trim())
+      val thumbnailUrl = URI(a.srcOf(".attachment-woocommerce_thumbnail"))
+      val price = el.select(".woocommerce-Price-amount")
+        .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
+        .first()
+        .ownText()
+        .toBigDecimal()
 
       val shortDesc = request(url).textOf(".woocommerce-product-details__short-description")
 
       val parts = shortDesc.extract("([^/]*?) / ([^/]*?) / (\\d+) x (\\d+)ml / (\\d+(\\.\\d+)?)% ABV")
-      val name: String
-      val summary: String?
-      val abv: BigDecimal?
-      val sizeMl: Int?
-      val numCans: Int
       if (parts != null) {
-        name = parts[1].trim()
-        summary = parts[2].trim()
-        numCans = parts[3].toInt()
-        sizeMl = parts[4].toInt()
-        abv = parts[5].toBigDecimal()
+        ParsedItem(
+          thumbnailUrl = thumbnailUrl,
+          url = url,
+          name = parts[1].trim(),
+          summary = parts[2].trim(),
+          available = true,   // TODO
+          sizeMl = parts[4].toInt(),
+          abv = parts[5].toBigDecimal(),
+          pricePerCan = price / parts[3].toBigDecimal()
+        )
       } else {
         with(shortDesc.extract("(.*?) (\\d+) x (\\d+)ml")!!) {
-          name = this[1].trim()
-          numCans = this[2].toInt()
-          sizeMl = this[3].toInt()
-          summary = "${numCans} cans"
-          abv = null
+          val numCans = this[2].toInt()
+          ParsedItem(
+            thumbnailUrl = thumbnailUrl,
+            url = url,
+            name = this[1].trim(),
+            summary = "${numCans} cans",
+            available = true,   // TODO
+            sizeMl = this[3].toInt(),
+            abv = null,
+            pricePerCan = price / numCans.toBigDecimal()
+          )
         }
       }
-
-      ParsedItem(
-        thumbnailUrl = URI(a.srcOf(".attachment-woocommerce_thumbnail")),
-        url = url,
-        name = name,
-        summary = summary,
-        available = true, // TODO
-        abv = abv,
-        sizeMl = sizeMl,
-        pricePerCan = el.select(".woocommerce-Price-amount")
-          .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
-          .first()
-          .ownText()
-          .toBigDecimal() / numCans.toBigDecimal()
-      )
     }
     .groupBy { it.name }
     .values
