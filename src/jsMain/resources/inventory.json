@@ -2,7 +2,7 @@
   "items" : [ {
     "brewery" : "Boxcar",
     "name" : "Dreamful",
-    "summary" : null,
+    "summary" : "IPA",
     "sizeMl" : 440,
     "abv" : 6.5,
     "pricePerCan" : 4.95,
@@ -12,7 +12,7 @@
   }, {
     "brewery" : "Boxcar",
     "name" : "Native Place",
-    "summary" : null,
+    "summary" : "Pale Ale",
     "sizeMl" : 440,
     "abv" : 4.6,
     "pricePerCan" : 4.25,
@@ -22,7 +22,7 @@
   }, {
     "brewery" : "Boxcar",
     "name" : "Avatar State",
-    "summary" : null,
+    "summary" : "West Coast IPA",
     "sizeMl" : 440,
     "abv" : 6.0,
     "pricePerCan" : 4.75,
@@ -32,7 +32,7 @@
   }, {
     "brewery" : "Boxcar",
     "name" : "Golden Ale",
-    "summary" : null,
+    "summary" : "English Pale Ale",
     "sizeMl" : 440,
     "abv" : 4.2,
     "pricePerCan" : 3.95,
@@ -52,7 +52,7 @@
   }, {
     "brewery" : "Boxcar",
     "name" : "Table Beer",
-    "summary" : null,
+    "summary" : "Pale Ale",
     "sizeMl" : 440,
     "abv" : 3.6,
     "pricePerCan" : 4.0,
@@ -82,7 +82,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Moneybags",
-    "summary" : null,
+    "summary" : "DIPA",
     "sizeMl" : 440,
     "abv" : 9.9,
     "pricePerCan" : 6.0,
@@ -92,7 +92,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Blisco Dash",
-    "summary" : null,
+    "summary" : "Kveik Pale Ale",
     "sizeMl" : 440,
     "abv" : 4.8,
     "pricePerCan" : 4.0,
@@ -102,7 +102,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Baller",
-    "summary" : null,
+    "summary" : "India Pale Ale",
     "sizeMl" : 330,
     "abv" : 5.4,
     "pricePerCan" : 2.7,
@@ -112,7 +112,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Carver",
-    "summary" : null,
+    "summary" : "Micro IPA",
     "sizeMl" : 330,
     "abv" : 2.8,
     "pricePerCan" : 2.2,
@@ -122,7 +122,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Bandit",
-    "summary" : null,
+    "summary" : "Gluten Free Pale Ale",
     "sizeMl" : 330,
     "abv" : 3.8,
     "pricePerCan" : 2.2,
@@ -132,7 +132,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Hunter",
-    "summary" : null,
+    "summary" : "Helles",
     "sizeMl" : 330,
     "abv" : 4.8,
     "pricePerCan" : 2.3,
@@ -152,7 +152,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: New England IPA",
-    "summary" : null,
+    "summary" : "NEIPA",
     "sizeMl" : null,
     "abv" : 6.5,
     "pricePerCan" : 4.0,
@@ -162,7 +162,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: Triple Fruited Sour",
-    "summary" : null,
+    "summary" : "Triple Fruited Sour",
     "sizeMl" : null,
     "abv" : 4.4,
     "pricePerCan" : 4.0,
@@ -172,7 +172,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: West Coast IPA",
-    "summary" : null,
+    "summary" : "West Coast IPA",
     "sizeMl" : null,
     "abv" : 7.2,
     "pricePerCan" : 4.0,
@@ -182,7 +182,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy The NHS A Pint: Sour IPA",
-    "summary" : null,
+    "summary" : "Sour IPA",
     "sizeMl" : null,
     "abv" : 7.5,
     "pricePerCan" : 5.0,
@@ -192,7 +192,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Hitcher",
-    "summary" : null,
+    "summary" : "American Pale Ale",
     "sizeMl" : 440,
     "abv" : 5.5,
     "pricePerCan" : 4.0,
@@ -202,7 +202,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Naturalist",
-    "summary" : null,
+    "summary" : "IPA",
     "sizeMl" : 440,
     "abv" : 6.5,
     "pricePerCan" : 5.0,
@@ -212,7 +212,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Filungar",
-    "summary" : null,
+    "summary" : "Kveik IPA",
     "sizeMl" : 440,
     "abv" : 5.5,
     "pricePerCan" : 5.0,
@@ -222,7 +222,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Outdoorsman",
-    "summary" : null,
+    "summary" : "Triple Fruited Sour",
     "sizeMl" : 440,
     "abv" : 4.8,
     "pricePerCan" : 5.0,
@@ -232,7 +232,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Left Handed Giant: Making Planets DIPA",
-    "summary" : null,
+    "summary" : "Double IPA",
     "sizeMl" : null,
     "abv" : 8.0,
     "pricePerCan" : 5.0,
@@ -242,7 +242,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Left Handed Giant: Opening Theme IPA",
-    "summary" : null,
+    "summary" : "Opening Theme",
     "sizeMl" : null,
     "abv" : 6.5,
     "pricePerCan" : 5.0,
@@ -252,7 +252,7 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Specials Box – 12 pack",
-    "summary" : null,
+    "summary" : "Variety",
     "sizeMl" : 440,
     "abv" : 4.8,
     "pricePerCan" : 4.83,
