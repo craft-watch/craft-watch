@@ -12,7 +12,7 @@ class PressureDropScraper : Scraper {
     .select(".product-grid-item")
     .map { el ->
       val a = el.selectFirst(".grid__image")
-      val url = ROOT_URL.resolve(a.attr("href").trim())
+      val url = ROOT_URL.resolve(a.hrefFrom())
 
       val itemDoc = request(url)
       val itemText = itemDoc.text()

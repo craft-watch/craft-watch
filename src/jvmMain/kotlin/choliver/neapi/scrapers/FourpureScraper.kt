@@ -15,7 +15,7 @@ class FourpureScraper : Scraper {
     .filterNot { el -> el.getName().contains("pack", ignoreCase = true) }  // Can't figure out how to extract price-per-can from packs, so ignore
     .map { el ->
       val a = el.selectFirst("a")
-      val url = URI(a.attr("href").trim())
+      val url = URI(a.hrefFrom())
       val itemDoc = request(url)
 
       ParsedItem(

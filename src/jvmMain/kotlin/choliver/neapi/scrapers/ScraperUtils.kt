@@ -13,11 +13,11 @@ data class ShopifyItemDetails(
   val available: Boolean
 )
 
-fun Document.shopifyItems(root: URI) = select(".product-card").map {
+fun Document.shopifyItems() = select(".product-card").map {
   ShopifyItemDetails(
     title = it.textFrom(".product-card__title"),
-    url = root.resolve(it.hrefFrom(".grid-view-item__link")),
-    thumbnailUrl = root.resolve(
+    url = URI(baseUri()).resolve(it.hrefFrom(".grid-view-item__link")),
+    thumbnailUrl = URI(baseUri()).resolve(
       it.srcFrom("noscript .grid-view-item__image")
         .replace("@2x", "")
         .replace("\\?.*".toRegex(), "")
@@ -27,15 +27,17 @@ fun Document.shopifyItems(root: URI) = select(".product-card").map {
   )
 }
 
-fun Element.priceFrom(cssQuery: String) = extractFrom(cssQuery, "\\d+\\.\\d+")!![0].toBigDecimal()
+fun Element.priceFrom(cssQuery: String = ":root") = extractFrom(cssQuery, "\\d+\\.\\d+")!![0].toBigDecimal()
 
-fun Element.extractFrom(cssQuery: String, regex: String) = textFrom(cssQuery).extract(regex)
+fun Element.extractFrom(cssQuery: String = ":root", regex: String) = textFrom(cssQuery).extract(regex)
 
-fun Element.textFrom(cssQuery: String) = selectFirst(cssQuery).text().trim()
+fun Element.textFrom(cssQuery: String = ":root") = selectFirst(cssQuery).text().trim()
 
-fun Element.hrefFrom(cssQuery: String) = selectFirst(cssQuery).attr("href").trim()
+fun Element.ownTextFrom(cssQuery: String = ":root") = selectFirst(cssQuery).ownText().trim()
 
-fun Element.srcFrom(cssQuery: String) = selectFirst(cssQuery).attr("src").trim()
+fun Element.hrefFrom(cssQuery: String = ":root") = selectFirst(cssQuery).attr("href").trim()
+
+fun Element.srcFrom(cssQuery: String = ":root") = selectFirst(cssQuery).attr("src").trim()
 
 fun String.extract(regex: String) = regex.toRegex().find(this)?.groupValues
 

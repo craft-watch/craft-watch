@@ -13,7 +13,7 @@ class HowlingHopsScraper : Scraper {
     .select(".wc-block-grid__product")
     .map { el ->
       val a = el.selectFirst(".wc-block-grid__product-link")
-      val url = URI(a.attr("href").trim())
+      val url = URI(a.hrefFrom())
       val thumbnailUrl = URI(a.srcFrom(".attachment-woocommerce_thumbnail"))
       val price = el.select(".woocommerce-Price-amount")
         .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price

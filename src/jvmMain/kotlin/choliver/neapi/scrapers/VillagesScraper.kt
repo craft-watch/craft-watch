@@ -10,7 +10,7 @@ class VillagesScraper : Scraper {
   override val name = "Villages"
 
   override fun Context.scrape() = request(ROOT_URL)
-    .shopifyItems(ROOT_URL)
+    .shopifyItems()
     .map { details ->
       val itemText = request(details.url).text()
 

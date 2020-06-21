@@ -12,7 +12,7 @@ class GipsyHillScraper : Scraper {
     .select(".product")
     .map { el ->
       val a = el.selectFirst(".woocommerce-LoopProduct-link")
-      val url = URI(a.attr("href").trim())
+      val url = URI(a.hrefFrom())
       val rawSummary = request(url).textFrom(".summary")
 
       val parts = rawSummary.extract("Sold as: ((\\d+) x )?(\\d+)ml")
@@ -26,7 +26,7 @@ class GipsyHillScraper : Scraper {
         available = true, // TODO
         abv = rawSummary.extract("ABV: (.*?)%")?.get(1)?.toBigDecimal(),
         sizeMl = parts?.get(3)?.toInt(),
-        pricePerCan = el.selectFirst(".woocommerce-Price-amount").ownText().toBigDecimal() / numCans.toBigDecimal()
+        pricePerCan = el.ownTextFrom(".woocommerce-Price-amount").toBigDecimal() / numCans.toBigDecimal()
       )
     }
     .distinctBy { it.name }

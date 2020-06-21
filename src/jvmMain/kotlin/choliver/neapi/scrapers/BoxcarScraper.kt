@@ -9,7 +9,7 @@ class BoxcarScraper : Scraper {
   override val name = "Boxcar"
 
   override fun Context.scrape() = request(ROOT_URL)
-    .shopifyItems(ROOT_URL)
+    .shopifyItems()
     .map { details ->
       val parts = details.title.extract("^(.*?) // (.*?)% *(.*?)? // (.*?)ml$")!!
 
