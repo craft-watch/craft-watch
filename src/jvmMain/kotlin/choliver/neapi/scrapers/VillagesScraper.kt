@@ -3,7 +3,6 @@ package choliver.neapi.scrapers
 import choliver.neapi.ParsedItem
 import choliver.neapi.Scraper
 import choliver.neapi.Scraper.Context
-import java.math.BigDecimal
 import java.net.URI
 
 class VillagesScraper : Scraper {
@@ -13,35 +12,33 @@ class VillagesScraper : Scraper {
     .shopifyItems()
     .map { details ->
       val itemText = request(details.url).text()
+      val sizeMl = itemText.extract("(\\d+)ml")?.get(1)?.toInt()
 
-      val numCans: Int
-      val name: String
-      val summary: String?
-      val abv: BigDecimal?
       if (details.title.contains("mixed case", ignoreCase = true)) {
+        val numCans = 24
         val parts = details.title.extract("^(.*?) \\((.*)\\)$")!!
-        name = parts[1].toTitleCase()
-        abv = null
-        numCans = 24
-        summary = "${numCans} cans"
+        ParsedItem(
+          thumbnailUrl = details.thumbnailUrl,
+          url = details.url,
+          name = parts[1].toTitleCase(),
+          summary = "${numCans} cans",
+          sizeMl = sizeMl,
+          available = details.available,
+          pricePerCan = details.price / numCans.toBigDecimal()
+        )
       } else {
         val parts = details.title.extract("^([^ ]*) (.*)? ((.*)%)?.*$")!!
-        name = parts[1].toTitleCase()
-        summary = parts[2]
-        abv = parts[4].toBigDecimal()
-        numCans = 12
+        ParsedItem(
+          thumbnailUrl = details.thumbnailUrl,
+          url = details.url,
+          name = parts[1].toTitleCase(),
+          summary = parts[2],
+          sizeMl = sizeMl,
+          abv = parts[4].toBigDecimal(),
+          available = details.available,
+          pricePerCan = details.price / 12.toBigDecimal()
+        )
       }
-
-      ParsedItem(
-        thumbnailUrl = details.thumbnailUrl,
-        url = details.url,
-        name = name,
-        summary = summary,
-        sizeMl = itemText.extract("(\\d+)ml")?.get(1)?.toInt(),
-        abv = abv,
-        available = details.available,
-        pricePerCan = details.price / numCans.toBigDecimal()
-      )
     }
 
   companion object {
