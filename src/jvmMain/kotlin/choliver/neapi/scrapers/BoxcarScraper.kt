@@ -8,7 +8,7 @@ import java.net.URI
 class BoxcarScraper : Scraper {
   override val name = "Boxcar"
 
-  override fun Context.scrape() = request(ROOT_URL) { doc -> doc
+  override fun Context.scrape() = request(ROOT_URL)
     .select(".product-card")
     .map { el ->
       val rawName = el.selectFirst(".product-card__title").text()
@@ -33,7 +33,6 @@ class BoxcarScraper : Scraper {
           .toBigDecimal()
       )
     }
-  }
 
   companion object {
     private val ROOT_URL = URI("https://shop.boxcarbrewery.co.uk/collections/beer")

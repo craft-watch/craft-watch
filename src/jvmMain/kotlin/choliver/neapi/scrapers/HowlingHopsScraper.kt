@@ -9,17 +9,16 @@ import java.net.URI
 class HowlingHopsScraper : Scraper {
   override val name = "Howling Hops"
 
-  override fun Context.scrape() = request(ROOT_URL) { doc -> doc
+  override fun Context.scrape() = request(ROOT_URL)
     .selectFirst(".wc-block-handpicked-products") // Avoid apparel
     .select(".wc-block-grid__product")
     .map { el ->
       val a = el.selectFirst(".wc-block-grid__product-link")
       val url = URI(a.attr("href").trim())
 
-      val shortDesc = request(url) { subDoc -> subDoc
+      val shortDesc = request(url)
         .selectFirst(".woocommerce-product-details__short-description")
         .text()
-      }
 
       val result = "([^/]*?) / ([^/]*?) / (\\d+) x (\\d+)ml / (\\d+(\\.\\d+)?)% ABV".toRegex().find(shortDesc)
       val name: String
@@ -60,7 +59,6 @@ class HowlingHopsScraper : Scraper {
     .groupBy { it.name }
     .values
     .map { group -> group.minBy { it.pricePerCan }!! }  // Find best price for this beer
-  }
 
   companion object {
     private val ROOT_URL = URI("https://www.howlinghops.co.uk/shop")

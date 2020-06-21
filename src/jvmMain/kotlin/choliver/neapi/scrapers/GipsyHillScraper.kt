@@ -8,12 +8,12 @@ import java.net.URI
 class GipsyHillScraper : Scraper {
   override val name = "Gipsy Hill"
 
-  override fun Context.scrape() = request(ROOT_URL) { doc -> doc
+  override fun Context.scrape() = request(ROOT_URL)
     .select(".product")
     .map { el ->
       val a = el.selectFirst(".woocommerce-LoopProduct-link")
       val url = URI(a.attr("href").trim())
-      val subText = request(url) { it.selectFirst(".summary").text() }
+      val subText = request(url).selectFirst(".summary").text()
 
       val result = "Sold as: ((\\d+) x )?(\\d+)ml".toRegex().find(subText)
       val numCans = result?.let { it.groupValues[2].toIntOrNull() } ?: 1
@@ -34,7 +34,6 @@ class GipsyHillScraper : Scraper {
       )
     }
     .distinctBy { it.name }
-  }
 
   companion object {
     private val ROOT_URL = URI("https://gipsyhillbrew.com")

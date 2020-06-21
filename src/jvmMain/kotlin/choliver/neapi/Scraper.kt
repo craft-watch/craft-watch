@@ -8,6 +8,6 @@ interface Scraper {
   fun Context.scrape(): List<ParsedItem>
 
   interface Context {
-    fun <R> request(url: URI, block: (Document) -> R): R
+    fun request(url: URI): Document
   }
 }

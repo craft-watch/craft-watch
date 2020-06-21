@@ -9,7 +9,7 @@ import java.net.URI
 class VillagesScraper : Scraper {
   override val name = "Villages"
 
-  override fun Context.scrape() = request(ROOT_URL) { doc -> doc
+  override fun Context.scrape() = request(ROOT_URL)
     .select(".product-card")
     .map { el ->
       val rawName = el.selectFirst(".product-card__title").text()
@@ -33,7 +33,7 @@ class VillagesScraper : Scraper {
       }
 
       val url = ROOT_URL.resolve(el.selectFirst(".grid-view-item__link").attr("href").trim())
-      val subText = request(url) { it.text() }
+      val itemText = request(url).text()
 
       ParsedItem(
         thumbnailUrl = ROOT_URL.resolve(
@@ -44,7 +44,7 @@ class VillagesScraper : Scraper {
         url = url,
         name = name,
         summary = summary,
-        sizeMl = "(\\d+)ml".toRegex().find(subText)?.let {
+        sizeMl = "(\\d+)ml".toRegex().find(itemText)?.let {
           it.groupValues[1].trim().toInt()
         },
         abv = abv,
@@ -52,7 +52,6 @@ class VillagesScraper : Scraper {
         pricePerCan = "\\d+\\.\\d+".toRegex().find(el.selectFirst(".price-item--sale").text())!!.value.toBigDecimal() / numCans.toBigDecimal()
       )
     }
-  }
 
   private fun String.toTitleCase(): String = toLowerCase().split(" ").joinToString(" ") { it.capitalize() }
 
