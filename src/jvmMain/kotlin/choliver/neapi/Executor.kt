@@ -45,6 +45,7 @@ class Executor(private val getter: HttpGetter) {
   companion object {
     private val SCRAPERS = listOf(
       BoxcarScraper(),
+      FourpureScraper(),
       GipsyHillScraper(),
       HowlingHopsScraper(),
       PressureDropScraper(),

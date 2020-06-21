@@ -80,6 +80,86 @@
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/bitter_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/best-bitter"
   }, {
+    "brewery" : "Fourpure",
+    "name" : "Juicebox",
+    "summary" : null,
+    "sizeMl" : 330,
+    "abv" : 5.9,
+    "pricePerCan" : 2.5,
+    "available" : true,
+    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_juicebox_1585746292Juicebox3302020.png",
+    "url" : "https://www.fourpure.com/item/127/Fourpure/Juicebox.html"
+  }, {
+    "brewery" : "Fourpure",
+    "name" : "Shapeshifter IPA",
+    "summary" : null,
+    "sizeMl" : 330,
+    "abv" : 5.9,
+    "pricePerCan" : 2.5,
+    "available" : true,
+    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_shapeshifteripa_1566988291Shapeshifter2019RenderCMYK.png",
+    "url" : "https://www.fourpure.com/item/7/Fourpure/Shapeshifter-IPA.html"
+  }, {
+    "brewery" : "Fourpure",
+    "name" : "Hemisphere",
+    "summary" : null,
+    "sizeMl" : 330,
+    "abv" : 4.2,
+    "pricePerCan" : 2.0,
+    "available" : true,
+    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_hemisphere_1584973070hemisphere2019RenderCROPPED.png",
+    "url" : "https://www.fourpure.com/item/1/Fourpure/Hemisphere.html"
+  }, {
+    "brewery" : "Fourpure",
+    "name" : "Easy Peeler",
+    "summary" : null,
+    "sizeMl" : 330,
+    "abv" : 4.0,
+    "pricePerCan" : 2.0,
+    "available" : true,
+    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_easypeeler_1566988005EasyPeeler2019RenderCROPPED.png",
+    "url" : "https://www.fourpure.com/item/90/Fourpure/Easy-Peeler.html"
+  }, {
+    "brewery" : "Fourpure",
+    "name" : "Basecamp",
+    "summary" : null,
+    "sizeMl" : 330,
+    "abv" : 4.7,
+    "pricePerCan" : 2.0,
+    "available" : true,
+    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_pilslager_1566986321BASECAMPNB.png",
+    "url" : "https://www.fourpure.com/item/3/Fourpure/Basecamp.html"
+  }, {
+    "brewery" : "Fourpure",
+    "name" : "Last Train",
+    "summary" : null,
+    "sizeMl" : 330,
+    "abv" : 5.1,
+    "pricePerCan" : 2.0,
+    "available" : true,
+    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_lasttrain_1566991767LastTrain2019RenderCMYK.png",
+    "url" : "https://www.fourpure.com/item/5/Fourpure/Last-Train.html"
+  }, {
+    "brewery" : "Fourpure",
+    "name" : "Coastline",
+    "summary" : null,
+    "sizeMl" : 440,
+    "abv" : 6.0,
+    "pricePerCan" : 3.5,
+    "available" : true,
+    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_coastline_1567172728CoastlineRenderCrop.png",
+    "url" : "https://www.fourpure.com/item/177/Fourpure/Coastline.html"
+  }, {
+    "brewery" : "Fourpure",
+    "name" : "Deucebox ",
+    "summary" : null,
+    "sizeMl" : 440,
+    "abv" : 8.3,
+    "pricePerCan" : 4.0,
+    "available" : true,
+    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_deucebox440ml_1567525575DeuceboxRenderCrop1.png",
+    "url" : "https://www.fourpure.com/item/188/Fourpure/Deucebox-440ml.html"
+  }, {
     "brewery" : "Gipsy Hill",
     "name" : "Moneybags",
     "summary" : "DIPA",
