@@ -8,32 +8,22 @@ import java.net.URI
 class BoxcarScraper : Scraper {
   override val name = "Boxcar"
 
-  override fun Context.scrape() = request(ROOT_URL) { doc -> doc
-    .select(".product-card")
-    .map { el ->
-      val rawName = el.selectFirst(".product-card__title").text()
-      val result = "^(.*?) // (.*?)% *(.*?)? // (.*?)ml$".toRegex().find(rawName)!!
+  override fun Context.scrape() = request(ROOT_URL)
+    .shopifyItems()
+    .map { details ->
+      val parts = details.title.extract("^(.*?) // (.*?)% *(.*?)? // (.*?)ml$")!!
 
       ParsedItem(
-        thumbnailUrl = ROOT_URL.resolve(
-          el.selectFirst("noscript .grid-view-item__image").attr("src").trim()
-            .replace("@2x", "")
-            .replace("\\?.*".toRegex(), "")
-        ),
-        url = ROOT_URL.resolve(el.selectFirst(".grid-view-item__link").attr("href").trim()),
-        name = result.groupValues[1].trim(),
-        abv = result.groupValues[2].trim().toBigDecimal(),
-        summary = result.groupValues[3].trim().ifEmpty { null },
-        sizeMl = result.groupValues[4].trim().toInt(),
-        available = "price--sold-out" !in el.selectFirst(".price").classNames(),
-        pricePerCan = el.selectFirst(".price-item--sale")
-          .text()
-          .trim()
-          .removePrefix("£")
-          .toBigDecimal()
+        thumbnailUrl = details.thumbnailUrl,
+        url = details.url,
+        name = parts[1],
+        abv = parts[2].toDouble(),
+        summary = parts[3].ifBlank { null },
+        sizeMl = parts[4].toInt(),
+        available = details.available,
+        pricePerCan = details.price
       )
     }
-  }
 
   companion object {
     private val ROOT_URL = URI("https://shop.boxcarbrewery.co.uk/collections/beer")

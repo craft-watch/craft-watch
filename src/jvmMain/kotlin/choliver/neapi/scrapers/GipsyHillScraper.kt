@@ -8,33 +8,28 @@ import java.net.URI
 class GipsyHillScraper : Scraper {
   override val name = "Gipsy Hill"
 
-  override fun Context.scrape() = request(ROOT_URL) { doc -> doc
+  override fun Context.scrape() = request(ROOT_URL)
     .select(".product")
     .map { el ->
       val a = el.selectFirst(".woocommerce-LoopProduct-link")
-      val url = URI(a.attr("href").trim())
-      val subText = request(url) { it.selectFirst(".summary").text() }
+      val url = URI(a.hrefFrom())
+      val rawSummary = request(url).textFrom(".summary")
 
-      val result = "Sold as: ((\\d+) x )?(\\d+)ml".toRegex().find(subText)
-      val numCans = result?.let { it.groupValues[2].toIntOrNull() } ?: 1
+      val parts = rawSummary.extract("Sold as: ((\\d+) x )?(\\d+)ml")
+      val numCans = parts?.get(2)?.toIntOrNull() ?: 1
 
       ParsedItem(
-        thumbnailUrl = URI(a.selectFirst(".attachment-woocommerce_thumbnail").attr("src").trim()),
+        thumbnailUrl = URI(a.srcFrom(".attachment-woocommerce_thumbnail")),
         url = url,
-        name = a.selectFirst(".woocommerce-loop-product__title").text().trim(),
-        summary = "Style: (.*) ABV".toRegex().find(subText)?.let {
-          it.groupValues[1].trim()
-        },
+        name = a.textFrom(".woocommerce-loop-product__title"),
+        summary = rawSummary.extract("Style: (.*) ABV")?.get(1),
         available = true, // TODO
-        abv = "ABV: (.*?)%".toRegex().find(subText)?.let {
-          it.groupValues[1].trim().toBigDecimal()
-        },
-        sizeMl = result?.let { it.groupValues[3].toInt() },
-        pricePerCan = el.selectFirst(".woocommerce-Price-amount").ownText().toBigDecimal() / numCans.toBigDecimal()
+        abv = rawSummary.extract("ABV: (.*?)%")?.get(1)?.toDouble(),
+        sizeMl = parts?.get(3)?.toInt(),
+        pricePerCan = el.ownTextFrom(".woocommerce-Price-amount").toDouble().divideAsPrice(numCans)
       )
     }
     .distinctBy { it.name }
-  }
 
   companion object {
     private val ROOT_URL = URI("https://gipsyhillbrew.com")

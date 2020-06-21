@@ -8,34 +8,28 @@ import java.net.URI
 class PressureDropScraper : Scraper {
   override val name = "Pressure Drop"
 
-  override fun Context.scrape() = request(ROOT_URL) { doc -> doc
+  override fun Context.scrape() = request(ROOT_URL)
     .select(".product-grid-item")
     .map { el ->
       val a = el.selectFirst(".grid__image")
-      val url = ROOT_URL.resolve(a.attr("href").trim())
+      val url = ROOT_URL.resolve(a.hrefFrom())
 
-      val subDoc = request(url) { it }
-      val subtext = subDoc.text()
+      val itemDoc = request(url)
+      val itemText = itemDoc.text()
 
-      val rawName = subDoc.selectFirst(".product__title").text().trim()
-      val result = "^(.*?)\\s*-\\s*(.*?)$".toRegex().find(rawName)!!
+      val parts = itemDoc.extractFrom(".product__title", "^(.*?)\\s*-\\s*(.*?)$")!!
 
       ParsedItem(
-        thumbnailUrl = ROOT_URL.resolve(a.selectFirst("noscript img").attr("src").trim()),
+        thumbnailUrl = ROOT_URL.resolve(a.srcFrom("noscript img")),
         url = url,
-        name = result.groupValues[1],
-        summary = result.groupValues[2],
-        abv = "(\\d+(\\.\\d+)?)\\s*%".toRegex().find(subtext)?.let {
-          it.groupValues[1].trim().toBigDecimal()
-        },
-        sizeMl = "(\\d+)ml".toRegex().find(subtext)?.let {
-          it.groupValues[1].trim().toInt()
-        },
+        name = parts[1],
+        summary = parts[2],
+        abv = itemText.extract("(\\d+(\\.\\d+)?)\\s*%")?.get(1)?.toDouble(),  // TODO - deal with all the ?
+        sizeMl = itemText.extract("(\\d+)ml")?.get(1)?.toInt(),
         available = true,
-        pricePerCan = subDoc.selectFirst(".ProductPrice").text().trim().removePrefix("£").toBigDecimal()
+        pricePerCan = itemDoc.priceFrom(".ProductPrice")
       )
     }
-  }
 
   companion object {
     private val ROOT_URL = URI("https://pressuredropbrewing.co.uk/collections/beers")

@@ -33,8 +33,8 @@ class FourpureScraperTest {
     assertEquals(
       ParsedItem(
         name = "Basecamp",
-        pricePerCan = "2.00".toBigDecimal(),
-        abv = "4.7".toBigDecimal(),
+        pricePerCan = 2.00,
+        abv = 4.7,
         sizeMl = 330,
         available = true,
         thumbnailUrl = URI("https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_pilslager_1566986321BASECAMPNB.png"),

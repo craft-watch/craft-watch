@@ -9,36 +9,28 @@ import java.net.URI
 class FourpureScraper : Scraper {
   override val name = "Fourpure"
 
-  override fun Context.scrape() = request(ROOT_URL) { doc -> doc
+  override fun Context.scrape() = request(ROOT_URL)
     .select(".itemsBrowse li")
     .filterNot { el -> el.getName().contains("minikeg", ignoreCase = true) }  // Kegs break our can-based model, so ignore
     .filterNot { el -> el.getName().contains("pack", ignoreCase = true) }  // Can't figure out how to extract price-per-can from packs, so ignore
     .map { el ->
       val a = el.selectFirst("a")
-      val url = URI(a.attr("href").trim())
-      val subdoc = request(url) { it }
+      val url = URI(a.hrefFrom())
+      val itemDoc = request(url)
 
       ParsedItem(
-        thumbnailUrl = ROOT_URL.resolve(a.selectFirst("img").attr("src").trim()),
+        thumbnailUrl = ROOT_URL.resolve(a.srcFrom("img")),
         url = url,
-        name = "([^\\d]+)( \\d+ml)?".toRegex().find(el.getName())!!.groupValues[1],  // Strip size embedded in name
-        abv = "Alcohol By Volume: (\\d+\\.\\d+)".toRegex()
-          .find(subdoc.selectFirst(".brewSheet").text())!!
-          .groupValues[1]
-          .toBigDecimal(),
+        name = el.getName().extract("([^\\d]+)( \\d+ml)?")!![1],  // Strip size embedded in name
+        abv = itemDoc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+\\.\\d+)")!![1].toDouble(),
         summary = null,
-        sizeMl = "(\\d+)ml".toRegex()
-          .find(subdoc.selectFirst(".quickBuy").text())!!
-          .groupValues[1]
-          .toInt(),
+        sizeMl = itemDoc.extractFrom(".quickBuy", "(\\d+)ml")!![1].toInt(),
         available = true,
-        pricePerCan = (el.selectFirst(".priceNow") ?: el.selectFirst(".priceStandard"))
-          .selectFirst(".GBP").text().removePrefix("£").toBigDecimal()
+        pricePerCan = (el.selectFirst(".priceNow") ?: el.selectFirst(".priceStandard")).priceFrom(".GBP")
       )
     }
-  }
 
-  private fun Element.getName() = selectFirst("h3").text().trim()
+  private fun Element.getName() = textFrom("h3")
 
   companion object {
     private val ROOT_URL = URI("https://www.fourpure.com/browse/c-Our-Beers-5/")

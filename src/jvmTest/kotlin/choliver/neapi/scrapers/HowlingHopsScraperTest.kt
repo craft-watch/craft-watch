@@ -23,8 +23,8 @@ class HowlingHopsScraperTest {
       ParsedItem(
         name = "Push Push",
         summary = "DDH Pale Ale",
-        pricePerCan = "4.00".toBigDecimal(),
-        abv = "5.8".toBigDecimal(),
+        pricePerCan = 4.00,
+        abv = 5.8,
         sizeMl = 440,
         available = true,
         thumbnailUrl = URI("https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png"),
@@ -38,7 +38,7 @@ class HowlingHopsScraperTest {
   fun `finds best prices for beer`() {
     // There are two raw prices available for this beer
     assertEquals(
-      listOf("2.75".toBigDecimal()),
+      listOf(2.75),
       ITEMS
         .filter { it.name == "Passionfruit Gose" }
         .map { it.pricePerCan }
