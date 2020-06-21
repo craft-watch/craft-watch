@@ -11,8 +11,9 @@ class BoxcarScraper : Scraper {
   override fun Context.scrape() = request(ROOT_URL)
     .select(".product-card")
     .map { el ->
-      val rawName = el.selectFirst(".product-card__title").text()
-      val result = "^(.*?) // (.*?)% *(.*?)? // (.*?)ml$".toRegex().find(rawName)!!
+      val parts = el.selectFirst(".product-card__title")
+        .text()
+        .extract("^(.*?) // (.*?)% *(.*?)? // (.*?)ml$")!!
 
       ParsedItem(
         thumbnailUrl = ROOT_URL.resolve(
@@ -21,10 +22,10 @@ class BoxcarScraper : Scraper {
             .replace("\\?.*".toRegex(), "")
         ),
         url = ROOT_URL.resolve(el.selectFirst(".grid-view-item__link").attr("href").trim()),
-        name = result.groupValues[1].trim(),
-        abv = result.groupValues[2].trim().toBigDecimal(),
-        summary = result.groupValues[3].trim().ifEmpty { null },
-        sizeMl = result.groupValues[4].trim().toInt(),
+        name = parts[1].trim(),
+        abv = parts[2].trim().toBigDecimal(),
+        summary = parts[3].trim().ifEmpty { null },
+        sizeMl = parts[4].trim().toInt(),
         available = "price--sold-out" !in el.selectFirst(".price").classNames(),
         pricePerCan = el.selectFirst(".price-item--sale")
           .text()

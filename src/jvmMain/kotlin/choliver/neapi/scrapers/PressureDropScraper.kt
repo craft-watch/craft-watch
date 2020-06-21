@@ -17,20 +17,17 @@ class PressureDropScraper : Scraper {
       val itemDoc = request(url)
       val itemText = itemDoc.text()
 
-      val rawName = itemDoc.selectFirst(".product__title").text().trim()
-      val result = "^(.*?)\\s*-\\s*(.*?)$".toRegex().find(rawName)!!
+      val parts = itemDoc.selectFirst(".product__title")
+        .text()
+        .extract("^(.*?)\\s*-\\s*(.*?)$")!!
 
       ParsedItem(
         thumbnailUrl = ROOT_URL.resolve(a.selectFirst("noscript img").attr("src").trim()),
         url = url,
-        name = result.groupValues[1],
-        summary = result.groupValues[2],
-        abv = "(\\d+(\\.\\d+)?)\\s*%".toRegex().find(itemText)?.let {
-          it.groupValues[1].trim().toBigDecimal()
-        },
-        sizeMl = "(\\d+)ml".toRegex().find(itemText)?.let {
-          it.groupValues[1].trim().toInt()
-        },
+        name = parts[1],
+        summary = parts[2],
+        abv = itemText.extract("(\\d+(\\.\\d+)?)\\s*%")?.get(1)?.toBigDecimal(),  // TODO - deal with all the ?
+        sizeMl = itemText.extract("(\\d+)ml")?.get(1)?.toInt(),
         available = true,
         pricePerCan = itemDoc.selectFirst(".ProductPrice").text().trim().removePrefix("£").toBigDecimal()
       )

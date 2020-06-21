@@ -19,16 +19,16 @@ class VillagesScraper : Scraper {
       val summary: String?
       val abv: BigDecimal?
       if (rawName.contains("mixed case", ignoreCase = true)) {
-        val result = "^(.*?) \\((.*)\\)$".toRegex().find(rawName)!!
-        name = result.groupValues[1].toTitleCase()
+        val parts = rawName.extract("^(.*?) \\((.*)\\)$")!!
+        name = parts[1].toTitleCase()
         abv = null
         numCans = 24
         summary = "${numCans} cans"
       } else {
-        val result = "^([^ ]*) (.*)? ((.*)%)?.*$".toRegex().find(rawName)!!
-        name = result.groupValues[1].toTitleCase()
-        summary = result.groupValues[2]
-        abv = result.groupValues[4].toBigDecimal()
+        val parts = rawName.extract("^([^ ]*) (.*)? ((.*)%)?.*$")!!
+        name = parts[1].toTitleCase()
+        summary = parts[2]
+        abv = parts[4].toBigDecimal()
         numCans = 12
       }
 
@@ -44,12 +44,11 @@ class VillagesScraper : Scraper {
         url = url,
         name = name,
         summary = summary,
-        sizeMl = "(\\d+)ml".toRegex().find(itemText)?.let {
-          it.groupValues[1].trim().toInt()
-        },
+        sizeMl = itemText.extract("(\\d+)ml")?.get(1)?.toInt(),
         abv = abv,
         available = "price--sold-out" !in el.selectFirst(".price").classNames(),
-        pricePerCan = "\\d+\\.\\d+".toRegex().find(el.selectFirst(".price-item--sale").text())!!.value.toBigDecimal() / numCans.toBigDecimal()
+        pricePerCan = el.selectFirst(".price-item--sale").text()
+          .extract("\\d+\\.\\d+")!![0].toBigDecimal() / numCans.toBigDecimal()
       )
     }
 

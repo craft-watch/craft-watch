@@ -13,23 +13,19 @@ class GipsyHillScraper : Scraper {
     .map { el ->
       val a = el.selectFirst(".woocommerce-LoopProduct-link")
       val url = URI(a.attr("href").trim())
-      val subText = request(url).selectFirst(".summary").text()
+      val rawSummary = request(url).selectFirst(".summary").text()
 
-      val result = "Sold as: ((\\d+) x )?(\\d+)ml".toRegex().find(subText)
-      val numCans = result?.let { it.groupValues[2].toIntOrNull() } ?: 1
+      val parts = rawSummary.extract("Sold as: ((\\d+) x )?(\\d+)ml")
+      val numCans = parts?.get(2)?.toIntOrNull() ?: 1
 
       ParsedItem(
         thumbnailUrl = URI(a.selectFirst(".attachment-woocommerce_thumbnail").attr("src").trim()),
         url = url,
         name = a.selectFirst(".woocommerce-loop-product__title").text().trim(),
-        summary = "Style: (.*) ABV".toRegex().find(subText)?.let {
-          it.groupValues[1].trim()
-        },
+        summary = rawSummary.extract("Style: (.*) ABV")?.get(1)?.trim(),
         available = true, // TODO
-        abv = "ABV: (.*?)%".toRegex().find(subText)?.let {
-          it.groupValues[1].trim().toBigDecimal()
-        },
-        sizeMl = result?.let { it.groupValues[3].toInt() },
+        abv = rawSummary.extract("ABV: (.*?)%")?.get(1)?.toBigDecimal(),
+        sizeMl = parts?.get(3)?.toInt(),
         pricePerCan = el.selectFirst(".woocommerce-Price-amount").ownText().toBigDecimal() / numCans.toBigDecimal()
       )
     }

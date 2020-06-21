@@ -21,16 +21,12 @@ class FourpureScraper : Scraper {
       ParsedItem(
         thumbnailUrl = ROOT_URL.resolve(a.selectFirst("img").attr("src").trim()),
         url = url,
-        name = "([^\\d]+)( \\d+ml)?".toRegex().find(el.getName())!!.groupValues[1],  // Strip size embedded in name
-        abv = "Alcohol By Volume: (\\d+\\.\\d+)".toRegex()
-          .find(itemDoc.selectFirst(".brewSheet").text())!!
-          .groupValues[1]
-          .toBigDecimal(),
+        name = el.getName().extract("([^\\d]+)( \\d+ml)?")!![1],  // Strip size embedded in name
+        abv = itemDoc.selectFirst(".brewSheet").text()
+          .extract("Alcohol By Volume: (\\d+\\.\\d+)")!![1].toBigDecimal(),
         summary = null,
-        sizeMl = "(\\d+)ml".toRegex()
-          .find(itemDoc.selectFirst(".quickBuy").text())!!
-          .groupValues[1]
-          .toInt(),
+        sizeMl = itemDoc.selectFirst(".quickBuy").text()
+          .extract("(\\d+)ml")!![1].toInt(),
         available = true,
         pricePerCan = (el.selectFirst(".priceNow") ?: el.selectFirst(".priceStandard"))
           .selectFirst(".GBP").text().removePrefix("£").toBigDecimal()

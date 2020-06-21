@@ -20,25 +20,26 @@ class HowlingHopsScraper : Scraper {
         .selectFirst(".woocommerce-product-details__short-description")
         .text()
 
-      val result = "([^/]*?) / ([^/]*?) / (\\d+) x (\\d+)ml / (\\d+(\\.\\d+)?)% ABV".toRegex().find(shortDesc)
+      val parts = shortDesc.extract("([^/]*?) / ([^/]*?) / (\\d+) x (\\d+)ml / (\\d+(\\.\\d+)?)% ABV")
       val name: String
       val summary: String?
       val abv: BigDecimal?
       val sizeMl: Int?
       val numCans: Int
-      if (result != null) {
-        name = result.groupValues[1].trim()
-        summary = result.groupValues[2].trim()
-        numCans = result.groupValues[3].toInt()
-        sizeMl = result.groupValues[4].toInt()
-        abv = result.groupValues[5].toBigDecimal()
+      if (parts != null) {
+        name = parts[1].trim()
+        summary = parts[2].trim()
+        numCans = parts[3].toInt()
+        sizeMl = parts[4].toInt()
+        abv = parts[5].toBigDecimal()
       } else {
-        val multiPackResult = "(.*?) (\\d+) x (\\d+)ml".toRegex().find(shortDesc)!!
-        name = multiPackResult.groupValues[1].trim()
-        numCans = multiPackResult.groupValues[2].toInt()
-        sizeMl = multiPackResult.groupValues[3].toInt()
-        summary = "${numCans} cans"
-        abv = null
+        with(shortDesc.extract("(.*?) (\\d+) x (\\d+)ml")!!) {
+          name = this[1].trim()
+          numCans = this[2].toInt()
+          sizeMl = this[3].toInt()
+          summary = "${numCans} cans"
+          abv = null
+        }
       }
 
       ParsedItem(
