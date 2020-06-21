@@ -21,9 +21,9 @@ class VillagesScraper : Scraper {
       if (rawName.contains("mixed case", ignoreCase = true)) {
         val result = "^(.*?) \\((.*)\\)$".toRegex().find(rawName)!!
         name = result.groupValues[1].toTitleCase()
-        summary = result.groupValues[2]
         abv = null
         numCans = 24
+        summary = "${numCans} cans"
       } else {
         val result = "^([^ ]*) (.*)? ((.*)%)?.*$".toRegex().find(rawName)!!
         name = result.groupValues[1].toTitleCase()
