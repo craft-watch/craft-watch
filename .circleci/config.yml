@@ -21,6 +21,16 @@ jobs:
           name: Build frontend
           command: ./gradlew jsBrowserProductionWebpack
 
+      # TODO - only on master
+
+      - add_ssh_keys:
+          fingerprints:
+            - b2:01:83:8d:4e:e6:72:11:5f:57:70:11:ec:57:29:42
+
+      - run:
+          name: Deploy
+          command: ./scripts/deploy.sh
+
       - save_cache:
           paths:
             - ~/.gradle/wrapper
