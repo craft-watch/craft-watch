@@ -24,7 +24,11 @@ fun updateDom(inventory: Inventory) {
       thead {
         tr {
           th { +"Brewery" }
-          th { +"Name" }
+          th { +" " }
+          th {
+            classes += "name"
+            +"Name"
+          }
           th { +"ABV" }
           th { +"Can size" }
           th { +"Price per can" }
@@ -40,10 +44,12 @@ fun updateDom(inventory: Inventory) {
                   img(src = item.thumbnailUrl) {
                     width = "100px"
                     height = "100px"
-                    style = "vertical-align: middle; margin-right: 10px"
                   }
                 }
               }
+            }
+            td {
+              classes += "name"
               a(item.url) {
                 +item.name
               }

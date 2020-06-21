@@ -1,0 +1,59 @@
+/* Colours taken from https://ethanschoonover.com/solarized/ */
+
+body {
+  background: #fdf6e3;
+}
+
+html, body {
+  font-family: 'Work Sans', sans-serif;
+  color: #586e75;
+  margin: 0;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+}
+
+th {
+  position: sticky;
+  top: 0px;
+  background: #eee8d5;
+  font-size: larger;
+}
+
+td, th {
+  text-align: center;
+  padding: 10px;
+}
+
+td img {
+  vertical-align: middle;
+}
+
+a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a:link {
+  color: #586e75;
+}
+
+a:visited {
+  color: #657b83;
+}
+
+a:hover {
+  color: #d33682;
+}
+
+.name {
+  text-align: left;
+  max-width: 300px;
+}
+
+img {
+  mix-blend-mode: multiply;
+}
