@@ -14,14 +14,14 @@ class HowlingHopsScraper : Scraper {
     .map { el ->
       val a = el.selectFirst(".wc-block-grid__product-link")
       val url = URI(a.attr("href").trim())
-      val thumbnailUrl = URI(a.srcOf(".attachment-woocommerce_thumbnail"))
+      val thumbnailUrl = URI(a.srcFrom(".attachment-woocommerce_thumbnail"))
       val price = el.select(".woocommerce-Price-amount")
         .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
         .first()
         .ownText()
         .toBigDecimal()
 
-      val shortDesc = request(url).textOf(".woocommerce-product-details__short-description")
+      val shortDesc = request(url).textFrom(".woocommerce-product-details__short-description")
 
       val parts = shortDesc.extract("([^/]*?) / ([^/]*?) / (\\d+) x (\\d+)ml / (\\d+(\\.\\d+)?)% ABV")
       if (parts != null) {

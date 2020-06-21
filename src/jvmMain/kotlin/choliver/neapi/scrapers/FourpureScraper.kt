@@ -19,19 +19,18 @@ class FourpureScraper : Scraper {
       val itemDoc = request(url)
 
       ParsedItem(
-        thumbnailUrl = ROOT_URL.resolve(a.srcOf("img")),
+        thumbnailUrl = ROOT_URL.resolve(a.srcFrom("img")),
         url = url,
         name = el.getName().extract("([^\\d]+)( \\d+ml)?")!![1],  // Strip size embedded in name
-        abv = itemDoc.textOf(".brewSheet").extract("Alcohol By Volume: (\\d+\\.\\d+)")!![1].toBigDecimal(),
+        abv = itemDoc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+\\.\\d+)")!![1].toBigDecimal(),
         summary = null,
-        sizeMl = itemDoc.textOf(".quickBuy").extract("(\\d+)ml")!![1].toInt(),
+        sizeMl = itemDoc.extractFrom(".quickBuy", "(\\d+)ml")!![1].toInt(),
         available = true,
-        pricePerCan = (el.selectFirst(".priceNow") ?: el.selectFirst(".priceStandard"))
-          .selectFirst(".GBP").text().removePrefix("£").toBigDecimal()
+        pricePerCan = (el.selectFirst(".priceNow") ?: el.selectFirst(".priceStandard")).priceFrom(".GBP")
       )
     }
 
-  private fun Element.getName() = selectFirst("h3").text().trim()
+  private fun Element.getName() = textFrom("h3")
 
   companion object {
     private val ROOT_URL = URI("https://www.fourpure.com/browse/c-Our-Beers-5/")
