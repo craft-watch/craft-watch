@@ -9,5 +9,5 @@ cd website
 git rm -r .
 cp ../build/distributions/* .
 git add .
-git commit -m "Update"
+git commit --allow-empty -m "Update from ${CIRCLE_PULL_REQUEST} (build URL: ${CIRCLE_BUILD_URL})"
 git push
