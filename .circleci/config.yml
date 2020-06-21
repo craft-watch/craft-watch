@@ -21,6 +21,20 @@ jobs:
           name: Build frontend
           command: ./gradlew jsBrowserProductionWebpack
 
+      - add_ssh_keys:
+          fingerprints:
+            - b2:01:83:8d:4e:e6:72:11:5f:57:70:11:ec:57:29:42
+
+      # CircleCI workflow configuration is a disaster, so do branch check manually
+      - run:
+          name: Deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              ./scripts/deploy.sh
+            else
+              echo "Not deploying from '${CIRCLE_BRANCH}' branch"
+            fi
+
       - save_cache:
           paths:
             - ~/.gradle/wrapper
