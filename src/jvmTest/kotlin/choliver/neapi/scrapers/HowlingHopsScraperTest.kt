@@ -19,16 +19,18 @@ class HowlingHopsScraperTest {
 
   @Test
   fun `extracts sale price not original price`() {
-    assertTrue(
+    assertEquals(
       ParsedItem(
-        name = "Push Push DDH Pale",
+        name = "Push Push",
+        summary = "DDH Pale Ale",
         pricePerCan = "4.00".toBigDecimal(),
         abv = "5.8".toBigDecimal(),
         sizeMl = 440,
         available = true,
         thumbnailUrl = URI("https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png"),
         url = URI("https://www.howlinghops.co.uk/product/push-push-4-x-440ml/")
-      ) in ITEMS
+      ),
+      ITEMS.first { it.name == "Push Push" }
     )
   }
 
