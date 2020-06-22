@@ -75,10 +75,10 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - test_backend
-        filters:
-          branches:
-            ignore: master
+      - test_backend:
+          filters:
+            branches:
+              ignore: master
       - build_frontend
       - deploy:
           requires:
