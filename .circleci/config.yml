@@ -35,12 +35,10 @@ jobs:
             - v1-yarn-
       - run:
           name: Install dependencies
-          command: yarn install
-          woring_directory: frontend/
+          command: cd frontend && yarn install
       - run:
           name: Build frontend
-          command: yarn build
-          working_directory: frontend/
+          command: cd frontend && yarn build
       - add_ssh_keys:
           fingerprints:
             - b2:01:83:8d:4e:e6:72:11:5f:57:70:11:ec:57:29:42
