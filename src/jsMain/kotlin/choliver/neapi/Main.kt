@@ -7,6 +7,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 import kotlin.browser.document
 import kotlin.browser.window
+import kotlin.text.Typography.nbsp
 
 fun main() {
   window.fetch("/inventory.json")
@@ -30,8 +31,8 @@ fun updateDom(inventory: Inventory) {
             +"Name"
           }
           th { +"ABV" }
-          th { +"Can size" }
-          th { +"Price per can" }
+          th { +"Unit size" }
+          th { +"Price per unit" }
         }
       }
       tbody {
@@ -68,13 +69,13 @@ fun updateDom(inventory: Inventory) {
               }
             }
             td {
-              if (item.sizeMl != null) {
-                +"${item.sizeMl}ml"
-              } else {
-                +"?"
+              +when (item.sizeMl) {
+                null -> "?"
+                in (0 until 1000) -> "${item.sizeMl}${nbsp}ml"
+                else -> "${item.sizeMl / 1000}${nbsp}litres"
               }
             }
-            td { +"£${item.pricePerCan.asDynamic().toFixed(2)}" }
+            td { +"£${item.unitPrice.asDynamic().toFixed(2)}" }
           }
         }
       }

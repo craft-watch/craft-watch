@@ -21,7 +21,7 @@ class BoxcarScraper : Scraper {
         summary = parts[3].ifBlank { null },
         sizeMl = parts[4].toInt(),
         available = details.available,
-        pricePerCan = details.price
+        unitPrice = details.price
       )
     }
 

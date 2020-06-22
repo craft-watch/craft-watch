@@ -3,7 +3,6 @@ package choliver.neapi.scrapers
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import java.net.URI
-import kotlin.math.nextTowards
 import kotlin.math.round
 
 data class ShopifyItemDetails(
