@@ -22,7 +22,6 @@ class FourpureScraper : Scraper {
 
       val title = el.title()
       if (title.contains("minikeg", ignoreCase = true)) {
-        println(title)
         val parts = title.extract("([^\\d]+) (\\d+)L.*")!!
         ParsedItem(
           thumbnailUrl = thumbnailUrl,

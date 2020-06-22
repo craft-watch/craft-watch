@@ -80,6 +80,76 @@
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/bitter_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/best-bitter"
   }, {
+    "brewery" : "Canopy",
+    "name" : "Brockwell IPA",
+    "summary" : null,
+    "sizeMl" : 330,
+    "abv" : 5.6,
+    "perItemPrice" : 2.5,
+    "available" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Brockwell-F_large.png?v=1539104364",
+    "url" : "https://shop.canopybeer.com/products/brockwell-ipa"
+  }, {
+    "brewery" : "Canopy",
+    "name" : "Sunray Pale Ale",
+    "summary" : null,
+    "sizeMl" : 330,
+    "abv" : 4.2,
+    "perItemPrice" : 2.5,
+    "available" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-330ml-Sunray-F_large.png?v=1539104580",
+    "url" : "https://shop.canopybeer.com/products/sunray-pale-ale"
+  }, {
+    "brewery" : "Canopy",
+    "name" : "Champion Kölsch",
+    "summary" : null,
+    "sizeMl" : 330,
+    "abv" : 4.5,
+    "perItemPrice" : 2.5,
+    "available" : false,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Champion-F_large.png?v=1540475156",
+    "url" : "https://shop.canopybeer.com/products/champion-kolsch"
+  }, {
+    "brewery" : "Canopy",
+    "name" : "Snapper Session IPA",
+    "summary" : null,
+    "sizeMl" : 330,
+    "abv" : 4.8,
+    "perItemPrice" : 2.5,
+    "available" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Snapper-F_large.png?v=1540475255",
+    "url" : "https://shop.canopybeer.com/products/snapper-session-ipa"
+  }, {
+    "brewery" : "Canopy",
+    "name" : "A Rising Tide Nelson & Motueka IPA",
+    "summary" : null,
+    "sizeMl" : 440,
+    "abv" : 6.5,
+    "perItemPrice" : 5.5,
+    "available" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-A-Rising-Tide-F_large.png?v=1591979218",
+    "url" : "https://shop.canopybeer.com/products/a-rising-tide-nelson-motueka-ipa-6-5"
+  }, {
+    "brewery" : "Canopy",
+    "name" : "Llopper Everyday Oyster Stout",
+    "summary" : null,
+    "sizeMl" : 440,
+    "abv" : 5.0,
+    "perItemPrice" : 3.5,
+    "available" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-LlopperF_large.png?v=1540568612",
+    "url" : "https://shop.canopybeer.com/products/llopper-everyday-oyster-stout"
+  }, {
+    "brewery" : "Canopy",
+    "name" : "Paceline Lime & Salt Lager",
+    "summary" : null,
+    "sizeMl" : 440,
+    "abv" : 4.0,
+    "perItemPrice" : 3.5,
+    "available" : false,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-Paceline-F_large.png?v=1585123486",
+    "url" : "https://shop.canopybeer.com/products/paceline-lime-salt-lager-4-0"
+  }, {
     "brewery" : "Fourpure",
     "name" : "Monsoon",
     "summary" : "Minikeg",
