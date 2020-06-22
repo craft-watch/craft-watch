@@ -33,7 +33,7 @@ class HowlingHopsScraper : Scraper {
           available = true,   // TODO
           sizeMl = parts[4].toInt(),
           abv = parts[5].toDouble(),
-          pricePerCan = price.divideAsPrice(parts[3].toInt())
+          unitPrice = price.divideAsPrice(parts[3].toInt())
         )
       } else {
         with(shortDesc.extract("(.*?) (\\d+) x (\\d+)ml")!!) {
@@ -46,14 +46,14 @@ class HowlingHopsScraper : Scraper {
             available = true,   // TODO
             sizeMl = this[3].toInt(),
             abv = null,
-            pricePerCan = price.divideAsPrice(numCans)
+            unitPrice = price.divideAsPrice(numCans)
           )
         }
       }
     }
     .groupBy { it.name }
     .values
-    .map { group -> group.minBy { it.pricePerCan }!! }  // Find best price for this beer
+    .map { group -> group.minBy { it.unitPrice }!! }  // Find best price for this beer
 
   companion object {
     private val ROOT_URL = URI("https://www.howlinghops.co.uk/shop")

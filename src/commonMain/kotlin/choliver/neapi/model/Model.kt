@@ -14,7 +14,7 @@ data class Item(
   val summary: String?,
   val sizeMl: Int?,
   val abv: Double?,
-  val pricePerCan: Double,
+  val unitPrice: Double,
   val available: Boolean,
   val thumbnailUrl: String?,
   val url: String

@@ -24,8 +24,8 @@ class Executor(private val getter: HttpGetter) {
               sizeMl = item.sizeMl,
               abv = item.abv
                 ?.validate("ABV unexpectedly high") { it < MAX_ABV },
-              pricePerCan = item.pricePerCan
-                .validate("Price unexpectedly high") { it < MAX_PRICE_PER_CAN },
+              unitPrice = item.unitPrice
+                .validate("Price per ml unexpectedly high") { (it / (item.sizeMl ?: 330)) < MAX_PRICE_PER_ML },
               available = item.available,
               thumbnailUrl = item.thumbnailUrl
                 ?.validate("Not an absolute URL") { it.isAbsolute }
@@ -57,6 +57,6 @@ class Executor(private val getter: HttpGetter) {
     )
 
     private const val MAX_ABV = 14.0
-    private const val MAX_PRICE_PER_CAN = 8.00
+    private const val MAX_PRICE_PER_ML = 8.00 / 440
   }
 }
