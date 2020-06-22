@@ -76,6 +76,9 @@ workflows:
   build_and_deploy:
     jobs:
       - test_backend
+        filters:
+          branches:
+            ignore: master
       - build_frontend
       - deploy:
           requires:
