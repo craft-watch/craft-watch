@@ -44,7 +44,6 @@ th {
 td, th {
   text-align: center;
   padding: 10px;
-  position: relative;
 }
 
 td img {
@@ -66,6 +65,10 @@ a:visited {
 
 a:hover {
   color: var(--sol-blue);
+}
+
+.thumbnail {
+  position: relative;
 }
 
 .name {

@@ -40,6 +40,7 @@ fun updateDom(inventory: Inventory) {
           tr {
             td { +item.brewery }
             td {
+              classes += "thumbnail"
               if (item.thumbnailUrl != null) {
                 a(item.url) {
                   img(src = item.thumbnailUrl) {
