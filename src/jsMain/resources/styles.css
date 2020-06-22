@@ -1,12 +1,30 @@
 /* Colours taken from https://ethanschoonover.com/solarized/ */
+:root {
+  --sol-base03:  #002b36;
+  --sol-base02:  #073642;
+  --sol-base01:  #586e75;
+  --sol-base00:  #657b83;
+  --sol-base0:   #839496;
+  --sol-base1:   #93a1a1;
+  --sol-base2:   #eee8d5;
+  --sol-base3:   #fdf6e3;
+  --sol-yellow:  #b58900;
+  --sol-orange:  #cb4b16;
+  --sol-red:     #dc322f;
+  --sol-magenta: #d33682;
+  --sol-violet:  #6c71c4;
+  --sol-blue:    #268bd2;
+  --sol-cyan:    #2aa198;
+  --sol-green:   #859900;
+}
 
 body {
-  background: #fdf6e3;
+  background: var(--sol-base3);
 }
 
 html, body {
   font-family: 'Work Sans', sans-serif;
-  color: #586e75;
+  color: var(--sol-base01);
   margin: 0;
 }
 
@@ -19,13 +37,14 @@ table {
 th {
   position: sticky;
   top: 0px;
-  background: #eee8d5;
+  background: var(--sol-base2);
   font-size: larger;
 }
 
 td, th {
   text-align: center;
   padding: 10px;
+  position: relative;
 }
 
 td img {
@@ -38,15 +57,15 @@ a {
 }
 
 a:link {
-  color: #586e75;
+  color: var(--sol-base01);
 }
 
 a:visited {
-  color: #657b83;
+  color: var(--sol-base00);
 }
 
 a:hover {
-  color: #d33682;
+  color: var(--sol-blue);
 }
 
 .name {
@@ -58,6 +77,23 @@ a:hover {
   font-size: smaller;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.sold-out {
+  color: var(--sol-base3);
+  background: var(--sol-red);
+  padding: 2px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: larger;
+  filter: drop-shadow(0 0 0.75rem var(--sol-base03));
+  /* Rotate and centre above image */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%) rotate(-20deg);
+  transform-origin: center;
 }
 
 img {
