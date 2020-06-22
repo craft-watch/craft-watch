@@ -27,7 +27,7 @@ class PressureDropScraper : Scraper {
         abv = itemText.extract("(\\d+(\\.\\d+)?)\\s*%")?.get(1)?.toDouble(),  // TODO - deal with all the ?
         sizeMl = itemText.extract("(\\d+)ml")?.get(1)?.toInt(),
         available = true,
-        unitPrice = itemDoc.priceFrom(".ProductPrice")
+        perItemPrice = itemDoc.priceFrom(".ProductPrice")
       )
     }
 

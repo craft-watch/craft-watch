@@ -23,7 +23,7 @@ class HowlingHopsScraperTest {
       ParsedItem(
         name = "Push Push",
         summary = "DDH Pale Ale",
-        unitPrice = 4.00,
+        perItemPrice = 4.00,
         abv = 5.8,
         sizeMl = 440,
         available = true,
@@ -41,7 +41,7 @@ class HowlingHopsScraperTest {
       listOf(2.75),
       ITEMS
         .filter { it.name == "Passionfruit Gose" }
-        .map { it.unitPrice }
+        .map { it.perItemPrice }
     )
   }
 

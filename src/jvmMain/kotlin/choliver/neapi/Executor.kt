@@ -24,7 +24,7 @@ class Executor(private val getter: HttpGetter) {
               sizeMl = item.sizeMl,
               abv = item.abv
                 ?.validate("ABV unexpectedly high") { it < MAX_ABV },
-              unitPrice = item.unitPrice
+              perItemPrice = item.perItemPrice
                 .validate("Price per ml unexpectedly high") { (it / (item.sizeMl ?: 330)) < MAX_PRICE_PER_ML },
               available = item.available,
               thumbnailUrl = item.thumbnailUrl
@@ -57,6 +57,6 @@ class Executor(private val getter: HttpGetter) {
     )
 
     private const val MAX_ABV = 14.0
-    private const val MAX_PRICE_PER_ML = 8.00 / 440
+    private const val MAX_PRICE_PER_ML = 8.00 / 440   // A fairly bougie can
   }
 }
