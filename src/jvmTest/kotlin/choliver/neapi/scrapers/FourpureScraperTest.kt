@@ -33,7 +33,7 @@ class FourpureScraperTest {
     assertEquals(
       ParsedItem(
         name = "Basecamp",
-        unitPrice = 2.00,
+        perItemPrice = 2.00,
         abv = 4.7,
         sizeMl = 330,
         available = true,
@@ -50,7 +50,7 @@ class FourpureScraperTest {
       ParsedItem(
         name = "Juicebox",
         summary = "Minikeg",
-        unitPrice = 35.00,
+        perItemPrice = 35.00,
         abv = 5.9,
         sizeMl = 5000,
         available = true,

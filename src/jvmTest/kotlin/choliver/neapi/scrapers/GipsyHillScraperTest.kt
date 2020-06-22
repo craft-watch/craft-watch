@@ -27,7 +27,7 @@ class GipsyHillScraperTest {
       ParsedItem(
         name = "Carver",
         summary = "Micro IPA",
-        unitPrice = 2.20,
+        perItemPrice = 2.20,
         abv = 2.8,
         sizeMl = 330,
         available = true,
@@ -42,7 +42,7 @@ class GipsyHillScraperTest {
   fun `normalises price for multi-pack`() {
     assertEquals(
       4.83,
-      ITEMS.find { it.name == "Specials Box – 12 pack" }!!.unitPrice
+      ITEMS.find { it.name == "Specials Box – 12 pack" }!!.perItemPrice
     )
   }
 }

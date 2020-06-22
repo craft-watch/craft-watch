@@ -24,7 +24,7 @@ class VillagesScraper : Scraper {
           summary = "${numCans} cans",
           sizeMl = sizeMl,
           available = details.available,
-          unitPrice = details.price.divideAsPrice(numCans)
+          perItemPrice = details.price.divideAsPrice(numCans)
         )
       } else {
         val parts = details.title.extract("^([^ ]*) (.*)? ((.*)%)?.*$")!!
@@ -36,7 +36,7 @@ class VillagesScraper : Scraper {
           sizeMl = sizeMl,
           abv = parts[4].toDouble(),
           available = details.available,
-          unitPrice = details.price.divideAsPrice(12)
+          perItemPrice = details.price.divideAsPrice(12)
         )
       }
     }

@@ -31,8 +31,8 @@ fun updateDom(inventory: Inventory) {
             +"Name"
           }
           th { +"ABV" }
-          th { +"Unit size" }
-          th { +"Price per unit" }
+          th { +"Size" }
+          th { +"Price per item" }
         }
       }
       tbody {
@@ -82,7 +82,7 @@ fun updateDom(inventory: Inventory) {
                 else -> "${item.sizeMl / 1000}${nbsp}litres"
               }
             }
-            td { +"£${item.unitPrice.asDynamic().toFixed(2)}" }
+            td { +"£${item.perItemPrice.asDynamic().toFixed(2)}" }
           }
         }
       }

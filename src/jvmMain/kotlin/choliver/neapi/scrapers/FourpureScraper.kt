@@ -32,7 +32,7 @@ class FourpureScraper : Scraper {
           summary = "Minikeg",
           sizeMl = parts[2].toInt() * 1000,
           available = true,
-          unitPrice = unitPrice
+          perItemPrice = unitPrice
         )
       } else {
         ParsedItem(
@@ -43,7 +43,7 @@ class FourpureScraper : Scraper {
           summary = null,
           sizeMl = itemDoc.extractFrom(".quickBuy", "(\\d+)ml")!![1].toInt(),
           available = true,
-          unitPrice = unitPrice
+          perItemPrice = unitPrice
         )
       }
     }

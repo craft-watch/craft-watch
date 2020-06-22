@@ -5,7 +5,7 @@ import java.net.URI
 data class ParsedItem(
   val name: String,
   val summary: String? = null,
-  val unitPrice: Double,
+  val perItemPrice: Double,
   val sizeMl: Int? = null,
   val abv: Double? = null,
   val available: Boolean,
