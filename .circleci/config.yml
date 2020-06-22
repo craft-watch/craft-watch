@@ -10,6 +10,11 @@ jobs:
       - checkout
       - restore_cache:
           key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+      - restore_cache:
+          keys:
+            - v1-gradle-{{ .Branch }}-{{ checksum "build.gradle.kts" }}
+            - v1-gradle-{{ .Branch }}-
+            - v1-gradle-
       - run:
           name: Run tests
           command: ./gradlew check
@@ -17,6 +22,10 @@ jobs:
           paths:
             - ~/.gradle/wrapper
           key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+      - save_cache:
+          paths:
+            - ~/.gradle/caches
+          key: v1-gradle-{{ .Branch }}-{{ checksum "build.gradle.kts" }}
       - store_test_results:
           path: build/test-results/test
       - store_artifacts:
