@@ -1,7 +1,5 @@
 package choliver.neapi
 
-import choliver.neapi.model.Inventory
-import choliver.neapi.model.Item
 import choliver.neapi.scrapers.*
 
 class Executor(private val getter: HttpGetter) {

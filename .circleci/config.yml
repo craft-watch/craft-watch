@@ -13,13 +13,19 @@ jobs:
       - restore_cache:
           key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
 
+      - restore_cache:
+          keys:
+            - v1-yarn-{{ .Branch }}-{{ checksum "frontend/yarn.lock" }}
+            - v1-yarn-{{ .Branch }}-
+            - v1-yarn-
+
       - run:
           name: Run tests
           command: ./gradlew check
 
       - run:
           name: Build frontend
-          command: ./gradlew jsBrowserProductionWebpack
+          command: cd frontend && yarn build
 
       - add_ssh_keys:
           fingerprints:
@@ -40,9 +46,14 @@ jobs:
             - ~/.gradle/wrapper
           key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
 
+      - save_cache:
+          paths:
+            - ~/.cache/yarn
+          key: v1-yarn-{{ .Branch }}-{{ checksum "frontend/yarn.lock" }}
+
       - store_test_results:
-          path: build/test-results/jvmTest
+          path: build/test-results/test
 
       - store_artifacts:
-          path: build/test-results/jvmTest
+          path: build/test-results/test
           when: always

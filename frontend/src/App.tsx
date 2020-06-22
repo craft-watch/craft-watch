@@ -30,7 +30,7 @@ const renderRow = (item: any) => (
         item.thumbnailUrl && (
           <>
             <a href={item.url}>
-              <img src={item.thumbnailUrl} width="100px" height="100px" />
+              <img alt="" src={item.thumbnailUrl} width="100px" height="100px" />
               {item.available || <div className="sold-out">Sold out</div>}
             </a>
           </>

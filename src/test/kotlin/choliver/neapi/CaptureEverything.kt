@@ -9,7 +9,7 @@ fun main() {
   val executor = Executor(getter)
   val mapper = jacksonObjectMapper().enable(INDENT_OUTPUT)
 
-  File("src/jsMain/resources/inventory.json").outputStream().use { ostream ->
+  File("frontend/src/inventory.json").outputStream().use { ostream ->
     mapper.writeValue(ostream, executor.scrapeAll())
   }
 }
