@@ -1,30 +1,47 @@
 version: 2
+
 jobs:
-  build:
+  test_backend:
     environment:
       GRADLE_OPTS: "-Dorg.gradle.daemon=false"
-
     docker:
       - image: circleci/openjdk:11.0.3-jdk-stretch
-
     steps:
       - checkout
-
       - restore_cache:
           key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
-
       - run:
           name: Run tests
           command: ./gradlew check
+      - save_cache:
+          paths:
+            - ~/.gradle/wrapper
+          key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+      - store_test_results:
+          path: build/test-results/test
+      - store_artifacts:
+          path: build/test-results/test
+          when: always
 
+  build_and_deploy_frontend:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-yarn-{{ .Branch }}-{{ checksum "frontend/yarn.lock" }}
+            - v1-yarn-{{ .Branch }}-
+            - v1-yarn-
+      - run:
+          name: Install dependencies
+          command: cd frontend && yarn install
       - run:
           name: Build frontend
-          command: ./gradlew jsBrowserProductionWebpack
-
+          command: cd frontend && yarn build
       - add_ssh_keys:
           fingerprints:
             - b2:01:83:8d:4e:e6:72:11:5f:57:70:11:ec:57:29:42
-
       # CircleCI workflow configuration is a disaster, so do branch check manually
       - run:
           name: Deploy
@@ -34,15 +51,14 @@ jobs:
             else
               echo "Not deploying from '${CIRCLE_BRANCH}' branch"
             fi
-
       - save_cache:
           paths:
-            - ~/.gradle/wrapper
-          key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+            - ~/.cache/yarn
+          key: v1-yarn-{{ .Branch }}-{{ checksum "frontend/yarn.lock" }}
 
-      - store_test_results:
-          path: build/test-results/jvmTest
-
-      - store_artifacts:
-          path: build/test-results/jvmTest
-          when: always
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - test_backend
+      - build_and_deploy_frontend

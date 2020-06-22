@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap');
+
 /* Colours taken from https://ethanschoonover.com/solarized/ */
 :root {
   --sol-base03:  #002b36;
@@ -18,13 +20,10 @@
   --sol-green:   #859900;
 }
 
-body {
-  background: var(--sol-base3);
-}
-
 html, body {
   font-family: 'Work Sans', sans-serif;
   color: var(--sol-base01);
+  background: var(--sol-base3);
   margin: 0;
 }
 
@@ -80,6 +79,10 @@ a:hover {
   font-size: smaller;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.size {
+  white-space: nowrap;
 }
 
 .sold-out {
