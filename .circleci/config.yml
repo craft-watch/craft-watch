@@ -56,5 +56,6 @@ jobs:
 workflows:
   version: 2
   build_and_deploy:
-    - test_backend
-    - build_and_deploy_frontend
+    jobs:
+      - test_backend
+      - build_and_deploy_frontend
