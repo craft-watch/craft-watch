@@ -47,6 +47,12 @@ fun updateDom(inventory: Inventory) {
                     height = "100px"
                   }
                 }
+                if (!item.available) {
+                  div {
+                    classes += "sold-out"
+                    +"Sold out"
+                  }
+                }
               }
             }
             td {
