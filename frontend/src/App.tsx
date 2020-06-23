@@ -7,12 +7,37 @@ import "./index.css";
 const App = () => (
   <div>
     <SortableTable data={(inventory as Inventory).items}>
-      <Column name="Brewery" render={renderBrewery} />
-      <Column className="thumbnail" render={renderThumbnail} />
-      <Column name="Name" className="name" render={renderName} />
-      <Column name="ABV" render={renderAbv} />
-      <Column name="Size" className="size" render={renderSize} />
-      <Column name="Price per item" render={renderPrice} />
+      <Column
+        name="Brewery"
+        render={renderBrewery}
+        selector={(item) => item.brewery}
+      />
+      <Column
+        className="thumbnail"
+        render={renderThumbnail}
+      />
+      <Column
+        name="Name"
+        className="name"
+        render={renderName}
+        selector={(item) => item.name}
+      />
+      <Column
+        name="ABV"
+        render={renderAbv}
+        selector={(item) => item.abv}
+      />
+      <Column
+        name="Size"
+        className="size"
+        render={renderSize}
+        selector={(item) => item.sizeMl}
+      />
+      <Column
+        name="Price per item"
+        render={renderPrice}
+        selector={(item) => item.perItemPrice}
+      />
     </SortableTable>
   </div>
 );

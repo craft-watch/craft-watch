@@ -62,8 +62,21 @@ a:visited {
   color: var(--sol-base00);
 }
 
-a:hover {
+a:hover, th.sort-none:hover, th.sort-asc:hover, th.sort-desc:hover {
+  cursor: pointer;
   color: var(--sol-blue);
+}
+
+th.sort-asc::after {
+  margin-left: 5px;
+  content: "▼";
+  font-size: smaller;
+}
+
+th.sort-desc::after {
+  margin-left: 5px;
+  content: "▲";
+  font-size: smaller;
 }
 
 td.thumbnail {
