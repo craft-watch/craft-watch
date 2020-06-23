@@ -1,56 +1,69 @@
 import React from "react";
-import "./index.css";
 import inventory from "./inventory.json";
+import { SortableTable, Column } from "./SortableTable";
+import { Inventory, Item } from "./model";
+import "./index.css";
 
 const App = () => (
   <div>
-    <table>
-      <thead>
-        <tr>
-          <th>Brewery</th>
-          <th></th>
-          <th className="name">Name</th>
-          <th>ABV</th>
-          <th>Size</th>
-          <th>Price per item</th>
-        </tr>
-      </thead>
-      <tbody>
-        {inventory.items.map(item => renderRow(item))}
-      </tbody>
-    </table>
+    <SortableTable data={(inventory as Inventory).items}>
+      <Column
+        name="Brewery"
+        render={renderBrewery}
+        selector={(item) => item.brewery}
+      />
+      <Column
+        className="thumbnail"
+        render={renderThumbnail}
+      />
+      <Column
+        name="Name"
+        className="name"
+        render={renderName}
+        selector={(item) => item.name}
+      />
+      <Column
+        name="ABV"
+        render={renderAbv}
+        selector={(item) => item.abv}
+      />
+      <Column
+        name="Size"
+        className="size"
+        render={renderSize}
+        selector={(item) => item.sizeMl}
+      />
+      <Column
+        name="Price per item"
+        render={renderPrice}
+        selector={(item) => item.perItemPrice}
+      />
+    </SortableTable>
   </div>
 );
 
-const renderRow = (item: any) => (
-  <tr key={`${item.name}/${item.summary}`}>
-    <td>{item.brewery}</td>
-    <td className="thumbnail">
-      {
-        item.thumbnailUrl && (
-          <>
-            <a href={item.url}>
-              <img alt="" src={item.thumbnailUrl} width="100px" height="100px" />
-              {item.available || <div className="sold-out">Sold out</div>}
-            </a>
-          </>
-        )
-      }
-    </td>
-    <td className="name">
-      <a href={item.url}>{item.name}</a>
-      {item.summary && <p className="summary">{item.summary}</p>}
-    </td>
-    <td>{item.abv ? `${item.abv.toFixed(1)}%` : "?"}</td>
-    <td>
-      {
-        !item.sizeMl ? null
-        : (item.sizeMl < 1000) ? `${item.sizeMl} ml`
-        : `${item.sizeMl / 1000} litres`
-      }
-    </td>
-    <td>{`£${item.perItemPrice.toFixed(2)}`}</td>
-  </tr>
+const renderBrewery = (item: Item) => item.brewery;
+
+const renderThumbnail = (item: Item) => (
+  <a href={item.url}>
+    <img alt="" src={item.thumbnailUrl} width="100px" height="100px" />
+    {item.available || <div className="sold-out">Sold out</div>}
+  </a>
 );
+
+const renderName = (item: Item) => (
+  <>
+    <a href={item.url}>{item.name}</a>
+    {item.summary && <p className="summary">{item.summary}</p>}
+  </>
+);
+
+const renderAbv = (item: Item) => item.abv ? `${item.abv.toFixed(1)}%` : "?";
+
+const renderSize = (item: Item) => !item.sizeMl ? "?"
+  : (item.sizeMl < 1000) ? `${item.sizeMl} ml`
+  : `${item.sizeMl / 1000} litres`;
+
+const renderPrice = (item: Item) => `£${item.perItemPrice.toFixed(2)}`;
 
 export default App;
