@@ -13,4 +13,3 @@ export interface Item {
   thumbnailUrl: string;
   url: string;
 }
-  
