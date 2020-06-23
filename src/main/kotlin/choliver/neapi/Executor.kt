@@ -26,8 +26,8 @@ class Executor(private val getter: HttpGetter) {
                 .validate("Price per ml unexpectedly high") { (it / (item.sizeMl ?: 330)) < MAX_PRICE_PER_ML },
               available = item.available,
               thumbnailUrl = item.thumbnailUrl
-                ?.validate("Not an absolute URL") { it.isAbsolute }
-                ?.toString(),
+                .validate("Not an absolute URL") { it.isAbsolute }
+                .toString(),
               url = item.url
                 .validate("Not an absolute URL") { it.isAbsolute }
                 .toString()

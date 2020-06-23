@@ -14,7 +14,7 @@ data class Item(
   val abv: Double?,
   val perItemPrice: Double,
   val available: Boolean,
-  val thumbnailUrl: String?,
+  val thumbnailUrl: String,
   val url: String
 )
 
@@ -25,6 +25,6 @@ data class ParsedItem(
   val sizeMl: Int? = null,
   val abv: Double? = null,
   val available: Boolean,
-  val thumbnailUrl: URI? = null,
+  val thumbnailUrl: URI,
   val url: URI
 )
