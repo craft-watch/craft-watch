@@ -2,8 +2,7 @@ package choliver.neapi.scrapers
 
 import choliver.neapi.ParsedItem
 import choliver.neapi.executeScraper
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.net.URI
 
@@ -42,6 +41,13 @@ class HowlingHopsScraperTest {
       ITEMS
         .filter { it.name == "Passionfruit Gose" }
         .map { it.perItemPrice }
+    )
+  }
+
+  @Test
+  fun `identifies out-of-stock items`() {
+    assertFalse(
+      ITEMS.first { it.name == "NEW 12 Beer Mega Pack" }.available
     )
   }
 

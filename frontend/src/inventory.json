@@ -436,7 +436,7 @@
     "sizeMl" : 440,
     "abv" : null,
     "perItemPrice" : 2.9,
-    "available" : true,
+    "available" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/12beers_june2-324x324.jpg",
     "url" : "https://www.howlinghops.co.uk/product/12-beer-mega-pack-24-x-440ml/"
   }, {
@@ -526,7 +526,7 @@
     "sizeMl" : 440,
     "abv" : 6.5,
     "perItemPrice" : 4.0,
-    "available" : true,
+    "available" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/05/soft-top-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/soft-top-sabro-stout-4-x-440ml/"
   }, {
