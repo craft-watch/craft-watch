@@ -9,7 +9,7 @@ interface State {
   expanded: boolean;
 }
   
-export class Menu extends React.Component<MenuProps, State> {
+export default class Menu extends React.Component<MenuProps, State> {
   constructor(props: MenuProps) {
     super(props);
     this.state = {

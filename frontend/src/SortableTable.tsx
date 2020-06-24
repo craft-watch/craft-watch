@@ -19,7 +19,7 @@ interface State {
 
 export class Column<T> extends React.PureComponent<ColumnProps<T>> {};
 
-export class SortableTable<T> extends React.Component<SortableTableProps<T>, State> {
+export default class SortableTable<T> extends React.Component<SortableTableProps<T>, State> {
   constructor(props: SortableTableProps<T>) {
     super(props);
     this.state = {
