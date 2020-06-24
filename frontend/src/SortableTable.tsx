@@ -74,14 +74,14 @@ export class SortableTable<T> extends React.Component<SortableTableProps<T>, Sta
     );
   }
 
-  handleHeaderClick(idx: number) {
+  private handleHeaderClick(idx: number) {
     this.setState(state => ({
       sortColIdx: idx,
       sortDescending: (state.sortColIdx === idx) ? !state.sortDescending : false,
     }));
   }
 
-  getSortedData(columns: Array<ReactElement<ColumnProps<T>>>): Array<T> {
+  private getSortedData(columns: Array<ReactElement<ColumnProps<T>>>): Array<T> {
     const selector = columns[this.state.sortColIdx || 0].props.selector;
     const sortedData = selector
       ? this.props.data.concat().sort((a, b) => compareNullable(selector(a), selector(b)))

@@ -31,6 +31,7 @@ table {
   margin-left: auto;
   margin-right: auto;
   border-collapse: collapse;
+  min-width: 60%;
 }
 
 th {
@@ -38,7 +39,7 @@ th {
   top: 0px;
   background: var(--sol-base2);
   font-size: larger;
-  }
+}
 
 td, th {
   text-align: center;
@@ -123,32 +124,40 @@ img {
   height: auto;
 }
 
-.settings {
+#menu {
   background: var(--sol-base02);
   color: var(--sol-base2);
-  padding: 10px 20px;
   right: 0;
   top: 0;
-  height: 100%;
-  min-width: 15%;
   z-index: 1;
   position: fixed;
   overflow-x: hidden;
 }
 
-.settings .close {
+#menu .button {
   font-size: xx-large;
   font-weight: 600;
   text-decoration: none;
-  color: var(--sol-base1);
+  text-align: right;
+  user-select: none;
 }
 
-.settings .close:hover {
+#menu .button:hover {
+  color: var(--sol-cyan);
   cursor: pointer;
-  color: var(--sol-base01);
 }
 
-.settings h4 {
+#menu .collapsed {
+  padding: 10px;
+}
+
+#menu .expanded {
+  padding: 10px 20px;
+  height: 100vh;
+  min-width: 15vw;
+}
+
+#menu h4 {
   margin: 0;
   padding: 0;
 }
@@ -177,6 +186,7 @@ img {
   width: 1em;
   background-color: var(--sol-base3);
   border-radius: 4px;
+  user-select: none;
 }
 
 .selectable .checkmark:after {

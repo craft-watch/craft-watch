@@ -26,7 +26,7 @@ class App extends React.Component<{}, AppState> {
   render() {
     return (
       <div>
-        <Settings
+        <Menu
           breweryVisibility={this.state.breweryVisibility}
           onChange={(brewery) => this.handleVisibilityChange(brewery)}
         />
@@ -38,7 +38,7 @@ class App extends React.Component<{}, AppState> {
     );
   }
 
-  handleVisibilityChange(brewery: string) {
+  private handleVisibilityChange(brewery: string) {
     this.setState(state => {
       const breweryVisibility = { ...state.breweryVisibility };
       breweryVisibility[brewery] = !breweryVisibility[brewery];
@@ -47,33 +47,61 @@ class App extends React.Component<{}, AppState> {
   }
 }
 
-interface SettingsTableProps {
+interface MenuProps {
   breweryVisibility: { [key: string]: boolean; };
   onChange: (brewery: string) => void;
 }
 
-const Settings = (props: SettingsTableProps) => {
-  return (
-    <div className="settings">
-      <div className="close">&times;</div>
-      <h4>Select breweries</h4>
-      {
-        Object.entries(props.breweryVisibility).map(([brewery, visible]) => (
-          <label key={brewery} className="selectable">
-            {brewery}
-            <input
-              type="checkbox"
-              checked={visible}
-              onChange={() => props.onChange(brewery)}
-            />
-            <span className="checkmark"></span>
-          </label>
-        ))
-      } 
-    </div>
-  );
-};
+interface MenuState {
+  expanded: boolean;
+}
 
+class Menu extends React.Component<MenuProps, MenuState> {
+  constructor(props: MenuProps) {
+    super(props);
+    this.state = {
+      expanded: false,
+    };
+  }
+
+  render() {
+    return (
+      <div id="menu">
+        {this.state.expanded ? this.renderExpanded() : this.renderCollapsed()}
+      </div>
+    );
+  }
+
+  private renderCollapsed() {
+    return (
+      <div className="collapsed">
+        <div className="button" onClick={() => this.setState({ expanded: true })}>&#9776;</div>
+      </div>
+    );
+  }
+
+  private renderExpanded() {
+    return (
+      <div className="expanded">
+        <div className="button" onClick={() => this.setState({ expanded: false })}>&times;</div>
+        <h4>Select breweries</h4>
+        {
+          Object.entries(this.props.breweryVisibility).map(([brewery, visible]) => (
+            <label key={brewery} className="selectable">
+              {brewery}
+              <input
+                type="checkbox"
+                checked={visible}
+                onChange={() => this.props.onChange(brewery)}
+              />
+              <span className="checkmark"></span>
+            </label>
+          ))
+        }
+      </div>
+    );
+  }
+}
 
 interface InventoryTableProps {
   items: Array<Item>;
