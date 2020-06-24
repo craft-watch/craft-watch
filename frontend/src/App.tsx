@@ -1,38 +1,75 @@
 import React from "react";
-import inventory from "./inventory.json";
+import _inventory from "./inventory.json";
 import { SortableTable, Column } from "./SortableTable";
 import { Inventory, Item } from "./model";
 import "./index.css";
 
-const App = () => (
-  <div style={{ display: "flex" }}>
-    <div id="left-gutter">
-      <Settings inventory={inventory as Inventory} />
-    </div>
+const inventory = _inventory as Inventory;
 
-    <InventoryTable inventory={inventory as Inventory} />
-
-    <div id="right-gutter" style={{ margin: "20px", border: "1px" }}>
-    </div>
-  </div>
-);
-
-interface SettingsTableProps {
-  inventory: Inventory;
+interface AppState {
+  breweryVisibility: { [key: string]: boolean; }; 
 }
 
+class App extends React.Component<{}, AppState> {
+  constructor(props: {}) {
+    super(props);
+    
+    const breweryVisibility: { [key:string]:boolean; } = {};
+    new Set(inventory.items.map(item => item.brewery))
+      .forEach(b => breweryVisibility[b] = true);
+
+    this.state = {
+      breweryVisibility: breweryVisibility,
+    };
+  }
+
+  render() {
+    return (
+      <div style={{ display: "flex" }}>
+        <div id="left-gutter">
+          <Settings
+            breweryVisibility={this.state.breweryVisibility}
+            onChange={(brewery) => this.handleVisibilityChange(brewery)}
+          />
+        </div>
+
+        <InventoryTable
+          items={inventory.items.filter(item => this.state.breweryVisibility[item.brewery])}
+        />
+
+        <div id="right-gutter">
+        </div>
+      </div>
+    );
+  }
+
+  handleVisibilityChange(brewery: string) {
+    this.setState(state => {
+      const breweryVisibility = { ...state.breweryVisibility };
+      breweryVisibility[brewery] = !breweryVisibility[brewery];
+      return { breweryVisibility };
+    });
+  }
+}
+
+interface SettingsTableProps {
+  breweryVisibility: { [key: string]: boolean; };
+  onChange: (brewery: string) => void;
+}
 
 const Settings = (props: SettingsTableProps) => {
-  const breweries = Array.from(new Set(props.inventory.items.map(item => item.brewery)));
-
   return (
     <div className="settings">
-      <h4>Filter breweries</h4>
+      <h4>Select breweries</h4>
       {
-        breweries.map((brewery, idx) => (
-          <label key={idx} className="selectable">
+        Object.entries(props.breweryVisibility).map(([brewery, visible]) => (
+          <label key={brewery} className="selectable">
             {brewery}
-            <input type="checkbox" checked={true} />
+            <input
+              type="checkbox"
+              checked={visible}
+              onChange={() => props.onChange(brewery)}
+            />
             <span className="checkmark"></span>
           </label>
         ))
@@ -43,11 +80,11 @@ const Settings = (props: SettingsTableProps) => {
 
 
 interface InventoryTableProps {
-  inventory: Inventory;
+  items: Array<Item>;
 }
 
 const InventoryTable = (props: InventoryTableProps) => (
-  <SortableTable data={inventory.items}>
+  <SortableTable data={props.items}>
     <Column
       name="Brewery"
       render={renderBrewery}

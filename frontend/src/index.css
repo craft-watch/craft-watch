@@ -124,7 +124,8 @@ img {
 }
 
 .settings {
-  background: var(--sol-base2);
+  background: var(--sol-base02);
+  color: var(--sol-base2);
   margin: 20px;
   padding: 10px;
 }
@@ -156,16 +157,8 @@ img {
   left: 0;
   height: 1em;
   width: 1em;
-  background-color: var(--sol-base02);
+  background-color: var(--sol-base3);
   border-radius: 4px;
-}
-
-.selectable:hover input ~ .checkmark {
-  background-color: var(--sol-base01);
-}
-
-.selectable input:checked ~ .checkmark {
-  background-color: var(--sol-blue);
 }
 
 .selectable .checkmark:after {
@@ -176,7 +169,7 @@ img {
   top: 2px;
   width: 4px;
   height: 8px;
-  border: solid var(--sol-base3);
+  border: solid var(--sol-base02);
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
@@ -184,4 +177,13 @@ img {
 .selectable input:checked ~ .checkmark:after {
   display: block;
 }
+
+.selectable:hover input ~ .checkmark {
+  background-color: var(--sol-base01);
+}
+
+.selectable:hover input:checked ~ .checkmark:after {
+  border-color: var(--sol-base2);
+}
+
 
