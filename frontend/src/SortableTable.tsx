@@ -88,5 +88,3 @@ export default class SortableTable<T> extends React.Component<SortableTableProps
     return this.state.sortDescending ? sortedData.reverse() : sortedData;
   }
 }
-
-const compareNullable = (a?: any, b?: any) => (a === null) ? 1 : (b === null) ? -1 : (a! > b!) ? 1 : -1;
