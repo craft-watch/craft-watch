@@ -1,11 +1,14 @@
 import React from "react";
+import _ from "underscore";
 import _inventory from "./inventory.json";
 import { Inventory } from "./model";
 import Menu from "./Menu";
 import InventoryTable from "./InventoryTable";
 import "./index.css";
 
-const inventory = _inventory as Inventory;
+const inventory = ({
+  items: _.flatten(_.shuffle(_.groupBy((_inventory as Inventory).items, item => item.brewery))),
+}) as Inventory;
 
 interface AppState {
   breweryVisibility: { [key: string]: boolean; }; 
@@ -16,8 +19,7 @@ class App extends React.Component<{}, AppState> {
     super(props);
     
     const breweryVisibility: { [key:string]:boolean; } = {};
-    new Set(inventory.items.map(item => item.brewery))
-      .forEach(b => breweryVisibility[b] = true);
+    _.each(inventory.items, item => breweryVisibility[item.brewery] = true);
 
     this.state = {
       breweryVisibility: breweryVisibility,
@@ -51,7 +53,7 @@ class App extends React.Component<{}, AppState> {
   private handleGlobalVisibility(visible: boolean) {
     this.setState(state => {
       const breweryVisibility = { ...state.breweryVisibility };
-      Object.keys(breweryVisibility).forEach(b => breweryVisibility[b] = visible);
+      _.each(breweryVisibility, (_, b) => breweryVisibility[b] = visible);
       return { breweryVisibility };
     });
   }

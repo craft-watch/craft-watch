@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import _ from "underscore";
 
 export interface ColumnProps<T> {
   name?: string;
@@ -82,15 +83,8 @@ export default class SortableTable<T> extends React.Component<SortableTableProps
   }
 
   private getSortedData(columns: Array<ReactElement<ColumnProps<T>>>): Array<T> {
-    const selector = columns[this.state.sortColIdx || 0].props.selector;
-    const sortedData = selector
-      ? this.props.data.concat().sort((a, b) => compareNullable(selector(a), selector(b)))
-      : this.props.data;
-    if (this.state.sortDescending) {
-      sortedData.reverse();
-    }
-    return sortedData;
+    const selector = this.state.sortColIdx ? columns[this.state.sortColIdx].props.selector : null;
+    const sortedData = selector ? _.sortBy(this.props.data, selector) : this.props.data;
+    return this.state.sortDescending ? sortedData.reverse() : sortedData;
   }
 }
-
-const compareNullable = (a?: any, b?: any) => (a === null) ? 1 : (b === null) ? -1 : (a! > b!) ? 1 : -1;
