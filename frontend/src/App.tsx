@@ -25,20 +25,15 @@ class App extends React.Component<{}, AppState> {
 
   render() {
     return (
-      <div style={{ display: "flex" }}>
-        <div id="left-gutter">
-          <Settings
-            breweryVisibility={this.state.breweryVisibility}
-            onChange={(brewery) => this.handleVisibilityChange(brewery)}
-          />
-        </div>
+      <div>
+        <Settings
+          breweryVisibility={this.state.breweryVisibility}
+          onChange={(brewery) => this.handleVisibilityChange(brewery)}
+        />
 
         <InventoryTable
           items={inventory.items.filter(item => this.state.breweryVisibility[item.brewery])}
         />
-
-        <div id="right-gutter">
-        </div>
       </div>
     );
   }
@@ -60,6 +55,7 @@ interface SettingsTableProps {
 const Settings = (props: SettingsTableProps) => {
   return (
     <div className="settings">
+      <div className="close">&times;</div>
       <h4>Select breweries</h4>
       {
         Object.entries(props.breweryVisibility).map(([brewery, visible]) => (
