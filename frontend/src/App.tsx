@@ -29,7 +29,8 @@ class App extends React.Component<{}, AppState> {
       <div>
         <Menu
           breweryVisibility={this.state.breweryVisibility}
-          onChange={(brewery) => this.handleVisibilityChange(brewery)}
+          onToggleVisibility={(brewery) => this.handleToggleVisibility(brewery)}
+          onGlobalVisibility={(visible) => this.handleGlobalVisibility(visible)}
         />
 
         <InventoryTable
@@ -39,10 +40,18 @@ class App extends React.Component<{}, AppState> {
     );
   }
 
-  private handleVisibilityChange(brewery: string) {
+  private handleToggleVisibility(brewery: string) {
     this.setState(state => {
       const breweryVisibility = { ...state.breweryVisibility };
       breweryVisibility[brewery] = !breweryVisibility[brewery];
+      return { breweryVisibility };
+    });
+  }
+
+  private handleGlobalVisibility(visible: boolean) {
+    this.setState(state => {
+      const breweryVisibility = { ...state.breweryVisibility };
+      Object.keys(breweryVisibility).forEach(b => breweryVisibility[b] = visible);
       return { breweryVisibility };
     });
   }

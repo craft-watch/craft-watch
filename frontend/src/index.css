@@ -162,6 +162,18 @@ img {
   padding: 0;
 }
 
+.allOrNone {
+  font-weight: 600;
+  font-size: smaller;
+  padding: 10px 20px 10px 0;
+  user-select: none;
+  cursor: pointer;
+}
+
+.allOrNone:hover {
+  color: var(--sol-base1);
+}
+
 .selectable {
   display: block;
   position: relative;
@@ -204,6 +216,10 @@ img {
 
 .selectable input:checked ~ .checkmark:after {
   display: block;
+}
+
+.selectable:hover {
+  color: var(--sol-base1);
 }
 
 .selectable:hover input ~ .checkmark {
