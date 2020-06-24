@@ -21,8 +21,10 @@ class HowlingHopsScraper : Scraper {
         .ownText()
         .toDouble()
 
-      val shortDesc = request(url).textFrom(".woocommerce-product-details__short-description")
+      val itemDoc = request(url)
+      val available = itemDoc.textFrom(".stock") == "In stock"
 
+      val shortDesc = itemDoc.textFrom(".woocommerce-product-details__short-description")
       val parts = shortDesc.extract("([^/]*?) / ([^/]*?) / (\\d+) x (\\d+)ml / (\\d+(\\.\\d+)?)% ABV")
       if (parts != null) {
         ParsedItem(
@@ -30,7 +32,7 @@ class HowlingHopsScraper : Scraper {
           url = url,
           name = parts[1],
           summary = parts[2],
-          available = true,   // TODO
+          available = available,
           sizeMl = parts[4].toInt(),
           abv = parts[5].toDouble(),
           perItemPrice = price.divideAsPrice(parts[3].toInt())
@@ -43,7 +45,7 @@ class HowlingHopsScraper : Scraper {
             url = url,
             name = this[1],
             summary = "${numCans} cans",
-            available = true,   // TODO
+            available = available,
             sizeMl = this[3].toInt(),
             abv = null,
             perItemPrice = price.divideAsPrice(numCans)
