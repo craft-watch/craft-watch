@@ -6,9 +6,9 @@ import Menu from "./Menu";
 import InventoryTable from "./InventoryTable";
 import "./index.css";
 
-const inventory = _inventory as Inventory;
-
-const extractBreweries = (inventory: Inventory) => _.map(inventory.items, item => item.brewery);
+const inventory = ({
+  items: _.flatten(_.shuffle(_.groupBy((_inventory as Inventory).items, item => item.brewery))),
+}) as Inventory;
 
 interface AppState {
   breweryVisibility: { [key: string]: boolean; }; 
@@ -19,7 +19,7 @@ class App extends React.Component<{}, AppState> {
     super(props);
     
     const breweryVisibility: { [key:string]:boolean; } = {};
-    _.each(extractBreweries(inventory), b => breweryVisibility[b] = true);
+    _.each(inventory.items, item => breweryVisibility[item.brewery] = true);
 
     this.state = {
       breweryVisibility: breweryVisibility,
