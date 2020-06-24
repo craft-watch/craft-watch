@@ -28,8 +28,8 @@ html, body {
 }
 
 table {
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
   border-collapse: collapse;
 }
 
@@ -122,3 +122,66 @@ img {
   width: auto;
   height: auto;
 }
+
+.settings {
+  background: var(--sol-base2);
+  margin: 20px;
+  padding: 10px;
+}
+
+.settings h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.selectable {
+  display: block;
+  position: relative;
+  padding-left: 1.3em;
+  margin: 0.4em 0;
+  cursor: pointer;
+}
+
+.selectable input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.selectable .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1em;
+  width: 1em;
+  background-color: var(--sol-base02);
+  border-radius: 4px;
+}
+
+.selectable:hover input ~ .checkmark {
+  background-color: var(--sol-base01);
+}
+
+.selectable input:checked ~ .checkmark {
+  background-color: var(--sol-blue);
+}
+
+.selectable .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--sol-base3);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.selectable input:checked ~ .checkmark:after {
+  display: block;
+}
+
