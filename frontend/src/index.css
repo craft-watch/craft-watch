@@ -31,6 +31,7 @@ table {
   margin-left: auto;
   margin-right: auto;
   border-collapse: collapse;
+  min-width: 60%;
 }
 
 th {
@@ -49,20 +50,20 @@ td img {
   vertical-align: middle;
 }
 
-a {
+table a {
   font-weight: 600;
   text-decoration: none;
 }
 
-a:link {
+table a:link {
   color: var(--sol-base01);
 }
 
-a:visited {
+table a:visited {
   color: var(--sol-base00);
 }
 
-a:hover, th.sort-none:hover, th.sort-asc:hover, th.sort-desc:hover {
+table a:hover, th.sort-none:hover, th.sort-asc:hover, th.sort-desc:hover {
   cursor: pointer;
   color: var(--sol-blue);
 }
@@ -121,4 +122,94 @@ img {
   max-height: 100px;
   width: auto;
   height: auto;
+}
+
+#menu {
+  background: var(--sol-base02);
+  color: var(--sol-base2);
+  right: 0;
+  top: 0;
+  z-index: 1;
+  position: fixed;
+  overflow-x: hidden;
+}
+
+#menu .button {
+  font-size: xx-large;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: right;
+  user-select: none;
+}
+
+#menu .button:hover {
+  color: var(--sol-cyan);
+  cursor: pointer;
+}
+
+#menu .collapsed {
+  padding: 10px;
+}
+
+#menu .expanded {
+  padding: 10px 20px;
+  height: 100vh;
+  min-width: 15vw;
+}
+
+#menu h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.selectable {
+  display: block;
+  position: relative;
+  padding-left: 1.3em;
+  margin: 0.4em 0;
+  cursor: pointer;
+}
+
+.selectable input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.selectable .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1em;
+  width: 1em;
+  background-color: var(--sol-base3);
+  border-radius: 4px;
+  user-select: none;
+}
+
+.selectable .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--sol-base02);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.selectable input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.selectable:hover input ~ .checkmark {
+  background-color: var(--sol-base01);
+}
+
+.selectable:hover input:checked ~ .checkmark:after {
+  border-color: var(--sol-base2);
 }
