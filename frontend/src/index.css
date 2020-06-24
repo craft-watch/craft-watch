@@ -213,5 +213,3 @@ img {
 .selectable:hover input:checked ~ .checkmark:after {
   border-color: var(--sol-base2);
 }
-
-

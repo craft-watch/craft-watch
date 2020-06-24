@@ -1,5 +1,6 @@
 import React from "react";
 import _inventory from "./inventory.json";
+import { Menu } from "./Menu";
 import { SortableTable, Column } from "./SortableTable";
 import { Inventory, Item } from "./model";
 import "./index.css";
@@ -44,62 +45,6 @@ class App extends React.Component<{}, AppState> {
       breweryVisibility[brewery] = !breweryVisibility[brewery];
       return { breweryVisibility };
     });
-  }
-}
-
-interface MenuProps {
-  breweryVisibility: { [key: string]: boolean; };
-  onChange: (brewery: string) => void;
-}
-
-interface MenuState {
-  expanded: boolean;
-}
-
-class Menu extends React.Component<MenuProps, MenuState> {
-  constructor(props: MenuProps) {
-    super(props);
-    this.state = {
-      expanded: false,
-    };
-  }
-
-  render() {
-    return (
-      <div id="menu">
-        {this.state.expanded ? this.renderExpanded() : this.renderCollapsed()}
-      </div>
-    );
-  }
-
-  private renderCollapsed() {
-    return (
-      <div className="collapsed">
-        <div className="button" onClick={() => this.setState({ expanded: true })}>&#9776;</div>
-      </div>
-    );
-  }
-
-  private renderExpanded() {
-    return (
-      <div className="expanded">
-        <div className="button" onClick={() => this.setState({ expanded: false })}>&times;</div>
-        <h4>Select breweries</h4>
-        {
-          Object.entries(this.props.breweryVisibility).map(([brewery, visible]) => (
-            <label key={brewery} className="selectable">
-              {brewery}
-              <input
-                type="checkbox"
-                checked={visible}
-                onChange={() => this.props.onChange(brewery)}
-              />
-              <span className="checkmark"></span>
-            </label>
-          ))
-        }
-      </div>
-    );
   }
 }
 
