@@ -17,7 +17,7 @@ class App extends React.Component<{}, AppState> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      breweryVisibility: _.object(_.map(items, item => [item.brewery, true])),
+      breweryVisibility: _.object(_.uniq(_.map(items, item => [item.brewery, true]), true, p => p[0])),
     };
   }
 
