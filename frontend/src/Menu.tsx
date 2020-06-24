@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "underscore";
 
 export interface MenuProps {
   breweryVisibility: { [key: string]: boolean; };
@@ -40,7 +41,7 @@ export default class Menu extends React.Component<MenuProps, State> {
         <div className="button" onClick={() => this.setState({ expanded: false })}>&times;</div>
         <h4>Select breweries</h4>
         {
-          Object.entries(this.props.breweryVisibility).map(([brewery, visible]) => (
+          _.map(this.props.breweryVisibility, (visible, brewery) => (
             <label key={brewery} className="selectable">
               {brewery}
               <input
