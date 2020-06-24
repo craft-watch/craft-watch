@@ -2,7 +2,8 @@ import React from "react";
 
 export interface MenuProps {
   breweryVisibility: { [key: string]: boolean; };
-  onChange: (brewery: string) => void;
+  onToggleVisibility: (brewery: string) => void;
+  onGlobalVisibility: (visible: boolean) => void;
 }
   
 interface State {
@@ -45,12 +46,16 @@ export default class Menu extends React.Component<MenuProps, State> {
               <input
                 type="checkbox"
                 checked={visible}
-                onChange={() => this.props.onChange(brewery)}
+                onClick={() => this.props.onToggleVisibility(brewery)}
               />
               <span className="checkmark"></span>
             </label>
           ))
         }
+        <div>
+          <span className="allOrNone" onClick={() => this.props.onGlobalVisibility(true)}>All</span>
+          <span className="allOrNone" onClick={() => this.props.onGlobalVisibility(false)}>None</span>
+        </div>
       </div>
     );
   }

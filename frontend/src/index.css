@@ -162,12 +162,25 @@ img {
   padding: 0;
 }
 
+.allOrNone {
+  font-weight: 600;
+  font-size: smaller;
+  padding: 10px 20px 10px 0;
+  user-select: none;
+  cursor: pointer;
+}
+
+.allOrNone:hover {
+  color: var(--sol-base1);
+}
+
 .selectable {
   display: block;
   position: relative;
   padding-left: 1.3em;
   margin: 0.4em 0;
   cursor: pointer;
+  user-select: none;
 }
 
 .selectable input {
@@ -186,7 +199,6 @@ img {
   width: 1em;
   background-color: var(--sol-base3);
   border-radius: 4px;
-  user-select: none;
 }
 
 .selectable .checkmark:after {
@@ -204,6 +216,10 @@ img {
 
 .selectable input:checked ~ .checkmark:after {
   display: block;
+}
+
+.selectable:hover {
+  color: var(--sol-base1);
 }
 
 .selectable:hover input ~ .checkmark {
