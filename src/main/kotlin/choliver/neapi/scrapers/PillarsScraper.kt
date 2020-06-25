@@ -2,6 +2,8 @@ package choliver.neapi.scrapers
 
 import choliver.neapi.*
 import choliver.neapi.Scraper.IndexEntry
+import choliver.neapi.Scraper.Result.Item
+import choliver.neapi.Scraper.Result.Skipped
 import org.jsoup.nodes.Document
 import java.net.URI
 
@@ -19,11 +21,11 @@ class PillarsScraper : Scraper {
           "STYLE:\\s+(.+?)\\s+ABV:\\s+(\\d\\.\\d+)%"
         )
 
-        // If we don't see these fields, assume we're not looking at a beer product
         if (descParts == null) {
-          null
+          // If we don't see these fields, assume we're not looking at a beer product
+          Skipped("Couldn't find style or ABV")
         } else {
-          ScrapedItem(
+          Item(
             thumbnailUrl = details.thumbnailUrl,
             name = titleParts.name,
             summary = if (titleParts.keg) "Minikeg" else descParts[1].toTitleCase(),

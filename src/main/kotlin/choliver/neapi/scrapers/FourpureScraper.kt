@@ -2,6 +2,7 @@ package choliver.neapi.scrapers
 
 import choliver.neapi.*
 import choliver.neapi.Scraper.IndexEntry
+import choliver.neapi.Scraper.Result.Item
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import java.net.URI
@@ -19,7 +20,7 @@ class FourpureScraper : Scraper {
       IndexEntry(a.hrefFrom()) { doc ->
         val parts = extractVariableParts(doc)
 
-        ScrapedItem(
+        Item(
           thumbnailUrl = a.srcFrom("img"),
           name = parts.name,
           abv = doc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+\\.\\d+)")!![1].toDouble(),

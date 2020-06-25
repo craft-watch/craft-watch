@@ -2,6 +2,7 @@ package choliver.neapi.scrapers
 
 import choliver.neapi.*
 import choliver.neapi.Scraper.IndexEntry
+import choliver.neapi.Scraper.Result.Item
 import org.jsoup.nodes.Document
 import java.net.URI
 
@@ -19,7 +20,7 @@ class GipsyHillScraper : Scraper {
         val parts = rawSummary.extract("Sold as: ((\\d+) x )?(\\d+)ml")
         val numCans = parts?.get(2)?.toIntOrNull() ?: 1
 
-        ScrapedItem(
+        Item(
           thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
           name = a.textFrom(".woocommerce-loop-product__title"),
           summary = rawSummary.extract("Style: (.*) ABV")?.get(1),

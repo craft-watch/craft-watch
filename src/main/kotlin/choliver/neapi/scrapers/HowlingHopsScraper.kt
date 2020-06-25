@@ -2,6 +2,7 @@ package choliver.neapi.scrapers
 
 import choliver.neapi.*
 import choliver.neapi.Scraper.IndexEntry
+import choliver.neapi.Scraper.Result.Item
 import org.jsoup.nodes.Document
 import java.net.URI
 
@@ -18,7 +19,7 @@ class HowlingHopsScraper : Scraper {
       IndexEntry(a.hrefFrom()) { doc ->
         val parts = extractVariableParts(doc.textFrom(".woocommerce-product-details__short-description"))
 
-        ScrapedItem(
+        Item(
           thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
           name = parts.name,
           summary = parts.summary,

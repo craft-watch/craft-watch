@@ -1,6 +1,6 @@
 package choliver.neapi.scrapers
 
-import choliver.neapi.ScrapedItem
+import choliver.neapi.Scraper.Result.Item
 import choliver.neapi.executeScraper
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
@@ -20,7 +20,7 @@ class CanopyScraperTest {
   @Test
   fun `extracts beer details`() {
     assertEquals(
-      ScrapedItem(
+      Item(
         name = "Brockwell IPA",   // ABV removed from name
         perItemPrice = 2.50,
         abv = 5.6,
