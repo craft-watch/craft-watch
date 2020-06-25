@@ -2,8 +2,6 @@ version: 2
 
 jobs:
   test_backend:
-    environment:
-      GRADLE_OPTS: "-Dorg.gradle.daemon=false"
     docker:
       - image: circleci/openjdk
     steps:
@@ -18,6 +16,9 @@ jobs:
       - run:
           name: Run tests
           command: ./gradlew check
+      - run:
+          name: Run application
+          command: ./gradlew run
       - save_cache:
           paths:
             - ~/.gradle/wrapper
