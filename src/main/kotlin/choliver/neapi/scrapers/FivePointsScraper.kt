@@ -11,9 +11,6 @@ class FivePointsScraper : Scraper {
   override val name = "Five Points"
   override val rootUrl = URI("https://shop.fivepointsbrewing.co.uk/browse/c-Beers-11")
 
-  // TODO - barley wine
-  // TODO - kegs
-
   override fun scrapeIndex(root: Document) = root
     .selectMultipleFrom("#browse li .itemWrap")
     .map { el ->
@@ -21,18 +18,19 @@ class FivePointsScraper : Scraper {
 
       IndexEntry(a.hrefFrom()) { doc ->
         val parts = doc.maybeSelectFrom(".itemTitle .small")
-          ?.extractFrom(regex = "(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+((\\d+)\\s+x\\s+)?(\\d+)ml")
+          ?.extractFrom(regex = "(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+((\\d+)\\s+x\\s+)?(\\d+)(ml|L)")
 
         if (parts == null) {
           Skipped("Could not extract details")
         } else {
           val numCans = parts[5].ifBlank { "1" }.toInt()
+          val sizeMl = parts[6].toInt() * (if (parts[7] == "L") 1000 else 1)
           Item(
             thumbnailUrl = el.srcFrom(".imageInnerWrap img"),
             name = a.extractFrom(regex = "([^(]+)")!![1].trim().toTitleCase(),
-            summary = parts[1],
+            summary = if (sizeMl > 1000) "Minikeg" else parts[1],
             abv = parts[2].toDouble(),
-            sizeMl = parts[6].toInt(),
+            sizeMl = sizeMl,
             available = doc.maybeSelectFrom(".unavailableItemWrap") == null,
             perItemPrice = el.extractFrom(".priceStandard", "£(\\d+\\.\\d+)")!![1].toDouble()
               .divideAsPrice(numCans)
@@ -40,10 +38,4 @@ class FivePointsScraper : Scraper {
         }
       }
     }
-
-  private fun removeSizeSuffix(str: String) = if (str.endsWith("ml")) {
-    str.extract(regex = "^(.+?)( \\d+ml)")!![1]
-  } else {
-    str
-  }
 }
