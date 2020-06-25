@@ -46,7 +46,10 @@ jobs:
           name: Install dependencies
           command: cd frontend && yarn install
       - run:
-          name: Build frontend
+          name: Lint
+          command: cd frontend && yarn lint
+      - run:
+          name: Build
           command: cd frontend && yarn build
       - save_cache:
           paths:
