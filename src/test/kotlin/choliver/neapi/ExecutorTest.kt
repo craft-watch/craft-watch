@@ -1,87 +1,191 @@
 package choliver.neapi
 
 import choliver.neapi.Scraper.IndexEntry
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
+import com.nhaarman.mockitokotlin2.*
+import org.jsoup.nodes.Document
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
+import org.junit.jupiter.api.assertThrows
 import java.net.URI
 
 class ExecutorTest {
-  private val getter = mock<HttpGetter>()
+  private val getter = mock<HttpGetter> {
+    on { get(any()) } doAnswer { "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>" }
+  }
   private val executor = Executor(getter)
+  private val scraper = mock<Scraper> {
+    on { name } doReturn BREWERY
+    on { rootUrl } doReturn ROOT_URL
+  }
+
+  // TODO - validation
+  // TODO - sanitisation
 
   @Test
-  fun `scrapes multiple products`() {
-    val brewery = "Foo Bar"
-    val rootUrl = URI("https://example.invalid/shop")
-    val productAUrl = URI("https://eaxmple.invalid/sweet-ipa")
-    val productBUrl = URI("https://eaxmple.invalid/ted-shandy")
-    val thumbnailAUrl = URI("https://example.invalid/assets/sweet-ipa.jpg")
-    val thumbnailBUrl = URI("https://example.invalid/assets/ted-shandy.jpg")
+  fun `passes correct URLs and HTML around`() {
+    val callback = mock<(Document) -> ScrapedItem?>()
+    whenever(scraper.scrapeIndex(any())) doReturn listOf(
+      IndexEntry(productUrl("a"), callback)
+    )
 
-    val itemA = ScrapedItem(
+    executor.scrapeAll(scraper)
+
+    verify(getter).get(ROOT_URL)
+    verify(getter).get(productUrl("a"))
+    verify(scraper).scrapeIndex(docWithHeaderMatching(ROOT_URL.toString()))
+    verify(callback)(docWithHeaderMatching(productUrl("a").toString()))
+  }
+
+  @Test
+  fun `scrapes products`() {
+    whenever(scraper.scrapeIndex(any())) doReturn listOf(
+      IndexEntry(productUrl("a")) { SWEET_IPA },
+      IndexEntry(productUrl("b")) { TED_SHANDY }
+    )
+
+    assertEquals(
+      Inventory(
+        listOf(
+          with(SWEET_IPA) {
+            Item(
+              brewery = BREWERY,
+              name = name,
+              summary = summary,
+              sizeMl = sizeMl,
+              abv = abv,
+              perItemPrice = perItemPrice,
+              available = available,
+              thumbnailUrl = thumbnailUrl.toString(),
+              url = productUrl("a").toString()
+            )
+          },
+          with (TED_SHANDY) {
+            Item(
+              brewery = BREWERY,
+              name = name,
+              summary = summary,
+              sizeMl = sizeMl,
+              abv = abv,
+              perItemPrice = perItemPrice,
+              available = available,
+              thumbnailUrl = thumbnailUrl.toString(),
+              url = productUrl("b").toString()
+            )
+          }
+        )
+      ),
+      executor.scrapeAll(scraper)
+    )
+  }
+
+  @Test
+  fun `filters out nulls`() {
+    whenever(scraper.scrapeIndex(any())) doReturn listOf(
+      IndexEntry(productUrl("a")) { null },
+      IndexEntry(productUrl("b")) { SWEET_IPA },
+      IndexEntry(productUrl("c")) { null }
+    )
+
+    // Only one item returned
+    assertEquals(
+      listOf(SWEET_IPA.name),
+      executor.scrapeAll(scraper).items.map { it.name }
+    )
+  }
+
+  @Test
+  fun `de-duplicates by picking best price`() {
+    whenever(scraper.scrapeIndex(any())) doReturn listOf(
+      IndexEntry(productUrl("a")) { SWEET_IPA },
+      IndexEntry(productUrl("b")) { SWEET_IPA.copy(perItemPrice = SWEET_IPA.perItemPrice / 2) },
+      IndexEntry(productUrl("c")) { SWEET_IPA.copy(perItemPrice = SWEET_IPA.perItemPrice * 2) }
+    )
+
+    // Only one item returned, with best price
+    assertEquals(
+      listOf(SWEET_IPA.perItemPrice / 2),
+      executor.scrapeAll(scraper).items.map { it.perItemPrice }
+    )
+  }
+
+  @Nested
+  inner class Validation {
+    @Test
+    fun `rejects if name is blank`() {
+      assertNoValidationFailure(SWEET_IPA.copy(name = "Yeah"))
+      assertValidationFailure(SWEET_IPA.copy(name = " "))
+    }
+
+    @Test
+    fun `rejects if summary is present and blank`() {
+      assertNoValidationFailure(SWEET_IPA.copy(summary = "Yeah"))
+      assertNoValidationFailure(SWEET_IPA.copy(summary = null))
+      assertValidationFailure(SWEET_IPA.copy(summary = " "))
+    }
+
+    @Test
+    fun `rejects if gross`() {
+      assertNoValidationFailure(SWEET_IPA.copy(abv = 12.0))
+      assertValidationFailure(SWEET_IPA.copy(abv = 15.0))
+    }
+
+    @Test
+    fun `rejects if too bougie`() {
+      assertNoValidationFailure(SWEET_IPA.copy(perItemPrice = 7.0))
+      assertValidationFailure(SWEET_IPA.copy(perItemPrice = 10.0))
+    }
+
+    private fun assertNoValidationFailure(item: ScrapedItem) {
+      configureMock(item)
+
+      assertDoesNotThrow {
+        executor.scrapeAll(scraper)
+      }
+    }
+
+    private fun assertValidationFailure(item: ScrapedItem) {
+      configureMock(item)
+
+      assertThrows<ScraperException> {
+        executor.scrapeAll(scraper)
+      }
+    }
+
+    private fun configureMock(item: ScrapedItem) {
+      whenever(scraper.scrapeIndex(any())) doReturn listOf(
+        IndexEntry(productUrl("a")) { item }
+      )
+    }
+  }
+
+  companion object {
+    private const val BREWERY = "Foo Bar"
+    private val ROOT_URL = URI("https://example.invalid/shop")
+
+    private val SWEET_IPA = ScrapedItem(
       name = "Sweet IPA",
       summary = "Bad ass",
       perItemPrice = 4.23,
       sizeMl = 440,
       abv = 6.9,
       available = true,
-      thumbnailUrl = thumbnailAUrl
+      thumbnailUrl = URI("https://example.invalid/assets/sweet-ipa.jpg")
     )
 
-    val itemB = ScrapedItem(
+    private val TED_SHANDY = ScrapedItem(
       name = "Ted Shandy",
       summary = "Awful",
       perItemPrice = 1.86,
       sizeMl = 330,
       abv = 1.2,
       available = true,
-      thumbnailUrl = thumbnailBUrl
+      thumbnailUrl = URI("https://example.invalid/assets/ted-shandy.jpg")
     )
 
-    val scraper = mock<Scraper>()
-    whenever(scraper.name) doReturn brewery
-    whenever(scraper.rootUrl) doReturn rootUrl
-    whenever(scraper.scrapeIndex(any())) doReturn listOf(
-      IndexEntry(productAUrl) { itemA },
-      IndexEntry(productBUrl) { itemB }
-    )
+    private fun productUrl(suffix: String) = URI("https://eaxmple.invalid/${suffix}")
 
-    whenever(getter.get(rootUrl)) doReturn ""
-    whenever(getter.get(productAUrl)) doReturn ""
-    whenever(getter.get(productBUrl)) doReturn ""
-
-    assertEquals(
-      Inventory(
-        listOf(
-          Item(
-            brewery = brewery,
-            name = "Sweet IPA",
-            summary = "Bad ass",
-            sizeMl = 440,
-            abv = 6.9,
-            perItemPrice = 4.23,
-            available = true,
-            thumbnailUrl = thumbnailAUrl.toString(),
-            url = productAUrl.toString()
-          ),
-          Item(
-            brewery = brewery,
-            name = "Ted Shandy",
-            summary = "Awful",
-            sizeMl = 330,
-            abv = 1.2,
-            perItemPrice = 1.86,
-            available = true,
-            thumbnailUrl = thumbnailBUrl.toString(),
-            url = productBUrl.toString()
-          )
-        )
-      ),
-      executor.scrapeAll(scraper)
-    )
+    private fun docWithHeaderMatching(header: String): Document = argForWhich { textFrom("h1") == header }
   }
 }
