@@ -49,7 +49,7 @@ export default class Menu extends React.Component<MenuProps, State> {
                 checked={visible}
                 onClick={() => this.props.onToggleVisibility(brewery)}
               />
-              <span className="checkmark"></span>
+              <span className="checkmark">{visible ? "✓" : ""}</span>
             </label>
           ))
         }
