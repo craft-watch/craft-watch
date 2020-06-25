@@ -167,7 +167,7 @@ img {
 }
 
 #menu .expanded {
-  padding: 10px 30px;
+  padding: 10px 20px 10px 30px;
   height: 100vh;
   min-width: 15vw;
 }
@@ -213,31 +213,16 @@ img {
   height: 1em;
   width: 1em;
   background-color: var(--sol-base3);
-  border-radius: 4px;
-}
-
-.selectable .checkmark:after {
-  content: "✓";
-  position: absolute;
-  left: 1px;
-  display: none;
   color: var(--sol-base02);
-  font-size: smaller;
-  font-weight: var(--bold-weight);
-}
-
-.selectable input:checked ~ .checkmark:after {
-  display: block;
+  border-radius: 4px;
+  text-align: center;
 }
 
 .selectable:hover {
   color: var(--sol-base1);
 }
 
-.selectable:hover input ~ .checkmark {
+.selectable:hover .checkmark {
   background-color: var(--sol-base01);
-}
-
-.selectable:hover input:checked ~ .checkmark:after {
-  border-color: var(--sol-base2);
+  color: var(--sol-base3);
 }
