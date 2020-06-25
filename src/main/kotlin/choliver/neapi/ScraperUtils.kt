@@ -21,7 +21,7 @@ fun Element.selectMultipleFrom(cssQuery: String) = select(cssQuery)
 fun String.extract(regex: String) = regex.toRegex().find(this)?.groupValues
 
 fun String.toTitleCase(): String = split(" ").joinToString(" ") {
-  if (it in BEER_WORDS) it else it.toLowerCase().capitalize()
+  if (it in BEER_ACRONYMS) it else it.toLowerCase().capitalize()
 }
 
 // I *know* this doesn't really work for floating-point.  But it's good enough for our purposes.
@@ -33,7 +33,7 @@ fun String.toUri() = try {
   throw ScraperException("URL syntax error: ${this}", e)
 }
 
-private val BEER_WORDS = listOf(
+private val BEER_ACRONYMS = listOf(
   "IPL",
   "IPA",
   "DDH",
