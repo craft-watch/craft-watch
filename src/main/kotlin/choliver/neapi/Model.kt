@@ -18,7 +18,7 @@ data class Item(
   val url: String
 )
 
-data class ParsedItem(
+data class ScrapedItem(
   val name: String,
   val summary: String? = null,
   val perItemPrice: Double,

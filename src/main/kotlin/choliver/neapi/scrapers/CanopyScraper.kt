@@ -19,7 +19,7 @@ class CanopyScraper : Scraper {
       val url = a.hrefFrom()
       val itemDoc = request(url)
 
-      ParsedItem(
+      ScrapedItem(
         thumbnailUrl = el.srcFrom(".grid__image img"),
         url = url,
         name = parts[1],

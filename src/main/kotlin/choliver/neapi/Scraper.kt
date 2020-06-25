@@ -5,7 +5,7 @@ import java.net.URI
 
 interface Scraper {
   val name: String
-  fun Context.scrape(): List<ParsedItem>
+  fun Context.scrape(): List<ScrapedItem>
 
   interface Context {
     fun request(url: URI): Document

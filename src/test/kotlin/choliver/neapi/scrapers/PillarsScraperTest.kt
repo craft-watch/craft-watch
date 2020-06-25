@@ -1,6 +1,6 @@
 package choliver.neapi.scrapers
 
-import choliver.neapi.ParsedItem
+import choliver.neapi.ScrapedItem
 import choliver.neapi.executeScraper
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -8,45 +8,49 @@ import java.net.URI
 
 class PillarsScraperTest {
   companion object {
-    private val ITEMS = executeScraper(VillagesScraper())
+    private val ITEMS = executeScraper(PillarsScraper())
   }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(7, ITEMS.size)
+    assertEquals(5, ITEMS.size)
   }
 
   @Test
   fun `extracts beer details`() {
     assertEquals(
-      ParsedItem(
-        name = "Rodeo", // Normalised case,
-        summary = "Pale Ale",
-        abv = 4.6,
-        sizeMl = 330,
-        perItemPrice = 2.13,
+      ScrapedItem(
+        name = "Pillars Icebock",
+        summary = "Eisbock",
+        sizeMl = null,
+        abv = 8.0,
+        perItemPrice = 6.00,
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345.jpg"),
-        url = URI("https://villagesbrewery.com/collections/buy-beer/products/rodeo-pale-ale")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0367/7857/3883/products/Icebock_Shopify_1edf8964-413d-4ad8-9b05-9a9672a48796_250x250.png"),
+        url = URI("https://shop.pillarsbrewery.com/collections/pillars-beers/products/pillars-icebock")
       ),
-      ITEMS.first { it.name == "Rodeo" }
+      ITEMS.first { it.name == "Pillars Icebock" }
     )
   }
 
   @Test
-  fun `extracts case details`() {
+  fun `identifies kegs`() {
+    val item = ITEMS.first { it.name == "Pillars Pilsner" } // Note "keg" no longer in title
+    assertEquals(5000, item.sizeMl)
+    assertEquals("Minikeg", item.summary)
+  }
+
+  @Test
+  fun `identifies cases`() {
+    val item = ITEMS.first { it.name == "Untraditional Lager" } // Note "case" no longer in title
+    assertEquals(1.88, item.perItemPrice)   // Divided price
+  }
+
+  @Test
+  fun `ignores things that aren't beers`() {
     assertEquals(
-      ParsedItem(
-        name = "Villages Mixed Case", // Normalised case
-        summary = "24 cans",  // Synthesised summary
-        abv = null,   // Can't find this!
-        sizeMl = 330,
-        perItemPrice = 2.19,
-        available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg"),
-        url = URI("https://villagesbrewery.com/collections/buy-beer/products/villages-mixed-case")
-      ),
-      ITEMS.first { it.name == "Villages Mixed Case" }
+      emptyList<String>(),
+      ITEMS.map { it.name }.filter { it.contains("gift card", ignoreCase = true) }
     )
   }
 }

@@ -28,6 +28,10 @@ fun Document.shopifyItems() = select(".product-card").map {
   )
 }
 
+fun List<ScrapedItem>.bestPricedItems() = groupBy { it.name }
+  .values
+  .map { group -> group.minBy { it.perItemPrice }!! }
+
 fun Element.priceFrom(cssQuery: String = ":root") = extractFrom(cssQuery, "\\d+\\.\\d+")!![0].toDouble()
 fun Element.extractFrom(cssQuery: String = ":root", regex: String) = textFrom(cssQuery).extract(regex)
 fun Element.textFrom(cssQuery: String = ":root") = selectFrom(cssQuery).text().trim()
@@ -41,7 +45,9 @@ fun Element.selectFrom(cssQuery: String) = selectFirst(cssQuery)
 
 fun String.extract(regex: String) = regex.toRegex().find(this)?.groupValues
 
-fun String.toTitleCase(): String = toLowerCase().split(" ").joinToString(" ") { it.capitalize() }
+fun String.toTitleCase(): String = split(" ").joinToString(" ") {
+  if (it in BEER_WORDS) it else it.toLowerCase().capitalize()
+}
 
 // I *know* this doesn't really work for floating-point.  But it's good enough for our purposes.
 fun Double.divideAsPrice(denominator: Int) = round(100 * this / denominator) / 100
@@ -51,3 +57,11 @@ private fun String.toUri() = try {
 } catch (e: URISyntaxException) {
   throw ScraperException("URL syntax error: ${this}", e)
 }
+
+private val BEER_WORDS = listOf(
+  "IPL",
+  "IPA",
+  "DDH",
+  "NEIPA",
+  "DIPA"
+)
