@@ -12,33 +12,43 @@ class VillagesScraper : Scraper {
     .map { details ->
       val itemText = request(details.url).text()
       val sizeMl = itemText.extract("(\\d+)ml")?.get(1)?.toInt()
+      val parts = extractVariableParts(details.title)
 
-      if (details.title.contains("mixed case", ignoreCase = true)) {
-        val numCans = 24
-        val parts = details.title.extract("^(.*?) \\((.*)\\)$")!!
-        ScrapedItem(
-          thumbnailUrl = details.thumbnailUrl,
-          url = details.url,
-          name = parts[1].toTitleCase(),
-          summary = "${numCans} cans",
-          sizeMl = sizeMl,
-          available = details.available,
-          perItemPrice = details.price.divideAsPrice(numCans)
-        )
-      } else {
-        val parts = details.title.extract("^([^ ]*) (.*)? ((.*)%)?.*$")!!
-        ScrapedItem(
-          thumbnailUrl = details.thumbnailUrl,
-          url = details.url,
-          name = parts[1].toTitleCase(),
-          summary = parts[2],
-          sizeMl = sizeMl,
-          abv = parts[4].toDouble(),
-          available = details.available,
-          perItemPrice = details.price.divideAsPrice(12)
-        )
-      }
+      ScrapedItem(
+        thumbnailUrl = details.thumbnailUrl,
+        url = details.url,
+        name = parts.name.toTitleCase(),
+        summary = parts.summary,
+        sizeMl = sizeMl,
+        abv = parts.abv,
+        available = details.available,
+        perItemPrice = details.price.divideAsPrice(parts.numCans)
+      )
     }
+
+  private data class VariableParts(
+    val name: String,
+    val summary: String,
+    val numCans: Int,
+    val abv: Double? = null
+  )
+
+  private fun extractVariableParts(title: String) = if (title.contains("mixed case", ignoreCase = true)) {
+    val parts = title.extract("^(.*?) \\((.*)\\)$")!!
+    VariableParts(
+      name = parts[1],
+      summary = "24 cans",
+      numCans = 24
+    )
+  } else {
+    val parts = title.extract("^([^ ]*) (.*)? ((.*)%)?.*$")!!
+    VariableParts(
+      name = parts[1],
+      summary = parts[2],
+      numCans = 12,
+      abv = parts[4].toDouble()
+    )
+  }
 
   companion object {
     private val ROOT_URL = URI("https://villagesbrewery.com/collections/buy-beer")
