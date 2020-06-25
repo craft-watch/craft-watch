@@ -24,8 +24,17 @@ class Executor(private val getter: HttpGetter) {
             null
           }
         }
+        .bestPricedItems()
     }
   )
+
+  private fun List<Item>.bestPricedItems() = groupBy { it.name to it.summary }
+    .map { (key, group) ->
+      if (group.size > 1) {
+        logger.info("Eliminating ${group.size - 1} item(s) with worse prices for: ${key}")
+      }
+      group.minBy { it.perItemPrice }!!
+    }
 
   private fun ScrapedItem.toItem(brewery: String, url: URI) = Item(
     brewery = brewery,

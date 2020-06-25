@@ -5,10 +5,6 @@ import java.net.URI
 import java.net.URISyntaxException
 import kotlin.math.round
 
-fun List<ScrapedItem>.bestPricedItems() = groupBy { it.name }
-  .values
-  .map { group -> group.minBy { it.perItemPrice }!! }
-
 fun Element.priceFrom(cssQuery: String = ":root") = extractFrom(cssQuery, "\\d+\\.\\d+")!![0].toDouble()
 fun Element.extractFrom(cssQuery: String = ":root", regex: String) = textFrom(cssQuery).extract(regex)
 fun Element.textFrom(cssQuery: String = ":root") = selectFrom(cssQuery).text().trim()
