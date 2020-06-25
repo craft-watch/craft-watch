@@ -18,6 +18,7 @@ fun main() {
       HowlingHopsScraper(),
       PillarsScraper(),
       PressureDropScraper(),
+      StewartScraper(),
       VillagesScraper()
     ))
   }
