@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
   kotlin("jvm") version "1.3.72"
+  application
 }
 
 group = "choliver.neapi"
@@ -24,6 +25,10 @@ dependencies {
   testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
   // byte-buddy 1.9.10 (pulled in by Mockito) behaves badly with Java 13 - see https://github.com/mockk/mockk/issues/397
   testImplementation("net.bytebuddy:byte-buddy:1.10.6")
+}
+
+application {
+  mainClassName = "choliver.neapi.ApplicationKt"
 }
 
 tasks.withType<KotlinCompile>().configureEach {
