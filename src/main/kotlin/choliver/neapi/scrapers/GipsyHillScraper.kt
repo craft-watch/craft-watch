@@ -8,9 +8,9 @@ class GipsyHillScraper : Scraper {
   override val name = "Gipsy Hill"
 
   override fun Context.scrape() = request(ROOT_URL)
-    .select(".product")
+    .selectMultipleFrom(".product")
     .map { el ->
-      val a = el.selectFirst(".woocommerce-LoopProduct-link")
+      val a = el.selectFrom(".woocommerce-LoopProduct-link")
       val url = a.hrefFrom()
       val rawSummary = request(url).textFrom(".summary")
 

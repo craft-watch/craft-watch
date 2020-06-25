@@ -10,10 +10,10 @@ class FourpureScraper : Scraper {
   override val name = "Fourpure"
 
   override fun Context.scrape() = request(ROOT_URL)
-    .select(".itemsBrowse li")
+    .selectMultipleFrom(".itemsBrowse li")
     .filterNot { el -> el.title().contains("pack", ignoreCase = true) }  // Can't figure out how to extract price-per-can from packs, so ignore
     .map { el ->
-      val a = el.selectFirst("a")
+      val a = el.selectFrom("a")
       val url = a.hrefFrom()
       val itemDoc = request(url)
       val parts = extractVariableParts(itemDoc)
@@ -26,7 +26,7 @@ class FourpureScraper : Scraper {
         summary = parts.summary,
         sizeMl = parts.sizeMl,
         available = true,
-        perItemPrice = (el.selectFirst(".priceNow") ?: el.selectFirst(".priceStandard")).priceFrom(".GBP")
+        perItemPrice = el.selectFrom(".priceNow, .priceStandard").priceFrom(".GBP")
       )
     }
 

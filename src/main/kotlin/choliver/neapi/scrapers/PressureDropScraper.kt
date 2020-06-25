@@ -8,9 +8,9 @@ class PressureDropScraper : Scraper {
   override val name = "Pressure Drop"
 
   override fun Context.scrape() = request(ROOT_URL)
-    .select(".product-grid-item")
+    .selectMultipleFrom(".product-grid-item")
     .map { el ->
-      val a = el.selectFirst(".grid__image")
+      val a = el.selectFrom(".grid__image")
       val url = a.hrefFrom()
 
       val itemDoc = request(url)

@@ -9,9 +9,9 @@ class CanopyScraper : Scraper {
   override val name = "Canopy"
 
   override fun Context.scrape() = request(ROOT_URL)
-    .select(".grid-uniform")
+    .selectMultipleFrom(".grid-uniform")
     .take(3)  // Avoid merch
-    .flatMap { it.select(".grid__item") }
+    .flatMap { it.selectMultipleFrom(".grid__item") }
     .filterNot { it.textFrom(".product__title").contains("box|pack".toRegex(IGNORE_CASE)) }  // Don't know how to extract number of can
     .map { el ->
       val a = el.selectFrom(".product__title a")

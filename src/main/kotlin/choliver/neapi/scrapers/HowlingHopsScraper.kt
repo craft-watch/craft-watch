@@ -8,13 +8,13 @@ class HowlingHopsScraper : Scraper {
   override val name = "Howling Hops"
 
   override fun Context.scrape() = request(ROOT_URL)
-    .selectFirst(".wc-block-handpicked-products") // Avoid apparel
-    .select(".wc-block-grid__product")
+    .selectFrom(".wc-block-handpicked-products") // Avoid apparel
+    .selectMultipleFrom(".wc-block-grid__product")
     .map { el ->
-      val a = el.selectFirst(".wc-block-grid__product-link")
+      val a = el.selectFrom(".wc-block-grid__product-link")
       val url = a.hrefFrom()
       val thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail")
-      val price = el.select(".woocommerce-Price-amount")
+      val price = el.selectMultipleFrom(".woocommerce-Price-amount")
         .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
         .first()
         .ownText()
