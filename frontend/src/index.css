@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap');
 
-/* Colours taken from https://ethanschoonover.com/solarized/ */
 :root {
+  /* Colours taken from https://ethanschoonover.com/solarized/ */
   --sol-base03:  #002b36;
   --sol-base02:  #073642;
   --sol-base01:  #586e75;
@@ -18,6 +18,10 @@
   --sol-blue:    #268bd2;
   --sol-cyan:    #2aa198;
   --sol-green:   #859900;
+
+  --sexy-radius: 16px;
+  --sexy-shadow: drop-shadow(0 0 0.75rem var(--sol-base03));
+  --bold-weight: 600;
 }
 
 html, body {
@@ -35,10 +39,18 @@ table {
 }
 
 th {
+  background: var(--sol-base2);
   position: sticky;
   top: 0px;
-  background: var(--sol-base2);
-  font-size: larger;
+  font-size: larger;  
+}
+
+th:first-child {
+  border-bottom-left-radius: var(--sexy-radius);
+}
+
+th:last-child {
+  border-bottom-right-radius: var(--sexy-radius);
 }
 
 td, th {
@@ -51,7 +63,7 @@ td img {
 }
 
 table a {
-  font-weight: 600;
+  font-weight: var(--bold-weight);
   text-decoration: none;
 }
 
@@ -103,15 +115,15 @@ td.thumbnail {
   color: var(--sol-base3);
   background: var(--sol-red);
   padding: 2px 10px;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: larger;
-  filter: drop-shadow(0 0 0.75rem var(--sol-base03));
+  border-radius: var(--sexy-radius);
+  font-weight: var(--bold-weight);
+  filter: var(--sexy-shadow);
+
   /* Rotate and centre above image */
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100%;
+  width: 80%;
   transform: translate(-50%, -50%) rotate(-20deg);
   transform-origin: center;
 }
@@ -122,11 +134,14 @@ img {
   max-height: 100px;
   width: auto;
   height: auto;
+  border-radius: var(--sexy-radius);
 }
 
 #menu {
   background: var(--sol-base02);
   color: var(--sol-base2);
+  filter: var(--sexy-shadow);
+  border-bottom-left-radius: var(--sexy-radius);
   right: 0;
   top: 0;
   z-index: 1;
@@ -136,7 +151,7 @@ img {
 
 #menu .button {
   font-size: xx-large;
-  font-weight: 600;
+  font-weight: var(--bold-weight);
   text-decoration: none;
   text-align: right;
   user-select: none;
@@ -152,7 +167,7 @@ img {
 }
 
 #menu .expanded {
-  padding: 10px 20px;
+  padding: 10px 30px;
   height: 100vh;
   min-width: 15vw;
 }
@@ -163,7 +178,7 @@ img {
 }
 
 .allOrNone {
-  font-weight: 600;
+  font-weight: var(--bold-weight);
   font-size: smaller;
   padding: 10px 20px 10px 0;
   user-select: none;
@@ -202,16 +217,13 @@ img {
 }
 
 .selectable .checkmark:after {
-  content: "";
+  content: "✓";
   position: absolute;
+  left: 1px;
   display: none;
-  left: 5px;
-  top: 2px;
-  width: 4px;
-  height: 8px;
-  border: solid var(--sol-base02);
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+  color: var(--sol-base02);
+  font-size: smaller;
+  font-weight: var(--bold-weight);
 }
 
 .selectable input:checked ~ .checkmark:after {
