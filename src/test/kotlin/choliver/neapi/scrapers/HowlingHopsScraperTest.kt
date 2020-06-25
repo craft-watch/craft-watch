@@ -1,6 +1,6 @@
 package choliver.neapi.scrapers
 
-import choliver.neapi.ScrapedItem
+import choliver.neapi.Scraper.Result.Item
 import choliver.neapi.executeScraper
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
@@ -19,7 +19,7 @@ class HowlingHopsScraperTest {
   @Test
   fun `extracts sale price not original price`() {
     assertEquals(
-      ScrapedItem(
+      Item(
         name = "Push Push",
         summary = "DDH Pale Ale",
         perItemPrice = 4.00,

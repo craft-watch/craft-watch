@@ -1,6 +1,7 @@
 package choliver.neapi
 
 import choliver.neapi.Scraper.IndexEntry
+import choliver.neapi.Scraper.Result
 import com.nhaarman.mockitokotlin2.*
 import org.jsoup.nodes.Document
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -20,12 +21,11 @@ class ExecutorTest {
     on { rootUrl } doReturn ROOT_URL
   }
 
-  // TODO - validation
-  // TODO - sanitisation
-
   @Test
   fun `passes correct URLs and HTML around`() {
-    val callback = mock<(Document) -> ScrapedItem?>()
+    val callback = mock<(Document) -> Result> {
+      on { invoke(any()) } doReturn Result.Skipped("Emo town")
+    }
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
       IndexEntry(productUrl("a"), callback)
     )
@@ -81,11 +81,11 @@ class ExecutorTest {
   }
 
   @Test
-  fun `filters out nulls`() {
+  fun `filters out skipped results`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
-      IndexEntry(productUrl("a")) { null },
+      IndexEntry(productUrl("a")) { Result.Skipped("Just too emo") },
       IndexEntry(productUrl("b")) { SWEET_IPA },
-      IndexEntry(productUrl("c")) { null }
+      IndexEntry(productUrl("c")) { Result.Skipped("Made of cheese") }
     )
 
     // Only one item returned
@@ -108,6 +108,33 @@ class ExecutorTest {
       listOf(SWEET_IPA.perItemPrice / 2),
       executor.scrapeAll(scraper).items.map { it.perItemPrice }
     )
+  }
+
+  @Nested
+  inner class Normalisation {
+    @Test
+    fun `trims name`() {
+      whenever(scraper.scrapeIndex(any())) doReturn listOf(
+        IndexEntry(productUrl("a")) { SWEET_IPA.copy(name = "  Padded Lager  ") }
+      )
+
+      assertEquals(
+        "Padded Lager",
+        executor.scrapeAll(scraper).items[0].name
+      )
+    }
+
+    @Test
+    fun `trims summary`() {
+      whenever(scraper.scrapeIndex(any())) doReturn listOf(
+        IndexEntry(productUrl("a")) { SWEET_IPA.copy(summary = "  Absolute nonsense  ") }
+      )
+
+      assertEquals(
+        "Absolute nonsense",
+        executor.scrapeAll(scraper).items[0].summary
+      )
+    }
   }
 
   @Nested
@@ -137,7 +164,7 @@ class ExecutorTest {
       assertValidationFailure(SWEET_IPA.copy(perItemPrice = 10.0))
     }
 
-    private fun assertNoValidationFailure(item: ScrapedItem) {
+    private fun assertNoValidationFailure(item: Result.Item) {
       configureMock(item)
 
       assertDoesNotThrow {
@@ -145,7 +172,7 @@ class ExecutorTest {
       }
     }
 
-    private fun assertValidationFailure(item: ScrapedItem) {
+    private fun assertValidationFailure(item: Result.Item) {
       configureMock(item)
 
       assertThrows<ScraperException> {
@@ -153,7 +180,7 @@ class ExecutorTest {
       }
     }
 
-    private fun configureMock(item: ScrapedItem) {
+    private fun configureMock(item: Result.Item) {
       whenever(scraper.scrapeIndex(any())) doReturn listOf(
         IndexEntry(productUrl("a")) { item }
       )
@@ -164,7 +191,7 @@ class ExecutorTest {
     private const val BREWERY = "Foo Bar"
     private val ROOT_URL = URI("https://example.invalid/shop")
 
-    private val SWEET_IPA = ScrapedItem(
+    private val SWEET_IPA = Result.Item(
       name = "Sweet IPA",
       summary = "Bad ass",
       perItemPrice = 4.23,
@@ -174,7 +201,7 @@ class ExecutorTest {
       thumbnailUrl = URI("https://example.invalid/assets/sweet-ipa.jpg")
     )
 
-    private val TED_SHANDY = ScrapedItem(
+    private val TED_SHANDY = Result.Item(
       name = "Ted Shandy",
       summary = "Awful",
       perItemPrice = 1.86,

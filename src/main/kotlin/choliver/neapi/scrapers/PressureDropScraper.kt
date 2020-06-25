@@ -2,6 +2,7 @@ package choliver.neapi.scrapers
 
 import choliver.neapi.*
 import choliver.neapi.Scraper.IndexEntry
+import choliver.neapi.Scraper.Result.Item
 import org.jsoup.nodes.Document
 import java.net.URI
 
@@ -18,7 +19,7 @@ class PressureDropScraper : Scraper {
         val itemText = doc.text()
         val parts = doc.extractFrom(".product__title", "^(.*?)\\s*-\\s*(.*?)$")!!
 
-        ScrapedItem(
+        Item(
           thumbnailUrl = a.srcFrom("noscript img"),
           name = parts[1],
           summary = parts[2],

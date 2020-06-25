@@ -1,6 +1,6 @@
 package choliver.neapi.scrapers
 
-import choliver.neapi.ScrapedItem
+import choliver.neapi.Scraper.Result.Item
 import choliver.neapi.executeScraper
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -19,7 +19,7 @@ class VillagesScraperTest {
   @Test
   fun `extracts beer details`() {
     assertEquals(
-      ScrapedItem(
+      Item(
         name = "Rodeo", // Normalised case,
         summary = "Pale Ale",
         abv = 4.6,
@@ -35,7 +35,7 @@ class VillagesScraperTest {
   @Test
   fun `extracts case details`() {
     assertEquals(
-      ScrapedItem(
+      Item(
         name = "Villages Mixed Case", // Normalised case
         summary = "24 cans",  // Synthesised summary
         abv = null,   // Can't find this!

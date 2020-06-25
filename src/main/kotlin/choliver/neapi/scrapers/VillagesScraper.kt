@@ -2,6 +2,7 @@ package choliver.neapi.scrapers
 
 import choliver.neapi.*
 import choliver.neapi.Scraper.IndexEntry
+import choliver.neapi.Scraper.Result.Item
 import org.jsoup.nodes.Document
 import java.net.URI
 
@@ -15,7 +16,7 @@ class VillagesScraper : Scraper {
       IndexEntry(details.url) { doc ->
         val parts = extractVariableParts(details.title)
 
-        ScrapedItem(
+        Item(
           thumbnailUrl = details.thumbnailUrl,
           name = parts.name.toTitleCase(),
           summary = parts.summary,

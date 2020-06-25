@@ -1,8 +1,8 @@
 package choliver.neapi.scrapers
 
-import choliver.neapi.ScrapedItem
 import choliver.neapi.Scraper
 import choliver.neapi.Scraper.IndexEntry
+import choliver.neapi.Scraper.Result.Item
 import choliver.neapi.extract
 import choliver.neapi.shopifyItems
 import org.jsoup.nodes.Document
@@ -18,7 +18,7 @@ class BoxcarScraper : Scraper {
       IndexEntry(details.url) {
         val parts = details.title.extract("^(.*?) // (.*?)% *(.*?)? // (.*?)ml$")!!
 
-        ScrapedItem(
+        Item(
           thumbnailUrl = details.thumbnailUrl,
           name = parts[1],
           abv = parts[2].toDouble(),

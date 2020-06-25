@@ -1,5 +1,6 @@
 package choliver.neapi
 
+import choliver.neapi.Scraper.Result
 import mu.KotlinLogging
 import java.net.URI
 
@@ -13,14 +14,16 @@ class Executor(getter: HttpGetter) {
         .trim()
         .validate("non-blank brewery name") { it.isNotBlank() }
 
+      logger.info("Executing scraper for brewery: ${brewery}")
+
       scraper.scrapeIndex(jsonGetter.request(scraper.rootUrl))
         .mapNotNull { (url, scrapeItem) ->
-          val item = scrapeItem(jsonGetter.request(url))
-          if (item != null) {
-            item.toItem(brewery, url)
-          } else {
-            logger.info("Skipping")
-            null
+          when (val result = scrapeItem(jsonGetter.request(url))) {
+            is Result.Skipped -> {
+              logger.info("Skipping because: ${result.reason}")
+              null
+            }
+            is Result.Item -> result.toItem(brewery, url)
           }
         }
         .bestPricedItems()
@@ -35,7 +38,7 @@ class Executor(getter: HttpGetter) {
       group.minBy { it.perItemPrice }!!
     }
 
-  private fun ScrapedItem.toItem(brewery: String, url: URI) = Item(
+  private fun Result.Item.toItem(brewery: String, url: URI) = Item(
     brewery = brewery,
     name = name
       .trim()
