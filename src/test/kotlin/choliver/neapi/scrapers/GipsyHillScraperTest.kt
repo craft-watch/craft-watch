@@ -13,12 +13,7 @@ class GipsyHillScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(18, ITEMS.size)
-  }
-
-  @Test
-  fun `eliminates duplicates`() {
-    assertEquals(1, ITEMS.filter { it.name == "Moneybags" }.size)
+    assertEquals(20, ITEMS.size)
   }
 
   @Test

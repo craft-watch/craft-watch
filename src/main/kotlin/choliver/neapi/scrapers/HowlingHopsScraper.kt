@@ -34,8 +34,6 @@ class HowlingHopsScraper : Scraper {
         )
       }
     }
-    // TODO
-    //.bestPricedItems()
 
   private data class VariableParts(
     val name: String,

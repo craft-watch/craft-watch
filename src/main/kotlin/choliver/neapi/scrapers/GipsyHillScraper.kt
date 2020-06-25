@@ -30,6 +30,4 @@ class GipsyHillScraper : Scraper {
         )
       }
     }
-  // TODO
-    //.distinctBy { it.name }
 }

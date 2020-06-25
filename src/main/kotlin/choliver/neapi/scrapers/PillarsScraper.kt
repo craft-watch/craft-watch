@@ -35,8 +35,6 @@ class PillarsScraper : Scraper {
         }
       }
     }
-    // TODO
-    //.bestPricedItems()
 
   private data class TitleParts(
     val name: String,

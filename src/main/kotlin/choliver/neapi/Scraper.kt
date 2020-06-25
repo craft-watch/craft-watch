@@ -9,10 +9,6 @@ interface Scraper {
 
   fun scrapeIndex(root: Document): List<IndexEntry>
 
-  interface Context {
-    fun request(url: URI): Document
-  }
-
   data class IndexEntry(
     val url: URI,
     val scrapeItem: (doc: Document) -> ScrapedItem?

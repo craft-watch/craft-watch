@@ -54,6 +54,5 @@ class FourpureScraper : Scraper {
     }
   }
 
-
   private fun Element.title() = textFrom("h3")
 }

@@ -4,19 +4,18 @@ import mu.KotlinLogging
 import java.net.URI
 
 class Executor(private val getter: HttpGetter) {
+  private val jsonGetter = JsonGetter(getter)
   private val logger = KotlinLogging.logger {}
 
   fun scrapeAll(vararg scrapers: Scraper) = Inventory(
     items = scrapers.flatMap { scraper ->
-      val ctx = RealScraperContext(getter)
-
       val brewery = scraper.name
         .trim()
         .validate("non-blank brewery name") { it.isNotBlank() }
 
-      scraper.scrapeIndex(ctx.request(scraper.rootUrl))
+      scraper.scrapeIndex(jsonGetter.request(scraper.rootUrl))
         .mapNotNull { (url, scrapeItem) ->
-          val item = scrapeItem(ctx.request(url))
+          val item = scrapeItem(jsonGetter.request(url))
           if (item != null) {
             item.toItem(brewery, url)
           } else {
