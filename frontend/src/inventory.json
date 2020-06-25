@@ -560,6 +560,56 @@
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/pocket-rocket-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/pocket-rocket-4-x-440ml/"
   }, {
+    "brewery" : "Pillars",
+    "name" : "Pillars Pilsner",
+    "summary" : "Minikeg",
+    "sizeMl" : 5000,
+    "abv" : 4.0,
+    "perItemPrice" : 30.0,
+    "available" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/706c48f7-f8b6-4933-981c-ae795fe96d24_250x250.png",
+    "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/pillars-pilsner-5l-mini-keg"
+  }, {
+    "brewery" : "Pillars",
+    "name" : "Pillars Tropical Pilsner",
+    "summary" : "Minikeg",
+    "sizeMl" : 5000,
+    "abv" : 4.0,
+    "perItemPrice" : 32.0,
+    "available" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/Tropical_MINI_KEG_250x250.png",
+    "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/pillars-tropical-pilsner-5l-mini-keg"
+  }, {
+    "brewery" : "Pillars",
+    "name" : "Untraditional Lager",
+    "summary" : "Session IPL",
+    "sizeMl" : null,
+    "abv" : 4.5,
+    "perItemPrice" : 1.88,
+    "available" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/a1df4143-6f3e-444f-876f-403e4646de81_e0ca1731-5b0e-436d-9697-af4d723dcafd_250x250.png",
+    "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/untraditional-lager-case-of-24"
+  }, {
+    "brewery" : "Pillars",
+    "name" : "Rebell Helles",
+    "summary" : "Helles Lager",
+    "sizeMl" : null,
+    "abv" : 4.8,
+    "perItemPrice" : 1.88,
+    "available" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/01125465-bf55-4019-9d59-52d2d00d1333_250x250.png",
+    "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/rebell-helles-case-24x-330ml"
+  }, {
+    "brewery" : "Pillars",
+    "name" : "Pillars Icebock",
+    "summary" : "Eisbock",
+    "sizeMl" : null,
+    "abv" : 8.0,
+    "perItemPrice" : 6.0,
+    "available" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/Icebock_Shopify_1edf8964-413d-4ad8-9b05-9a9672a48796_250x250.png",
+    "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/pillars-icebock"
+  }, {
     "brewery" : "Pressure Drop",
     "name" : "Behind Door Number 3",
     "summary" : "Citra & Mosaic New England DIPA",

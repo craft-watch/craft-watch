@@ -16,7 +16,7 @@ class VillagesScraper : Scraper {
       if (details.title.contains("mixed case", ignoreCase = true)) {
         val numCans = 24
         val parts = details.title.extract("^(.*?) \\((.*)\\)$")!!
-        ParsedItem(
+        ScrapedItem(
           thumbnailUrl = details.thumbnailUrl,
           url = details.url,
           name = parts[1].toTitleCase(),
@@ -27,7 +27,7 @@ class VillagesScraper : Scraper {
         )
       } else {
         val parts = details.title.extract("^([^ ]*) (.*)? ((.*)%)?.*$")!!
-        ParsedItem(
+        ScrapedItem(
           thumbnailUrl = details.thumbnailUrl,
           url = details.url,
           name = parts[1].toTitleCase(),

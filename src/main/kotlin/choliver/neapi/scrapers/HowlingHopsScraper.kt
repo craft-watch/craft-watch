@@ -26,7 +26,7 @@ class HowlingHopsScraper : Scraper {
       val shortDesc = itemDoc.textFrom(".woocommerce-product-details__short-description")
       val parts = shortDesc.extract("([^/]*?) / ([^/]*?) / (\\d+) x (\\d+)ml / (\\d+(\\.\\d+)?)% ABV")
       if (parts != null) {
-        ParsedItem(
+        ScrapedItem(
           thumbnailUrl = thumbnailUrl,
           url = url,
           name = parts[1],
@@ -39,7 +39,7 @@ class HowlingHopsScraper : Scraper {
       } else {
         with(shortDesc.extract("(.*?) (\\d+) x (\\d+)ml")!!) {
           val numCans = this[2].toInt()
-          ParsedItem(
+          ScrapedItem(
             thumbnailUrl = thumbnailUrl,
             url = url,
             name = this[1],
@@ -52,9 +52,7 @@ class HowlingHopsScraper : Scraper {
         }
       }
     }
-    .groupBy { it.name }
-    .values
-    .map { group -> group.minBy { it.perItemPrice }!! }  // Find best price for this beer
+    .bestPricedItems()
 
   companion object {
     private val ROOT_URL = URI("https://www.howlinghops.co.uk/shop")

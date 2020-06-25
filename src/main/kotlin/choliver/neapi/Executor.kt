@@ -1,10 +1,8 @@
 package choliver.neapi
 
-import choliver.neapi.scrapers.*
-
 class Executor(private val getter: HttpGetter) {
-  fun scrapeAll() = Inventory(
-    items = SCRAPERS.flatMap { scraper ->
+  fun scrapeAll(vararg scrapers: Scraper) = Inventory(
+    items = scrapers.flatMap { scraper ->
       with(scraper) {
         val brewery = name
           .trim()
@@ -15,7 +13,7 @@ class Executor(private val getter: HttpGetter) {
     }
   )
 
-  private fun ParsedItem.toItem(brewery: String) = Item(
+  private fun ScrapedItem.toItem(brewery: String) = Item(
     brewery = brewery,
     name = name
       .trim()
@@ -46,17 +44,7 @@ class Executor(private val getter: HttpGetter) {
   }
 
   companion object {
-    private val SCRAPERS = listOf(
-      BoxcarScraper(),
-      CanopyScraper(),
-      FourpureScraper(),
-      GipsyHillScraper(),
-      HowlingHopsScraper(),
-      PressureDropScraper(),
-      VillagesScraper()
-    )
-
     private const val MAX_ABV = 14.0
-    private const val MAX_PRICE_PER_ML = 8.00 / 440   // A fairly bougie can
+    private const val MAX_PRICE_PER_ML = 10.00 / 440   // A fairly bougie can
   }
 }

@@ -17,7 +17,7 @@ class GipsyHillScraper : Scraper {
       val parts = rawSummary.extract("Sold as: ((\\d+) x )?(\\d+)ml")
       val numCans = parts?.get(2)?.toIntOrNull() ?: 1
 
-      ParsedItem(
+      ScrapedItem(
         thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
         url = url,
         name = a.textFrom(".woocommerce-loop-product__title"),

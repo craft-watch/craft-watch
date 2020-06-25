@@ -1,6 +1,6 @@
 package choliver.neapi.scrapers
 
-import choliver.neapi.ParsedItem
+import choliver.neapi.ScrapedItem
 import choliver.neapi.Scraper
 import choliver.neapi.Scraper.Context
 import choliver.neapi.extract
@@ -15,7 +15,7 @@ class BoxcarScraper : Scraper {
     .map { details ->
       val parts = details.title.extract("^(.*?) // (.*?)% *(.*?)? // (.*?)ml$")!!
 
-      ParsedItem(
+      ScrapedItem(
         thumbnailUrl = details.thumbnailUrl,
         url = details.url,
         name = parts[1],

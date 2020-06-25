@@ -1,6 +1,6 @@
 package choliver.neapi.scrapers
 
-import choliver.neapi.ParsedItem
+import choliver.neapi.ScrapedItem
 import choliver.neapi.executeScraper
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -31,7 +31,7 @@ class FourpureScraperTest {
   @Test
   fun `extracts non-keg details`() {
     assertEquals(
-      ParsedItem(
+      ScrapedItem(
         name = "Basecamp",
         perItemPrice = 2.00,
         abv = 4.7,
@@ -47,7 +47,7 @@ class FourpureScraperTest {
   @Test
   fun `extracts keg details`() {
     assertEquals(
-      ParsedItem(
+      ScrapedItem(
         name = "Juicebox",
         summary = "Minikeg",
         perItemPrice = 35.00,

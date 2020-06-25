@@ -22,7 +22,7 @@ class FourpureScraper : Scraper {
       val title = el.title()
       if (title.contains("minikeg", ignoreCase = true)) {
         val parts = title.extract("([^\\d]+) (\\d+)L.*")!!
-        ParsedItem(
+        ScrapedItem(
           thumbnailUrl = thumbnailUrl,
           url = url,
           name = parts[1],
@@ -33,7 +33,7 @@ class FourpureScraper : Scraper {
           perItemPrice = unitPrice
         )
       } else {
-        ParsedItem(
+        ScrapedItem(
           thumbnailUrl = a.srcFrom("img"),
           url = url,
           name = el.title().extract("([^\\d]+)( \\d+ml)?")!![1],  // Strip size embedded in name

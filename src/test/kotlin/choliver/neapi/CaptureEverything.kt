@@ -1,5 +1,6 @@
 package choliver.neapi
 
+import choliver.neapi.scrapers.*
 import com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import java.io.File
@@ -10,6 +11,15 @@ fun main() {
   val mapper = jacksonObjectMapper().enable(INDENT_OUTPUT)
 
   File("frontend/src/inventory.json").outputStream().use { ostream ->
-    mapper.writeValue(ostream, executor.scrapeAll())
+    mapper.writeValue(ostream, executor.scrapeAll(
+      BoxcarScraper(),
+      CanopyScraper(),
+      FourpureScraper(),
+      GipsyHillScraper(),
+      HowlingHopsScraper(),
+      PillarsScraper(),
+      PressureDropScraper(),
+      VillagesScraper()
+    ))
   }
 }

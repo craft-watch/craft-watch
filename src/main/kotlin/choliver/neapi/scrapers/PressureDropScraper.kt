@@ -18,7 +18,7 @@ class PressureDropScraper : Scraper {
 
       val parts = itemDoc.extractFrom(".product__title", "^(.*?)\\s*-\\s*(.*?)$")!!
 
-      ParsedItem(
+      ScrapedItem(
         thumbnailUrl = a.srcFrom("noscript img"),
         url = url,
         name = parts[1],
