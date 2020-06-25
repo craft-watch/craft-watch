@@ -14,8 +14,8 @@ class FourpureScraper : Scraper {
     .filterNot { el -> el.title().contains("pack", ignoreCase = true) }  // Can't figure out how to extract price-per-can from packs, so ignore
     .map { el ->
       val a = el.selectFirst("a")
-      val thumbnailUrl = ROOT_URL.resolve(a.srcFrom("img"))
-      val url = URI(a.hrefFrom())
+      val thumbnailUrl = a.srcFrom("img")
+      val url = a.hrefFrom()
       val itemDoc = request(url)
       val abv = itemDoc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+\\.\\d+)")!![1].toDouble()
       val unitPrice = (el.selectFirst(".priceNow") ?: el.selectFirst(".priceStandard")).priceFrom(".GBP")
@@ -35,7 +35,7 @@ class FourpureScraper : Scraper {
         )
       } else {
         ParsedItem(
-          thumbnailUrl = ROOT_URL.resolve(a.srcFrom("img")),
+          thumbnailUrl = a.srcFrom("img"),
           url = url,
           name = el.title().extract("([^\\d]+)( \\d+ml)?")!![1],  // Strip size embedded in name
           abv = abv,

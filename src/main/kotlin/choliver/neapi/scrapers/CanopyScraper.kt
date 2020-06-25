@@ -15,13 +15,13 @@ class CanopyScraper : Scraper {
     .flatMap { it.select(".grid__item") }
     .filterNot { it.textFrom(".product__title").contains("box|pack".toRegex(IGNORE_CASE)) }  // Don't know how to extract number of can
     .map { el ->
-      val a = el.selectFirst(".product__title a")
+      val a = el.selectFrom(".product__title a")
       val parts = a.extractFrom(regex = "([^\\d]+) (\\d+(\\.\\d+)?)?")!!
-      val url = ROOT_URL.resolve(a.hrefFrom())
+      val url = a.hrefFrom()
       val itemDoc = request(url)
 
       ParsedItem(
-        thumbnailUrl = ROOT_URL.resolve(el.srcFrom(".grid__image img")),
+        thumbnailUrl = el.srcFrom(".grid__image img"),
         url = url,
         name = parts[1],
         summary = null,
