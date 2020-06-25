@@ -3,7 +3,7 @@ package choliver.neapi
 import mu.KotlinLogging
 import java.net.URI
 
-class Executor(private val getter: HttpGetter) {
+class Executor(getter: HttpGetter) {
   private val jsonGetter = JsonGetter(getter)
   private val logger = KotlinLogging.logger {}
 
