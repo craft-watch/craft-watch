@@ -10,7 +10,7 @@ const items = (_inventory as Inventory).items;
 const shuffledItems = _.flatten(_.shuffle(_.groupBy(items, item => item.brewery)));
 
 interface AppState {
-  breweryVisibility: { [key: string]: boolean; }; 
+  breweryVisibility: { [key: string]: boolean }; 
 }
 
 class App extends React.Component<{}, AppState> {
@@ -21,7 +21,7 @@ class App extends React.Component<{}, AppState> {
     };
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <div>
         <Menu
@@ -37,7 +37,7 @@ class App extends React.Component<{}, AppState> {
     );
   }
 
-  private handleToggleVisibility(brewery: string) {
+  private handleToggleVisibility(brewery: string): void {
     this.setState(state => {
       const breweryVisibility = { ...state.breweryVisibility };
       breweryVisibility[brewery] = !breweryVisibility[brewery];
@@ -45,7 +45,7 @@ class App extends React.Component<{}, AppState> {
     });
   }
 
-  private handleGlobalVisibility(visible: boolean) {
+  private handleGlobalVisibility(visible: boolean): void {
     this.setState(state => {
       const breweryVisibility = { ...state.breweryVisibility };
       _.each(breweryVisibility, (_, b) => breweryVisibility[b] = visible);
