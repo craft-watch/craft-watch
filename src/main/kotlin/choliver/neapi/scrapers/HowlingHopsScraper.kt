@@ -21,38 +21,49 @@ class HowlingHopsScraper : Scraper {
         .toDouble()
 
       val itemDoc = request(url)
-      val available = itemDoc.textFrom(".stock") == "In stock"
-
-      val shortDesc = itemDoc.textFrom(".woocommerce-product-details__short-description")
-      val parts = shortDesc.extract("([^/]*?) / ([^/]*?) / (\\d+) x (\\d+)ml / (\\d+(\\.\\d+)?)% ABV")
-      if (parts != null) {
-        ScrapedItem(
-          thumbnailUrl = thumbnailUrl,
-          url = url,
-          name = parts[1],
-          summary = parts[2],
-          available = available,
-          sizeMl = parts[4].toInt(),
-          abv = parts[5].toDouble(),
-          perItemPrice = price.divideAsPrice(parts[3].toInt())
-        )
-      } else {
-        with(shortDesc.extract("(.*?) (\\d+) x (\\d+)ml")!!) {
-          val numCans = this[2].toInt()
-          ScrapedItem(
-            thumbnailUrl = thumbnailUrl,
-            url = url,
-            name = this[1],
-            summary = "${numCans} cans",
-            available = available,
-            sizeMl = this[3].toInt(),
-            abv = null,
-            perItemPrice = price.divideAsPrice(numCans)
-          )
-        }
-      }
+      val parts = extractVariableParts(itemDoc.textFrom(".woocommerce-product-details__short-description"))
+      ScrapedItem(
+        thumbnailUrl = thumbnailUrl,
+        url = url,
+        name = parts.name,
+        summary = parts.summary,
+        available = itemDoc.textFrom(".stock") == "In stock",
+        sizeMl = parts.sizeMl,
+        abv = parts.abv,
+        perItemPrice = price.divideAsPrice(parts.numCans)
+      )
     }
     .bestPricedItems()
+
+  private data class VariableParts(
+    val name: String,
+    val summary: String,
+    val abv: Double? = null,
+    val sizeMl: Int,
+    val numCans: Int
+  )
+
+  private fun extractVariableParts(desc: String): VariableParts {
+    val parts = desc.extract("([^/]*?) / ([^/]*?) / (\\d+) x (\\d+)ml / (\\d+(\\.\\d+)?)% ABV")
+    return if (parts != null) {
+      VariableParts(
+        name = parts[1],
+        summary = parts[2],
+        sizeMl = parts[4].toInt(),
+        abv = parts[5].toDouble(),
+        numCans = parts[3].toInt()
+      )
+    } else {
+      val betterParts = desc.extract("(.*?) (\\d+) x (\\d+)ml")!!
+      val numCans = betterParts[2].toInt()
+      VariableParts(
+        name = betterParts[1],
+        summary = "${numCans} cans",
+        sizeMl = betterParts[3].toInt(),
+        numCans = numCans
+      )
+    }
+  }
 
   companion object {
     private val ROOT_URL = URI("https://www.howlinghops.co.uk/shop")
