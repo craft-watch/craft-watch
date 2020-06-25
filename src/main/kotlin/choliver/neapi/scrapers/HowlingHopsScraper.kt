@@ -1,7 +1,6 @@
 package choliver.neapi.scrapers
 
-import choliver.neapi.ParsedItem
-import choliver.neapi.Scraper
+import choliver.neapi.*
 import choliver.neapi.Scraper.Context
 import java.net.URI
 
@@ -13,8 +12,8 @@ class HowlingHopsScraper : Scraper {
     .select(".wc-block-grid__product")
     .map { el ->
       val a = el.selectFirst(".wc-block-grid__product-link")
-      val url = URI(a.hrefFrom())
-      val thumbnailUrl = URI(a.srcFrom(".attachment-woocommerce_thumbnail"))
+      val url = a.hrefFrom()
+      val thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail")
       val price = el.select(".woocommerce-Price-amount")
         .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
         .first()

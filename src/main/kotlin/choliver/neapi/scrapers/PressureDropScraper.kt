@@ -1,7 +1,6 @@
 package choliver.neapi.scrapers
 
-import choliver.neapi.ParsedItem
-import choliver.neapi.Scraper
+import choliver.neapi.*
 import choliver.neapi.Scraper.Context
 import java.net.URI
 
@@ -12,7 +11,7 @@ class PressureDropScraper : Scraper {
     .select(".product-grid-item")
     .map { el ->
       val a = el.selectFirst(".grid__image")
-      val url = ROOT_URL.resolve(a.hrefFrom())
+      val url = a.hrefFrom()
 
       val itemDoc = request(url)
       val itemText = itemDoc.text()
@@ -20,7 +19,7 @@ class PressureDropScraper : Scraper {
       val parts = itemDoc.extractFrom(".product__title", "^(.*?)\\s*-\\s*(.*?)$")!!
 
       ParsedItem(
-        thumbnailUrl = ROOT_URL.resolve(a.srcFrom("noscript img")),
+        thumbnailUrl = a.srcFrom("noscript img"),
         url = url,
         name = parts[1],
         summary = parts[2],
