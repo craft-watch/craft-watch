@@ -26,8 +26,7 @@ class CanopyScraperTest {
         abv = 5.6,
         sizeMl = 330,
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Brockwell-F_large.png?v=1539104364"),
-        url = URI("https://shop.canopybeer.com/products/brockwell-ipa")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Brockwell-F_large.png?v=1539104364")
       ),
       ITEMS.first { it.name == "Brockwell IPA" }
     )

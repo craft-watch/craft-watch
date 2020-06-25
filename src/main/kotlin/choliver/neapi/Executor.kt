@@ -1,19 +1,41 @@
 package choliver.neapi
 
-class Executor(private val getter: HttpGetter) {
+import mu.KotlinLogging
+import java.net.URI
+
+class Executor(getter: HttpGetter) {
+  private val jsonGetter = JsonGetter(getter)
+  private val logger = KotlinLogging.logger {}
+
   fun scrapeAll(vararg scrapers: Scraper) = Inventory(
     items = scrapers.flatMap { scraper ->
-      with(scraper) {
-        val brewery = name
-          .trim()
-          .validate("non-blank brewery name") { it.isNotBlank() }
+      val brewery = scraper.name
+        .trim()
+        .validate("non-blank brewery name") { it.isNotBlank() }
 
-        RealScraperContext(getter).scrape().map { it.toItem(brewery) }
-      }
+      scraper.scrapeIndex(jsonGetter.request(scraper.rootUrl))
+        .mapNotNull { (url, scrapeItem) ->
+          val item = scrapeItem(jsonGetter.request(url))
+          if (item != null) {
+            item.toItem(brewery, url)
+          } else {
+            logger.info("Skipping")
+            null
+          }
+        }
+        .bestPricedItems()
     }
   )
 
-  private fun ScrapedItem.toItem(brewery: String) = Item(
+  private fun List<Item>.bestPricedItems() = groupBy { it.name to it.summary }
+    .map { (key, group) ->
+      if (group.size > 1) {
+        logger.info("Eliminating ${group.size - 1} item(s) with worse prices for: ${key}")
+      }
+      group.minBy { it.perItemPrice }!!
+    }
+
+  private fun ScrapedItem.toItem(brewery: String, url: URI) = Item(
     brewery = brewery,
     name = name
       .trim()

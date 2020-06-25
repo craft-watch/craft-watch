@@ -13,7 +13,7 @@ class PillarsScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(5, ITEMS.size)
+    assertEquals(7, ITEMS.size)
   }
 
   @Test
@@ -26,8 +26,7 @@ class PillarsScraperTest {
         abv = 8.0,
         perItemPrice = 6.00,
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0367/7857/3883/products/Icebock_Shopify_1edf8964-413d-4ad8-9b05-9a9672a48796_250x250.png"),
-        url = URI("https://shop.pillarsbrewery.com/collections/pillars-beers/products/pillars-icebock")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0367/7857/3883/products/Icebock_Shopify_1edf8964-413d-4ad8-9b05-9a9672a48796_250x250.png")
       ),
       ITEMS.first { it.name == "Pillars Icebock" }
     )

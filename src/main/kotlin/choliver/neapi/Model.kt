@@ -25,6 +25,5 @@ data class ScrapedItem(
   val sizeMl: Int? = null,
   val abv: Double? = null,
   val available: Boolean,
-  val thumbnailUrl: URI,
-  val url: URI
+  val thumbnailUrl: URI
 )

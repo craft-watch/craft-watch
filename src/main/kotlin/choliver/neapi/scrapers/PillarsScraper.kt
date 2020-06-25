@@ -1,21 +1,20 @@
 package choliver.neapi.scrapers
 
 import choliver.neapi.*
-import choliver.neapi.Scraper.Context
+import choliver.neapi.Scraper.IndexEntry
+import org.jsoup.nodes.Document
 import java.net.URI
 
 class PillarsScraper : Scraper {
   override val name = "Pillars"
+  override val rootUrl = URI("https://shop.pillarsbrewery.com/collections/pillars-beers")
 
-  override fun Context.scrape() = //      val itemText = request(details.url).text()
-//      val sizeMl = itemText.extract("(\\d+)ml")?.get(1)?.toInt()
-    request(ROOT_URL)
-      .shopifyItems()
-      .mapNotNull { details ->
+  override fun scrapeIndex(root: Document) = root
+    .shopifyItems()
+    .map { details ->
+      IndexEntry(details.url) { doc ->
         val titleParts = extractTitleParts(details.title)
-
-        val itemDoc = request(details.url)
-        val descParts = itemDoc.extractFrom(
+        val descParts = doc.extractFrom(
           ".product-single__description",
           "STYLE:\\s+(.+?)\\s+ABV:\\s+(\\d\\.\\d+)%"
         )
@@ -26,7 +25,6 @@ class PillarsScraper : Scraper {
         } else {
           ScrapedItem(
             thumbnailUrl = details.thumbnailUrl,
-            url = details.url,
             name = titleParts.name,
             summary = if (titleParts.keg) "Minikeg" else descParts[1].toTitleCase(),
             sizeMl = titleParts.sizeMl,
@@ -36,7 +34,7 @@ class PillarsScraper : Scraper {
           )
         }
       }
-      .bestPricedItems()
+    }
 
   private data class TitleParts(
     val name: String,
@@ -55,9 +53,5 @@ class PillarsScraper : Scraper {
       TitleParts(name = parts[1], sizeMl = parts[2].toInt() * 1000, keg = true)
     }
     else -> TitleParts(name = title)
-  }
-
-  companion object {
-    private val ROOT_URL = URI("https://shop.pillarsbrewery.com/collections/pillars-beers")
   }
 }

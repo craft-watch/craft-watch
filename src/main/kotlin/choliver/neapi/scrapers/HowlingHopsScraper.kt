@@ -1,39 +1,39 @@
 package choliver.neapi.scrapers
 
 import choliver.neapi.*
-import choliver.neapi.Scraper.Context
+import choliver.neapi.Scraper.IndexEntry
+import org.jsoup.nodes.Document
 import java.net.URI
 
 class HowlingHopsScraper : Scraper {
   override val name = "Howling Hops"
+  override val rootUrl = URI("https://www.howlinghops.co.uk/shop")
 
-  override fun Context.scrape() = request(ROOT_URL)
-    .selectFirst(".wc-block-handpicked-products") // Avoid apparel
-    .select(".wc-block-grid__product")
+  override fun scrapeIndex(root: Document) = root
+    .selectFrom(".wc-block-handpicked-products") // Avoid apparel
+    .selectMultipleFrom(".wc-block-grid__product")
     .map { el ->
-      val a = el.selectFirst(".wc-block-grid__product-link")
-      val url = a.hrefFrom()
-      val thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail")
-      val price = el.select(".woocommerce-Price-amount")
-        .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
-        .first()
-        .ownText()
-        .toDouble()
+      val a = el.selectFrom(".wc-block-grid__product-link")
 
-      val itemDoc = request(url)
-      val parts = extractVariableParts(itemDoc.textFrom(".woocommerce-product-details__short-description"))
-      ScrapedItem(
-        thumbnailUrl = thumbnailUrl,
-        url = url,
-        name = parts.name,
-        summary = parts.summary,
-        available = itemDoc.textFrom(".stock") == "In stock",
-        sizeMl = parts.sizeMl,
-        abv = parts.abv,
-        perItemPrice = price.divideAsPrice(parts.numCans)
-      )
+      IndexEntry(a.hrefFrom()) { doc ->
+        val parts = extractVariableParts(doc.textFrom(".woocommerce-product-details__short-description"))
+
+        ScrapedItem(
+          thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
+          name = parts.name,
+          summary = parts.summary,
+          available = doc.textFrom(".stock") == "In stock",
+          sizeMl = parts.sizeMl,
+          abv = parts.abv,
+          perItemPrice = el.selectMultipleFrom(".woocommerce-Price-amount")
+            .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
+            .first()
+            .ownText()
+            .toDouble()
+            .divideAsPrice(parts.numCans)
+        )
+      }
     }
-    .bestPricedItems()
 
   private data class VariableParts(
     val name: String,
@@ -63,9 +63,5 @@ class HowlingHopsScraper : Scraper {
         numCans = numCans
       )
     }
-  }
-
-  companion object {
-    private val ROOT_URL = URI("https://www.howlinghops.co.uk/shop")
   }
 }

@@ -5,9 +5,12 @@ import java.net.URI
 
 interface Scraper {
   val name: String
-  fun Context.scrape(): List<ScrapedItem>
+  val rootUrl: URI
 
-  interface Context {
-    fun request(url: URI): Document
-  }
+  fun scrapeIndex(root: Document): List<IndexEntry>
+
+  data class IndexEntry(
+    val url: URI,
+    val scrapeItem: (doc: Document) -> ScrapedItem?
+  )
 }

@@ -1,4 +1,5 @@
 import org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
   kotlin("jvm") version "1.3.72"
@@ -9,13 +10,6 @@ version = "0.0.0"
 
 repositories {
   jcenter() // Because of kotlinx.html
-}
-
-tasks.test {
-  useJUnitPlatform()
-  testLogging {
-    events(FAILED)
-  }
 }
 
 dependencies {
@@ -30,4 +24,17 @@ dependencies {
   // byte-buddy 1.9.10 (pulled in by Mockito) behaves badly with Java 13 - see https://github.com/mockk/mockk/issues/397
   testImplementation("net.bytebuddy:byte-buddy:1.10.6")
   testRuntimeOnly("ch.qos.logback:logback-classic:1.2.3")
+}
+
+tasks.withType<KotlinCompile>().configureEach {
+  kotlinOptions {
+    jvmTarget = "1.8"
+  }
+}
+
+tasks.test {
+  useJUnitPlatform()
+  testLogging {
+    events(FAILED)
+  }
 }

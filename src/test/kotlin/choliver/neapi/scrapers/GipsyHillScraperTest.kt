@@ -13,12 +13,7 @@ class GipsyHillScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(18, ITEMS.size)
-  }
-
-  @Test
-  fun `eliminates duplicates`() {
-    assertEquals(1, ITEMS.filter { it.name == "Moneybags" }.size)
+    assertEquals(20, ITEMS.size)
   }
 
   @Test
@@ -31,8 +26,7 @@ class GipsyHillScraperTest {
         abv = 2.8,
         sizeMl = 330,
         available = true,
-        thumbnailUrl = URI("https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/CARVER.png?resize=300%2C300&ssl=1"),
-        url = URI("https://gipsyhillbrew.com/product/carver/")
+        thumbnailUrl = URI("https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/CARVER.png?resize=300%2C300&ssl=1")
       ),
       ITEMS.first { it.name == "Carver" }
     )

@@ -61,16 +61,6 @@
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/table-beer"
   }, {
     "brewery" : "Boxcar",
-    "name" : "English Porter",
-    "summary" : null,
-    "sizeMl" : 440,
-    "abv" : 6.0,
-    "perItemPrice" : 4.75,
-    "available" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/porter_345x345.jpg",
-    "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/english-porter-6-0-440ml"
-  }, {
-    "brewery" : "Boxcar",
     "name" : "Best Bitter with Mills Brewing",
     "summary" : null,
     "sizeMl" : 440,
