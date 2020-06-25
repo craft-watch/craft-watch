@@ -18,7 +18,7 @@ interface State {
   sortDescending: boolean;
 }
 
-export class Column<T> extends React.PureComponent<ColumnProps<T>> {};
+export class Column<T> extends React.PureComponent<ColumnProps<T>> {}
 
 export default class SortableTable<T> extends React.Component<SortableTableProps<T>, State> {
   constructor(props: SortableTableProps<T>) {

@@ -22,10 +22,19 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext 'js,jsx,ts,tsx' src/"
+    "lint": "eslint --max-warnings=0 --ext 'js,jsx,ts,tsx' src/"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+      "@typescript-eslint/explicit-function-return-type": ["warn", {
+        "allowExpressions": true
+      }]
+    }
   },
   "browserslist": {
     "production": [

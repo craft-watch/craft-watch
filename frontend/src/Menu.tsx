@@ -2,7 +2,7 @@ import React from "react";
 import _ from "underscore";
 
 export interface MenuProps {
-  breweryVisibility: { [key: string]: boolean; };
+  breweryVisibility: { [key: string]: boolean };
   onToggleVisibility: (brewery: string) => void;
   onGlobalVisibility: (visible: boolean) => void;
 }
