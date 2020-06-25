@@ -1,4 +1,4 @@
-package choliver.neapi.scrapers
+package choliver.neapi
 
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
@@ -13,11 +13,6 @@ data class ShopifyItemDetails(
   val price: Double,
   val available: Boolean
 )
-
-class ScraperException : RuntimeException {
-  constructor(message: String) : super(message)
-  constructor(message: String, cause: Throwable) : super(message, cause)
-}
 
 fun Document.shopifyItems() = select(".product-card").map {
   ShopifyItemDetails(

@@ -20,14 +20,12 @@ class HttpGetter(private val cacheDir: File) {
       fromZip(zip)
     } else {
       logger.info("${url}: writing to cache: ${zip}")
-      val text = url.toURL().readText()
-      zip.parentFile.mkdirs()
-      toZip(zip, text)
-      text
+      url.toURL().readText().also { toZip(zip, it) }
     }
   }
 
   private fun toZip(zip: File, text: String) {
+    zip.parentFile.mkdirs()
     ZipOutputStream(zip.outputStream().buffered()).use { zos ->
       zos.putNextEntry(ZipEntry("my.html"))
       zos.write(text.toByteArray())

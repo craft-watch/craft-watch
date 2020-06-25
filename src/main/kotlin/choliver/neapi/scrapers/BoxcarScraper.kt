@@ -3,6 +3,8 @@ package choliver.neapi.scrapers
 import choliver.neapi.ParsedItem
 import choliver.neapi.Scraper
 import choliver.neapi.Scraper.Context
+import choliver.neapi.extract
+import choliver.neapi.shopifyItems
 import java.net.URI
 
 class BoxcarScraper : Scraper {

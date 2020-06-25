@@ -1,7 +1,6 @@
 package choliver.neapi.scrapers
 
-import choliver.neapi.ParsedItem
-import choliver.neapi.Scraper
+import choliver.neapi.*
 import choliver.neapi.Scraper.Context
 import java.net.URI
 
