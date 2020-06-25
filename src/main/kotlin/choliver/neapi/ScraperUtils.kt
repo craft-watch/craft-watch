@@ -40,5 +40,6 @@ private val BEER_ACRONYMS = listOf(
   "IPA",
   "DDH",
   "NEIPA",
-  "DIPA"
+  "DIPA",
+  "XPA"
 )

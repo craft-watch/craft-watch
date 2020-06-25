@@ -13,6 +13,7 @@ fun main() {
     mapper.writeValue(ostream, executor.scrapeAll(
       BoxcarScraper(),
       CanopyScraper(),
+      FivePointsScraper(),
       FourpureScraper(),
       GipsyHillScraper(),
       HowlingHopsScraper(),
