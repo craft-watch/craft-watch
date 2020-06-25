@@ -1,11 +1,13 @@
 import React, { ReactElement } from "react";
 import _ from "underscore";
 
+export type Renderer<T> = (datum: T) => JSX.Element | string | null;
+
 export interface ColumnProps<T> {
   name?: string;
   className?: string;
-  render: (datum: T) => ReactElement | string | null;
-  selector?: (datum: T) => any;
+  render: Renderer<T>;
+  selector?: (datum: T) => any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 export interface SortableTableProps<T> {
@@ -32,7 +34,7 @@ export default class SortableTable<T> extends React.Component<SortableTableProps
   // TODO - memoize sorted data
   // TODO - reset state if column config changes
 
-  render() {
+  render(): JSX.Element {
     const columns = React.Children.toArray(this.props.children) as Array<ReactElement<ColumnProps<T>>>;
     return (
       <table>
@@ -75,7 +77,7 @@ export default class SortableTable<T> extends React.Component<SortableTableProps
     );
   }
 
-  private handleHeaderClick(idx: number) {
+  private handleHeaderClick(idx: number): void {
     this.setState(state => ({
       sortColIdx: idx,
       sortDescending: (state.sortColIdx === idx) ? !state.sortDescending : false,

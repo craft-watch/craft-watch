@@ -19,7 +19,7 @@ export default class Menu extends React.Component<MenuProps, State> {
     };
   }
   
-  render() {
+  render(): JSX.Element {
     return (
       <div id="menu">
         {this.state.expanded ? this.renderExpanded() : this.renderCollapsed()}
@@ -27,7 +27,7 @@ export default class Menu extends React.Component<MenuProps, State> {
     );
   }
 
-  private renderCollapsed() {
+  private renderCollapsed(): JSX.Element {
     return (
       <div className="collapsed">
         <div className="button" onClick={() => this.setState({ expanded: true })}>&#9776;</div>
@@ -35,7 +35,7 @@ export default class Menu extends React.Component<MenuProps, State> {
     );
   }
 
-  private renderExpanded() {
+  private renderExpanded(): JSX.Element {
     return (
       <div className="expanded">
         <div className="button" onClick={() => this.setState({ expanded: false })}>&times;</div>
