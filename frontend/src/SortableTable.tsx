@@ -83,7 +83,7 @@ export default class SortableTable<T> extends React.Component<SortableTableProps
   }
 
   private getSortedData(columns: Array<ReactElement<ColumnProps<T>>>): Array<T> {
-    const selector = this.state.sortColIdx ? columns[this.state.sortColIdx].props.selector : null;
+    const selector = (this.state.sortColIdx === null) ? null : columns[this.state.sortColIdx].props.selector;
     const sortedData = selector ? _.sortBy(this.props.data, selector) : this.props.data;
     return this.state.sortDescending ? sortedData.reverse() : sortedData;
   }
