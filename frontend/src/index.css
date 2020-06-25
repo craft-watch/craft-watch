@@ -42,7 +42,8 @@ th {
   background: var(--sol-base2);
   position: sticky;
   top: 0px;
-  font-size: larger;  
+  font-size: larger; 
+  z-index: 1; 
 }
 
 th:first-child {
