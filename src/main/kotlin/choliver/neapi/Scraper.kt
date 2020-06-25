@@ -3,13 +3,18 @@ package choliver.neapi
 import org.jsoup.nodes.Document
 import java.net.URI
 
-interface Scraper<T> {
+interface Scraper {
   val name: String
-  fun Context.scrape(): List<ScrapedItem>
+  val rootUrl: URI
 
-  fun Context.scrapeFoSho(): List<Pair<URI, (Document) -> ScrapedItem>> = emptyList()
+  fun scrapeIndex(root: Document): List<IndexEntry>
 
   interface Context {
     fun request(url: URI): Document
   }
+
+  data class IndexEntry(
+    val url: URI,
+    val scrapeItem: (doc: Document) -> ScrapedItem?
+  )
 }

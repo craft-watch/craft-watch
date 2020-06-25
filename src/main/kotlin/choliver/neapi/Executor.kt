@@ -1,19 +1,33 @@
 package choliver.neapi
 
+import mu.KotlinLogging
+import java.net.URI
+
 class Executor(private val getter: HttpGetter) {
+  private val logger = KotlinLogging.logger {}
+
   fun scrapeAll(vararg scrapers: Scraper) = Inventory(
     items = scrapers.flatMap { scraper ->
-      with(scraper) {
-        val brewery = name
-          .trim()
-          .validate("non-blank brewery name") { it.isNotBlank() }
+      val ctx = RealScraperContext(getter)
 
-        RealScraperContext(getter).scrape().map { it.toItem(brewery) }
-      }
+      val brewery = scraper.name
+        .trim()
+        .validate("non-blank brewery name") { it.isNotBlank() }
+
+      scraper.scrapeIndex(ctx.request(scraper.rootUrl))
+        .mapNotNull { (url, scrapeItem) ->
+          val item = scrapeItem(ctx.request(url))
+          if (item != null) {
+            item.toItem(brewery, url)
+          } else {
+            logger.info("Skipping")
+            null
+          }
+        }
     }
   )
 
-  private fun ScrapedItem.toItem(brewery: String) = Item(
+  private fun ScrapedItem.toItem(brewery: String, url: URI) = Item(
     brewery = brewery,
     name = name
       .trim()

@@ -26,8 +26,7 @@ class HowlingHopsScraperTest {
         abv = 5.8,
         sizeMl = 440,
         available = true,
-        thumbnailUrl = URI("https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png"),
-        url = URI("https://www.howlinghops.co.uk/product/push-push-4-x-440ml/")
+        thumbnailUrl = URI("https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png")
       ),
       ITEMS.first { it.name == "Push Push" }
     )

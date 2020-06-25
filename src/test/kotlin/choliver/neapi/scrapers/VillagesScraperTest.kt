@@ -26,8 +26,7 @@ class VillagesScraperTest {
         sizeMl = 330,
         perItemPrice = 2.13,
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345.jpg"),
-        url = URI("https://villagesbrewery.com/collections/buy-beer/products/rodeo-pale-ale")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345.jpg")
       ),
       ITEMS.first { it.name == "Rodeo" }
     )
@@ -43,8 +42,7 @@ class VillagesScraperTest {
         sizeMl = 330,
         perItemPrice = 2.19,
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg"),
-        url = URI("https://villagesbrewery.com/collections/buy-beer/products/villages-mixed-case")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg")
       ),
       ITEMS.first { it.name == "Villages Mixed Case" }
     )

@@ -37,8 +37,7 @@ class FourpureScraperTest {
         abv = 4.7,
         sizeMl = 330,
         available = true,
-        thumbnailUrl = URI("https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_pilslager_1566986321BASECAMPNB.png"),
-        url = URI("https://www.fourpure.com/item/3/Fourpure/Basecamp.html")
+        thumbnailUrl = URI("https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_pilslager_1566986321BASECAMPNB.png")
       ),
       ITEMS.first { it.name == "Basecamp" }
     )
@@ -54,8 +53,7 @@ class FourpureScraperTest {
         abv = 5.9,
         sizeMl = 5000,
         available = true,
-        thumbnailUrl = URI("https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_juicebox5lminikeg_1588779669WhatsAppImage20200506at14.07.452.jpeg"),
-        url = URI("https://www.fourpure.com/item/286/Fourpure/Juicebox-5L-Minikeg.html")
+        thumbnailUrl = URI("https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_juicebox5lminikeg_1588779669WhatsAppImage20200506at14.07.452.jpeg")
       ),
       ITEMS.first { it.name == "Juicebox" && it.summary == "Minikeg" }
     )

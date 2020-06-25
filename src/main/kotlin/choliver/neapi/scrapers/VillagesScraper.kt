@@ -1,29 +1,30 @@
 package choliver.neapi.scrapers
 
 import choliver.neapi.*
-import choliver.neapi.Scraper.Context
+import choliver.neapi.Scraper.IndexEntry
+import org.jsoup.nodes.Document
 import java.net.URI
 
 class VillagesScraper : Scraper {
   override val name = "Villages"
+  override val rootUrl = URI("https://villagesbrewery.com/collections/buy-beer")
 
-  override fun Context.scrape() = request(ROOT_URL)
+  override fun scrapeIndex(root: Document) = root
     .shopifyItems()
     .map { details ->
-      val itemText = request(details.url).text()
-      val sizeMl = itemText.extract("(\\d+)ml")?.get(1)?.toInt()
-      val parts = extractVariableParts(details.title)
+      IndexEntry(details.url) { doc ->
+        val parts = extractVariableParts(details.title)
 
-      ScrapedItem(
-        thumbnailUrl = details.thumbnailUrl,
-        url = details.url,
-        name = parts.name.toTitleCase(),
-        summary = parts.summary,
-        sizeMl = sizeMl,
-        abv = parts.abv,
-        available = details.available,
-        perItemPrice = details.price.divideAsPrice(parts.numCans)
-      )
+        ScrapedItem(
+          thumbnailUrl = details.thumbnailUrl,
+          name = parts.name.toTitleCase(),
+          summary = parts.summary,
+          sizeMl = doc.extractFrom(regex = "(\\d+)ml")?.get(1)?.toInt(),
+          abv = parts.abv,
+          available = details.available,
+          perItemPrice = details.price.divideAsPrice(parts.numCans)
+        )
+      }
     }
 
   private data class VariableParts(
@@ -48,9 +49,5 @@ class VillagesScraper : Scraper {
       numCans = 12,
       abv = parts[4].toDouble()
     )
-  }
-
-  companion object {
-    private val ROOT_URL = URI("https://villagesbrewery.com/collections/buy-beer")
   }
 }
