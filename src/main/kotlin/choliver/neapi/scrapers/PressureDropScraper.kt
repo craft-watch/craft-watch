@@ -14,8 +14,9 @@ class PressureDropScraper : Scraper {
     .selectMultipleFrom(".product-grid-item")
     .map { el ->
       val a = el.selectFrom(".grid__image")
+      val rawName = el.textFrom(".f--title")
 
-      IndexEntry(a.hrefFrom()) { doc ->
+      IndexEntry(rawName, a.hrefFrom()) { doc ->
         val itemText = doc.text()
         val parts = doc.extractFrom(".product__title", "^(.*?)\\s*-\\s*(.*?)$")!!
 

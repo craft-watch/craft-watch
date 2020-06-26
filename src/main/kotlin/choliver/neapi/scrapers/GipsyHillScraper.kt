@@ -14,15 +14,16 @@ class GipsyHillScraper : Scraper {
     .selectMultipleFrom(".product")
     .map { el ->
       val a = el.selectFrom(".woocommerce-LoopProduct-link")
+      val name = a.textFrom(".woocommerce-loop-product__title")
 
-      IndexEntry(a.hrefFrom()) { doc ->
+      IndexEntry(name, a.hrefFrom()) { doc ->
         val rawSummary = doc.textFrom(".summary")
         val parts = rawSummary.extract("Sold as: ((\\d+) x )?(\\d+)ml")
         val numCans = parts?.get(2)?.toIntOrNull() ?: 1
 
         Item(
           thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
-          name = a.textFrom(".woocommerce-loop-product__title"),
+          name = name,
           summary = rawSummary.extract("Style: (.*) ABV")?.get(1),
           available = true, // TODO
           abv = rawSummary.extract("ABV: (.*?)%")?.get(1)?.toDouble(),

@@ -16,8 +16,9 @@ class FourpureScraper : Scraper {
     .selectMultipleFrom(".itemsBrowse li")
     .map { el ->
       val a = el.selectFrom("a")
+      val rawName = el.textFrom(".content h3")
 
-      IndexEntry(a.hrefFrom()) { doc ->
+      IndexEntry(rawName, a.hrefFrom()) { doc ->
         if (el.title().contains("pack", ignoreCase = true)) {
           Skipped("Can't calculate price-per-can for packs")
         } else {

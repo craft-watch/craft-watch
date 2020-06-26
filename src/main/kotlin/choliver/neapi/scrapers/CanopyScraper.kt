@@ -18,11 +18,12 @@ class CanopyScraper : Scraper {
     .flatMap { it.selectMultipleFrom(".grid__item") }
     .map { el ->
       val a = el.selectFrom(".product__title a")
+      val title = el.textFrom(".product__title")
 
-      IndexEntry(a.hrefFrom()) { doc ->
+      IndexEntry(title, a.hrefFrom()) { doc ->
         val parts = a.extractFrom(regex = "([^\\d]+) (\\d+(\\.\\d+)?)?")!!
 
-        if (el.textFrom(".product__title").contains("box|pack".toRegex(IGNORE_CASE))) {
+        if (title.contains("box|pack".toRegex(IGNORE_CASE))) {
           Skipped("Can't extract number of cans for packs")
         } else {
           Item(

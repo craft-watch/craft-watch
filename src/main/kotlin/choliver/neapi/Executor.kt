@@ -1,75 +1,60 @@
 package choliver.neapi
 
+import choliver.neapi.Scraper.IndexEntry
 import choliver.neapi.Scraper.Result
 import mu.KotlinLogging
-import java.net.URI
 
 class Executor(getter: HttpGetter) {
   private val jsonGetter = JsonGetter(getter)
   private val logger = KotlinLogging.logger {}
 
   fun scrapeAll(vararg scrapers: Scraper) = Inventory(
-    items = scrapers.flatMap { scraper ->
-      val brewery = scraper.name
-        .trim()
-        .validate("non-blank brewery name") { it.isNotBlank() }
+    items = scrapers.flatMap { ScraperExecutor(it).execute() }
+  )
 
-      logger.info("Executing scraper for brewery: ${brewery}")
+  inner class ScraperExecutor(private val scraper: Scraper) {
+    private val brewery = scraper.name
 
-      scraper.scrapeIndex(jsonGetter.request(scraper.rootUrl))
-        .mapNotNull { (url, scrapeItem) ->
-          when (val result = scrapeItem(jsonGetter.request(url))) {
-            is Result.Skipped -> {
-              logger.info("Skipping because: ${result.reason}")
-              null
-            }
-            is Result.Item -> result.toItem(brewery, url)
-          }
-        }
+    fun execute(): List<Item> {
+      logger.info("[${brewery}] Scraping brewery")
+
+      return scrapeIndexSafely(scraper)
+        .mapNotNull { scrapeItem(it) }
         .bestPricedItems()
     }
-  )
 
-  private fun List<Item>.bestPricedItems() = groupBy { it.name to it.summary }
-    .map { (key, group) ->
-      if (group.size > 1) {
-        logger.info("Eliminating ${group.size - 1} item(s) with worse prices for: ${key}")
+    private fun scrapeItem(entry: IndexEntry): Item? {
+      logger.info("[${brewery}] Scraping item: ${entry.rawName}")
+
+      return when (val result = scrapeItemSafely(entry)) {
+        is Result.Item -> result.normalise(brewery, entry.url)
+        is Result.Skipped -> {
+          logger.info("[${brewery}] Skipping item because: ${result.reason}")
+          null
+        }
       }
-      group.minBy { it.perItemPrice }!!
     }
 
-  private fun Result.Item.toItem(brewery: String, url: URI) = Item(
-    brewery = brewery,
-    name = name
-      .trim()
-      .validate("non-blank item name") { it.isNotBlank() },
-    summary = summary
-      ?.trim()
-      ?.validate("non-blank summary") { it.isNotBlank() },
-    // TODO - validate sane size
-    sizeMl = sizeMl,
-    abv = abv
-      ?.validate("sane ABV") { it < MAX_ABV },
-    perItemPrice = perItemPrice
-      .validate("sane price per ml") { (it / (sizeMl ?: 330)) < MAX_PRICE_PER_ML },
-    available = available,
-    thumbnailUrl = thumbnailUrl
-      .validate("absolute thumbnail URL") { it.isAbsolute }
-      .toString(),
-    url = url
-      .validate("absolute URL") { it.isAbsolute }
-      .toString()
-  )
-
-  private fun <T> T.validate(name: String, predicate: (T) -> Boolean): T {
-    if (!predicate(this)) {
-      throw ScraperException("Validation '${name}' failed for value: ${this}")
+    private fun scrapeIndexSafely(scraper: Scraper): List<IndexEntry> = try {
+      scraper.scrapeIndex(jsonGetter.request(scraper.rootUrl))
+    } catch (e: Exception) {
+      logger.error("[${brewery}] Error scraping brewery", e)
+      emptyList()
     }
-    return this
-  }
 
-  companion object {
-    private const val MAX_ABV = 14.0
-    private const val MAX_PRICE_PER_ML = 10.00 / 440   // A fairly bougie can
+    private fun scrapeItemSafely(entry: IndexEntry) = try {
+      entry.scrapeItem(jsonGetter.request(entry.url))
+    } catch (e: Exception) {
+      logger.error("[${brewery}] Error scraping item: ${entry.rawName}", e)
+      Result.Skipped("Error scraping item")
+    }
+
+    private fun List<Item>.bestPricedItems() = groupBy { it.name to it.summary }
+      .map { (key, group) ->
+        if (group.size > 1) {
+          logger.info("[${brewery}] Eliminating ${group.size - 1} more expensive item(s) for: ${key}")
+        }
+        group.minBy { it.perItemPrice }!!
+      }
   }
 }

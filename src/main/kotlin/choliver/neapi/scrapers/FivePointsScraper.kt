@@ -16,7 +16,7 @@ class FivePointsScraper : Scraper {
     .map { el ->
       val a = el.selectFrom("h2 a")
 
-      IndexEntry(a.hrefFrom()) { doc ->
+      IndexEntry(a.text(), a.hrefFrom()) { doc ->
         val parts = doc.maybeSelectFrom(".itemTitle .small")
           ?.extractFrom(regex = "(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+((\\d+)\\s+x\\s+)?(\\d+)(ml|L)")
 
