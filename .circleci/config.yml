@@ -1,6 +1,14 @@
 version: 2
 
 jobs:
+  auth:
+    docker:
+      - image: google/cloud-sdk
+    steps:
+        - run: |
+            echo "${GCLOUD_SERVICE_KEY}" | gcloud auth activate-service-account --key-file=-
+            gcloud --quiet config set project "${GOOGLE_PROJECT_ID}"
+
   test_backend:
     docker:
       - image: circleci/openjdk
@@ -79,11 +87,12 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - test_backend
-      - build_frontend
-      - deploy:
-          requires:
-            - build_frontend
-          filters:
-            branches:
-              only: master
+      - auth
+#      - test_backend
+#      - build_frontend
+#      - deploy:
+#          requires:
+#            - build_frontend
+#          filters:
+#            branches:
+#              only: master
