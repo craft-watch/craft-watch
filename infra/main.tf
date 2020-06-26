@@ -44,5 +44,5 @@ resource "google_storage_bucket_iam_policy" "policy" {
 }
 
 output "circleci_key" {
-  value = google_service_account_key.circleci.private_key
+  value = base64decode(google_service_account_key.circleci.private_key)
 }

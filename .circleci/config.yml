@@ -1,14 +1,16 @@
-version: 2
+version: 2.1
+
+orbs:
+  gcp-cli: circleci/gcp-cli@1.8.4
 
 jobs:
-  auth:
-    docker:
-      - image: google/cloud-sdk
-    steps:
-        - run: |
-            echo "${GCLOUD_SERVICE_KEY}" | base64 -d > ${HOME}/gcloud-service-key.json
-            gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
-            gcloud --quiet config set project "${GOOGLE_PROJECT_ID}"
+#  auth:
+#    docker:
+#      - image: google/cloud-sdk
+#    steps:
+#        - run: |
+#            echo "${GCLOUD_SERVICE_KEY}" | base64 -d > ${HOME}/gcloud-service-key.json
+#            gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
 
   test_backend:
     docker:
@@ -25,6 +27,7 @@ jobs:
       - run:
           name: Run tests
           command: ./gradlew check
+      - gcp-cli/initialize
       - run:
           name: Run application
           command: ./gradlew run
