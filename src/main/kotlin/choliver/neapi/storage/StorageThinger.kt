@@ -7,35 +7,35 @@ import java.io.FileNotFoundException
 import java.time.Instant
 import java.time.ZoneOffset.UTC
 import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeFormatter.ISO_TIME
 
 class StorageThinger(
-  private val rootDir: File,
+  private val backer: Backer,
   start: Instant
 ) {
   private val logger = KotlinLogging.logger {}
 
-  private val todayDir = rootDir.resolve(DATE_FORMAT.format(start))
-  private val cacheDir = todayDir.resolve(CACHE_DIRNAME)
-  private val resultsDir = todayDir.resolve(RESULTS_DIRNAME).resolve(TIME_FORMAT.format(start))
+  private val todayDir = DATE_FORMAT.format(start)
+  private val cacheDir = "${todayDir}/${CACHE_DIRNAME}"
+  private val resultsDir = "${todayDir}/${RESULTS_DIRNAME}/${TIME_FORMAT.format(start)}"
 
   fun readFromHtmlCache(key: String) = try {
-    ISO_TIME
-    val file = htmlFileInCache(key)
-    file.readText()
-      .also { logger.info("${key} read from cache: ${file.friendly()}") }
+    val fqk = htmlKey(key)
+    String(backer.read(fqk))
+      .also { logger.info("${key} read from cache: ${fqk}") }
   } catch (e: FileNotFoundException) {
     null
   }
 
   fun writeToHtmlCache(key: String, text: String) {
-    val file = htmlFileInCache(key)
-    file.createAndWrite(text.toByteArray())
-    logger.info("${key} written to cache: ${file.friendly()}")
+    val fqk = htmlKey(key)
+    backer.write(fqk, text.toByteArray())
+    logger.info("${key} written to cache: ${fqk}")
   }
 
-  fun writeResults(key: String, data: ByteArray) {
-    resultsDir.resolve(key).createAndWrite(data)  // TODO - make key safe
+  fun writeResults(key: String, content: ByteArray) {
+    val fqk = "${resultsDir}/${key}"
+    backer.write(fqk, content)  // TODO - make key safe
+    logger.info("Results written to: ${fqk}")
   }
 
   private fun File.createAndWrite(data: ByteArray) {
@@ -43,9 +43,7 @@ class StorageThinger(
     writeBytes(data)
   }
 
-  private fun htmlFileInCache(key: String) = cacheDir.resolve(key.sha1() + ".html")
-
-  private fun File.friendly() = relativeTo(rootDir)
+  private fun htmlKey(key: String) = "${cacheDir}/${key.sha1()}.html"
 
   companion object {
     const val CACHE_DIRNAME = "cache"

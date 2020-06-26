@@ -4,7 +4,6 @@ import choliver.neapi.sha1
 import mu.KotlinLogging
 import java.io.File
 import java.net.URI
-import java.security.MessageDigest
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
 import java.util.zip.ZipOutputStream

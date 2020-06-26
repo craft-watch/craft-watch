@@ -3,6 +3,7 @@ package choliver.neapi
 import choliver.neapi.getters.HttpGetter
 import choliver.neapi.getters.NewCachingGetter
 import choliver.neapi.scrapers.*
+import choliver.neapi.storage.GcsBacker
 import choliver.neapi.storage.StorageThinger
 import com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
@@ -33,9 +34,10 @@ class Cli : CliktCommand(name = "scraper") {
   }
 
   private fun executeScrape() {
-    val storage = StorageThinger(STORAGE_DIR, Instant.now())
+//    val backer = LocalBacker(STORAGE_DIR)
+    val backer = GcsBacker(GCS_BUCKET)
+    val storage = StorageThinger(backer, Instant.now())
     val getter = NewCachingGetter(storage, HttpGetter())
-
     val executor = Executor(getter)
 
     val inventory = executor.scrape(*scrapers.ifEmpty { SCRAPERS.values }.toTypedArray())
