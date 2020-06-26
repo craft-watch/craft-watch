@@ -1,4 +1,4 @@
-package choliver.neapi
+package choliver.neapi.getters
 
 import mu.KotlinLogging
 import java.io.File
@@ -8,10 +8,13 @@ import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
 import java.util.zip.ZipOutputStream
 
-class HttpGetter(private val cacheDir: File) {
+class CachingGetter(
+  private val cacheDir: File,
+  private val delegate: Getter<String>
+): Getter<String> {
   private val logger = KotlinLogging.logger {}
 
-  fun get(url: URI): String {
+  override fun request(url: URI): String {
     val hash = url.toString().sha1()
     val zip = File(cacheDir, "${hash}.zip")
 
@@ -20,7 +23,7 @@ class HttpGetter(private val cacheDir: File) {
       fromZip(zip)
     } else {
       logger.info("${url}: writing to cache: ${zip}")
-      url.toURL().readText().also { toZip(zip, it) }
+      delegate.request(url).also { toZip(zip, it) }
     }
   }
 

@@ -2,6 +2,7 @@ package choliver.neapi
 
 import choliver.neapi.Scraper.IndexEntry
 import choliver.neapi.Scraper.Result
+import choliver.neapi.getters.Getter
 import com.nhaarman.mockitokotlin2.*
 import org.jsoup.nodes.Document
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -9,8 +10,8 @@ import org.junit.jupiter.api.Test
 import java.net.URI
 
 class ExecutorTest {
-  private val getter = mock<HttpGetter> {
-    on { get(any()) } doAnswer { "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>" }
+  private val getter = mock<Getter<String>> {
+    on { request(any()) } doAnswer { "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>" }
   }
   private val executor = Executor(getter)
   private val scraper = mock<Scraper> {
@@ -29,8 +30,8 @@ class ExecutorTest {
 
     executor.scrapeAll(scraper)
 
-    verify(getter).get(ROOT_URL)
-    verify(getter).get(productUrl("a"))
+    verify(getter).request(ROOT_URL)
+    verify(getter).request(productUrl("a"))
     verify(scraper).scrapeIndex(docWithHeaderMatching(ROOT_URL.toString()))
     verify(callback)(docWithHeaderMatching(productUrl("a").toString()))
   }

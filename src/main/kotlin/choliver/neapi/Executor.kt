@@ -2,10 +2,13 @@ package choliver.neapi
 
 import choliver.neapi.Scraper.IndexEntry
 import choliver.neapi.Scraper.Result
+import choliver.neapi.getters.Getter
+import choliver.neapi.getters.HttpGetter
+import choliver.neapi.getters.HtmlGetter
 import mu.KotlinLogging
 
-class Executor(getter: HttpGetter) {
-  private val jsonGetter = JsonGetter(getter)
+class Executor(getter: Getter<String>) {
+  private val jsonGetter = HtmlGetter(getter)
   private val logger = KotlinLogging.logger {}
 
   fun scrapeAll(vararg scrapers: Scraper) = Inventory(
