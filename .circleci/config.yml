@@ -17,6 +17,8 @@ jobs:
       - image: circleci/openjdk
     steps:
       - checkout
+      - gcp-cli/install
+      - gcp-cli/initialize
       - restore_cache:
           key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
       - restore_cache:
@@ -27,7 +29,6 @@ jobs:
       - run:
           name: Run tests
           command: ./gradlew check
-      - gcp-cli/initialize
       - run:
           name: Run application
           command: ./gradlew run
