@@ -91,8 +91,7 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - auth
-#      - test_backend
+      - test_backend
 #      - build_frontend
 #      - deploy:
 #          requires:
