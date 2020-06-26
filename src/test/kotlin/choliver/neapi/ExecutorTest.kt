@@ -2,6 +2,7 @@ package choliver.neapi
 
 import choliver.neapi.Scraper.IndexEntry
 import choliver.neapi.Scraper.Result
+import choliver.neapi.getters.Getter
 import com.nhaarman.mockitokotlin2.*
 import org.jsoup.nodes.Document
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -9,8 +10,8 @@ import org.junit.jupiter.api.Test
 import java.net.URI
 
 class ExecutorTest {
-  private val getter = mock<HttpGetter> {
-    on { get(any()) } doAnswer { "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>" }
+  private val getter = mock<Getter<String>> {
+    on { request(any()) } doAnswer { "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>" }
   }
   private val executor = Executor(getter)
   private val scraper = mock<Scraper> {
@@ -29,8 +30,8 @@ class ExecutorTest {
 
     executor.scrapeAll(scraper)
 
-    verify(getter).get(ROOT_URL)
-    verify(getter).get(productUrl("a"))
+    verify(getter).request(ROOT_URL)
+    verify(getter).request(productUrl("a"))
     verify(scraper).scrapeIndex(docWithHeaderMatching(ROOT_URL.toString()))
     verify(callback)(docWithHeaderMatching(productUrl("a").toString()))
   }
@@ -108,20 +109,6 @@ class ExecutorTest {
   }
 
   @Test
-  fun `item-scrape failure doesn't jettison everything`() {
-    whenever(scraper.scrapeIndex(any())) doReturn listOf(
-      indexEntry("a") { SWEET_IPA },
-      indexEntry("b") { throw ScraperException("What happened") },
-      indexEntry("c") { TED_SHANDY }
-    )
-
-    assertEquals(
-      listOf(SWEET_IPA.name, TED_SHANDY.name),
-      executor.scrapeAll(scraper).items.map { it.name }
-    )
-  }
-
-  @Test
   fun `index-scrape failure doesn't jettison everything`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
       indexEntry("a") { SWEET_IPA },
@@ -137,6 +124,36 @@ class ExecutorTest {
     assertEquals(
       listOf(SWEET_IPA.name, TED_SHANDY.name),
       executor.scrapeAll(badScraper, scraper).items.map { it.name } // Execute good and bad scrapers
+    )
+  }
+
+  @Test
+  fun `item-scrape failure doesn't jettison everything`() {
+    whenever(scraper.scrapeIndex(any())) doReturn listOf(
+      indexEntry("a") { SWEET_IPA },
+      indexEntry("b") { throw ScraperException("What happened") },
+      indexEntry("c") { TED_SHANDY }
+    )
+
+    assertEquals(
+      listOf(SWEET_IPA.name, TED_SHANDY.name),
+      executor.scrapeAll(scraper).items.map { it.name }
+    )
+  }
+
+
+
+  @Test
+  fun `normalisation failure doesn't jettison everything`() {
+    whenever(scraper.scrapeIndex(any())) doReturn listOf(
+      indexEntry("a") { SWEET_IPA },
+      indexEntry("b") { SWEET_IPA.copy(name = "") },  // Invalid name
+      indexEntry("c") { TED_SHANDY }
+    )
+
+    assertEquals(
+      listOf(SWEET_IPA.name, TED_SHANDY.name),
+      executor.scrapeAll(scraper).items.map { it.name }
     )
   }
 

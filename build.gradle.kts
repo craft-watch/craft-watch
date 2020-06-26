@@ -18,6 +18,7 @@ dependencies {
   implementation("io.github.microutils:kotlin-logging:1.7.10")
   implementation("org.jsoup:jsoup:1.13.1")
   implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.0")
+  implementation("com.github.ajalt:clikt:2.6.0")
   runtimeOnly("ch.qos.logback:logback-classic:1.2.3")
 
   testImplementation("org.junit.jupiter:junit-jupiter:5.5.2")
@@ -28,7 +29,7 @@ dependencies {
 }
 
 application {
-  mainClassName = "choliver.neapi.ApplicationKt"
+  mainClassName = "choliver.neapi.CliKt"
 }
 
 tasks.withType<KotlinCompile>().configureEach {
