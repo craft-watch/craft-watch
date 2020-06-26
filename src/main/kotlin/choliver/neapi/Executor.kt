@@ -10,7 +10,7 @@ class Executor(getter: Getter<String>) {
   private val jsonGetter = HtmlGetter(getter)
   private val logger = KotlinLogging.logger {}
 
-  fun scrapeAll(vararg scrapers: Scraper) = Inventory(
+  fun scrape(vararg scrapers: Scraper) = Inventory(
     items = scrapers.flatMap { ScraperExecutor(it).execute() }
   )
 
