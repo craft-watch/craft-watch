@@ -107,6 +107,39 @@ class ExecutorTest {
     )
   }
 
+  @Test
+  fun `item-scrape failure doesn't jettison everything`() {
+    whenever(scraper.scrapeIndex(any())) doReturn listOf(
+      IndexEntry(productUrl("a")) { SWEET_IPA },
+      IndexEntry(productUrl("b")) { throw ScraperException("What happened") },
+      IndexEntry(productUrl("c")) { TED_SHANDY }
+    )
+
+    assertEquals(
+      listOf(SWEET_IPA.name, TED_SHANDY.name),
+      executor.scrapeAll(scraper).items.map { it.name }
+    )
+  }
+
+  @Test
+  fun `index-scrape failure doesn't jettison everything`() {
+    whenever(scraper.scrapeIndex(any())) doReturn listOf(
+      IndexEntry(productUrl("a")) { SWEET_IPA },
+      IndexEntry(productUrl("b")) { TED_SHANDY }
+    )
+
+    val badScraper = mock<Scraper> {
+      on { name } doReturn "Bad Brewing"
+      on { rootUrl } doReturn URI("http://bad.invalid")
+      on { scrapeIndex(any()) } doThrow ScraperException("Noooo")
+    }
+
+    assertEquals(
+      listOf(SWEET_IPA.name, TED_SHANDY.name),
+      executor.scrapeAll(badScraper, scraper).items.map { it.name } // Execute good and bad scrapers
+    )
+  }
+
   companion object {
     private const val BREWERY = "Foo Bar"
     private val ROOT_URL = URI("https://example.invalid/shop")

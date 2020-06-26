@@ -1,5 +1,6 @@
 package choliver.neapi
 
+import choliver.neapi.Scraper.IndexEntry
 import choliver.neapi.Scraper.Result
 import mu.KotlinLogging
 
@@ -8,23 +9,40 @@ class Executor(getter: HttpGetter) {
   private val logger = KotlinLogging.logger {}
 
   fun scrapeAll(vararg scrapers: Scraper) = Inventory(
-    items = scrapers.flatMap { scraper ->
-      val brewery = scraper.name
-      logger.info("Executing scraper for brewery: ${brewery}")
-
-      scraper.scrapeIndex(jsonGetter.request(scraper.rootUrl))
-        .mapNotNull { (url, scrapeItem) ->
-          when (val result = scrapeItem(jsonGetter.request(url))) {
-            is Result.Skipped -> {
-              logger.info("Skipping because: ${result.reason}")
-              null
-            }
-            is Result.Item -> result.normalise(brewery, url)
-          }
-        }
-        .bestPricedItems()
-    }
+    items = scrapers.flatMap { scraper -> scrapeBrewery(scraper) }
   )
+
+  private fun scrapeBrewery(scraper: Scraper): List<Item> {
+    val brewery = scraper.name
+    logger.info("Executing scraper for brewery: ${brewery}")
+
+    return scrapeIndexSafely(scraper, brewery)
+      .mapNotNull { scrapeItem(it, brewery) }
+      .bestPricedItems()
+  }
+
+  private fun scrapeItem(entry: IndexEntry, brewery: String) =
+    when (val result = scrapeItemSafely(entry)) {
+      is Result.Item -> result.normalise(brewery, entry.url)
+      is Result.Skipped -> {
+        logger.info("Skipping because: ${result.reason}")
+        null
+      }
+    }
+
+  private fun scrapeIndexSafely(scraper: Scraper, brewery: String): List<IndexEntry> = try {
+    scraper.scrapeIndex(jsonGetter.request(scraper.rootUrl))
+  } catch (e: Exception) {
+    logger.error("Error scraping index for brewery: ${brewery}", e)
+    emptyList()
+  }
+
+  private fun scrapeItemSafely(entry: IndexEntry) = try {
+    entry.scrapeItem(jsonGetter.request(entry.url))
+  } catch (e: Exception) {
+    logger.error("Error scraping item", e)
+    Result.Skipped("Scraping error")
+  }
 
   private fun List<Item>.bestPricedItems() = groupBy { it.name to it.summary }
     .map { (key, group) ->
