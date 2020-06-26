@@ -38,4 +38,6 @@ gcloud init
 gcloud auth application-default login
 ```
 
+Ensure you have the **Storage Admin** role.
+
 
