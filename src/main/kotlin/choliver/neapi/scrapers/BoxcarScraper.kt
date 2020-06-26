@@ -15,7 +15,7 @@ class BoxcarScraper : Scraper {
   override fun scrapeIndex(root: Document) = root
     .shopifyItems()
     .map { details ->
-      IndexEntry(details.url) {
+      IndexEntry(details.title, details.url) {
         val parts = details.title.extract("^(.*?) // (.*?)% *(.*?)? // (.*?)ml$")!!
 
         Item(

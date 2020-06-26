@@ -16,7 +16,7 @@ class StewartScraper : Scraper {
     .map { el ->
       val a = el.selectFrom("h2 a")
 
-      IndexEntry(a.hrefFrom()) { doc ->
+      IndexEntry(a.text(), a.hrefFrom()) { doc ->
         val alco = doc.maybeSelectFrom(".alco")
         val volume = doc.maybeSelectFrom(".volume")
 

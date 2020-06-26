@@ -13,7 +13,7 @@ class VillagesScraper : Scraper {
   override fun scrapeIndex(root: Document) = root
     .shopifyItems()
     .map { details ->
-      IndexEntry(details.url) { doc ->
+      IndexEntry(details.title, details.url) { doc ->
         val parts = extractVariableParts(details.title)
 
         Item(

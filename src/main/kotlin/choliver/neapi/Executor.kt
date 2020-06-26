@@ -14,33 +14,36 @@ class Executor(getter: HttpGetter) {
 
   private fun scrapeBrewery(scraper: Scraper): List<Item> {
     val brewery = scraper.name
-    logger.info("Executing scraper for brewery: ${brewery}")
+    logger.info("Scraping brewery: ${brewery}")
 
     return scrapeIndexSafely(scraper, brewery)
       .mapNotNull { scrapeItem(it, brewery) }
       .bestPricedItems()
   }
 
-  private fun scrapeItem(entry: IndexEntry, brewery: String) =
-    when (val result = scrapeItemSafely(entry)) {
+  private fun scrapeItem(entry: IndexEntry, brewery: String): Item? {
+    logger.info("Scraping item: ${entry.rawName}")
+
+    return when (val result = scrapeItemSafely(entry)) {
       is Result.Item -> result.normalise(brewery, entry.url)
       is Result.Skipped -> {
         logger.info("Skipping because: ${result.reason}")
         null
       }
     }
+  }
 
   private fun scrapeIndexSafely(scraper: Scraper, brewery: String): List<IndexEntry> = try {
     scraper.scrapeIndex(jsonGetter.request(scraper.rootUrl))
   } catch (e: Exception) {
-    logger.error("Error scraping index for brewery: ${brewery}", e)
+    logger.error("Error scraping brewery: ${brewery}", e)
     emptyList()
   }
 
   private fun scrapeItemSafely(entry: IndexEntry) = try {
     entry.scrapeItem(jsonGetter.request(entry.url))
   } catch (e: Exception) {
-    logger.error("Error scraping item", e)
+    logger.error("Error scraping item: ${entry.rawName}", e)
     Result.Skipped("Scraping error")
   }
 

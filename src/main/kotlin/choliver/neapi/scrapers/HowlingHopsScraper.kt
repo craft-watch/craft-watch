@@ -15,8 +15,9 @@ class HowlingHopsScraper : Scraper {
     .selectMultipleFrom(".wc-block-grid__product")
     .map { el ->
       val a = el.selectFrom(".wc-block-grid__product-link")
+      val rawName = el.textFrom(".wc-block-grid__product-title")
 
-      IndexEntry(a.hrefFrom()) { doc ->
+      IndexEntry(rawName, a.hrefFrom()) { doc ->
         val parts = extractVariableParts(doc.textFrom(".woocommerce-product-details__short-description"))
 
         Item(

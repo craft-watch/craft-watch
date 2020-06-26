@@ -24,7 +24,7 @@ class ExecutorTest {
       on { invoke(any()) } doReturn Result.Skipped("Emo town")
     }
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
-      IndexEntry(productUrl("a"), callback)
+      indexEntry("a", callback)
     )
 
     executor.scrapeAll(scraper)
@@ -38,8 +38,8 @@ class ExecutorTest {
   @Test
   fun `scrapes products`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
-      IndexEntry(productUrl("a")) { SWEET_IPA },
-      IndexEntry(productUrl("b")) { TED_SHANDY }
+      indexEntry("a") { SWEET_IPA },
+      indexEntry("b") { TED_SHANDY }
     )
 
     assertEquals(
@@ -80,9 +80,9 @@ class ExecutorTest {
   @Test
   fun `filters out skipped results`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
-      IndexEntry(productUrl("a")) { Result.Skipped("Just too emo") },
-      IndexEntry(productUrl("b")) { SWEET_IPA },
-      IndexEntry(productUrl("c")) { Result.Skipped("Made of cheese") }
+      indexEntry("a") { Result.Skipped("Just too emo") },
+      indexEntry("b") { SWEET_IPA },
+      indexEntry("c") { Result.Skipped("Made of cheese") }
     )
 
     // Only one item returned
@@ -95,9 +95,9 @@ class ExecutorTest {
   @Test
   fun `de-duplicates by picking best price`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
-      IndexEntry(productUrl("a")) { SWEET_IPA },
-      IndexEntry(productUrl("b")) { SWEET_IPA.copy(perItemPrice = SWEET_IPA.perItemPrice / 2) },
-      IndexEntry(productUrl("c")) { SWEET_IPA.copy(perItemPrice = SWEET_IPA.perItemPrice * 2) }
+      indexEntry("a") { SWEET_IPA },
+      indexEntry("b") { SWEET_IPA.copy(perItemPrice = SWEET_IPA.perItemPrice / 2) },
+      indexEntry("c") { SWEET_IPA.copy(perItemPrice = SWEET_IPA.perItemPrice * 2) }
     )
 
     // Only one item returned, with best price
@@ -110,9 +110,9 @@ class ExecutorTest {
   @Test
   fun `item-scrape failure doesn't jettison everything`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
-      IndexEntry(productUrl("a")) { SWEET_IPA },
-      IndexEntry(productUrl("b")) { throw ScraperException("What happened") },
-      IndexEntry(productUrl("c")) { TED_SHANDY }
+      indexEntry("a") { SWEET_IPA },
+      indexEntry("b") { throw ScraperException("What happened") },
+      indexEntry("c") { TED_SHANDY }
     )
 
     assertEquals(
@@ -124,8 +124,8 @@ class ExecutorTest {
   @Test
   fun `index-scrape failure doesn't jettison everything`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
-      IndexEntry(productUrl("a")) { SWEET_IPA },
-      IndexEntry(productUrl("b")) { TED_SHANDY }
+      indexEntry("a") { SWEET_IPA },
+      indexEntry("b") { TED_SHANDY }
     )
 
     val badScraper = mock<Scraper> {
@@ -163,6 +163,9 @@ class ExecutorTest {
       available = true,
       thumbnailUrl = URI("https://example.invalid/assets/ted-shandy.jpg")
     )
+
+    private fun indexEntry(suffix: String, scrapeItem: (doc: Document) -> Result) =
+      IndexEntry(suffix, productUrl(suffix), scrapeItem)
 
     private fun productUrl(suffix: String) = URI("https://eaxmple.invalid/${suffix}")
 
