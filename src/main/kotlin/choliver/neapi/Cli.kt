@@ -27,7 +27,10 @@ class Cli : CliktCommand(name = "scraper") {
   )
 
   override fun run() {
-    val executor = Executor(HttpGetter().cached(CACHE_DIR))
+    val getter = HttpGetter()
+      .let { if (withoutCache) it else it.cached(CACHE_DIR) }
+
+    val executor = Executor(getter)
 
     INVENTORY_JSON_FILE.outputStream().use { ostream ->
       mapper.writeValue(ostream, executor.scrapeAll(*scrapers.toTypedArray()))

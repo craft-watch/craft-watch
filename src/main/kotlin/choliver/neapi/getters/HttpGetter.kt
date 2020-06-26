@@ -1,7 +1,13 @@
 package choliver.neapi.getters
 
+import mu.KotlinLogging
 import java.net.URI
 
 class HttpGetter : Getter<String> {
-  override fun request(url: URI) = url.toURL().readText()
+  private val logger = KotlinLogging.logger {}
+
+  override fun request(url: URI): String {
+    logger.info("${url}: reading from network")
+    return url.toURL().readText()
+  }
 }
