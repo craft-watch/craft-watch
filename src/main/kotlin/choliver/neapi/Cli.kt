@@ -1,13 +1,16 @@
 package choliver.neapi
 
 import choliver.neapi.getters.HttpGetter
+import choliver.neapi.getters.NewCachingGetter
 import choliver.neapi.getters.cached
 import choliver.neapi.scrapers.*
+import choliver.neapi.storage.StorageThinger
 import com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.option
+import java.time.Instant
 
 class Cli : CliktCommand(name = "scraper") {
   private val withoutCache by option("--without-cache", "-w").flag()
@@ -27,14 +30,16 @@ class Cli : CliktCommand(name = "scraper") {
   )
 
   override fun run() {
-    val getter = HttpGetter()
-      .let { if (withoutCache) it else it.cached(CACHE_DIR) }
+    val storage = StorageThinger(STORAGE_DIR, Instant.now())
+    val getter = NewCachingGetter(storage, HttpGetter())
 
     val executor = Executor(getter)
 
-    INVENTORY_JSON_FILE.outputStream().use { ostream ->
-      mapper.writeValue(ostream, executor.scrapeAll(*scrapers.toTypedArray()))
-    }
+    val inventory = executor.scrapeAll(*scrapers.toTypedArray())
+    storage.writeResults(
+      "inventory.json",
+      mapper.writeValueAsBytes(inventory)
+    )
   }
 }
 

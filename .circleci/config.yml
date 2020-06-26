@@ -16,9 +16,9 @@ jobs:
       - run:
           name: Run tests
           command: ./gradlew check
-      - run:
-          name: Run application
-          command: ./gradlew run
+#      - run:
+#          name: Run application
+#          command: ./gradlew run
       - save_cache:
           paths:
             - ~/.gradle/wrapper
