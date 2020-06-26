@@ -5,10 +5,7 @@ import choliver.neapi.Scraper.Result
 import com.nhaarman.mockitokotlin2.*
 import org.jsoup.nodes.Document
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertDoesNotThrow
-import org.junit.jupiter.api.assertThrows
 import java.net.URI
 
 class ExecutorTest {
@@ -108,83 +105,6 @@ class ExecutorTest {
       listOf(SWEET_IPA.perItemPrice / 2),
       executor.scrapeAll(scraper).items.map { it.perItemPrice }
     )
-  }
-
-  @Nested
-  inner class Normalisation {
-    @Test
-    fun `trims name`() {
-      whenever(scraper.scrapeIndex(any())) doReturn listOf(
-        IndexEntry(productUrl("a")) { SWEET_IPA.copy(name = "  Padded Lager  ") }
-      )
-
-      assertEquals(
-        "Padded Lager",
-        executor.scrapeAll(scraper).items[0].name
-      )
-    }
-
-    @Test
-    fun `trims summary`() {
-      whenever(scraper.scrapeIndex(any())) doReturn listOf(
-        IndexEntry(productUrl("a")) { SWEET_IPA.copy(summary = "  Absolute nonsense  ") }
-      )
-
-      assertEquals(
-        "Absolute nonsense",
-        executor.scrapeAll(scraper).items[0].summary
-      )
-    }
-  }
-
-  @Nested
-  inner class Validation {
-    @Test
-    fun `rejects if name is blank`() {
-      assertNoValidationFailure(SWEET_IPA.copy(name = "Yeah"))
-      assertValidationFailure(SWEET_IPA.copy(name = " "))
-    }
-
-    @Test
-    fun `rejects if summary is present and blank`() {
-      assertNoValidationFailure(SWEET_IPA.copy(summary = "Yeah"))
-      assertNoValidationFailure(SWEET_IPA.copy(summary = null))
-      assertValidationFailure(SWEET_IPA.copy(summary = " "))
-    }
-
-    @Test
-    fun `rejects if gross`() {
-      assertNoValidationFailure(SWEET_IPA.copy(abv = 12.0))
-      assertValidationFailure(SWEET_IPA.copy(abv = 15.0))
-    }
-
-    @Test
-    fun `rejects if too bougie`() {
-      assertNoValidationFailure(SWEET_IPA.copy(perItemPrice = 7.0))
-      assertValidationFailure(SWEET_IPA.copy(perItemPrice = 10.0))
-    }
-
-    private fun assertNoValidationFailure(item: Result.Item) {
-      configureMock(item)
-
-      assertDoesNotThrow {
-        executor.scrapeAll(scraper)
-      }
-    }
-
-    private fun assertValidationFailure(item: Result.Item) {
-      configureMock(item)
-
-      assertThrows<ScraperException> {
-        executor.scrapeAll(scraper)
-      }
-    }
-
-    private fun configureMock(item: Result.Item) {
-      whenever(scraper.scrapeIndex(any())) doReturn listOf(
-        IndexEntry(productUrl("a")) { item }
-      )
-    }
   }
 
   companion object {
