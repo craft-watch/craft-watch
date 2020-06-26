@@ -5,21 +5,19 @@ import mu.KotlinLogging
 import java.io.File
 import java.io.FileNotFoundException
 import java.time.Instant
-import java.time.ZoneOffset
 import java.time.ZoneOffset.UTC
 import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeFormatter.ISO_DATE
 import java.time.format.DateTimeFormatter.ISO_TIME
 
 class StorageThinger(
   private val rootDir: File,
-  timestamp: Instant
+  start: Instant
 ) {
   private val logger = KotlinLogging.logger {}
 
-  private val todayDir = rootDir.resolve(DATE_FORMAT.format(timestamp))
+  private val todayDir = rootDir.resolve(DATE_FORMAT.format(start))
   private val cacheDir = todayDir.resolve(CACHE_DIRNAME)
-  private val resultsDir = todayDir.resolve(RESULTS_DIRNAME).resolve(TIME_FORMAT.format(timestamp))
+  private val resultsDir = todayDir.resolve(RESULTS_DIRNAME).resolve(TIME_FORMAT.format(start))
 
   fun readFromHtmlCache(key: String) = try {
     ISO_TIME
@@ -53,7 +51,7 @@ class StorageThinger(
     const val CACHE_DIRNAME = "cache"
     const val RESULTS_DIRNAME = "results"
 
-    private val DATE_FORMAT = DateTimeFormatter.ofPattern("YYYY-MM-DD").withZone(UTC)
+    private val DATE_FORMAT = DateTimeFormatter.ofPattern("YYYY-MM-dd").withZone(UTC)
     private val TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm:ss").withZone(UTC)
   }
 }
