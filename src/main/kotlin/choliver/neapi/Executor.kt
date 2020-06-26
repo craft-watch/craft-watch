@@ -3,7 +3,6 @@ package choliver.neapi
 import choliver.neapi.Scraper.IndexEntry
 import choliver.neapi.Scraper.Result
 import choliver.neapi.getters.Getter
-import choliver.neapi.getters.HttpGetter
 import choliver.neapi.getters.HtmlGetter
 import mu.KotlinLogging
 
@@ -30,7 +29,7 @@ class Executor(getter: Getter<String>) {
       logger.info("[${brewery}] Scraping item: ${entry.rawName}")
 
       return when (val result = scrapeItemSafely(entry)) {
-        is Result.Item -> result.normalise(brewery, entry.url)
+        is Result.Item -> normaliseItemSafely(entry, result)
         is Result.Skipped -> {
           logger.info("[${brewery}] Skipping item because: ${result.reason}")
           null
@@ -50,6 +49,13 @@ class Executor(getter: Getter<String>) {
     } catch (e: Exception) {
       logger.error("[${brewery}] Error scraping item: ${entry.rawName}", e)
       Result.Skipped("Error scraping item")
+    }
+
+    private fun normaliseItemSafely(entry: IndexEntry, result: Result.Item) = try {
+      result.normalise(brewery, entry.url)
+    } catch (e: Exception) {
+      logger.error("[${brewery}] Error normalising item: ${entry.rawName}", e)
+      null
     }
 
     private fun List<Item>.bestPricedItems() = groupBy { it.name to it.summary }

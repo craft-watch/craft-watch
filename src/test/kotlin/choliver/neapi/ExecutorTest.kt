@@ -109,20 +109,6 @@ class ExecutorTest {
   }
 
   @Test
-  fun `item-scrape failure doesn't jettison everything`() {
-    whenever(scraper.scrapeIndex(any())) doReturn listOf(
-      indexEntry("a") { SWEET_IPA },
-      indexEntry("b") { throw ScraperException("What happened") },
-      indexEntry("c") { TED_SHANDY }
-    )
-
-    assertEquals(
-      listOf(SWEET_IPA.name, TED_SHANDY.name),
-      executor.scrapeAll(scraper).items.map { it.name }
-    )
-  }
-
-  @Test
   fun `index-scrape failure doesn't jettison everything`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
       indexEntry("a") { SWEET_IPA },
@@ -138,6 +124,36 @@ class ExecutorTest {
     assertEquals(
       listOf(SWEET_IPA.name, TED_SHANDY.name),
       executor.scrapeAll(badScraper, scraper).items.map { it.name } // Execute good and bad scrapers
+    )
+  }
+
+  @Test
+  fun `item-scrape failure doesn't jettison everything`() {
+    whenever(scraper.scrapeIndex(any())) doReturn listOf(
+      indexEntry("a") { SWEET_IPA },
+      indexEntry("b") { throw ScraperException("What happened") },
+      indexEntry("c") { TED_SHANDY }
+    )
+
+    assertEquals(
+      listOf(SWEET_IPA.name, TED_SHANDY.name),
+      executor.scrapeAll(scraper).items.map { it.name }
+    )
+  }
+
+
+
+  @Test
+  fun `normalisation failure doesn't jettison everything`() {
+    whenever(scraper.scrapeIndex(any())) doReturn listOf(
+      indexEntry("a") { SWEET_IPA },
+      indexEntry("b") { SWEET_IPA.copy(name = "") },  // Invalid name
+      indexEntry("c") { TED_SHANDY }
+    )
+
+    assertEquals(
+      listOf(SWEET_IPA.name, TED_SHANDY.name),
+      executor.scrapeAll(scraper).items.map { it.name }
     )
   }
 
