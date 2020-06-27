@@ -20,14 +20,19 @@ class MarbleScraper : Scraper {
         val attributes = doc.extractAttributes()
         val volumeDetails = attributes.extractVolumeDetails()
 
-        val keg = attributes.maybeGrab("Packaging")?.contains("keg", ignoreCase = true) ?: false
+        val style = attributes.maybeGrab("Style")
+        val mixed = style?.contains("mixed", ignoreCase = true) ?: false
 
         Item(
           thumbnailUrl = el.srcFrom(".wp-post-image"),
           name = name
-            .replace("\\s+(Case\\s+\\(\\d+ Cans\\)|(\\d+l mini (keg|cask)))".toRegex(IGNORE_CASE), "")
+            .replace("\\s+\\d+l mini (keg|cask)$".toRegex(IGNORE_CASE), "")
+            .replace("\\s+Case\\s+\\(\\d+ Cans\\)$".toRegex(IGNORE_CASE), "")
+            .replace("\\d+$".toRegex(), "")
             .toTitleCase(),
-          summary = if (keg) "Minikeg" else null,
+          summary = if (mixed) null else style,
+          mixed = mixed,
+          keg = attributes.maybeGrab("Packaging")?.contains("keg", ignoreCase = true) ?: false,
           sizeMl = volumeDetails.sizeMl,
           abv = attributes.grab("ABV").maybeExtract("(\\d+(\\.\\d+)?)")?.get(1)?.toDouble(),
           available = doc.maybeSelectFrom(".out-of-stock") == null,
