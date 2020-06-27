@@ -6,6 +6,7 @@ import com.nhaarman.mockitokotlin2.*
 import org.jsoup.nodes.Document
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import java.net.URI
 
 class ExecutorTest {
@@ -108,7 +109,27 @@ class ExecutorTest {
   }
 
   @Test
-  fun `index-scrape failure doesn't jettison everything`() {
+  fun `dies on fatal index-scrape failure`() {
+    whenever(scraper.scrapeIndex(any())) doThrow FatalScraperException("Noooo")
+
+    assertThrows<FatalScraperException> {
+      executor.scrape(scraper)
+    }
+  }
+
+  @Test
+  fun `dies on fatal item-scrape failure`() {
+    whenever(scraper.scrapeIndex(any())) doReturn listOf(
+      indexEntry("a") { throw FatalScraperException("Noooo") }
+    )
+
+    assertThrows<FatalScraperException> {
+      executor.scrape(scraper)
+    }
+  }
+
+  @Test
+  fun `continues after non-fatal index-scrape failure`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
       indexEntry("a") { SWEET_IPA },
       indexEntry("b") { TED_SHANDY }
@@ -127,7 +148,7 @@ class ExecutorTest {
   }
 
   @Test
-  fun `item-scrape failure doesn't jettison everything`() {
+  fun `continues after non-fatal item-scrape failure`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
       indexEntry("a") { SWEET_IPA },
       indexEntry("b") { throw MalformedInputException("What happened") },
@@ -141,7 +162,7 @@ class ExecutorTest {
   }
 
   @Test
-  fun `validation failure doesn't jettison everything`() {
+  fun `continues after validation failure`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
       indexEntry("a") { SWEET_IPA },
       indexEntry("b") { SWEET_IPA.copy(name = "") },  // Invalid name
