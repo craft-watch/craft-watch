@@ -33,6 +33,11 @@ class HowlingHopsScraperTest {
   }
 
   @Test
+  fun `identifies mixed cases`() {
+    assertTrue(ITEMS.find { it.name == "NEW 12 Beer Mega Pack" }!!.mixed)
+  }
+
+  @Test
   fun `identifies out-of-stock items`() {
     assertFalse(
       ITEMS.first { it.name == "Off Ramp" }.available

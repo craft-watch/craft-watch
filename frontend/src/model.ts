@@ -7,6 +7,7 @@ export interface Item {
   name: string;
   summary?: string;
   keg: boolean;
+  mixed: boolean;
   sizeMl?: number;
   abv?: number;
   perItemPrice: number;

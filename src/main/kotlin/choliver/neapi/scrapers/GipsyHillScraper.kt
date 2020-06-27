@@ -26,17 +26,15 @@ class GipsyHillScraper : Scraper {
           }
         }
         val style = rawSummary.maybeExtract("Style: (.*) ABV")?.get(1)
+        val mixed = style in listOf("Various", "Mixed")
 
         Item(
           thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
           name = name,
-          summary = style,
+          summary = if (mixed) null else style,
+          mixed = mixed,
           available = true, // TODO
-          abv = if (style in listOf("Various", "Mixed")) {
-            null
-          } else {
-            rawSummary.maybeExtract("ABV: (\\d+(\\.\\d+)?)")?.get(1)?.toDouble()
-          },
+          abv = if (mixed) null else rawSummary.maybeExtract("ABV: (\\d+(\\.\\d+)?)")?.get(1)?.toDouble(),
           sizeMl = rawSummary.maybeExtract("(\\d+)ml")?.get(1)?.toInt(),
           perItemPrice = el.ownTextFrom(".woocommerce-Price-amount").toDouble().divideAsPrice(numCans)
         )

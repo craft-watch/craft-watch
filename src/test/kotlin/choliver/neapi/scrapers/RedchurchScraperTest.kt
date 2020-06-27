@@ -34,7 +34,7 @@ class RedchurchScraperTest {
 
   @Test
   fun `identifies mixed cases`() {
-    val mixedCases = ITEMS.filter { it.summary == "Mixed case" }
+    val mixedCases = ITEMS.filter { it.mixed }
 
     assertFalse(mixedCases.isEmpty())
     assertFalse(mixedCases.any { it.name.contains("Mixed case") })

@@ -2,8 +2,7 @@ package choliver.neapi.scrapers
 
 import choliver.neapi.Scraper.Item
 import choliver.neapi.executeScraper
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.net.URI
 
@@ -31,6 +30,11 @@ class GipsyHillScraperTest {
       ),
       ITEMS.first { it.name == "Carver" }
     )
+  }
+
+  @Test
+  fun `identifies mixed cases`() {
+    assertTrue(ITEMS.find { it.name == "DJ BBQ Box" }!!.mixed)
   }
 
   @Test

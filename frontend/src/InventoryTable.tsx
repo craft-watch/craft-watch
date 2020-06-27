@@ -58,7 +58,8 @@ const renderName: Renderer<Item> = item => (
       {item.summary && item.summary}
     </p>
     <p className="summary">
-      {item.keg && <span className="pill">Minikeg</span>}
+      {item.keg && <span className="pill violet">Minikeg</span>}
+      {item.mixed && <span className="pill magenta">Mixed case</span>}
     </p>
   </>
 );
