@@ -2,7 +2,7 @@ terraform {
   required_version = "~> 0.12.28"
 
   backend "gcs" {
-    bucket      = "terraform-craft-watch"
+    bucket      = "terraform.craft.watch"
     prefix      = "terraform/state"
   }
 }
@@ -14,7 +14,7 @@ provider "google" {
 }
 
 resource "google_storage_bucket" "backend" {
-  name          = "backend-craft-watch"
+  name          = "backend.craft.watch"
   location      = "europe-west2"
   force_destroy = true
 }
