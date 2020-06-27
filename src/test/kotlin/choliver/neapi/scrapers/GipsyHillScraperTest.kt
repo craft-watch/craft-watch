@@ -1,6 +1,6 @@
 package choliver.neapi.scrapers
 
-import choliver.neapi.Scraper.Result.Item
+import choliver.neapi.Scraper.Item
 import choliver.neapi.executeScraper
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull

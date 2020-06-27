@@ -2,7 +2,7 @@ package choliver.neapi
 
 import java.net.URI
 
-fun Scraper.Result.Item.normalise(brewery: String, url: URI) = Item(
+fun Scraper.Item.normalise(brewery: String, url: URI) = Item(
   brewery = brewery
     .trim()
     .validate("non-blank brewery name") { it.isNotBlank() },

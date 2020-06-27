@@ -1,6 +1,5 @@
 package choliver.neapi
 
-import choliver.neapi.Scraper.Result
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
@@ -49,25 +48,25 @@ class ItemNormalisationTest {
     assertValidationFailure(prototype.copy(perItemPrice = 10.0))
   }
 
-  private fun assertNoValidationFailure(item: Result.Item) {
+  private fun assertNoValidationFailure(item: Scraper.Item) {
     assertDoesNotThrow {
       normalise(item)
     }
   }
 
-  private fun assertValidationFailure(item: Result.Item) {
-    assertThrows<MalformedException> {
+  private fun assertValidationFailure(item: Scraper.Item) {
+    assertThrows<InvalidItemException> {
       normalise(item)
     }
   }
 
   private fun normalise(
-    item: Result.Item = prototype,
+    item: Scraper.Item = prototype,
     brewery: String = "Foo Bar",
     url: URI = URI("https://example.invalid/shop")
   ) = item.normalise(brewery, url)
 
-  private val prototype = Result.Item(
+  private val prototype = Scraper.Item(
     name = "Ted Shandy",
     summary = "Awful",
     perItemPrice = 1.86,

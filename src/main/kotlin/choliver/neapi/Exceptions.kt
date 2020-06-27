@@ -11,7 +11,7 @@ abstract class NonFatalScraperException : ScraperException {
 }
 
 // Intentionally skip because we know we aren't dealing with something
-class NotAnItemException : NonFatalScraperException {
+class SkipItemException : NonFatalScraperException {
   constructor(message: String) : super(message)
   constructor(message: String, cause: Throwable) : super(message, cause)
 }

@@ -1,7 +1,6 @@
 package choliver.neapi
 
 import choliver.neapi.Scraper.IndexEntry
-import choliver.neapi.Scraper.Result
 import choliver.neapi.getters.Getter
 import com.nhaarman.mockitokotlin2.*
 import org.jsoup.nodes.Document
@@ -21,8 +20,8 @@ class ExecutorTest {
 
   @Test
   fun `passes correct URLs and HTML around`() {
-    val callback = mock<(Document) -> Result> {
-      on { invoke(any()) } doReturn Result.Skipped("Emo town")
+    val callback = mock<(Document) -> Scraper.Item> {
+      on { invoke(any()) } doThrow SkipItemException("Emo town")
     }
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
       indexEntry("a", callback)
@@ -81,9 +80,9 @@ class ExecutorTest {
   @Test
   fun `filters out skipped results`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
-      indexEntry("a") { Result.Skipped("Just too emo") },
+      indexEntry("a") { throw SkipItemException("Just too emo") },
       indexEntry("b") { SWEET_IPA },
-      indexEntry("c") { Result.Skipped("Made of cheese") }
+      indexEntry("c") { throw SkipItemException("Made of cheese") }
     )
 
     // Only one item returned
@@ -118,7 +117,7 @@ class ExecutorTest {
     val badScraper = mock<Scraper> {
       on { name } doReturn "Bad Brewing"
       on { rootUrl } doReturn URI("http://bad.invalid")
-      on { scrapeIndex(any()) } doThrow MalformedException("Noooo")
+      on { scrapeIndex(any()) } doThrow MalformedInputException("Noooo")
     }
 
     assertEquals(
@@ -131,7 +130,7 @@ class ExecutorTest {
   fun `item-scrape failure doesn't jettison everything`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
       indexEntry("a") { SWEET_IPA },
-      indexEntry("b") { throw MalformedException("What happened") },
+      indexEntry("b") { throw MalformedInputException("What happened") },
       indexEntry("c") { TED_SHANDY }
     )
 
@@ -141,10 +140,8 @@ class ExecutorTest {
     )
   }
 
-
-
   @Test
-  fun `normalisation failure doesn't jettison everything`() {
+  fun `validation failure doesn't jettison everything`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
       indexEntry("a") { SWEET_IPA },
       indexEntry("b") { SWEET_IPA.copy(name = "") },  // Invalid name
@@ -161,7 +158,7 @@ class ExecutorTest {
     private const val BREWERY = "Foo Bar"
     private val ROOT_URL = URI("https://example.invalid/shop")
 
-    private val SWEET_IPA = Result.Item(
+    private val SWEET_IPA = Scraper.Item(
       name = "Sweet IPA",
       summary = "Bad ass",
       perItemPrice = 4.23,
@@ -171,7 +168,7 @@ class ExecutorTest {
       thumbnailUrl = URI("https://example.invalid/assets/sweet-ipa.jpg")
     )
 
-    private val TED_SHANDY = Result.Item(
+    private val TED_SHANDY = Scraper.Item(
       name = "Ted Shandy",
       summary = "Awful",
       perItemPrice = 1.86,
@@ -181,7 +178,7 @@ class ExecutorTest {
       thumbnailUrl = URI("https://example.invalid/assets/ted-shandy.jpg")
     )
 
-    private fun indexEntry(suffix: String, scrapeItem: (doc: Document) -> Result) =
+    private fun indexEntry(suffix: String, scrapeItem: (doc: Document) -> Scraper.Item) =
       IndexEntry(suffix, productUrl(suffix), scrapeItem)
 
     private fun productUrl(suffix: String) = URI("https://eaxmple.invalid/${suffix}")

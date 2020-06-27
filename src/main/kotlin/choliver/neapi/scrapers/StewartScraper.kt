@@ -2,8 +2,7 @@ package choliver.neapi.scrapers
 
 import choliver.neapi.*
 import choliver.neapi.Scraper.IndexEntry
-import choliver.neapi.Scraper.Result.Item
-import choliver.neapi.Scraper.Result.Skipped
+import choliver.neapi.Scraper.Item
 import org.jsoup.nodes.Document
 import java.net.URI
 
@@ -21,18 +20,18 @@ class StewartScraper : Scraper {
         val volume = doc.maybeSelectFrom(".volume")
 
         if (alco == null || volume == null) {
-          Skipped("Couldn't find ABV or volume")
-        } else {
-          Item(
-            thumbnailUrl = el.srcFrom(".imageInnerWrap img"),
-            name = removeSizeSuffix(a.text()),
-            summary = el.maybeTextFrom(".itemStyle"),
-            abv = alco.extractFrom(regex = "(\\d+(\\.\\d+)?)%")[1].toDouble(),
-            sizeMl = volume.extractFrom(regex = "(\\d+)ml")[1].toInt(),
-            available = true,
-            perItemPrice = doc.extractFrom(".priceNow", "£(\\d+\\.\\d+)")[1].toDouble()
-          )
+          throw SkipItemException("Couldn't find ABV or volume")
         }
+
+        Item(
+          thumbnailUrl = el.srcFrom(".imageInnerWrap img"),
+          name = removeSizeSuffix(a.text()),
+          summary = el.maybeTextFrom(".itemStyle"),
+          abv = alco.extractFrom(regex = "(\\d+(\\.\\d+)?)%")[1].toDouble(),
+          sizeMl = volume.extractFrom(regex = "(\\d+)ml")[1].toInt(),
+          available = true,
+          perItemPrice = doc.extractFrom(".priceNow", "£(\\d+\\.\\d+)")[1].toDouble()
+        )
       }
     }
 
