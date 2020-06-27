@@ -20,7 +20,7 @@ class VillagesScraper : Scraper {
           thumbnailUrl = details.thumbnailUrl,
           name = parts.name.toTitleCase(),
           summary = parts.summary,
-          sizeMl = doc.extractFrom(regex = "(\\d+)ml")?.get(1)?.toInt(),
+          sizeMl = doc.maybeExtractFrom(regex = "(\\d+)ml")?.get(1)?.toInt(),
           abv = parts.abv,
           available = details.available,
           perItemPrice = details.price.divideAsPrice(parts.numCans)
@@ -36,14 +36,14 @@ class VillagesScraper : Scraper {
   )
 
   private fun extractVariableParts(title: String) = if (title.contains("mixed case", ignoreCase = true)) {
-    val parts = title.extract("^(.*?) \\((.*)\\)$")!!
+    val parts = title.extract("^(.*?) \\((.*)\\)$")
     VariableParts(
       name = parts[1],
       summary = "24 cans",
       numCans = 24
     )
   } else {
-    val parts = title.extract("^([^ ]*) (.*)? ((.*)%)?.*$")!!
+    val parts = title.extract("^([^ ]*) (.*)? ((.*)%)?.*$")
     VariableParts(
       name = parts[1],
       summary = parts[2],

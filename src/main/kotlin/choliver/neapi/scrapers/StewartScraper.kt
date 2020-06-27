@@ -27,17 +27,17 @@ class StewartScraper : Scraper {
             thumbnailUrl = el.srcFrom(".imageInnerWrap img"),
             name = removeSizeSuffix(a.text()),
             summary = el.maybeTextFrom(".itemStyle"),
-            abv = alco.extractFrom(regex = "(\\d+(\\.\\d+)?)%")!![1].toDouble(),
-            sizeMl = volume.extractFrom(regex = "(\\d+)ml")!![1].toInt(),
+            abv = alco.extractFrom(regex = "(\\d+(\\.\\d+)?)%")[1].toDouble(),
+            sizeMl = volume.extractFrom(regex = "(\\d+)ml")[1].toInt(),
             available = true,
-            perItemPrice = doc.extractFrom(".priceNow", "£(\\d+\\.\\d+)")!![1].toDouble()
+            perItemPrice = doc.extractFrom(".priceNow", "£(\\d+\\.\\d+)")[1].toDouble()
           )
         }
       }
     }
 
   private fun removeSizeSuffix(str: String) = if (str.endsWith("ml")) {
-    str.extract(regex = "^(.+?)( \\d+ml)")!![1]
+    str.extract(regex = "^(.+?)( \\d+ml)")[1]
   } else {
     str
   }

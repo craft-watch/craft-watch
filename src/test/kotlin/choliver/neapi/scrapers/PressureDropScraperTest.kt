@@ -3,6 +3,7 @@ package choliver.neapi.scrapers
 import choliver.neapi.Scraper.Result.Item
 import choliver.neapi.executeScraper
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import java.net.URI
 
@@ -13,7 +14,7 @@ class PressureDropScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(9, ITEMS.size)
+    assertEquals(11, ITEMS.size)
   }
 
   @Test
@@ -30,6 +31,11 @@ class PressureDropScraperTest {
       ),
       ITEMS.first { it.name == "Golden State" }
     )
+  }
+
+  @Test
+  fun `null summary if no title suffix`() {
+    assertNull(ITEMS.first { it.name == "A Box Of Juice!" }.summary)
   }
 }
 

@@ -18,14 +18,14 @@ class PressureDropScraper : Scraper {
 
       IndexEntry(rawName, a.hrefFrom()) { doc ->
         val itemText = doc.text()
-        val parts = doc.extractFrom(".product__title", "^(.*?)\\s*-\\s*(.*?)$")!!
+        val parts = doc.extractFrom(".product__title", "^(.*?)\\s*(-\\s*(.*?))?$")
 
         Item(
           thumbnailUrl = a.srcFrom("noscript img"),
           name = parts[1],
-          summary = parts[2],
-          abv = itemText.extract("(\\d+(\\.\\d+)?)\\s*%")?.get(1)?.toDouble(),  // TODO - deal with all the ?
-          sizeMl = itemText.extract("(\\d+)ml")?.get(1)?.toInt(),
+          summary = parts[3].ifBlank { null },
+          abv = itemText.maybeExtract("(\\d+(\\.\\d+)?)\\s*%")?.get(1)?.toDouble(),
+          sizeMl = itemText.maybeExtract("(\\d+)ml")?.get(1)?.toInt(),
           available = true,
           perItemPrice = doc.priceFrom(".ProductPrice")
         )
