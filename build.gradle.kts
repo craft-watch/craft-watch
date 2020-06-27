@@ -18,6 +18,7 @@ dependencies {
   implementation("io.github.microutils:kotlin-logging:1.7.10")
   implementation("org.jsoup:jsoup:1.13.1")
   implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.0")
+  implementation("com.google.cloud:google-cloud-storage:1.111.0")
   implementation("com.github.ajalt:clikt:2.6.0")
   runtimeOnly("ch.qos.logback:logback-classic:1.2.3")
 

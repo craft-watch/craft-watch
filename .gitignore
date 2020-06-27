@@ -8,3 +8,6 @@ out/
 # Gradle
 .gradle/
 build/
+
+# Scraper
+/storage/

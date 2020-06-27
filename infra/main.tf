@@ -24,6 +24,10 @@ resource "google_service_account" "circleci" {
   display_name = "CircleCI service account"
 }
 
+resource "google_service_account_key" "circleci" {
+  service_account_id = google_service_account.circleci.name
+}
+
 data "google_iam_policy" "admin" {
   binding {
     role = "roles/storage.objectAdmin"
@@ -37,4 +41,8 @@ data "google_iam_policy" "admin" {
 resource "google_storage_bucket_iam_policy" "policy" {
   bucket = google_storage_bucket.backend.name
   policy_data = data.google_iam_policy.admin.policy_data
+}
+
+output "circleci_key" {
+  value = base64decode(google_service_account_key.circleci.private_key)
 }

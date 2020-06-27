@@ -1,9 +1,9 @@
 package choliver.neapi.getters
 
+import choliver.neapi.sha1
 import mu.KotlinLogging
 import java.io.File
 import java.net.URI
-import java.security.MessageDigest
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
 import java.util.zip.ZipOutputStream
@@ -42,14 +42,4 @@ class CachingGetter(
       zis.reader().readText()
     }
   }
-
-  private fun String.sha1() = this.toByteArray().sha1()
-
-  private fun ByteArray.sha1(): String {
-    val md = MessageDigest.getInstance("SHA-1")
-    md.update(this)
-    return md.digest().hex()
-  }
-
-  private fun ByteArray.hex() = joinToString("") { "%02X".format(it) }
 }

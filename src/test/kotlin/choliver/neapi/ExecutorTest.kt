@@ -28,7 +28,7 @@ class ExecutorTest {
       indexEntry("a", callback)
     )
 
-    executor.scrapeAll(scraper)
+    executor.scrape(scraper)
 
     verify(getter).request(ROOT_URL)
     verify(getter).request(productUrl("a"))
@@ -74,7 +74,7 @@ class ExecutorTest {
           }
         )
       ),
-      executor.scrapeAll(scraper)
+      executor.scrape(scraper)
     )
   }
 
@@ -89,7 +89,7 @@ class ExecutorTest {
     // Only one item returned
     assertEquals(
       listOf(SWEET_IPA.name),
-      executor.scrapeAll(scraper).items.map { it.name }
+      executor.scrape(scraper).items.map { it.name }
     )
   }
 
@@ -104,7 +104,7 @@ class ExecutorTest {
     // Only one item returned, with best price
     assertEquals(
       listOf(SWEET_IPA.perItemPrice / 2),
-      executor.scrapeAll(scraper).items.map { it.perItemPrice }
+      executor.scrape(scraper).items.map { it.perItemPrice }
     )
   }
 
@@ -123,7 +123,7 @@ class ExecutorTest {
 
     assertEquals(
       listOf(SWEET_IPA.name, TED_SHANDY.name),
-      executor.scrapeAll(badScraper, scraper).items.map { it.name } // Execute good and bad scrapers
+      executor.scrape(badScraper, scraper).items.map { it.name } // Execute good and bad scrapers
     )
   }
 
@@ -137,7 +137,7 @@ class ExecutorTest {
 
     assertEquals(
       listOf(SWEET_IPA.name, TED_SHANDY.name),
-      executor.scrapeAll(scraper).items.map { it.name }
+      executor.scrape(scraper).items.map { it.name }
     )
   }
 
@@ -153,7 +153,7 @@ class ExecutorTest {
 
     assertEquals(
       listOf(SWEET_IPA.name, TED_SHANDY.name),
-      executor.scrapeAll(scraper).items.map { it.name }
+      executor.scrape(scraper).items.map { it.name }
     )
   }
 

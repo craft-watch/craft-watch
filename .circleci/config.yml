@@ -6,6 +6,12 @@ jobs:
       - image: circleci/openjdk
     steps:
       - checkout
+      - run:
+          name: Create service key
+          command: |
+            KEY_FILE="${HOME}/service-key.json"
+            echo "${GCLOUD_SERVICE_KEY}" > "${KEY_FILE}"
+            echo "export GOOGLE_APPLICATION_CREDENTIALS=${KEY_FILE}" >> "${BASH_ENV}"
       - restore_cache:
           key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
       - restore_cache:
@@ -17,7 +23,7 @@ jobs:
           name: Run tests
           command: ./gradlew check
       - run:
-          name: Run application
+          name: Run scraper application
           command: ./gradlew run
       - save_cache:
           paths:
