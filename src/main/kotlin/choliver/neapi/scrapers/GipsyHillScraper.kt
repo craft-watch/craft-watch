@@ -2,7 +2,7 @@ package choliver.neapi.scrapers
 
 import choliver.neapi.*
 import choliver.neapi.Scraper.IndexEntry
-import choliver.neapi.Scraper.Result.Item
+import choliver.neapi.Scraper.Item
 import org.jsoup.nodes.Document
 import java.net.URI
 
@@ -26,7 +26,6 @@ class GipsyHillScraper : Scraper {
           }
         }
         val style = rawSummary.maybeExtract("Style: (.*) ABV")?.get(1)
-
 
         Item(
           thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),

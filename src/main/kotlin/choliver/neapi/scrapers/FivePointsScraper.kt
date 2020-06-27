@@ -2,8 +2,7 @@ package choliver.neapi.scrapers
 
 import choliver.neapi.*
 import choliver.neapi.Scraper.IndexEntry
-import choliver.neapi.Scraper.Result.Item
-import choliver.neapi.Scraper.Result.Skipped
+import choliver.neapi.Scraper.Item
 import org.jsoup.nodes.Document
 import java.net.URI
 
@@ -20,24 +19,20 @@ class FivePointsScraper : Scraper {
         val parts = doc.maybeExtractFrom(
           ".itemTitle .small",
           "(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+((\\d+)\\s+x\\s+)?(\\d+)(ml|L)"
-        )
+        ) ?: throw SkipItemException("Could not extract details")
 
-        if (parts == null) {
-          Skipped("Could not extract details")
-        } else {
-          val numCans = parts[5].ifBlank { "1" }.toInt()
-          val sizeMl = parts[6].toInt() * (if (parts[7] == "L") 1000 else 1)
-          Item(
-            thumbnailUrl = el.srcFrom(".imageInnerWrap img"),
-            name = a.extractFrom(regex = "([^(]+)")[1].trim().toTitleCase(),
-            summary = if (sizeMl > 1000) "Minikeg" else parts[1],
-            abv = parts[2].toDouble(),
-            sizeMl = sizeMl,
-            available = doc.maybeSelectFrom(".unavailableItemWrap") == null,
-            perItemPrice = el.extractFrom(".priceStandard", "£(\\d+\\.\\d+)")[1].toDouble()
-              .divideAsPrice(numCans)
-          )
-        }
+        val numCans = parts[5].ifBlank { "1" }.toInt()
+        val sizeMl = parts[6].toInt() * (if (parts[7] == "L") 1000 else 1)
+        Item(
+          thumbnailUrl = el.srcFrom(".imageInnerWrap img"),
+          name = a.extractFrom(regex = "([^(]+)")[1].trim().toTitleCase(),
+          summary = if (sizeMl > 1000) "Minikeg" else parts[1],
+          abv = parts[2].toDouble(),
+          sizeMl = sizeMl,
+          available = doc.maybeSelectFrom(".unavailableItemWrap") == null,
+          perItemPrice = el.extractFrom(".priceStandard", "£(\\d+\\.\\d+)")[1].toDouble()
+            .divideAsPrice(numCans)
+        )
       }
     }
 }

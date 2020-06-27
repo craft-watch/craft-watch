@@ -2,7 +2,7 @@ package choliver.neapi.scrapers
 
 import choliver.neapi.Scraper
 import choliver.neapi.Scraper.IndexEntry
-import choliver.neapi.Scraper.Result.Item
+import choliver.neapi.Scraper.Item
 import choliver.neapi.extract
 import choliver.neapi.shopifyItems
 import org.jsoup.nodes.Document

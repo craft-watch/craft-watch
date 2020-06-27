@@ -21,19 +21,19 @@ fun Element.hrefFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:href"
 fun Element.srcFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:src").toUri()
 
 fun Element.attrFrom(cssQuery: String = ":root", attr: String) = selectFrom(cssQuery).attr(attr)
-  .ifBlank { throw ScraperException("Attribute blank or not present: ${attr}") }!!
+  .ifBlank { throw MalformedInputException("Attribute blank or not present: ${attr}") }!!
 
 fun Element.maybeSelectFrom(cssQuery: String): Element? = selectFirst(cssQuery)
 fun Element.selectFrom(cssQuery: String) = selectFirst(cssQuery)
-  ?: throw ScraperException("Element not present: ${cssQuery}")
+  ?: throw MalformedInputException("Element not present: ${cssQuery}")
 
 fun Element.selectMultipleFrom(cssQuery: String) = maybeSelectMultipleFrom(cssQuery)
-  .ifEmpty { throw ScraperException("Element(s) not present: ${cssQuery}") }
+  .ifEmpty { throw MalformedInputException("Element(s) not present: ${cssQuery}") }
 fun Element.maybeSelectMultipleFrom(cssQuery: String): Elements = select(cssQuery)
 
 
 fun String.extract(regex: String) = maybeExtract(regex)
-  ?: throw ScraperException("Can't extract regex: ${regex}")
+  ?: throw MalformedInputException("Can't extract regex: ${regex}")
 fun String.maybeExtract(regex: String) = regex.toRegex().find(this)?.groupValues
 
 fun String.toTitleCase(): String = split(" ").joinToString(" ") {
@@ -46,7 +46,7 @@ fun Double.divideAsPrice(denominator: Int) = round(100 * this / denominator) / 1
 fun String.toUri() = try {
   URI(this)
 } catch (e: URISyntaxException) {
-  throw ScraperException("URL syntax error: ${this}", e)
+  throw MalformedInputException("URL syntax error: ${this}", e)
 }
 
 private val BEER_ACRONYMS = listOf(

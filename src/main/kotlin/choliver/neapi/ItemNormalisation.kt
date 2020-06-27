@@ -2,7 +2,7 @@ package choliver.neapi
 
 import java.net.URI
 
-fun Scraper.Result.Item.normalise(brewery: String, url: URI) = Item(
+fun Scraper.Item.normalise(brewery: String, url: URI) = Item(
   brewery = brewery
     .trim()
     .validate("non-blank brewery name") { it.isNotBlank() },
@@ -29,7 +29,7 @@ fun Scraper.Result.Item.normalise(brewery: String, url: URI) = Item(
 
 private fun <T> T.validate(name: String, predicate: (T) -> Boolean): T {
   if (!predicate(this)) {
-    throw ScraperException("Validation '${name}' failed for value: ${this}")
+    throw InvalidItemException("Validation '${name}' failed for value: ${this}")
   }
   return this
 }

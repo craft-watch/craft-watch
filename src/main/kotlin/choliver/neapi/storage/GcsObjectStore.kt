@@ -1,5 +1,6 @@
 package choliver.neapi.storage
 
+import choliver.neapi.FatalScraperException
 import com.google.cloud.storage.BlobId
 import com.google.cloud.storage.BlobInfo
 import com.google.cloud.storage.StorageException
@@ -19,7 +20,7 @@ class GcsObjectStore(private val bucketName: String) : ObjectStore {
     if (e.code == 404) {
       throw FileNotFoundException()
     } else {
-      throw e
+      throw FatalScraperException("Error accessing GCS", e)
     }
   }
 
