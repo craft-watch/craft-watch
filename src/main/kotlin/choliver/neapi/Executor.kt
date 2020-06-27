@@ -39,16 +39,28 @@ class Executor(getter: Getter<String>) {
 
     private fun scrapeIndexSafely(scraper: Scraper): List<IndexEntry> = try {
       scraper.scrapeIndex(jsonGetter.request(scraper.rootUrl))
+    } catch (e: NonFatalScraperException) {
+      logger.warn("[${brewery}] Error scraping brewery", e)
+      emptyList()
+    } catch (e: FatalScraperException) {
+      logger.error("[${brewery}] Fatal error scraping brewery", e)
+      throw e
     } catch (e: Exception) {
-      logger.error("[${brewery}] Error scraping brewery", e)
+      logger.warn("[${brewery}] Unexpected error scraping brewery", e)
       emptyList()
     }
 
     private fun scrapeItemSafely(entry: IndexEntry) = try {
       entry.scrapeItem(jsonGetter.request(entry.url))
-    } catch (e: Exception) {
+    } catch (e: NonFatalScraperException) {
+      logger.warn("[${brewery}] Error scraping item: ${entry.rawName}", e)
+      Result.Skipped("Error scraping item") // TODO - eliminate Result.Skipped
+    } catch (e: FatalScraperException) {
       logger.error("[${brewery}] Error scraping item: ${entry.rawName}", e)
-      Result.Skipped("Error scraping item")
+      throw e
+    } catch (e: Exception) {
+      logger.warn("[${brewery}] Unexpected error scraping item: ${entry.rawName}", e)
+      Result.Skipped("Error scraping item") // TODO - eliminate Result.Skipped
     }
 
     private fun normaliseItemSafely(entry: IndexEntry, result: Result.Item) = try {
