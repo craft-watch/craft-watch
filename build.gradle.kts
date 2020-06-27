@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
   kotlin("jvm") version "1.3.72"
   application
+  idea
 }
 
 group = "choliver.neapi"
@@ -30,7 +31,7 @@ dependencies {
 }
 
 application {
-  mainClassName = "choliver.neapi.CliKt"
+  mainClassName = "watch.craft.CliKt"
 }
 
 tasks.withType<KotlinCompile>().configureEach {
@@ -43,5 +44,14 @@ tasks.test {
   useJUnitPlatform()
   testLogging {
     events(FAILED)
+  }
+}
+
+idea {
+  module {
+    excludeDirs = setOf(
+      rootDir.resolve("frontend/node_modules"),
+      rootDir.resolve("frontend/build")
+    )
   }
 }

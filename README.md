@@ -18,8 +18,8 @@ Requires the following secret things:
        project [here][circleci-env-var].
 
 [create-deploy-key]: https://github.com/oliver-charlesworth/oliver-charlesworth.github.io/settings/keys/new
-[register-key]: https://app.circleci.com/settings/project/github/oliver-charlesworth/neapi/ssh
-[circleci-env-var]: https://app.circleci.com/settings/project/github/oliver-charlesworth/neapi/environment-variables
+[register-key]: https://app.circleci.com/settings/project/github/oliver-charlesworth/craft-watch/ssh
+[circleci-env-var]: https://app.circleci.com/settings/project/github/oliver-charlesworth/craft-watch/environment-variables
 
 
 ## Backend

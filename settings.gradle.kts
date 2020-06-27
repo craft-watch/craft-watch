@@ -1,1 +1,1 @@
-rootProject.name = "neapi"
+rootProject.name = "craft-watch"
