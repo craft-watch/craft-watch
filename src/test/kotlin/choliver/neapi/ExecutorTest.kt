@@ -118,7 +118,7 @@ class ExecutorTest {
     val badScraper = mock<Scraper> {
       on { name } doReturn "Bad Brewing"
       on { rootUrl } doReturn URI("http://bad.invalid")
-      on { scrapeIndex(any()) } doThrow ScraperException("Noooo")
+      on { scrapeIndex(any()) } doThrow MalformedException("Noooo")
     }
 
     assertEquals(
@@ -131,7 +131,7 @@ class ExecutorTest {
   fun `item-scrape failure doesn't jettison everything`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
       indexEntry("a") { SWEET_IPA },
-      indexEntry("b") { throw ScraperException("What happened") },
+      indexEntry("b") { throw MalformedException("What happened") },
       indexEntry("c") { TED_SHANDY }
     )
 

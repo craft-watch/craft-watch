@@ -56,7 +56,7 @@ class ItemNormalisationTest {
   }
 
   private fun assertValidationFailure(item: Result.Item) {
-    assertThrows<ScraperException> {
+    assertThrows<MalformedException> {
       normalise(item)
     }
   }

@@ -27,7 +27,6 @@ class GipsyHillScraper : Scraper {
         }
         val style = rawSummary.maybeExtract("Style: (.*) ABV")?.get(1)
 
-
         Item(
           thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
           name = name,
