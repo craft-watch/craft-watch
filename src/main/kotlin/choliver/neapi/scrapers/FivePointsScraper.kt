@@ -26,7 +26,8 @@ class FivePointsScraper : Scraper {
         Item(
           thumbnailUrl = el.srcFrom(".imageInnerWrap img"),
           name = a.extractFrom(regex = "([^(]+)")[1].trim().toTitleCase(),
-          summary = if (sizeMl > 1000) "Minikeg" else parts[1],
+          summary = parts[1],
+          keg = (sizeMl >= 1000),
           abv = parts[2].toDouble(),
           sizeMl = sizeMl,
           available = doc.maybeSelectFrom(".unavailableItemWrap") == null,

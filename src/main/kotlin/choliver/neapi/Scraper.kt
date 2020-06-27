@@ -18,6 +18,7 @@ interface Scraper {
   data class Item(
     val name: String,
     val summary: String? = null,
+    val keg: Boolean = false,
     val perItemPrice: Double,
     val sizeMl: Int? = null,
     val abv: Double? = null,

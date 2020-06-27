@@ -3,6 +3,7 @@ package choliver.neapi.scrapers
 import choliver.neapi.Scraper.Item
 import choliver.neapi.executeScraper
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.net.URI
 
@@ -36,7 +37,7 @@ class PillarsScraperTest {
   fun `identifies kegs`() {
     val item = ITEMS.first { it.name == "Pillars Pilsner" } // Note "keg" no longer in title
     assertEquals(5000, item.sizeMl)
-    assertEquals("Minikeg", item.summary)
+    assertTrue(item.keg)
   }
 
   @Test

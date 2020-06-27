@@ -6,6 +6,7 @@ export interface Item {
   brewery: string;
   name: string;
   summary?: string;
+  keg: boolean;
   sizeMl?: number;
   abv?: number;
   perItemPrice: number;

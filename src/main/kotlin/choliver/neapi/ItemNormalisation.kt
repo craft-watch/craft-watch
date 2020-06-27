@@ -12,6 +12,7 @@ fun Scraper.Item.normalise(brewery: String, url: URI) = Item(
   summary = summary
     ?.trim()
     ?.validate("non-blank summary") { it.isNotBlank() },
+  keg = keg,
   // TODO - validate sane size
   sizeMl = sizeMl,
   abv = abv
