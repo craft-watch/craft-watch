@@ -4,6 +4,8 @@ import choliver.neapi.Scraper.IndexEntry
 import choliver.neapi.getters.Getter
 import choliver.neapi.getters.HtmlGetter
 import mu.KotlinLogging
+import java.util.stream.Collectors
+import java.util.stream.Collectors.*
 
 class Executor(getter: Getter<String>) {
   private val jsonGetter = HtmlGetter(getter)
@@ -17,7 +19,10 @@ class Executor(getter: Getter<String>) {
     private val brewery = scraper.name
 
     fun execute() = scrapeIndexSafely(scraper)
-      .mapNotNull { scrapeItemSafely(it) }
+      .parallelStream()
+      .map { scrapeItemSafely(it) }
+      .collect(toList())
+      .filterNotNull()
       .bestPricedItems()
 
     private fun scrapeIndexSafely(scraper: Scraper): List<IndexEntry> {
@@ -37,22 +42,22 @@ class Executor(getter: Getter<String>) {
     }
 
     private fun scrapeItemSafely(entry: IndexEntry): Item? {
-      logger.info("[${brewery}] Scraping item: ${entry.rawName}")
+      logger.info("[${brewery}] Scraping [${entry.rawName}]")
       return try {
         entry
           .scrapeItem(jsonGetter.request(entry.url))
           .normalise(brewery, entry.url)
       } catch (e: SkipItemException) {
-        logger.info("[${brewery}] Skipping item because: ${e.message}")
+        logger.info("[${brewery}] Skipping [${entry.rawName}] because: ${e.message}")
         null
       } catch (e: NonFatalScraperException) {
-        logger.warn("[${brewery}] Error scraping item: ${entry.rawName}", e)
+        logger.warn("[${brewery}] Error scraping [${entry.rawName}]", e)
         null
       } catch (e: FatalScraperException) {
-        logger.error("[${brewery}] Error scraping item: ${entry.rawName}", e)
+        logger.error("[${brewery}] Error scraping [${entry.rawName}]", e)
         throw e
       } catch (e: Exception) {
-        logger.warn("[${brewery}] Unexpected error scraping item: ${entry.rawName}", e)
+        logger.warn("[${brewery}] Unexpected error scraping [${entry.rawName}]", e)
         null
       }
     }
@@ -60,7 +65,7 @@ class Executor(getter: Getter<String>) {
     private fun List<Item>.bestPricedItems() = groupBy { it.name to it.summary }
       .map { (key, group) ->
         if (group.size > 1) {
-          logger.info("[${brewery}] Eliminating ${group.size - 1} more expensive item(s) for: ${key}")
+          logger.info("[${brewery}] Eliminating ${group.size - 1} more expensive item(s) for [${key}]")
         }
         group.minBy { it.perItemPrice }!!
       }
