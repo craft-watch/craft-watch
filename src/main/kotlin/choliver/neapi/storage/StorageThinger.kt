@@ -2,7 +2,6 @@ package choliver.neapi.storage
 
 import choliver.neapi.sha1
 import mu.KotlinLogging
-import java.io.File
 import java.io.FileNotFoundException
 import java.time.Instant
 import java.time.ZoneOffset.UTC
@@ -21,7 +20,7 @@ class StorageThinger(
   fun readFromHtmlCache(key: String) = try {
     val fqk = htmlKey(key)
     String(backer.read(fqk))
-      .also { logger.info("${key} read from cache: ${fqk}") }
+      .also { logger.info("${key} read from ${backer.desc} cache: ${fqk}") }
   } catch (e: FileNotFoundException) {
     null
   }
@@ -29,18 +28,13 @@ class StorageThinger(
   fun writeToHtmlCache(key: String, text: String) {
     val fqk = htmlKey(key)
     backer.write(fqk, text.toByteArray())
-    logger.info("${key} written to cache: ${fqk}")
+    logger.info("${key} written to ${backer.desc} cache: ${fqk}")
   }
 
   fun writeResults(key: String, content: ByteArray) {
     val fqk = "${resultsDir}/${key}"
     backer.write(fqk, content)  // TODO - make key safe
-    logger.info("Results written to: ${fqk}")
-  }
-
-  private fun File.createAndWrite(data: ByteArray) {
-    parentFile.mkdirs()
-    writeBytes(data)
+    logger.info("Results written to ${backer.desc}: ${fqk}")
   }
 
   private fun htmlKey(key: String) = "${cacheDir}/${key.sha1()}.html"

@@ -9,6 +9,8 @@ import java.io.FileNotFoundException
 class GcsBacker(private val bucketName: String) : Backer {
   private val storage = StorageOptions.getDefaultInstance().service
 
+  override val desc = "GCS"
+
   override fun write(key: String, content: ByteArray) {
     storage.create(blobInfo(key), content)
   }

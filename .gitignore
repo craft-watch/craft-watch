@@ -9,5 +9,5 @@ out/
 .gradle/
 build/
 
-# Scraper
-/storage/
+# Local scraper cache
+/cache/
