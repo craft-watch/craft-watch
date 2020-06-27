@@ -10,7 +10,7 @@ jobs:
           name: Create service key
           command: |
             KEY_FILE="${HOME}/service-key.json"
-            echo "${GCLOUD_SERVICE_KEY}" | base64 -d > "${KEY_FILE}"
+            echo "${GCLOUD_SERVICE_KEY}" > "${KEY_FILE}"
             echo "export GOOGLE_APPLICATION_CREDENTIALS=${KEY_FILE}" >> "${BASH_ENV}"
       - restore_cache:
           key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
