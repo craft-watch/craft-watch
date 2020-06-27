@@ -36,21 +36,20 @@ class Cli : CliktCommand(name = "scraper") {
   }
 
   private fun executeScrape() {
-    val storage = StoreStructure(
-      WriteThroughObjectStore(
-        firstLevel = LocalObjectStore(CACHE_DIR),
-        secondLevel = GcsObjectStore(GCS_BUCKET)
-      ),
-      Instant.now()
+    val store = WriteThroughObjectStore(
+      firstLevel = LocalObjectStore(CACHE_DIR),
+      secondLevel = GcsObjectStore(GCS_BUCKET)
     )
-    val getter = CachingGetter(storage.htmlCache, HttpGetter())
+    val structure = StoreStructure(store, Instant.now())
+    val getter = CachingGetter(structure.cache, HttpGetter())
     val executor = Executor(getter)
 
     val inventory = executor.scrape(*scrapers.ifEmpty { SCRAPERS.values }.toTypedArray())
-    storage.writeResults(
+    structure.results.write(
       "inventory.json",
       mapper.writeValueAsBytes(inventory)
     )
+    // TODO - log
   }
 
   companion object {

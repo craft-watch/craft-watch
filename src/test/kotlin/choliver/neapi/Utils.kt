@@ -15,10 +15,8 @@ fun executeScraper(scraper: Scraper): List<Result.Item> {
     firstLevel = LocalObjectStore(CACHE_DIR),
     secondLevel = GcsObjectStore(GCS_BUCKET)
   )
-  val cachingGetter = CachingGetter(
-    StoreStructure(store, Instant.now()).htmlCache,
-    HttpGetter()
-  )
+  val structure = StoreStructure(store, Instant.now())
+  val cachingGetter = CachingGetter(structure.cache, HttpGetter())
   val getter = HtmlGetter(cachingGetter)
   return scraper.scrapeIndex(getter.request(scraper.rootUrl))
     .map { it.scrapeItem(getter.request(it.url)) }

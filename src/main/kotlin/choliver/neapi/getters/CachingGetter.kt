@@ -1,12 +1,34 @@
 package choliver.neapi.getters
 
-import choliver.neapi.storage.HtmlCache
+import choliver.neapi.sha1
+import choliver.neapi.storage.ObjectStore
+import choliver.neapi.storage.SubObjectStore
+import mu.KotlinLogging
+import java.io.FileNotFoundException
 import java.net.URI
 
 class CachingGetter(
-  private val cache: HtmlCache,
+  private val store: SubObjectStore,
   private val delegate: Getter<String>
 ): Getter<String> {
-  override fun request(url: URI) = cache.read(url.toString())
-    ?: delegate.request(url).also { cache.write(url.toString(), it) }
+  private val logger = KotlinLogging.logger {}
+
+  override fun request(url: URI) = read(url)
+    ?: delegate.request(url).also { write(url, it) }
+
+  private fun write(url: URI, text: String) {
+    val key = key(url)
+    store.write(key, text.toByteArray())
+    logger.info("${url} written to cache: ${key}")
+  }
+
+  private fun read(url: URI) = try {
+    val key = key(url)
+    String(store.read(key))
+      .also { logger.info("${url} read from cache: ${key}") }
+  } catch (e: FileNotFoundException) {
+    null
+  }
+
+  private fun key(url: URI) = "${url.toString().sha1()}.html"
 }
