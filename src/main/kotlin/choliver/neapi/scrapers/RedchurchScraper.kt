@@ -48,6 +48,7 @@ class RedchurchScraper : Scraper {
   private fun Document.extractBestPerItemPrice(): Double {
     val json = selectFrom("#ProductJson-product-template")
 
+    @Suppress("UNCHECKED_CAST")
     val winner = (objectMapper.readValue<Map<String, Any>>(json.data())["variants"] as List<Map<String, Any>>)
       .map {
         Variant(title = it["title"] as String, price = (it["price"] as Int) / 100.0)
