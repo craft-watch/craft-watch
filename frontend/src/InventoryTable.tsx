@@ -54,7 +54,13 @@ const renderThumbnail: Renderer<Item> = item => (
 const renderName: Renderer<Item> = item => (
   <>
     <a href={item.url}>{item.name}</a>
-    {item.summary && <p className="summary">{item.summary}</p>}
+    <p className="summary">
+      {item.summary && item.summary}
+    </p>
+    <p className="summary">
+      {item.keg && <span className="pill violet">Minikeg</span>}
+      {item.mixed && <span className="pill magenta">Mixed case</span>}
+    </p>
   </>
 );
 

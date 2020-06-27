@@ -108,6 +108,24 @@ td.thumbnail {
   margin-bottom: 5px;
 }
 
+.pill {
+  color: var(--sol-base3);
+  font-size: smaller;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 2px 10px;
+  border-radius: var(--sexy-radius);
+}
+
+.violet {
+  background: var(--sol-violet);
+}
+
+.magenta {
+  background: var(--sol-magenta);
+}
+
+
 .size {
   white-space: nowrap;
 }

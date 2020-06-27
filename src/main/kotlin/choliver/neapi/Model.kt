@@ -8,6 +8,8 @@ data class Item(
   val brewery: String,
   val name: String,
   val summary: String?,
+  val keg: Boolean,
+  val mixed: Boolean,
   val sizeMl: Int?,
   val abv: Double?,
   val perItemPrice: Double,

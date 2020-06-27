@@ -48,14 +48,14 @@ class FourpureScraperTest {
     assertEquals(
       Item(
         name = "Juicebox",
-        summary = "Minikeg",
+        keg = true,
         perItemPrice = 35.00,
         abv = 5.9,
         sizeMl = 5000,
         available = true,
         thumbnailUrl = URI("https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_juicebox5lminikeg_1588779669WhatsAppImage20200506at14.07.452.jpeg")
       ),
-      ITEMS.first { it.name == "Juicebox" && it.summary == "Minikeg" }
+      ITEMS.first { it.name == "Juicebox" && it.keg }
     )
   }
 }

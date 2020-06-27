@@ -24,6 +24,7 @@ class HowlingHopsScraper : Scraper {
           thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
           name = parts.name,
           summary = parts.summary,
+          mixed = parts.mixed,
           available = doc.textFrom(".stock") == "In stock",
           sizeMl = parts.sizeMl,
           abv = parts.abv,
@@ -42,7 +43,8 @@ class HowlingHopsScraper : Scraper {
     val summary: String,
     val abv: Double? = null,
     val sizeMl: Int,
-    val numCans: Int
+    val numCans: Int,
+    val mixed: Boolean = false
   )
 
   private fun extractVariableParts(desc: String): VariableParts {
@@ -62,7 +64,8 @@ class HowlingHopsScraper : Scraper {
         name = betterParts[1],
         summary = "${numCans} cans",
         sizeMl = betterParts[3].toInt(),
-        numCans = numCans
+        numCans = numCans,
+        mixed = true
       )
     }
   }

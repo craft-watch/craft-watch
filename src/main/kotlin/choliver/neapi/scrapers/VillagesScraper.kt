@@ -20,6 +20,7 @@ class VillagesScraper : Scraper {
           thumbnailUrl = details.thumbnailUrl,
           name = parts.name.toTitleCase(),
           summary = parts.summary,
+          mixed = parts.mixed,
           sizeMl = doc.maybeExtractFrom(regex = "(\\d+)ml")?.get(1)?.toInt(),
           abv = parts.abv,
           available = details.available,
@@ -32,6 +33,7 @@ class VillagesScraper : Scraper {
     val name: String,
     val summary: String,
     val numCans: Int,
+    val mixed: Boolean = false,
     val abv: Double? = null
   )
 
@@ -40,7 +42,8 @@ class VillagesScraper : Scraper {
     VariableParts(
       name = parts[1],
       summary = "24 cans",
-      numCans = 24
+      numCans = 24,
+      mixed = true
     )
   } else {
     val parts = title.extract("^([^ ]*) (.*)? ((.*)%)?.*$")

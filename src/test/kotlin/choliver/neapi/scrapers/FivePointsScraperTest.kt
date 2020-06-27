@@ -2,8 +2,7 @@ package choliver.neapi.scrapers
 
 import choliver.neapi.Scraper.Item
 import choliver.neapi.executeScraper
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.net.URI
 
@@ -36,7 +35,7 @@ class FivePointsScraperTest {
   @Test
   fun `identifies minikeg`() {
     val item = ITEMS.first { it.name == "Five Points Best" }
-    assertEquals("Minikeg", item.summary)
+    assertTrue(item.keg)
     assertEquals(5000, item.sizeMl)
   }
 

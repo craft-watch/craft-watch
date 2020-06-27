@@ -23,7 +23,8 @@ class PillarsScraper : Scraper {
         Item(
           thumbnailUrl = details.thumbnailUrl,
           name = titleParts.name,
-          summary = if (titleParts.keg) "Minikeg" else descParts[1].toTitleCase(),
+          summary = descParts[1].toTitleCase(),
+          keg = titleParts.keg,
           sizeMl = titleParts.sizeMl,
           abv = descParts[2].toDouble(),
           available = details.available,

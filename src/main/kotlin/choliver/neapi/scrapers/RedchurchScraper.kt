@@ -36,7 +36,7 @@ class RedchurchScraper : Scraper {
             .replace("\\?.*".toRegex(), "")
             .toUri(),
           name = nameParts[2],
-          summary = if (mixed) "Mixed case" else null,
+          mixed = mixed,
           sizeMl = sizeMl,
           abv = abv,
           available = el.maybeSelectFrom(".sold-out-text") == null,

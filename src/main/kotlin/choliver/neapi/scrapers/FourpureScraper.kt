@@ -27,7 +27,7 @@ class FourpureScraper : Scraper {
           thumbnailUrl = a.srcFrom("img"),
           name = parts.name,
           abv = doc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+\\.\\d+)")[1].toDouble(),
-          summary = parts.summary,
+          keg = parts.keg,
           sizeMl = parts.sizeMl,
           available = true,
           perItemPrice = el.selectFrom(".priceNow, .priceStandard").priceFrom(".GBP")
@@ -38,7 +38,7 @@ class FourpureScraper : Scraper {
   private data class VariableParts(
     val name: String,
     val sizeMl: Int,
-    val summary: String? = null
+    val keg: Boolean = false
   )
 
   private fun extractVariableParts(itemDoc: Document): VariableParts {
@@ -48,7 +48,7 @@ class FourpureScraper : Scraper {
       VariableParts(
         name = parts[1],
         sizeMl = parts[2].toInt() * 1000,
-        summary = "Minikeg"
+        keg = true
       )
     } else {
       VariableParts(
