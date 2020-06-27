@@ -44,10 +44,8 @@ class Cli : CliktCommand(name = "scraper") {
     val executor = Executor(getter)
 
     val inventory = executor.scrape(*scrapers.ifEmpty { SCRAPERS.values }.toTypedArray())
-    structure.results.write(
-      "inventory.json",
-      mapper.writeValueAsBytes(inventory)
-    )
+    structure.results.write("inventory.json", mapper.writeValueAsBytes(inventory))
+    INVENTORY_JSON_FILE.outputStream().use { mapper.writeValue(it, inventory) }
     // TODO - log
   }
 

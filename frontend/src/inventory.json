@@ -1,6 +1,16 @@
 {
   "items" : [ {
     "brewery" : "Boxcar",
+    "name" : "Oh Ginkgo",
+    "summary" : "IPA",
+    "sizeMl" : 440,
+    "abv" : 6.5,
+    "perItemPrice" : 4.95,
+    "available" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/IMG_20200626_152802-02_345x345.jpg",
+    "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/oh-ginkgo-6-5-ipa-440ml"
+  }, {
+    "brewery" : "Boxcar",
     "name" : "Dreamful",
     "summary" : "IPA",
     "sizeMl" : 440,
@@ -86,7 +96,7 @@
     "sizeMl" : 330,
     "abv" : 4.2,
     "perItemPrice" : 2.5,
-    "available" : true,
+    "available" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-330ml-Sunray-F_large.png?v=1539104580",
     "url" : "https://shop.canopybeer.com/products/sunray-pale-ale"
   }, {
@@ -96,7 +106,7 @@
     "sizeMl" : 330,
     "abv" : 4.5,
     "perItemPrice" : 2.5,
-    "available" : false,
+    "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Champion-F_large.png?v=1540475156",
     "url" : "https://shop.canopybeer.com/products/champion-kolsch"
   }, {
@@ -106,9 +116,19 @@
     "sizeMl" : 330,
     "abv" : 4.8,
     "perItemPrice" : 2.5,
-    "available" : true,
+    "available" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Snapper-F_large.png?v=1540475255",
     "url" : "https://shop.canopybeer.com/products/snapper-session-ipa"
+  }, {
+    "brewery" : "Canopy",
+    "name" : "All Together IPA",
+    "summary" : null,
+    "sizeMl" : 440,
+    "abv" : 6.5,
+    "perItemPrice" : 5.5,
+    "available" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-All-Together-F_large.png?v=1593006475",
+    "url" : "https://shop.canopybeer.com/products/copy-of-a-rising-tide-nelson-motueka-ipa-6-5"
   }, {
     "brewery" : "Canopy",
     "name" : "A Rising Tide Nelson & Motueka IPA",
@@ -121,6 +141,16 @@
     "url" : "https://shop.canopybeer.com/products/a-rising-tide-nelson-motueka-ipa-6-5"
   }, {
     "brewery" : "Canopy",
+    "name" : "Paceline Lime & Salt Lager",
+    "summary" : null,
+    "sizeMl" : 440,
+    "abv" : 4.0,
+    "perItemPrice" : 3.5,
+    "available" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-Paceline-F_large.png?v=1585123486",
+    "url" : "https://shop.canopybeer.com/products/paceline-lime-salt-lager-4-0"
+  }, {
+    "brewery" : "Canopy",
     "name" : "Llopper Everyday Oyster Stout",
     "summary" : null,
     "sizeMl" : 440,
@@ -130,15 +160,15 @@
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-LlopperF_large.png?v=1540568612",
     "url" : "https://shop.canopybeer.com/products/llopper-everyday-oyster-stout"
   }, {
-    "brewery" : "Canopy",
-    "name" : "Paceline Lime & Salt Lager",
-    "summary" : null,
-    "sizeMl" : 440,
+    "brewery" : "Five Points",
+    "name" : "Five Points XPA",
+    "summary" : "Extra Pale Ale",
+    "sizeMl" : 330,
     "abv" : 4.0,
-    "perItemPrice" : 3.5,
-    "available" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-Paceline-F_large.png?v=1585123486",
-    "url" : "https://shop.canopybeer.com/products/paceline-lime-salt-lager-4-0"
+    "perItemPrice" : 1.8,
+    "available" : true,
+    "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-xpa-1574871288XPA-Can-Mock-Up.png",
+    "url" : "https://shop.fivepointsbrewing.co.uk/item/9/FivePointsBrewing/FIVE-POINTS-XPA-12-PACK.html"
   }, {
     "brewery" : "Five Points",
     "name" : "Five Points Pale",
@@ -156,7 +186,7 @@
     "sizeMl" : 330,
     "abv" : 5.5,
     "perItemPrice" : 1.96,
-    "available" : false,
+    "available" : true,
     "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-jupa-1574871172Jupa-Can-Mock-Up.png",
     "url" : "https://shop.fivepointsbrewing.co.uk/item/12/FivePointsBrewing/FIVE-POINTS-JUPA-12-PACK.html"
   }, {
@@ -230,16 +260,6 @@
     "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-xpa-5l-mini-keg-1591885313XPA-Mini-Cask-Mockup-SML2.jpg",
     "url" : "https://shop.fivepointsbrewing.co.uk/item/42/FivePointsBrewing/FIVE-POINTS-XPA-5L-MINI-KEG.html"
   }, {
-    "brewery" : "Five Points",
-    "name" : "Five Points XPA",
-    "summary" : "Extra Pale Ale",
-    "sizeMl" : 330,
-    "abv" : 4.0,
-    "perItemPrice" : 1.8,
-    "available" : false,
-    "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-xpa-1574871288XPA-Can-Mock-Up.png",
-    "url" : "https://shop.fivepointsbrewing.co.uk/item/9/FivePointsBrewing/FIVE-POINTS-XPA-12-PACK-BACK-WC-22ND-JUNE.html"
-  }, {
     "brewery" : "Fourpure",
     "name" : "Monsoon",
     "summary" : "Minikeg",
@@ -261,6 +281,16 @@
     "url" : "https://www.fourpure.com/item/286/Fourpure/Juicebox-5L-Minikeg.html"
   }, {
     "brewery" : "Fourpure",
+    "name" : "Hemisphere",
+    "summary" : null,
+    "sizeMl" : 330,
+    "abv" : 4.2,
+    "perItemPrice" : 2.0,
+    "available" : true,
+    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_hemisphere_1584973070hemisphere2019RenderCROPPED.png",
+    "url" : "https://www.fourpure.com/item/1/Fourpure/Hemisphere.html"
+  }, {
+    "brewery" : "Fourpure",
     "name" : "Juicebox",
     "summary" : null,
     "sizeMl" : 330,
@@ -279,16 +309,6 @@
     "available" : true,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_shapeshifteripa_1566988291Shapeshifter2019RenderCMYK.png",
     "url" : "https://www.fourpure.com/item/7/Fourpure/Shapeshifter-IPA.html"
-  }, {
-    "brewery" : "Fourpure",
-    "name" : "Hemisphere",
-    "summary" : null,
-    "sizeMl" : 330,
-    "abv" : 4.2,
-    "perItemPrice" : 2.0,
-    "available" : true,
-    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_hemisphere_1584973070hemisphere2019RenderCROPPED.png",
-    "url" : "https://www.fourpure.com/item/1/Fourpure/Hemisphere.html"
   }, {
     "brewery" : "Fourpure",
     "name" : "Easy Peeler",
@@ -341,14 +361,24 @@
     "url" : "https://www.fourpure.com/item/188/Fourpure/Deucebox-440ml.html"
   }, {
     "brewery" : "Gipsy Hill",
-    "name" : "Moneybags",
-    "summary" : "DIPA",
-    "sizeMl" : 440,
-    "abv" : 9.9,
-    "perItemPrice" : 6.0,
+    "name" : "Buy The NHS A Pint: West Coast IPA",
+    "summary" : "West Coast IPA",
+    "sizeMl" : null,
+    "abv" : 7.2,
+    "perItemPrice" : 4.0,
     "available" : true,
-    "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/02/Moneybags-1.png?resize=300%2C300&ssl=1",
-    "url" : "https://gipsyhillbrew.com/product/moneybags/"
+    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/1-2.png?resize=300%2C300&ssl=1",
+    "url" : "https://gipsyhillbrew.com/product/nhs-west-coast-ipa/"
+  }, {
+    "brewery" : "Gipsy Hill",
+    "name" : "Core Range 24 Pack",
+    "summary" : "Various",
+    "sizeMl" : 330,
+    "abv" : null,
+    "perItemPrice" : 2.33,
+    "available" : true,
+    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/03/Copy-of-Core-range-6-pack-31.png?resize=300%2C300&ssl=1",
+    "url" : "https://gipsyhillbrew.com/product/core-range-24-pack/"
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Blisco Dash",
@@ -359,6 +389,26 @@
     "available" : true,
     "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Blisco-Dash.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/blisco-dash/"
+  }, {
+    "brewery" : "Gipsy Hill",
+    "name" : "DJ BBQ Box",
+    "summary" : "Mixed",
+    "sizeMl" : null,
+    "abv" : null,
+    "perItemPrice" : 3.17,
+    "available" : true,
+    "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Fathers-day-box-3.png?resize=300%2C300&ssl=1",
+    "url" : "https://gipsyhillbrew.com/product/dj-bbq-box/"
+  }, {
+    "brewery" : "Gipsy Hill",
+    "name" : "Hepcat",
+    "summary" : "Session IPA",
+    "sizeMl" : 330,
+    "abv" : 4.6,
+    "perItemPrice" : 2.4,
+    "available" : true,
+    "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/HEPCAT.png?resize=300%2C300&ssl=1",
+    "url" : "https://gipsyhillbrew.com/product/hepcat/"
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Baller",
@@ -401,6 +451,16 @@
     "url" : "https://gipsyhillbrew.com/product/hunter/"
   }, {
     "brewery" : "Gipsy Hill",
+    "name" : "Ranger",
+    "summary" : "Pale Ale",
+    "sizeMl" : 330,
+    "abv" : null,
+    "perItemPrice" : 2.2,
+    "available" : true,
+    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/RANGER.png?resize=300%2C300&ssl=1",
+    "url" : "https://gipsyhillbrew.com/product/ranger/"
+  }, {
+    "brewery" : "Gipsy Hill",
     "name" : "Buy the NHS a pint!",
     "summary" : null,
     "sizeMl" : null,
@@ -411,46 +471,6 @@
     "url" : "https://gipsyhillbrew.com/product/buy-the-nhs-a-pint/"
   }, {
     "brewery" : "Gipsy Hill",
-    "name" : "Buy The NHS A Pint: New England IPA",
-    "summary" : "NEIPA",
-    "sizeMl" : null,
-    "abv" : 6.5,
-    "perItemPrice" : 4.0,
-    "available" : true,
-    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/5-1.png?resize=300%2C300&ssl=1",
-    "url" : "https://gipsyhillbrew.com/product/nhs-new-england-ipa/"
-  }, {
-    "brewery" : "Gipsy Hill",
-    "name" : "Buy The NHS A Pint: Triple Fruited Sour",
-    "summary" : "Triple Fruited Sour",
-    "sizeMl" : null,
-    "abv" : 4.4,
-    "perItemPrice" : 4.0,
-    "available" : true,
-    "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/4-1.png?resize=300%2C300&ssl=1",
-    "url" : "https://gipsyhillbrew.com/product/nhs-triple-fruited-sour/"
-  }, {
-    "brewery" : "Gipsy Hill",
-    "name" : "Buy The NHS A Pint: West Coast IPA",
-    "summary" : "West Coast IPA",
-    "sizeMl" : null,
-    "abv" : 7.2,
-    "perItemPrice" : 4.0,
-    "available" : true,
-    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/1-2.png?resize=300%2C300&ssl=1",
-    "url" : "https://gipsyhillbrew.com/product/nhs-west-coast-ipa/"
-  }, {
-    "brewery" : "Gipsy Hill",
-    "name" : "Buy The NHS A Pint: Sour IPA",
-    "summary" : "Sour IPA",
-    "sizeMl" : null,
-    "abv" : 7.5,
-    "perItemPrice" : 5.0,
-    "available" : true,
-    "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/2-2.png?resize=300%2C300&ssl=1",
-    "url" : "https://gipsyhillbrew.com/product/nhs-sour-ipa/"
-  }, {
-    "brewery" : "Gipsy Hill",
     "name" : "Hitcher",
     "summary" : "American Pale Ale",
     "sizeMl" : 440,
@@ -459,16 +479,6 @@
     "available" : true,
     "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Hitcher.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/hitcher/"
-  }, {
-    "brewery" : "Gipsy Hill",
-    "name" : "Naturalist",
-    "summary" : "IPA",
-    "sizeMl" : 440,
-    "abv" : 6.5,
-    "perItemPrice" : 5.0,
-    "available" : true,
-    "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Naturalist.png?resize=300%2C300&ssl=1",
-    "url" : "https://gipsyhillbrew.com/product/naturalist/"
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Filungar",
@@ -511,14 +521,14 @@
     "url" : "https://gipsyhillbrew.com/product/left-handed-giant-opening-theme-ipa/"
   }, {
     "brewery" : "Gipsy Hill",
-    "name" : "Specials Box – 12 pack",
-    "summary" : "Variety",
-    "sizeMl" : 440,
-    "abv" : 4.8,
-    "perItemPrice" : 4.83,
+    "name" : "Hepcat Case (24 Cans)",
+    "summary" : "Session IPA",
+    "sizeMl" : null,
+    "abv" : 4.6,
+    "perItemPrice" : 2.4,
     "available" : true,
-    "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Specials-01.png?resize=300%2C300&ssl=1",
-    "url" : "https://gipsyhillbrew.com/product/specials-box/"
+    "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/Copy-of-Core-range-6-pack-34.png?resize=300%2C300&ssl=1",
+    "url" : "https://gipsyhillbrew.com/product/hepcat-case-24-cans/"
   }, {
     "brewery" : "Howling Hops",
     "name" : "NEW 12 Beer Mega Pack",
@@ -526,8 +536,8 @@
     "sizeMl" : 440,
     "abv" : null,
     "perItemPrice" : 2.9,
-    "available" : false,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/12beers_june2-324x324.jpg",
+    "available" : true,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/12beers_june3-324x324.jpg",
     "url" : "https://www.howlinghops.co.uk/product/12-beer-mega-pack-24-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
@@ -541,22 +551,12 @@
     "url" : "https://www.howlinghops.co.uk/product/passionfruit-gose-24-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Tropical Deluxe",
-    "summary" : "Pale Ale",
-    "sizeMl" : 440,
-    "abv" : 3.8,
-    "perItemPrice" : 2.75,
-    "available" : true,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/04/Tropical-24-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/tropical-deluxe-pale-ale-3-8-24-x440ml-cans/"
-  }, {
-    "brewery" : "Howling Hops",
     "name" : "Off Ramp",
     "summary" : "DIPA",
     "sizeMl" : 440,
     "abv" : 8.0,
     "perItemPrice" : 5.0,
-    "available" : true,
+    "available" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/offramp-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/off-ramp-dipa-4-x-440ml/"
   }, {
@@ -576,7 +576,7 @@
     "sizeMl" : 440,
     "abv" : 6.9,
     "perItemPrice" : 4.5,
-    "available" : true,
+    "available" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/05/house-ipa-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/house-ipa-4-x-440ml/"
   }, {
@@ -589,16 +589,6 @@
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/flashpoint-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/flashpoint-4-x-440ml/"
-  }, {
-    "brewery" : "Howling Hops",
-    "name" : "Romans",
-    "summary" : "DDH Pale Ale",
-    "sizeMl" : 440,
-    "abv" : 5.5,
-    "perItemPrice" : 4.0,
-    "available" : true,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/HBC-romans-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/romans-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
     "name" : "Push Push",
@@ -649,6 +639,16 @@
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/pocket-rocket-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/pocket-rocket-4-x-440ml/"
+  }, {
+    "brewery" : "Howling Hops",
+    "name" : "Tropical Deluxe",
+    "summary" : "Pale Ale",
+    "sizeMl" : 440,
+    "abv" : 3.8,
+    "perItemPrice" : 3.5,
+    "available" : false,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/04/tropical-deluxe-440ml-324x324.png",
+    "url" : "https://www.howlinghops.co.uk/product/tropical-deluxe-4-x-440ml/"
   }, {
     "brewery" : "Pillars",
     "name" : "Pillars Pilsner",
@@ -701,6 +701,36 @@
     "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/pillars-icebock"
   }, {
     "brewery" : "Pressure Drop",
+    "name" : "The Rendezvous",
+    "summary" : "NEIPA",
+    "sizeMl" : 440,
+    "abv" : 6.8,
+    "perItemPrice" : 4.8,
+    "available" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/Screenshot_2019-06-25_at_15.05.51_large.png?v=1561471658",
+    "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/the-rendezvous-ddh-neipa-collab-with-gamma"
+  }, {
+    "brewery" : "Pressure Drop",
+    "name" : "Tomorrow's World",
+    "summary" : "New England Pale Ale",
+    "sizeMl" : 440,
+    "abv" : 5.5,
+    "perItemPrice" : 4.2,
+    "available" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_8968_large.jpg?v=1593158286",
+    "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/tomorrows-world-new-england-pale-ale"
+  }, {
+    "brewery" : "Pressure Drop",
+    "name" : "It Is Wednesday My Dudes",
+    "summary" : "Special Lager",
+    "sizeMl" : null,
+    "abv" : 5.2,
+    "perItemPrice" : 3.8,
+    "available" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9954_large.jpg?v=1592930412",
+    "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/it-is-wednesday-my-dudes-special-lager"
+  }, {
+    "brewery" : "Pressure Drop",
     "name" : "Behind Door Number 3",
     "summary" : "Citra & Mosaic New England DIPA",
     "sizeMl" : 440,
@@ -731,16 +761,6 @@
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/perfect-life-new-england-pale"
   }, {
     "brewery" : "Pressure Drop",
-    "name" : "Pallet Notes",
-    "summary" : "Sabro, Mosaic & Simcoe NEIPA",
-    "sizeMl" : 440,
-    "abv" : 7.4,
-    "perItemPrice" : 4.95,
-    "available" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_8516_large.jpg?v=1579084092",
-    "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/pallet-notes-sabro-mosaic-simcoe-neipa"
-  }, {
-    "brewery" : "Pressure Drop",
     "name" : "Pale Fire",
     "summary" : "Mosaic & Amarillo Pale",
     "sizeMl" : 440,
@@ -769,26 +789,6 @@
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9565_large.jpg?v=1589446938",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/future-sunshine-peach-pineapple-passionfruit-sour"
-  }, {
-    "brewery" : "Pressure Drop",
-    "name" : "The Numbers",
-    "summary" : "DDH New England Pale Ale",
-    "sizeMl" : 440,
-    "abv" : 5.2,
-    "perItemPrice" : 4.2,
-    "available" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/pour_large.jpg?v=1589448793",
-    "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/the-numbers-ddh-new-england-pale-ale"
-  }, {
-    "brewery" : "Pressure Drop",
-    "name" : "Bosko",
-    "summary" : "Mosaic & Amarillo West Coast IPA",
-    "sizeMl" : 440,
-    "abv" : 6.5,
-    "perItemPrice" : 4.15,
-    "available" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/imagejpg_large.png?v=1554993771",
-    "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/bosko-west-coast-ipa"
   }, {
     "brewery" : "Stewart Brewing",
     "name" : "HotHead Kveik IPA",
@@ -889,16 +889,6 @@
     "available" : true,
     "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-st-giles-1592389432330ml-StGiles.png",
     "url" : "https://www.stewartbrewing.co.uk/item/254/StewartBrewing/St-Giles.html"
-  }, {
-    "brewery" : "Stewart Brewing",
-    "name" : "Big Blue",
-    "summary" : "Stout",
-    "sizeMl" : 440,
-    "abv" : 7.0,
-    "perItemPrice" : 4.3,
-    "available" : true,
-    "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-big-blue-1589444053Big-Blue-Can.png",
-    "url" : "https://www.stewartbrewing.co.uk/item/274/StewartBrewing/Big-Blue.html"
   }, {
     "brewery" : "Stewart Brewing",
     "name" : "Gooseberry Gose",

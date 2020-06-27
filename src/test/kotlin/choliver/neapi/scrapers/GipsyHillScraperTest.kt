@@ -3,6 +3,7 @@ package choliver.neapi.scrapers
 import choliver.neapi.Scraper.Result.Item
 import choliver.neapi.executeScraper
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import java.net.URI
 
@@ -30,6 +31,11 @@ class GipsyHillScraperTest {
       ),
       ITEMS.first { it.name == "Carver" }
     )
+  }
+
+  @Test
+  fun `ignores abv for multi-pack`() {
+    assertNull(ITEMS.find { it.name == "DJ BBQ Box" }!!.abv)
   }
 
   @Test

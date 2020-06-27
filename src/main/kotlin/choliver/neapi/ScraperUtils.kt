@@ -1,6 +1,7 @@
 package choliver.neapi
 
 import org.jsoup.nodes.Element
+import org.jsoup.select.Elements
 import java.net.URI
 import java.net.URISyntaxException
 import kotlin.math.round
@@ -26,8 +27,10 @@ fun Element.maybeSelectFrom(cssQuery: String): Element? = selectFirst(cssQuery)
 fun Element.selectFrom(cssQuery: String) = selectFirst(cssQuery)
   ?: throw ScraperException("Element not present: ${cssQuery}")
 
-fun Element.selectMultipleFrom(cssQuery: String) = select(cssQuery)
-  .ifEmpty { throw ScraperException("Element(s) not present: ${cssQuery}") }!!
+fun Element.selectMultipleFrom(cssQuery: String) = maybeSelectMultipleFrom(cssQuery)
+  .ifEmpty { throw ScraperException("Element(s) not present: ${cssQuery}") }
+fun Element.maybeSelectMultipleFrom(cssQuery: String): Elements = select(cssQuery)
+
 
 fun String.extract(regex: String) = maybeExtract(regex)
   ?: throw ScraperException("Can't extract regex: ${regex}")
