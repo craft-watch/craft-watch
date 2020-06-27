@@ -20,6 +20,7 @@ class VillagesScraper : Scraper {
           thumbnailUrl = details.thumbnailUrl,
           name = parts.name.toTitleCase(),
           summary = parts.summary,
+          desc = doc.maybeWholeTextFrom(".product-single__description")?.split("~")?.get(0),
           mixed = parts.mixed,
           sizeMl = doc.maybeExtractFrom(regex = "(\\d+)ml")?.get(1)?.toInt(),
           abv = parts.abv,

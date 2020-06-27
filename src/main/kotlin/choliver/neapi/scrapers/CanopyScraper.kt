@@ -30,6 +30,7 @@ class CanopyScraper : Scraper {
           thumbnailUrl = el.srcFrom(".grid__image img"),
           name = parts[1],
           summary = null,
+          desc = doc.maybeWholeTextFrom(".product-description"),
           available = !(el.text().contains("Sold out", ignoreCase = true)),
           sizeMl = doc.extractFrom(regex = "(\\d+)ml")[1].toInt(),
           abv = if (parts[2].isBlank()) null else parts[2].toDouble(),

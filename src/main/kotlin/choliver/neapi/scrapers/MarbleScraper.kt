@@ -31,6 +31,7 @@ class MarbleScraper : Scraper {
             .replace("\\d+$".toRegex(), "")
             .toTitleCase(),
           summary = if (mixed) null else style,
+          desc = doc.maybeWholeTextFrom(".woocommerce-product-details__short-description"),
           mixed = mixed,
           keg = attributes.maybeGrab("Packaging")?.contains("keg", ignoreCase = true) ?: false,
           sizeMl = volumeDetails.sizeMl,

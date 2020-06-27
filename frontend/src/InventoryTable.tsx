@@ -1,3 +1,4 @@
+import _ from "underscore";
 import SortableTable, { Column, Renderer } from "./SortableTable";
 import React from "react";
 import { Item } from "./model";
@@ -52,7 +53,7 @@ const renderThumbnail: Renderer<Item> = item => (
 );
 
 const renderName: Renderer<Item> = item => (
-  <>
+  <div className="tooltip">
     <a href={item.url}>{item.name}</a>
     <p className="summary">
       {item.summary && item.summary}
@@ -61,7 +62,16 @@ const renderName: Renderer<Item> = item => (
       {item.keg && <span className="pill violet">Minikeg</span>}
       {item.mixed && <span className="pill magenta">Mixed case</span>}
     </p>
-  </>
+    {item.desc && renderTooltipText(item)}
+  </div>
+);
+
+// TODO - collapse successive newlines
+const renderTooltipText = (item: Item): JSX.Element => (
+  <span className="tooltipText">
+    {item.desc && _.map(item.desc.split("\n"), para => <p>{para}</p>)}
+    <div className="disclaimer">© {item.brewery}</div>
+  </span>
 );
 
 const renderAbv: Renderer<Item> = item => item.abv ? `${item.abv.toFixed(1)}%` : "?";
