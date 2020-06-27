@@ -37,7 +37,7 @@ class GipsyHillScraper : Scraper {
           } else {
             rawSummary.maybeExtract("ABV: (\\d+(\\.\\d+)?)%")?.get(1)?.toDouble()
           },
-          sizeMl = rawSummary.maybeExtract("Sold as: .*?(\\d+)ml")?.get(1)?.toInt(),
+          sizeMl = rawSummary.maybeExtract("(\\d+)ml")?.get(1)?.toInt(),
           perItemPrice = el.ownTextFrom(".woocommerce-Price-amount").toDouble().divideAsPrice(numCans)
         )
       }
