@@ -1,10 +1,22 @@
 import React from "react";
 import _ from "underscore";
 
+export type Selections = { [key: string]: boolean };
+
 export interface MenuProps {
-  breweryVisibility: { [key: string]: boolean };
-  onToggleVisibility: (brewery: string) => void;
-  onGlobalVisibility: (visible: boolean) => void;
+  brewerySelections: Selections;
+  onToggleBrewerySelection: (key: string) => void;
+  onGlobalBrewerySelection: (selected: boolean) => void;
+  formatSelections: Selections;
+  onToggleFormatSelection: (key: string) => void;
+  onGlobalFormatSelection: (selected: boolean) => void;
+}
+
+export interface SectionProps {
+  title: string;
+  selections: Selections;
+  onToggleSelection: (key: string) => void;
+  onGlobalSelection: (selection: boolean) => void;
 }
   
 interface State {
@@ -39,25 +51,42 @@ export default class Menu extends React.Component<MenuProps, State> {
     return (
       <div className="expanded">
         <div className="button" onClick={() => this.setState({ expanded: false })}>&times;</div>
-        <h4>Select breweries</h4>
-        {
-          _.map(this.props.breweryVisibility, (visible, brewery) => (
-            <label key={brewery} className="selectable">
-              {brewery}
-              <input
-                type="checkbox"
-                checked={visible}
-                onClick={() => this.props.onToggleVisibility(brewery)}
-              />
-              <span className="checkmark">{visible ? "✓" : ""}</span>
-            </label>
-          ))
-        }
-        <div>
-          <span className="allOrNone" onClick={() => this.props.onGlobalVisibility(true)}>All</span>
-          <span className="allOrNone" onClick={() => this.props.onGlobalVisibility(false)}>None</span>
-        </div>
+        <Section
+          title="Formats"
+          selections={this.props.formatSelections}
+          onToggleSelection={this.props.onToggleFormatSelection}
+          onGlobalSelection={this.props.onGlobalFormatSelection}
+        />
+        <Section
+          title="Breweries"
+          selections={this.props.brewerySelections}
+          onToggleSelection={this.props.onToggleBrewerySelection}
+          onGlobalSelection={this.props.onGlobalBrewerySelection}
+        />
       </div>
     );
   }
 }
+
+const Section: React.FC<SectionProps> = (props) => (
+  <div className="section">
+    <h4>{props.title}</h4>
+    {
+      _.map(props.selections, (selected, key) => (
+        <label key={key} className="selectable">
+          {key}
+          <input
+            type="checkbox"
+            checked={selected}
+            onClick={() => props.onToggleSelection(key)}
+          />
+          <span className="checkmark">{selected ? "✓" : ""}</span>
+        </label>
+      ))
+    }
+    <div>
+      <span className="allOrNone" onClick={() => props.onGlobalSelection(true)}>All</span>
+      <span className="allOrNone" onClick={() => props.onGlobalSelection(false)}>None</span>
+    </div>
+  </div>
+);
