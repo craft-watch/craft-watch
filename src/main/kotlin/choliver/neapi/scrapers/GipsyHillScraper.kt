@@ -32,6 +32,7 @@ class GipsyHillScraper : Scraper {
           thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
           name = name,
           summary = if (mixed) null else style,
+          desc = doc.maybeWholeTextFrom(".description"),
           mixed = mixed,
           available = true, // TODO
           abv = if (mixed) null else rawSummary.maybeExtract("ABV: (\\d+(\\.\\d+)?)")?.get(1)?.toDouble(),

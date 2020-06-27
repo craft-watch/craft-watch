@@ -1,9 +1,10 @@
 package choliver.neapi.scrapers
 
 import choliver.neapi.Scraper
+import choliver.neapi.byName
 import choliver.neapi.executeScraper
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertFalse
+import choliver.neapi.noDesc
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.net.URI
 
@@ -29,7 +30,7 @@ class MarbleScraperTest {
         available = true,
         thumbnailUrl = URI("https://marblebeers.com/wp-content/uploads/2017/11/Earl-Grey-500ml-Can-234x300.png")
       ),
-      ITEMS.first { it.name == "Earl Grey IPA" }
+      ITEMS.byName("Earl Grey IPA").noDesc()
     )
   }
 
@@ -51,13 +52,18 @@ class MarbleScraperTest {
 
   @Test
   fun `identifies sold out`() {
-    assertFalse(ITEMS.first { it.name == "Cross Collar Half" }.available)
+    assertFalse(ITEMS.byName("Cross Collar Half").available)
   }
 
   @Test
   fun `removes irritating suffixes`() {
     assertFalse(ITEMS.any { it.name.contains("cans", ignoreCase = true) })
     assertFalse(ITEMS.any { it.name.contains("\\d+$".toRegex()) })
+  }
+
+  @Test
+  fun `extracts description`() {
+    assertNotNull(ITEMS.byName("Earl Grey IPA").desc)
   }
 }
 

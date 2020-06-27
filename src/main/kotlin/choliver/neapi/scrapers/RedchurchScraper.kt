@@ -36,6 +36,7 @@ class RedchurchScraper : Scraper {
             .replace("\\?.*".toRegex(), "")
             .toUri(),
           name = nameParts[2],
+          desc = doc.maybeWholeTextFrom(".product-single__description"),
           mixed = mixed,
           sizeMl = sizeMl,
           abv = abv,

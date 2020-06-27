@@ -5,6 +5,7 @@ import org.jsoup.select.Elements
 import java.net.URI
 import java.net.URISyntaxException
 import kotlin.math.round
+import kotlin.text.RegexOption.DOT_MATCHES_ALL
 
 fun Element.priceFrom(cssQuery: String = ":root") = extractFrom(cssQuery, "\\d+\\.\\d+")[0].toDouble()
 
@@ -13,6 +14,9 @@ fun Element.maybeExtractFrom(cssQuery: String = ":root", regex: String) = maybeT
 
 fun Element.textFrom(cssQuery: String = ":root") = selectFrom(cssQuery).text().trim()
 fun Element.maybeTextFrom(cssQuery: String = ":root") = maybeSelectFrom(cssQuery)?.text()?.trim()
+
+fun Element.wholeTextFrom(cssQuery: String = ":root") = selectFrom(cssQuery).wholeText().trim()
+fun Element.maybeWholeTextFrom(cssQuery: String = ":root") = maybeSelectFrom(cssQuery)?.wholeText()?.trim()
 
 fun Element.ownTextFrom(cssQuery: String = ":root") = selectFrom(cssQuery).ownText().trim()
 
@@ -34,7 +38,7 @@ fun Element.maybeSelectMultipleFrom(cssQuery: String): Elements = select(cssQuer
 
 fun String.extract(regex: String) = maybeExtract(regex)
   ?: throw MalformedInputException("Can't extract regex: ${regex}")
-fun String.maybeExtract(regex: String) = regex.toRegex().find(this)?.groupValues
+fun String.maybeExtract(regex: String) = regex.toRegex(DOT_MATCHES_ALL).find(this)?.groupValues
 
 fun String.toTitleCase(): String = split(" ").joinToString(" ") {
   if (it in BEER_ACRONYMS) it else it.toLowerCase().capitalize()

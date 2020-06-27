@@ -24,6 +24,7 @@ class HowlingHopsScraper : Scraper {
           thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
           name = parts.name,
           summary = parts.summary,
+          desc = doc.maybeWholeTextFrom(".woocommerce-product-details__short-description"),
           mixed = parts.mixed,
           available = doc.textFrom(".stock") == "In stock",
           sizeMl = parts.sizeMl,

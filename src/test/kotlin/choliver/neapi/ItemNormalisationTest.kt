@@ -24,6 +24,14 @@ class ItemNormalisationTest {
   }
 
   @Test
+  fun `trims desc`() {
+    assertEquals(
+      "Lorem ipsum",
+      normalise(prototype.copy(desc = "  Lorem ipsum  ")).desc
+    )
+  }
+
+  @Test
   fun `rejects if name is blank`() {
     assertNoValidationFailure(prototype.copy(name = "Yeah"))
     assertValidationFailure(prototype.copy(name = " "))
@@ -34,6 +42,13 @@ class ItemNormalisationTest {
     assertNoValidationFailure(prototype.copy(summary = "Yeah"))
     assertNoValidationFailure(prototype.copy(summary = null))
     assertValidationFailure(prototype.copy(summary = " "))
+  }
+
+  @Test
+  fun `rejects if description is present and blank`() {
+    assertNoValidationFailure(prototype.copy(desc = "Yeah"))
+    assertNoValidationFailure(prototype.copy(desc = null))
+    assertValidationFailure(prototype.copy(desc = " "))
   }
 
   @Test

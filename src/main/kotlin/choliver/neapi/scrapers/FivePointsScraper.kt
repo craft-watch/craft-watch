@@ -27,6 +27,7 @@ class FivePointsScraper : Scraper {
           thumbnailUrl = el.srcFrom(".imageInnerWrap img"),
           name = a.extractFrom(regex = "([^(]+)")[1].trim().toTitleCase(),
           summary = parts[1],
+          desc = doc.maybeSelectMultipleFrom(".about p").joinToString("\n") { it.text() },
           keg = (sizeMl >= 1000),
           abv = parts[2].toDouble(),
           sizeMl = sizeMl,
