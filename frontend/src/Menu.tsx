@@ -63,6 +63,7 @@ export default class Menu extends React.Component<MenuProps, State> {
           onToggleSelection={this.props.onToggleBrewerySelection}
           onGlobalSelection={this.props.onGlobalBrewerySelection}
         />
+        <div className="copyright">© <a href="https://github.com/oliver-charlesworth">Oliver Charlesworth</a> 2020</div>
       </div>
     );
   }

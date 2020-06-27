@@ -125,7 +125,6 @@ td.thumbnail {
   background: var(--sol-magenta);
 }
 
-
 .size {
   white-space: nowrap;
 }
@@ -189,6 +188,7 @@ img {
   padding: 10px 20px 10px 30px;
   height: 100vh;
   min-width: 15vw;
+  position: relative;
 }
 
 #menu h4 {
@@ -198,6 +198,28 @@ img {
 
 #menu .section {
   margin: 30px 0;
+}
+
+#menu .copyright {
+  font-size: small;
+  position: absolute;
+  margin: 0;
+  bottom: 40px;
+  right: 20px;
+}
+
+#menu a {
+  font-weight: var(--bold-weight);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#menu a:hover {
+  color: var(--sol-base1);
+}
+
+#menu a:visited {
+  color: inherit;
 }
 
 .allOrNone {
@@ -211,6 +233,8 @@ img {
 .allOrNone:hover {
   color: var(--sol-base1);
 }
+
+/* ----------------------------- */
 
 .selectable {
   display: block;
