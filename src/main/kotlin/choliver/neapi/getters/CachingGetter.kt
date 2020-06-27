@@ -1,7 +1,6 @@
 package choliver.neapi.getters
 
 import choliver.neapi.sha1
-import choliver.neapi.storage.ObjectStore
 import choliver.neapi.storage.SubObjectStore
 import mu.KotlinLogging
 import java.io.FileNotFoundException

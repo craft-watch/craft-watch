@@ -19,7 +19,6 @@ import java.time.Instant
 
 class Cli : CliktCommand(name = "scraper") {
   private val listScrapers by option("--list-scrapers", "-l").flag()
-  private val withoutCache by option("--without-cache", "-w").flag()
   private val scrapers by argument().choice(SCRAPERS).multiple()
 
   private val mapper = jacksonObjectMapper().enable(INDENT_OUTPUT)
