@@ -1,8 +1,11 @@
 package choliver.neapi.scrapers
 
 import choliver.neapi.Scraper.Item
+import choliver.neapi.byName
 import choliver.neapi.executeScraper
+import choliver.neapi.noDesc
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import java.net.URI
 
@@ -28,7 +31,7 @@ class BoxcarScraperTest {
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/IMG-20200604-WA0003_345x345.jpg")
       ),
-      ITEMS.first { it.name == "Dreamful" }
+      ITEMS.byName("Dreamful").noDesc()
     )
   }
 
@@ -43,8 +46,13 @@ class BoxcarScraperTest {
         available = false,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/20200429_183043_345x345.jpg")
       ),
-      ITEMS.first { it.name == "Dark Mild" }
+      ITEMS.byName("Dark Mild").noDesc()
     )
+  }
+
+  @Test
+  fun `extracts description`() {
+    assertNotNull(ITEMS.byName("Dreamful").desc)
   }
 }
 

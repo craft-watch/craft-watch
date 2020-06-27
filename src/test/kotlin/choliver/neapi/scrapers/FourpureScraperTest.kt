@@ -1,9 +1,10 @@
 package choliver.neapi.scrapers
 
 import choliver.neapi.Scraper.Item
+import choliver.neapi.byName
 import choliver.neapi.executeScraper
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
+import choliver.neapi.noDesc
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
@@ -39,7 +40,7 @@ class FourpureScraperTest {
         available = true,
         thumbnailUrl = URI("https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_pilslager_1566986321BASECAMPNB.png")
       ),
-      ITEMS.first { it.name == "Basecamp" }
+      ITEMS.byName("Basecamp").noDesc()
     )
   }
 
@@ -55,8 +56,13 @@ class FourpureScraperTest {
         available = true,
         thumbnailUrl = URI("https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_juicebox5lminikeg_1588779669WhatsAppImage20200506at14.07.452.jpeg")
       ),
-      ITEMS.first { it.name == "Juicebox" && it.keg }
+      ITEMS.first { it.name == "Juicebox" && it.keg }.noDesc()
     )
+  }
+
+  @Test
+  fun `extracts description`() {
+    assertNotNull(ITEMS.byName("Basecamp").desc)
   }
 }
 

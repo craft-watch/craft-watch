@@ -1,8 +1,11 @@
 package choliver.neapi.scrapers
 
 import choliver.neapi.Scraper.Item
+import choliver.neapi.byName
 import choliver.neapi.executeScraper
+import choliver.neapi.noDesc
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Test
 import java.net.URI
 
@@ -28,7 +31,7 @@ class VillagesScraperTest {
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345.jpg")
       ),
-      ITEMS.first { it.name == "Rodeo" }
+      ITEMS.byName("Rodeo").noDesc()
     )
   }
 
@@ -45,8 +48,13 @@ class VillagesScraperTest {
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg")
       ),
-      ITEMS.first { it.name == "Villages Mixed Case" }
+      ITEMS.byName("Villages Mixed Case").noDesc()
     )
+  }
+
+  @Test
+  fun `sanitises description`() {
+    assertFalse(ITEMS.byName("Rodeo").desc!!.contains("~"))
   }
 }
 

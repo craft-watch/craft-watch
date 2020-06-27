@@ -1,7 +1,9 @@
 package choliver.neapi.scrapers
 
 import choliver.neapi.Scraper.Item
+import choliver.neapi.byName
 import choliver.neapi.executeScraper
+import choliver.neapi.noDesc
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.net.URI
@@ -28,27 +30,29 @@ class HowlingHopsScraperTest {
         available = true,
         thumbnailUrl = URI("https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png")
       ),
-      ITEMS.first { it.name == "Push Push" }
+      ITEMS.byName("Push Push").noDesc()
     )
   }
 
   @Test
   fun `identifies mixed cases`() {
-    assertTrue(ITEMS.find { it.name == "NEW 12 Beer Mega Pack" }!!.mixed)
+    assertTrue(ITEMS.byName("NEW 12 Beer Mega Pack").mixed)
   }
 
   @Test
   fun `identifies out-of-stock items`() {
-    assertFalse(
-      ITEMS.first { it.name == "Off Ramp" }.available
+    assertFalse(ITEMS.byName("Off Ramp").available
     )
   }
 
   @Test
   fun `doesn't extract apparel`() {
-    assertTrue(
-      ITEMS.none { it.name.contains("various colours") }
-    )
+    assertTrue(ITEMS.none { it.name.contains("various colours") })
+  }
+
+  @Test
+  fun `extracts description`() {
+    assertNotNull(ITEMS.byName("Push Push").desc)
   }
 }
 

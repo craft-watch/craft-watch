@@ -1,9 +1,10 @@
 package choliver.neapi.scrapers
 
 import choliver.neapi.Scraper.Item
+import choliver.neapi.byName
 import choliver.neapi.executeScraper
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
+import choliver.neapi.noDesc
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.net.URI
 
@@ -29,20 +30,20 @@ class PillarsScraperTest {
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0367/7857/3883/products/Icebock_Shopify_1edf8964-413d-4ad8-9b05-9a9672a48796_250x250.png")
       ),
-      ITEMS.first { it.name == "Pillars Icebock" }
+      ITEMS.byName("Pillars Icebock").noDesc()
     )
   }
 
   @Test
   fun `identifies kegs`() {
-    val item = ITEMS.first { it.name == "Pillars Pilsner" } // Note "keg" no longer in title
+    val item = ITEMS.byName("Pillars Pilsner") // Note "keg" no longer in title
     assertEquals(5000, item.sizeMl)
     assertTrue(item.keg)
   }
 
   @Test
   fun `identifies cases`() {
-    val item = ITEMS.first { it.name == "Untraditional Lager" } // Note "case" no longer in title
+    val item = ITEMS.byName("Untraditional Lager") // Note "case" no longer in title
     assertEquals(1.88, item.perItemPrice)   // Divided price
   }
 
@@ -52,6 +53,11 @@ class PillarsScraperTest {
       emptyList<String>(),
       ITEMS.map { it.name }.filter { it.contains("gift card", ignoreCase = true) }
     )
+  }
+
+  @Test
+  fun `sanitises description`() {
+    assertFalse(ITEMS.byName("Pillars Icebock").desc!!.contains("STYLE"))
   }
 }
 

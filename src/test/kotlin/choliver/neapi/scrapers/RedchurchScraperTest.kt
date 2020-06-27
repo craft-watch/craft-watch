@@ -1,9 +1,10 @@
 package choliver.neapi.scrapers
 
 import choliver.neapi.Scraper
+import choliver.neapi.byName
 import choliver.neapi.executeScraper
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertFalse
+import choliver.neapi.noDesc
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.net.URI
 
@@ -28,7 +29,7 @@ class RedchurchScraperTest {
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0034/8694/1229/products/SBwwwimage_200x200.png")
       ),
-      ITEMS.first { it.name == "Shoreditch Blonde" }
+      ITEMS.byName("Shoreditch Blonde").noDesc()
     )
   }
 
@@ -42,7 +43,7 @@ class RedchurchScraperTest {
 
   @Test
   fun `identifies sold out`() {
-    assertFalse(ITEMS.first { it.name == "Hoxton Stout" }.available)
+    assertFalse(ITEMS.byName("Hoxton Stout").available)
   }
 
   @Test
@@ -51,6 +52,11 @@ class RedchurchScraperTest {
       emptyList<String>(),
       ITEMS.map { it.name }.filter { it.contains("glass", ignoreCase = true) }
     )
+  }
+
+  @Test
+  fun `extracts description`() {
+    assertNotNull(ITEMS.byName("Shoreditch Blonde").desc)
   }
 }
 

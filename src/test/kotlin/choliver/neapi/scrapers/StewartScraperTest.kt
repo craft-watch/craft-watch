@@ -1,6 +1,7 @@
 package choliver.neapi.scrapers
 
 import choliver.neapi.Scraper.Item
+import choliver.neapi.byName
 import choliver.neapi.executeScraper
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -29,7 +30,7 @@ class StewartScraperTest {
         available = true,
         thumbnailUrl = URI("https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-first-world-problems-1592394080330ml-can-FWP-002-.png")
       ),
-      ITEMS.first { it.name == "First World Problems" }
+      ITEMS.byName("First World Problems")
     )
   }
 

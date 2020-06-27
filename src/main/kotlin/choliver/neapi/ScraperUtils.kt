@@ -6,7 +6,6 @@ import java.net.URI
 import java.net.URISyntaxException
 import kotlin.math.round
 import kotlin.text.RegexOption.DOT_MATCHES_ALL
-import kotlin.text.RegexOption.MULTILINE
 
 fun Element.priceFrom(cssQuery: String = ":root") = extractFrom(cssQuery, "\\d+\\.\\d+")[0].toDouble()
 

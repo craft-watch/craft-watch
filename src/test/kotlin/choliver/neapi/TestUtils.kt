@@ -30,3 +30,8 @@ fun executeScraper(scraper: Scraper): List<Scraper.Item> {
       }
     }
 }
+
+
+fun List<Scraper.Item>.byName(name: String) = first { it.name == name }
+
+fun Scraper.Item.noDesc() = copy(desc = null)    // Makes it easier to test item equality
