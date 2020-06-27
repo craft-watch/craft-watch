@@ -59,6 +59,7 @@ class Cli : CliktCommand(name = "scraper") {
       HowlingHopsScraper(),
       PillarsScraper(),
       PressureDropScraper(),
+      RedchurchScraper(),
       StewartScraper(),
       VillagesScraper()
     ).associateBy { it.name.toSafeName() }

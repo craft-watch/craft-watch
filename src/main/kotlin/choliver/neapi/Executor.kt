@@ -4,8 +4,7 @@ import choliver.neapi.Scraper.IndexEntry
 import choliver.neapi.getters.Getter
 import choliver.neapi.getters.HtmlGetter
 import mu.KotlinLogging
-import java.util.stream.Collectors
-import java.util.stream.Collectors.*
+import java.util.stream.Collectors.toList
 
 class Executor(getter: Getter<String>) {
   private val jsonGetter = HtmlGetter(getter)

@@ -7,7 +7,10 @@ import choliver.neapi.storage.GcsObjectStore
 import choliver.neapi.storage.LocalObjectStore
 import choliver.neapi.storage.StoreStructure
 import choliver.neapi.storage.WriteThroughObjectStore
+import mu.KotlinLogging
 import java.time.Instant
+
+private val logger = KotlinLogging.logger {}
 
 fun executeScraper(scraper: Scraper): List<Scraper.Item> {
   val store = WriteThroughObjectStore(
@@ -22,6 +25,7 @@ fun executeScraper(scraper: Scraper): List<Scraper.Item> {
       try {
         it.scrapeItem(getter.request(it.url))
       } catch (e: NonFatalScraperException) {
+        logger.warn("Non-fatal exception", e)
         null
       }
     }
