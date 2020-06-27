@@ -14,9 +14,9 @@ Requires the following secret things:
 
 - A service account for read/write access to a GCS bucket.
     1. Run a `terraform apply` to create the key.
-    2. Copy the base64-encoded output and create a `GCLOUD_SERVICE_KEY` environment variable for the CircleCI
+    2. Copy the output and create a `GCLOUD_SERVICE_KEY` environment variable for the CircleCI
        project [here][circleci-env-var].
-    3. Create `GOOGLE_COMPUTE_ZONE` and `GOOGLE_PROJECT_ID` environment variables.
+    3. Also create `GOOGLE_COMPUTE_ZONE` and `GOOGLE_PROJECT_ID` environment variables.
 
 [create-deploy-key]: https://github.com/oliver-charlesworth/oliver-charlesworth.github.io/settings/keys/new
 [register-key]: https://app.circleci.com/settings/project/github/oliver-charlesworth/neapi/ssh

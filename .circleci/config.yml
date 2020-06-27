@@ -1,24 +1,16 @@
-version: 2.1
-
-orbs:
-  gcp-cli: circleci/gcp-cli@1.8.4
+version: 2
 
 jobs:
-#  auth:
-#    docker:
-#      - image: google/cloud-sdk
-#    steps:
-#        - run: |
-#            echo "${GCLOUD_SERVICE_KEY}" | base64 -d > ${HOME}/gcloud-service-key.json
-#            gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
-
   test_backend:
     docker:
       - image: circleci/openjdk
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: "${HOME}/service-key.json"
     steps:
       - checkout
-      - gcp-cli/install
-      - gcp-cli/initialize
+      - run:
+          name: Create service key
+          command: echo "{GCLOUD_SERVICE_KEY}" | bas64 -d > "${GOOGLE_APPLICATION_CREDENTIALS}"
       - restore_cache:
           key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
       - restore_cache:
