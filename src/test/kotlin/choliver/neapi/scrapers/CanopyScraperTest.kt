@@ -14,7 +14,7 @@ class CanopyScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(7, ITEMS.size)
+    assertEquals(8, ITEMS.size)
   }
 
   @Test
@@ -34,7 +34,7 @@ class CanopyScraperTest {
 
   @Test
   fun `identifies sold out`() {
-    assertFalse(ITEMS.first { it.name == "Champion Kölsch" }.available)
+    assertFalse(ITEMS.first { it.name == "Sunray Pale Ale" }.available)
   }
 
   @Test

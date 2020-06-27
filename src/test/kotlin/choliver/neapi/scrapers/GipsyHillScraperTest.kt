@@ -13,7 +13,7 @@ class GipsyHillScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(20, ITEMS.size)
+    assertEquals(21, ITEMS.size)
   }
 
   @Test
@@ -35,8 +35,8 @@ class GipsyHillScraperTest {
   @Test
   fun `normalises price for multi-pack`() {
     assertEquals(
-      4.83,
-      ITEMS.find { it.name == "Specials Box – 12 pack" }!!.perItemPrice
+      2.33,
+      ITEMS.find { it.name == "Core Range 24 Pack" }!!.perItemPrice
     )
   }
 }

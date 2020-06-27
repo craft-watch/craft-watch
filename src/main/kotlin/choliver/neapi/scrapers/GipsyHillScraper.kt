@@ -26,7 +26,7 @@ class GipsyHillScraper : Scraper {
           name = name,
           summary = rawSummary.extract("Style: (.*) ABV")?.get(1),
           available = true, // TODO
-          abv = rawSummary.extract("ABV: (.*?)%")?.get(1)?.toDouble(),
+          abv = rawSummary.extract("ABV: (\\d+(\\.\\d+)?)%")?.get(1)?.toDouble(),
           sizeMl = parts?.get(3)?.toInt(),
           perItemPrice = el.ownTextFrom(".woocommerce-Price-amount").toDouble().divideAsPrice(numCans)
         )
