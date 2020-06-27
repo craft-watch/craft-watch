@@ -4,13 +4,14 @@ jobs:
   test_backend:
     docker:
       - image: circleci/openjdk
-    environment:
-      GOOGLE_APPLICATION_CREDENTIALS: "${HOME}/service-key.json"
     steps:
       - checkout
       - run:
           name: Create service key
-          command: echo "${GCLOUD_SERVICE_KEY}" | base64 -d > "${GOOGLE_APPLICATION_CREDENTIALS}"
+          command: |
+            KEY_FILE="${HOME}/service-key.json"
+            echo "${GCLOUD_SERVICE_KEY}" | base64 -d > "${KEY_FILE}"
+            echo "export GOOGLE_APPLICATION_CREDENTIALS=${KEY_FILE}" >> "${BASH_ENV}"
       - restore_cache:
           key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
       - restore_cache:
