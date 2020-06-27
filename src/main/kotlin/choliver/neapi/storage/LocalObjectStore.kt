@@ -2,9 +2,7 @@ package choliver.neapi.storage
 
 import java.io.File
 
-class LocalBacker(private val rootDir: File) : Backer {
-  override val desc = "local"
-
+class LocalObjectStore(private val rootDir: File) : ObjectStore {
   override fun write(key: String, content: ByteArray) {
     val file = resolveFile(key)
     file.parentFile.mkdirs()

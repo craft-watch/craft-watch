@@ -7,8 +7,8 @@ import java.time.Instant
 import java.time.ZoneOffset.UTC
 import java.time.format.DateTimeFormatter
 
-class StorageThinger(
-  private val backer: Backer,
+class StoreStructure(
+  private val store: ObjectStore,
   start: Instant
 ) {
   private val logger = KotlinLogging.logger {}
@@ -17,24 +17,26 @@ class StorageThinger(
   private val cacheDir = "${todayDir}/${CACHE_DIRNAME}"
   private val resultsDir = "${todayDir}/${RESULTS_DIRNAME}/${TIME_FORMAT.format(start)}"
 
-  fun readFromHtmlCache(key: String) = try {
-    val fqk = htmlKey(key)
-    String(backer.read(fqk))
-      .also { logger.info("${key} read from ${backer.desc} cache: ${fqk}") }
-  } catch (e: FileNotFoundException) {
-    null
-  }
+  val htmlCache = object : HtmlCache {
+    override fun write(key: String, text: String) {
+      val fqk = htmlKey(key)
+      store.write(fqk, text.toByteArray())
+      logger.info("${key} written to cache: ${fqk}")
+    }
 
-  fun writeToHtmlCache(key: String, text: String) {
-    val fqk = htmlKey(key)
-    backer.write(fqk, text.toByteArray())
-    logger.info("${key} written to ${backer.desc} cache: ${fqk}")
+    override fun read(key: String) = try {
+      val fqk = htmlKey(key)
+      String(store.read(fqk))
+        .also { logger.info("${key} read from cache: ${fqk}") }
+    } catch (e: FileNotFoundException) {
+      null
+    }
   }
 
   fun writeResults(key: String, content: ByteArray) {
     val fqk = "${resultsDir}/${key}"
-    backer.write(fqk, content)  // TODO - make key safe
-    logger.info("Results written to ${backer.desc}: ${fqk}")
+    store.write(fqk, content)  // TODO - make key safe
+    logger.info("Results written to: ${fqk}")
   }
 
   private fun htmlKey(key: String) = "${cacheDir}/${key.sha1()}.html"

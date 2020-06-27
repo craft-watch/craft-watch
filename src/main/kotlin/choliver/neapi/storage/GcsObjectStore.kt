@@ -6,10 +6,8 @@ import com.google.cloud.storage.StorageException
 import com.google.cloud.storage.StorageOptions
 import java.io.FileNotFoundException
 
-class GcsBacker(private val bucketName: String) : Backer {
+class GcsObjectStore(private val bucketName: String) : ObjectStore {
   private val storage = StorageOptions.getDefaultInstance().service
-
-  override val desc = "GCS"
 
   override fun write(key: String, content: ByteArray) {
     storage.create(blobInfo(key), content)

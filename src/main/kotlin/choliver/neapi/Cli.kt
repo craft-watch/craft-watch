@@ -1,10 +1,12 @@
 package choliver.neapi
 
-import choliver.neapi.getters.HttpGetter
 import choliver.neapi.getters.CachingGetter
+import choliver.neapi.getters.HttpGetter
 import choliver.neapi.scrapers.*
-import choliver.neapi.storage.GcsBacker
-import choliver.neapi.storage.StorageThinger
+import choliver.neapi.storage.GcsObjectStore
+import choliver.neapi.storage.LocalObjectStore
+import choliver.neapi.storage.StoreStructure
+import choliver.neapi.storage.WriteThroughObjectStore
 import com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.github.ajalt.clikt.core.CliktCommand
@@ -34,10 +36,14 @@ class Cli : CliktCommand(name = "scraper") {
   }
 
   private fun executeScrape() {
-//    val backer = LocalBacker(STORAGE_DIR)
-    val backer = GcsBacker(GCS_BUCKET)
-    val storage = StorageThinger(backer, Instant.now())
-    val getter = CachingGetter(storage, HttpGetter())
+    val storage = StoreStructure(
+      WriteThroughObjectStore(
+        firstLevel = LocalObjectStore(CACHE_DIR),
+        secondLevel = GcsObjectStore(GCS_BUCKET)
+      ),
+      Instant.now()
+    )
+    val getter = CachingGetter(storage.htmlCache, HttpGetter())
     val executor = Executor(getter)
 
     val inventory = executor.scrape(*scrapers.ifEmpty { SCRAPERS.values }.toTypedArray())

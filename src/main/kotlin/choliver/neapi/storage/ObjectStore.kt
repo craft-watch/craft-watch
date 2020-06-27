@@ -2,9 +2,7 @@ package choliver.neapi.storage
 
 import java.io.FileNotFoundException
 
-interface Backer {
-  val desc: String
-
+interface ObjectStore {
   fun write(key: String, content: ByteArray)
 
   @Throws(FileNotFoundException::class)
