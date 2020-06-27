@@ -23,7 +23,7 @@ jobs:
           name: Run tests
           command: ./gradlew check
       - run:
-          name: Run application
+          name: Run scraper application
           command: ./gradlew run
       - save_cache:
           paths:
