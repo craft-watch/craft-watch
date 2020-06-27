@@ -47,7 +47,7 @@ const renderBrewery: Renderer<Item> = item => item.brewery;
 const renderThumbnail: Renderer<Item> = item => (
   <a href={item.url}>
     <img alt="" src={item.thumbnailUrl} width="100px" height="100px" />
-    {item.available || <div className="sold-out">Sold out</div>}
+    {item.available || <div className="sold-out">Out of stock</div>}
   </a>
 );
 

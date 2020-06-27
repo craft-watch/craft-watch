@@ -49,6 +49,9 @@ fun String.toUri() = try {
   throw MalformedInputException("URL syntax error: ${this}", e)
 }
 
+fun <K, V> Map<K, V>.grab(key: K) = maybeGrab(key) ?: throw MalformedInputException("Key not present: ${key}")
+fun <K, V> Map<K, V>.maybeGrab(key: K) = this[key]
+
 private val BEER_ACRONYMS = listOf(
   "IPL",
   "IPA",

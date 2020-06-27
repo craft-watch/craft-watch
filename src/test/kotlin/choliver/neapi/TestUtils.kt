@@ -25,7 +25,7 @@ fun executeScraper(scraper: Scraper): List<Scraper.Item> {
       try {
         it.scrapeItem(getter.request(it.url))
       } catch (e: NonFatalScraperException) {
-        logger.warn("Non-fatal exception", e)
+        logger.warn("Non-fatal exception: ${e.message}")
         null
       }
     }
