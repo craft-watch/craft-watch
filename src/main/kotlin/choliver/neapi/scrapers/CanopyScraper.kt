@@ -21,7 +21,7 @@ class CanopyScraper : Scraper {
       val title = el.textFrom(".product__title")
 
       IndexEntry(title, a.hrefFrom()) { doc ->
-        val parts = a.extractFrom(regex = "([^\\d]+) (\\d+(\\.\\d+)?)?")!!
+        val parts = a.extractFrom(regex = "([^\\d]+) (\\d+(\\.\\d+)?)?")
 
         if (title.contains("box|pack".toRegex(IGNORE_CASE))) {
           Skipped("Can't extract number of cans for packs")
@@ -31,9 +31,9 @@ class CanopyScraper : Scraper {
             name = parts[1],
             summary = null,
             available = !(el.text().contains("Sold out", ignoreCase = true)),
-            sizeMl = doc.extractFrom(regex = "(\\d+)ml")!![1].toInt(),
+            sizeMl = doc.extractFrom(regex = "(\\d+)ml")[1].toInt(),
             abv = if (parts[2].isBlank()) null else parts[2].toDouble(),
-            perItemPrice = el.extractFrom(regex = "£(\\d+\\.\\d+)")!![1].toDouble()
+            perItemPrice = el.extractFrom(regex = "£(\\d+\\.\\d+)")[1].toDouble()
           )
         }
       }

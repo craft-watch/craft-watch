@@ -16,7 +16,7 @@ class PillarsScraper : Scraper {
     .map { details ->
       IndexEntry(details.title, details.url) { doc ->
         val titleParts = extractTitleParts(details.title)
-        val descParts = doc.extractFrom(
+        val descParts = doc.maybeExtractFrom(
           ".product-single__description",
           "STYLE:\\s+(.+?)\\s+ABV:\\s+(\\d\\.\\d+)%"
         )
@@ -47,11 +47,11 @@ class PillarsScraper : Scraper {
 
   private fun extractTitleParts(title: String) = when {
     title.contains("Case") -> {
-      val parts = title.extract("(.*?) Case of (\\d+)")!!
+      val parts = title.extract("(.*?) Case of (\\d+)")
       TitleParts(name = parts[1], numItems = parts[2].toInt())
     }
     title.contains("Keg") -> {
-      val parts = title.extract("(.*?) (\\d+)L")!!
+      val parts = title.extract("(.*?) (\\d+)L")
       TitleParts(name = parts[1], sizeMl = parts[2].toInt() * 1000, keg = true)
     }
     else -> TitleParts(name = title)

@@ -31,5 +31,13 @@ class PressureDropScraperTest {
       ITEMS.first { it.name == "Golden State" }
     )
   }
+
+  @Test
+  fun `ignores boxes`() {
+    assertEquals(
+      emptyList<String>(),
+      ITEMS.map { it.name }.filter { it.contains("box", ignoreCase = true) }
+    )
+  }
 }
 

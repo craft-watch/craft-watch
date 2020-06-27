@@ -3,6 +3,7 @@ package choliver.neapi.scrapers
 import choliver.neapi.Scraper.Result.Item
 import choliver.neapi.executeScraper
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import java.net.URI
 
@@ -13,7 +14,7 @@ class GipsyHillScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(20, ITEMS.size)
+    assertEquals(21, ITEMS.size)
   }
 
   @Test
@@ -33,10 +34,15 @@ class GipsyHillScraperTest {
   }
 
   @Test
+  fun `ignores abv for multi-pack`() {
+    assertNull(ITEMS.find { it.name == "DJ BBQ Box" }!!.abv)
+  }
+
+  @Test
   fun `normalises price for multi-pack`() {
     assertEquals(
-      4.83,
-      ITEMS.find { it.name == "Specials Box – 12 pack" }!!.perItemPrice
+      2.33,
+      ITEMS.find { it.name == "Core Range 24 Pack" }!!.perItemPrice
     )
   }
 }

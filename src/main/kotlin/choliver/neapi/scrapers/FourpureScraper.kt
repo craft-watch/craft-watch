@@ -26,7 +26,7 @@ class FourpureScraper : Scraper {
           Item(
             thumbnailUrl = a.srcFrom("img"),
             name = parts.name,
-            abv = doc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+\\.\\d+)")!![1].toDouble(),
+            abv = doc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+\\.\\d+)")[1].toDouble(),
             summary = parts.summary,
             sizeMl = parts.sizeMl,
             available = true,
@@ -45,7 +45,7 @@ class FourpureScraper : Scraper {
   private fun extractVariableParts(itemDoc: Document): VariableParts {
     val title = itemDoc.textFrom(".itemTitle h1")
     return if (title.contains("minikeg", ignoreCase = true)) {
-      val parts = title.extract("([^\\d]+) (\\d+)L.*")!!
+      val parts = title.extract("([^\\d]+) (\\d+)L.*")
       VariableParts(
         name = parts[1],
         sizeMl = parts[2].toInt() * 1000,
@@ -53,8 +53,8 @@ class FourpureScraper : Scraper {
       )
     } else {
       VariableParts(
-        name = title.extract("([^\\d]+)( \\d+ml)?")!![1],  // Strip size in title
-        sizeMl = itemDoc.extractFrom(".quickBuy", "(\\d+)ml")!![1].toInt()
+        name = title.extract("([^\\d]+)( \\d+ml)?")[1],  // Strip size in title
+        sizeMl = itemDoc.extractFrom(".quickBuy", "(\\d+)ml")[1].toInt()
       )
     }
   }

@@ -18,16 +18,27 @@ class GipsyHillScraper : Scraper {
 
       IndexEntry(name, a.hrefFrom()) { doc ->
         val rawSummary = doc.textFrom(".summary")
-        val parts = rawSummary.extract("Sold as: ((\\d+) x )?(\\d+)ml")
-        val numCans = parts?.get(2)?.toIntOrNull() ?: 1
+        val numCans = with(doc.maybeSelectMultipleFrom(".woosb-title-inner")) {
+          if (isEmpty()) {
+            1
+          } else {
+            map { it.extractFrom(regex = "(\\d+) ×")[1].toInt() }.sum()
+          }
+        }
+        val style = rawSummary.maybeExtract("Style: (.*) ABV")?.get(1)
+
 
         Item(
           thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
           name = name,
-          summary = rawSummary.extract("Style: (.*) ABV")?.get(1),
+          summary = style,
           available = true, // TODO
-          abv = rawSummary.extract("ABV: (.*?)%")?.get(1)?.toDouble(),
-          sizeMl = parts?.get(3)?.toInt(),
+          abv = if (style in listOf("Various", "Mixed")) {
+            null
+          } else {
+            rawSummary.maybeExtract("ABV: (\\d+(\\.\\d+)?)%")?.get(1)?.toDouble()
+          },
+          sizeMl = rawSummary.maybeExtract("Sold as: .*?(\\d+)ml")?.get(1)?.toInt(),
           perItemPrice = el.ownTextFrom(".woocommerce-Price-amount").toDouble().divideAsPrice(numCans)
         )
       }

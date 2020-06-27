@@ -1,45 +1,33 @@
 package choliver.neapi.getters
 
 import choliver.neapi.sha1
+import choliver.neapi.storage.SubObjectStore
 import mu.KotlinLogging
-import java.io.File
+import java.io.FileNotFoundException
 import java.net.URI
-import java.util.zip.ZipEntry
-import java.util.zip.ZipInputStream
-import java.util.zip.ZipOutputStream
 
 class CachingGetter(
-  private val cacheDir: File,
+  private val store: SubObjectStore,
   private val delegate: Getter<String>
 ): Getter<String> {
   private val logger = KotlinLogging.logger {}
 
-  override fun request(url: URI): String {
-    val hash = url.toString().sha1()
-    val zip = File(cacheDir, "${hash}.zip")
+  override fun request(url: URI) = read(url)
+    ?: delegate.request(url).also { write(url, it) }
 
-    return if (zip.exists()) {
-      logger.info("${url}: reading from cache: ${zip}")
-      fromZip(zip)
-    } else {
-      logger.info("${url}: writing to cache: ${zip}")
-      delegate.request(url).also { toZip(zip, it) }
-    }
+  private fun write(url: URI, text: String) {
+    val key = key(url)
+    store.write(key, text.toByteArray())
+    logger.info("${url} written to cache: ${key}")
   }
 
-  private fun toZip(zip: File, text: String) {
-    zip.parentFile.mkdirs()
-    ZipOutputStream(zip.outputStream().buffered()).use { zos ->
-      zos.putNextEntry(ZipEntry("my.html"))
-      zos.write(text.toByteArray())
-      zos.closeEntry()
-    }
+  private fun read(url: URI) = try {
+    val key = key(url)
+    String(store.read(key))
+      .also { logger.info("${url} read from cache: ${key}") }
+  } catch (e: FileNotFoundException) {
+    null
   }
 
-  private fun fromZip(zip: File): String {
-    return ZipInputStream(zip.inputStream().buffered()).use { zis ->
-      zis.nextEntry
-      zis.reader().readText()
-    }
-  }
+  private fun key(url: URI) = "${url.toString().sha1()}.html"
 }

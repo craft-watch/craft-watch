@@ -17,8 +17,10 @@ class FivePointsScraper : Scraper {
       val a = el.selectFrom("h2 a")
 
       IndexEntry(a.text(), a.hrefFrom()) { doc ->
-        val parts = doc.maybeSelectFrom(".itemTitle .small")
-          ?.extractFrom(regex = "(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+((\\d+)\\s+x\\s+)?(\\d+)(ml|L)")
+        val parts = doc.maybeExtractFrom(
+          ".itemTitle .small",
+          "(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+((\\d+)\\s+x\\s+)?(\\d+)(ml|L)"
+        )
 
         if (parts == null) {
           Skipped("Could not extract details")
@@ -27,12 +29,12 @@ class FivePointsScraper : Scraper {
           val sizeMl = parts[6].toInt() * (if (parts[7] == "L") 1000 else 1)
           Item(
             thumbnailUrl = el.srcFrom(".imageInnerWrap img"),
-            name = a.extractFrom(regex = "([^(]+)")!![1].trim().toTitleCase(),
+            name = a.extractFrom(regex = "([^(]+)")[1].trim().toTitleCase(),
             summary = if (sizeMl > 1000) "Minikeg" else parts[1],
             abv = parts[2].toDouble(),
             sizeMl = sizeMl,
             available = doc.maybeSelectFrom(".unavailableItemWrap") == null,
-            perItemPrice = el.extractFrom(".priceStandard", "£(\\d+\\.\\d+)")!![1].toDouble()
+            perItemPrice = el.extractFrom(".priceStandard", "£(\\d+\\.\\d+)")[1].toDouble()
               .divideAsPrice(numCans)
           )
         }

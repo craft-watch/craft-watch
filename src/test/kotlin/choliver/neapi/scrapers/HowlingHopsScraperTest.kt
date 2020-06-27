@@ -13,7 +13,7 @@ class HowlingHopsScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(17, ITEMS.size)
+    assertEquals(14, ITEMS.size)
   }
 
   @Test
@@ -35,7 +35,7 @@ class HowlingHopsScraperTest {
   @Test
   fun `identifies out-of-stock items`() {
     assertFalse(
-      ITEMS.first { it.name == "NEW 12 Beer Mega Pack" }.available
+      ITEMS.first { it.name == "Off Ramp" }.available
     )
   }
 

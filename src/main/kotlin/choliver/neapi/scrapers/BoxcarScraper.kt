@@ -16,7 +16,7 @@ class BoxcarScraper : Scraper {
     .shopifyItems()
     .map { details ->
       IndexEntry(details.title, details.url) {
-        val parts = details.title.extract("^(.*?) // (.*?)% *(.*?)? // (.*?)ml$")!!
+        val parts = details.title.extract("^(.*?) // (.*?)% *(.*?)? // (.*?)ml$")
 
         Item(
           thumbnailUrl = details.thumbnailUrl,

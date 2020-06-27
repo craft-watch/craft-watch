@@ -42,7 +42,7 @@ class FivePointsScraperTest {
 
   @Test
   fun `identifies sold out`() {
-    assertFalse(ITEMS.first { it.name == "Five Points Jupa" }.available)
+    assertFalse(ITEMS.first { it.name == "Five Points Best" }.available)
   }
 }
 
