@@ -238,7 +238,7 @@ img {
 }
 
 .menu-button:hover {
-  color: var(--sol-cyan);
+  color: var(--sol-base1);
   cursor: pointer;
 }
 
