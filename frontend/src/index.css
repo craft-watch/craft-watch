@@ -30,6 +30,8 @@
   }
 }
 
+/* TODO - scrolling looks pants on Firefox on Pixel 2 */
+
 html, body {
   font-family: 'Work Sans', sans-serif;
   color: var(--sol-base01);
@@ -41,7 +43,7 @@ table {
   margin-left: auto;
   margin-right: auto;
   border-collapse: collapse;
-  min-width: 60vw;
+  min-width: 50vw;
 }
 
 @media (max-width: 768px) {
@@ -52,13 +54,16 @@ table {
 
 th {
   background: var(--sol-base2);
-  position: sticky;
   top: 0px;
   font-size: larger; 
   z-index: 1; 
 }
 
-@media not (max-width: 768px) {
+@media not screen and (max-width: 768px) {
+  th {
+    position: sticky;
+  }
+
   th:first-child {
     border-bottom-left-radius: var(--sexy-radius);
   }
@@ -211,7 +216,7 @@ img {
 #menu .expanded {
   padding: 10px 20px 10px 30px;
   height: 100vh;
-  min-width: 15vw;
+  min-width: 20vw;
   position: relative;
 }
 
