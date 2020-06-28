@@ -291,7 +291,6 @@ img {
   height: 1em;
   width: 1em;
   line-height: 1em;
-  /* padding-bottom: 1px; */
   background-color: var(--sol-base3);
   color: var(--sol-base02);
   border-radius: 4px;
@@ -358,17 +357,19 @@ img {
 }
 
 @media (max-width: 768px) {
+  /* Compress table layout */
+  
   table {
     width: 100vw;
-  }
-
-  th {
-    border-radius: inherit !important;
   }
 
   td, th {
     padding: 10px 5px;
   }  
+
+  th {
+    border-radius: inherit !important;
+  }
 
   /* Bottom-right to avoid blocking table header */
   .menu-hamburger {
