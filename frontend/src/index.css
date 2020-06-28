@@ -24,12 +24,6 @@
   --bold-weight: 600;
 }
 
-@media (max-width: 480px) {
-  .hide-on-mobile {
-    display: none; 
-  }
-}
-
 html, body {
   font-family: 'Work Sans', sans-serif;
   color: var(--sol-base01);
@@ -37,17 +31,16 @@ html, body {
   margin: 0;
 }
 
+
+/* ----------------------
+    Table
+   ---------------------- */
+
 table {
   margin-left: auto;
   margin-right: auto;
   border-collapse: collapse;
   min-width: 50vw;
-}
-
-@media (max-width: 768px) {
-  table {
-    width: 100vw;
-  }
 }
 
 th {
@@ -58,29 +51,17 @@ th {
   position: sticky;
 }
 
-@media not screen and (max-width: 768px) {
-  th {
-    position: sticky;
-  }
+th:first-child {
+  border-bottom-left-radius: var(--sexy-radius);
+}
 
-  th:first-child {
-    border-bottom-left-radius: var(--sexy-radius);
-  }
-
-  th:last-child {
-    border-bottom-right-radius: var(--sexy-radius);
-  }
+th:last-child {
+  border-bottom-right-radius: var(--sexy-radius);
 }
 
 td, th {
   text-align: center;
   padding: 10px 10px;
-}
-
-@media (max-width: 768px) {
-  td, th {
-    padding: 10px 5px;
-  }
 }
 
 td img {
@@ -181,6 +162,10 @@ img {
 }
 
 
+/* ----------------------
+    Menu
+   ---------------------- */
+
 .menu-hamburger {
   background: var(--sol-base02);
   color: var(--sol-base2);
@@ -212,21 +197,6 @@ img {
   /* No scroll */
   overflow-x: hidden;
   overflow-y: hidden;
-}
-
-@media (max-width: 768px) {
-  /* Bottom-right to avoid blocking table header */
-  .menu-hamburger {
-    border-radius: inherit;
-    border-top-left-radius: var(--sexy-radius);
-    top: inherit;
-    bottom: 0;
-  }
-
-  /* Wider */
-  .menu {
-    width: 50vw;
-  }
 }
 
 .menu-button {
@@ -292,7 +262,10 @@ img {
   color: var(--sol-base1);
 }
 
-/* ----------------------------- */
+
+/* ----------------------
+    Selectable items
+   ---------------------- */
 
 .selectable {
   display: block;
@@ -317,7 +290,8 @@ img {
   left: 0;
   height: 1em;
   width: 1em;
-  padding-bottom: 1px;
+  line-height: 1em;
+  /* padding-bottom: 1px; */
   background-color: var(--sol-base3);
   color: var(--sol-base02);
   border-radius: 4px;
@@ -333,7 +307,10 @@ img {
   color: var(--sol-base3);
 }
 
-/* ----------------------------- */
+
+/* ----------------------
+    Tooltips
+   ---------------------- */
 
 .tooltip {
   position: relative;
@@ -358,13 +335,6 @@ img {
   z-index: 2;
 }
 
-/* These are positioned all wrong on mobile */
-@media (max-width: 768px) {
-  .tooltip .tooltip-text {
-    width: 60vw;
-  }
-}
-
 .tooltip:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
@@ -374,4 +344,47 @@ img {
   font-size: small;
   font-weight: var(--bold-weight);
   text-align: right;
+}
+
+
+/* ----------------------
+    Mobile adjustments
+   ---------------------- */
+
+@media (max-width: 480px) {
+  .hide-on-mobile {
+    display: none; 
+  }
+}
+
+@media (max-width: 768px) {
+  table {
+    width: 100vw;
+  }
+
+  th {
+    border-radius: inherit !important;
+  }
+
+  td, th {
+    padding: 10px 5px;
+  }  
+
+  /* Bottom-right to avoid blocking table header */
+  .menu-hamburger {
+    border-radius: inherit;
+    border-top-left-radius: var(--sexy-radius);
+    top: inherit;
+    bottom: 0;
+  }
+
+  /* Wider */
+  .menu {
+    width: 50vw;
+  }
+
+  /* These are positioned all wrong on mobile, so diable for now */
+  .tooltip .tooltip-text {
+    visibility: hidden;
+  }  
 }
