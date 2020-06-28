@@ -24,7 +24,7 @@
   --bold-weight: 600;
 }
 
-@media screen and (max-width: 480px) {
+@media (max-width: 480px) {
   .hide-on-mobile {
     display: none; 
   }
@@ -41,10 +41,15 @@ table {
   margin-left: auto;
   margin-right: auto;
   border-collapse: collapse;
-  min-width: 60%;
+  min-width: 60vw;
 }
 
-/* TODO - this scrolls off-screen (and left/right) slightly on mobile */
+@media (max-width: 768px) {
+  table {
+    width: 100vw;
+  }
+}
+
 th {
   background: var(--sol-base2);
   position: sticky;
@@ -53,7 +58,7 @@ th {
   z-index: 1; 
 }
 
-@media not screen and (max-width: 480px) {
+@media not (max-width: 768px) {
   th:first-child {
     border-bottom-left-radius: var(--sexy-radius);
   }
@@ -65,7 +70,7 @@ th {
 
 td, th {
   text-align: center;
-  padding: 10px;
+  padding: 10px 5px;
 }
 
 td img {
@@ -190,9 +195,17 @@ img {
   cursor: pointer;
 }
 
-/* TODO: bottom-right for mobile */
+/* TODO: bottom-right (or maybe full-width and display: block) for mobile */
 #menu .collapsed {
   padding: 10px;
+}
+
+@media (max-width: 768px) {
+  #menu .collapsed {
+    padding: 10px;
+    bottom: 0;
+    position: absolute;
+  }
 }
 
 #menu .expanded {
@@ -202,10 +215,9 @@ img {
   position: relative;
 }
 
-/* TODO - this is broken on mobile */
-@media screen and (max-width: 480px) {
+@media (max-width: 768px) {
   #menu .expanded {
-    width: 100vw; 
+    width: 50vw; 
   }
 }
 
@@ -218,7 +230,6 @@ img {
   margin: 30px 0;
 }
 
-/* TODO: position on mobile */
 #menu .copyright {
   font-size: small;
   position: absolute;
@@ -260,7 +271,7 @@ img {
   display: block;
   position: relative;
   padding-left: 1.3em;
-  margin: 0.4em 0;
+  margin: 0.6em 0;
   cursor: pointer;
   user-select: none;
 }
