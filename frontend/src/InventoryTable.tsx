@@ -26,17 +26,18 @@ const InventoryTable: React.FC<InventoryTableProps> = (props) => (
     />
     <Column
       name="ABV"
+      className="hide-on-mobile"
       render={renderAbv}
       selector={(item) => item.abv}
     />
     <Column
       name="Size"
-      className="size"
+      className="size hide-on-mobile"
       render={renderSize}
       selector={(item) => item.sizeMl}
     />
     <Column
-      name="Price per item"
+      name={<>Price <span className="hide-on-mobile">per item</span></>}
       render={renderPrice}
       selector={(item) => item.perItemPrice}
     />
@@ -68,8 +69,8 @@ const renderName: Renderer<Item> = item => (
 
 // TODO - collapse successive newlines
 const renderTooltipText = (item: Item): JSX.Element => (
-  <span className="tooltipText">
-    {item.desc && _.map(item.desc.split("\n"), para => <p>{para}</p>)}
+  <span className="tooltip-text">
+    {item.desc && _.map(item.desc.split("\n"), (para, idx) => <p key={idx}>{para}</p>)}
     <div className="disclaimer">© {item.brewery}</div>
   </span>
 );

@@ -4,7 +4,7 @@ import _ from "underscore";
 export type Renderer<T> = (datum: T) => JSX.Element | string | null;
 
 export interface ColumnProps<T> {
-  name?: string;
+  name?: JSX.Element | string;
   className?: string;
   render: Renderer<T>;
   selector?: (datum: T) => any; // eslint-disable-line @typescript-eslint/no-explicit-any
