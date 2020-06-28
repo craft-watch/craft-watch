@@ -30,8 +30,6 @@
   }
 }
 
-/* TODO - scrolling looks pants on Firefox on Pixel 2 */
-
 html, body {
   font-family: 'Work Sans', sans-serif;
   color: var(--sol-base01);
@@ -56,7 +54,8 @@ th {
   background: var(--sol-base2);
   top: 0px;
   font-size: larger; 
-  z-index: 1; 
+  z-index: 1;
+  position: sticky;
 }
 
 @media not screen and (max-width: 768px) {
@@ -173,7 +172,7 @@ td.thumbnail {
 }
 
 img {
-  mix-blend-mode: multiply;
+  mix-blend-mode: multiply;   /* No white backgrounds, plus makes things look sultry */
   max-width: 100px;
   max-height: 100px;
   width: auto;
@@ -181,67 +180,84 @@ img {
   border-radius: var(--sexy-radius);
 }
 
-#menu {
+
+.menu-hamburger {
   background: var(--sol-base02);
   color: var(--sol-base2);
   filter: var(--sexy-shadow);
-  border-bottom-left-radius: var(--sexy-radius);  /* TODO: only for collapsed */
+  border-bottom-left-radius: var(--sexy-radius);
   right: 0;
   top: 0;
   z-index: 2;
   position: fixed;
-  overflow-x: hidden;
+  padding: 10px;
 }
 
-#menu .button {
-  font-size: xx-large;
+.menu {
+  background: var(--sol-base02);
+  color: var(--sol-base2);
+  filter: var(--sexy-shadow);
+
+  padding: 10px;
+  padding-left: 30px;
+
+  /* Overlay everything else */
+  z-index: 2;
+  position: fixed;
+  right: 0;
+  top: 0;
+  min-width: 20vw;
+  height: 100vh;
+
+  /* No scroll */
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+@media (max-width: 768px) {
+  /* Bottom-right to avoid blocking table header */
+  .menu-hamburger {
+    border-radius: inherit;
+    border-top-left-radius: var(--sexy-radius);
+    top: inherit;
+    bottom: 0;
+  }
+
+  /* Wider */
+  .menu {
+    width: 50vw;
+  }
+}
+
+.menu-button {
+  font-size: x-large;
   font-weight: var(--bold-weight);
   text-decoration: none;
   text-align: right;
   user-select: none;
 }
 
-#menu .button:hover {
+.menu-button:hover {
   color: var(--sol-cyan);
   cursor: pointer;
 }
 
-/* TODO: bottom-right (or maybe full-width and display: block) for mobile */
-#menu .collapsed {
-  padding: 10px;
+/* Prevent clashing with e.g. copyright */
+.menu .content {
+  overflow-y: auto;
+  max-height: 85vh;
 }
 
-@media (max-width: 768px) {
-  #menu .collapsed {
-    padding: 10px;
-    bottom: 0;
-    position: absolute;
-  }
-}
-
-#menu .expanded {
-  padding: 10px 20px 10px 30px;
-  height: 100vh;
-  min-width: 20vw;
-  position: relative;
-}
-
-@media (max-width: 768px) {
-  #menu .expanded {
-    width: 50vw; 
-  }
-}
-
-#menu h4 {
+.menu h4 {
   margin: 0;
   padding: 0;
 }
 
-#menu .section {
-  margin: 30px 0;
+.menu .section {
+  margin-bottom: 30px;
 }
 
-#menu .copyright {
+.menu .copyright {
   font-size: small;
   position: absolute;
   margin: 0;
@@ -249,18 +265,18 @@ img {
   right: 20px;
 }
 
-#menu a {
+.menu a {
   color: var(--sol-base2);
   font-weight: var(--bold-weight);
   cursor: pointer;
   text-decoration: none;
 }
 
-#menu a:hover {
+.menu a:hover {
   color: var(--sol-base1);
 }
 
-#menu a:visited {
+.menu a:visited {
   color: inherit;
 }
 
@@ -301,6 +317,7 @@ img {
   left: 0;
   height: 1em;
   width: 1em;
+  padding-bottom: 1px;
   background-color: var(--sol-base3);
   color: var(--sol-base02);
   border-radius: 4px;

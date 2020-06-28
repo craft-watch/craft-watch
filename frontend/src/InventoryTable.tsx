@@ -63,7 +63,7 @@ const renderName: Renderer<Item> = item => (
       {item.keg && <span className="pill violet">Minikeg</span>}
       {item.mixed && <span className="pill magenta">Mixed case</span>}
     </p>
-    {item.desc && renderTooltipText(item)}
+    {/* {item.desc && renderTooltipText(item)} */}
   </div>
 );
 
