@@ -86,8 +86,8 @@ const Section: React.FC<SectionProps> = (props) => (
       ))
     }
     <div>
-      <span className="allOrNone" onClick={() => props.onGlobalSelection(true)}>All</span>
-      <span className="allOrNone" onClick={() => props.onGlobalSelection(false)}>None</span>
+      <span className="all-or-none" onClick={() => props.onGlobalSelection(true)}>All</span>
+      <span className="all-or-none" onClick={() => props.onGlobalSelection(false)}>None</span>
     </div>
   </div>
 );
