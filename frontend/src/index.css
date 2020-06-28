@@ -75,7 +75,13 @@ th {
 
 td, th {
   text-align: center;
-  padding: 10px 5px;
+  padding: 10px 10px;
+}
+
+@media (max-width: 768px) {
+  td, th {
+    padding: 10px 5px;
+  }
 }
 
 td img {
@@ -333,6 +339,13 @@ img {
  
   position: absolute;
   z-index: 2;
+}
+
+/* These are positioned all wrong on mobile */
+@media (max-width: 768px) {
+  .tooltip .tooltip-text {
+    width: 60vw;
+  }
 }
 
 .tooltip:hover .tooltip-text {
