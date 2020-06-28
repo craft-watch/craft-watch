@@ -11,7 +11,7 @@ group = "choliver.neapi"
 version = "0.0.0"
 
 repositories {
-  jcenter() // Because of kotlinx.html
+  mavenCentral()
 }
 
 dependencies {
