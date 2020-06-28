@@ -32,37 +32,35 @@ export default class Menu extends React.Component<MenuProps, State> {
   }
   
   render(): JSX.Element {
-    return (
-      <div id="menu">
-        {this.state.expanded ? this.renderExpanded() : this.renderCollapsed()}
-      </div>
-    );
+    return this.state.expanded ? this.renderExpanded() : this.renderCollapsed();
   }
 
   private renderCollapsed(): JSX.Element {
     return (
-      <div className="collapsed">
-        <div className="button" onClick={() => this.setState({ expanded: true })}>&#9776;</div>
+      <div className="menu-hamburger">
+        <div className="menu-button" onClick={() => this.setState({ expanded: true })}>&#9776;</div>
       </div>
     );
   }
 
   private renderExpanded(): JSX.Element {
     return (
-      <div className="expanded">
-        <div className="button" onClick={() => this.setState({ expanded: false })}>&times;</div>
-        <Section
-          title="Formats"
-          selections={this.props.formatSelections}
-          onToggleSelection={this.props.onToggleFormatSelection}
-          onGlobalSelection={this.props.onGlobalFormatSelection}
-        />
-        <Section
-          title="Breweries"
-          selections={this.props.brewerySelections}
-          onToggleSelection={this.props.onToggleBrewerySelection}
-          onGlobalSelection={this.props.onGlobalBrewerySelection}
-        />
+      <div className="menu">
+        <div className="menu-button" onClick={() => this.setState({ expanded: false })}>&times;</div>
+        <div className="content">
+          <Section
+            title="Formats"
+            selections={this.props.formatSelections}
+            onToggleSelection={this.props.onToggleFormatSelection}
+            onGlobalSelection={this.props.onGlobalFormatSelection}
+          />
+          <Section
+            title="Breweries"
+            selections={this.props.brewerySelections}
+            onToggleSelection={this.props.onToggleBrewerySelection}
+            onGlobalSelection={this.props.onGlobalBrewerySelection}
+          />
+        </div>
         <div className="copyright">© <a href="https://github.com/oliver-charlesworth">Oliver Charlesworth</a> 2020</div>
       </div>
     );
@@ -79,7 +77,7 @@ const Section: React.FC<SectionProps> = (props) => (
           <input
             type="checkbox"
             checked={selected}
-            onClick={() => props.onToggleSelection(key)}
+            onChange={() => props.onToggleSelection(key)}
           />
           <span className="checkmark">{selected ? "✓" : ""}</span>
         </label>
