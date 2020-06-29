@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import App from "../components/App";
 
-export default () => (
+const IndexPage = (): JSX.Element => (
   <>
     <Head>
       <meta charSet="UTF-8" />
@@ -30,3 +30,5 @@ export default () => (
     <App />
   </>
 );
+
+export default IndexPage;

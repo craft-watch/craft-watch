@@ -9,12 +9,12 @@ const items = (_inventory as Inventory).items;
 const shuffledItems = _.flatten(_.shuffle(_.groupBy(items, item => item.brewery)));
 
 interface AppState {
-  brewerySelections: Selections; 
+  brewerySelections: Selections;
   formatSelections: Selections;
 }
 
-class App extends React.Component<{}, AppState> {
-  constructor(props: {}) {
+class App extends React.Component<unknown, AppState> {
+  constructor(props: unknown) {
     super(props);
     this.state = {
       brewerySelections: _.object(_.uniq(_.map(items, item => [item.brewery, true]), true, p => p[0])),
@@ -57,8 +57,8 @@ class App extends React.Component<{}, AppState> {
       const brewerySelections = { ...state.brewerySelections };
       brewerySelections[key] = !brewerySelections[key];
       return { brewerySelections };
-    })
-  }
+    });
+  };
 
   private handleGlobalBrewerySelection = (selected: boolean): void => {
     this.setState(state => {
@@ -66,7 +66,7 @@ class App extends React.Component<{}, AppState> {
       _.each(brewerySelections, (_, b) => brewerySelections[b] = selected);
       return { brewerySelections };
     });
-  }
+  };
 
   private handleToggleFormatSelection = (key: string): void => {
     this.setState(state => {
@@ -74,7 +74,7 @@ class App extends React.Component<{}, AppState> {
       formatSelections[key] = !formatSelections[key];
       return { formatSelections };
     });
-  }
+  };
 
   private handleGlobalFormatSelection = (selected: boolean): void => {
     this.setState(state => {
@@ -82,7 +82,7 @@ class App extends React.Component<{}, AppState> {
       _.each(formatSelections, (_, b) => formatSelections[b] = selected);
       return { formatSelections };
     });
-  }
+  };
 }
 
 export default App;

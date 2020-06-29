@@ -77,9 +77,10 @@ const renderTooltipText = (item: Item): JSX.Element => (
 
 const renderAbv: Renderer<Item> = item => item.abv ? `${item.abv.toFixed(1)}%` : "?";
 
-const renderSize: Renderer<Item> = item => !item.sizeMl ? "?"
-  : (item.sizeMl < 1000) ? `${item.sizeMl} ml`
-  : `${item.sizeMl / 1000} litres`;
+const renderSize: Renderer<Item> = item =>
+  !item.sizeMl ? "?" :
+  (item.sizeMl < 1000) ? `${item.sizeMl} ml` :
+  `${item.sizeMl / 1000} litres`;
 
 const renderPrice: Renderer<Item> = item => `£${item.perItemPrice.toFixed(2)}`;
 
