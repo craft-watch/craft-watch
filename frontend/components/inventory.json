@@ -308,7 +308,7 @@
     "sizeMl" : 5000,
     "abv" : 4.1,
     "perItemPrice" : 25.0,
-    "available" : false,
+    "available" : true,
     "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-best-5l-mini-cask-1588589149Mini-Keg-Best-Mockup-SML.jpg",
     "url" : "https://shop.fivepointsbrewing.co.uk/item/33/FivePointsBrewing/FIVE-POINTS-BEST-5L-MINI-CASK.html"
   }, {
@@ -443,19 +443,6 @@
     "url" : "https://www.fourpure.com/item/5/Fourpure/Last-Train.html"
   }, {
     "brewery" : "Fourpure",
-    "name" : "Coastline",
-    "summary" : null,
-    "desc" : "Warm sun, a cool breeze and a comfortable chair with an ocean view… are not prerequisites for enjoying Coastline, but they help. Gooseberry, lactose and fresh vanilla pods create a beer that is lightly sour with sweet notes from the vanilla, fruity tartness from the gooseberry, and hoppy notes from plentiful amounts of Citra hop. An everyday sour.\r\nThis beer is suitable for vegetarians.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 6.0,
-    "perItemPrice" : 3.5,
-    "available" : true,
-    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_coastline_1567172728CoastlineRenderCrop.png",
-    "url" : "https://www.fourpure.com/item/177/Fourpure/Coastline.html"
-  }, {
-    "brewery" : "Fourpure",
     "name" : "Deucebox",
     "summary" : null,
     "desc" : "The oranges for Deucebox, our 8.3% citrus double IPA, are harvested by blasting California Dreaming through very large speakers at such a high intensity, the fruit just falls from the trees and juices itself. This is then added to our lovely citrus IPA recipe with twice the hops, twice the malt and twice the juice to serve up a punchy, tropical, glass of joy, every time.\r\nThis beer is suitable for vegetarians and vegans.",
@@ -482,19 +469,6 @@
     "url" : "https://gipsyhillbrew.com/product/nhs-west-coast-ipa/"
   }, {
     "brewery" : "Gipsy Hill",
-    "name" : "Core Range 24 Pack",
-    "summary" : null,
-    "desc" : "This pack contains 24 x 330ml cans from our core range.\nEach pack includes:\n4 x Hepcat – Session IPA – 4.6%\n4 x Baller – IPA – 5.4%\n4 x Hunter – Helles Lager – 4.8%\n4 x Carver – Micro IPA – 2.8%\n4 x Ranger – Pale Ale – 4.2%\n4 x Bandit – Gluten Free Pale – 3.8%",
-    "keg" : false,
-    "mixed" : true,
-    "sizeMl" : 330,
-    "abv" : null,
-    "perItemPrice" : 2.33,
-    "available" : true,
-    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/03/Copy-of-Core-range-6-pack-31.png?resize=300%2C300&ssl=1",
-    "url" : "https://gipsyhillbrew.com/product/core-range-24-pack/"
-  }, {
-    "brewery" : "Gipsy Hill",
     "name" : "Blisco Dash",
     "summary" : "Kveik Pale Ale",
     "desc" : "This is a single 440ml can of Blisco Dash – A Kveik Pale Ale.\nOur favourite Voss yeast strain has been cranking esters through ramped fermentation and cast out temps.\nOn top of that it’s been loaded with classic Cascade and Hallertau Blanc & Melon hotside for full on pine, floral and sweet-fruit top notes, before being blasted with Idaho 7 in the dry-hop for that tropical kick.\nGoes well with getting lost and sweet fresh air.\nFeaturing Sarah, Gipsy Hill’s finance guru and speed demon.",
@@ -506,32 +480,6 @@
     "available" : true,
     "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Blisco-Dash.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/blisco-dash/"
-  }, {
-    "brewery" : "Gipsy Hill",
-    "name" : "DJ BBQ Box",
-    "summary" : null,
-    "desc" : "This is a 12 pack of 330ml cans and 1 x Burger Book.\n\nA perfect box for an evening cooking over the grill. DJ BBQ is the king of the coals and starting parties. He’s picked two of his favourite Gipsy Hill tinnies – Hepcat and Hunter, and signed 24 copies of his incredible Burger Book.\nGo check him out on Instagram for the live cooking, lessons and sweet beats.\nCase contents listed below.",
-    "keg" : false,
-    "mixed" : true,
-    "sizeMl" : 330,
-    "abv" : null,
-    "perItemPrice" : 3.17,
-    "available" : true,
-    "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Fathers-day-box-3.png?resize=300%2C300&ssl=1",
-    "url" : "https://gipsyhillbrew.com/product/dj-bbq-box/"
-  }, {
-    "brewery" : "Gipsy Hill",
-    "name" : "Hepcat",
-    "summary" : "Session IPA",
-    "desc" : "This is a single 330ml can of Hepcat.\n\nA Session IPA. Our mainstay and our original. It’s everything the style should be – fruity nose, juicy body, bright taste. Can we humbly call it a classic?\nGoes well with dancefloors and smooth moves.\nThis is Marcus. He’s our designer, illustrator and friend. He likes expensive jackets and colouring in.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 330,
-    "abv" : 4.6,
-    "perItemPrice" : 2.4,
-    "available" : true,
-    "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/HEPCAT.png?resize=300%2C300&ssl=1",
-    "url" : "https://gipsyhillbrew.com/product/hepcat/"
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Baller",
@@ -676,19 +624,6 @@
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/01/OPENINGTHEMECANSOCIAL-1.jpg?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/left-handed-giant-opening-theme-ipa/"
   }, {
-    "brewery" : "Gipsy Hill",
-    "name" : "Hepcat Case (24 Cans)",
-    "summary" : "Session IPA",
-    "desc" : "This is 24 x 330ml cans of Hepcat.\n\nYou asked, we listened – a full case of Hepcat.\nA Session IPA. Our mainstay and our original. It’s everything the style should be – fruity nose, juicy body, bright taste. Can we humbly call it a classic?\nGoes well with dancefloors and smooth moves.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 330,
-    "abv" : 4.6,
-    "perItemPrice" : 2.4,
-    "available" : true,
-    "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/Copy-of-Core-range-6-pack-34.png?resize=300%2C300&ssl=1",
-    "url" : "https://gipsyhillbrew.com/product/hepcat-case-24-cans/"
-  }, {
     "brewery" : "Howling Hops",
     "name" : "NEW 12 Beer Mega Pack",
     "summary" : "24 cans",
@@ -716,19 +651,6 @@
     "url" : "https://www.howlinghops.co.uk/product/passionfruit-gose-24-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Off Ramp",
-    "summary" : "DIPA",
-    "desc" : "Off Ramp / DIPA / 4 x 440ml  / 8.0% ABV\nSuitable for vegans.\nOff Ramp is a new 8% DIPA hopped with Cryo Mosaic, Citra and HBC-692 (last seen in Countrymen)! This a specdankular bit of murkology, not for the faint of heart.\n\n\nOne 4-pack leaves 20 can slots left in your case!",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 8.0,
-    "perItemPrice" : 5.0,
-    "available" : false,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/offramp-440ml-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/off-ramp-dipa-4-x-440ml/"
-  }, {
-    "brewery" : "Howling Hops",
     "name" : "Drag Race Johnny",
     "summary" : "NEIPA",
     "desc" : "Drag Race Johnny / NEIPA / 4 x 440ml  / 6.7% ABV\nSuitable for vegans.\nDrag Race Johnny is a NEIPA that rides the racing line between sticky stonefruit and pithy bitterness. Azacca, Citra, Simcoe and no brakes.\n\nOne 4-pack leaves 20 can slots left in your case!",
@@ -740,19 +662,6 @@
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/drag-race-johnny-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/drag-race-johnny-4-x-440ml/"
-  }, {
-    "brewery" : "Howling Hops",
-    "name" : "House IPA",
-    "summary" : "India Pale Ale",
-    "desc" : "House IPA / India Pale Ale / 4 x 440ml  / 6.9% ABV\nSuitable for vegans.\n\nHouse IPA is a New England IPA with a light and fluffy body,  delicate carbonation, and a big-hitting dry-hop combo of Mosaic and Motueka. Aromas of mango and pineapple. More tropical fruit on the tongue. Super drinkable and very moreish.\n\nOne 4-pack leaves 20 can slots left in your case!",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 6.9,
-    "perItemPrice" : 4.5,
-    "available" : false,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/05/house-ipa-440ml-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/house-ipa-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
     "name" : "Flashpoint",
@@ -779,19 +688,6 @@
     "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/push-push-4-x-440ml/"
-  }, {
-    "brewery" : "Howling Hops",
-    "name" : "Soft Top",
-    "summary" : "Sabro Stout",
-    "desc" : "Soft Top / Sabro Stout / 4 x 440ml  / 6.5% ABV\nSuitable for vegans.\nSoft Top is the luxury smooth ride you deserve. Built to Last™ with decadent, toasty malts. Hopped for Comfort™ with Sabro brand tropical coconut goodness. Smooth vibes and electric windows as standard.\n\n\nOne 4-pack leaves 20 can slots left in your case!",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 6.5,
-    "perItemPrice" : 4.0,
-    "available" : false,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/05/soft-top-440ml-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/soft-top-sabro-stout-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
     "name" : "Blankets",
@@ -832,45 +728,6 @@
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/pocket-rocket-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/pocket-rocket-4-x-440ml/"
   }, {
-    "brewery" : "Howling Hops",
-    "name" : "Tropical Deluxe",
-    "summary" : "Pale Ale",
-    "desc" : "Tropical Deluxe / Pale Ale / 4 x 440ml  / 3.8% ABV\nSuitable for vegans.\n\nTropical Deluxe is our core pale ale. Citra, Mosaic and Simcoe do the tropical dry hop tango, while the mighty London Ale III yeast strain keeps things soft, light, and as level as a hammock. Lower in alcohol, deluxer in tropical.\n\nOne 4-pack leaves 20 can slots left in your case!",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 3.8,
-    "perItemPrice" : 3.5,
-    "available" : false,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/04/tropical-deluxe-440ml-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/tropical-deluxe-4-x-440ml/"
-  }, {
-    "brewery" : "Marble",
-    "name" : "Lagonda",
-    "summary" : "Pale",
-    "desc" : "Named after a classic car owned by the boss’s father, Lagonda has been a house beer since 1997. The beer was originally designated an IPA but we feel pale ale better reflects current beer definitions. Pale in colour, the malts provide a sturdy body on which is built a citrus and floral hop character.\nCONTAINS LIVE YEAST, ALLOW NATURAL SETTLING. ONCE VENTED CONSUME WITHIN 3 DAYS. KEEP AS CLOSE TO 8°C",
-    "keg" : true,
-    "mixed" : false,
-    "sizeMl" : 5000,
-    "abv" : 5.0,
-    "perItemPrice" : 22.25,
-    "available" : false,
-    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/05/Lagonda-IMG_1534-e1589905679839-300x300.jpg",
-    "url" : "https://marblebeers.com/shop-home/lagonda-5l-mink-cask-local-delivery-only/"
-  }, {
-    "brewery" : "Marble",
-    "name" : "Stout",
-    "summary" : "Stout",
-    "desc" : "Roasty and robust.It is deep, dark and rich, with layers of malty complexity to be unravelled with each sip.",
-    "keg" : true,
-    "mixed" : false,
-    "sizeMl" : 5000,
-    "abv" : 5.7,
-    "perItemPrice" : 24.8,
-    "available" : true,
-    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/06/Stout-IMG_1600-e1591956607727-300x300.jpg",
-    "url" : "https://marblebeers.com/shop-home/stout-5l-mini-keg/"
-  }, {
     "brewery" : "Marble",
     "name" : "Manchester Bitter",
     "summary" : "Bitter",
@@ -898,30 +755,30 @@
     "url" : "https://marblebeers.com/shop-home/pint-metric-5l-mini-cask-local-delivery-only/"
   }, {
     "brewery" : "Marble",
-    "name" : "Manchester Bitter",
-    "summary" : "Bitter",
-    "desc" : "Our most traditional core beer is inspired by a Manchester stalwart; a fondly-remembered original. Speciality malt gives the deep golden colour and robust base, balanced by crisp bitterness and a floral, lemony aroma.",
-    "keg" : false,
+    "name" : "Lagonda",
+    "summary" : "Pale",
+    "desc" : "Named after a classic car owned by the boss’s father, Lagonda has been a house beer since 1997. The beer was originally designated an IPA but we feel pale ale better reflects current beer definitions. Pale in colour, the malts provide a sturdy body on which is built a citrus and floral hop character.\nCONTAINS LIVE YEAST, ALLOW NATURAL SETTLING. ONCE VENTED CONSUME WITHIN 3 DAYS. KEEP AS CLOSE TO 8°C",
+    "keg" : true,
     "mixed" : false,
-    "sizeMl" : 500,
-    "abv" : 4.2,
-    "perItemPrice" : 2.35,
-    "available" : true,
-    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Manchester_bitter_24_pack-234x300.png",
-    "url" : "https://marblebeers.com/shop-home/manchester-bitter-full-case-24-cans/"
+    "sizeMl" : 5000,
+    "abv" : 5.0,
+    "perItemPrice" : 22.25,
+    "available" : false,
+    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/05/Lagonda-IMG_1534-e1589905679839-300x300.jpg",
+    "url" : "https://marblebeers.com/shop-home/lagonda-5l-mink-cask-local-delivery-only/"
   }, {
     "brewery" : "Marble",
-    "name" : "Metric (pint-ish)",
-    "summary" : "Pale",
-    "desc" : "Our 3.9% session ale is brewed with an all pale malt bill and then hopped with a blend of New Zealand and US hops. Our benchmark beer promises a burst of zesty aromas, uplifting grapefruit flavours and a subtle lemongrass finish.",
-    "keg" : false,
+    "name" : "Stout",
+    "summary" : "Stout",
+    "desc" : "Roasty and robust.It is deep, dark and rich, with layers of malty complexity to be unravelled with each sip.",
+    "keg" : true,
     "mixed" : false,
-    "sizeMl" : 500,
-    "abv" : 3.9,
-    "perItemPrice" : 2.5,
-    "available" : true,
-    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Metric_24_pack-234x300.png",
-    "url" : "https://marblebeers.com/shop-home/metric-pint-ish-case-24-cans/"
+    "sizeMl" : 5000,
+    "abv" : 5.7,
+    "perItemPrice" : 24.8,
+    "available" : false,
+    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/06/Stout-IMG_1600-e1591956607727-300x300.jpg",
+    "url" : "https://marblebeers.com/shop-home/stout-5l-mini-keg/"
   }, {
     "brewery" : "Marble",
     "name" : "Lagonda",
@@ -961,6 +818,32 @@
     "available" : true,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Pilsner_24_pack-234x300.png",
     "url" : "https://marblebeers.com/shop-home/american-pilsner-case-24-cans/"
+  }, {
+    "brewery" : "Marble",
+    "name" : "Manchester Bitter",
+    "summary" : "Bitter",
+    "desc" : "Our most traditional core beer is inspired by a Manchester stalwart; a fondly-remembered original. Speciality malt gives the deep golden colour and robust base, balanced by crisp bitterness and a floral, lemony aroma.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 500,
+    "abv" : 4.2,
+    "perItemPrice" : 2.35,
+    "available" : true,
+    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Manchester_bitter_24_pack-234x300.png",
+    "url" : "https://marblebeers.com/shop-home/manchester-bitter-full-case-24-cans/"
+  }, {
+    "brewery" : "Marble",
+    "name" : "Metric (pint-ish)",
+    "summary" : "Pale",
+    "desc" : "Our 3.9% session ale is brewed with an all pale malt bill and then hopped with a blend of New Zealand and US hops. Our benchmark beer promises a burst of zesty aromas, uplifting grapefruit flavours and a subtle lemongrass finish.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 500,
+    "abv" : 3.9,
+    "perItemPrice" : 2.5,
+    "available" : true,
+    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Metric_24_pack-234x300.png",
+    "url" : "https://marblebeers.com/shop-home/metric-pint-ish-case-24-cans/"
   }, {
     "brewery" : "Marble",
     "name" : "Core Range Mixed",
@@ -1156,6 +1039,19 @@
     "available" : true,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2018/03/Dry-Hopped-Sours-330ml-Can01-234x300.png",
     "url" : "https://marblebeers.com/shop-home/dry-hopped-sour/"
+  }, {
+    "brewery" : "Pillars",
+    "name" : "Pillars Lager Mixed",
+    "summary" : "Session IPL & Helles",
+    "desc" : "A MIXED 24 CASE OF PILLARS LAGERS! HALF UNTRADITIONAL LAGER AND HALF REBELL HELLES 330ML CANS FOR THOSE WHO JUST CAN'T CHOOSE BETWEEN THE TWO.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : null,
+    "abv" : 4.5,
+    "perItemPrice" : 1.88,
+    "available" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/mixedcase2_250x250.png",
+    "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/pillars-lager-mixed-case-of-24"
   }, {
     "brewery" : "Pillars",
     "name" : "Pillars Pilsner",
@@ -1611,32 +1507,6 @@
     "available" : true,
     "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-cauld-reekie-1592387707330ml-cauldreekie.png",
     "url" : "https://www.stewartbrewing.co.uk/item/266/StewartBrewing/Cauld-Reekie.html"
-  }, {
-    "brewery" : "Stewart Brewing",
-    "name" : "First World Problems",
-    "summary" : "India Pale Ale",
-    "desc" : null,
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 330,
-    "abv" : 6.2,
-    "perItemPrice" : 1.8,
-    "available" : true,
-    "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-first-world-problems-1592394080330ml-can-FWP-002-.png",
-    "url" : "https://www.stewartbrewing.co.uk/item/264/StewartBrewing/First-World-Problems.html"
-  }, {
-    "brewery" : "Stewart Brewing",
-    "name" : "Radical Road",
-    "summary" : "Pale Ale",
-    "desc" : null,
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 330,
-    "abv" : 6.4,
-    "perItemPrice" : 1.8,
-    "available" : true,
-    "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-radical-road-1590741419330ml-RadicalRoad-mockup-crop.png",
-    "url" : "https://www.stewartbrewing.co.uk/item/263/StewartBrewing/Radical-Road.html"
   }, {
     "brewery" : "Stewart Brewing",
     "name" : "Edinburgh Gold",
