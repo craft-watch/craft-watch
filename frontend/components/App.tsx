@@ -6,7 +6,6 @@ import Menu, { Selections } from "./Menu";
 import InventoryTable from "./InventoryTable";
 
 const items = (_inventory as Inventory).items;
-const shuffledItems = _.flatten(_.shuffle(_.groupBy(items, item => item.brewery)));
 
 interface AppState {
   brewerySelections: Selections;
@@ -43,7 +42,7 @@ class App extends React.Component<unknown, AppState> {
     );
   }
 
-  private filterItems = (): Array<Item> => shuffledItems.filter(item =>
+  private filterItems = (): Array<Item> => items.filter(item =>
     this.state.brewerySelections[item.brewery] && this.formatSelected(item)
   );
 
