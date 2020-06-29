@@ -2,11 +2,10 @@ package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import watch.craft.Scraper.Item
+import watch.craft.Item
 import watch.craft.byName
 import watch.craft.executeScraper
 import watch.craft.noDesc
-import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
 class CanopyScraperTest {
@@ -23,12 +22,14 @@ class CanopyScraperTest {
   fun `extracts beer details`() {
     assertEquals(
       Item(
+        brewery = "Canopy",
         name = "Brockwell IPA",   // ABV removed from name
         perItemPrice = 2.50,
         abv = 5.6,
         sizeMl = 330,
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Brockwell-F_large.png?v=1539104364")
+        url = "https://shop.canopybeer.com/products/brockwell-ipa",
+        thumbnailUrl = "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Brockwell-F_large.png?v=1539104364"
       ),
       ITEMS.byName("Brockwell IPA").noDesc()
     )

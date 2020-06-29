@@ -8,13 +8,8 @@ import com.github.ajalt.clikt.parameters.arguments.multiple
 import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.types.choice
-import watch.craft.getters.CachingGetter
-import watch.craft.getters.HttpGetter
 import watch.craft.scrapers.*
-import watch.craft.storage.GcsObjectStore
-import watch.craft.storage.LocalObjectStore
-import watch.craft.storage.StoreStructure
-import watch.craft.storage.WriteThroughObjectStore
+import watch.craft.storage.*
 import java.time.Instant
 
 class Cli : CliktCommand(name = "scraper") {
@@ -40,7 +35,7 @@ class Cli : CliktCommand(name = "scraper") {
       secondLevel = GcsObjectStore(GCS_BUCKET)
     )
     val structure = StoreStructure(store, Instant.now())
-    val getter = CachingGetter(structure.cache, HttpGetter())
+    val getter = CachingGetter(structure.cache)
     val executor = Executor(getter)
 
     val inventory = executor.scrape(*scrapers.ifEmpty { SCRAPERS.values }.toTypedArray())

@@ -1,14 +1,13 @@
 package watch.craft
 
 import mu.KotlinLogging
+import org.jsoup.Jsoup
 import watch.craft.Scraper.IndexEntry
-import watch.craft.getters.Getter
-import watch.craft.getters.HtmlGetter
+import watch.craft.storage.CachingGetter
 import java.net.URI
 import java.util.stream.Collectors.toList
 
-class Executor(getter: Getter<String>) {
-  private val jsonGetter = HtmlGetter(getter)
+class Executor(private val getter: CachingGetter) {
   private val logger = KotlinLogging.logger {}
 
   fun scrape(vararg scrapers: Scraper) = Inventory(
@@ -37,7 +36,7 @@ class Executor(getter: Getter<String>) {
     private fun scrapeIndexSafely(scraper: Scraper, url: URI): List<IndexEntry> {
       logger.info("[${brewery}] Scraping index: ${url}")
       return try {
-        scraper.scrapeIndex(jsonGetter.request(url))
+        scraper.scrapeIndex(request(url))
       } catch (e: NonFatalScraperException) {
         logger.warn("[${brewery}] Error scraping brewery", e)
         emptyList()
@@ -54,7 +53,7 @@ class Executor(getter: Getter<String>) {
       logger.info("[${brewery}] Scraping [${entry.rawName}]")
       return try {
         entry
-          .scrapeItem(jsonGetter.request(entry.url))
+          .scrapeItem(request(entry.url))
           .normalise(brewery, entry.url)
       } catch (e: SkipItemException) {
         logger.info("[${brewery}] Skipping [${entry.rawName}] because: ${e.message}")
@@ -78,6 +77,12 @@ class Executor(getter: Getter<String>) {
         }
         group.minBy { it.perItemPrice }!!
       }
+  }
+
+  private fun request(url: URI) = try {
+    Jsoup.parse(String(getter.request(url)), url.toString())!!
+  } catch (e: Exception) {
+    throw FatalScraperException("Could not read page: ${url}", e)
   }
 
   private fun List<Item>.logStats() {
