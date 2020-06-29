@@ -1,6 +1,7 @@
 {
   "name": "craft-watch",
   "version": "0.1.0",
+  "license": "MIT",
   "scripts": {
     "dev": "NEXT_TELEMETRY_DISABLED=1 next",
     "build": "NEXT_TELEMETRY_DISABLED=1 next build",
@@ -8,9 +9,11 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@types/underscore": "^1.10.2",
     "next": "latest",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "underscore": "^1.10.2"
   },
   "devDependencies": {
     "@types/node": "^12.12.21",

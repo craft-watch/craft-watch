@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap');
+
+:root {
+  /* Colours taken from https://ethanschoonover.com/solarized/ */
+  --sol-base03:  #002b36;
+  --sol-base02:  #073642;
+  --sol-base01:  #586e75;
+  --sol-base00:  #657b83;
+  --sol-base0:   #839496;
+  --sol-base1:   #93a1a1;
+  --sol-base2:   #eee8d5;
+  --sol-base3:   #fdf6e3;
+  --sol-yellow:  #b58900;
+  --sol-orange:  #cb4b16;
+  --sol-red:     #dc322f;
+  --sol-magenta: #d33682;
+  --sol-violet:  #6c71c4;
+  --sol-blue:    #268bd2;
+  --sol-cyan:    #2aa198;
+  --sol-green:   #859900;
+
+  --sexy-radius: 16px;
+  --sexy-shadow: drop-shadow(0 0 0.75rem var(--sol-base03));
+  --bold-weight: 600;
+}
+
+html, body {
+  font-family: 'Work Sans', sans-serif;
+  color: var(--sol-base01);
+  background: var(--sol-base3);
+  margin: 0;
+}
+
+
+/* ----------------------
+    Table
+   ---------------------- */
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  min-width: 50vw;
+}
+
+th {
+  background: var(--sol-base2);
+  top: 0px;
+  font-size: larger; 
+  z-index: 1;
+  position: sticky;
+}
+
+th:first-child {
+  border-bottom-left-radius: var(--sexy-radius);
+}
+
+th:last-child {
+  border-bottom-right-radius: var(--sexy-radius);
+}
+
+td, th {
+  text-align: center;
+  padding: 10px 10px;
+}
+
+td img {
+  vertical-align: middle;
+}
+
+table a {
+  font-weight: var(--bold-weight);
+  text-decoration: none;
+}
+
+table a:link {
+  color: var(--sol-base01);
+}
+
+table a:visited {
+  color: var(--sol-base00);
+}
+
+table a:hover, th.sort-none:hover, th.sort-asc:hover, th.sort-desc:hover {
+  cursor: pointer;
+  color: var(--sol-blue);
+}
+
+th.sort-asc::after {
+  margin-left: 5px;
+  content: "▼";
+  font-size: smaller;
+}
+
+th.sort-desc::after {
+  margin-left: 5px;
+  content: "▲";
+  font-size: smaller;
+}
+
+td.thumbnail {
+  position: relative;
+}
+
+.name {
+  text-align: left;
+  max-width: 300px;
+}
+
+.summary {
+  font-size: smaller;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.pill {
+  color: var(--sol-base3);
+  font-size: smaller;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 2px 10px;
+  border-radius: var(--sexy-radius);
+}
+
+.violet {
+  background: var(--sol-violet);
+}
+
+.magenta {
+  background: var(--sol-magenta);
+}
+
+.size {
+  white-space: nowrap;
+}
+
+.sold-out {
+  color: var(--sol-base3);
+  background: var(--sol-red);
+  padding: 2px 10px;
+  font-size: smaller;
+  border-radius: var(--sexy-radius);
+  font-weight: var(--bold-weight);
+  filter: var(--sexy-shadow);
+
+  /* Rotate and centre above image */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  transform: translate(-50%, -50%) rotate(-20deg);
+  transform-origin: center;
+}
+
+img {
+  mix-blend-mode: multiply;   /* No white backgrounds, plus makes things look sultry */
+  max-width: 100px;
+  max-height: 100px;
+  width: auto;
+  height: auto;
+  border-radius: var(--sexy-radius);
+}
+
+
+/* ----------------------
+    Menu
+   ---------------------- */
+
+.menu-hamburger {
+  background: var(--sol-base02);
+  color: var(--sol-base2);
+  filter: var(--sexy-shadow);
+  border-bottom-left-radius: var(--sexy-radius);
+  right: 0;
+  top: 0;
+  z-index: 2;
+  position: fixed;
+  padding: 10px;
+}
+
+.menu {
+  background: var(--sol-base02);
+  color: var(--sol-base2);
+  filter: var(--sexy-shadow);
+
+  padding: 10px;
+  padding-left: 30px;
+
+  /* Overlay everything else */
+  z-index: 2;
+  position: fixed;
+  right: 0;
+  top: 0;
+  min-width: 20vw;
+  height: 100vh;
+
+  /* No scroll */
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.menu-button {
+  font-size: x-large;
+  font-weight: var(--bold-weight);
+  text-decoration: none;
+  text-align: right;
+  user-select: none;
+}
+
+.menu-button:hover {
+  color: var(--sol-base1);
+  cursor: pointer;
+}
+
+/* Prevent clashing with e.g. copyright */
+.menu .content {
+  overflow-y: auto;
+  max-height: 85vh;
+}
+
+.menu h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.menu .section {
+  margin-bottom: 30px;
+}
+
+.menu .copyright {
+  font-size: small;
+  position: absolute;
+  margin: 0;
+  bottom: 40px;
+  right: 20px;
+}
+
+.menu a {
+  color: var(--sol-base2);
+  font-weight: var(--bold-weight);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: var(--sol-base1);
+}
+
+.menu a:visited {
+  color: inherit;
+}
+
+.all-or-none {
+  font-weight: var(--bold-weight);
+  font-size: smaller;
+  padding: 10px 20px 10px 0;
+  user-select: none;
+  cursor: pointer;
+}
+
+.all-or-none:hover {
+  color: var(--sol-base1);
+}
+
+
+/* ----------------------
+    Selectable items
+   ---------------------- */
+
+.selectable {
+  display: block;
+  position: relative;
+  padding-left: 1.3em;
+  margin: 0.6em 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.selectable input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.selectable .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1em;
+  width: 1em;
+  line-height: 1em;
+  background-color: var(--sol-base3);
+  color: var(--sol-base02);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.selectable:hover {
+  color: var(--sol-base1);
+}
+
+.selectable:hover .checkmark {
+  background-color: var(--sol-base01);
+  color: var(--sol-base3);
+}
+
+
+/* ----------------------
+    Tooltips
+   ---------------------- */
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-text {
+  background-color: var(--sol-base03);
+  color: var(--sol-base3);
+
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s linear, opacity 0.5s linear;
+
+  width: 30vw;
+  font-size: small;
+  padding: 10px;
+  border-radius: var(--sexy-radius);
+  filter: var(--sexy-shadow);
+ 
+  position: absolute;
+  z-index: 2;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip .tooltip-text .disclaimer {
+  font-size: small;
+  font-weight: var(--bold-weight);
+  text-align: right;
+}
+
+
+/* ----------------------
+    Mobile adjustments
+   ---------------------- */
+
+@media (max-width: 480px) {
+  .hide-on-mobile {
+    display: none; 
+  }
+}
+
+@media (max-width: 768px) {
+  /* Compress table layout */
+  
+  table {
+    width: 100vw;
+  }
+
+  td, th {
+    padding: 10px 5px;
+  }  
+
+  th {
+    border-radius: inherit !important;
+  }
+
+  /* Bottom-right to avoid blocking table header */
+  .menu-hamburger {
+    border-radius: inherit;
+    border-top-left-radius: var(--sexy-radius);
+    top: inherit;
+    bottom: 0;
+  }
+
+  /* Wider */
+  .menu {
+    width: 50vw;
+  }
+
+  /* These are positioned all wrong on mobile, so diable for now */
+  .tooltip .tooltip-text {
+    visibility: hidden;
+  }  
+}
