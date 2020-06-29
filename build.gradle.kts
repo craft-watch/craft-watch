@@ -51,6 +51,6 @@ idea {
   module {
     excludeDirs.add(rootDir.resolve("frontend/node_modules"))
     excludeDirs.add(rootDir.resolve("frontend/.next"))
-    excludeDirs.add(rootDir.resolve("frontend/build"))
+    excludeDirs.add(rootDir.resolve("frontend/out"))
   }
 }

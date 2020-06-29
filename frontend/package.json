@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "NEXT_TELEMETRY_DISABLED=1 next",
-    "build": "NEXT_TELEMETRY_DISABLED=1 next build",
+    "build": "NEXT_TELEMETRY_DISABLED=1 next build && next export",
     "start": "NEXT_TELEMETRY_DISABLED=1 next start",
     "lint": "eslint components/ pages/ --ext .js,.jsx,.ts,.tsx",
     "type-check": "tsc"
