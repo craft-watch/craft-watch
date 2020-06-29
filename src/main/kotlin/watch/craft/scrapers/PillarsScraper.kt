@@ -20,9 +20,6 @@ class PillarsScraper : Scraper {
           "STYLE:\\s+(.+?)\\s+ABV:\\s+(\\d\\.\\d+)%"
         ) ?: throw SkipItemException("Couldn't find style or ABV")  // If we don't see these fields, assume we're not looking at a beer product
 
-        println(doc.maybeWholeTextFrom(".product-single__description"))
-
-
         Item(
           thumbnailUrl = details.thumbnailUrl,
           name = titleParts.name,
