@@ -18,11 +18,11 @@ export interface SectionProps {
   onToggleSelection: (key: string) => void;
   onGlobalSelection: (selection: boolean) => void;
 }
-  
+
 interface State {
   expanded: boolean;
 }
-  
+
 export default class Menu extends React.Component<MenuProps, State> {
   constructor(props: MenuProps) {
     super(props);
@@ -30,7 +30,7 @@ export default class Menu extends React.Component<MenuProps, State> {
       expanded: false,
     };
   }
-  
+
   render(): JSX.Element {
     return this.state.expanded ? this.renderExpanded() : this.renderCollapsed();
   }
