@@ -38,7 +38,7 @@ brew install yarn
 Then in `frontend/`:
 
 ```
-yarn start
+yarn dev
 ```
 
 Then browse to http://localhost:3000.
