@@ -1,8 +1,8 @@
 package watch.craft
 
 import mu.KotlinLogging
-import watch.craft.getters.CachingGetter
-import watch.craft.getters.HttpGetter
+import watch.craft.storage.CachingGetter
+import watch.craft.storage.HttpGetter
 import watch.craft.storage.*
 import java.time.Instant
 import java.time.LocalDate
