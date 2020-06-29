@@ -9,7 +9,7 @@ import kotlin.text.RegexOption.IGNORE_CASE
 
 class MarbleScraper : Scraper {
   override val name = "Marble"
-  override val rootUrl = URI("https://marblebeers.com/product-category/?term=beers")
+  override val rootUrls = listOf(URI("https://marblebeers.com/product-category/?term=beers"))
 
   override fun scrapeIndex(root: Document) = root
     .selectMultipleFrom(".product")

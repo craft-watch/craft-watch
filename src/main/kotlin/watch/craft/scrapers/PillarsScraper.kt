@@ -8,7 +8,7 @@ import java.net.URI
 
 class PillarsScraper : Scraper {
   override val name = "Pillars"
-  override val rootUrl = URI("https://shop.pillarsbrewery.com/collections/pillars-beers")
+  override val rootUrls = listOf(URI("https://shop.pillarsbrewery.com/collections/pillars-beers"))
 
   override fun scrapeIndex(root: Document) = root
     .shopifyItems()

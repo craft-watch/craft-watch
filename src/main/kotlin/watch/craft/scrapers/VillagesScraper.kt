@@ -8,7 +8,7 @@ import java.net.URI
 
 class VillagesScraper : Scraper {
   override val name = "Villages"
-  override val rootUrl = URI("https://villagesbrewery.com/collections/buy-beer")
+  override val rootUrls = listOf(URI("https://villagesbrewery.com/collections/buy-beer"))
 
   override fun scrapeIndex(root: Document) = root
     .shopifyItems()

@@ -12,7 +12,7 @@ import kotlin.text.RegexOption.IGNORE_CASE
 
 class BoxcarScraper : Scraper {
   override val name = "Boxcar"
-  override val rootUrl = URI("https://shop.boxcarbrewery.co.uk/collections/beer")
+  override val rootUrls = listOf(URI("https://shop.boxcarbrewery.co.uk/collections/beer"))
 
   override fun scrapeIndex(root: Document) = root
     .shopifyItems()

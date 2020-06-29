@@ -8,7 +8,7 @@ import java.net.URI
 
 class GipsyHillScraper : Scraper {
   override val name = "Gipsy Hill"
-  override val rootUrl = URI("https://gipsyhillbrew.com")
+  override val rootUrls = listOf(URI("https://gipsyhillbrew.com"))
 
   override fun scrapeIndex(root: Document) = root
     .selectMultipleFrom(".product")

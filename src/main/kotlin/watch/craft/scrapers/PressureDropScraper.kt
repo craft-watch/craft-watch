@@ -8,7 +8,7 @@ import java.net.URI
 
 class PressureDropScraper : Scraper {
   override val name = "Pressure Drop"
-  override val rootUrl = URI("https://pressuredropbrewing.co.uk/collections/beers")
+  override val rootUrls = listOf(URI("https://pressuredropbrewing.co.uk/collections/beers"))
 
   override fun scrapeIndex(root: Document) = root
     .selectMultipleFrom(".product-grid-item")

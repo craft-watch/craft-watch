@@ -9,7 +9,7 @@ import java.net.URI
 
 class FourpureScraper : Scraper {
   override val name = "Fourpure"
-  override val rootUrl = URI("https://www.fourpure.com/browse/c-Our-Beers-5/")
+  override val rootUrls = listOf(URI("https://www.fourpure.com/browse/c-Our-Beers-5/"))
 
   override fun scrapeIndex(root: Document) = root
     .selectMultipleFrom(".itemsBrowse li")

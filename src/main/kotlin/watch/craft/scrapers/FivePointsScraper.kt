@@ -8,7 +8,7 @@ import java.net.URI
 
 class FivePointsScraper : Scraper {
   override val name = "Five Points"
-  override val rootUrl = URI("https://shop.fivepointsbrewing.co.uk/browse/c-Beers-11")
+  override val rootUrls = listOf(URI("https://shop.fivepointsbrewing.co.uk/browse/c-Beers-11"))
 
   override fun scrapeIndex(root: Document) = root
     .selectMultipleFrom("#browse li .itemWrap")

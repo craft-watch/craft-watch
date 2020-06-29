@@ -8,7 +8,7 @@ import java.net.URI
 
 class StewartScraper : Scraper {
   override val name = "Stewart Brewing"
-  override val rootUrl = URI("https://www.stewartbrewing.co.uk/browse/c-Build-Your-Own-12-Pack-37?view_all=true")
+  override val rootUrls = listOf(URI("https://www.stewartbrewing.co.uk/browse/c-Build-Your-Own-12-Pack-37?view_all=true"))
 
   override fun scrapeIndex(root: Document) = root
     .selectMultipleFrom("#browse li .itemWrap")

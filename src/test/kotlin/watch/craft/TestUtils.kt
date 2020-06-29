@@ -31,7 +31,8 @@ fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE): List<Sc
   val cachingGetter = CachingGetter(structure.cache, HttpGetter())
   val getter = HtmlGetter(cachingGetter)
 
-  return scraper.scrapeIndex(getter.request(scraper.rootUrl))
+  return scraper.rootUrls
+    .flatMap { scraper.scrapeIndex(getter.request(it)) }
     .mapNotNull {
       try {
         it.scrapeItem(getter.request(it.url))

@@ -8,7 +8,7 @@ import java.net.URI
 
 class HowlingHopsScraper : Scraper {
   override val name = "Howling Hops"
-  override val rootUrl = URI("https://www.howlinghops.co.uk/shop")
+  override val rootUrls = listOf(URI("https://www.howlinghops.co.uk/shop"))
 
   override fun scrapeIndex(root: Document) = root
     .selectFrom(".wc-block-handpicked-products") // Avoid apparel
