@@ -33,6 +33,16 @@ html, body {
 
 
 /* ----------------------
+    Miscellaneous
+   ---------------------- */
+
+.how-to-use {
+  display: none;
+}
+
+
+
+/* ----------------------
     Table
    ---------------------- */
 
@@ -83,7 +93,7 @@ table a:visited {
 
 table a:hover, th.sort-none:hover, th.sort-asc:hover, th.sort-desc:hover {
   cursor: pointer;
-  color: var(--sol-blue);
+  color: var(--sol-magenta);
 }
 
 th.sort-asc::after {
@@ -352,7 +362,7 @@ img {
 
 @media (max-width: 480px) {
   .hide-on-mobile {
-    display: none; 
+    display: none;
   }
 }
 
@@ -387,5 +397,15 @@ img {
   /* These are positioned all wrong on mobile, so diable for now */
   .tooltip .tooltip-text {
     visibility: hidden;
-  }  
+  }
+
+  /* Useful when no affordance from hover */
+  .how-to-use {
+    display: inherit;
+    background: var(--sol-base02);
+    color: var(--sol-base2);
+    text-align: center;
+    font-size: smaller;
+    padding: 5px 0;  
+  }
 }
