@@ -6,7 +6,6 @@ import watch.craft.Item
 import watch.craft.byName
 import watch.craft.executeScraper
 import watch.craft.noDesc
-import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
 class CanopyScraperTest {

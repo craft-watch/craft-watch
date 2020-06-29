@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test
 import watch.craft.Item
 import watch.craft.byName
 import watch.craft.executeScraper
-import java.net.URI
 
 class StewartScraperTest {
   companion object {

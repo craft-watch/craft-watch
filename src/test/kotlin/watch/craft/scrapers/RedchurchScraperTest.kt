@@ -2,8 +2,10 @@ package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import watch.craft.*
-import java.net.URI
+import watch.craft.Item
+import watch.craft.byName
+import watch.craft.executeScraper
+import watch.craft.noDesc
 
 class RedchurchScraperTest {
   companion object {

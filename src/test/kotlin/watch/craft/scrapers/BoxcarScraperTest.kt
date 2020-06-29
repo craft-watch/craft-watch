@@ -7,7 +7,6 @@ import watch.craft.Item
 import watch.craft.byName
 import watch.craft.executeScraper
 import watch.craft.noDesc
-import java.net.URI
 
 class BoxcarScraperTest {
   companion object {
