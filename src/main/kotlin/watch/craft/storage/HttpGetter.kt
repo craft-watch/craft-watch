@@ -3,7 +3,7 @@ package watch.craft.storage
 import mu.KotlinLogging
 import java.net.URI
 
-class HttpGetter : Getter<ByteArray> {
+class HttpGetter : Getter {
   private val logger = KotlinLogging.logger {}
 
   override fun request(url: URI): ByteArray {

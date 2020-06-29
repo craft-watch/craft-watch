@@ -7,7 +7,7 @@ import watch.craft.storage.Getter
 import java.net.URI
 import java.util.stream.Collectors.toList
 
-class Executor(private val getter: Getter<ByteArray>) {
+class Executor(private val getter: Getter) {
   private val logger = KotlinLogging.logger {}
 
   fun scrape(vararg scrapers: Scraper) = Inventory(

@@ -7,8 +7,8 @@ import java.net.URI
 
 class CachingGetter(
   private val store: SubObjectStore,
-  private val delegate: Getter<ByteArray>
-): Getter<ByteArray> {
+  private val delegate: Getter
+): Getter {
   private val logger = KotlinLogging.logger {}
 
   override fun request(url: URI) = read(url)
