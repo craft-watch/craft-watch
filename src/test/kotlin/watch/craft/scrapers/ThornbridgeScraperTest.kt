@@ -44,5 +44,7 @@ class ThornbridgeScraperTest {
   fun `ignores things that aren't beers`() {
     assertFalse(ITEMS.any { it.name.contains("glass", ignoreCase = true) })
   }
+
+  // TODO - no "can/bottle" in name
 }
 

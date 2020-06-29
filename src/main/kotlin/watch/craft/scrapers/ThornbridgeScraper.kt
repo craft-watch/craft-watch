@@ -20,26 +20,36 @@ class ThornbridgeScraper : Scraper {
       val rawName = el.textFrom(".h6")
 
       IndexEntry(rawName, el.hrefFrom("a")) { doc ->
-        if (!rawName.contains("%")) {
-          throw SkipItemException("No ABV in title, so assume it's not a beer")
-        }
-
-        val parts = rawName.extract("(.*?)\\W+(\\d(\\.\\d+)?)%\\W+(.*)")
         val desc = doc.selectFrom(".product-description")
 
-        // TODO - identify mixed packs
+        val allStats = desc.selectMultipleFrom("p")
+          .mapNotNull { it.maybeExtractFrom(regex = "((\\d+) x .*)?ABV (\\d+(\\.\\d+)?)%( / (\\d+)ml)?") }
 
-        val numCans = desc.maybeExtractFrom(regex = "(\\d+)\\s*x")?.get(1)?.toInt()
-          ?: rawName.maybeExtract(regex = "(\\d+)\\s*x")?.get(1)?.toInt()
-          ?: 1
+        if (allStats.isEmpty()) {
+          throw SkipItemException("Can't find any stats")
+        }
+
+        val numCans = allStats.sumBy { it[2].toIntOrNull() ?: 1 }
+        println(numCans)
+
+
+
+        val parts = rawName.extract("(.*?)\\W+(\\d(\\.\\d+)?)%\\W+(.*)")
+        val descText = desc.text()
+
+//        val numCans = descText.maybeExtract(regex = "(\\d+)\\s*x")?.get(1)?.toInt()
+//          ?: rawName.maybeExtract(regex = "(\\d+)\\s*x")?.get(1)?.toInt()
+//          ?: 1
+
+        val sizeMl = desc.maybeExtractFrom(regex = "(\\d+)ml")?.get(1)?.toInt()
 
         Item(
           thumbnailUrl = doc.srcFrom(".product__image-wrapper img"),
           name = parts[1].replace(" (bottle|can)$".toRegex(IGNORE_CASE), ""),
           summary = parts[4],
           desc = desc.selectMultipleFrom("p").joinToString("\n") { it.text() },
-          mixed = false,
-          sizeMl = desc.maybeExtractFrom(regex = "(\\d+)ml")?.get(1)?.toInt(),
+          mixed = allStats.size > 1,
+          sizeMl = sizeMl,
           abv = parts[2].toDouble(),
           available = "sold-out" !in el.classNames(),
           perItemPrice = el.priceFrom(".product-item--price").divideAsPrice(numCans)
