@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import watch.craft.Scraper.IndexEntry
-import watch.craft.storage.Getter
+import watch.craft.storage.CachingGetter
 import java.net.URI
 
 class ExecutorTest {
-  private val getter = mock<Getter<ByteArray>> {
+  private val getter = mock<CachingGetter> {
     on { request(any()) } doAnswer { "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>".toByteArray() }
   }
   private val executor = Executor(getter)

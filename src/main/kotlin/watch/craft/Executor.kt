@@ -3,11 +3,11 @@ package watch.craft
 import mu.KotlinLogging
 import org.jsoup.Jsoup
 import watch.craft.Scraper.IndexEntry
-import watch.craft.storage.Getter
+import watch.craft.storage.CachingGetter
 import java.net.URI
 import java.util.stream.Collectors.toList
 
-class Executor(private val getter: Getter) {
+class Executor(private val getter: CachingGetter) {
   private val logger = KotlinLogging.logger {}
 
   fun scrape(vararg scrapers: Scraper) = Inventory(

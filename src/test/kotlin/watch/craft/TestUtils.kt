@@ -1,8 +1,6 @@
 package watch.craft
 
 import mu.KotlinLogging
-import watch.craft.storage.CachingGetter
-import watch.craft.storage.HttpGetter
 import watch.craft.storage.*
 import java.time.Instant
 import java.time.LocalDate
@@ -27,8 +25,8 @@ fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE): List<It
   ).let { if (live) it else ReadOnlyObjectStore(it) }
 
   val structure = StoreStructure(store, instant)
-  val cachingGetter = CachingGetter(structure.cache, HttpGetter())
-  return Executor(cachingGetter).scrape(scraper).items
+  val getter = CachingGetter(structure.cache)
+  return Executor(getter).scrape(scraper).items
 }
 
 fun List<Item>.byName(name: String) = first { it.name == name }
