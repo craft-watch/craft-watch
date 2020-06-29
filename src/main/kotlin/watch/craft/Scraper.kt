@@ -5,7 +5,7 @@ import java.net.URI
 
 interface Scraper {
   val name: String
-  val rootUrl: URI
+  val rootUrls: List<URI>
 
   fun scrapeIndex(root: Document): List<IndexEntry>
 

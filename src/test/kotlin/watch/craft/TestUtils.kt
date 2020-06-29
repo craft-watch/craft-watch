@@ -5,26 +5,34 @@ import watch.craft.getters.CachingGetter
 import watch.craft.getters.HtmlGetter
 import watch.craft.getters.HttpGetter
 import watch.craft.storage.*
+import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneOffset
 
 private val logger = KotlinLogging.logger {}
 
-private val GOLDEN_TIMESTAMP = LocalDate.parse("2020-06-28")
-  .atStartOfDay(ZoneOffset.UTC).toInstant()
+private const val GOLDEN_DATE = "2020-06-28"
 
-fun executeScraper(scraper: Scraper): List<Scraper.Item> {
-  // TODO - make this configurable
-  val store = ReadOnlyObjectStore(
-    WriteThroughObjectStore(
-      firstLevel = LocalObjectStore(CACHE_DIR),
-      secondLevel = GcsObjectStore(GCS_BUCKET)
-    )
-  )
-  val structure = StoreStructure(store, GOLDEN_TIMESTAMP)
+fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE): List<Scraper.Item> {
+  val live = dateString == null
+
+  val instant = if (live) {
+    Instant.now()
+  } else {
+    LocalDate.parse(dateString).atStartOfDay(ZoneOffset.UTC).toInstant()
+  }
+
+  val store = WriteThroughObjectStore(
+    firstLevel = LocalObjectStore(CACHE_DIR),
+    secondLevel = GcsObjectStore(GCS_BUCKET)
+  ).let { if (live) it else ReadOnlyObjectStore(it) }
+
+  val structure = StoreStructure(store, instant)
   val cachingGetter = CachingGetter(structure.cache, HttpGetter())
   val getter = HtmlGetter(cachingGetter)
-  return scraper.scrapeIndex(getter.request(scraper.rootUrl))
+
+  return scraper.rootUrls
+    .flatMap { scraper.scrapeIndex(getter.request(it)) }
     .mapNotNull {
       try {
         it.scrapeItem(getter.request(it.url))

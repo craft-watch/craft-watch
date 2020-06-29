@@ -9,7 +9,7 @@ import kotlin.text.RegexOption.IGNORE_CASE
 
 class CanopyScraper : Scraper {
   override val name = "Canopy"
-  override val rootUrl = URI("https://shop.canopybeer.com/")
+  override val rootUrls = listOf(URI("https://shop.canopybeer.com/"))
 
   override fun scrapeIndex(root: Document) = root
     .selectMultipleFrom(".grid-uniform")

@@ -16,7 +16,7 @@ class ExecutorTest {
   private val executor = Executor(getter)
   private val scraper = mock<Scraper> {
     on { name } doReturn BREWERY
-    on { rootUrl } doReturn ROOT_URL
+    on { rootUrls } doReturn listOf(ROOT_URL_BEERS, ROOT_URL_PACKS)
   }
 
   @Test
@@ -24,29 +24,34 @@ class ExecutorTest {
     val callback = mock<(Document) -> Scraper.Item> {
       on { invoke(any()) } doThrow SkipItemException("Emo town")
     }
-    whenever(scraper.scrapeIndex(any())) doReturn listOf(
-      indexEntry("a", callback)
+    whenever(scraper.scrapeIndex(any())) doReturnConsecutively listOf(
+      listOf(indexEntry("a", callback)),
+      listOf(indexEntry("b", callback))
     )
 
     executor.scrape(scraper)
 
-    verify(getter).request(ROOT_URL)
+    verify(getter).request(ROOT_URL_BEERS)
+    verify(getter).request(ROOT_URL_PACKS)
     verify(getter).request(productUrl("a"))
-    verify(scraper).scrapeIndex(docWithHeaderMatching(ROOT_URL.toString()))
+    verify(getter).request(productUrl("b"))
+    verify(scraper).scrapeIndex(docWithHeaderMatching(ROOT_URL_BEERS.toString()))
+    verify(scraper).scrapeIndex(docWithHeaderMatching(ROOT_URL_PACKS.toString()))
     verify(callback)(docWithHeaderMatching(productUrl("a").toString()))
+    verify(callback)(docWithHeaderMatching(productUrl("b").toString()))
   }
 
   @Test
   fun `scrapes products`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
-      indexEntry("a") { SWEET_IPA },
-      indexEntry("b") { TED_SHANDY }
+      indexEntry("a") { product("Foo") },
+      indexEntry("b") { product("Bar") }
     )
 
     assertEquals(
       Inventory(
         listOf(
-          with(SWEET_IPA) {
+          with(product("Foo")) {
             Item(
               brewery = BREWERY,
               name = name,
@@ -62,7 +67,7 @@ class ExecutorTest {
               url = productUrl("a").toString()
             )
           },
-          with (TED_SHANDY) {
+          with (product("Bar")) {
             Item(
               brewery = BREWERY,
               name = name,
@@ -88,13 +93,13 @@ class ExecutorTest {
   fun `filters out skipped results`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
       indexEntry("a") { throw SkipItemException("Just too emo") },
-      indexEntry("b") { SWEET_IPA },
+      indexEntry("b") { product("Foo") },
       indexEntry("c") { throw SkipItemException("Made of cheese") }
     )
 
     // Only one item returned
     assertEquals(
-      listOf(SWEET_IPA.name),
+      listOf("Foo"),
       executor.scrape(scraper).items.map { it.name }
     )
   }
@@ -102,14 +107,14 @@ class ExecutorTest {
   @Test
   fun `de-duplicates by picking best price`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
-      indexEntry("a") { SWEET_IPA },
-      indexEntry("b") { SWEET_IPA.copy(perItemPrice = SWEET_IPA.perItemPrice / 2) },
-      indexEntry("c") { SWEET_IPA.copy(perItemPrice = SWEET_IPA.perItemPrice * 2) }
+      indexEntry("a") { product("Foo") },
+      indexEntry("b") { product("Foo").copy(perItemPrice = DECENT_PRICE / 2) },
+      indexEntry("c") { product("Foo").copy(perItemPrice = DECENT_PRICE * 2) }
     )
 
     // Only one item returned, with best price
     assertEquals(
-      listOf(SWEET_IPA.perItemPrice / 2),
+      listOf(DECENT_PRICE / 2),
       executor.scrape(scraper).items.map { it.perItemPrice }
     )
   }
@@ -137,18 +142,18 @@ class ExecutorTest {
   @Test
   fun `continues after non-fatal index-scrape failure`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
-      indexEntry("a") { SWEET_IPA },
-      indexEntry("b") { TED_SHANDY }
+      indexEntry("a") { product("Foo") },
+      indexEntry("b") { product("Bar") }
     )
 
     val badScraper = mock<Scraper> {
       on { name } doReturn "Bad Brewing"
-      on { rootUrl } doReturn URI("http://bad.invalid")
+      on { rootUrls } doReturn listOf(URI("http://bad.invalid"))
       on { scrapeIndex(any()) } doThrow MalformedInputException("Noooo")
     }
 
     assertEquals(
-      listOf(SWEET_IPA.name, TED_SHANDY.name),
+      listOf("Foo", "Bar"),
       executor.scrape(badScraper, scraper).items.map { it.name } // Execute good and bad scrapers
     )
   }
@@ -156,13 +161,13 @@ class ExecutorTest {
   @Test
   fun `continues after non-fatal item-scrape failure`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
-      indexEntry("a") { SWEET_IPA },
+      indexEntry("a") { product("Foo") },
       indexEntry("b") { throw MalformedInputException("What happened") },
-      indexEntry("c") { TED_SHANDY }
+      indexEntry("c") { product("Bar") }
     )
 
     assertEquals(
-      listOf(SWEET_IPA.name, TED_SHANDY.name),
+      listOf("Foo", "Bar"),
       executor.scrape(scraper).items.map { it.name }
     )
   }
@@ -170,39 +175,31 @@ class ExecutorTest {
   @Test
   fun `continues after validation failure`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
-      indexEntry("a") { SWEET_IPA },
-      indexEntry("b") { SWEET_IPA.copy(name = "") },  // Invalid name
-      indexEntry("c") { TED_SHANDY }
+      indexEntry("a") { product("Foo") },
+      indexEntry("b") { product("Foo").copy(name = "") },  // Invalid name
+      indexEntry("c") { product("Bar") }
     )
 
     assertEquals(
-      listOf(SWEET_IPA.name, TED_SHANDY.name),
+      listOf("Foo", "Bar"),
       executor.scrape(scraper).items.map { it.name }
     )
   }
 
   companion object {
     private const val BREWERY = "Foo Bar"
-    private val ROOT_URL = URI("https://example.invalid/shop")
+    private val ROOT_URL_BEERS = URI("https://example.invalid/beers")
+    private val ROOT_URL_PACKS = URI("https://example.invalid/packs")
+    private const val DECENT_PRICE = 2.46
 
-    private val SWEET_IPA = Scraper.Item(
-      name = "Sweet IPA",
-      summary = "Bad ass",
-      perItemPrice = 4.23,
+    private fun product(name: String) = Scraper.Item(
+      name = name,
+      summary = "${name} is great",
+      perItemPrice = DECENT_PRICE,
       sizeMl = 440,
       abv = 6.9,
       available = true,
-      thumbnailUrl = URI("https://example.invalid/assets/sweet-ipa.jpg")
-    )
-
-    private val TED_SHANDY = Scraper.Item(
-      name = "Ted Shandy",
-      summary = "Awful",
-      perItemPrice = 1.86,
-      sizeMl = 330,
-      abv = 1.2,
-      available = true,
-      thumbnailUrl = URI("https://example.invalid/assets/ted-shandy.jpg")
+      thumbnailUrl = URI("https://example.invalid/assets/${name}.jpg")
     )
 
     private fun indexEntry(suffix: String, scrapeItem: (doc: Document) -> Scraper.Item) =

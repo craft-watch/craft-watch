@@ -4,6 +4,7 @@ import mu.KotlinLogging
 import watch.craft.Scraper.IndexEntry
 import watch.craft.getters.Getter
 import watch.craft.getters.HtmlGetter
+import java.net.URI
 import java.util.stream.Collectors.toList
 
 class Executor(getter: Getter<String>) {
@@ -18,17 +19,25 @@ class Executor(getter: Getter<String>) {
   inner class ScraperExecutor(private val scraper: Scraper) {
     private val brewery = scraper.name
 
-    fun execute() = scrapeIndexSafely(scraper)
-      .parallelStream()
-      .map { scrapeItemSafely(it) }
-      .collect(toList())
-      .filterNotNull()
-      .bestPricedItems()
+    fun execute(): List<Item> {
+      val entries = scraper.rootUrls
+        .parallelStream()
+        .map { scrapeIndexSafely(scraper, it) }
+        .collect(toList())
+        .flatten()
 
-    private fun scrapeIndexSafely(scraper: Scraper): List<IndexEntry> {
-      logger.info("[${brewery}] Scraping brewery")
+      return entries
+        .parallelStream()
+        .map { scrapeItemSafely(it) }
+        .collect(toList())
+        .filterNotNull()
+        .bestPricedItems()
+    }
+
+    private fun scrapeIndexSafely(scraper: Scraper, url: URI): List<IndexEntry> {
+      logger.info("[${brewery}] Scraping index: ${url}")
       return try {
-        scraper.scrapeIndex(jsonGetter.request(scraper.rootUrl))
+        scraper.scrapeIndex(jsonGetter.request(url))
       } catch (e: NonFatalScraperException) {
         logger.warn("[${brewery}] Error scraping brewery", e)
         emptyList()

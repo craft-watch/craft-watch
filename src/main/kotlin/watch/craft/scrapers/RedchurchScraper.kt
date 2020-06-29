@@ -10,7 +10,7 @@ import java.net.URI
 
 class RedchurchScraper : Scraper {
   override val name = "Redchurch"
-  override val rootUrl = URI("https://redchurch.store/")
+  override val rootUrls = listOf(URI("https://redchurch.store/"))
 
   private val objectMapper = jacksonObjectMapper()
 
