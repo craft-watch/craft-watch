@@ -3,7 +3,7 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
-import watch.craft.Scraper.Item
+import watch.craft.Item
 import watch.craft.byName
 import watch.craft.executeScraper
 import watch.craft.noDesc
@@ -23,13 +23,15 @@ class PressureDropScraperTest {
   fun `extracts beer details`() {
     assertEquals(
       Item(
+        brewery = "Pressure Drop",
         name = "Golden State",
         summary = "New England Pale",
         sizeMl = 440,
         abv = 5.2,
         perItemPrice = 4.05,
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9751_large.jpg?v=1592315629")
+        url = "https://pressuredropbrewing.co.uk/collections/beers/products/golden-state-new-england-pale",
+        thumbnailUrl = "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9751_large.jpg?v=1592315629"
       ),
       ITEMS.byName("Golden State").noDesc()
     )

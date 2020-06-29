@@ -2,7 +2,7 @@ package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import watch.craft.Scraper.Item
+import watch.craft.Item
 import watch.craft.byName
 import watch.craft.executeScraper
 import watch.craft.noDesc
@@ -15,20 +15,22 @@ class PillarsScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(7, ITEMS.size)
+    assertEquals(5, ITEMS.size)
   }
 
   @Test
   fun `extracts beer details`() {
     assertEquals(
       Item(
+        brewery = "Pillars",
         name = "Pillars Icebock",
         summary = "Eisbock",
         sizeMl = null,
         abv = 8.0,
         perItemPrice = 6.00,
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0367/7857/3883/products/Icebock_Shopify_1edf8964-413d-4ad8-9b05-9a9672a48796_250x250.png")
+        url = "https://shop.pillarsbrewery.com/collections/pillars-beers/products/pillars-icebock",
+        thumbnailUrl = "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/Icebock_Shopify_1edf8964-413d-4ad8-9b05-9a9672a48796_250x250.png"
       ),
       ITEMS.byName("Pillars Icebock").noDesc()
     )

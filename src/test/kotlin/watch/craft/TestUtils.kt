@@ -2,7 +2,6 @@ package watch.craft
 
 import mu.KotlinLogging
 import watch.craft.getters.CachingGetter
-import watch.craft.getters.HtmlGetter
 import watch.craft.getters.HttpGetter
 import watch.craft.storage.*
 import java.time.Instant
@@ -13,7 +12,7 @@ private val logger = KotlinLogging.logger {}
 
 private const val GOLDEN_DATE = "2020-06-28"
 
-fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE): List<Scraper.Item> {
+fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE): List<Item> {
   val live = dateString == null
 
   val instant = if (live) {
@@ -29,23 +28,9 @@ fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE): List<Sc
 
   val structure = StoreStructure(store, instant)
   val cachingGetter = CachingGetter(structure.cache, HttpGetter())
-  val getter = HtmlGetter(cachingGetter)
-
-  return scraper.rootUrls
-    .flatMap { scraper.scrapeIndex(getter.request(it)) }
-    .mapNotNull {
-      try {
-        it.scrapeItem(getter.request(it.url))
-      } catch (e: SkipItemException) {
-        logger.info("Skipped because: ${e.message}")
-        null
-      } catch (e: NonFatalScraperException) {
-        logger.warn("Non-fatal exception: ${e.message}")
-        null
-      }
-    }
+  return Executor(cachingGetter).scrape(scraper).items
 }
 
-fun List<Scraper.Item>.byName(name: String) = first { it.name == name }
+fun List<Item>.byName(name: String) = first { it.name == name }
 
-fun Scraper.Item.noDesc() = copy(desc = null)    // Makes it easier to test item equality
+fun Item.noDesc() = copy(desc = null)    // Makes it easier to test item equality
