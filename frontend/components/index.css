@@ -186,6 +186,12 @@ img {
   z-index: 2;
   position: fixed;
   padding: 10px;
+  font-size: smaller;
+}
+
+.menu-hamburger:hover {
+  color: var(--sol-base1);
+  cursor: pointer;
 }
 
 .menu {

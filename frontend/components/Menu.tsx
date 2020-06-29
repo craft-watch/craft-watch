@@ -38,7 +38,7 @@ export default class Menu extends React.Component<MenuProps, State> {
   private renderCollapsed(): JSX.Element {
     return (
       <div className="menu-hamburger">
-        <div className="menu-button" onClick={() => this.setState({ expanded: true })}>&#9776;</div>
+        <div onClick={() => this.setState({ expanded: true })}>Refine search ...</div>
       </div>
     );
   }
