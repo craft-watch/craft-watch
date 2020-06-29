@@ -9,9 +9,9 @@ import kotlin.text.RegexOption.IGNORE_CASE
 
 class ThornbridgeScraper : Scraper {
   override val name = "Thornbridge"
+  // TODO - URI("https://shop.thornbridgebrewery.co.uk/collections/smart-collection?view=list")
   override val rootUrls = listOf(
-    URI("https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers?view=list"),
-    URI("https://shop.thornbridgebrewery.co.uk/collections/smart-collection?view=list")
+    URI("https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers?view=list")
   )
 
   override fun scrapeIndex(root: Document) = root

@@ -10,13 +10,13 @@ import java.net.URI
 
 class ThornbridgeScraperTest {
   companion object {
-    private val ITEMS = executeScraper(ThornbridgeScraper(), dateString = null) //"2020-06-29")
+    private val ITEMS = executeScraper(ThornbridgeScraper(), dateString = "2020-06-29")
   }
 
   @Test
   fun `finds all the beers`() {
     ITEMS.forEach { println(it.noDesc()) }
-    assertEquals(30, ITEMS.size)
+    assertEquals(15, ITEMS.size)
   }
 
   @Test
