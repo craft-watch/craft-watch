@@ -28,6 +28,10 @@ class App extends React.Component<unknown, AppState> {
   render(): JSX.Element {
     return (
       <div>
+        <div className="how-to-use">
+          Click on an image to go to the brewery shop!
+        </div>
+
         <Menu
           brewerySelections={this.state.brewerySelections}
           onToggleBrewerySelection={(key) => this.handleToggleBrewerySelection(key)}
