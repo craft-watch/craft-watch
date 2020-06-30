@@ -40,4 +40,4 @@ private fun <T> T.validate(name: String, predicate: (T) -> Boolean): T {
 }
 
 private const val MAX_ABV = 14.0
-private const val MAX_PRICE_PER_ML = 10.00 / 440   // A fairly bougie can
+private const val MAX_PRICE_PER_ML = 12.00 / 440   // A fairly bougie can
