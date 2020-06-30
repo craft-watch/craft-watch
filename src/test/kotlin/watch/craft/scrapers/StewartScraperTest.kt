@@ -14,7 +14,7 @@ class StewartScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(14, ITEMS.size)
+    assertEquals(12, ITEMS.size)
   }
 
   @Test
@@ -22,16 +22,16 @@ class StewartScraperTest {
     assertEquals(
       Item(
         brewery = "Stewart Brewing",
-        name = "First World Problems",
-        summary = "India Pale Ale",
+        name = "St Giles",
+        summary = "Scotch Ale",
         sizeMl = 330,
-        abv = 6.2,
+        abv = 5.0,
         perItemPrice = 1.80,
         available = true,
-        url = "https://www.stewartbrewing.co.uk/item/264/StewartBrewing/First-World-Problems.html",
-        thumbnailUrl = "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-first-world-problems-1592394080330ml-can-FWP-002-.png"
+        url = "https://www.stewartbrewing.co.uk/item/254/StewartBrewing/St-Giles.html",
+        thumbnailUrl = "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-st-giles-1592389432330ml-StGiles.png"
       ),
-      ITEMS.byName("First World Problems")
+      ITEMS.byName("St Giles")
     )
   }
 

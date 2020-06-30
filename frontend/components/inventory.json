@@ -339,6 +339,84 @@
     "url" : "https://shop.fivepointsbrewing.co.uk/item/42/FivePointsBrewing/FIVE-POINTS-XPA-5L-MINI-KEG.html"
   }, {
     "brewery" : "Fourpure",
+    "name" : "Cosmic Café Coffee Sour",
+    "summary" : null,
+    "desc" : "Our sour take on cold press in a can. Lightly roasted malts provide a clean base upon which we’ve added fruity US hops, with some light dry hopping. The addition of Coffee in fermentation and dry hop gives Cosmic Café’ a balanced, roasted bitterness. We kettle soured the wort to add some zing and the result is a smooth, lightly tart sour with a fresh coffee backbone.\r\n \r\nIngredients: Water, Barley, Wheat, Coffee, Hops, Yeast",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 5.4,
+    "perItemPrice" : 4.3,
+    "available" : true,
+    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_cosmiccafcoffeesour_1593006028CosmicCafeRenderCMYK.png",
+    "url" : "https://www.fourpure.com/item/306/Fourpure/Cosmic-Caf-Coffee-Sour.html"
+  }, {
+    "brewery" : "Fourpure",
+    "name" : "Midsummer Pinot Noir Gose",
+    "summary" : null,
+    "desc" : "In collaboration with Noita Winery.\r\n \r\nWe were determined to create a beer that could bridge the decision between white, rosé or beer on those warm summer evenings. Midsummer offers a light to medium body with a soft malt base and light hop profile. The addition of Pinot Noir grapes from Noita Winery in Finland means there’s plenty of fruit, with blackcurrant and strawberry delivering a jammy sweetness to balance the refreshing salt profile.\r\n \r\nIngredients: Water, Barley, Grape Juice, Wheat, Hops, Yeast",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 5.5,
+    "perItemPrice" : 4.5,
+    "available" : true,
+    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_midsummerpinotnoirgose_1593013689MidsummerRender.png",
+    "url" : "https://www.fourpure.com/item/305/Fourpure/Midsummer-Pinot-Noir-Gose.html"
+  }, {
+    "brewery" : "Fourpure",
+    "name" : "Carnival Coconut & Lime Sour",
+    "summary" : null,
+    "desc" : "Creamy and refreshingly tart, Carnival is a celebration of tropical flavours. Five unique malts add body, with oats providing a creamy mouthfeel. The coconut provides a slight sweetness, with 48 hours of kettle souring and 3kg of lime zest delivering a fresh, tangy finish.\r\n \r\nIngredients: Water, Barley, Oats, Lactose, Lime Zest, Natural Coconut Flavour, Natural Almond Flavour,  Yeast",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 4.5,
+    "perItemPrice" : 4.0,
+    "available" : true,
+    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_carnivalcoconutlimesour_1593005364CarnivalRenderCMYK.png",
+    "url" : "https://www.fourpure.com/item/304/Fourpure/Carnival-Coconut--Lime-Sour.html"
+  }, {
+    "brewery" : "Fourpure",
+    "name" : "Castaway Mai Tai DIPA",
+    "summary" : null,
+    "desc" : "Waves of tropical fruits and citrus set the tone for a hop-forward Double IPA with an island paradise slant. Oats bring a creamy softness, which are layered with natural flavours of orange, almond and lime, and just a little brown sugar to truly reflect the tiki bar classic, the Mai Tai. Pace yourself and savour, you’re on island time now.\r\nIngredients: Water, Barley, Oats, Hops, Maltodextrin, Sugar, Yeast, Natural Flavourings (Almond, Orange, Lime)",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 8.0,
+    "perItemPrice" : 5.5,
+    "available" : true,
+    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_castawaymaitaidipa_1593005177CastawayRenderCMYK.png",
+    "url" : "https://www.fourpure.com/item/303/Fourpure/Castaway-Mai-Tai-DIPA-.html"
+  }, {
+    "brewery" : "Fourpure",
+    "name" : "Lantern Earl Grey Session IPA",
+    "summary" : null,
+    "desc" : "Lantern focuses on the fusion between full, oriental Earl Grey tea with the vibrant hop profile delivered by four unique American hop varieties. The base is a super juicy, tropical session beer, we then infused the beer with fresh orange and lemon zest, finally, we added the tea for a hint of bergamot and full-bodied black tea.\r\n \r\nIngredients: Water, Barley, Oats, Earl Grey Tea, Hops, Yeast",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 3.7,
+    "perItemPrice" : 3.5,
+    "available" : true,
+    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_lanternearlgreysessionipa_1593004970LanternRenderCMYK.png",
+    "url" : "https://www.fourpure.com/item/302/Fourpure/Lantern-Earl-Grey-Session-IPA.html"
+  }, {
+    "brewery" : "Fourpure",
+    "name" : "Jazz Age Espresso Martini Stout",
+    "summary" : null,
+    "desc" : "Rich, indulgent and creamy, just like the cocktail it’s based on, Jazz Age offers a bold malt profile, full body and plenty of chocolate and coffee. The creaminess comes from six different malts, the joy comes from imagining yourself in a speakeasy in New Orleans with every sip. Settle in, sling on some tunes and enjoy immediately. Or let it warm a little from the fridge, you’ll thank us.\r\nIngredients: Water, Barley, Lactose, Wheat, Hops, Coffee, Yeast",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 7.4,
+    "perItemPrice" : 4.8,
+    "available" : true,
+    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_jazzageespressomartinistout_1593004843JazzAgeRenderCMYK.png",
+    "url" : "https://www.fourpure.com/item/301/Fourpure/Jazz-Age-Espresso-Martini-Stout.html"
+  }, {
+    "brewery" : "Fourpure",
     "name" : "Monsoon",
     "summary" : null,
     "desc" : "Gets pints in  your home with this metal 5L minikeg. When you can't go to the pub, make the pub come to you.\r\nContains Monsoon:Fourpure Monsoon is our fresh, local, brewery-direct Pale Ale with a full flavour and a light natural haze. We use a malt and wheat blend to give the beer extra body and texture, six varieties of American hops impart intense, juicy notes of passionfruit, mango, grapefruit, peach, orange, lemon and a little pine.\r\nComes with a free pint Glass.\r\nOnce open the keg will keep for 2/3 days and we put a 2 week best before from the date of filling. The keg coimes with an integral tap for pouring.",
@@ -469,6 +547,19 @@
     "url" : "https://gipsyhillbrew.com/product/nhs-west-coast-ipa/"
   }, {
     "brewery" : "Gipsy Hill",
+    "name" : "Core Range 24 Pack",
+    "summary" : null,
+    "desc" : "This pack contains 24 x 330ml cans from our core range.\nEach pack includes:\n4 x Hepcat – Session IPA – 4.6%\n4 x Baller – IPA – 5.4%\n4 x Hunter – Helles Lager – 4.8%\n4 x Carver – Micro IPA – 2.8%\n4 x Ranger – Pale Ale – 4.2%\n4 x Bandit – Gluten Free Pale – 3.8%",
+    "keg" : false,
+    "mixed" : true,
+    "sizeMl" : 330,
+    "abv" : null,
+    "perItemPrice" : 2.33,
+    "available" : true,
+    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/03/Copy-of-Core-range-6-pack-31.png?resize=300%2C300&ssl=1",
+    "url" : "https://gipsyhillbrew.com/product/core-range-24-pack/"
+  }, {
+    "brewery" : "Gipsy Hill",
     "name" : "Blisco Dash",
     "summary" : "Kveik Pale Ale",
     "desc" : "This is a single 440ml can of Blisco Dash – A Kveik Pale Ale.\nOur favourite Voss yeast strain has been cranking esters through ramped fermentation and cast out temps.\nOn top of that it’s been loaded with classic Cascade and Hallertau Blanc & Melon hotside for full on pine, floral and sweet-fruit top notes, before being blasted with Idaho 7 in the dry-hop for that tropical kick.\nGoes well with getting lost and sweet fresh air.\nFeaturing Sarah, Gipsy Hill’s finance guru and speed demon.",
@@ -480,6 +571,32 @@
     "available" : true,
     "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Blisco-Dash.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/blisco-dash/"
+  }, {
+    "brewery" : "Gipsy Hill",
+    "name" : "DJ BBQ Box",
+    "summary" : null,
+    "desc" : "This is a 12 pack of 330ml cans and 1 x Burger Book.\n\nA perfect box for an evening cooking over the grill. DJ BBQ is the king of the coals and starting parties. He’s picked two of his favourite Gipsy Hill tinnies – Hepcat and Hunter, and signed 24 copies of his incredible Burger Book.\nGo check him out on Instagram for the live cooking, lessons and sweet beats.\nCase contents listed below.",
+    "keg" : false,
+    "mixed" : true,
+    "sizeMl" : 330,
+    "abv" : null,
+    "perItemPrice" : 3.17,
+    "available" : true,
+    "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Fathers-day-box-3.png?resize=300%2C300&ssl=1",
+    "url" : "https://gipsyhillbrew.com/product/dj-bbq-box/"
+  }, {
+    "brewery" : "Gipsy Hill",
+    "name" : "Hepcat",
+    "summary" : "Session IPA",
+    "desc" : "This is a single 330ml can of Hepcat.\n\nA Session IPA. Our mainstay and our original. It’s everything the style should be – fruity nose, juicy body, bright taste. Can we humbly call it a classic?\nGoes well with dancefloors and smooth moves.\nThis is Marcus. He’s our designer, illustrator and friend. He likes expensive jackets and colouring in.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 330,
+    "abv" : 4.6,
+    "perItemPrice" : 2.4,
+    "available" : true,
+    "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/HEPCAT.png?resize=300%2C300&ssl=1",
+    "url" : "https://gipsyhillbrew.com/product/hepcat/"
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Baller",
@@ -623,6 +740,19 @@
     "available" : true,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/01/OPENINGTHEMECANSOCIAL-1.jpg?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/left-handed-giant-opening-theme-ipa/"
+  }, {
+    "brewery" : "Gipsy Hill",
+    "name" : "Hepcat Case (24 Cans)",
+    "summary" : "Session IPA",
+    "desc" : "This is 24 x 330ml cans of Hepcat.\n\nYou asked, we listened – a full case of Hepcat.\nA Session IPA. Our mainstay and our original. It’s everything the style should be – fruity nose, juicy body, bright taste. Can we humbly call it a classic?\nGoes well with dancefloors and smooth moves.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 330,
+    "abv" : 4.6,
+    "perItemPrice" : 2.4,
+    "available" : true,
+    "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/Copy-of-Core-range-6-pack-34.png?resize=300%2C300&ssl=1",
+    "url" : "https://gipsyhillbrew.com/product/hepcat-case-24-cans/"
   }, {
     "brewery" : "Howling Hops",
     "name" : "NEW 12 Beer Mega Pack",
@@ -2037,7 +2167,7 @@
     "sizeMl" : 330,
     "abv" : 5.9,
     "perItemPrice" : 2.0,
-    "available" : true,
+    "available" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_bottle_mockup_for_website_300x300.jpg?v=1583153726",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/jaipur"
   }, {
@@ -2128,7 +2258,7 @@
     "sizeMl" : 330,
     "abv" : 5.9,
     "perItemPrice" : 2.1,
-    "available" : true,
+    "available" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Colorado_Red_for_website_300x300.png?v=1578655816",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/colorado-red"
   }, {

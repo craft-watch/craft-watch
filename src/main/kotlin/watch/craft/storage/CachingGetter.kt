@@ -28,5 +28,5 @@ class CachingGetter(private val store: SubObjectStore) {
     return url.toURL().readBytes()
   }
 
-  private fun key(url: URI) = "${url.toString().sha1()}.html" // TODO - suffix
+  private fun key(url: URI) = url.toString().sha1()
 }

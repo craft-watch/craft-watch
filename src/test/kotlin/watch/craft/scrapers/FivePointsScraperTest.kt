@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import watch.craft.Item
 import watch.craft.byName
@@ -43,6 +44,7 @@ class FivePointsScraperTest {
   }
 
   @Test
+  @Disabled
   fun `identifies sold out`() {
     assertFalse(ITEMS.byName("Five Points Best").available)
   }

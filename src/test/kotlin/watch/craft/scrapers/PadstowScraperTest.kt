@@ -9,7 +9,7 @@ import watch.craft.noDesc
 
 class PadstowScraperTest {
   companion object {
-    private val ITEMS = executeScraper(PadstowScraper(), dateString = null)
+    private val ITEMS = executeScraper(PadstowScraper())
   }
 
   @Test

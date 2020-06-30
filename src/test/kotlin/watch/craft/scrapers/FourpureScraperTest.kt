@@ -15,7 +15,7 @@ class FourpureScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(10, ITEMS.size)
+    assertEquals(15, ITEMS.size)
   }
 
   @Test
