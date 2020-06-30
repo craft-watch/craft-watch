@@ -9,7 +9,7 @@ import watch.craft.noDesc
 
 class ThornbridgeScraperTest {
   companion object {
-    private val ITEMS = executeScraper(ThornbridgeScraper(), dateString = "2020-06-29")
+    private val ITEMS = executeScraper(ThornbridgeScraper())
   }
 
   @Test
@@ -27,7 +27,7 @@ class ThornbridgeScraperTest {
         sizeMl = 330,
         abv = 5.9,
         perItemPrice = 2.00,
-        available = true,
+        available = false,
         url = "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/jaipur",
         thumbnailUrl = "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_bottle_mockup_for_website_300x300.jpg?v=1583153726"
       ),

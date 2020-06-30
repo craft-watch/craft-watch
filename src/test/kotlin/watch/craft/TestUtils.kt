@@ -5,7 +5,7 @@ import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneOffset
 
-private const val GOLDEN_DATE = "2020-06-28"
+private const val GOLDEN_DATE = "2020-06-30"
 
 fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE): List<Item> {
   val live = dateString == null
