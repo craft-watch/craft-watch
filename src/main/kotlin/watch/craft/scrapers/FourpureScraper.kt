@@ -27,7 +27,7 @@ class FourpureScraper : Scraper {
           thumbnailUrl = a.srcFrom("img"),
           name = parts.name,
           desc = doc.maybeWholeTextFrom(".productDetailsWrap .innerContent"),
-          abv = doc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+\\.\\d+)")[1].toDouble(),
+          abv = doc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+(\\.\\d+)?)")[1].toDouble(),
           keg = parts.keg,
           sizeMl = parts.sizeMl,
           available = true,

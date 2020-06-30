@@ -10,12 +10,12 @@ import kotlin.text.RegexOption.IGNORE_CASE
 
 class FourpureScraperTest {
   companion object {
-    private val ITEMS = executeScraper(FourpureScraper())
+    private val ITEMS = executeScraper(FourpureScraper(), dateString = "2020-06-30")
   }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(10, ITEMS.size)
+    assertEquals(15, ITEMS.size)
   }
 
   @Test

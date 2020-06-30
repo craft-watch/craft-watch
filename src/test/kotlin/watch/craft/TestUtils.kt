@@ -1,12 +1,9 @@
 package watch.craft
 
-import mu.KotlinLogging
 import watch.craft.storage.*
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneOffset
-
-private val logger = KotlinLogging.logger {}
 
 private const val GOLDEN_DATE = "2020-06-28"
 
