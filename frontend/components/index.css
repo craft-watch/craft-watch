@@ -189,7 +189,7 @@ img {
   font-size: smaller;
 }
 
-.menu-hamburger:hover {
+.menu-hamburger div:hover {
   color: var(--sol-base1);
   cursor: pointer;
 }
@@ -223,7 +223,7 @@ img {
   user-select: none;
 }
 
-.menu-button:hover {
+.menu-button span:hover {
   color: var(--sol-base1);
   cursor: pointer;
 }

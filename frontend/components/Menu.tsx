@@ -46,7 +46,9 @@ export default class Menu extends React.Component<MenuProps, State> {
   private renderExpanded(): JSX.Element {
     return (
       <div className="menu">
-        <div className="menu-button" onClick={() => this.setState({ expanded: false })}>&times;</div>
+        <div className="menu-button">
+          <span onClick={() => this.setState({ expanded: false })}>&times;</span>
+        </div>
         <div className="content">
           <Section
             title="Formats"
