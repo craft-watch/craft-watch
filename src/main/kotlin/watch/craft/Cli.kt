@@ -1,7 +1,5 @@
 package watch.craft
 
-import com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.arguments.multiple
@@ -15,8 +13,6 @@ import java.time.Instant
 class Cli : CliktCommand(name = "scraper") {
   private val listScrapers by option("--list-scrapers", "-l").flag()
   private val scrapers by argument().choice(SCRAPERS).multiple()
-
-  private val mapper = jacksonObjectMapper().enable(INDENT_OUTPUT)
 
   override fun run() {
     when {
@@ -36,12 +32,12 @@ class Cli : CliktCommand(name = "scraper") {
     )
     val structure = StoreStructure(store, Instant.now())
     val getter = CachingGetter(structure.cache)
-    val executor = Executor(getter)
+    val blobs = BlobManager(structure.blobs)
+    val writer = ResultsWriter(structure.results, blobs)
+    val executor = Executor(getter, blobs)
 
     val inventory = executor.scrape(*scrapers.ifEmpty { SCRAPERS.values }.toTypedArray())
-    structure.results.write("inventory.json", mapper.writeValueAsBytes(inventory))
-    INVENTORY_JSON_FILE.outputStream().use { mapper.writeValue(it, inventory) }
-    // TODO - log
+    writer.writeResults(inventory)
   }
 
   companion object {

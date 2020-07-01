@@ -14,5 +14,6 @@ export interface Item {
   perItemPrice: number;
   available: boolean;
   thumbnailUrl: string;
+  thumbnailKey: string;
   url: string;
 }

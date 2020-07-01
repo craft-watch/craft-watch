@@ -3,11 +3,15 @@ package watch.craft
 import mu.KotlinLogging
 import org.jsoup.Jsoup
 import watch.craft.Scraper.IndexEntry
+import watch.craft.storage.BlobManager
 import watch.craft.storage.CachingGetter
 import java.net.URI
 import java.util.stream.Collectors.toList
 
-class Executor(private val getter: CachingGetter) {
+class Executor(
+  private val getter: CachingGetter,
+  private val blobs: BlobManager
+) {
   private val logger = KotlinLogging.logger {}
 
   fun scrape(vararg scrapers: Scraper) = Inventory(
@@ -24,6 +28,7 @@ class Executor(private val getter: CachingGetter) {
         .map { scrapeIndexSafely(scraper, it) }
         .collect(toList())
         .flatten()
+        .distinctBy { it.url }  // Some index pages list an item multiple times, which causes cache race issues    // TODO - test that we do this
 
       return entries
         .parallelStream()
@@ -36,7 +41,7 @@ class Executor(private val getter: CachingGetter) {
     private fun scrapeIndexSafely(scraper: Scraper, url: URI): List<IndexEntry> {
       logger.info("[${brewery}] Scraping index: ${url}")
       return try {
-        scraper.scrapeIndex(request(url))
+        scraper.scrapeIndex(requestHtmlDoc(url))
       } catch (e: NonFatalScraperException) {
         logger.warn("[${brewery}] Error scraping brewery", e)
         emptyList()
@@ -53,8 +58,9 @@ class Executor(private val getter: CachingGetter) {
       logger.info("[${brewery}] Scraping [${entry.rawName}]")
       return try {
         entry
-          .scrapeItem(request(entry.url))
+          .scrapeItem(requestHtmlDoc(entry.url))
           .normalise(brewery, entry.url)
+          .withThumbnailBlobKey()
       } catch (e: SkipItemException) {
         logger.info("[${brewery}] Skipping [${entry.rawName}] because: ${e.message}")
         null
@@ -70,6 +76,13 @@ class Executor(private val getter: CachingGetter) {
       }
     }
 
+    private fun Item.withThumbnailBlobKey(): Item {
+      val image = requestImage(URI(thumbnailUrl))
+      val key = blobs.write(image)
+      logger.info("[${brewery}] Thumbnail key: ${key}")
+      return copy(thumbnailKey = key)
+    }
+
     private fun List<Item>.bestPricedItems() = groupBy { ItemGroupFields(it.name, it.keg) }
       .map { (key, group) ->
         if (group.size > 1) {
@@ -79,10 +92,16 @@ class Executor(private val getter: CachingGetter) {
       }
   }
 
-  private fun request(url: URI) = try {
+  private fun requestHtmlDoc(url: URI) = try {
     Jsoup.parse(String(getter.request(url)), url.toString())!!
   } catch (e: Exception) {
     throw FatalScraperException("Could not read page: ${url}", e)
+  }
+
+  private fun requestImage(url: URI) = try {
+    getter.request(url)
+  } catch (e: Exception) {
+    throw FatalScraperException("Could not read image: ${url}", e)
   }
 
   private fun List<Item>.logStats() {

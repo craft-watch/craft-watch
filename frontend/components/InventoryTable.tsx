@@ -46,12 +46,16 @@ const InventoryTable: React.FC<InventoryTableProps> = (props) => (
 
 const renderBrewery: Renderer<Item> = item => item.brewery;
 
-const renderThumbnail: Renderer<Item> = item => (
-  <a href={item.url}>
-    <img alt="" src={item.thumbnailUrl} width="100px" height="100px" />
-    {item.available || <div className="sold-out">Out of stock</div>}
-  </a>
-);
+const renderThumbnail: Renderer<Item> = item => {
+  const path = `/scraped/${item.thumbnailKey}.png`;
+
+  return (
+    <a href={item.url}>
+      <img alt="" src={path} width="100px" height="100px" />
+      {item.available || <div className="sold-out">Out of stock</div>}
+    </a>
+  );
+}
 
 const renderName: Renderer<Item> = item => (
   <div className="tooltip">

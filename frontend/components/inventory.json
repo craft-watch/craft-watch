@@ -763,7 +763,7 @@
     "sizeMl" : 440,
     "abv" : null,
     "perItemPrice" : 2.9,
-    "available" : false,
+    "available" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/12beers_june3-324x324.jpg",
     "url" : "https://www.howlinghops.co.uk/product/12-beer-mega-pack-24-x-440ml/"
   }, {
@@ -911,6 +911,32 @@
     "url" : "https://marblebeers.com/shop-home/stout-5l-mini-keg/"
   }, {
     "brewery" : "Marble",
+    "name" : "Manchester Bitter",
+    "summary" : "Bitter",
+    "desc" : "Our most traditional core beer is inspired by a Manchester stalwart; a fondly-remembered original. Speciality malt gives the deep golden colour and robust base, balanced by crisp bitterness and a floral, lemony aroma.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 500,
+    "abv" : 4.2,
+    "perItemPrice" : 2.35,
+    "available" : true,
+    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Manchester_bitter_24_pack-234x300.png",
+    "url" : "https://marblebeers.com/shop-home/manchester-bitter-full-case-24-cans/"
+  }, {
+    "brewery" : "Marble",
+    "name" : "Metric (pint-ish)",
+    "summary" : "Pale",
+    "desc" : "Our 3.9% session ale is brewed with an all pale malt bill and then hopped with a blend of New Zealand and US hops. Our benchmark beer promises a burst of zesty aromas, uplifting grapefruit flavours and a subtle lemongrass finish.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 500,
+    "abv" : 3.9,
+    "perItemPrice" : 2.5,
+    "available" : true,
+    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Metric_24_pack-234x300.png",
+    "url" : "https://marblebeers.com/shop-home/metric-pint-ish-case-24-cans/"
+  }, {
+    "brewery" : "Marble",
     "name" : "Lagonda",
     "summary" : "English Pale",
     "desc" : "Named after a classic car owned by the boss’s father, Lagonda has been a house beer since 1997. The beer was originally designated an IPA but we feel pale ale better reflects current beer definitions. Pale in colour, the malts provide a sturdy body on which is built a citrus and floral hop character.",
@@ -948,32 +974,6 @@
     "available" : true,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Pilsner_24_pack-234x300.png",
     "url" : "https://marblebeers.com/shop-home/american-pilsner-case-24-cans/"
-  }, {
-    "brewery" : "Marble",
-    "name" : "Manchester Bitter",
-    "summary" : "Bitter",
-    "desc" : "Our most traditional core beer is inspired by a Manchester stalwart; a fondly-remembered original. Speciality malt gives the deep golden colour and robust base, balanced by crisp bitterness and a floral, lemony aroma.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 500,
-    "abv" : 4.2,
-    "perItemPrice" : 2.35,
-    "available" : true,
-    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Manchester_bitter_24_pack-234x300.png",
-    "url" : "https://marblebeers.com/shop-home/manchester-bitter-full-case-24-cans/"
-  }, {
-    "brewery" : "Marble",
-    "name" : "Metric (pint-ish)",
-    "summary" : "Pale",
-    "desc" : "Our 3.9% session ale is brewed with an all pale malt bill and then hopped with a blend of New Zealand and US hops. Our benchmark beer promises a burst of zesty aromas, uplifting grapefruit flavours and a subtle lemongrass finish.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 500,
-    "abv" : 3.9,
-    "perItemPrice" : 2.5,
-    "available" : true,
-    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Metric_24_pack-234x300.png",
-    "url" : "https://marblebeers.com/shop-home/metric-pint-ish-case-24-cans/"
   }, {
     "brewery" : "Marble",
     "name" : "Core Range Mixed",
@@ -2248,6 +2248,19 @@
     "available" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Little_by_Little_for_website_300x300.jpg?v=1577799301",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/little-by-little"
+  }, {
+    "brewery" : "Thornbridge",
+    "name" : "Colorado Red",
+    "summary" : "Red IPA",
+    "desc" : "This red IPA offers hints of toffee malt, complemented by flavours of dry fruit, candied peel and fragrant citrus hops.\nABV 5.9% / 330ml bottle\nHOPS Centennial / Nugget / Bullion / Admiral / Ernest / Fuggles / Citra\nMALTS Pale / Munich / Crystal / Caramalt / Dark Crystal / Wheat\nYou must be 18 or over to purchase this product.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 330,
+    "abv" : 5.9,
+    "perItemPrice" : 2.1,
+    "available" : false,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Colorado_Red_for_website_300x300.png?v=1578655816",
+    "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/colorado-red"
   }, {
     "brewery" : "Thornbridge",
     "name" : "Shelby - The Official Beer of the TV Series",

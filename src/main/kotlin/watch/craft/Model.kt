@@ -16,5 +16,6 @@ data class Item(
   val perItemPrice: Double,
   val available: Boolean,
   val thumbnailUrl: String,
+  val thumbnailKey: String? = null,
   val url: String
 )
