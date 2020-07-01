@@ -10,7 +10,21 @@ const ThisPage = (): JSX.Element => {
 
   // TODO - is there a better way to avoid this being captured by SSG?
   useEffect(() => {
-    setItems(_.sample(_.filter(inventoryItems, item => !item.keg && !item.mixed && item.available), 30));
+    const sample = _.sample(_.filter(inventoryItems, item => !item.keg && !item.mixed && item.available), 20);
+
+    // Sorted, but then brewery order is randomised
+    setItems(
+      _.flatten(
+        _.values(
+          _.shuffle(
+            _.groupBy(
+              _.sortBy(sample, item => item.name),
+              item => item.brewery
+            )
+          )
+        )
+      )
+    );
   }, []);
 
   return (
