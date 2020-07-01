@@ -1,7 +1,9 @@
 import _ from "underscore";
-import SortableTable, { Column, Renderer } from "./SortableTable";
 import React from "react";
+import Link from "next/link";
 import { Item } from "../utils/model";
+import SortableTable, { Column, Renderer } from "./SortableTable";
+import { toSafePathPart } from "../utils/stuff";
 
 export interface InventoryTableProps {
   items: Array<Item>;
@@ -44,7 +46,7 @@ const InventoryTable: React.FC<InventoryTableProps> = (props) => (
   </SortableTable>
 );
 
-const renderBrewery: Renderer<Item> = item => item.brewery;
+const renderBrewery: Renderer<Item> = item => <Link href={`/${toSafePathPart(item.brewery)}`}>{item.brewery}</Link>;
 
 const renderThumbnail: Renderer<Item> = item => (
   <a href={item.url}>
@@ -55,7 +57,7 @@ const renderThumbnail: Renderer<Item> = item => (
 
 const renderName: Renderer<Item> = item => (
   <div className="tooltip">
-    <a href={item.url}>{item.name}</a>
+    <a className="item-link" href={item.url}>{item.name}</a>
     <p className="summary">
       {item.summary && item.summary}
     </p>

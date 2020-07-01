@@ -79,8 +79,11 @@ td img {
 }
 
 table a {
-  font-weight: var(--bold-weight);
   text-decoration: none;
+}
+
+table a.item-link {
+  font-weight: var(--bold-weight);
 }
 
 table a:link {
