@@ -33,7 +33,7 @@ class VillagesScraper : Scraper {
 
   private data class VariableParts(
     val name: String,
-    val summary: String,
+    val summary: String? = null,
     val numCans: Int,
     val mixed: Boolean = false,
     val abv: Double? = null
@@ -43,7 +43,6 @@ class VillagesScraper : Scraper {
     val parts = title.extract("^(.*?) \\((.*)\\)$")
     VariableParts(
       name = parts[1],
-      summary = "24 cans",
       numCans = 24,
       mixed = true
     )

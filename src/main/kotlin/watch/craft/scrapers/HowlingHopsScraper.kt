@@ -41,7 +41,7 @@ class HowlingHopsScraper : Scraper {
 
   private data class VariableParts(
     val name: String,
-    val summary: String,
+    val summary: String? = null,
     val abv: Double? = null,
     val sizeMl: Int,
     val numCans: Int,
@@ -63,7 +63,6 @@ class HowlingHopsScraper : Scraper {
       val numCans = betterParts[2].toInt()
       VariableParts(
         name = betterParts[1],
-        summary = "${numCans} cans",
         sizeMl = betterParts[3].toInt(),
         numCans = numCans,
         mixed = true

@@ -799,7 +799,7 @@
     "url" : "https://gipsyhillbrew.com/product/left-handed-giant-opening-theme-ipa/"
   }, {
     "brewery" : "Gipsy Hill",
-    "name" : "Hepcat Case (24 Cans)",
+    "name" : "Hepcat Case",
     "summary" : "Session IPA",
     "desc" : "This is 24 x 330ml cans of Hepcat.\n\nYou asked, we listened – a full case of Hepcat.\nA Session IPA. Our mainstay and our original. It’s everything the style should be – fruity nose, juicy body, bright taste. Can we humbly call it a classic?\nGoes well with dancefloors and smooth moves.",
     "keg" : false,
@@ -814,7 +814,7 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "NEW 12 Beer Mega Pack",
-    "summary" : "24 cans",
+    "summary" : null,
     "desc" : "NEW 12 Beer Mega Pack 24 x 440ml\nThe biggest beer selection yet! Loads of new beers straight off the canning line and some fresh, firm favorites. Each case of 24 cans will consist of 12 different beers, in quantities subject to availability. Cases cannot be customised. All the beer is superfresh! Beers included:\nFLASHPOINT – NEIPA (CITRA TOPAZ ENIGMA) – 6.2% ABV\nPUSH PUSH – DDH PALE (CITRA AZACCA SABRO) – 5.8% ABV\nOFF RAMP – DIPA (HBC 692 CRYO MOSAIC CITRA) – 8.0% ABV\nBLANKETS – PALE ALE (CITRA COLUMBUS CASCADE) – 4.2% ABV\nPOCKET ROCKET – TINY IPA (CITRA SIMCOE IDAHO 7) – 2.7% ABV\nHOUSE IPA – INDIA PALE ALE – 6.9% ABV\nROMANS – DDH SINGLE HOP PALE ALE (HBC-586) – 5.5% ABV\nDRAG RACE JOHNNY – NEIPA (AZACCA CITRA SIMCOE) – 6.7% ABV\nBIRD TALK – PALE ALE (AMARILLO CENTENNIAL COLUMBUS) – 4.4% ABV\nPACKETS – KELLER LAGER – 4.2% ABV\nTROPICAL DELUXE – PALE ALE – 3.8% ABV\nPASSIONFRUIT GOSE – FRUIT SOUR – 4.5% ABV",
     "keg" : false,
     "mixed" : true,
@@ -2564,7 +2564,7 @@
   }, {
     "brewery" : "Villages",
     "name" : "Villages Mixed Case",
-    "summary" : "24 cans",
+    "summary" : null,
     "desc" : "An ever-changing mixed case of 24 × cans of the freshest Villages bevs. Currently the case includes:\n6 × RODEO Pale Ale  •  4.6%One of our first pals. Rodeo is a light straw colour with a gentle haze. Citrus and grapefruit aromas and flavours come from Citra and Cascade, giving a balanced floral tone. Low bitterness and a soft body. Real refreshing!\n6 × WHISTLE Pilsner  •  4.4%A crisp, unfiltered Pilsner with lots of flavour. Saaz and Hallertau Mittelfrüh give it those traditional floral and spicy notes. The yeast gives a big ester profile and a clean finish.6 × RAFIKI Session IPA  •  4.3%Our low-strength IPA, and a family fave. Tropical notes of mango, passionfruit and guava come from Mosaic and Ekuanot. Smooth bitterness and a sweet biscuity malt flavour.\n6 × ISOLATION IPA Number 3  •  5.4%This is the third Isolation IPA we've brewed, and this one's been hopped with Amarillo, Centennial and Chinook. Really nicely balanced! We're getting orange, grapefruit and a resinous pine, pleasant late bitterness too. Delish! All proceeds from the sale of Isolation IPA will be donated to the National Emergencies Trust.",
     "keg" : false,
     "mixed" : true,
@@ -2578,7 +2578,7 @@
   }, {
     "brewery" : "Villages",
     "name" : "Ales Mixed Case",
-    "summary" : "24 cans",
+    "summary" : null,
     "desc" : "An ever-changing mixed case of 24 × cans of Villages ales. Currently the case includes:\n8 × RODEO Pale Ale  •  4.6%One of our first pals. Rodeo is a light straw colour with a gentle haze. Citrus and grapefruit aromas and flavours come from Citra and Cascade, giving a balanced floral tone. Low bitterness and a soft body. Real refreshing!\n8 × RAFIKI Session IPA  •  4.3%Our low-strength IPA, and a family fave. Tropical notes of mango, passionfruit and guava come from Mosaic and Ekuanot. Smooth bitterness and a sweet biscuity malt flavour.\n8 × ISOLATION IPA Number 3  •  5.4%This is the third Isolation IPA we've brewed, and this one's been hopped with Amarillo, Centennial and Chinook. Really nicely balanced! We're getting orange, grapefruit and a resinous pine, pleasant late bitterness too. Delish! All proceeds from the sale of Isolation IPA will be donated to the National Emergencies Trust.",
     "keg" : false,
     "mixed" : true,
@@ -2592,7 +2592,7 @@
   }, {
     "brewery" : "Villages",
     "name" : "Regulars Mixed Case",
-    "summary" : "24 cans",
+    "summary" : null,
     "desc" : "A mixed case of 24 × cans of go-to Villages bevs.8 × RODEO Pale Ale  •  4.6%One of our first pals. Rodeo is a light straw colour with a gentle haze. Citrus and grapefruit aromas and flavours come from Citra and Cascade, giving a balanced floral tone. Low bitterness and a soft body. Real refreshing!\n8 × WHISTLE Pilsner  •  4.4%A crisp, unfiltered Pilsner with lots of flavour. Saaz and Hallertau Mittelfrüh give it those traditional floral and spicy notes. The yeast gives a big ester profile and a clean finish.8 × RAFIKI Session IPA  •  4.3%Our low-strength IPA, and a family fave. Tropical notes of mango, passionfruit and guava come from Mosaic and Ekuanot. Smooth bitterness and a sweet biscuity malt flavour.",
     "keg" : false,
     "mixed" : true,

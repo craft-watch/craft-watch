@@ -43,7 +43,6 @@ class VillagesScraperTest {
       Item(
         brewery = "Villages",
         name = "Villages Mixed Case", // Normalised case
-        summary = "24 cans",  // Synthesised summary
         mixed = true,
         abv = null,   // Can't find this!
         sizeMl = 330,
