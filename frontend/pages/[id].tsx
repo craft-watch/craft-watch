@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const items = safeNamesToItems[brewery];
   return {
     props: {
-      brewery: items[0].brewery,
+      brewery: items[0].brewery,  // Hack to get back to human-readable name
       items
     }
   };
