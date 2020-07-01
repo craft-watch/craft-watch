@@ -11,7 +11,7 @@ interface Props {
   items: Array<Item>;
 }
 
-const IndexPage = (props: Props): JSX.Element => (
+const ThisPage = (props: Props): JSX.Element => (
   <Page
     title = {`Craft Watch - ${props.brewery}`}
     description = {`Daily updates of beer prices from ${props.brewery}`}
@@ -20,7 +20,7 @@ const IndexPage = (props: Props): JSX.Element => (
   </Page>
 );
 
-export default IndexPage;
+export default ThisPage;
 
 export const getStaticPaths: GetStaticPaths = async () => ({
   paths: _.map(_.keys(safeNamesToItems), name => ({ params: { id: name } })),
@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const items = safeNamesToItems[brewery];
   return {
     props: {
-      brewery: items[0].brewery,
+      brewery: items[0].brewery,  // Hack to get back to human-readable name
       items
     }
   };
