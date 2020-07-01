@@ -40,7 +40,7 @@ const InventoryTable: React.FC<InventoryTableProps> = (props) => (
       selector={(item) => item.sizeMl}
     />
     <Column
-      name={<>Price <span className="hide-on-mobile">per item</span></>}
+      name="Price"
       render={renderPrice}
       selector={(item) => item.perItemPrice}
     />
