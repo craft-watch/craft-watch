@@ -3,6 +3,7 @@ package watch.craft.storage
 import com.nhaarman.mockitokotlin2.*
 import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import watch.craft.FatalScraperException
 import watch.craft.sha1
@@ -35,12 +36,12 @@ class CachingGetterTest {
   }
 
   @Test
-  fun `throw if data unexpectedly appears in store when we try to write it`() {
+  fun `don't throw if data unexpectedly appears in store when we try to write it`() {
     whenever(store.read(NICE_KEY)) doThrow FileDoesntExistException("oh")
     whenever(store.write(any(), any())) doThrow FileExistsException("no")
     whenever(networkGet(NICE_URL)) doReturn NICE_DATA
 
-    assertThrows<FatalScraperException> {
+    assertDoesNotThrow {
       getter.request(NICE_URL)
     }
   }
