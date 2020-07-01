@@ -3,6 +3,7 @@ package watch.craft.storage
 import com.nhaarman.mockitokotlin2.*
 import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
 class WriteThroughObjectStoreTest {
@@ -21,7 +22,7 @@ class WriteThroughObjectStoreTest {
   }
 
   @Test
-  fun `writes to first store if already present in second`() {
+  fun `still writes to first store if already present in second`() {
     whenever(second.write(any(), any())) doThrow FileExistsException("oh")
 
     store.write(NICE_KEY, NICE_DATA)
@@ -66,6 +67,17 @@ class WriteThroughObjectStoreTest {
     whenever(second.read(NICE_KEY)) doThrow FileDoesntExistException("No")
 
     assertThrows<FileDoesntExistException> {
+      store.read(NICE_KEY)
+    }
+  }
+
+  @Test
+  fun `don't throw if data unexpectedly appears in first-level store when we try to copy it`() {
+    whenever(first.read(NICE_KEY)) doThrow FileDoesntExistException("Oh")
+    whenever(first.write(any(), any())) doThrow FileExistsException("No")
+    whenever(second.read(NICE_KEY)) doReturn NICE_DATA
+
+    assertDoesNotThrow {
       store.read(NICE_KEY)
     }
   }
