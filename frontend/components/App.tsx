@@ -1,22 +1,23 @@
 import React from "react";
 import _ from "underscore";
-import _inventory from "./inventory.json";
-import { Inventory, Item } from "./model";
+import { Item } from "../utils/model";
 import Menu, { Selections } from "./Menu";
 import InventoryTable from "./InventoryTable";
 
-const items = (_inventory as Inventory).items;
+interface Props {
+  items: Array<Item>;
+}
 
-interface AppState {
+interface State {
   brewerySelections: Selections;
   formatSelections: Selections;
 }
 
-class App extends React.Component<unknown, AppState> {
-  constructor(props: unknown) {
+class App extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
-      brewerySelections: _.object(_.uniq(_.map(items, item => [item.brewery, true]), true, p => p[0])),
+      brewerySelections: _.object(_.uniq(_.map(props.items, item => [item.brewery, true]), true, p => p[0])),
       formatSelections: {
         "Regular": true,
         "Mixed case": true,
@@ -46,7 +47,7 @@ class App extends React.Component<unknown, AppState> {
     );
   }
 
-  private filterItems = (): Array<Item> => items.filter(item =>
+  private filterItems = (): Array<Item> => this.props.items.filter(item =>
     this.state.brewerySelections[item.brewery] && this.formatSelected(item)
   );
 
