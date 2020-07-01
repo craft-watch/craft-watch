@@ -24,6 +24,7 @@ class RedchurchScraperTest {
         brewery = "Redchurch",
         name = "Shoreditch Blonde",
         sizeMl = 330,
+        numItems = 24,
         abv = 4.5,
         perItemPrice = 1.46,    // Best price
         available = true,

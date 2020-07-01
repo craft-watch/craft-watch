@@ -25,6 +25,7 @@ class FivePointsScraperTest {
         brewery = "Five Points",
         name = "Five Points Pils",   // No size in title
         summary = "Pilsner",
+        numItems = 12,
         perItemPrice = 1.80,
         abv = 4.8,
         sizeMl = 330,

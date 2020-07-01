@@ -13,6 +13,7 @@ data class Item(
   val mixed: Boolean = false,
   val sizeMl: Int? = null,
   val abv: Double? = null,
+  val numItems: Int = 1,
   val perItemPrice: Double,
   val available: Boolean,
   val thumbnailUrl: String,

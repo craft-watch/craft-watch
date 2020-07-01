@@ -59,8 +59,8 @@ class ItemNormalisationTest {
 
   @Test
   fun `rejects if too bougie`() {
-    assertNoValidationFailure(prototype.copy(perItemPrice = 7.0))
-    assertValidationFailure(prototype.copy(perItemPrice = 10.0))
+    assertNoValidationFailure(prototype.copy(price = 14.0))
+    assertValidationFailure(prototype.copy(price = 20.0))
   }
 
   private fun assertNoValidationFailure(item: Scraper.Item) {
@@ -84,7 +84,8 @@ class ItemNormalisationTest {
   private val prototype = Scraper.Item(
     name = "Ted Shandy",
     summary = "Awful",
-    perItemPrice = 1.86,
+    numItems = 2,
+    price = 3.72,
     sizeMl = 330,
     abv = 1.2,
     available = true,

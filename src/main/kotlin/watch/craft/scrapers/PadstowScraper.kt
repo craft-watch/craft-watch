@@ -26,7 +26,6 @@ class PadstowScraper : Scraper {
         }
 
         val rawSize = doc.textFrom(".size .stat")
-        val numItems = rawSize.maybeExtract("(\\d+) x")?.get(1)?.toInt() ?: 1
         val sizeParts = rawSize.extract("(\\d+)\\s*(ml|L|litres)")
 
         val name = rawName
@@ -48,7 +47,8 @@ class PadstowScraper : Scraper {
           abv = if (mixed) null else doc.extractFrom(".abv .stat", "\\d+(\\.\\d+)?")[0].toDouble(),
           sizeMl = if (mixed) null else sizeParts[1].toInt() * (if (sizeParts[2] in listOf("L", "litres")) 1000 else 1),
           available = true,
-          perItemPrice = el.priceFrom(".woocommerce-Price-amount").divideAsPrice(numItems)
+          numItems = rawSize.maybeExtract("(\\d+) x")?.get(1)?.toInt() ?: 1,
+          price = el.priceFrom(".woocommerce-Price-amount")
         )
       }
     }

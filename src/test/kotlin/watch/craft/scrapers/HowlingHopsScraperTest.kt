@@ -25,6 +25,7 @@ class HowlingHopsScraperTest {
         brewery = "Howling Hops",
         name = "Push Push",
         summary = "DDH Pale Ale",
+        numItems = 4,
         perItemPrice = 4.00,
         abv = 5.8,
         sizeMl = 440,

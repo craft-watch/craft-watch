@@ -37,7 +37,8 @@ class MarbleScraper : Scraper {
           sizeMl = volumeDetails.sizeMl,
           abv = attributes.grab("ABV").maybeExtract("(\\d+(\\.\\d+)?)")?.get(1)?.toDouble(),
           available = doc.maybeSelectFrom(".out-of-stock") == null,
-          perItemPrice = doc.priceFrom(".price").divideAsPrice(volumeDetails.numItems)
+          numItems = volumeDetails.numItems,
+          price = doc.priceFrom(".price")
         )
       }
     }

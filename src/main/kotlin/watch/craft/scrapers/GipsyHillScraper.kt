@@ -37,7 +37,8 @@ class GipsyHillScraper : Scraper {
           available = true, // TODO
           abv = if (mixed) null else rawSummary.maybeExtract("ABV: (\\d+(\\.\\d+)?)")?.get(1)?.toDouble(),
           sizeMl = rawSummary.maybeExtract("(\\d+)ml")?.get(1)?.toInt(),
-          perItemPrice = el.ownTextFrom(".woocommerce-Price-amount").toDouble().divideAsPrice(numCans)
+          numItems = numCans,
+          price = el.ownTextFrom(".woocommerce-Price-amount").toDouble()
         )
       }
     }

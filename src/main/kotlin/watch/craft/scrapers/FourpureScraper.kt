@@ -31,7 +31,7 @@ class FourpureScraper : Scraper {
           keg = parts.keg,
           sizeMl = parts.sizeMl,
           available = true,
-          perItemPrice = el.selectFrom(".priceNow, .priceStandard").priceFrom(".GBP")
+          price = el.selectFrom(".priceNow, .priceStandard").priceFrom(".GBP")
         )
       }
     }

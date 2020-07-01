@@ -29,7 +29,8 @@ class PillarsScraper : Scraper {
           sizeMl = titleParts.sizeMl,
           abv = descParts[2].toDouble(),
           available = details.available,
-          perItemPrice = details.price.divideAsPrice(titleParts.numItems)
+          numItems = titleParts.numItems,
+          price = details.price
         )
       }
     }

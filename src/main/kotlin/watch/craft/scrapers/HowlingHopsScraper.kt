@@ -29,12 +29,12 @@ class HowlingHopsScraper : Scraper {
           available = doc.textFrom(".stock") == "In stock",
           sizeMl = parts.sizeMl,
           abv = parts.abv,
-          perItemPrice = el.selectMultipleFrom(".woocommerce-Price-amount")
+          numItems = parts.numCans,
+          price = el.selectMultipleFrom(".woocommerce-Price-amount")
             .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
             .first()
             .ownText()
             .toDouble()
-            .divideAsPrice(parts.numCans)
         )
       }
     }
