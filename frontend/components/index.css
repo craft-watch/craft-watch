@@ -56,7 +56,7 @@ table {
 th {
   background: var(--sol-base2);
   top: 0px;
-  font-size: larger; 
+  font-size: larger;
   z-index: 1;
   position: sticky;
 }
@@ -189,7 +189,7 @@ img {
   font-size: smaller;
 }
 
-.menu-hamburger:hover {
+.menu-hamburger div:hover {
   color: var(--sol-base1);
   cursor: pointer;
 }
@@ -223,7 +223,7 @@ img {
   user-select: none;
 }
 
-.menu-button:hover {
+.menu-button span:hover {
   color: var(--sol-base1);
   cursor: pointer;
 }
@@ -338,14 +338,13 @@ img {
 
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0.5s linear, opacity 0.5s linear;
 
   width: 30vw;
   font-size: small;
   padding: 10px;
   border-radius: var(--sexy-radius);
   filter: var(--sexy-shadow);
- 
+
   position: absolute;
   z-index: 2;
 }
@@ -374,14 +373,14 @@ img {
 
 @media (max-width: 768px) {
   /* Compress table layout */
-  
+
   table {
     width: 100vw;
   }
 
   td, th {
     padding: 10px 5px;
-  }  
+  }
 
   th {
     border-radius: inherit !important;
@@ -412,6 +411,6 @@ img {
     color: var(--sol-base2);
     text-align: center;
     font-size: smaller;
-    padding: 5px 0;  
+    padding: 5px 0;
   }
 }
