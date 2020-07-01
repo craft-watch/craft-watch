@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Item } from "../utils/model";
 import SortableTable, { Column, Renderer } from "./SortableTable";
 import { toSafePathPart } from "../utils/stuff";
+import { OUT_OF_STOCK, MINIKEG, MIXED_CASE } from "../utils/strings";
 
 export interface InventoryTableProps {
   items: Array<Item>;
@@ -51,7 +52,7 @@ const renderBrewery: Renderer<Item> = item => <Link href={`/${toSafePathPart(ite
 const renderThumbnail: Renderer<Item> = item => (
   <a href={item.url}>
     <img alt="" src={item.thumbnailUrl} width="100px" height="100px" />
-    {item.available || <div className="sold-out">Out of stock</div>}
+    {item.available || <div className="sold-out">{OUT_OF_STOCK}</div>}
   </a>
 );
 
@@ -62,8 +63,8 @@ const renderName: Renderer<Item> = item => (
       {item.summary && item.summary}
     </p>
     <p className="summary">
-      {item.keg && <span className="pill violet">Minikeg</span>}
-      {item.mixed && <span className="pill magenta">Mixed case</span>}
+      {item.keg && <span className="pill violet">{MINIKEG}</span>}
+      {item.mixed && <span className="pill magenta">{MIXED_CASE}</span>}
     </p>
     {item.desc && renderTooltipText(item)}
   </div>

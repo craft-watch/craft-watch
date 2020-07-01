@@ -1,18 +1,13 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import _ from "underscore";
 
 export type Selections = { [key: string]: boolean };
 
-export interface MenuProps {
-  brewerySelections: Selections;
-  onToggleBrewerySelection: (key: string) => void;
-  onGlobalBrewerySelection: (selected: boolean) => void;
-  formatSelections: Selections;
-  onToggleFormatSelection: (key: string) => void;
-  onGlobalFormatSelection: (selected: boolean) => void;
+interface MenuProps {
+  children: ReactElement<SectionProps> | Array<ReactElement<SectionProps> | boolean>;
 }
 
-export interface SectionProps {
+interface SectionProps {
   title: string;
   selections: Selections;
   onToggleSelection: (key: string) => void;
@@ -50,22 +45,7 @@ export default class Menu extends React.Component<MenuProps, State> {
           <span onClick={() => this.setState({ expanded: false })}>&times;</span>
         </div>
         <div className="content">
-          <Section
-            title="Formats"
-            selections={this.props.formatSelections}
-            onToggleSelection={this.props.onToggleFormatSelection}
-            onGlobalSelection={this.props.onGlobalFormatSelection}
-          />
-          {
-            (_.size(this.props.brewerySelections) > 1) && (
-              <Section
-                title="Breweries"
-                selections={this.props.brewerySelections}
-                onToggleSelection={this.props.onToggleBrewerySelection}
-                onGlobalSelection={this.props.onGlobalBrewerySelection}
-              />
-            )
-          }
+          {this.props.children}
         </div>
         <div className="copyright">© <a href="https://github.com/oliver-charlesworth">Oliver Charlesworth</a> 2020</div>
       </div>
@@ -73,7 +53,7 @@ export default class Menu extends React.Component<MenuProps, State> {
   }
 }
 
-const Section: React.FC<SectionProps> = (props) => (
+export const Section: React.FC<SectionProps> = (props) => (
   <div className="section">
     <h4>{props.title}</h4>
     {
@@ -89,9 +69,14 @@ const Section: React.FC<SectionProps> = (props) => (
         </label>
       ))
     }
-    <div>
-      <span className="all-or-none" onClick={() => props.onGlobalSelection(true)}>All</span>
-      <span className="all-or-none" onClick={() => props.onGlobalSelection(false)}>None</span>
-    </div>
+    {
+      (_.size(props.selections) > 1) && (
+        <div>
+          <span className="all-or-none" onClick={() => props.onGlobalSelection(true)}>All</span>
+          <span className="all-or-none" onClick={() => props.onGlobalSelection(false)}>None</span>
+        </div>
+      )
+    }
+
   </div>
 );

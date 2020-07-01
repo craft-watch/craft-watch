@@ -1,14 +1,16 @@
 import React from "react";
 import _ from "underscore";
 import { Item } from "../utils/model";
-import Menu, { Selections } from "./Menu";
+import Menu, { Selections, Section } from "./Menu";
 import InventoryTable from "./InventoryTable";
+import { MIXED_CASE, MINIKEG, REGULAR, OUT_OF_STOCK } from "../utils/strings";
 
 interface Props {
   items: Array<Item>;
 }
 
 interface State {
+  availabilitySelections: Selections;
   brewerySelections: Selections;
   formatSelections: Selections;
 }
@@ -17,8 +19,9 @@ class App extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
+      availabilitySelections: this.initialSelections([OUT_OF_STOCK]),
       brewerySelections: this.initialSelections(this.uniqueBreweries(props.items)),
-      formatSelections: this.initialSelections(["Regular", "Mixed case", "Minikeg"]),
+      formatSelections: this.initialSelections([REGULAR, MIXED_CASE, MINIKEG]),
     };
   }
 
@@ -38,14 +41,30 @@ class App extends React.Component<Props, State> {
           Click on an image to go to the brewery shop!
         </div>
 
-        <Menu
-          brewerySelections={this.state.brewerySelections}
-          onToggleBrewerySelection={(key) => this.handleToggleBrewerySelection(key)}
-          onGlobalBrewerySelection={(selected) => this.handleGlobalBrewerySelection(selected)}
-          formatSelections={this.state.formatSelections}
-          onToggleFormatSelection={(key) => this.handleToggleFormatSelection(key)}
-          onGlobalFormatSelection={(selected) => this.handleGlobalFormatSelection(selected)}
-        />
+        <Menu>
+          <Section
+            title="Formats"
+            selections={this.state.formatSelections}
+            onToggleSelection={(key) => this.handleToggleFormatSelection(key)}
+            onGlobalSelection={(selected) => this.handleGlobalFormatSelection(selected)}
+          />
+          <Section
+            title="Availability"
+            selections={this.state.availabilitySelections}
+            onToggleSelection={(key) => this.handleToggleAvailabilitySelection(key)}
+            onGlobalSelection={(selected) => this.handleGlobalAvailabilitySelection(selected)}
+          />
+          {
+            (_.size(this.state.brewerySelections) > 1) && (
+              <Section
+                title="Breweries"
+                selections={this.state.brewerySelections}
+                onToggleSelection={(key) => this.handleToggleBrewerySelection(key)}
+                onGlobalSelection={(selected) => this.handleGlobalBrewerySelection(selected)}
+              />
+            )
+          }
+        </Menu>
 
         <InventoryTable items={this.filterItems()} />
       </div>
@@ -53,13 +72,19 @@ class App extends React.Component<Props, State> {
   }
 
   private filterItems = (): Array<Item> => this.props.items.filter(item =>
-    this.state.brewerySelections[item.brewery] && this.formatSelected(item)
+    this.brewerySelected(item) && this.formatSelected(item) && this.availabilitySelected(item)
   );
 
+  private brewerySelected = (item: Item): boolean =>
+    this.state.brewerySelections[item.brewery];
+
   private formatSelected = (item: Item): boolean =>
-    (this.state.formatSelections["Regular"] && !item.keg && !item.mixed) ||
-    (this.state.formatSelections["Mixed case"] && item.mixed) ||
-    (this.state.formatSelections["Minikeg"] && item.keg);
+    (this.state.formatSelections[REGULAR] && !item.keg && !item.mixed) ||
+    (this.state.formatSelections[MIXED_CASE] && item.mixed) ||
+    (this.state.formatSelections[MINIKEG] && item.keg);
+
+  private availabilitySelected = (item: Item): boolean =>
+    (this.state.availabilitySelections[OUT_OF_STOCK] || item.available);
 
   private handleToggleBrewerySelection = (key: string): void => {
     this.setState(state => {
@@ -90,6 +115,22 @@ class App extends React.Component<Props, State> {
       const formatSelections = { ...state.formatSelections };
       _.each(formatSelections, (_, b) => formatSelections[b] = selected);
       return { formatSelections };
+    });
+  };
+
+  private handleToggleAvailabilitySelection = (key: string): void => {
+    this.setState(state => {
+      const availabilitySelections = { ...state.availabilitySelections };
+      availabilitySelections[key] = !availabilitySelections[key];
+      return { availabilitySelections };
+    });
+  };
+
+  private handleGlobalAvailabilitySelection = (selected: boolean): void => {
+    this.setState(state => {
+      const availabilitySelections = { ...state.formatSelections };
+      _.each(availabilitySelections, (_, b) => availabilitySelections[b] = selected);
+      return { availabilitySelections };
     });
   };
 
