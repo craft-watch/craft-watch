@@ -14,9 +14,9 @@ class GipsyHillScraper : Scraper {
     .selectMultipleFrom(".product")
     .map { el ->
       val a = el.selectFrom(".woocommerce-LoopProduct-link")
-      val name = a.textFrom(".woocommerce-loop-product__title")
+      val rawName = a.textFrom(".woocommerce-loop-product__title")
 
-      IndexEntry(name, a.hrefFrom()) { doc ->
+      IndexEntry(rawName, a.hrefFrom()) { doc ->
         val rawSummary = doc.textFrom(".summary")
         val numCans = with(doc.maybeSelectMultipleFrom(".woosb-title-inner")) {
           if (isEmpty()) {
@@ -27,6 +27,8 @@ class GipsyHillScraper : Scraper {
         }
         val style = rawSummary.maybeExtract("Style: (.*) ABV")?.get(1)
         val mixed = style in listOf("Various", "Mixed")
+
+        val name = rawName.replace(" \\(.*\\)$".toRegex(), "")
 
         Item(
           thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
