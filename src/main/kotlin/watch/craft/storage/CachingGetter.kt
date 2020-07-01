@@ -1,31 +1,38 @@
 package watch.craft.storage
 
 import mu.KotlinLogging
+import watch.craft.FatalScraperException
 import watch.craft.sha1
-import java.io.FileNotFoundException
 import java.net.URI
 
-class CachingGetter(private val store: SubObjectStore) {
+class CachingGetter(
+  private val store: SubObjectStore,
+  private val networkGet: (URI) -> ByteArray = { it.toURL().readBytes() }
+) {
   private val logger = KotlinLogging.logger {}
 
   fun request(url: URI) = read(url) ?: getFromNetwork(url).also { write(url, it) }
 
   private fun write(url: URI, content: ByteArray) {
     val key = key(url)
-    store.write(key, content)
-    logger.info("${url} written to cache: ${key}")
+    try {
+      store.write(key, content)
+      logger.info("${url} written to cache: ${key}")
+    } catch (e: FileExistsException) {
+      // Another writer raced us to write to this location in the cache
+    }
   }
 
   private fun read(url: URI) = try {
     val key = key(url)
     store.read(key).also { logger.info("${url} read from cache: ${key}") }
-  } catch (e: FileNotFoundException) {
+  } catch (e: FileDoesntExistException) {
     null
   }
 
   private fun getFromNetwork(url: URI): ByteArray {
     logger.info("${url}: reading from network")
-    return url.toURL().readBytes()
+    return networkGet(url)
   }
 
   private fun key(url: URI) = url.toString().sha1()

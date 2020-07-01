@@ -1,20 +1,22 @@
 package watch.craft.storage
 
-import java.io.FileNotFoundException
-
 class WriteThroughObjectStore(
   private val firstLevel: ObjectStore,
   private val secondLevel: ObjectStore
 ) : ObjectStore {
   override fun write(key: String, content: ByteArray) {
-    secondLevel.write(key, content) // Do this first, so we never end up with stuff in the primary that isn't in secondary
-    firstLevel.write(key, content)
+    try {
+      secondLevel.write(key, content) // Do this first, so we never end up with stuff in the primary that isn't in secondary
+    } catch (e: FileExistsException) {
+      // Swallow
+    }
+    firstLevel.write(key, content)  // Allow this to throw
   }
 
   override fun read(key: String): ByteArray {
     return try {
       firstLevel.read(key)
-    } catch (e: FileNotFoundException) {
+    } catch (e: FileDoesntExistException) {
       val content = secondLevel.read(key)
       firstLevel.write(key, content)
       content

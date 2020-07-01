@@ -1,10 +1,9 @@
 package watch.craft.storage
 
-import java.io.FileNotFoundException
-
 interface ObjectStore {
+  @Throws(FileExistsException::class)
   fun write(key: String, content: ByteArray)
 
-  @Throws(FileNotFoundException::class)
+  @Throws(FileDoesntExistException::class)
   fun read(key: String): ByteArray
 }

@@ -1,26 +1,38 @@
 package watch.craft.storage
 
-import com.google.cloud.storage.BlobId
-import com.google.cloud.storage.BlobInfo
-import com.google.cloud.storage.StorageException
-import com.google.cloud.storage.StorageOptions
+import com.google.cloud.http.HttpTransportOptions
+import com.google.cloud.storage.*
+import com.google.cloud.storage.Storage.BlobTargetOption.doesNotExist
 import watch.craft.FatalScraperException
-import java.io.FileNotFoundException
 
-class GcsObjectStore(private val bucketName: String) : ObjectStore {
-  private val storage = StorageOptions.getDefaultInstance().service
-
+class GcsObjectStore(
+  private val bucketName: String,
+  private val storage: Storage = StorageOptions.newBuilder().apply {
+    setTransportOptions(HttpTransportOptions.newBuilder().apply {
+      setConnectTimeout(60_000)
+      setReadTimeout(60_000)
+    }.build())
+  }.build().service
+) : ObjectStore {
   override fun write(key: String, content: ByteArray) {
-    storage.create(blobInfo(key), content)
+    try {
+      storage.create(blobInfo(key), content, doesNotExist())
+    } catch (e: StorageException) {
+      if (e.code == 412) {
+        throw FileExistsException(key)
+      } else {
+        throw FatalScraperException("Error writing to GCS", e)
+      }
+    }
   }
 
   override fun read(key: String) = try {
     storage.readAllBytes(blobId(key))!!
   } catch (e: StorageException) {
     if (e.code == 404) {
-      throw FileNotFoundException()
+      throw FileDoesntExistException(key)
     } else {
-      throw FatalScraperException("Error accessing GCS", e)
+      throw FatalScraperException("Error reading from GCS", e)
     }
   }
 
