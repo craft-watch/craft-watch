@@ -3,6 +3,7 @@ import _ from "underscore";
 import { Item } from "../utils/model";
 import Menu, { Selections } from "./Menu";
 import InventoryTable from "./InventoryTable";
+import { MIXED_CASE, MINIKEG, REGULAR } from "../utils/strings";
 
 interface Props {
   items: Array<Item>;
@@ -18,7 +19,7 @@ class App extends React.Component<Props, State> {
     super(props);
     this.state = {
       brewerySelections: this.initialSelections(this.uniqueBreweries(props.items)),
-      formatSelections: this.initialSelections(["Regular", "Mixed case", "Minikeg"]),
+      formatSelections: this.initialSelections([REGULAR, MIXED_CASE, MINIKEG]),
     };
   }
 
@@ -57,9 +58,9 @@ class App extends React.Component<Props, State> {
   );
 
   private formatSelected = (item: Item): boolean =>
-    (this.state.formatSelections["Regular"] && !item.keg && !item.mixed) ||
-    (this.state.formatSelections["Mixed case"] && item.mixed) ||
-    (this.state.formatSelections["Minikeg"] && item.keg);
+    (this.state.formatSelections[REGULAR] && !item.keg && !item.mixed) ||
+    (this.state.formatSelections[MIXED_CASE] && item.mixed) ||
+    (this.state.formatSelections[MINIKEG] && item.keg);
 
   private handleToggleBrewerySelection = (key: string): void => {
     this.setState(state => {
