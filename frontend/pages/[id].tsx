@@ -1,10 +1,10 @@
 import React from "react";
 import _ from "underscore";
 import { GetStaticProps, GetStaticPaths } from "next";
-import Page from "../../components/Page";
-import App from "../../components/App";
-import { Item } from "../../utils/model";
-import { items } from "../../utils/inventory";
+import Page from "../components/Page";
+import App from "../components/App";
+import { Item } from "../utils/model";
+import { items } from "../utils/inventory";
 
 interface Props {
   brewery: string;
