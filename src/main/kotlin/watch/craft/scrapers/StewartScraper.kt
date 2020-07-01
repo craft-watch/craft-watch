@@ -30,7 +30,7 @@ class StewartScraper : Scraper {
           abv = alco.extractFrom(regex = "(\\d+(\\.\\d+)?)%")[1].toDouble(),
           sizeMl = volume.extractFrom(regex = "(\\d+)ml")[1].toInt(),
           available = true,
-          perItemPrice = doc.extractFrom(".priceNow", "£(\\d+\\.\\d+)")[1].toDouble()
+          price = doc.extractFrom(".priceNow", "£(\\d+\\.\\d+)")[1].toDouble()
         )
       }
     }

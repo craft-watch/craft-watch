@@ -25,7 +25,8 @@ class VillagesScraper : Scraper {
           sizeMl = doc.maybeExtractFrom(regex = "(\\d+)ml")?.get(1)?.toInt(),
           abv = parts.abv,
           available = details.available,
-          perItemPrice = details.price.divideAsPrice(parts.numCans)
+          numItems = parts.numCans,
+          price = details.price
         )
       }
     }

@@ -29,10 +29,6 @@ class ThornbridgeScraper : Scraper {
 
         // TODO - identify mixed packs
 
-        val numCans = desc.maybeExtractFrom(regex = "(\\d+)\\s*x")?.get(1)?.toInt()
-          ?: rawName.maybeExtract(regex = "(\\d+)\\s*x")?.get(1)?.toInt()
-          ?: 1
-
         Item(
           thumbnailUrl = doc.srcFrom(".product__image-wrapper img"),
           name = parts[1].replace(" (bottle|can)$".toRegex(IGNORE_CASE), ""),
@@ -42,7 +38,10 @@ class ThornbridgeScraper : Scraper {
           sizeMl = desc.maybeExtractFrom(regex = "(\\d+)ml")?.get(1)?.toInt(),
           abv = parts[2].toDouble(),
           available = "sold-out" !in el.classNames(),
-          perItemPrice = el.priceFrom(".product-item--price").divideAsPrice(numCans)
+          numItems = desc.maybeExtractFrom(regex = "(\\d+)\\s*x")?.get(1)?.toInt()
+            ?: rawName.maybeExtract(regex = "(\\d+)\\s*x")?.get(1)?.toInt()
+            ?: 1,
+          price = el.priceFrom(".product-item--price")
         )
       }
     }

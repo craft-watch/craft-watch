@@ -21,7 +21,6 @@ class FivePointsScraper : Scraper {
           "(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+((\\d+)\\s+x\\s+)?(\\d+)(ml|L)"
         ) ?: throw SkipItemException("Could not extract details")
 
-        val numCans = parts[5].ifBlank { "1" }.toInt()
         val sizeMl = parts[6].toInt() * (if (parts[7] == "L") 1000 else 1)
         Item(
           thumbnailUrl = el.srcFrom(".imageInnerWrap img"),
@@ -32,8 +31,8 @@ class FivePointsScraper : Scraper {
           abv = parts[2].toDouble(),
           sizeMl = sizeMl,
           available = doc.maybeSelectFrom(".unavailableItemWrap") == null,
-          perItemPrice = el.extractFrom(".priceStandard", "£(\\d+\\.\\d+)")[1].toDouble()
-            .divideAsPrice(numCans)
+          numItems = parts[5].ifBlank { "1" }.toInt(),
+          price = el.extractFrom(".priceStandard", "£(\\d+\\.\\d+)")[1].toDouble()
         )
       }
     }

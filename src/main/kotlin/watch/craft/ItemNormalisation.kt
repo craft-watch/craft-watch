@@ -21,7 +21,7 @@ fun Scraper.Item.normalise(brewery: String, url: URI) = Item(
   sizeMl = sizeMl,
   abv = abv
     ?.validate("sane ABV") { it < MAX_ABV },
-  perItemPrice = perItemPrice
+  perItemPrice = price.divideAsPrice(numItems)  // TODO - separate
     .validate("sane price per ml") { (it / (sizeMl ?: 330)) < MAX_PRICE_PER_ML },
   available = available,
   thumbnailUrl = thumbnailUrl

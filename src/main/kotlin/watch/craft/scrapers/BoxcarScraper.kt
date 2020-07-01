@@ -29,7 +29,7 @@ class BoxcarScraper : Scraper {
             ?.replace("^DESCRIPTION".toRegex(IGNORE_CASE), ""),
           sizeMl = parts[4].toInt(),
           available = details.available,
-          perItemPrice = details.price
+          price = details.price
         )
       }
     }

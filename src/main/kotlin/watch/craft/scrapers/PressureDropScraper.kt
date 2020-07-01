@@ -32,7 +32,7 @@ class PressureDropScraper : Scraper {
           abv = itemText.maybeExtract("(\\d+(\\.\\d+)?)\\s*%")?.get(1)?.toDouble(),
           sizeMl = itemText.maybeExtract("(\\d+)ml")?.get(1)?.toInt(),
           available = true,
-          perItemPrice = doc.priceFrom(".ProductPrice")
+          price = doc.priceFrom(".ProductPrice")
         )
       }
     }

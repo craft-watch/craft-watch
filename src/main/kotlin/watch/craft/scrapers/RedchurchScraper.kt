@@ -30,6 +30,8 @@ class RedchurchScraper : Scraper {
           throw SkipItemException("Can't identify ABV or size for non-mixed case, so assume it's not a beer")
         }
 
+        val bestDeal = doc.extractBestDeal()
+
         Item(
           thumbnailUrl = doc.srcFrom(".product-single__photo")
             .toString()
@@ -41,12 +43,13 @@ class RedchurchScraper : Scraper {
           sizeMl = sizeMl,
           abv = abv,
           available = el.maybeSelectFrom(".sold-out-text") == null,
-          perItemPrice = doc.extractBestPerItemPrice()
+          numItems = bestDeal.numItems,
+          price = bestDeal.price
         )
       }
     }
 
-  private fun Document.extractBestPerItemPrice(): Double {
+  private fun Document.extractBestDeal(): ItemPrice {
     val json = selectFrom("#ProductJson-product-template")
 
     @Suppress("UNCHECKED_CAST")
@@ -56,14 +59,20 @@ class RedchurchScraper : Scraper {
       }
       .maxBy { it.price }!!   // Assume highest price gives us the best deal
 
-    val numItems = winner.title.maybeExtract("^(\\d+)")?.get(1)?.toInt()
-      ?: throw SkipItemException("Don't know how to identify number of items")
-
-    return winner.price.divideAsPrice(numItems)
+    return ItemPrice(
+      numItems = winner.title.maybeExtract("^(\\d+)")?.get(1)?.toInt()
+        ?: throw SkipItemException("Don't know how to identify number of items"),
+      price = winner.price
+    )
   }
 
   private data class Variant(
     val title: String,
+    val price: Double
+  )
+
+  private data class ItemPrice(
+    val numItems: Int,
     val price: Double
   )
 }
