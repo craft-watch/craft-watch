@@ -54,12 +54,16 @@ export default class Menu extends React.Component<MenuProps, State> {
             onToggleSelection={this.props.onToggleFormatSelection}
             onGlobalSelection={this.props.onGlobalFormatSelection}
           />
-          <Section
-            title="Breweries"
-            selections={this.props.brewerySelections}
-            onToggleSelection={this.props.onToggleBrewerySelection}
-            onGlobalSelection={this.props.onGlobalBrewerySelection}
-          />
+          {
+            (_.size(this.props.brewerySelections) > 1) && (
+              <Section
+                title="Breweries"
+                selections={this.props.brewerySelections}
+                onToggleSelection={this.props.onToggleBrewerySelection}
+                onGlobalSelection={this.props.onGlobalBrewerySelection}
+              />
+            )
+          }
         </div>
         <div className="copyright">© <a href="https://github.com/oliver-charlesworth">Oliver Charlesworth</a> 2020</div>
       </div>
