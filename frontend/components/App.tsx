@@ -17,13 +17,18 @@ class App extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      brewerySelections: _.object(_.uniq(_.map(props.items, item => [item.brewery, true]), true, p => p[0])),
-      formatSelections: {
-        "Regular": true,
-        "Mixed case": true,
-        "Minikeg": true,
-      },
+      brewerySelections: this.initialSelections(this.uniqueBreweries(props.items)),
+      formatSelections: this.initialSelections(["Regular", "Mixed case", "Minikeg"]),
     };
+  }
+
+  componentDidUpdate(prevProps: Props): void {
+    const breweries = this.uniqueBreweries(this.props.items);
+    const prevBreweries = this.uniqueBreweries(prevProps.items);
+    if (!_(breweries).isEqual(prevBreweries)) {
+      // TODO - retain selection for retained item
+      this.setState({ brewerySelections: this.initialSelections(breweries) });
+    }
   }
 
   render(): JSX.Element {
@@ -87,6 +92,10 @@ class App extends React.Component<Props, State> {
       return { formatSelections };
     });
   };
+
+  private initialSelections = (keys: Array<string>): Selections => _.object(_.map(keys, b => [b, true]));
+
+  private uniqueBreweries = (items: Array<Item>): Array<string> => _.uniq(_.map(items, item => item.brewery));
 }
 
 export default App;

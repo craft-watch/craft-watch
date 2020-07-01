@@ -1,28 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import _ from "underscore";
-import { GetServerSideProps } from "next";
 import Page from "../components/Page";
 import App from "../components/App";
 import { Item } from "../utils/model";
-import { items } from "../utils/inventory";
+import { items as inventoryItems } from "../utils/inventory";
 
-interface Props {
-  items: Array<Item>;
-}
+const ThisPage = (): JSX.Element => {
+  const [items, setItems] = useState<Array<Item>>([]);
 
-const IndexPage = (props: Props): JSX.Element => (
-  <Page
-    title = {"Craft Watch - taster menu"}
-    description = {"Taster menu of beer prices from across the UK"}
-  >
-    <App items={props.items} />
-  </Page>
-);
+  // TODO - is there a better way to avoid this being captured by SSG?
+  useEffect(() => {
+    setItems(_.sample(_.filter(inventoryItems, item => !item.keg && !item.mixed && item.available), 30));
+  }, []);
 
-export default IndexPage;
+  return (
+    <Page
+      title = {"Craft Watch - taster menu"}
+      description = {"Taster menu of beer prices from across the UK"}
+    >
+      <App items={items} />
+    </Page>
+  );
+};
 
-export const getServerSideProps: GetServerSideProps<Props> = async () => ({
-  props: {
-    items: _.sample(items, 30)
-  }
-});
+export default ThisPage;
