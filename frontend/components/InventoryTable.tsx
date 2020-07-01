@@ -1,7 +1,7 @@
 import _ from "underscore";
 import SortableTable, { Column, Renderer } from "./SortableTable";
 import React from "react";
-import { Item } from "./model";
+import { Item } from "../utils/model";
 
 export interface InventoryTableProps {
   items: Array<Item>;
