@@ -69,7 +69,7 @@ const renderName: Renderer<Item> = item => (
 
 // TODO - collapse successive newlines
 const renderTooltipText = (item: Item): JSX.Element => (
-  <span className="tooltip-text">
+  <span className="tooltip-text" style={{ display: "hidden" }}>
     {item.desc && _.map(item.desc.split("\n"), (para, idx) => <p key={idx}>{para}</p>)}
     <div className="disclaimer">© {item.brewery}</div>
   </span>

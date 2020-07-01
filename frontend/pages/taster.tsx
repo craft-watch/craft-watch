@@ -15,8 +15,8 @@ const ThisPage = (): JSX.Element => {
 
   return (
     <Page
-      title = {"Craft Watch - taster menu"}
-      description = {"Taster menu of beer prices from across the UK"}
+      title = "Craft Watch - taster menu"
+      description = "Taster menu of beer prices from across the UK"
     >
       <App items={items} />
     </Page>
