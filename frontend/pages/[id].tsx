@@ -5,6 +5,7 @@ import Page from "../components/Page";
 import App from "../components/App";
 import { Item } from "../utils/model";
 import { items } from "../utils/inventory";
+import { toSafePathPart } from "../utils/stuff";
 
 interface Props {
   brewery: string;
@@ -38,4 +39,4 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   };
 };
 
-const safeNamesToItems = _.groupBy(items, item => item.brewery.toLowerCase().replace(/[^0-9a-z]/g, "-"));
+const safeNamesToItems = _.groupBy(items, item => toSafePathPart(item.brewery));
