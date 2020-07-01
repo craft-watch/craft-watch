@@ -61,7 +61,7 @@ class ExecutorTest {
               mixed = mixed,
               sizeMl = sizeMl,
               abv = abv,
-              perItemPrice = perItemPrice,
+              perItemPrice = price,
               available = available,
               thumbnailUrl = thumbnailUrl.toString(),
               url = productUrl("a").toString()
@@ -77,7 +77,7 @@ class ExecutorTest {
               mixed = mixed,
               sizeMl = sizeMl,
               abv = abv,
-              perItemPrice = perItemPrice,
+              perItemPrice = price,
               available = available,
               thumbnailUrl = thumbnailUrl.toString(),
               url = productUrl("b").toString()
@@ -108,8 +108,8 @@ class ExecutorTest {
   fun `de-duplicates by picking best price`() {
     whenever(scraper.scrapeIndex(any())) doReturn listOf(
       indexEntry("a") { product("Foo") },
-      indexEntry("b") { product("Foo").copy(perItemPrice = DECENT_PRICE / 2) },
-      indexEntry("c") { product("Foo").copy(perItemPrice = DECENT_PRICE * 2) }
+      indexEntry("b") { product("Foo").copy(price = DECENT_PRICE / 2) },
+      indexEntry("c") { product("Foo").copy(price = DECENT_PRICE * 2) }
     )
 
     // Only one item returned, with best price
@@ -195,7 +195,7 @@ class ExecutorTest {
     private fun product(name: String) = Scraper.Item(
       name = name,
       summary = "${name} is great",
-      perItemPrice = DECENT_PRICE,
+      price = DECENT_PRICE,
       sizeMl = 440,
       abv = 6.9,
       available = true,

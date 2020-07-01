@@ -1,7 +1,6 @@
 package watch.craft.storage
 
 import mu.KotlinLogging
-import watch.craft.FatalScraperException
 import watch.craft.sha1
 import java.net.URI
 

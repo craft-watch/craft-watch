@@ -82,6 +82,17 @@ const renderSize: Renderer<Item> = item =>
   (item.sizeMl < 1000) ? `${item.sizeMl} ml` :
   `${item.sizeMl / 1000} litres`;
 
-const renderPrice: Renderer<Item> = item => `£${item.perItemPrice.toFixed(2)}`;
+const renderPrice: Renderer<Item> = item => (
+  <div>
+    £{item.perItemPrice.toFixed(2)}
+    {
+      (item.numItems > 1) && (
+        <p className="summary">
+          &times; {item.numItems} items
+        </p>
+      )
+    }
+  </div>
+);
 
 export default InventoryTable;

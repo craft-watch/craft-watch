@@ -4,8 +4,6 @@ import com.nhaarman.mockitokotlin2.*
 import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
-import org.junit.jupiter.api.assertThrows
-import watch.craft.FatalScraperException
 import watch.craft.sha1
 import java.net.URI
 

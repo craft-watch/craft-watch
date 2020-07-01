@@ -27,6 +27,7 @@ class VillagesScraperTest {
         summary = "Pale Ale",
         abv = 4.6,
         sizeMl = 330,
+        numItems = 12,
         perItemPrice = 2.13,
         available = true,
         url = "https://villagesbrewery.com/collections/buy-beer/products/rodeo-pale-ale",
@@ -46,6 +47,7 @@ class VillagesScraperTest {
         mixed = true,
         abv = null,   // Can't find this!
         sizeMl = 330,
+        numItems = 24,
         perItemPrice = 2.19,
         available = true,
         url = "https://villagesbrewery.com/collections/buy-beer/products/villages-mixed-case",

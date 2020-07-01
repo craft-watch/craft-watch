@@ -11,6 +11,7 @@ export interface Item {
   mixed: boolean;
   sizeMl?: number;
   abv?: number;
+  numItems: number;
   perItemPrice: number;
   available: boolean;
   thumbnailUrl: string;
