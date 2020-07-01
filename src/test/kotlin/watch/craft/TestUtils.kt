@@ -19,10 +19,14 @@ fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE): List<It
   val store = WriteThroughObjectStore(
     firstLevel = LocalObjectStore(CACHE_DIR),
     secondLevel = GcsObjectStore(GCS_BUCKET)
-  ).let { if (live) it else ReadOnlyObjectStore(it) }
+  )
 
   val structure = StoreStructure(store, instant)
-  val getter = CachingGetter(structure.cache)
+  val getter = if (live) {
+    CachingGetter(structure.cache)
+  } else {
+    CachingGetter(structure.cache) { throw FatalScraperException("Non-live tests should not perform network gets") }
+  }
   return Executor(getter).scrape(scraper).items
 }
 

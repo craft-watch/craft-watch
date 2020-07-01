@@ -10,15 +10,8 @@ class StoreStructure(
 ) {
   private val todayDir = DATE_FORMAT.format(start)
 
-  val cache = SubObjectStore(
-    "$todayDir/$CACHE_DIRNAME",
-    store
-  )
-
-  val results = SubObjectStore(
-    "$todayDir/$RESULTS_DIRNAME/${TIME_FORMAT.format(start)}",
-    store
-  )
+  val cache = SubObjectStore(store, "$todayDir/$CACHE_DIRNAME")
+  val results = SubObjectStore(store, "$todayDir/$RESULTS_DIRNAME/${TIME_FORMAT.format(start)}")
 
   companion object {
     const val CACHE_DIRNAME = "cache"
