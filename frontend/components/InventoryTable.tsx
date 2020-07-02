@@ -47,7 +47,11 @@ const InventoryTable: React.FC<InventoryTableProps> = (props) => (
   </SortableTable>
 );
 
-const renderBrewery: Renderer<Item> = item => <Link href={`/${toSafePathPart(item.brewery)}`}>{item.brewery}</Link>;
+const renderBrewery: Renderer<Item> = item => (
+  <Link href={`/${toSafePathPart(item.brewery)}`}>
+    <a>{item.brewery}</a>
+  </Link>
+);
 
 const renderThumbnail: Renderer<Item> = item => (
   <a href={item.url}>

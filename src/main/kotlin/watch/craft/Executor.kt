@@ -5,15 +5,25 @@ import org.jsoup.Jsoup
 import watch.craft.Scraper.IndexEntry
 import watch.craft.storage.CachingGetter
 import java.net.URI
+import java.time.Clock
 import java.util.stream.Collectors.toList
 
-class Executor(private val getter: CachingGetter) {
+class Executor(
+  private val getter: CachingGetter,
+  private val clock: Clock = Clock.systemUTC()
+) {
   private val logger = KotlinLogging.logger {}
 
-  fun scrape(vararg scrapers: Scraper) = Inventory(
-    items = scrapers.flatMap { ScraperExecutor(it).execute() }
+  fun scrape(vararg scrapers: Scraper): Inventory {
+    val items = scrapers.flatMap { ScraperExecutor(it).execute() }
       .also { it.logStats() }
-  )
+    return Inventory(
+      metadata = Metadata(
+        capturedAt = clock.instant()
+      ),
+      items = items
+    )
+  }
 
   inner class ScraperExecutor(private val scraper: Scraper) {
     private val brewery = scraper.name

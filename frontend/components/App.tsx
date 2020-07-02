@@ -4,8 +4,10 @@ import { Item } from "../utils/model";
 import Menu, { Selections, Section } from "./Menu";
 import InventoryTable from "./InventoryTable";
 import { MIXED_CASE, MINIKEG, REGULAR, OUT_OF_STOCK } from "../utils/strings";
+import { Moment } from "moment";
 
 interface Props {
+  capturedAt: Moment;
   items: Array<Item>;
 }
 
@@ -41,7 +43,7 @@ class App extends React.Component<Props, State> {
           Click on an image to go to the brewery shop!
         </div>
 
-        <Menu>
+        <Menu capturedAt={this.props.capturedAt}>
           <Section
             title="Formats"
             selections={this.state.formatSelections}

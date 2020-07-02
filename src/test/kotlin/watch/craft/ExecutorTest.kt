@@ -8,12 +8,15 @@ import org.junit.jupiter.api.assertThrows
 import watch.craft.Scraper.IndexEntry
 import watch.craft.storage.CachingGetter
 import java.net.URI
+import java.time.Clock
+import java.time.Instant
+import java.time.ZoneId
 
 class ExecutorTest {
   private val getter = mock<CachingGetter> {
     on { request(any()) } doAnswer { "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>".toByteArray() }
   }
-  private val executor = Executor(getter)
+  private val executor = Executor(getter, Clock.fixed(NOW, ZoneId.systemDefault()))
   private val scraper = mock<Scraper> {
     on { name } doReturn BREWERY
     on { rootUrls } doReturn listOf(ROOT_URL_BEERS, ROOT_URL_PACKS)
@@ -50,7 +53,10 @@ class ExecutorTest {
 
     assertEquals(
       Inventory(
-        listOf(
+        metadata = Metadata(
+          capturedAt = NOW
+        ),
+        items = listOf(
           with(product("Foo")) {
             Item(
               brewery = BREWERY,
@@ -191,6 +197,7 @@ class ExecutorTest {
     private val ROOT_URL_BEERS = URI("https://example.invalid/beers")
     private val ROOT_URL_PACKS = URI("https://example.invalid/packs")
     private const val DECENT_PRICE = 2.46
+    private val NOW = Instant.EPOCH
 
     private fun product(name: String) = Scraper.Item(
       name = name,

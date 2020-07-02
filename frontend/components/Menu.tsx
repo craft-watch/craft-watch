@@ -1,10 +1,12 @@
 import React, { ReactElement } from "react";
 import _ from "underscore";
+import { Moment } from "moment";
 
 export type Selections = { [key: string]: boolean };
 
 interface MenuProps {
   children: ReactElement<SectionProps> | Array<ReactElement<SectionProps> | boolean>;
+  capturedAt: Moment;
 }
 
 interface SectionProps {
@@ -47,7 +49,12 @@ export default class Menu extends React.Component<MenuProps, State> {
         <div className="content">
           {this.props.children}
         </div>
-        <div className="copyright">© <a href="https://github.com/oliver-charlesworth">Oliver Charlesworth</a> 2020</div>
+        <div className="info">
+          Data captured: {this.props.capturedAt.local().format("lll")}.
+          <div className="copyright">
+            © <a href="https://github.com/oliver-charlesworth">Oliver Charlesworth</a> 2020
+          </div>
+        </div>
       </div>
     );
   }
