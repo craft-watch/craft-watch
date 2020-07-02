@@ -15,7 +15,8 @@ interface Props<T> {
   data: Array<T>;
 }
 
-export class Column<T> extends React.PureComponent<ColumnProps<T>> {}
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const Column = <T extends unknown>(_: ColumnProps<T>): null => null;
 
 const SortableTable = <T extends unknown>(props: Props<T>): JSX.Element => {
   const [sortColIdx, setSortColIdx] = useState<number | null>(null);
