@@ -1,92 +1,77 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import _ from "underscore";
 
 export type Renderer<T> = (datum: T) => JSX.Element | string | null;
 
-export interface ColumnProps<T> {
+interface ColumnProps<T> {
   name?: JSX.Element | string;
   className?: string;
   render: Renderer<T>;
   selector?: (datum: T) => any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
-export interface SortableTableProps<T> {
+interface Props<T> {
   children: ReactElement<ColumnProps<T>> | Array<ReactElement<ColumnProps<T>>>;
   data: Array<T>;
 }
 
-interface State {
-  sortColIdx: number | null;
-  sortDescending: boolean;
-}
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const Column = <T extends unknown>(_: ColumnProps<T>): null => null;
 
-export class Column<T> extends React.PureComponent<ColumnProps<T>> {}
+const SortableTable = <T extends unknown>(props: Props<T>): JSX.Element => {
+  const [sortColIdx, setSortColIdx] = useState<number | null>(null);
+  const [sortDescending, setSortDescending] = useState<boolean>(false);
 
-export default class SortableTable<T> extends React.Component<SortableTableProps<T>, State> {
-  constructor(props: SortableTableProps<T>) {
-    super(props);
-    this.state = {
-      sortColIdx: null,
-      sortDescending: false,
-    };
-  }
+  // TODO - useCallback?
+  const handleHeaderClick = (idx: number) => {
+    setSortColIdx(idx);
+    setSortDescending((sortColIdx === idx) ? !sortDescending : false);
+  };
 
-  // TODO - memoize sorted data
-  // TODO - reset state if column config changes
+  const columns = React.Children.toArray(props.children) as Array<ReactElement<ColumnProps<T>>>;
 
-  render(): JSX.Element {
-    const columns = React.Children.toArray(this.props.children) as Array<ReactElement<ColumnProps<T>>>;
-    return (
-      <table>
-        <thead>
-          <tr>
-            {
-              columns.map((col, idx) => {
-                const className = (this.state.sortColIdx !== idx) ? "sort-none"
-                  : this.state.sortDescending ? "sort-desc" : "sort-asc";
+  const selector = (sortColIdx === null) ? null : columns[sortColIdx].props.selector;
+  const sortedData = selector ? _.sortBy(props.data, selector) : props.data;
+  const sortedData2 = sortDescending ? sortedData.reverse() : sortedData;
 
-                return (col.props.selector)
-                  ? (
-                    <th
-                      key={idx}
-                      className={[className, col.props.className].join(" ")}
-                      onClick={() => this.handleHeaderClick(idx)}
-                    >
-                      {col.props.name}
-                    </th>
-                  )
-                  : <th key={idx} className={col.props.className}>{col.props.name}</th>;
-              })
-            }
-          </tr>
-        </thead>
-        <tbody>
+  return (
+    <table>
+      <thead>
+        <tr>
           {
-            this.getSortedData(columns).map((datum, idx) => (
-              <tr key={idx}>
-                {
-                  columns.map((col, idx) => (
-                    <td key={idx} className={col.props.className}>{col.props.render(datum)}</td>
-                  ))
-                }
-              </tr>
-            ))
+            columns.map((col, idx) => {
+              const className = (sortColIdx !== idx) ? "sort-none" : sortDescending ? "sort-desc" : "sort-asc";
+
+              return (col.props.selector)
+                ? (
+                  <th
+                    key={idx}
+                    className={[className, col.props.className].join(" ")}
+                    onClick={() => handleHeaderClick(idx)}
+                  >
+                    {col.props.name}
+                  </th>
+                )
+                : <th key={idx} className={col.props.className}>{col.props.name}</th>;
+            })
           }
-        </tbody>
-      </table>
-    );
-  }
+        </tr>
+      </thead>
+      <tbody>
+        {
+          sortedData2.map((datum, idx) => (
+            <tr key={idx}>
+              {
+                columns.map((col, idx) => (
+                  <td key={idx} className={col.props.className}>{col.props.render(datum)}</td>
+                ))
+              }
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  );
+};
 
-  private handleHeaderClick(idx: number): void {
-    this.setState(state => ({
-      sortColIdx: idx,
-      sortDescending: (state.sortColIdx === idx) ? !state.sortDescending : false,
-    }));
-  }
-
-  private getSortedData(columns: Array<ReactElement<ColumnProps<T>>>): Array<T> {
-    const selector = (this.state.sortColIdx === null) ? null : columns[this.state.sortColIdx].props.selector;
-    const sortedData = selector ? _.sortBy(this.props.data, selector) : this.props.data;
-    return this.state.sortDescending ? sortedData.reverse() : sortedData;
-  }
-}
+export default SortableTable;

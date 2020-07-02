@@ -1,10 +1,10 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import _ from "underscore";
 import { Moment } from "moment";
 
 export type Selections = { [key: string]: boolean };
 
-interface MenuProps {
+interface Props {
   children: ReactElement<SectionProps> | Array<ReactElement<SectionProps> | boolean>;
   capturedAt: Moment;
 }
@@ -16,49 +16,34 @@ interface SectionProps {
   onGlobalSelection: (selection: boolean) => void;
 }
 
-interface State {
-  expanded: boolean;
-}
+const Menu = (props: Props): JSX.Element => {
+  const [expanded, setExpanded] = useState<boolean>(false);
 
-export default class Menu extends React.Component<MenuProps, State> {
-  constructor(props: MenuProps) {
-    super(props);
-    this.state = {
-      expanded: false,
-    };
-  }
+  const renderCollapsed = (): JSX.Element => (
+    <div className="menu-hamburger">
+      <div onClick={() => setExpanded(true)}>Refine search ...</div>
+    </div>
+  );
 
-  render(): JSX.Element {
-    return this.state.expanded ? this.renderExpanded() : this.renderCollapsed();
-  }
-
-  private renderCollapsed(): JSX.Element {
-    return (
-      <div className="menu-hamburger">
-        <div onClick={() => this.setState({ expanded: true })}>Refine search ...</div>
+  const renderExpanded = (): JSX.Element => (
+    <div className="menu">
+      <div className="menu-button">
+        <span onClick={() => setExpanded(false)}>&times;</span>
       </div>
-    );
-  }
-
-  private renderExpanded(): JSX.Element {
-    return (
-      <div className="menu">
-        <div className="menu-button">
-          <span onClick={() => this.setState({ expanded: false })}>&times;</span>
-        </div>
-        <div className="content">
-          {this.props.children}
-        </div>
-        <div className="info">
-          Data captured: {this.props.capturedAt.local().format("lll")}.
-          <div className="copyright">
-            © <a href="https://github.com/oliver-charlesworth">Oliver Charlesworth</a> 2020
-          </div>
+      <div className="content">
+        {props.children}
+      </div>
+      <div className="info">
+        Data captured: {props.capturedAt.local().format("lll")}.
+        <div className="copyright">
+          © <a href="https://github.com/oliver-charlesworth">Oliver Charlesworth</a> 2020
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+
+  return expanded ? renderExpanded() : renderCollapsed();
+};
 
 export const Section: React.FC<SectionProps> = (props) => (
   <div className="section">
@@ -87,3 +72,5 @@ export const Section: React.FC<SectionProps> = (props) => (
 
   </div>
 );
+
+export default Menu;
