@@ -1,5 +1,6 @@
 export interface Inventory {
   metadata: Metadata;
+  categories: Array<string>;
   items: Array<Item>;
 }
 
@@ -19,6 +20,7 @@ export interface Item {
   numItems: number;
   perItemPrice: number;
   available: boolean;
+  categories: Array<string>;
   thumbnailUrl: string;
   url: string;
 }

@@ -4,6 +4,7 @@ import java.time.Instant
 
 data class Inventory(
   val metadata: Metadata,
+  val categories: List<String>,
   val items: List<Item>
 )
 
@@ -23,6 +24,7 @@ data class Item(
   val numItems: Int = 1,
   val perItemPrice: Double,
   val available: Boolean,
+  val categories: Set<String> = emptySet(),
   val thumbnailUrl: String,
   val url: String
 )

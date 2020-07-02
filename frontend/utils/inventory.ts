@@ -6,3 +6,4 @@ const inventory = (_inventory as Inventory);
 
 export const capturedAt = moment(inventory.metadata.capturedAt);
 export const items = inventory.items;
+export const categories = inventory.categories;

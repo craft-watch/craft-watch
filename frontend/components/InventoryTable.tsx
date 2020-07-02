@@ -2,16 +2,17 @@ import _ from "underscore";
 import React from "react";
 import Link from "next/link";
 import { Item } from "../utils/model";
-import SortableTable, { Column, Renderer } from "./SortableTable";
+import SortableTable, { Column, Renderer, Section } from "./SortableTable";
 import { toSafePathPart } from "../utils/stuff";
 import { OUT_OF_STOCK, MINIKEG, MIXED_CASE } from "../utils/strings";
 
-export interface InventoryTableProps {
+interface Props {
   items: Array<Item>;
+  categories: Array<string>;
 }
 
-const InventoryTable: React.FC<InventoryTableProps> = (props) => (
-  <SortableTable data={props.items}>
+const InventoryTable: React.FC<Props> = (props) => (
+  <SortableTable sections={partitionItems(props.items, props.categories)}>
     <Column
       name="Brewery"
       render={renderBrewery}
@@ -46,6 +47,14 @@ const InventoryTable: React.FC<InventoryTableProps> = (props) => (
     />
   </SortableTable>
 );
+
+// TODO - may want to randomise selection for items with more than one category
+const partitionItems = (items: Array<Item>, categories: Array<string>): Array<Section<Item>> => {
+  const other = "Other";
+  const partitioned = _.groupBy(items, item => item.categories[0] || other);
+  // Ensure we uphold preferred display order
+  return _.map(categories.concat(other), c => ({ name: c, data: partitioned[c] }));
+};
 
 const renderBrewery: Renderer<Item> = item => (
   <Link href={`/${toSafePathPart(item.brewery)}`}>

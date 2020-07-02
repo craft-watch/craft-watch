@@ -10,9 +10,14 @@ interface ColumnProps<T> {
   selector?: (datum: T) => any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
+export interface Section<T> {
+  name: string;
+  data: Array<T>;
+}
+
 interface Props<T> {
   children: ReactElement<ColumnProps<T>> | Array<ReactElement<ColumnProps<T>>>;
-  data: Array<T>;
+  sections: Array<Section<T>>;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -29,10 +34,7 @@ const SortableTable = <T extends unknown>(props: Props<T>): JSX.Element => {
   };
 
   const columns = React.Children.toArray(props.children) as Array<ReactElement<ColumnProps<T>>>;
-
   const selector = (sortColIdx === null) ? null : columns[sortColIdx].props.selector;
-  const sortedData = selector ? _.sortBy(props.data, selector) : props.data;
-  const sortedData2 = sortDescending ? sortedData.reverse() : sortedData;
 
   return (
     <table>
@@ -57,19 +59,34 @@ const SortableTable = <T extends unknown>(props: Props<T>): JSX.Element => {
           }
         </tr>
       </thead>
-      <tbody>
-        {
-          sortedData2.map((datum, idx) => (
-            <tr key={idx}>
+      {
+        // TODO - no header if only one section
+        _.map(props.sections, section => {
+          const sorted = selector ? _.sortBy(section.data, selector) : section.data;
+          const maybeReversed = sortDescending ? sorted.reverse() : sorted;
+
+          return (_.size(section.data) > 1) && (
+            <tbody key={section.name}>
+              <tr>
+                <th colSpan={_.size(columns)}>
+                  <div className="table-section">{section.name}</div>
+                </th>
+              </tr>
               {
-                columns.map((col, idx) => (
-                  <td key={idx} className={col.props.className}>{col.props.render(datum)}</td>
+                maybeReversed.map((datum, idx) => (
+                  <tr key={idx}>
+                    {
+                      columns.map((col, idx) => (
+                        <td key={idx} className={col.props.className}>{col.props.render(datum)}</td>
+                      ))
+                    }
+                  </tr>
                 ))
               }
-            </tr>
-          ))
-        }
-      </tbody>
+            </tbody>
+          );
+        })
+      }
     </table>
   );
 };

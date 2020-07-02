@@ -1,7 +1,7 @@
 import React from "react";
 import _ from "underscore";
 import { Item } from "../utils/model";
-import Menu, { Selections, Section } from "./Menu";
+import Menu, { Selections, Section as MenuSection } from "./Menu";
 import InventoryTable from "./InventoryTable";
 import { MIXED_CASE, MINIKEG, REGULAR, OUT_OF_STOCK } from "../utils/strings";
 import { Moment } from "moment";
@@ -9,6 +9,7 @@ import { Moment } from "moment";
 interface Props {
   capturedAt: Moment;
   items: Array<Item>;
+  categories: Array<string>;
 }
 
 interface State {
@@ -44,13 +45,13 @@ class App extends React.Component<Props, State> {
         </div>
 
         <Menu capturedAt={this.props.capturedAt}>
-          <Section
+          <MenuSection
             title="Formats"
             selections={this.state.formatSelections}
             onToggleSelection={(key) => this.handleToggleFormatSelection(key)}
             onGlobalSelection={(selected) => this.handleGlobalFormatSelection(selected)}
           />
-          <Section
+          <MenuSection
             title="Availability"
             selections={this.state.availabilitySelections}
             onToggleSelection={(key) => this.handleToggleAvailabilitySelection(key)}
@@ -58,7 +59,7 @@ class App extends React.Component<Props, State> {
           />
           {
             (_.size(this.state.brewerySelections) > 1) && (
-              <Section
+              <MenuSection
                 title="Breweries"
                 selections={this.state.brewerySelections}
                 onToggleSelection={(key) => this.handleToggleBrewerySelection(key)}
@@ -68,7 +69,7 @@ class App extends React.Component<Props, State> {
           }
         </Menu>
 
-        <InventoryTable items={this.filterItems()} />
+        <InventoryTable items={this.filterItems()} categories={this.props.categories} />
       </div>
     );
   }
