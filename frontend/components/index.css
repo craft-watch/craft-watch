@@ -234,7 +234,7 @@ img {
 /* Prevent clashing with e.g. copyright */
 .menu .content {
   overflow-y: auto;
-  max-height: 85vh;
+  max-height: 75vh;
 }
 
 .menu h4 {
@@ -246,12 +246,17 @@ img {
   margin-bottom: 30px;
 }
 
-.menu .copyright {
+.menu .info {
   font-size: small;
   position: absolute;
   margin: 0;
-  bottom: 40px;
+  bottom: 60px;
   right: 20px;
+  text-align: right;
+}
+
+.menu .copyright {
+  margin-top: 5px;
 }
 
 .menu a {
@@ -261,12 +266,12 @@ img {
   text-decoration: none;
 }
 
-.menu a:hover {
-  color: var(--sol-base1);
-}
-
 .menu a:visited {
   color: inherit;
+}
+
+.menu a:hover {
+  color: var(--sol-base1);
 }
 
 .all-or-none {

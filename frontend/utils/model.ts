@@ -1,5 +1,10 @@
 export interface Inventory {
+  metadata: Metadata;
   items: Array<Item>;
+}
+
+export interface Metadata {
+  capturedAt: string;   // TODO - can we specify this as Date directly?
 }
 
 export interface Item {
