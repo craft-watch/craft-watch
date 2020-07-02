@@ -54,8 +54,8 @@ table {
 }
 
 thead th {
-  background: var(--sol-base2);
-  /* color: var(--sol-base02); */
+  background: var(--sol-base01);
+  color: var(--sol-base03);
   top: 0px;
   font-size: larger;
   z-index: 1;
@@ -81,7 +81,8 @@ tbody th {
 }
 
 tbody th .table-section {
-  background: var(--sol-base2);
+  background: var(--sol-base1);
+  color: var(--sol-base03);
   border-radius: var(--sexy-radius);
   padding: 5px 10px;
 }
@@ -106,9 +107,14 @@ table a:visited {
   color: var(--sol-base00);
 }
 
-table a:hover, th.sort-none:hover, th.sort-asc:hover, th.sort-desc:hover {
+table a:hover {
   cursor: pointer;
   color: var(--sol-magenta);
+}
+
+th.sort-none:hover, th.sort-asc:hover, th.sort-desc:hover {
+  cursor: pointer;
+  color: var(--sol-base2);
 }
 
 th.sort-asc::after {
