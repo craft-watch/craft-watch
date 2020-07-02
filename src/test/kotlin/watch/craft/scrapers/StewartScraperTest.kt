@@ -3,9 +3,10 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-import watch.craft.Item
+import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
+import java.net.URI
 
 class StewartScraperTest {
   companion object {
@@ -14,22 +15,20 @@ class StewartScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(12, ITEMS.size)
+    assertEquals(14, ITEMS.size)
   }
 
   @Test
   fun `extracts beer details`() {
     assertEquals(
-      Item(
-        brewery = "Stewart Brewing",
+      ScrapedItem(
         name = "St Giles",
         summary = "Scotch Ale",
         sizeMl = 330,
         abv = 5.0,
-        perItemPrice = 1.80,
+        price = 1.80,
         available = true,
-        url = "https://www.stewartbrewing.co.uk/item/254/StewartBrewing/St-Giles.html",
-        thumbnailUrl = "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-st-giles-1592389432330ml-StGiles.png"
+        thumbnailUrl = URI("https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-st-giles-1592389432330ml-StGiles.png")
       ),
       ITEMS.byName("St Giles")
     )

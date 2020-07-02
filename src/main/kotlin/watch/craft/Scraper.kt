@@ -12,10 +12,10 @@ interface Scraper {
   data class IndexEntry(
     val rawName: String,
     val url: URI,
-    val scrapeItem: (doc: Document) -> Item
+    val scrapeItem: (doc: Document) -> ScrapedItem
   )
 
-  data class Item(
+  data class ScrapedItem(
     val name: String,
     val summary: String? = null,
     val desc: String? = null,

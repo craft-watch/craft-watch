@@ -3,7 +3,7 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Document
 import watch.craft.*
 import watch.craft.Scraper.IndexEntry
-import watch.craft.Scraper.Item
+import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class PressureDropScraper : Scraper {
@@ -24,7 +24,7 @@ class PressureDropScraper : Scraper {
           throw SkipItemException("Don't know how to identify number of cans for boxes")
         }
 
-        Item(
+        ScrapedItem(
           thumbnailUrl = a.srcFrom("noscript img"),
           name = parts[1],
           summary = parts[3].ifBlank { null },

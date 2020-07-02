@@ -1,34 +1,39 @@
-package watch.craft
+package watch.craft.executor
 
-import java.net.URI
+import watch.craft.InvalidItemException
+import watch.craft.Item
+import watch.craft.divideAsPrice
+import watch.craft.executor.ScraperExecutor.Result
 
-fun Scraper.Item.normalise(brewery: String, url: URI) = Item(
+fun Result.normalise() = Item(
   brewery = brewery
     .trim()
     .validate("non-blank brewery name") { it.isNotBlank() },
-  name = name
+  name = item.name
     .trim()
     .validate("non-blank item name") { it.isNotBlank() },
-  summary = summary
+  summary = item.summary
     ?.trim()
     ?.validate("non-blank summary") { it.isNotBlank() },
-  desc = desc
+  desc = item.desc
     ?.trim()
     ?.validate("non-blank description") { it.isNotBlank() },
-  keg = keg,
-  mixed = mixed,
+  keg = item.keg,
+  mixed = item.mixed,
   // TODO - validate sane size
-  sizeMl = sizeMl,
-  abv = abv
+  sizeMl = item.sizeMl,
+  abv = item.abv
     ?.validate("sane ABV") { it < MAX_ABV },
-  numItems = numItems,
-  perItemPrice = price.divideAsPrice(numItems)  // TODO - separate price field
-    .validate("sane price per ml") { (it / (sizeMl ?: 330)) < MAX_PRICE_PER_ML },
-  available = available,
-  thumbnailUrl = thumbnailUrl
+  numItems = item.numItems,
+  perItemPrice = item.price.divideAsPrice(item.numItems)  // TODO - separate price field
+    .validate("sane price per ml") {
+      (it / (item.sizeMl ?: 330)) < MAX_PRICE_PER_ML
+    },
+  available = item.available,
+  thumbnailUrl = item.thumbnailUrl
     .validate("absolute thumbnail URL") { it.isAbsolute }
     .toString(),
-  url = url
+  url = entry.url
     .validate("absolute URL") { it.isAbsolute }
     .toString()
 )

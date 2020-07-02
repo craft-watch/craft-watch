@@ -4,7 +4,7 @@ import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import watch.craft.*
 import watch.craft.Scraper.IndexEntry
-import watch.craft.Scraper.Item
+import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class FourpureScraper : Scraper {
@@ -23,7 +23,7 @@ class FourpureScraper : Scraper {
         }
 
         val parts = extractVariableParts(doc)
-        Item(
+        ScrapedItem(
           thumbnailUrl = a.srcFrom("img"),
           name = parts.name,
           desc = doc.maybeWholeTextFrom(".productDetailsWrap .innerContent"),

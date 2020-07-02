@@ -3,10 +3,11 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import watch.craft.Item
+import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
 import watch.craft.noDesc
+import java.net.URI
 
 class FivePointsScraperTest {
   companion object {
@@ -21,17 +22,15 @@ class FivePointsScraperTest {
   @Test
   fun `extracts beer details`() {
     assertEquals(
-      Item(
-        brewery = "Five Points",
+      ScrapedItem(
         name = "Five Points Pils",   // No size in title
         summary = "Pilsner",
         numItems = 12,
-        perItemPrice = 1.80,
+        price = 21.60,
         abv = 4.8,
         sizeMl = 330,
         available = true,
-        url = "https://shop.fivepointsbrewing.co.uk/item/8/FivePointsBrewing/FIVE-POINTS-PILS-12-PACK.html",
-        thumbnailUrl = "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-pils-1574871238PILS-Can-Mock-Up.png"
+        thumbnailUrl = URI("https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-pils-1574871238PILS-Can-Mock-Up.png")
       ),
       ITEMS.byName("Five Points Pils").noDesc()
     )

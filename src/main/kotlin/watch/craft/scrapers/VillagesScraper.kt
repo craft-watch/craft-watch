@@ -3,7 +3,7 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Document
 import watch.craft.*
 import watch.craft.Scraper.IndexEntry
-import watch.craft.Scraper.Item
+import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class VillagesScraper : Scraper {
@@ -16,7 +16,7 @@ class VillagesScraper : Scraper {
       IndexEntry(details.title, details.url) { doc ->
         val parts = extractVariableParts(details.title)
 
-        Item(
+        ScrapedItem(
           thumbnailUrl = details.thumbnailUrl,
           name = parts.name.toTitleCase(),
           summary = parts.summary,

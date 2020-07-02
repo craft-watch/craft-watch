@@ -3,7 +3,7 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Document
 import watch.craft.*
 import watch.craft.Scraper.IndexEntry
-import watch.craft.Scraper.Item
+import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class HowlingHopsScraper : Scraper {
@@ -20,7 +20,7 @@ class HowlingHopsScraper : Scraper {
       IndexEntry(rawName, a.hrefFrom()) { doc ->
         val parts = extractVariableParts(doc.textFrom(".woocommerce-product-details__short-description"))
 
-        Item(
+        ScrapedItem(
           thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
           name = parts.name,
           summary = parts.summary,

@@ -3,7 +3,7 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Document
 import watch.craft.*
 import watch.craft.Scraper.IndexEntry
-import watch.craft.Scraper.Item
+import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
@@ -26,7 +26,7 @@ class CanopyScraper : Scraper {
           throw SkipItemException("Can't extract number of cans for packs")
         }
 
-        Item(
+        ScrapedItem(
           thumbnailUrl = el.srcFrom(".grid__image img"),
           name = parts[1],
           summary = null,

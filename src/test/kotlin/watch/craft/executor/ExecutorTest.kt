@@ -1,10 +1,11 @@
-package watch.craft
+package watch.craft.executor
 
 import com.nhaarman.mockitokotlin2.*
 import org.jsoup.nodes.Document
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import watch.craft.*
 import watch.craft.Scraper.IndexEntry
 import watch.craft.storage.CachingGetter
 import java.net.URI
@@ -24,7 +25,7 @@ class ExecutorTest {
 
   @Test
   fun `passes correct URLs and HTML around`() {
-    val callback = mock<(Document) -> Scraper.Item> {
+    val callback = mock<(Document) -> Scraper.ScrapedItem> {
       on { invoke(any()) } doThrow SkipItemException("Emo town")
     }
     whenever(scraper.scrapeIndex(any())) doReturnConsecutively listOf(
@@ -73,7 +74,7 @@ class ExecutorTest {
               url = productUrl("a").toString()
             )
           },
-          with (product("Bar")) {
+          with(product("Bar")) {
             Item(
               brewery = BREWERY,
               name = name,
@@ -199,7 +200,7 @@ class ExecutorTest {
     private const val DECENT_PRICE = 2.46
     private val NOW = Instant.EPOCH
 
-    private fun product(name: String) = Scraper.Item(
+    private fun product(name: String) = Scraper.ScrapedItem(
       name = name,
       summary = "${name} is great",
       price = DECENT_PRICE,
@@ -209,7 +210,7 @@ class ExecutorTest {
       thumbnailUrl = URI("https://example.invalid/assets/${name}.jpg")
     )
 
-    private fun indexEntry(suffix: String, scrapeItem: (doc: Document) -> Scraper.Item) =
+    private fun indexEntry(suffix: String, scrapeItem: (doc: Document) -> Scraper.ScrapedItem) =
       IndexEntry(suffix, productUrl(suffix), scrapeItem)
 
     private fun productUrl(suffix: String) = URI("https://eaxmple.invalid/${suffix}")

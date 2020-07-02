@@ -3,10 +3,11 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import watch.craft.Item
+import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
 import watch.craft.noDesc
+import java.net.URI
 
 class HowlingHopsScraperTest {
   companion object {
@@ -15,23 +16,21 @@ class HowlingHopsScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(8, ITEMS.size)
+    assertEquals(10, ITEMS.size)
   }
 
   @Test
   fun `extracts sale price not original price`() {
     assertEquals(
-      Item(
-        brewery = "Howling Hops",
+      ScrapedItem(
         name = "Push Push",
         summary = "DDH Pale Ale",
         numItems = 4,
-        perItemPrice = 4.00,
+        price = 16.00,
         abv = 5.8,
         sizeMl = 440,
         available = true,
-        url = "https://www.howlinghops.co.uk/product/push-push-4-x-440ml/",
-        thumbnailUrl = "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png"
+        thumbnailUrl = URI("https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png")
       ),
       ITEMS.byName("Push Push").noDesc()
     )
