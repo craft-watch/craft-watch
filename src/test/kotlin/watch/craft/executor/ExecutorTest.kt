@@ -1,10 +1,11 @@
-package watch.craft
+package watch.craft.executor
 
 import com.nhaarman.mockitokotlin2.*
 import org.jsoup.nodes.Document
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import watch.craft.*
 import watch.craft.Scraper.IndexEntry
 import watch.craft.storage.CachingGetter
 import java.net.URI
@@ -73,7 +74,7 @@ class ExecutorTest {
               url = productUrl("a").toString()
             )
           },
-          with (product("Bar")) {
+          with(product("Bar")) {
             Item(
               brewery = BREWERY,
               name = name,

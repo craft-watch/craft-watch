@@ -1,7 +1,8 @@
-package watch.craft
+package watch.craft.executor
 
 import mu.KotlinLogging
 import org.jsoup.Jsoup
+import watch.craft.*
 import watch.craft.Scraper.IndexEntry
 import watch.craft.storage.CachingGetter
 import java.net.URI

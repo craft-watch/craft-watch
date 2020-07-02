@@ -1,5 +1,9 @@
-package watch.craft
+package watch.craft.executor
 
+import watch.craft.InvalidItemException
+import watch.craft.Item
+import watch.craft.Scraper
+import watch.craft.divideAsPrice
 import java.net.URI
 
 fun Scraper.Item.normalise(brewery: String, url: URI) = Item(
@@ -23,7 +27,9 @@ fun Scraper.Item.normalise(brewery: String, url: URI) = Item(
     ?.validate("sane ABV") { it < MAX_ABV },
   numItems = numItems,
   perItemPrice = price.divideAsPrice(numItems)  // TODO - separate price field
-    .validate("sane price per ml") { (it / (sizeMl ?: 330)) < MAX_PRICE_PER_ML },
+    .validate("sane price per ml") {
+      (it / (sizeMl ?: 330)) < MAX_PRICE_PER_ML
+    },
   available = available,
   thumbnailUrl = thumbnailUrl
     .validate("absolute thumbnail URL") { it.isAbsolute }

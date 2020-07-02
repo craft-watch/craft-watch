@@ -1,9 +1,11 @@
-package watch.craft
+package watch.craft.executor
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
+import watch.craft.InvalidItemException
+import watch.craft.Scraper
 import java.net.URI
 
 class ItemNormalisationTest {
