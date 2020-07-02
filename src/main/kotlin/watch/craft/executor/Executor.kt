@@ -2,6 +2,7 @@ package watch.craft.executor
 
 import mu.KotlinLogging
 import watch.craft.*
+import watch.craft.analysis.Categoriser
 import watch.craft.executor.ScraperExecutor.Result
 import watch.craft.storage.CachingGetter
 import java.time.Clock
@@ -11,6 +12,7 @@ class Executor(
   private val clock: Clock = Clock.systemUTC()
 ) {
   private val logger = KotlinLogging.logger {}
+  private val categoriser = Categoriser(KEYWORDS)
 
   fun scrape(vararg scrapers: Scraper): Inventory {
     val items = scrapers
@@ -19,6 +21,7 @@ class Executor(
           .execute()
           .normalise()
       }
+      .categorise()
       .bestPricedItems()
       .also { it.logStats() }
 
@@ -32,7 +35,7 @@ class Executor(
 
   private fun List<Result>.normalise() = mapNotNull {
     try {
-      it.normalise().addCategories()
+      it.normalise()
     } catch (e: InvalidItemException) {
       logger.warn("[${it.brewery}] Invalid item [${it.entry.rawName}]", e)
       null
@@ -41,6 +44,8 @@ class Executor(
       null
     }
   }
+
+  private fun List<Item>.categorise() = map { it.copy(categories = categoriser.categorise(it)) }
 
   private fun List<Item>.bestPricedItems() = groupBy { ItemGroupFields(it.brewery, it.name, it.keg) }
     .map { (key, group) ->

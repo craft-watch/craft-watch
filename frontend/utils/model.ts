@@ -19,6 +19,7 @@ export interface Item {
   numItems: number;
   perItemPrice: number;
   available: boolean;
+  categories: Array<string>;
   thumbnailUrl: string;
   url: string;
 }
