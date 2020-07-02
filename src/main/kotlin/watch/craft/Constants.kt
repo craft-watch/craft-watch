@@ -19,7 +19,9 @@ val KEYWORDS = mapOf(
   ),
   "Pale" to listOf(
     "Pale",
-    "Pale Ale"
+    "Pale Ale",
+    "Blonde",
+    "Blonde Ale"
   ),
   "Dark" to listOf(
     "Porter",
@@ -29,6 +31,7 @@ val KEYWORDS = mapOf(
   ),
   "Pils / Lager" to listOf(
     "Pils",
+    "Pilsner",
     "Lager",
     "India Pale Lager"
   ),

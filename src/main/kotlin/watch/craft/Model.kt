@@ -23,7 +23,7 @@ data class Item(
   val numItems: Int = 1,
   val perItemPrice: Double,
   val available: Boolean,
-  val categories: List<String> = emptyList(),
+  val categories: Set<String> = emptySet(),
   val thumbnailUrl: String,
   val url: String
 )

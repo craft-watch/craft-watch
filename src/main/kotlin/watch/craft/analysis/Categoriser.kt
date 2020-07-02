@@ -1,38 +1,45 @@
 package watch.craft.analysis
 
-import watch.craft.FatalScraperException
 import watch.craft.Item
+import kotlin.text.RegexOption.IGNORE_CASE
 
 class Categoriser(categories: Map<String, List<String>>) {
   private val keywords = categories
-    .flatMap { (category, synonyms) -> synonyms.map { it to category } }
-    .associate { it }
+    .flatMap { (category, synonyms) -> synonyms.map { Keyword(it, it.toSweetRegex(), category) } }
 
-  // TODO - needs to perform whole-word comparison ("IPA" may appear as part of a normal word)
-  fun categorise(item: Item): List<String> {
-    val sources = listOf(
+  fun categorise(item: Item): Set<String> {
+    val components = listOf(
       item.name,
       item.summary,
       item.desc
     )
 
-    return keywords.keys
-      .filter { keyword -> sources.any { it?.contains(keyword, ignoreCase = true) ?: false } }
+    return keywords
+      .filter { keyword -> components.any { it?.contains(keyword.regex) ?: false } }
       .pickMostSpecific()
-      .map { keywords[it] ?: throw FatalScraperException("Unexpectedly weird") }
-      .distinct()
+      .map { it.category }
+      .toSet()
   }
 
-  private fun List<String>.pickMostSpecific(): List<String> {
-    val output = mutableListOf<String>()
+  // Ensure we don't match against partial words
+  private fun String.toSweetRegex() = "(^|\\W)${Regex.escape(this)}($|\\W)".toRegex(IGNORE_CASE)
 
-    sortedByDescending { it.length }
+  private fun List<Keyword>.pickMostSpecific(): List<Keyword> {
+    val output = mutableListOf<Keyword>()
+
+    sortedByDescending { it.raw.length }
       .forEach { candidate ->
-        if (output.none { it.contains(candidate, ignoreCase = true) }) {
+        if (output.none { it.raw.contains(candidate.raw, ignoreCase = true) }) {
           output += candidate
         }
       }
 
     return output
   }
+
+  private data class Keyword(
+    val raw: String,
+    val regex: Regex,
+    val category: String
+  )
 }
