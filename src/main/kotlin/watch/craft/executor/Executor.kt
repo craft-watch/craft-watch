@@ -32,7 +32,7 @@ class Executor(
 
   private fun List<Result>.normalise() = mapNotNull {
     try {
-      it.normalise()
+      it.normalise().addCategories()
     } catch (e: InvalidItemException) {
       logger.warn("[${it.brewery}] Invalid item [${it.entry.rawName}]", e)
       null
