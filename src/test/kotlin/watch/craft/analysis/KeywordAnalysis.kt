@@ -5,7 +5,7 @@ import watch.craft.INVENTORY_JSON_FILE
 import watch.craft.Inventory
 import watch.craft.mapper
 
-
+// TODO - needs to perform whole-word comparison ("IPA" may appear as part of a normal word)
 fun main() {
   val items = mapper().readValue<Inventory>(INVENTORY_JSON_FILE).items
 
