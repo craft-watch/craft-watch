@@ -1,7 +1,14 @@
 package watch.craft
 
+import java.time.Instant
+
 data class Inventory(
+  val metadata: Metadata,
   val items: List<Item>
+)
+
+data class Metadata(
+  val capturedAt: Instant
 )
 
 data class Item(
