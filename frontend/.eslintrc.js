@@ -29,5 +29,6 @@ module.exports = {
     "@typescript-eslint/quotes": ["error", "double"],
     "@typescript-eslint/indent": ["error", 2, { "flatTernaryExpressions": true }],
     "@typescript-eslint/semi": "error",
+    "@typescript-eslint/strict-boolean-expressions": "error",
   }
 };

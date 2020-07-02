@@ -73,28 +73,28 @@ const renderName: Renderer<Item> = item => (
   <div className="tooltip">
     <a className="item-link" href={item.url}>{item.name}</a>
     <p className="summary">
-      {item.summary && item.summary}
+      {item.summary}
     </p>
     <p className="summary">
       {item.keg && <span className="pill violet">{MINIKEG}</span>}
       {item.mixed && <span className="pill magenta">{MIXED_CASE}</span>}
     </p>
-    {item.desc && renderTooltipText(item)}
+    {(item.desc !== null) && renderTooltipText(item)}
   </div>
 );
 
 // TODO - collapse successive newlines
 const renderTooltipText = (item: Item): JSX.Element => (
   <span className="tooltip-text" style={{ display: "hidden" }}>
-    {item.desc && _.map(item.desc.split("\n"), (para, idx) => <p key={idx}>{para}</p>)}
+    {(item.desc !== null) && _.map(item.desc.split("\n"), (para, idx) => <p key={idx}>{para}</p>)}
     <div className="disclaimer">© {item.brewery}</div>
   </span>
 );
 
-const renderAbv: Renderer<Item> = item => item.abv ? `${item.abv.toFixed(1)}%` : "?";
+const renderAbv: Renderer<Item> = item => (item.abv !== null) ? `${item.abv.toFixed(1)}%` : "?";
 
 const renderSize: Renderer<Item> = item =>
-  !item.sizeMl ? "?" :
+  (item.sizeMl === null) ? "?" :
   (item.sizeMl < 1000) ? `${item.sizeMl} ml` :
   `${item.sizeMl / 1000} litres`;
 

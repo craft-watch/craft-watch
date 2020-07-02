@@ -11,12 +11,12 @@ export interface Metadata {
 export interface Item {
   brewery: string;
   name: string;
-  summary?: string;
-  desc?: string;
+  summary: string | null;
+  desc: string | null;
   keg: boolean;
   mixed: boolean;
-  sizeMl?: number;
-  abv?: number;
+  sizeMl: number | null;
+  abv: number | null;
   numItems: number;
   perItemPrice: number;
   available: boolean;
