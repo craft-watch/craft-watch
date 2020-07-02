@@ -65,25 +65,29 @@ class ItemNormalisationTest {
     assertValidationFailure(prototype.copy(price = 20.0))
   }
 
-  private fun assertNoValidationFailure(item: Scraper.Item) {
+  private fun assertNoValidationFailure(item: Scraper.ScrapedItem) {
     assertDoesNotThrow {
       normalise(item)
     }
   }
 
-  private fun assertValidationFailure(item: Scraper.Item) {
+  private fun assertValidationFailure(item: Scraper.ScrapedItem) {
     assertThrows<InvalidItemException> {
       normalise(item)
     }
   }
 
   private fun normalise(
-    item: Scraper.Item = prototype,
+    item: Scraper.ScrapedItem = prototype,
     brewery: String = "Foo Bar",
     url: URI = URI("https://example.invalid/shop")
-  ) = item.normalise(brewery, url)
+  ) = ScraperExecutor.Result(
+    brewery = brewery,
+    entry = Scraper.IndexEntry(rawName = "", url = url) { throw RuntimeException() },
+    item = item
+  ).normalise()
 
-  private val prototype = Scraper.Item(
+  private val prototype = Scraper.ScrapedItem(
     name = "Ted Shandy",
     summary = "Awful",
     numItems = 2,

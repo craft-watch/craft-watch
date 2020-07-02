@@ -3,7 +3,7 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Document
 import watch.craft.*
 import watch.craft.Scraper.IndexEntry
-import watch.craft.Scraper.Item
+import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
@@ -23,7 +23,7 @@ class MarbleScraper : Scraper {
         val style = attributes.maybeGrab("Style")
         val mixed = style?.contains("mixed", ignoreCase = true) ?: false
 
-        Item(
+        ScrapedItem(
           thumbnailUrl = el.srcFrom(".wp-post-image"),
           name = name
             .replace("\\s+\\d+l mini (keg|cask)$".toRegex(IGNORE_CASE), "")

@@ -3,7 +3,7 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Document
 import watch.craft.*
 import watch.craft.Scraper.IndexEntry
-import watch.craft.Scraper.Item
+import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
@@ -29,7 +29,7 @@ class ThornbridgeScraper : Scraper {
 
         // TODO - identify mixed packs
 
-        Item(
+        ScrapedItem(
           thumbnailUrl = doc.srcFrom(".product__image-wrapper img"),
           name = parts[1].replace(" (bottle|can)$".toRegex(IGNORE_CASE), ""),
           summary = parts[4],

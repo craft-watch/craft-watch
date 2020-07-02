@@ -3,7 +3,7 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Document
 import watch.craft.*
 import watch.craft.Scraper.IndexEntry
-import watch.craft.Scraper.Item
+import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class FivePointsScraper : Scraper {
@@ -22,7 +22,7 @@ class FivePointsScraper : Scraper {
         ) ?: throw SkipItemException("Could not extract details")
 
         val sizeMl = parts[6].toInt() * (if (parts[7] == "L") 1000 else 1)
-        Item(
+        ScrapedItem(
           thumbnailUrl = el.srcFrom(".imageInnerWrap img"),
           name = a.extractFrom(regex = "([^(]+)")[1].trim().toTitleCase(),
           summary = parts[1],

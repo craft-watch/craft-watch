@@ -25,7 +25,7 @@ class ExecutorTest {
 
   @Test
   fun `passes correct URLs and HTML around`() {
-    val callback = mock<(Document) -> Scraper.Item> {
+    val callback = mock<(Document) -> Scraper.ScrapedItem> {
       on { invoke(any()) } doThrow SkipItemException("Emo town")
     }
     whenever(scraper.scrapeIndex(any())) doReturnConsecutively listOf(
@@ -200,7 +200,7 @@ class ExecutorTest {
     private const val DECENT_PRICE = 2.46
     private val NOW = Instant.EPOCH
 
-    private fun product(name: String) = Scraper.Item(
+    private fun product(name: String) = Scraper.ScrapedItem(
       name = name,
       summary = "${name} is great",
       price = DECENT_PRICE,
@@ -210,7 +210,7 @@ class ExecutorTest {
       thumbnailUrl = URI("https://example.invalid/assets/${name}.jpg")
     )
 
-    private fun indexEntry(suffix: String, scrapeItem: (doc: Document) -> Scraper.Item) =
+    private fun indexEntry(suffix: String, scrapeItem: (doc: Document) -> Scraper.ScrapedItem) =
       IndexEntry(suffix, productUrl(suffix), scrapeItem)
 
     private fun productUrl(suffix: String) = URI("https://eaxmple.invalid/${suffix}")

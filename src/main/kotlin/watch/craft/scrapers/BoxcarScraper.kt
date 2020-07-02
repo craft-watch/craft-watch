@@ -3,7 +3,7 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Document
 import watch.craft.Scraper
 import watch.craft.Scraper.IndexEntry
-import watch.craft.Scraper.Item
+import watch.craft.Scraper.ScrapedItem
 import watch.craft.extract
 import watch.craft.maybeWholeTextFrom
 import watch.craft.shopifyItems
@@ -20,7 +20,7 @@ class BoxcarScraper : Scraper {
       IndexEntry(details.title, details.url) { doc ->
         val parts = details.title.extract("^(.*?) // (.*?)% *(.*?)? // (.*?)ml$")
 
-        Item(
+        ScrapedItem(
           thumbnailUrl = details.thumbnailUrl,
           name = parts[1],
           abv = parts[2].toDouble(),

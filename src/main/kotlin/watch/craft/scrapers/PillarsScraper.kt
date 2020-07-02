@@ -3,7 +3,7 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Document
 import watch.craft.*
 import watch.craft.Scraper.IndexEntry
-import watch.craft.Scraper.Item
+import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class PillarsScraper : Scraper {
@@ -20,7 +20,7 @@ class PillarsScraper : Scraper {
           "STYLE:\\s+(.+?)\\s+ABV:\\s+(\\d\\.\\d+)%"
         ) ?: throw SkipItemException("Couldn't find style or ABV")  // If we don't see these fields, assume we're not looking at a beer product
 
-        Item(
+        ScrapedItem(
           thumbnailUrl = details.thumbnailUrl,
           name = titleParts.name,
           summary = descParts[1].toTitleCase(),

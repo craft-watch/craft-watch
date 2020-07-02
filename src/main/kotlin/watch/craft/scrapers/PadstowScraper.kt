@@ -3,7 +3,7 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Document
 import watch.craft.*
 import watch.craft.Scraper.IndexEntry
-import watch.craft.Scraper.Item
+import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
@@ -37,7 +37,7 @@ class PadstowScraper : Scraper {
 
         val mixed = doc.textFrom(".style .stat").contains("mixed", ignoreCase = true)
 
-        Item(
+        ScrapedItem(
           thumbnailUrl = el.srcFrom(".attachment-woocommerce_thumbnail"),
           name = name,
           summary = doc.maybeTextFrom(".tag_line")?.replace(" \\d+(\\.\\d+)?%$".toRegex(), ""),

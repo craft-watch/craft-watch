@@ -2,10 +2,11 @@ package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import watch.craft.Item
+import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
 import watch.craft.noDesc
+import java.net.URI
 
 class MarbleScraperTest {
   companion object {
@@ -20,16 +21,14 @@ class MarbleScraperTest {
   @Test
   fun `extracts beer details`() {
     assertEquals(
-      Item(
-        brewery = "Marble",
+      ScrapedItem(
         name = "Earl Grey IPA",
         summary = "IPA",
         sizeMl = 500,
         abv = 6.8,
-        perItemPrice = 4.00,
+        price = 4.00,
         available = true,
-        url = "https://marblebeers.com/shop-home/earl-grey-ipa/",
-        thumbnailUrl = "https://marblebeers.com/wp-content/uploads/2017/11/Earl-Grey-500ml-Can-234x300.png"
+        thumbnailUrl = URI("https://marblebeers.com/wp-content/uploads/2017/11/Earl-Grey-500ml-Can-234x300.png")
       ),
       ITEMS.byName("Earl Grey IPA").noDesc()
     )

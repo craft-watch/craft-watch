@@ -5,7 +5,7 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import org.jsoup.nodes.Document
 import watch.craft.*
 import watch.craft.Scraper.IndexEntry
-import watch.craft.Scraper.Item
+import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class RedchurchScraper : Scraper {
@@ -32,7 +32,7 @@ class RedchurchScraper : Scraper {
 
         val bestDeal = doc.extractBestDeal()
 
-        Item(
+        ScrapedItem(
           thumbnailUrl = doc.srcFrom(".product-single__photo")
             .toString()
             .replace("\\?.*".toRegex(), "")

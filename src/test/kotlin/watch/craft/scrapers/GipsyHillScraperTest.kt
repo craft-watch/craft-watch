@@ -2,10 +2,11 @@ package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import watch.craft.Item
+import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
 import watch.craft.noDesc
+import java.net.URI
 
 class GipsyHillScraperTest {
   companion object {
@@ -20,16 +21,14 @@ class GipsyHillScraperTest {
   @Test
   fun `extracts beer details`() {
     assertEquals(
-      Item(
-        brewery = "Gipsy Hill",
+      ScrapedItem(
         name = "Carver",
         summary = "Micro IPA",
-        perItemPrice = 2.20,
+        price = 2.20,
         abv = 2.8,
         sizeMl = 330,
         available = true,
-        url = "https://gipsyhillbrew.com/product/carver/",
-        thumbnailUrl = "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/CARVER.png?resize=300%2C300&ssl=1"
+        thumbnailUrl = URI("https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/CARVER.png?resize=300%2C300&ssl=1")
       ),
       ITEMS.byName("Carver").noDesc()
     )
@@ -43,11 +42,6 @@ class GipsyHillScraperTest {
   @Test
   fun `ignores abv for multi-pack`() {
     assertNull(ITEMS.byName("DJ BBQ Box").abv)
-  }
-
-  @Test
-  fun `normalises price for multi-pack`() {
-    assertEquals(2.33, ITEMS.byName("Core Range 24 Pack").perItemPrice)
   }
 
   @Test

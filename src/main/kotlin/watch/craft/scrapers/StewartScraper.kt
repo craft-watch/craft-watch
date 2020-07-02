@@ -3,7 +3,7 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Document
 import watch.craft.*
 import watch.craft.Scraper.IndexEntry
-import watch.craft.Scraper.Item
+import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class StewartScraper : Scraper {
@@ -23,7 +23,7 @@ class StewartScraper : Scraper {
           throw SkipItemException("Couldn't find ABV or volume")
         }
 
-        Item(
+        ScrapedItem(
           thumbnailUrl = el.srcFrom(".imageInnerWrap img"),
           name = removeSizeSuffix(a.text()),
           summary = el.maybeTextFrom(".itemStyle"),
