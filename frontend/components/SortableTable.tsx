@@ -17,7 +17,7 @@ interface Props<T> {
 
 export class Column<T> extends React.PureComponent<ColumnProps<T>> {}
 
-const SortableTable = <T extends {}>(props: Props<T>): JSX.Element => {
+const SortableTable = <T extends unknown>(props: Props<T>): JSX.Element => {
   const [sortColIdx, setSortColIdx] = useState<number | null>(null);
   const [sortDescending, setSortDescending] = useState<boolean>(false);
 
