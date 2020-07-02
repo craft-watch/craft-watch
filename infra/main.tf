@@ -17,6 +17,15 @@ resource "google_storage_bucket" "backend" {
   name          = "backend.craft.watch"
   location      = "europe-west2"
   force_destroy = true
+
+  lifecycle_rule {
+    action {
+      type = "Delete"
+    }
+    condition {
+      age = 90
+    }
+  }
 }
 
 resource "google_service_account" "circleci" {
