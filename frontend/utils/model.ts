@@ -1,5 +1,6 @@
 export interface Inventory {
   metadata: Metadata;
+  categories: Array<string>;
   items: Array<Item>;
 }
 

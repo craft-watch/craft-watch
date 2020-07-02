@@ -9,6 +9,7 @@ import { Moment } from "moment";
 interface Props {
   capturedAt: Moment;
   items: Array<Item>;
+  categories: Array<string>;
 }
 
 interface State {
@@ -68,7 +69,7 @@ class App extends React.Component<Props, State> {
           }
         </Menu>
 
-        <InventoryTable items={this.filterItems()} />
+        <InventoryTable items={this.filterItems()} categories={this.props.categories} />
       </div>
     );
   }

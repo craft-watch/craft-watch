@@ -3,13 +3,13 @@ package watch.craft.analysis
 import com.fasterxml.jackson.module.kotlin.readValue
 import watch.craft.INVENTORY_JSON_FILE
 import watch.craft.Inventory
-import watch.craft.KEYWORDS
+import watch.craft.CATEGORY_KEYWORDS
 import watch.craft.mapper
 
 fun main() {
   val items = mapper().readValue<Inventory>(INVENTORY_JSON_FILE).items
 
-  val categoriser = Categoriser(KEYWORDS)
+  val categoriser = Categoriser(CATEGORY_KEYWORDS)
 
   val categorised = items.map { it.copy(categories = categoriser.categorise(it)) }
 

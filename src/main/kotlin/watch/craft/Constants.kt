@@ -6,7 +6,14 @@ const val GCS_BUCKET = "backend.craft.watch"
 val CACHE_DIR = File("cache")
 val INVENTORY_JSON_FILE = File("frontend/data/inventory.json")
 
-val KEYWORDS = mapOf(
+// Key order here is respected in frontend
+val CATEGORY_KEYWORDS = mapOf(
+  "Pale" to listOf(
+    "Pale",
+    "Pale Ale",
+    "Blonde",
+    "Blonde Ale"
+  ),
   "IPA" to listOf(
     "IPA",
     "DIPA",
@@ -17,17 +24,16 @@ val KEYWORDS = mapOf(
     "XPA",
     "Extra Pale Ale"
   ),
-  "Pale" to listOf(
-    "Pale",
-    "Pale Ale",
-    "Blonde",
-    "Blonde Ale"
-  ),
   "Dark" to listOf(
     "Porter",
     "Stout",
     "Red Ale",
     "Dark"
+  ),
+  "Bitter" to listOf(
+    "Bitter",
+    "Copper Ale",
+    "Golden Ale"
   ),
   "Pils / Lager" to listOf(
     "Pils",
@@ -38,11 +44,6 @@ val KEYWORDS = mapOf(
   "Sours / Gose" to listOf(
     "Sour",
     "Gose"
-  ),
-  "Bitter" to listOf(
-    "Bitter",
-    "Copper Ale",
-    "Golden Ale"
   ),
   "Cider" to listOf(
     "Cider"

@@ -53,46 +53,41 @@ class ExecutorTest {
     )
 
     assertEquals(
-      Inventory(
-        metadata = Metadata(
-          capturedAt = NOW
-        ),
-        items = listOf(
-          with(product("Foo")) {
-            Item(
-              brewery = BREWERY,
-              name = name,
-              summary = summary,
-              desc = desc,
-              keg = keg,
-              mixed = mixed,
-              sizeMl = sizeMl,
-              abv = abv,
-              perItemPrice = price,
-              available = available,
-              thumbnailUrl = thumbnailUrl.toString(),
-              url = productUrl("a").toString()
-            )
-          },
-          with(product("Bar")) {
-            Item(
-              brewery = BREWERY,
-              name = name,
-              summary = summary,
-              desc = desc,
-              keg = keg,
-              mixed = mixed,
-              sizeMl = sizeMl,
-              abv = abv,
-              perItemPrice = price,
-              available = available,
-              thumbnailUrl = thumbnailUrl.toString(),
-              url = productUrl("b").toString()
-            )
-          }
-        )
+      listOf(
+        with(product("Foo")) {
+          Item(
+            brewery = BREWERY,
+            name = name,
+            summary = summary,
+            desc = desc,
+            keg = keg,
+            mixed = mixed,
+            sizeMl = sizeMl,
+            abv = abv,
+            perItemPrice = price,
+            available = available,
+            thumbnailUrl = thumbnailUrl.toString(),
+            url = productUrl("a").toString()
+          )
+        },
+        with(product("Bar")) {
+          Item(
+            brewery = BREWERY,
+            name = name,
+            summary = summary,
+            desc = desc,
+            keg = keg,
+            mixed = mixed,
+            sizeMl = sizeMl,
+            abv = abv,
+            perItemPrice = price,
+            available = available,
+            thumbnailUrl = thumbnailUrl.toString(),
+            url = productUrl("b").toString()
+          )
+        }
       ),
-      executor.scrape(scraper)
+      executor.scrape(scraper).items
     )
   }
 

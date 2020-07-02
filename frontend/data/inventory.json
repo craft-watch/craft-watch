@@ -1,7 +1,8 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-02T20:11:05.976895Z"
+    "capturedAt" : "2020-07-02T20:27:40.160251Z"
   },
+  "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Sours / Gose", "Cider" ],
   "items" : [ {
     "brewery" : "Boxcar",
     "name" : "Oh Ginkgo",
@@ -1079,7 +1080,7 @@
     "numItems" : 24,
     "perItemPrice" : 2.71,
     "available" : true,
-    "categories" : [ ],
+    "categories" : [ "Pils / Lager" ],
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Pilsner_24_pack-234x300.png",
     "url" : "https://marblebeers.com/shop-home/american-pilsner-case-24-cans/"
   }, {
@@ -1229,7 +1230,7 @@
     "numItems" : 1,
     "perItemPrice" : 9.9,
     "available" : true,
-    "categories" : [ "Sours / Gose" ],
+    "categories" : [ "Pale", "Sours / Gose" ],
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2018/07/blonde-234x300.png",
     "url" : "https://marblebeers.com/shop-home/sour-blonde-ale/"
   }, {
@@ -1304,7 +1305,7 @@
     "numItems" : 1,
     "perItemPrice" : 3.35,
     "available" : true,
-    "categories" : [ ],
+    "categories" : [ "Pale" ],
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2018/05/Berimbolo-500ml-Can01-234x300.png",
     "url" : "https://marblebeers.com/shop-home/berimbolo/"
   }, {
@@ -1844,7 +1845,7 @@
     "numItems" : 1,
     "perItemPrice" : 30.0,
     "available" : true,
-    "categories" : [ ],
+    "categories" : [ "Pils / Lager" ],
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/706c48f7-f8b6-4933-981c-ae795fe96d24_250x250.png",
     "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/pillars-pilsner-5l-mini-keg"
   }, {
@@ -1859,7 +1860,7 @@
     "numItems" : 1,
     "perItemPrice" : 32.0,
     "available" : true,
-    "categories" : [ ],
+    "categories" : [ "Pils / Lager" ],
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/Tropical_MINI_KEG_250x250.png",
     "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/pillars-tropical-pilsner-5l-mini-keg"
   }, {
@@ -2024,7 +2025,7 @@
     "numItems" : 1,
     "perItemPrice" : 3.8,
     "available" : true,
-    "categories" : [ ],
+    "categories" : [ "Pils / Lager" ],
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_8451_large.jpg?v=1578645917",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/great-heights-unfiltered-pilsner"
   }, {
@@ -2069,7 +2070,7 @@
     "numItems" : 24,
     "perItemPrice" : 1.5,
     "available" : true,
-    "categories" : [ "Pale" ],
+    "categories" : [ "Pils / Lager", "Pale" ],
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/MixedCaseCoreweb_4_200x200.png",
     "url" : "https://redchurch.store/products/mixed-case-the-core-one"
   }, {
@@ -2159,7 +2160,7 @@
     "numItems" : 24,
     "perItemPrice" : 1.21,
     "available" : true,
-    "categories" : [ ],
+    "categories" : [ "Pils / Lager" ],
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/StortValleywebtextcopy_535342b3-a449-47ae-aaa4-a48b2202a9c3_200x200.png",
     "url" : "https://redchurch.store/products/stort-valley"
   }, {
@@ -2249,7 +2250,7 @@
     "numItems" : 24,
     "perItemPrice" : 1.04,
     "available" : true,
-    "categories" : [ ],
+    "categories" : [ "Pils / Lager" ],
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/StratfordPilsner2Web_200x200.png",
     "url" : "https://redchurch.store/products/stratford-pilsner"
   }, {
@@ -2714,7 +2715,7 @@
     "numItems" : 12,
     "perItemPrice" : 2.13,
     "available" : true,
-    "categories" : [ ],
+    "categories" : [ "Pils / Lager" ],
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_WHISTLE_PILSNER_330ML_CAN_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/whistle-pilsner"
   }, {
@@ -2759,7 +2760,7 @@
     "numItems" : 24,
     "perItemPrice" : 2.19,
     "available" : true,
-    "categories" : [ "Pale", "IPA" ],
+    "categories" : [ "Pale", "Pils / Lager", "IPA" ],
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/villages-mixed-case"
   }, {
@@ -2789,7 +2790,7 @@
     "numItems" : 24,
     "perItemPrice" : 2.05,
     "available" : true,
-    "categories" : [ "Pale", "IPA" ],
+    "categories" : [ "Pale", "Pils / Lager", "IPA" ],
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_REGULARS_MIXED_CASE_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/regulars-mixed-case"
   } ]

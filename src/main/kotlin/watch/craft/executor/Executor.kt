@@ -12,7 +12,7 @@ class Executor(
   private val clock: Clock = Clock.systemUTC()
 ) {
   private val logger = KotlinLogging.logger {}
-  private val categoriser = Categoriser(KEYWORDS)
+  private val categoriser = Categoriser(CATEGORY_KEYWORDS)
 
   fun scrape(vararg scrapers: Scraper): Inventory {
     val items = scrapers
@@ -29,6 +29,7 @@ class Executor(
       metadata = Metadata(
         capturedAt = clock.instant()
       ),
+      categories = CATEGORY_KEYWORDS.keys.toList(),
       items = items
     )
   }

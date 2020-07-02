@@ -4,6 +4,7 @@ import java.time.Instant
 
 data class Inventory(
   val metadata: Metadata,
+  val categories: List<String>,
   val items: List<Item>
 )
 

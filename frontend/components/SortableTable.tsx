@@ -61,12 +61,11 @@ const SortableTable = <T extends unknown>(props: Props<T>): JSX.Element => {
       </thead>
       {
         // TODO - no header if only one section
-        // TODO - no section at all if empty
         _.map(props.sections, section => {
           const sorted = selector ? _.sortBy(section.data, selector) : section.data;
           const maybeReversed = sortDescending ? sorted.reverse() : sorted;
 
-          return (
+          return (_.size(section.data) > 1) && (
             <tbody key={section.name}>
               <tr>
                 <th colSpan={_.size(columns)}>

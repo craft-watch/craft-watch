@@ -8,10 +8,11 @@ import { OUT_OF_STOCK, MINIKEG, MIXED_CASE } from "../utils/strings";
 
 interface Props {
   items: Array<Item>;
+  categories: Array<string>;
 }
 
 const InventoryTable: React.FC<Props> = (props) => (
-  <SortableTable sections={partitionItems(props.items)}>
+  <SortableTable sections={partitionItems(props.items, props.categories)}>
     <Column
       name="Brewery"
       render={renderBrewery}
@@ -48,11 +49,12 @@ const InventoryTable: React.FC<Props> = (props) => (
 );
 
 // TODO - may want to randomise selection for items with more than one category
-const partitionItems = (items: Array<Item>): Array<Section<Item>> =>
-  _.map(
-    _.groupBy(items, item => item.categories[0] || "Other"),
-    (v, k) => ({ name: k, data: v })
-  );
+const partitionItems = (items: Array<Item>, categories: Array<string>): Array<Section<Item>> => {
+  const other = "Other";
+  const partitioned = _.groupBy(items, item => item.categories[0] || other);
+  // Ensure we uphold preferred display order
+  return _.map(categories.concat(other), c => ({ name: c, data: partitioned[c] }));
+};
 
 const renderBrewery: Renderer<Item> = item => (
   <Link href={`/${toSafePathPart(item.brewery)}`}>
