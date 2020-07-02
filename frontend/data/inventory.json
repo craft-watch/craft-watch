@@ -743,20 +743,6 @@
     "url" : "https://gipsyhillbrew.com/product/hitcher/"
   }, {
     "brewery" : "Gipsy Hill",
-    "name" : "Filungar",
-    "summary" : "Kveik IPA",
-    "desc" : "This is a single 440ml can of Filungar – A Kveik IPA.\nFilungar was originally a collaboration with Vault City.\nIt’s an IPA fermented through with a traditional Norwegian Kviek yeast. This Voss strain ferments hot and kicks out bags of fruity orange and citrus esters.\nIt’s been liberally hopped with Denali, El Dorado and Citra for good measure.\nGoes well with strong winds and stronger ships.\nFeaturing Johnny, master of mixed ferm at Vault City.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 5.5,
-    "numItems" : 1,
-    "perItemPrice" : 5.0,
-    "available" : true,
-    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2019/04/Filungar.png?resize=300%2C300&ssl=1",
-    "url" : "https://gipsyhillbrew.com/product/filungar/"
-  }, {
-    "brewery" : "Gipsy Hill",
     "name" : "Outdoorsman",
     "summary" : "Triple Fruited Sour",
     "desc" : "This is a single 440ml of Outdoorsman – A Triple Fruited Sour.\nA classic Gipsy Hill sour base beer, with lashings of blueberry and just a hint of banana thrown in. It’s balanced and sweet, with so much fruity flavour that it must count as one of your five a day (It probably doesn’t).\nGoes well with narrow, winding country lanes.\nFeaturing Terry, Gipsy Hill salesman and South London legend.",
@@ -813,18 +799,18 @@
     "url" : "https://gipsyhillbrew.com/product/hepcat-case-24-cans/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "NEW 12 Beer Mega Pack",
+    "name" : "FINAL 12 Beer Mega Pack",
     "summary" : null,
-    "desc" : "NEW 12 Beer Mega Pack 24 x 440ml\nThe biggest beer selection yet! Loads of new beers straight off the canning line and some fresh, firm favorites. Each case of 24 cans will consist of 12 different beers, in quantities subject to availability. Cases cannot be customised. All the beer is superfresh! Beers included:\nFLASHPOINT – NEIPA (CITRA TOPAZ ENIGMA) – 6.2% ABV\nPUSH PUSH – DDH PALE (CITRA AZACCA SABRO) – 5.8% ABV\nOFF RAMP – DIPA (HBC 692 CRYO MOSAIC CITRA) – 8.0% ABV\nBLANKETS – PALE ALE (CITRA COLUMBUS CASCADE) – 4.2% ABV\nPOCKET ROCKET – TINY IPA (CITRA SIMCOE IDAHO 7) – 2.7% ABV\nHOUSE IPA – INDIA PALE ALE – 6.9% ABV\nROMANS – DDH SINGLE HOP PALE ALE (HBC-586) – 5.5% ABV\nDRAG RACE JOHNNY – NEIPA (AZACCA CITRA SIMCOE) – 6.7% ABV\nBIRD TALK – PALE ALE (AMARILLO CENTENNIAL COLUMBUS) – 4.4% ABV\nPACKETS – KELLER LAGER – 4.2% ABV\nTROPICAL DELUXE – PALE ALE – 3.8% ABV\nPASSIONFRUIT GOSE – FRUIT SOUR – 4.5% ABV",
+    "desc" : "FINAL 12 Beer Mega Pack 24 x 440ml\nThe last ever mega mixed case! Loads of new beers straight off the canning line and some fresh, firm favourites. Each case of 24 cans will consist of 12 different beers, in quantities subject to availability. Cases cannot be customised. All the beer is superfresh! Beers included:\nFLASHPOINT – NEIPA (CITRA TOPAZ ENIGMA) – 6.2% ABV\nPUSH PUSH – DDH PALE (CITRA AZACCA SABRO) – 5.8% ABV\nOFF RAMP – DIPA (HBC 692 CRYO MOSAIC CITRA) – 8.0% ABV\nBLANKETS – PALE ALE (CITRA COLUMBUS CASCADE) – 4.2% ABV\nPOCKET ROCKET – TINY IPA (CITRA SIMCOE IDAHO 7) – 2.7% ABV\nHOUSE IPA – INDIA PALE ALE – 6.9% ABV\nBUCKLE DOWN – DDH PALE ALE (CITRA AMARILLO COLUMBUS) – 5.0% ABV\nDRAG RACE JOHNNY – NEIPA (AZACCA CITRA SIMCOE) – 6.7% ABV\nBIRD TALK – PALE ALE (AMARILLO CENTENNIAL COLUMBUS) – 4.4% ABV\nPACKETS – KELLER LAGER – 4.2% ABV\nTROPICAL DELUXE – PALE ALE – 3.8% ABV\nPASSIONFRUIT GOSE – FRUIT SOUR – 4.5% ABV",
     "keg" : false,
     "mixed" : true,
     "sizeMl" : 440,
     "abv" : null,
     "numItems" : 24,
     "perItemPrice" : 2.9,
-    "available" : false,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/12beers_june3-324x324.jpg",
-    "url" : "https://www.howlinghops.co.uk/product/12-beer-mega-pack-24-x-440ml/"
+    "available" : true,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/june-beer-case-4-324x324.png",
+    "url" : "https://www.howlinghops.co.uk/product/new-12-beer-24-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
     "name" : "Passionfruit Gose",
@@ -2353,6 +2339,20 @@
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/green-mountain"
   }, {
     "brewery" : "Thornbridge",
+    "name" : "Bliss Point",
+    "summary" : "Hazy American Pale Ale",
+    "desc" : "Bliss Point is a modern take on the American Pale Ale style with a slight haziness and big juicy flavours from the four US hops.\nABV 5% / 330ml can\nHOPS Cascade, Simcoe, Azacca, Citra\nMALTS LCMO, Wheat\nYou must be 18 or over to purchase this product.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 330,
+    "abv" : 5.0,
+    "numItems" : 1,
+    "perItemPrice" : 2.0,
+    "available" : false,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Bliss_Point_can_mockup_coloured_background_300x300.jpg?v=1581437605",
+    "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/bliss-point-5-hazy-american-pale-ale-can"
+  }, {
+    "brewery" : "Thornbridge",
     "name" : "Lukas",
     "summary" : "Helles Lager",
     "desc" : "Lukas in cans, the perfect fridge filler.\nHelles is a traditional, elegant Bavarian style of beer originating in Munich. Lukas is straw blonde, full-bodied yet sparklingly light.\nABV 4.2% / 330ml can\nHOPS Hallertauer\nMALTS Pale / Carapils / Wheat\nNOTABLE AWARDS\nSIBA Midlands Independent Beer Awards, June Lukas - Gold - Bottled Session Lager and Pilsner\nYou must be 18 or over to purchase this product.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.",
@@ -2446,7 +2446,7 @@
     "abv" : 5.9,
     "numItems" : 1,
     "perItemPrice" : 2.2,
-    "available" : true,
+    "available" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jamestowncan_colouredbakground_1_300x300.jpg?v=1584374239",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/jamestowncan"
   }, {
