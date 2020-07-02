@@ -14,7 +14,7 @@ class PillarsScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(6, ITEMS.size)
+    assertEquals(8, ITEMS.size)
   }
 
   @Test

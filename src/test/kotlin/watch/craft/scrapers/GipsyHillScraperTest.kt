@@ -14,7 +14,7 @@ class GipsyHillScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(17, ITEMS.size)
+    assertEquals(21, ITEMS.size)
   }
 
   @Test

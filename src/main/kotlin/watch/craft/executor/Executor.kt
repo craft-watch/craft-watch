@@ -17,6 +17,7 @@ class Executor(
   fun scrape(vararg scrapers: Scraper): Inventory {
     val items = scrapers
       .flatMap { ScraperExecutor(getter, it).execute() }
+      .bestPricedItems()
       .also { it.logStats() }
 
     return Inventory(
@@ -31,4 +32,18 @@ class Executor(
     groupBy { it.brewery }.forEach { (key, group) -> logger.info("Scraped (${key}): ${group.size}") }
     logger.info("Scraped (TOTAL): ${size}")
   }
+
+  private fun List<Item>.bestPricedItems() = groupBy { ItemGroupFields(it.brewery, it.name, it.keg) }
+    .map { (key, group) ->
+      if (group.size > 1) {
+        logger.info("[${key.brewery}] Eliminating ${group.size - 1} more expensive item(s) for [${key.name}]")
+      }
+      group.minBy { it.perItemPrice }!!
+    }
+
+  private data class ItemGroupFields(
+    val brewery: String,
+    val name: String,
+    val keg: Boolean
+  )
 }

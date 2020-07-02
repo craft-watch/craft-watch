@@ -15,7 +15,7 @@ class HowlingHopsScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(8, ITEMS.size)
+    assertEquals(10, ITEMS.size)
   }
 
   @Test

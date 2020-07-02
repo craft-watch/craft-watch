@@ -14,7 +14,7 @@ class MarbleScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(24, ITEMS.size)
+    assertEquals(28, ITEMS.size)
   }
 
   @Test

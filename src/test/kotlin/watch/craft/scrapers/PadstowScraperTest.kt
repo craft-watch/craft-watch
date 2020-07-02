@@ -14,7 +14,7 @@ class PadstowScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(32, ITEMS.size)
+    assertEquals(35, ITEMS.size)
   }
 
   @Test

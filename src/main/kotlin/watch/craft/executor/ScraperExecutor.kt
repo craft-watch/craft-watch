@@ -27,7 +27,6 @@ class ScraperExecutor(
       .map { scrapeItemSafely(it) }
       .collect(Collectors.toList())
       .filterNotNull()
-      .bestPricedItems()
   }
 
   private fun scrapeIndexSafely(scraper: Scraper, url: URI): List<IndexEntry> {
@@ -67,22 +66,9 @@ class ScraperExecutor(
     }
   }
 
-  private fun List<Item>.bestPricedItems() = groupBy { ItemGroupFields(it.name, it.keg) }
-    .map { (key, group) ->
-      if (group.size > 1) {
-        logger.info("[${brewery}] Eliminating ${group.size - 1} more expensive item(s) for [${key}]")
-      }
-      group.minBy { it.perItemPrice }!!
-    }
-
   private fun request(url: URI) = try {
     Jsoup.parse(String(getter.request(url)), url.toString())!!
   } catch (e: Exception) {
     throw FatalScraperException("Could not read page: ${url}", e)
   }
-
-  private data class ItemGroupFields(
-    val name: String,
-    val keg: Boolean
-  )
 }

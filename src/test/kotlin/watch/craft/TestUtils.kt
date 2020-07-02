@@ -1,6 +1,6 @@
 package watch.craft
 
-import watch.craft.executor.Executor
+import watch.craft.executor.ScraperExecutor
 import watch.craft.storage.*
 import java.time.Instant
 import java.time.LocalDate
@@ -28,7 +28,7 @@ fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE): List<It
   } else {
     CachingGetter(structure.cache) { throw FatalScraperException("Non-live tests should not perform network gets") }
   }
-  return Executor(getter).scrape(scraper).items
+  return ScraperExecutor(getter, scraper).execute()
 }
 
 fun List<Item>.byName(name: String) = first { it.name == name }
