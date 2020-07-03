@@ -76,8 +76,9 @@ const renderName: Renderer<Item> = item => (
       {item.summary}
     </p>
     <p className="summary">
-      {item.keg && <span className="pill violet">{MINIKEG}</span>}
-      {item.mixed && <span className="pill magenta">{MIXED_CASE}</span>}
+      {item.new && <span className="pill magenta">NEW !!!</span>}
+      {item.keg && <span className="pill green">{MINIKEG}</span>}
+      {item.mixed && <span className="pill violet">{MIXED_CASE}</span>}
     </p>
     {(item.desc !== null) && renderTooltipText(item)}
   </div>

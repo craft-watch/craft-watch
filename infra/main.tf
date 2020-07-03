@@ -44,6 +44,12 @@ data "google_iam_policy" "admin" {
       "serviceAccount:${google_service_account.circleci.email}"
     ]
   }
+  binding {
+    role = "roles/storage.legacyBucketReader"
+    members = [
+      "serviceAccount:${google_service_account.circleci.email}"
+    ]
+  }
 }
 
 # Requires you to have "Storage Admin" role

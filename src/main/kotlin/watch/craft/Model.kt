@@ -25,6 +25,16 @@ data class Item(
   val perItemPrice: Double,
   val available: Boolean,
   val categories: Set<String> = emptySet(),
+  val new: Boolean = false,
   val thumbnailUrl: String,
   val url: String
+)
+
+data class MinimalInventory(
+  val items: List<MinimalItem>
+)
+
+data class MinimalItem(
+  val brewery: String,
+  val name: String
 )

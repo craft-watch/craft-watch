@@ -2,19 +2,23 @@ package watch.craft.executor
 
 import mu.KotlinLogging
 import watch.craft.*
-import watch.craft.analysis.Categoriser
+import watch.craft.enrichers.Categoriser
+import watch.craft.enrichers.Newalyser
 import watch.craft.executor.ScraperExecutor.Result
 import watch.craft.storage.CachingGetter
 import java.time.Clock
+import java.time.Instant
 
 class Executor(
+  private val results: ResultsManager,
   private val getter: CachingGetter,
   private val clock: Clock = Clock.systemUTC()
 ) {
   private val logger = KotlinLogging.logger {}
-  private val categoriser = Categoriser(CATEGORY_KEYWORDS)
 
   fun scrape(vararg scrapers: Scraper): Inventory {
+    val now = clock.instant()
+
     val items = scrapers
       .flatMap { scraper ->
         ScraperExecutor(getter, scraper)
@@ -23,13 +27,12 @@ class Executor(
           .sortedBy { it.name }
       }
       .categorise()
+      .newalyse(now)
       .bestPricedItems()
       .also { it.logStats() }
 
     return Inventory(
-      metadata = Metadata(
-        capturedAt = clock.instant()
-      ),
+      metadata = Metadata(capturedAt = now),
       categories = CATEGORY_KEYWORDS.keys.toList(),
       items = items
     )
@@ -47,7 +50,9 @@ class Executor(
     }
   }
 
-  private fun List<Item>.categorise() = map { it.copy(categories = categoriser.categorise(it)) }
+  private fun List<Item>.categorise() = map(Categoriser(CATEGORY_KEYWORDS)::enrich)
+
+  private fun List<Item>.newalyse(now: Instant) = map(Newalyser(results, now)::enrich)
 
   private fun List<Item>.bestPricedItems() = groupBy { ItemGroupFields(it.brewery, it.name, it.keg) }
     .map { (key, group) ->

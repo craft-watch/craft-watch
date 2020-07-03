@@ -1,17 +1,23 @@
 package watch.craft.storage
 
 import com.google.cloud.http.HttpTransportOptions
-import com.google.cloud.storage.*
-import com.google.cloud.storage.Storage.BlobTargetOption.doesNotExist
+import com.google.cloud.storage.Bucket.BlobTargetOption.doesNotExist
+import com.google.cloud.storage.Storage
+import com.google.cloud.storage.Storage.BlobListOption.currentDirectory
+import com.google.cloud.storage.Storage.BlobListOption.prefix
+import com.google.cloud.storage.StorageException
+import com.google.cloud.storage.StorageOptions
 import watch.craft.FatalScraperException
 
 class GcsObjectStore(
-  private val bucketName: String,
-  private val storage: Storage = createGcsService()
+  bucketName: String,
+  storage: Storage = createGcsService()
 ) : ObjectStore {
+  private val bucket = storage.get(bucketName)
+
   override fun write(key: String, content: ByteArray) {
     try {
-      storage.create(blobInfo(key), content, doesNotExist())
+      bucket.create(key, content, doesNotExist())
     } catch (e: StorageException) {
       if (e.code == 412) {
         throw FileExistsException(key)
@@ -22,7 +28,7 @@ class GcsObjectStore(
   }
 
   override fun read(key: String) = try {
-    storage.readAllBytes(blobId(key))!!
+    bucket.get(key).getContent()!!
   } catch (e: StorageException) {
     if (e.code == 404) {
       throw FileDoesntExistException(key)
@@ -31,9 +37,24 @@ class GcsObjectStore(
     }
   }
 
-  private fun blobInfo(key: String) = BlobInfo.newBuilder(blobId(key)).build()
+  override fun list(key: String) = try {
+    val prefix = key.normaliseAsPrefix()
+    bucket.list(prefix(prefix), currentDirectory())
+      .iterateAll()
+      .map { it.name.removePrefix(prefix).removeSuffix("/") }
+  } catch (e: StorageException) {
+    if (e.code == 404) {
+      throw FileDoesntExistException(key)
+    } else {
+      throw FatalScraperException("Error reading from GCS", e)
+    }
+  }
 
-  private fun blobId(key: String) = BlobId.of(bucketName, key)
+  private fun String.normaliseAsPrefix() = when {
+    this in listOf("", "/") -> ""   // Root is slightly inconsistent
+    endsWith("/") -> this
+    else -> "${this}/"
+  }
 
   companion object {
     fun createGcsService() = StorageOptions.newBuilder().apply {
@@ -41,6 +62,6 @@ class GcsObjectStore(
         setConnectTimeout(60_000)
         setReadTimeout(60_000)
       }.build())
-    }.build().service
+    }.build().service!!
   }
 }

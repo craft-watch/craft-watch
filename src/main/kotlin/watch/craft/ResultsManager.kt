@@ -1,5 +1,6 @@
 package watch.craft
 
+import com.fasterxml.jackson.module.kotlin.readValue
 import watch.craft.storage.SubObjectStore
 import java.time.Instant
 import java.time.ZoneOffset
@@ -9,12 +10,18 @@ class ResultsManager(private val setup: Setup) {
   private val mapper = mapper()
 
   fun write(inventory: Inventory) {
-    val dir = SubObjectStore(setup.structure.results, inventory.metadata.capturedAt.format())
-    dir.write("inventory.json", mapper.writeValueAsBytes(inventory))
-    INVENTORY_JSON_FILE.outputStream().use { mapper.writeValue(it, inventory) }
+    dir(inventory.metadata.capturedAt).write(INVENTORY_FILENAME, mapper.writeValueAsBytes(inventory))
+    CANONICAL_INVENTORY_PATH.outputStream().use { mapper.writeValue(it, inventory) }
     // TODO - log
   }
 
-  private fun Instant.format() =
-    DateTimeFormatter.ISO_DATE_TIME.withZone(ZoneOffset.UTC).format(this)
+  fun listHistoricalResults(): List<Instant> = setup.structure.results.list().map { Instant.from(formatter.parse(it)) }
+
+  fun readMinimalHistoricalResult(timestamp: Instant) =
+    mapper.readValue<MinimalInventory>(dir(timestamp).read(INVENTORY_FILENAME))
+
+  private fun dir(timestamp: Instant) =
+    SubObjectStore(setup.structure.results, formatter.format(timestamp))
+
+  private val formatter = DateTimeFormatter.ISO_DATE_TIME.withZone(ZoneOffset.UTC)
 }
