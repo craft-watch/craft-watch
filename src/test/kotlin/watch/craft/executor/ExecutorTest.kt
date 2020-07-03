@@ -67,6 +67,7 @@ class ExecutorTest {
             abv = abv,
             perItemPrice = price,
             available = available,
+            newToUs = true,
             thumbnailUrl = thumbnailUrl.toString(),
             url = productUrl("b").toString()
           )
@@ -83,6 +84,7 @@ class ExecutorTest {
             abv = abv,
             perItemPrice = price,
             available = available,
+            newToUs = true,
             thumbnailUrl = thumbnailUrl.toString(),
             url = productUrl("a").toString()
           )
