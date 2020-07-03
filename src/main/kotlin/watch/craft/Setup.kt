@@ -14,7 +14,7 @@ class Setup(dateString: String? = null) {
     LocalDate.parse(dateString).atStartOfDay(ZoneOffset.UTC).toInstant()
   }
 
-  val store = WriteThroughObjectStore(
+  private val store = WriteThroughObjectStore(
     firstLevel = LocalObjectStore(CACHE_DIR),
     secondLevel = GcsObjectStore(GCS_BUCKET)
   )
@@ -22,8 +22,8 @@ class Setup(dateString: String? = null) {
   val structure = StoreStructure(store, instant)
 
   val getter = if (live) {
-    CachingGetter(structure.cache)
+    CachingGetter(structure.downloads)
   } else {
-    CachingGetter(structure.cache) { throw FatalScraperException("Non-live tests should not perform network gets") }
+    CachingGetter(structure.downloads) { throw FatalScraperException("Non-live tests should not perform network gets") }
   }
 }
