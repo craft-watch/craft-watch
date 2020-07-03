@@ -1,8 +1,8 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-03T19:54:30.498191Z"
+    "capturedAt" : "2020-07-03T20:08:20.146365Z"
   },
-  "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Sours / Gose", "Cider" ],
+  "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "items" : [ {
     "brewery" : "Boxcar",
     "name" : "Avatar State",
@@ -2208,7 +2208,7 @@
     "numItems" : 1,
     "perItemPrice" : 3.75,
     "available" : true,
-    "categories" : [ "Sours / Gose" ],
+    "categories" : [ "Weisse", "Sours / Gose" ],
     "newFromBrewer" : false,
     "newToUs" : true,
     "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/06/sb-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
@@ -2922,7 +2922,7 @@
     "numItems" : 1,
     "perItemPrice" : 2.0,
     "available" : true,
-    "categories" : [ "Sours / Gose" ],
+    "categories" : [ "Weisse", "Sours / Gose" ],
     "newFromBrewer" : false,
     "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Florida_Weisse_can_mockup_coloured_background_300x300.jpg?v=1583153430",

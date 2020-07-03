@@ -42,6 +42,15 @@ val CATEGORY_KEYWORDS = mapOf(
     "Lager",
     "India Pale Lager"
   ),
+  "Weisse" to listOf(
+    "Weiss",
+    "Weisse",
+    "Weizen",
+    "Weizenbier",
+    "Hefeweizen",
+    "Witbier",
+    "Weißbier"
+  ),
   "Sours / Gose" to listOf(
     "Sour",
     "Gose"
