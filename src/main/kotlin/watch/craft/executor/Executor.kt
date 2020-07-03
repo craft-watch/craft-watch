@@ -16,10 +16,11 @@ class Executor(
 
   fun scrape(vararg scrapers: Scraper): Inventory {
     val items = scrapers
-      .flatMap {
-        ScraperExecutor(getter, it)
+      .flatMap { scraper ->
+        ScraperExecutor(getter, scraper)
           .execute()
           .normalise()
+          .sortedBy { it.name }
       }
       .categorise()
       .bestPricedItems()
