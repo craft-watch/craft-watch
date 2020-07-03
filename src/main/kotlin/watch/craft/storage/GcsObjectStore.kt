@@ -7,12 +7,7 @@ import watch.craft.FatalScraperException
 
 class GcsObjectStore(
   private val bucketName: String,
-  private val storage: Storage = StorageOptions.newBuilder().apply {
-    setTransportOptions(HttpTransportOptions.newBuilder().apply {
-      setConnectTimeout(60_000)
-      setReadTimeout(60_000)
-    }.build())
-  }.build().service
+  private val storage: Storage = createGcsService()
 ) : ObjectStore {
   override fun write(key: String, content: ByteArray) {
     try {
@@ -39,4 +34,13 @@ class GcsObjectStore(
   private fun blobInfo(key: String) = BlobInfo.newBuilder(blobId(key)).build()
 
   private fun blobId(key: String) = BlobId.of(bucketName, key)
+
+  companion object {
+    fun createGcsService() = StorageOptions.newBuilder().apply {
+      setTransportOptions(HttpTransportOptions.newBuilder().apply {
+        setConnectTimeout(60_000)
+        setReadTimeout(60_000)
+      }.build())
+    }.build().service
+  }
 }
