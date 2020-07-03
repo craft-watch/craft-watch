@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-03T20:08:20.146365Z"
+    "capturedAt" : "2020-07-03T20:28:44.176735Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "items" : [ {
@@ -3080,6 +3080,57 @@
     "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Shelby_bottle_for_website_300x300.jpg?v=1592160756",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/shelby-official"
+  }, {
+    "brewery" : "Unity",
+    "name" : "Conflux Pale Ale",
+    "summary" : null,
+    "desc" : "Conflux is our house Pale Ale, soft and tropical featuring flaked oats and a light touch of rye malt, liberally hopped with Citra and Azacca. 440ml / 4.8% ABV ALLERGENS: Gluten (Barley, Oats, Rye) Unfiltered, unpasteurised - Vegan Friendly",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 4.8,
+    "numItems" : 1,
+    "perItemPrice" : 3.8,
+    "available" : true,
+    "categories" : [ "Pale" ],
+    "newFromBrewer" : false,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0340/2829/0107/products/CONFLUX_can_345x345.jpg",
+    "url" : "https://unitybrewingco.com/collections/unity-beer/products/conflux-pale-ale"
+  }, {
+    "brewery" : "Unity",
+    "name" : "This Must Be The Place Simcoe Pale Ale",
+    "summary" : null,
+    "desc" : "Simcoe takes centre stage in this single hopped pale ale, balanced with a big dose of rye malt to add complimentary spicy notes to Simcoe’s big citrus and pine flavours. 440ml / 4.8% ABV Allergens: Gluten, Barley, Oats, Rye Vegan Friendly",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 4.8,
+    "numItems" : 1,
+    "perItemPrice" : 3.9,
+    "available" : true,
+    "categories" : [ "Pale" ],
+    "newFromBrewer" : false,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0340/2829/0107/products/image_b557f02a-0c75-40af-92aa-d9b0788558af_345x345.jpg",
+    "url" : "https://unitybrewingco.com/collections/unity-beer/products/this-must-be-the-place-simcoe-pale-ale"
+  }, {
+    "brewery" : "Unity",
+    "name" : "Wowee Zowee West Coast IPA",
+    "summary" : null,
+    "desc" : "A crisp, bitter and resinous West Coast style IPA with Simcoe, Centennial and Mosaic hops, and a little homage to our favourite West Coast indie rock band. 440ml / 6.7% ABV ALLERGENS: Gluten, barley, wheat Unfiltered, unpasteurised - Vegan Friendly",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 6.7,
+    "numItems" : 1,
+    "perItemPrice" : 4.4,
+    "available" : true,
+    "categories" : [ "Bitter", "IPA" ],
+    "newFromBrewer" : false,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0340/2829/0107/products/image_e5e7654b-3a09-4b87-9ced-aa3260fea001_345x345.jpg",
+    "url" : "https://unitybrewingco.com/collections/unity-beer/products/wowee-zowee-west-coast-ipa"
   }, {
     "brewery" : "Villages",
     "name" : "Ales Mixed Case",
