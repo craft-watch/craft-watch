@@ -30,10 +30,13 @@ class Newalyser(
     .distinct()
     .toSet()
 
-  override fun enrich(item: Item) = item.copy(
-    new = (item.brewery in oldBreweries) &&
-      (MinimalItem(brewery = item.brewery, name = item.name.toLowerCase()) !in oldInventory)
-  )
+  override fun enrich(item: Item): Item {
+    val newAtAll = MinimalItem(brewery = item.brewery, name = item.name.toLowerCase()) !in oldInventory
+    return item.copy(
+      newFromBrewer = (item.brewery in oldBreweries) && newAtAll,
+      newToUs = newAtAll
+    )
+  }
 
   companion object {
     // TODO - modify range once we have more data

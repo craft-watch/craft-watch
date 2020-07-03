@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-03T19:45:45.281255Z"
+    "capturedAt" : "2020-07-03T19:54:30.498191Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Sours / Gose", "Cider" ],
   "items" : [ {
@@ -16,7 +16,8 @@
     "perItemPrice" : 4.75,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/Screenshot_20200520-165150_WhatsApp_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/avatar-state"
   }, {
@@ -32,7 +33,8 @@
     "perItemPrice" : 3.85,
     "available" : false,
     "categories" : [ "Bitter" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/bitter_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/best-bitter"
   }, {
@@ -48,7 +50,8 @@
     "perItemPrice" : 3.75,
     "available" : false,
     "categories" : [ "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/20200429_183043_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/dark-mild"
   }, {
@@ -64,7 +67,8 @@
     "perItemPrice" : 4.95,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/IMG-20200604-WA0003_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/dreamful-6-5-ipa-440ml"
   }, {
@@ -80,7 +84,8 @@
     "perItemPrice" : 3.95,
     "available" : true,
     "categories" : [ "Bitter", "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/Screenshot_20200520-164720_WhatsApp_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/golden-ale"
   }, {
@@ -96,7 +101,8 @@
     "perItemPrice" : 4.25,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/nativeplace_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/native-place-440ml"
   }, {
@@ -112,7 +118,8 @@
     "perItemPrice" : 4.95,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/IMG_20200626_152802-02_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/oh-ginkgo-6-5-ipa-440ml"
   }, {
@@ -128,7 +135,8 @@
     "perItemPrice" : 4.0,
     "available" : false,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/20200407_100153_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/table-beer"
   }, {
@@ -144,7 +152,8 @@
     "perItemPrice" : 5.5,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-A-Rising-Tide-F_large.png?v=1591979218",
     "url" : "https://shop.canopybeer.com/products/a-rising-tide-nelson-motueka-ipa-6-5"
   }, {
@@ -160,7 +169,8 @@
     "perItemPrice" : 5.5,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-All-Together-F_large.png?v=1593006475",
     "url" : "https://shop.canopybeer.com/products/copy-of-a-rising-tide-nelson-motueka-ipa-6-5"
   }, {
@@ -176,7 +186,8 @@
     "perItemPrice" : 2.5,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Brockwell-F_large.png?v=1539104364",
     "url" : "https://shop.canopybeer.com/products/brockwell-ipa"
   }, {
@@ -192,7 +203,8 @@
     "perItemPrice" : 2.5,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Champion-F_large.png?v=1540475156",
     "url" : "https://shop.canopybeer.com/products/champion-kolsch"
   }, {
@@ -208,7 +220,8 @@
     "perItemPrice" : 3.5,
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-LlopperF_large.png?v=1540568612",
     "url" : "https://shop.canopybeer.com/products/llopper-everyday-oyster-stout"
   }, {
@@ -224,7 +237,8 @@
     "perItemPrice" : 3.5,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-Paceline-F_large.png?v=1585123486",
     "url" : "https://shop.canopybeer.com/products/paceline-lime-salt-lager-4-0"
   }, {
@@ -240,7 +254,8 @@
     "perItemPrice" : 2.5,
     "available" : false,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Snapper-F_large.png?v=1540475255",
     "url" : "https://shop.canopybeer.com/products/snapper-session-ipa"
   }, {
@@ -256,7 +271,8 @@
     "perItemPrice" : 2.5,
     "available" : false,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-330ml-Sunray-F_large.png?v=1539104580",
     "url" : "https://shop.canopybeer.com/products/sunray-pale-ale"
   }, {
@@ -272,7 +288,8 @@
     "perItemPrice" : 12.0,
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-grand-stout-whisky-barley-aged-1574871101Grand-Stout-bottle-Mock-Up.png",
     "url" : "https://shop.fivepointsbrewing.co.uk/item/15/FivePointsBrewing/Barrel-Aged-Grand-Stout.html"
   }, {
@@ -288,7 +305,8 @@
     "perItemPrice" : 25.0,
     "available" : true,
     "categories" : [ "Bitter" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-best-5l-mini-cask-1588589149Mini-Keg-Best-Mockup-SML.jpg",
     "url" : "https://shop.fivepointsbrewing.co.uk/item/33/FivePointsBrewing/FIVE-POINTS-BEST-5L-MINI-CASK.html"
   }, {
@@ -304,7 +322,8 @@
     "perItemPrice" : 1.96,
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-jupa-1574871172Jupa-Can-Mock-Up.png",
     "url" : "https://shop.fivepointsbrewing.co.uk/item/12/FivePointsBrewing/FIVE-POINTS-JUPA-12-PACK.html"
   }, {
@@ -320,7 +339,8 @@
     "perItemPrice" : 1.67,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-micro-pale-12-pack-1590489952Micro-Pale-bottle-Mock-Up-2-.png",
     "url" : "https://shop.fivepointsbrewing.co.uk/item/38/FivePointsBrewing/FIVE-POINTS-MICRO-PALE-12-PACK.html"
   }, {
@@ -336,7 +356,8 @@
     "perItemPrice" : 1.8,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-pale-1574871213Pale-Can-Mock-Up.png",
     "url" : "https://shop.fivepointsbrewing.co.uk/item/7/FivePointsBrewing/FIVE-POINTS-PALE-12-PACK.html"
   }, {
@@ -352,7 +373,8 @@
     "perItemPrice" : 25.0,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-pale-5l-mini-keg-1591885265Pale-Mini-Cask-Mockup-SML2.jpg",
     "url" : "https://shop.fivepointsbrewing.co.uk/item/41/FivePointsBrewing/FIVE-POINTS-PALE-5L-MINI-KEG.html"
   }, {
@@ -368,7 +390,8 @@
     "perItemPrice" : 1.8,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-pils-1574871238PILS-Can-Mock-Up.png",
     "url" : "https://shop.fivepointsbrewing.co.uk/item/8/FivePointsBrewing/FIVE-POINTS-PILS-12-PACK.html"
   }, {
@@ -384,7 +407,8 @@
     "perItemPrice" : 1.8,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-xpa-1574871288XPA-Can-Mock-Up.png",
     "url" : "https://shop.fivepointsbrewing.co.uk/item/9/FivePointsBrewing/FIVE-POINTS-XPA-12-PACK.html"
   }, {
@@ -400,7 +424,8 @@
     "perItemPrice" : 25.0,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-xpa-5l-mini-keg-1591885313XPA-Mini-Cask-Mockup-SML2.jpg",
     "url" : "https://shop.fivepointsbrewing.co.uk/item/42/FivePointsBrewing/FIVE-POINTS-XPA-5L-MINI-KEG.html"
   }, {
@@ -416,7 +441,8 @@
     "perItemPrice" : 1.8,
     "available" : true,
     "categories" : [ "Dark", "Bitter" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-railway-porter-1574871262Railway-Porter-bottle-Mock-Up.png",
     "url" : "https://shop.fivepointsbrewing.co.uk/item/10/FivePointsBrewing/RAILWAY-PORTER-12-PACK.html"
   }, {
@@ -432,7 +458,8 @@
     "perItemPrice" : 2.0,
     "available" : true,
     "categories" : [ ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_pilslager_1566986321BASECAMPNB.png",
     "url" : "https://www.fourpure.com/item/3/Fourpure/Basecamp.html"
   }, {
@@ -448,7 +475,8 @@
     "perItemPrice" : 4.0,
     "available" : true,
     "categories" : [ "Sours / Gose" ],
-    "new" : true,
+    "newFromBrewer" : true,
+    "newToUs" : true,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_carnivalcoconutlimesour_1593005364CarnivalRenderCMYK.png",
     "url" : "https://www.fourpure.com/item/304/Fourpure/Carnival-Coconut--Lime-Sour.html"
   }, {
@@ -464,7 +492,8 @@
     "perItemPrice" : 5.5,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "newFromBrewer" : true,
+    "newToUs" : true,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_castawaymaitaidipa_1593005177CastawayRenderCMYK.png",
     "url" : "https://www.fourpure.com/item/303/Fourpure/Castaway-Mai-Tai-DIPA-.html"
   }, {
@@ -480,7 +509,8 @@
     "perItemPrice" : 4.3,
     "available" : true,
     "categories" : [ "Sours / Gose" ],
-    "new" : true,
+    "newFromBrewer" : true,
+    "newToUs" : true,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_cosmiccafcoffeesour_1593006028CosmicCafeRenderCMYK.png",
     "url" : "https://www.fourpure.com/item/306/Fourpure/Cosmic-Caf-Coffee-Sour.html"
   }, {
@@ -496,7 +526,8 @@
     "perItemPrice" : 4.0,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_deucebox440ml_1567525575DeuceboxRenderCrop1.png",
     "url" : "https://www.fourpure.com/item/188/Fourpure/Deucebox-440ml.html"
   }, {
@@ -512,7 +543,8 @@
     "perItemPrice" : 2.0,
     "available" : true,
     "categories" : [ ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_easypeeler_1566988005EasyPeeler2019RenderCROPPED.png",
     "url" : "https://www.fourpure.com/item/90/Fourpure/Easy-Peeler.html"
   }, {
@@ -528,7 +560,8 @@
     "perItemPrice" : 2.0,
     "available" : true,
     "categories" : [ ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_hemisphere_1584973070hemisphere2019RenderCROPPED.png",
     "url" : "https://www.fourpure.com/item/1/Fourpure/Hemisphere.html"
   }, {
@@ -544,7 +577,8 @@
     "perItemPrice" : 4.8,
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : true,
+    "newFromBrewer" : true,
+    "newToUs" : true,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_jazzageespressomartinistout_1593004843JazzAgeRenderCMYK.png",
     "url" : "https://www.fourpure.com/item/301/Fourpure/Jazz-Age-Espresso-Martini-Stout.html"
   }, {
@@ -560,7 +594,8 @@
     "perItemPrice" : 35.0,
     "available" : true,
     "categories" : [ ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_juicebox5lminikeg_1588779669WhatsAppImage20200506at14.07.452.jpeg",
     "url" : "https://www.fourpure.com/item/286/Fourpure/Juicebox-5L-Minikeg.html"
   }, {
@@ -576,7 +611,8 @@
     "perItemPrice" : 2.5,
     "available" : true,
     "categories" : [ ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_juicebox_1585746292Juicebox3302020.png",
     "url" : "https://www.fourpure.com/item/127/Fourpure/Juicebox.html"
   }, {
@@ -592,7 +628,8 @@
     "perItemPrice" : 3.5,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "newFromBrewer" : true,
+    "newToUs" : true,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_lanternearlgreysessionipa_1593004970LanternRenderCMYK.png",
     "url" : "https://www.fourpure.com/item/302/Fourpure/Lantern-Earl-Grey-Session-IPA.html"
   }, {
@@ -608,7 +645,8 @@
     "perItemPrice" : 2.0,
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_lasttrain_1566991767LastTrain2019RenderCMYK.png",
     "url" : "https://www.fourpure.com/item/5/Fourpure/Last-Train.html"
   }, {
@@ -624,7 +662,8 @@
     "perItemPrice" : 4.5,
     "available" : true,
     "categories" : [ "Sours / Gose" ],
-    "new" : true,
+    "newFromBrewer" : true,
+    "newToUs" : true,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_midsummerpinotnoirgose_1593013689MidsummerRender.png",
     "url" : "https://www.fourpure.com/item/305/Fourpure/Midsummer-Pinot-Noir-Gose.html"
   }, {
@@ -640,7 +679,8 @@
     "perItemPrice" : 28.0,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_monsoon5lminikeg_1588779774WhatsAppImage20200506at14.07.451.jpeg",
     "url" : "https://www.fourpure.com/item/287/Fourpure/Monsoon-5L-Minikeg.html"
   }, {
@@ -656,7 +696,8 @@
     "perItemPrice" : 2.5,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_shapeshifteripa_1566988291Shapeshifter2019RenderCMYK.png",
     "url" : "https://www.fourpure.com/item/7/Fourpure/Shapeshifter-IPA.html"
   }, {
@@ -672,7 +713,8 @@
     "perItemPrice" : 2.7,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/BALLER.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/baller/"
   }, {
@@ -688,7 +730,8 @@
     "perItemPrice" : 2.2,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/BANDIT.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/bandit/"
   }, {
@@ -704,7 +747,8 @@
     "perItemPrice" : 4.0,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Blisco-Dash.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/blisco-dash/"
   }, {
@@ -720,7 +764,8 @@
     "perItemPrice" : 4.0,
     "available" : true,
     "categories" : [ "Bitter", "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/1-2.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/nhs-west-coast-ipa/"
   }, {
@@ -736,7 +781,8 @@
     "perItemPrice" : 5.0,
     "available" : true,
     "categories" : [ ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/03/Copy-of-Core-range-6-pack-17.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/buy-the-nhs-a-pint/"
   }, {
@@ -752,7 +798,8 @@
     "perItemPrice" : 2.2,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/CARVER.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/carver/"
   }, {
@@ -768,7 +815,8 @@
     "perItemPrice" : 2.33,
     "available" : true,
     "categories" : [ "Pale", "Pils / Lager", "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/03/Copy-of-Core-range-6-pack-31.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/core-range-24-pack/"
   }, {
@@ -784,7 +832,8 @@
     "perItemPrice" : 3.17,
     "available" : true,
     "categories" : [ ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Fathers-day-box-3.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/dj-bbq-box/"
   }, {
@@ -800,7 +849,8 @@
     "perItemPrice" : 2.4,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/HEPCAT.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/hepcat/"
   }, {
@@ -816,7 +866,8 @@
     "perItemPrice" : 2.4,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "newFromBrewer" : true,
+    "newToUs" : true,
     "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/Copy-of-Core-range-6-pack-34.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/hepcat-case-24-cans/"
   }, {
@@ -832,7 +883,8 @@
     "perItemPrice" : 4.0,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Hitcher.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/hitcher/"
   }, {
@@ -848,7 +900,8 @@
     "perItemPrice" : 2.3,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/HUNTER.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/hunter/"
   }, {
@@ -864,7 +917,8 @@
     "perItemPrice" : 5.0,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2019/04/Copy-of-Core-range-6-pack-26.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/left-handed-giant-making-planets-dipa/"
   }, {
@@ -880,7 +934,8 @@
     "perItemPrice" : 5.0,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/01/OPENINGTHEMECANSOCIAL-1.jpg?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/left-handed-giant-opening-theme-ipa/"
   }, {
@@ -896,7 +951,8 @@
     "perItemPrice" : 5.0,
     "available" : true,
     "categories" : [ "Sours / Gose" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/06/Outdoorsman.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/outdoorsman/"
   }, {
@@ -912,7 +968,8 @@
     "perItemPrice" : 2.2,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/RANGER.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/ranger/"
   }, {
@@ -928,7 +985,8 @@
     "perItemPrice" : 3.75,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/blankets-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/blankets-4-x-440ml/"
   }, {
@@ -944,7 +1002,8 @@
     "perItemPrice" : 4.5,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/drag-race-johnny-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/drag-race-johnny-4-x-440ml/"
   }, {
@@ -960,7 +1019,8 @@
     "perItemPrice" : 4.25,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/flashpoint-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/flashpoint-4-x-440ml/"
   }, {
@@ -976,7 +1036,8 @@
     "perItemPrice" : 2.9,
     "available" : true,
     "categories" : [ "IPA", "Pils / Lager", "Sours / Gose" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/june-beer-case-4-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/new-12-beer-24-x-440ml/"
   }, {
@@ -992,7 +1053,8 @@
     "perItemPrice" : 3.5,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/packets-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/packets-4-x-440ml/"
   }, {
@@ -1008,7 +1070,8 @@
     "perItemPrice" : 2.75,
     "available" : true,
     "categories" : [ "Sours / Gose" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/PFG-24-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/passionfruit-gose-24-x-440ml/"
   }, {
@@ -1024,7 +1087,8 @@
     "perItemPrice" : 3.5,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/pocket-rocket-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/pocket-rocket-4-x-440ml/"
   }, {
@@ -1040,7 +1104,8 @@
     "perItemPrice" : 4.0,
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/push-push-4-x-440ml/"
   }, {
@@ -1056,7 +1121,8 @@
     "perItemPrice" : 3.7,
     "available" : false,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2019/01/ALF-500ml-Can-234x300.png",
     "url" : "https://marblebeers.com/shop-home/alf/"
   }, {
@@ -1072,7 +1138,8 @@
     "perItemPrice" : 2.71,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Pilsner_24_pack-234x300.png",
     "url" : "https://marblebeers.com/shop-home/american-pilsner-case-24-cans/"
   }, {
@@ -1088,7 +1155,8 @@
     "perItemPrice" : 14.1,
     "available" : true,
     "categories" : [ ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2019/11/BarleyWine2019-660ml-Bottle-1-234x300.png",
     "url" : "https://marblebeers.com/shop-home/barley-wine-2019/"
   }, {
@@ -1104,7 +1172,8 @@
     "perItemPrice" : 3.35,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2018/05/Berimbolo-500ml-Can01-234x300.png",
     "url" : "https://marblebeers.com/shop-home/berimbolo/"
   }, {
@@ -1120,7 +1189,8 @@
     "perItemPrice" : 9.9,
     "available" : true,
     "categories" : [ "Dark", "Sours / Gose" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2018/07/blended-234x300.png",
     "url" : "https://marblebeers.com/shop-home/blended-red-ale/"
   }, {
@@ -1136,7 +1206,8 @@
     "perItemPrice" : 2.6,
     "available" : true,
     "categories" : [ "Bitter" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/03/bright-spot_-2-300x300.jpg",
     "url" : "https://marblebeers.com/shop-home/earth-station-bright-spot/"
   }, {
@@ -1152,7 +1223,8 @@
     "perItemPrice" : 14.5,
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/06/660ml-Bottle_Marble_Beers_Caramel_Vanilla_Imperial_Milkshake_Stout-e1591088871151-234x300.png",
     "url" : "https://marblebeers.com/shop-home/caramel-vanilla-imperial-milkshake-stout/"
   }, {
@@ -1168,7 +1240,8 @@
     "perItemPrice" : 2.72,
     "available" : true,
     "categories" : [ ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/03/Mixed2_24_pack_Cans-234x300.png",
     "url" : "https://marblebeers.com/shop-home/core-range-mixed-case-24-cans/"
   }, {
@@ -1184,7 +1257,8 @@
     "perItemPrice" : 3.7,
     "available" : false,
     "categories" : [ "Pale", "Bitter" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2018/11/Cross-Collar-500ml-Can01-234x300.png",
     "url" : "https://marblebeers.com/shop-home/cross-collar/"
   }, {
@@ -1200,7 +1274,8 @@
     "perItemPrice" : 3.33,
     "available" : false,
     "categories" : [ "Pale", "Bitter" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Cross_Collar_24_pack-234x300.png",
     "url" : "https://marblebeers.com/shop-home/cross-collar-half-case-12-cans/"
   }, {
@@ -1216,7 +1291,8 @@
     "perItemPrice" : 4.2,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/01/Cubbio-Damage-500ml-Can-234x300.png",
     "url" : "https://marblebeers.com/shop-home/cubbio-damage/"
   }, {
@@ -1232,7 +1308,8 @@
     "perItemPrice" : 2.25,
     "available" : true,
     "categories" : [ "Sours / Gose" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2018/03/Dry-Hopped-Sours-330ml-Can01-234x300.png",
     "url" : "https://marblebeers.com/shop-home/dry-hopped-sour/"
   }, {
@@ -1248,7 +1325,8 @@
     "perItemPrice" : 4.0,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2017/11/Earl-Grey-500ml-Can-234x300.png",
     "url" : "https://marblebeers.com/shop-home/earl-grey-ipa/"
   }, {
@@ -1264,7 +1342,8 @@
     "perItemPrice" : 22.25,
     "available" : false,
     "categories" : [ "Pale", "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/05/Lagonda-IMG_1534-e1589905679839-300x300.jpg",
     "url" : "https://marblebeers.com/shop-home/lagonda-5l-mink-cask-local-delivery-only/"
   }, {
@@ -1280,7 +1359,8 @@
     "perItemPrice" : 3.12,
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Lagonda_24_pack-234x300.png",
     "url" : "https://marblebeers.com/shop-home/lagonda-case-24-cans/"
   }, {
@@ -1296,7 +1376,8 @@
     "perItemPrice" : 19.5,
     "available" : false,
     "categories" : [ "Bitter" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/05/Manchester-Bitter-Mini-Keg-IMG_1532-e1589903747581-300x300.jpg",
     "url" : "https://marblebeers.com/shop-home/manchester-bitter-5l-mini-cask-local-delivery-only/"
   }, {
@@ -1312,7 +1393,8 @@
     "perItemPrice" : 2.35,
     "available" : true,
     "categories" : [ "Bitter" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Manchester_bitter_24_pack-234x300.png",
     "url" : "https://marblebeers.com/shop-home/manchester-bitter-full-case-24-cans/"
   }, {
@@ -1328,7 +1410,8 @@
     "perItemPrice" : 2.7,
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2019/09/Stout-Marble-500ml-Can-234x300.png",
     "url" : "https://marblebeers.com/shop-home/marble-stout/"
   }, {
@@ -1344,7 +1427,8 @@
     "perItemPrice" : 2.5,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Metric_24_pack-234x300.png",
     "url" : "https://marblebeers.com/shop-home/metric-pint-ish-case-24-cans/"
   }, {
@@ -1360,7 +1444,8 @@
     "perItemPrice" : 3.5,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2018/08/North-South-500ml-Can-234x300.png",
     "url" : "https://marblebeers.com/shop-home/north-south/"
   }, {
@@ -1376,7 +1461,8 @@
     "perItemPrice" : 19.5,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/05/Pint-2_1531-e1589904569823-300x300.jpg",
     "url" : "https://marblebeers.com/shop-home/pint-metric-5l-mini-cask-local-delivery-only/"
   }, {
@@ -1392,7 +1478,8 @@
     "perItemPrice" : 9.9,
     "available" : true,
     "categories" : [ "Pale", "Sours / Gose" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2018/07/blonde-234x300.png",
     "url" : "https://marblebeers.com/shop-home/sour-blonde-ale/"
   }, {
@@ -1408,7 +1495,8 @@
     "perItemPrice" : 24.8,
     "available" : false,
     "categories" : [ "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/06/Stout-IMG_1600-e1591956607727-300x300.jpg",
     "url" : "https://marblebeers.com/shop-home/stout-5l-mini-keg/"
   }, {
@@ -1424,7 +1512,8 @@
     "perItemPrice" : 4.09,
     "available" : true,
     "categories" : [ "Cider" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/12/12-days-of-Christmas.png",
     "url" : "https://www.padstowbrewing.co.uk/product/12-beers-mixed-gift/"
   }, {
@@ -1440,7 +1529,8 @@
     "perItemPrice" : 4.99,
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/01/440ml-can-Breakfast-In-Luxembourg-3-can-render-1024x724.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/breakfast-in-luxembourg/"
   }, {
@@ -1456,7 +1546,8 @@
     "perItemPrice" : 32.5,
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/04/minikeg-front.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/minikeg-breakfast-in-luxembourg/"
   }, {
@@ -1472,7 +1563,8 @@
     "perItemPrice" : 7.99,
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/03/CONNOR-Can-4-1024x724.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/connors-stout-individual-cans/"
   }, {
@@ -1488,7 +1580,8 @@
     "perItemPrice" : 3.95,
     "available" : true,
     "categories" : [ "Cider" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/11/Padstow-Elderflower-Sunrise-Cider-Bottle-1.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/elderflower-sunrise/"
   }, {
@@ -1504,7 +1597,8 @@
     "perItemPrice" : 3.75,
     "available" : true,
     "categories" : [ ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/11/Padstow-Brewing-Co-6-mixed-case.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/mixed-beer-case-x6/"
   }, {
@@ -1520,7 +1614,8 @@
     "perItemPrice" : 4.99,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/01/440ml-can-Moselle-Skies-3-can-render-1024x724.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/moselle-skies/"
   }, {
@@ -1536,7 +1631,8 @@
     "perItemPrice" : 32.5,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/04/minikeg-front.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/minikeg-moselle-skies/"
   }, {
@@ -1552,7 +1648,8 @@
     "perItemPrice" : 3.75,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Padstow-IPA-Bottle-1.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/padstow-ipa/"
   }, {
@@ -1568,7 +1665,8 @@
     "perItemPrice" : 23.95,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/11/Padstow-IPA-Minikeg.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/mini-keg-padstow-ipa/"
   }, {
@@ -1584,7 +1682,8 @@
     "perItemPrice" : 23.5,
     "available" : true,
     "categories" : [ "Bitter" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/04/Padstow-Local-Minikeg.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/minikeg-padstow-local/"
   }, {
@@ -1600,7 +1699,8 @@
     "perItemPrice" : 3.75,
     "available" : true,
     "categories" : [ "Bitter", "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Padstow-May-Day-Bottle-1.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/padstow-may-day/"
   }, {
@@ -1616,7 +1716,8 @@
     "perItemPrice" : 26.5,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/11/Padstow-May-Day-Minikeg.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/mini-keg-padstow-may-day/"
   }, {
@@ -1632,7 +1733,8 @@
     "perItemPrice" : 3.75,
     "available" : true,
     "categories" : [ "Bitter", "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Padstow-Pale-Ale-Bottle.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/padstow-pale-ale/"
   }, {
@@ -1648,7 +1750,8 @@
     "perItemPrice" : 23.95,
     "available" : true,
     "categories" : [ "Bitter", "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/11/Padstow-Pale-Ale-Minikeg.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/mini-keg-padstow-pale-ale/"
   }, {
@@ -1664,7 +1767,8 @@
     "perItemPrice" : 23.95,
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/04/padstow-Pilot-minikeg.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/mini-keg-padstow-pilot/"
   }, {
@@ -1680,7 +1784,8 @@
     "perItemPrice" : 3.5,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Padstow-Pilsner-Can.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/padstow-pilsner/"
   }, {
@@ -1696,7 +1801,8 @@
     "perItemPrice" : 29.5,
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/11/Padstow-Pilsner-Minikeg.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/mini-keg-padstow-pilsner/"
   }, {
@@ -1712,7 +1818,8 @@
     "perItemPrice" : 23.95,
     "available" : true,
     "categories" : [ "Bitter" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/11/Padstow-Pride-Minikeg.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/mini-keg-padstow-pride/"
   }, {
@@ -1728,7 +1835,8 @@
     "perItemPrice" : 4.1,
     "available" : true,
     "categories" : [ "Cider" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Padstow-Sunshine-Cider-Bottle-1.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/sunshine-cider/"
   }, {
@@ -1744,7 +1852,8 @@
     "perItemPrice" : 3.75,
     "available" : true,
     "categories" : [ "Bitter" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Windjammer-Bottle.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/windjammer/"
   }, {
@@ -1760,7 +1869,8 @@
     "perItemPrice" : 23.95,
     "available" : true,
     "categories" : [ "Bitter" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/11/Padstow-Windjammer-Minikeg.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/mini-keg-padstow-windjammer/"
   }, {
@@ -1776,7 +1886,8 @@
     "perItemPrice" : 3.95,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Pocket-Rocket-Can-1.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/pocket-rocket/"
   }, {
@@ -1792,7 +1903,8 @@
     "perItemPrice" : 29.5,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/04/pockete-rcket-minikeg.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/minikeg-pocket-rocket/"
   }, {
@@ -1808,7 +1920,8 @@
     "perItemPrice" : 3.95,
     "available" : true,
     "categories" : [ "Cider", "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Padstow-Red-Sky-Cornish-Berry-Cider-Bottle-1.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/red-sky-berry-cider/"
   }, {
@@ -1824,7 +1937,8 @@
     "perItemPrice" : 3.95,
     "available" : true,
     "categories" : [ ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/440ml-can-SHALLOW-END-3-cans-1024x724.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/shallow-end/"
   }, {
@@ -1840,7 +1954,8 @@
     "perItemPrice" : 10.0,
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/12/20191218_135254.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/spiced-vintage-ale/"
   }, {
@@ -1856,7 +1971,8 @@
     "perItemPrice" : 4.99,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/440ml-can-SUNDOWNER-3-3-cans-1024x724.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/sundowner-3-0/"
   }, {
@@ -1872,7 +1988,8 @@
     "perItemPrice" : 29.5,
     "available" : true,
     "categories" : [ "Cider" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/04/sunlight-cider-minikeg.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/minikeg-sunlight-cider/"
   }, {
@@ -1888,7 +2005,8 @@
     "perItemPrice" : 3.5,
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale" ],
-    "new" : true,
+    "newFromBrewer" : true,
+    "newToUs" : true,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/07/1881-CAN-RENDER-new-1024x549.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/1881-lager-support-the-fishermens-mission/"
   }, {
@@ -1904,7 +2022,8 @@
     "perItemPrice" : 29.5,
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale" ],
-    "new" : true,
+    "newFromBrewer" : true,
+    "newToUs" : true,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/07/1881-CAN-RENDER-new-1024x549.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/1881-lager-support-the-fishermens-mission-minikeg/"
   }, {
@@ -1920,7 +2039,8 @@
     "perItemPrice" : 3.95,
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/The-Smoke-Can.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/the-smoke/"
   }, {
@@ -1936,7 +2056,8 @@
     "perItemPrice" : 6.0,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/Icebock_Shopify_1edf8964-413d-4ad8-9b05-9a9672a48796_250x250.png",
     "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/pillars-icebock"
   }, {
@@ -1952,7 +2073,8 @@
     "perItemPrice" : 1.88,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/mixedcase2_250x250.png",
     "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/pillars-lager-mixed-case-of-24"
   }, {
@@ -1968,7 +2090,8 @@
     "perItemPrice" : 30.0,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/706c48f7-f8b6-4933-981c-ae795fe96d24_250x250.png",
     "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/pillars-pilsner-5l-mini-keg"
   }, {
@@ -1984,7 +2107,8 @@
     "perItemPrice" : 32.0,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/Tropical_MINI_KEG_250x250.png",
     "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/pillars-tropical-pilsner-5l-mini-keg"
   }, {
@@ -2000,7 +2124,8 @@
     "perItemPrice" : 1.88,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/01125465-bf55-4019-9d59-52d2d00d1333_250x250.png",
     "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/rebell-helles-case-24x-330ml"
   }, {
@@ -2016,7 +2141,8 @@
     "perItemPrice" : 1.88,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/a1df4143-6f3e-444f-876f-403e4646de81_e0ca1731-5b0e-436d-9697-af4d723dcafd_250x250.png",
     "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/untraditional-lager-case-of-24"
   }, {
@@ -2032,7 +2158,8 @@
     "perItemPrice" : 5.75,
     "available" : false,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : true,
     "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/07/DDHS-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
     "url" : "https://shop.pollysbrew.co/product/ddh-spur-triple-ipa-10-0/"
   }, {
@@ -2048,7 +2175,8 @@
     "perItemPrice" : 4.5,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : true,
     "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/07/MYL-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
     "url" : "https://shop.pollysbrew.co/product/mylar-ipa-6-3/"
   }, {
@@ -2064,7 +2192,8 @@
     "perItemPrice" : 5.0,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : true,
     "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/07/NM-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
     "url" : "https://shop.pollysbrew.co/product/naive-melody-double-ipa-8-2/"
   }, {
@@ -2080,7 +2209,8 @@
     "perItemPrice" : 3.75,
     "available" : true,
     "categories" : [ "Sours / Gose" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : true,
     "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/06/sb-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
     "url" : "https://shop.pollysbrew.co/product/slow-burn-berliner-weisse-4-0/"
   }, {
@@ -2096,7 +2226,8 @@
     "perItemPrice" : 4.5,
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : true,
     "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/07/TC-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
     "url" : "https://shop.pollysbrew.co/product/transit-culture-west-coast-ipa-7-2/"
   }, {
@@ -2112,7 +2243,8 @@
     "perItemPrice" : 5.35,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_8398_large.jpg?v=1576076300",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/behind-door-number-3"
   }, {
@@ -2128,7 +2260,8 @@
     "perItemPrice" : 4.95,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "newFromBrewer" : true,
+    "newToUs" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_0021_large.jpg?v=1593692581",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/circuits-citra-ekuanot-neipa"
   }, {
@@ -2144,7 +2277,8 @@
     "perItemPrice" : 4.25,
     "available" : true,
     "categories" : [ "Sours / Gose" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9565_large.jpg?v=1589446938",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/future-sunshine-peach-pineapple-passionfruit-sour"
   }, {
@@ -2160,7 +2294,8 @@
     "perItemPrice" : 4.05,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9751_large.jpg?v=1592315629",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/golden-state-new-england-pale"
   }, {
@@ -2176,7 +2311,8 @@
     "perItemPrice" : 3.8,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_8451_large.jpg?v=1578645917",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/great-heights-unfiltered-pilsner"
   }, {
@@ -2192,7 +2328,8 @@
     "perItemPrice" : 3.8,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9954_large.jpg?v=1592930412",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/it-is-wednesday-my-dudes-special-lager"
   }, {
@@ -2208,7 +2345,8 @@
     "perItemPrice" : 3.7,
     "available" : true,
     "categories" : [ "Pale", "Bitter" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_7845_large.jpg?v=1588861254",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/pale-fire"
   }, {
@@ -2224,7 +2362,8 @@
     "perItemPrice" : 4.1,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9694_large.jpg?v=1591879961",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/perfect-life-new-england-pale"
   }, {
@@ -2240,7 +2379,8 @@
     "perItemPrice" : 4.8,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/Screenshot_2019-06-25_at_15.05.51_large.png?v=1561471658",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/the-rendezvous-ddh-neipa-collab-with-gamma"
   }, {
@@ -2256,7 +2396,8 @@
     "perItemPrice" : 4.2,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_8968_large.jpg?v=1593158286",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/tomorrows-world-new-england-pale-ale"
   }, {
@@ -2272,7 +2413,8 @@
     "perItemPrice" : 1.46,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/BETHNAL_MOCKUP_R-2_200x200.png",
     "url" : "https://redchurch.store/products/bethnal-pale-ale"
   }, {
@@ -2288,7 +2430,8 @@
     "perItemPrice" : 1.25,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/DeckChairwebwithtext_2_a2b3a15d-535c-450d-834d-014933e09adb_200x200.png",
     "url" : "https://redchurch.store/products/deck-chair-pale-ale"
   }, {
@@ -2304,7 +2447,8 @@
     "perItemPrice" : 1.5,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/GreatEasterwwwimage_200x200.png",
     "url" : "https://redchurch.store/products/great-eastern-ipa"
   }, {
@@ -2320,7 +2464,8 @@
     "perItemPrice" : 1.46,
     "available" : false,
     "categories" : [ "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/Hoxtonwwwimage_87bda3e9-3b18-4947-aba5-fdb91d566306_200x200.png",
     "url" : "https://redchurch.store/products/hoxton-stout"
   }, {
@@ -2336,7 +2481,8 @@
     "perItemPrice" : 1.42,
     "available" : true,
     "categories" : [ ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/MarzAtakswwwimage_200x200.png",
     "url" : "https://redchurch.store/products/marz-ataks"
   }, {
@@ -2352,7 +2498,8 @@
     "perItemPrice" : 1.5,
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/OFEweb_3_copy_200x200.png",
     "url" : "https://redchurch.store/products/old-ford-export-stout"
   }, {
@@ -2368,7 +2515,8 @@
     "perItemPrice" : 1.42,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/Paradisewebwithtext_fe23ce2d-17c6-4afc-9222-1cb48b1ebdfa_200x200.png",
     "url" : "https://redchurch.store/products/paradise-pale-ale"
   }, {
@@ -2384,7 +2532,8 @@
     "perItemPrice" : 0.92,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/Lagerwwwimage2_200x200.png",
     "url" : "https://redchurch.store/products/redchurch-lager"
   }, {
@@ -2400,7 +2549,8 @@
     "perItemPrice" : 1.46,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/SBwwwimage_200x200.png",
     "url" : "https://redchurch.store/products/shoreditch-blonde"
   }, {
@@ -2416,7 +2566,8 @@
     "perItemPrice" : 1.21,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/StortValleywebtextcopy_535342b3-a449-47ae-aaa4-a48b2202a9c3_200x200.png",
     "url" : "https://redchurch.store/products/stort-valley"
   }, {
@@ -2432,7 +2583,8 @@
     "perItemPrice" : 1.04,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/StratfordPilsner2Web_200x200.png",
     "url" : "https://redchurch.store/products/stratford-pilsner"
   }, {
@@ -2448,7 +2600,8 @@
     "perItemPrice" : 1.5,
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/MixedCaseCoreweb_4_200x200.png",
     "url" : "https://redchurch.store/products/mixed-case-the-core-one"
   }, {
@@ -2464,7 +2617,8 @@
     "perItemPrice" : 1.5,
     "available" : true,
     "categories" : [ ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/MixedCaseGermanweb_4_copy_200x200.png",
     "url" : "https://redchurch.store/products/mixed-case-the-german-one"
   }, {
@@ -2480,7 +2634,8 @@
     "perItemPrice" : 1.5,
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/MixedCaseHoppyweb_1_copy_200x200.png",
     "url" : "https://redchurch.store/products/mixed-case-the-hoppy-one"
   }, {
@@ -2496,7 +2651,8 @@
     "perItemPrice" : 1.5,
     "available" : true,
     "categories" : [ "Pale", "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/MixedCaseSpecialsweb_2_533283c0-83fb-4c98-a974-a8976196bcb8_200x200.png",
     "url" : "https://redchurch.store/products/mixed-case-the-specials-one"
   }, {
@@ -2512,7 +2668,8 @@
     "perItemPrice" : 1.5,
     "available" : true,
     "categories" : [ ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/MixedcaseTotalMixwebwithtext_2_200x200.png",
     "url" : "https://redchurch.store/products/redchurch-mixed-case"
   }, {
@@ -2528,7 +2685,8 @@
     "perItemPrice" : 6.67,
     "available" : true,
     "categories" : [ "Sours / Gose" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/Barrels1_2750wwwimage_200x200.png",
     "url" : "https://redchurch.store/products/urban-farmhouse-barrels-1-2"
   }, {
@@ -2544,7 +2702,8 @@
     "perItemPrice" : 2.0,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-cascadian-east-1589535328cas-front-330.png",
     "url" : "https://www.stewartbrewing.co.uk/item/265/StewartBrewing/Cascadian-East.html"
   }, {
@@ -2560,7 +2719,8 @@
     "perItemPrice" : 2.1,
     "available" : true,
     "categories" : [ ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-cauld-reekie-1592387707330ml-cauldreekie.png",
     "url" : "https://www.stewartbrewing.co.uk/item/266/StewartBrewing/Cauld-Reekie.html"
   }, {
@@ -2576,7 +2736,8 @@
     "perItemPrice" : 1.8,
     "available" : true,
     "categories" : [ "Bitter" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-edinburgh-gold-330ml-1592387999330ml-EdinburghGold.png",
     "url" : "https://www.stewartbrewing.co.uk/item/262/StewartBrewing/Edinburgh-Gold-330ml.html"
   }, {
@@ -2592,7 +2753,8 @@
     "perItemPrice" : 2.0,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-franz-1592389221330ml-can-Franz.png",
     "url" : "https://www.stewartbrewing.co.uk/item/258/StewartBrewing/Franz.html"
   }, {
@@ -2608,7 +2770,8 @@
     "perItemPrice" : 3.6,
     "available" : true,
     "categories" : [ "Sours / Gose" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-gooseberry-gose-1589443746Gooseberry-Gose-Can-Transparent.png",
     "url" : "https://www.stewartbrewing.co.uk/item/272/StewartBrewing/Gooseberry-Gose.html"
   }, {
@@ -2624,7 +2787,8 @@
     "perItemPrice" : 1.8,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-hollyrood-330ml-1592394278330ml-Hollyrood.png",
     "url" : "https://www.stewartbrewing.co.uk/item/261/StewartBrewing/Hollyrood-330ml.html"
   }, {
@@ -2640,7 +2804,8 @@
     "perItemPrice" : 4.3,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-hot-head-kveik-ipa-1589444205Hot-Head-Can.png",
     "url" : "https://www.stewartbrewing.co.uk/item/275/StewartBrewing/HotHead-Kveik-IPA.html"
   }, {
@@ -2656,7 +2821,8 @@
     "perItemPrice" : 2.0,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-ka-pai-1589380741ka-pai-330ml-front.png",
     "url" : "https://www.stewartbrewing.co.uk/item/256/StewartBrewing/Ka-Pai.html"
   }, {
@@ -2672,7 +2838,8 @@
     "perItemPrice" : 1.8,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-session-ipa-1592387551330ml-SessionIPA.png",
     "url" : "https://www.stewartbrewing.co.uk/item/267/StewartBrewing/Session-IPA.html"
   }, {
@@ -2688,7 +2855,8 @@
     "perItemPrice" : 2.45,
     "available" : true,
     "categories" : [ ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-stewart-s-80-1589443544500ml-Stewarts80-mockup.png",
     "url" : "https://www.stewartbrewing.co.uk/item/271/StewartBrewing/Stewarts-80.html"
   }, {
@@ -2704,7 +2872,8 @@
     "perItemPrice" : 1.8,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-stewart-s-lager-1592386559330ml-lager.png",
     "url" : "https://www.stewartbrewing.co.uk/item/268/StewartBrewing/Stewarts-Lager.html"
   }, {
@@ -2720,7 +2889,8 @@
     "perItemPrice" : 1.7,
     "available" : true,
     "categories" : [ ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/CarryUsall_colouredbackground_300x300.jpg?v=1588755573",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/carry-us-all-2-5-table-beer"
   }, {
@@ -2736,7 +2906,8 @@
     "perItemPrice" : 2.6,
     "available" : true,
     "categories" : [ "Dark", "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Cocoa_Wonderland_bottle_mockup_for_website_300x300.jpg?v=1568809399",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/cocoa-wonderland"
   }, {
@@ -2752,7 +2923,8 @@
     "perItemPrice" : 2.0,
     "available" : true,
     "categories" : [ "Sours / Gose" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Florida_Weisse_can_mockup_coloured_background_300x300.jpg?v=1583153430",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/florida-weisse"
   }, {
@@ -2768,7 +2940,8 @@
     "perItemPrice" : 2.0,
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Green_Mounain_can_mockup_coloured_background_300x300.jpg?v=1568808951",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/green-mountain"
   }, {
@@ -2784,7 +2957,8 @@
     "perItemPrice" : 2.0,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_can_mockup_coloured_background_300x300.jpg?v=1583154011",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/jaipur-can"
   }, {
@@ -2800,7 +2974,8 @@
     "perItemPrice" : 2.2,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jamestowncan_colouredbakground_1_300x300.jpg?v=1584374239",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/jamestowncan"
   }, {
@@ -2816,7 +2991,8 @@
     "perItemPrice" : 1.5,
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Little_by_Little_for_website_300x300.jpg?v=1577799301",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/little-by-little"
   }, {
@@ -2832,7 +3008,8 @@
     "perItemPrice" : 1.9,
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Lukas_can_mockup_coloured_background_300x300.jpg?v=1583156441",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/lukas-can"
   }, {
@@ -2848,7 +3025,8 @@
     "perItemPrice" : 1.9,
     "available" : true,
     "categories" : [ "Dark", "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Market_Porter_bottle_mockup_for_website_3_300x300.png?v=1571406327",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/market-porter"
   }, {
@@ -2864,7 +3042,8 @@
     "perItemPrice" : 2.2,
     "available" : false,
     "categories" : [ "Dark", "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Myddlemockup_colouredbackground_300x300.jpg?v=1587639749",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/myddle-6-2-american-red-ipa"
   }, {
@@ -2880,7 +3059,8 @@
     "perItemPrice" : 4.0,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Ponderamockup_colouredbackground_300x300.jpg?v=1584958778",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/pondera"
   }, {
@@ -2896,7 +3076,8 @@
     "perItemPrice" : 2.0,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Shelby_bottle_for_website_300x300.jpg?v=1592160756",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/shelby-official"
   }, {
@@ -2912,7 +3093,8 @@
     "perItemPrice" : 2.23,
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_ALES_MIXED_CASE_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/ales-mixed-case"
   }, {
@@ -2928,7 +3110,8 @@
     "perItemPrice" : 2.68,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_ISOLATION_IPA_NUMBER_3_330ML_CAN_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/isolation-ipa"
   }, {
@@ -2944,7 +3127,8 @@
     "perItemPrice" : 2.13,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RAFIKI_SESSION_IPA_330ML_CAN_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/rafiki-session-ipa"
   }, {
@@ -2960,7 +3144,8 @@
     "perItemPrice" : 2.05,
     "available" : true,
     "categories" : [ "Pale", "Pils / Lager", "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_REGULARS_MIXED_CASE_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/regulars-mixed-case"
   }, {
@@ -2976,7 +3161,8 @@
     "perItemPrice" : 2.13,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/rodeo-pale-ale"
   }, {
@@ -2992,7 +3178,8 @@
     "perItemPrice" : 2.68,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : true,
+    "newFromBrewer" : true,
+    "newToUs" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_TOTO_AMERICAN_PALE_330ML_CAN_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/toto-american-pale"
   }, {
@@ -3008,7 +3195,8 @@
     "perItemPrice" : 2.19,
     "available" : true,
     "categories" : [ "Pale", "Pils / Lager", "IPA" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/villages-mixed-case"
   }, {
@@ -3024,7 +3212,8 @@
     "perItemPrice" : 2.13,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : false,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_WHISTLE_PILSNER_330ML_CAN_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/whistle-pilsner"
   } ]

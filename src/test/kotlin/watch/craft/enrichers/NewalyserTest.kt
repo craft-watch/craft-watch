@@ -18,7 +18,10 @@ class NewalyserTest {
       11 to listOf(INTERESTING_ITEM)
     ))
 
-    assertFalse(newalyser.enrich(INTERESTING_ITEM).new)
+    val result = newalyser.enrich(INTERESTING_ITEM)
+
+    assertFalse(result.newFromBrewer)
+    assertFalse(result.newToUs)
   }
 
   @Test
@@ -27,16 +30,22 @@ class NewalyserTest {
       11 to listOf(SAME_BREWERY_ITEM)
     ))
 
-    assertTrue(newalyser.enrich(INTERESTING_ITEM).new)
+    val result = newalyser.enrich(INTERESTING_ITEM)
+
+    assertTrue(result.newFromBrewer)
+    assertTrue(result.newToUs)
   }
 
   @Test
-  fun `doesn't mark as new if no beer match in historical window but brewery is also new`() {
+  fun `only mark as new from brewer if no beer match in historical window but brewery is also new`() {
     val newalyser = createNewalyser(mapOf(
       11 to listOf(DIFFERENT_BREWERY_ITEM)
     ))
 
-    assertFalse(newalyser.enrich(INTERESTING_ITEM).new)
+    val result = newalyser.enrich(INTERESTING_ITEM)
+
+    assertFalse(result.newFromBrewer)
+    assertTrue(result.newToUs)
   }
 
   @Test
@@ -46,7 +55,10 @@ class NewalyserTest {
       2 to listOf(INTERESTING_ITEM)
     ))
 
-    assertTrue(newalyser.enrich(INTERESTING_ITEM).new)
+    val result = newalyser.enrich(INTERESTING_ITEM)
+
+    assertTrue(result.newFromBrewer)
+    assertTrue(result.newToUs)
   }
 
   @Test
@@ -56,7 +68,10 @@ class NewalyserTest {
       18 to listOf(INTERESTING_ITEM)
     ))
 
-    assertTrue(newalyser.enrich(INTERESTING_ITEM).new)
+    val result = newalyser.enrich(INTERESTING_ITEM)
+
+    assertTrue(result.newFromBrewer)
+    assertTrue(result.newToUs)
   }
 
   @Test
@@ -65,7 +80,10 @@ class NewalyserTest {
       11 to listOf(INTERESTING_ITEM.run { copy(name = name.toUpperCase()) })
     ))
 
-    assertFalse(newalyser.enrich(INTERESTING_ITEM).new)
+    val result = newalyser.enrich(INTERESTING_ITEM)
+
+    assertFalse(result.newFromBrewer)
+    assertFalse(result.newToUs)
   }
 
   private fun createNewalyser(results: Map<Int, List<Item>>): Newalyser {

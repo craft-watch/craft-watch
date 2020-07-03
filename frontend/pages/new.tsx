@@ -11,7 +11,7 @@ const ThisPage = (): JSX.Element => (
   >
     <App
       capturedAt={capturedAt}
-      items={_.filter(items, item => item.new) }
+      items={_.filter(items, item => item.newFromBrewer || item.newToUs) }
       categories={categories}
     />
   </Page>

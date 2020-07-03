@@ -21,7 +21,8 @@ export interface Item {
   perItemPrice: number;
   available: boolean;
   categories: Array<string>;
-  new: boolean;
+  newFromBrewer: boolean;
+  newToUs: boolean;
   thumbnailUrl: string;
   url: string;
 }
