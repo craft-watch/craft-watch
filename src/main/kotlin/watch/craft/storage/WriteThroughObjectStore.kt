@@ -9,15 +9,16 @@ class WriteThroughObjectStore(
     firstLevel.write(key, content)  // Allow this to throw
   }
 
-  override fun read(key: String): ByteArray {
-    return try {
-      firstLevel.read(key)
-    } catch (e: FileDoesntExistException) {
-      val content = secondLevel.read(key)
-      firstLevel.writeGracefully(key, content)  // Race conditions are anticipated due to concurrent writers
-      content
-    }
+  override fun read(key: String) = try {
+    firstLevel.read(key)
+  } catch (e: FileDoesntExistException) {
+    val content = secondLevel.read(key)
+    firstLevel.writeGracefully(key, content)  // Race conditions are anticipated due to concurrent writers
+    content
   }
+
+  // We go straight to second-level storage as source of truth
+  override fun list(key: String) = secondLevel.list(key)
 
   private fun ObjectStore.writeGracefully(key: String, content: ByteArray) {
     try {
