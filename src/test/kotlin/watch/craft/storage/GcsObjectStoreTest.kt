@@ -65,7 +65,7 @@ class GcsObjectStoreTest {
 
     @Test
     fun `throws if file not present`() {
-      whenever(bucket.get(NICE_KEY)) doThrow StorageException(404, "Uh oh")
+      whenever(bucket.get(NICE_KEY)) doReturn null
 
       assertThrows<FileDoesntExistException> {
         store.read(NICE_KEY)
