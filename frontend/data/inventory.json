@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-02T20:27:40.160251Z"
+    "capturedAt" : "2020-07-03T10:34:56.379032Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Sours / Gose", "Cider" ],
   "items" : [ {
@@ -1289,7 +1289,7 @@
     "abv" : 3.9,
     "numItems" : 1,
     "perItemPrice" : 19.5,
-    "available" : false,
+    "available" : true,
     "categories" : [ "Pale" ],
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/05/Pint-2_1531-e1589904569823-300x300.jpg",
     "url" : "https://marblebeers.com/shop-home/pint-metric-5l-mini-cask-local-delivery-only/"
@@ -1413,21 +1413,6 @@
     "categories" : [ "Cider" ],
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/11/Padstow-Elderflower-Sunrise-Cider-Bottle-1.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/elderflower-sunrise/"
-  }, {
-    "brewery" : "Padstow",
-    "name" : "I Sea Gose",
-    "summary" : "Gooseberry and Seaweed Gose",
-    "desc" : "Inspired by the historic German-style Gose, this Cornish Gose combines locally harvested seaweed, gooseberry and coriander to balance sour and saltiness for a unique refreshing beer. Part of our ongoing collaboration with Falmouth University, this can features artwork by local resident, Phoebe Roberts and combines great beer with great art. This beer is suitable for vegans. It contains barley and wheat,which are sources of gluten.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 4.7,
-    "numItems" : 1,
-    "perItemPrice" : 4.5,
-    "available" : true,
-    "categories" : [ "Sours / Gose" ],
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/I-sea-Gose-3-can-render-1024x724.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/i-sea-gose/"
   }, {
     "brewery" : "Padstow",
     "name" : "Mixed Beer Case",
@@ -1760,21 +1745,6 @@
     "url" : "https://www.padstowbrewing.co.uk/product/spiced-vintage-ale/"
   }, {
     "brewery" : "Padstow",
-    "name" : "Sundowner 2.0",
-    "summary" : "NEIPA",
-    "desc" : "Our National Champion NEIPA returns for a strictly limited time in great value minikeg! Double dry hopped with 6 US hop varieties this hugely drinkable NEIPA wowed the judges at the 2020 BeerX and stole away with the top prize in the hotly contested Imperial IPA category. This beer is suitable for vegans. Contains barley, and wheat.",
-    "keg" : true,
-    "mixed" : false,
-    "sizeMl" : 5000,
-    "abv" : 6.8,
-    "numItems" : 1,
-    "perItemPrice" : 32.5,
-    "available" : true,
-    "categories" : [ "IPA" ],
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/04/minikeg-front.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/minikeg-sundowner-2-0/"
-  }, {
-    "brewery" : "Padstow",
     "name" : "Sundowner 3.0",
     "summary" : "DDH NEIPA",
     "desc" : "Sundowner 3.0 is the long awaited follow up to the SIBA National Gold winning Sundowner 2.0. We've added oats for more body, and kept the massive double dry hop (DDH) with just a few adjustments to maximise the flavour. Smooth and punchy this is our best NEIPA (New England IPA) yet. Continuing our work with Falmouth University combining great beer with great art, this can features the work of Esmé Fergusson (@Esmefineart) This beer is unfined and suitable for vegans. It contains barley and wheat,which are sources of gluten.",
@@ -1803,6 +1773,36 @@
     "categories" : [ "Cider" ],
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/04/sunlight-cider-minikeg.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/minikeg-sunlight-cider/"
+  }, {
+    "brewery" : "Padstow",
+    "name" : "Support the Fishermen’s Mission",
+    "summary" : "Patiently fermented, unfiltered craft lager",
+    "desc" : "Brewed in support of the Fishermen's Mission, 1881 commemorates the year of their founding and helps to raise money towards their vital work in the present. A pale, refreshing, unfiltered lager, 1881 has been patiently fermented and packaged to maximise its clean flavour. This beer is suitable for vegans. It contains barley, wheat and oats. ** Also available in a 5 litre mini-keg **",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 3.9,
+    "numItems" : 1,
+    "perItemPrice" : 3.5,
+    "available" : true,
+    "categories" : [ "Pils / Lager", "Pale" ],
+    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/07/1881-CAN-RENDER-new-1024x549.jpg",
+    "url" : "https://www.padstowbrewing.co.uk/product/1881-lager-support-the-fishermens-mission/"
+  }, {
+    "brewery" : "Padstow",
+    "name" : "Support the Fishermen’s Mission",
+    "summary" : "Patiently fermented, unfiltered craft lager",
+    "desc" : "Brewed in support of the Fishermen's Mission, 1881 commemorates the year of their founding and helps to raise money towards their vital work in the present. A pale, refreshing, unfiltered lager, 1881 has been patiently fermented and packaged to maximise its clean flavour. This beer is suitable for vegans. It contains barley, wheat and oats. ** Also available in 440ml cans **",
+    "keg" : true,
+    "mixed" : false,
+    "sizeMl" : 5000,
+    "abv" : 3.9,
+    "numItems" : 1,
+    "perItemPrice" : 29.5,
+    "available" : true,
+    "categories" : [ "Pils / Lager", "Pale" ],
+    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/07/1881-CAN-RENDER-new-1024x549.jpg",
+    "url" : "https://www.padstowbrewing.co.uk/product/1881-lager-support-the-fishermens-mission-minikeg/"
   }, {
     "brewery" : "Padstow",
     "name" : "The Smoke",
@@ -1923,6 +1923,21 @@
     "categories" : [ "IPA" ],
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_8398_large.jpg?v=1576076300",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/behind-door-number-3"
+  }, {
+    "brewery" : "Pressure Drop",
+    "name" : "Circuits",
+    "summary" : "Citra Ekuanot NEIPA",
+    "desc" : "7.2% Citra & Ekuanot NEIPA 440ml Can\n\nConnect to the mainframe, it's a wild ride. \n\nCitra & Ekuanot are dreamy hops that we love to play with, used here in a hazy NEIPA for maximum fun times!",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 7.2,
+    "numItems" : 1,
+    "perItemPrice" : 4.95,
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_0021_large.jpg?v=1593692581",
+    "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/circuits-citra-ekuanot-neipa"
   }, {
     "brewery" : "Pressure Drop",
     "name" : "Future Sunshine",
@@ -2480,21 +2495,6 @@
     "url" : "https://www.stewartbrewing.co.uk/item/268/StewartBrewing/Stewarts-Lager.html"
   }, {
     "brewery" : "Thornbridge",
-    "name" : "Bliss Point",
-    "summary" : "Hazy American Pale Ale",
-    "desc" : "Bliss Point is a modern take on the American Pale Ale style with a slight haziness and big juicy flavours from the four US hops.\nABV 5% / 330ml can\nHOPS Cascade, Simcoe, Azacca, Citra\nMALTS LCMO, Wheat\nYou must be 18 or over to purchase this product.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 330,
-    "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 2.0,
-    "available" : false,
-    "categories" : [ "Pale" ],
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Bliss_Point_can_mockup_coloured_background_300x300.jpg?v=1581437605",
-    "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/bliss-point-5-hazy-american-pale-ale-can"
-  }, {
-    "brewery" : "Thornbridge",
     "name" : "Carry Us All",
     "summary" : "Table Beer",
     "desc" : "Carry us all has been brewed as part of our ‘Year of Beer’ range for 2020. It is a light and hoppy table beer overflowing with flavours of peach, tangerine and lychee.\nABV 2.5% / 330ml bottle\nHOPS Sabro / Citra / Amarillo / Bru-1\nMALTS Low Colour Maris Otter / Wheat / Carapils / Munich\n\nYou must be 18 or over to purchase this product.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.",
@@ -2557,17 +2557,17 @@
     "brewery" : "Thornbridge",
     "name" : "Jaipur",
     "summary" : "IPA",
-    "desc" : "With over 100 worldwide awards, this American style IPA has a complexity of flavour created by a six-dimensional hop experience.\nABV 5.9% / 330ml bottle\nHOPS Chinook / Centennial / Ahtanum / Simcoe / Columbus / Cascade\nMALTS Low Colour Maris Otter\nNOTABLE AWARDS 2016 – 4 Stars. International Wine and Spirits Competition 2016 – Bronze. International Beer Challenge 2016 – Gold, IPA United Kingdom. World Beer Awards 2015 – 3 Stars. Great Taste Awards 2015 – UK Top 50 Food and Drink. Great Taste Awards 2014 – 3 Stars. Great Taste Awards 2013 – Europe’s Best IPA. World Beer Awards 2013 – Gold, IPA. SIBA 2011 – World’s Best Keg Ale. Brewing Industry Awards\nYou must be 18 or over to purchase this product.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.",
+    "desc" : "With over 100 worldwide awards, this American style IPA has a complexity of flavour created by a six-dimensional hop experience.\nABV 5.9% / 330ml can\nHOPS Chinook / Centennial / Ahtanum / Simcoe / Columbus / Cascade\nMALTS Maris Otter\nNOTABLE AWARDS 2016 – 4 Stars. International Wine and Spirits Competition 2016 – Bronze. International Beer Challenge 2016 – Gold, IPA United Kingdom. World Beer Awards 2015 – 3 Stars. Great Taste Awards 2015 – UK Top 50 Food and Drink. Great Taste Awards 2014 – 3 Stars. Great Taste Awards 2013 – Europe’s Best IPA. World Beer Awards 2013 – Gold, IPA. SIBA 2011 – World’s Best Keg Ale. Brewing Industry Awards\nYou must be 18 or over to purchase this product.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.",
     "keg" : false,
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.9,
     "numItems" : 1,
     "perItemPrice" : 2.0,
-    "available" : false,
+    "available" : true,
     "categories" : [ "IPA" ],
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_bottle_mockup_for_website_300x300.jpg?v=1583153726",
-    "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/jaipur"
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_can_mockup_coloured_background_300x300.jpg?v=1583154011",
+    "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/jaipur-can"
   }, {
     "brewery" : "Thornbridge",
     "name" : "Jamestown",
@@ -2579,7 +2579,7 @@
     "abv" : 5.9,
     "numItems" : 1,
     "perItemPrice" : 2.2,
-    "available" : false,
+    "available" : true,
     "categories" : [ "IPA" ],
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jamestowncan_colouredbakground_1_300x300.jpg?v=1584374239",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/jamestowncan"
@@ -2674,25 +2674,10 @@
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Shelby_bottle_for_website_300x300.jpg?v=1592160756",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/shelby-official"
   }, {
-    "brewery" : "Thornbridge",
-    "name" : "The River Knows",
-    "summary" : "Passionfruit & Blueberry Sour",
-    "desc" : "The River Knows pours a deep red and exudes a full bodied aroma of soft berries. The flavour is fruity and sharply piquant with the passion fuit coming through strongly, all culminating in an alluringly tart finish.\nABV 6% / 440ml Can\nYou must be 18 or over to purchase this product.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 6.0,
-    "numItems" : 1,
-    "perItemPrice" : 4.0,
-    "available" : false,
-    "categories" : [ "Sours / Gose" ],
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/TheRiverKnows_300x300.jpg?v=1588072367",
-    "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/the-river-knows"
-  }, {
     "brewery" : "Villages",
     "name" : "Ales Mixed Case",
     "summary" : null,
-    "desc" : "An ever-changing mixed case of 24 × cans of Villages ales. Currently the case includes:\n8 × RODEO Pale Ale  •  4.6%One of our first pals. Rodeo is a light straw colour with a gentle haze. Citrus and grapefruit aromas and flavours come from Citra and Cascade, giving a balanced floral tone. Low bitterness and a soft body. Real refreshing!\n8 × RAFIKI Session IPA  •  4.3%Our low-strength IPA, and a family fave. Tropical notes of mango, passionfruit and guava come from Mosaic and Ekuanot. Smooth bitterness and a sweet biscuity malt flavour.\n8 × ISOLATION IPA Number 3  •  5.4%This is the third Isolation IPA we've brewed, and this one's been hopped with Amarillo, Centennial and Chinook. Really nicely balanced! We're getting orange, grapefruit and a resinous pine, pleasant late bitterness too. Delish! All proceeds from the sale of Isolation IPA will be donated to the National Emergencies Trust.",
+    "desc" : "An ever-changing mixed case of 24 × cans of Villages ales. Currently the case includes:\n6 × RODEO Pale Ale  •  4.6%One of our first pals. Rodeo is a light straw colour with a gentle haze. Citrus and grapefruit aromas and flavours come from Citra and Cascade, giving a balanced floral tone. Low bitterness and a soft body. Real refreshing!\n6 × RAFIKI Session IPA  •  4.3%Our low-strength IPA, and a family fave. Tropical notes of mango, passionfruit and guava come from Mosaic and Ekuanot. Smooth bitterness and a sweet biscuity malt flavour.\n6 × ISOLATION IPA Number 3  •  5.4%This is the third Isolation IPA we've brewed, and this one's been hopped with Amarillo, Centennial and Chinook. Really nicely balanced! We're getting orange, grapefruit and a resinous pine, pleasant late bitterness too. Delish! All proceeds from the sale of Isolation IPA will be donated to the National Emergencies Trust.\n6 × TOTO American Pale  •  5.3%Toto is a 5.3% American Pale hopped with Idaho 7, Simcoe and Ekuanot and fermented with London Ale III. Real haps with this one! Full-bodied, lovely soft bitterness. Tropical, citrus and pine flaves. Limited run!",
     "keg" : false,
     "mixed" : true,
     "sizeMl" : 330,
@@ -2701,7 +2686,7 @@
     "perItemPrice" : 2.23,
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_ALES_MIXED_CASE_73fc0f61-8232-4bef-b3ec-de9f85a44852_345x345.jpg",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_ALES_MIXED_CASE_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/ales-mixed-case"
   }, {
     "brewery" : "Villages",
@@ -2765,9 +2750,24 @@
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/rodeo-pale-ale"
   }, {
     "brewery" : "Villages",
+    "name" : "Toto",
+    "summary" : "American Pale",
+    "desc" : "TOTO is a 5.3% American Pale hopped with Idaho 7, Simcoe and Ekuanot and fermented with London Ale III. Real haps with this one! Full-bodied, lovely soft bitterness. Tropical, citrus and pine flaves. Limited run!",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 330,
+    "abv" : 5.3,
+    "numItems" : 12,
+    "perItemPrice" : 2.68,
+    "available" : true,
+    "categories" : [ "Pale" ],
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_TOTO_AMERICAN_PALE_330ML_CAN_345x345.jpg",
+    "url" : "https://villagesbrewery.com/collections/buy-beer/products/toto-american-pale"
+  }, {
+    "brewery" : "Villages",
     "name" : "Villages Mixed Case",
     "summary" : null,
-    "desc" : "An ever-changing mixed case of 24 × cans of the freshest Villages bevs. Currently the case includes:\n6 × RODEO Pale Ale  •  4.6%One of our first pals. Rodeo is a light straw colour with a gentle haze. Citrus and grapefruit aromas and flavours come from Citra and Cascade, giving a balanced floral tone. Low bitterness and a soft body. Real refreshing!\n6 × WHISTLE Pilsner  •  4.4%A crisp, unfiltered Pilsner with lots of flavour. Saaz and Hallertau Mittelfrüh give it those traditional floral and spicy notes. The yeast gives a big ester profile and a clean finish.6 × RAFIKI Session IPA  •  4.3%Our low-strength IPA, and a family fave. Tropical notes of mango, passionfruit and guava come from Mosaic and Ekuanot. Smooth bitterness and a sweet biscuity malt flavour.\n6 × ISOLATION IPA Number 3  •  5.4%This is the third Isolation IPA we've brewed, and this one's been hopped with Amarillo, Centennial and Chinook. Really nicely balanced! We're getting orange, grapefruit and a resinous pine, pleasant late bitterness too. Delish! All proceeds from the sale of Isolation IPA will be donated to the National Emergencies Trust.",
+    "desc" : "An ever-changing mixed case of 24 × cans of the freshest Villages bevs. Currently the case includes:\n5 × RODEO Pale Ale  •  4.6%One of our first pals. Rodeo is a light straw colour with a gentle haze. Citrus and grapefruit aromas and flavours come from Citra and Cascade, giving a balanced floral tone. Low bitterness and a soft body. Real refreshing!\n5 × WHISTLE Pilsner  •  4.4%A crisp, unfiltered Pilsner with lots of flavour. Saaz and Hallertau Mittelfrüh give it those traditional floral and spicy notes. The yeast gives a big ester profile and a clean finish.5 × RAFIKI Session IPA  •  4.3%Our low-strength IPA, and a family fave. Tropical notes of mango, passionfruit and guava come from Mosaic and Ekuanot. Smooth bitterness and a sweet biscuity malt flavour.\n4 × ISOLATION IPA Number 3  •  5.4%This is the third Isolation IPA we've brewed, and this one's been hopped with Amarillo, Centennial and Chinook. Really nicely balanced! We're getting orange, grapefruit and a resinous pine, pleasant late bitterness too. Delish! All proceeds from the sale of Isolation IPA will be donated to the National Emergencies Trust.\n5 × TOTO American Pale  •  5.3%Toto is a 5.3% American Pale hopped with Idaho 7, Simcoe and Ekuanot and fermented with London Ale III. Real haps with this one! Full-bodied, lovely soft bitterness. Tropical, citrus and pine flaves. Limited run!",
     "keg" : false,
     "mixed" : true,
     "sizeMl" : 330,
