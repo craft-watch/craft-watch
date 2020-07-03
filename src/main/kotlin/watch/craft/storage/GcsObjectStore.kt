@@ -28,13 +28,9 @@ class GcsObjectStore(
   }
 
   override fun read(key: String) = try {
-    bucket.get(key).getContent()!!
+    bucket.get(key)?.getContent() ?: throw FileDoesntExistException(key)
   } catch (e: StorageException) {
-    if (e.code == 404) {
-      throw FileDoesntExistException(key)
-    } else {
-      throw FatalScraperException("Error reading from GCS", e)
-    }
+    throw FatalScraperException("Error reading from GCS", e)
   }
 
   override fun list(key: String) = try {
