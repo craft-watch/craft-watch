@@ -1,9 +1,9 @@
 package watch.craft.analysis
 
 import com.fasterxml.jackson.module.kotlin.readValue
+import watch.craft.CATEGORY_KEYWORDS
 import watch.craft.INVENTORY_JSON_FILE
 import watch.craft.Inventory
-import watch.craft.CATEGORY_KEYWORDS
 import watch.craft.mapper
 
 fun main() {

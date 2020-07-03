@@ -16,7 +16,7 @@ class PressureDropScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(9, ITEMS.size)
+    assertEquals(10, ITEMS.size)
   }
 
   @Test

@@ -3,7 +3,7 @@ package watch.craft
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.executor.ScraperExecutor
 
-private const val GOLDEN_DATE = "2020-06-30"
+private const val GOLDEN_DATE = "2020-07-03"
 
 fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE): List<ScrapedItem> {
   val setup = Setup(dateString)

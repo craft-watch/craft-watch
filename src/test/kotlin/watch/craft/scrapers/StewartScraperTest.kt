@@ -15,22 +15,22 @@ class StewartScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(14, ITEMS.size)
+    assertEquals(12, ITEMS.size)
   }
 
   @Test
   fun `extracts beer details`() {
     assertEquals(
       ScrapedItem(
-        name = "St Giles",
-        summary = "Scotch Ale",
+        name = "Cascadian East",
+        summary = "India Pale Ale",
         sizeMl = 330,
-        abv = 5.0,
-        price = 1.80,
+        abv = 5.4,
+        price = 2.00,
         available = true,
-        thumbnailUrl = URI("https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-st-giles-1592389432330ml-StGiles.png")
+        thumbnailUrl = URI("https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-cascadian-east-1589535328cas-front-330.png")
       ),
-      ITEMS.byName("St Giles")
+      ITEMS.byName("Cascadian East")
     )
   }
 
