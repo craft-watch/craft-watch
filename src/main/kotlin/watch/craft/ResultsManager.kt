@@ -17,4 +17,6 @@ class ResultsManager(private val setup: Setup) {
 
   private fun Instant.format() =
     DateTimeFormatter.ISO_DATE_TIME.withZone(ZoneOffset.UTC).format(this)
+
+  // TODO - read minimal inventory from date
 }
