@@ -1,24 +1,27 @@
-package watch.craft.analysis
+package watch.craft.enrichers
 
+import watch.craft.Enricher
 import watch.craft.Item
 import kotlin.text.RegexOption.IGNORE_CASE
 
-class Categoriser(categories: Map<String, List<String>>) {
+class Categoriser(categories: Map<String, List<String>>) : Enricher {
   private val keywords = categories
     .flatMap { (category, synonyms) -> synonyms.map { Keyword(it, it.toSweetRegex(), category) } }
 
-  fun categorise(item: Item): Set<String> {
+  override fun enrich(item: Item): Item {
     val components = listOf(
       item.name,
       item.summary,
       item.desc
     )
 
-    return keywords
-      .filter { keyword -> components.any { it?.contains(keyword.regex) ?: false } }
-      .pickMostSpecific()
-      .map { it.category }
-      .toSet()
+    return item.copy(
+      categories = keywords
+        .filter { keyword -> components.any { it?.contains(keyword.regex) ?: false } }
+        .pickMostSpecific()
+        .map { it.category }
+        .toSet()
+    )
   }
 
   // Ensure we don't match against partial words

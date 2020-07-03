@@ -1,4 +1,4 @@
-package watch.craft.analysis
+package watch.craft.enrichers
 
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
@@ -69,6 +69,8 @@ class CategoriserTest {
     assertNoMatch("abcfoo bar")
     assertNoMatch("foo bardef")
   }
+
+  private fun Categoriser.categorise(item: Item) = enrich(item).categories
 
   private fun item(name: String, summary: String? = null, desc: String? = null) = mock<Item> {
     on { this.name } doReturn name

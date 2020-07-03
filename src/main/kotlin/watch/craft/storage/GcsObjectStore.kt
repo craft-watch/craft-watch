@@ -38,7 +38,7 @@ class GcsObjectStore(
   }
 
   override fun list(key: String) = try {
-    val prefix = key.ensureTrailingSlash()
+    val prefix = key.normaliseAsPrefix()
     bucket.list(prefix(prefix), currentDirectory())
       .iterateAll()
       .map { it.name.removePrefix(prefix).removeSuffix("/") }
@@ -50,7 +50,11 @@ class GcsObjectStore(
     }
   }
 
-  private fun String.ensureTrailingSlash() = if (endsWith("/")) this else ("${this}/")
+  private fun String.normaliseAsPrefix() = when {
+    this in listOf("", "/") -> ""   // Root is slightly inconsistent
+    endsWith("/") -> this
+    else -> "${this}/"
+  }
 
   companion object {
     fun createGcsService() = StorageOptions.newBuilder().apply {

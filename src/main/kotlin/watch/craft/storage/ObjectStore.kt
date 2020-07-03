@@ -8,5 +8,5 @@ interface ObjectStore {
   fun read(key: String): ByteArray
 
   /** Lists direct children. */
-  fun list(key: String): List<String> = emptyList()
+  fun list(key: String = ""): List<String> = emptyList()
 }

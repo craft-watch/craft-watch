@@ -4,7 +4,8 @@ import java.io.File
 
 const val GCS_BUCKET = "backend.craft.watch"
 val CACHE_DIR = File("cache")
-val INVENTORY_JSON_FILE = File("frontend/data/inventory.json")
+const val INVENTORY_FILENAME = "inventory.json"
+val CANONICAL_INVENTORY_PATH = File("frontend/data/${INVENTORY_FILENAME}")
 
 // Key order here is respected in frontend
 val CATEGORY_KEYWORDS = mapOf(
