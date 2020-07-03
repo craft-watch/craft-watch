@@ -1,13 +1,11 @@
 package watch.craft.enrichers
 
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import watch.craft.Item
+import watch.craft.PROTOTYPE_ITEM
 
 class CategoriserTest {
-
   @Test
   fun `case insensitive`() {
     val categoriser = Categoriser(mapOf("foo" to listOf("foo")))
@@ -72,9 +70,9 @@ class CategoriserTest {
 
   private fun Categoriser.categorise(item: Item) = enrich(item).categories
 
-  private fun item(name: String, summary: String? = null, desc: String? = null) = mock<Item> {
-    on { this.name } doReturn name
-    on { this.summary } doReturn summary
-    on { this.desc } doReturn desc
-  }
+  private fun item(name: String, summary: String? = null, desc: String? = null) = PROTOTYPE_ITEM.copy(
+    name = name,
+    summary = summary,
+    desc = desc
+  )
 }

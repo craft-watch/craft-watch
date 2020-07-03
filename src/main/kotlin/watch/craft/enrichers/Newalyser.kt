@@ -6,7 +6,7 @@ import watch.craft.Item
 import watch.craft.MinimalItem
 import watch.craft.ResultsManager
 import java.time.Instant
-import java.time.temporal.ChronoUnit
+import java.time.temporal.ChronoUnit.DAYS
 
 class Newalyser(
   private val results: ResultsManager,
@@ -15,7 +15,7 @@ class Newalyser(
   private val logger = KotlinLogging.logger {}
 
   private val oldInventory = results.listHistoricalResults()
-    .filter { ChronoUnit.DAYS.between(it, now).toInt() in MIN_DAYS_AGO..MAX_DAYS_AGO }
+    .filter { DAYS.between(it, now).toInt() in MIN_DAYS_AGO..MAX_DAYS_AGO }
     .flatMap {
       logger.info("Collating old inventory from: ${it}")
       results.readMinimalHistoricalResult(it).items
