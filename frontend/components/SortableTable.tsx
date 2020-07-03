@@ -65,7 +65,7 @@ const SortableTable = <T extends unknown>(props: Props<T>): JSX.Element => {
           const sorted = selector ? _.sortBy(section.data, selector) : section.data;
           const maybeReversed = sortDescending ? sorted.reverse() : sorted;
 
-          return (_.size(section.data) > 1) && (
+          return _.isEmpty(section.data) || (
             <tbody key={section.name}>
               <tr>
                 <th colSpan={_.size(columns)}>
