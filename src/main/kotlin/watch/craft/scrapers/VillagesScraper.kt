@@ -17,7 +17,6 @@ class VillagesScraper : Scraper {
         val parts = extractVariableParts(details.title)
 
         ScrapedItem(
-          thumbnailUrl = details.thumbnailUrl,
           name = parts.name.toTitleCase(),
           summary = parts.summary,
           desc = doc.maybeWholeTextFrom(".product-single__description")?.split("~")?.get(0),
@@ -26,7 +25,8 @@ class VillagesScraper : Scraper {
           abv = parts.abv,
           available = details.available,
           numItems = parts.numCans,
-          price = details.price
+          price = details.price,
+          thumbnailUrl = details.thumbnailUrl
         )
       }
     }

@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-03T17:58:00.288946Z"
+    "capturedAt" : "2020-07-03T19:45:45.281255Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Sours / Gose", "Cider" ],
   "items" : [ {
@@ -2019,6 +2019,86 @@
     "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/a1df4143-6f3e-444f-876f-403e4646de81_e0ca1731-5b0e-436d-9697-af4d723dcafd_250x250.png",
     "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/untraditional-lager-case-of-24"
+  }, {
+    "brewery" : "Polly's Brew",
+    "name" : "DDH Spur",
+    "summary" : "Triple IPA",
+    "desc" : "DDH Spur\nHere it is, the big one. We’ve always had it in the back of our minds that a TIPA would be a natural progression after nailing down our DIPA game, but never knew where to wrangle it into our plans. The biggest beer we’ve ever brewed by a country mile; in-house favourite Spur is amplified to the max, with an insane 60kg of Azacca, Simcoe and Citra thrown in for a dry hop rate of 29g/l giving massive amounts of stone fruit, peach, mango, and passionfruit flavours bursting throughout. A beer perfect for our new water profile directly influenced by the profile used at Other Half NYC, and fermented with our house strain of LA3 for maximum suspension. Expect juice to the nines, complimented by a soft but full bodied mouthfeel.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 10.0,
+    "numItems" : 1,
+    "perItemPrice" : 5.75,
+    "available" : false,
+    "categories" : [ "IPA" ],
+    "new" : false,
+    "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/07/DDHS-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
+    "url" : "https://shop.pollysbrew.co/product/ddh-spur-triple-ipa-10-0/"
+  }, {
+    "brewery" : "Polly's Brew",
+    "name" : "Mylar",
+    "summary" : "IPA",
+    "desc" : "Mylar\nThe part of Wales we’re based is an incredible mish-mash of culture, and it’s reflected best in the dialect – part-Welsh, part-Liverpudlian, and by proxy, part-Irish. This dictates a lot of the day to day sayings in the brewery, and when we were sat in a meeting talking about various recipes submitted by the team, someone shouted up “That’s mine, la”. The beer itself is textbook Polly’s – high juice, low bitterness, accentuated by our generous use of Citra, Mosaic, and Sabro in the dry hop. Expect a swagbag of honeydew melon, mango, tangerine, and pina colada flavours abound from the Sabro. A beer that is an homage to the wonderfully bizarre part of the world we grew up.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 6.3,
+    "numItems" : 1,
+    "perItemPrice" : 4.5,
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "new" : false,
+    "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/07/MYL-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
+    "url" : "https://shop.pollysbrew.co/product/mylar-ipa-6-3/"
+  }, {
+    "brewery" : "Polly's Brew",
+    "name" : "Naive Melody",
+    "summary" : "Double IPA",
+    "desc" : "Naive Melody\nWe just can’t help ourselves really. We’ve taken Mosaic for a spin on a single hopped Kveik DIPA, now it’s the turn of another Polly’s stalwart in Citra – say hello to Naive Melody. Named in honour of the Talking Heads song of the same name, this beer shares the same delicate aura as its namesake throughout – soft on the palate, but loaded to the nines with juicy citrus, peach, and lychee notes throughout. A beer that is a perfect summation of every single one of the techniques and experiences we’ve learned as a brewery in our short two and a half years, growing from that ramshackle stable to the (almost) sophisticated setup we have today, this one scores a top Mark. Home is where I want to be!",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 8.2,
+    "numItems" : 1,
+    "perItemPrice" : 5.0,
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "new" : false,
+    "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/07/NM-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
+    "url" : "https://shop.pollysbrew.co/product/naive-melody-double-ipa-8-2/"
+  }, {
+    "brewery" : "Polly's Brew",
+    "name" : "Slow Burn",
+    "summary" : "Berliner Weisse",
+    "desc" : "With Lally back at the wheel, and summer fully engaged, we wanted to break out of our comfort zone somewhat and set ourselves a challenge of creating a lower abv beer, perfect for sitting back and supping in the sun. After the phenomenal feedback to our dry-hopped sour, Strange Addiction, we figured “Why not brew a dry-hopped Berliner Weisse?” and immediately put it into our brew plans. The result is Slow Burn – a Polly’s twist on the classic style, dry hopped with 15kg of Comet and Ekuanot. Crisp, clean, and subtly tart, with juicy hop notes to boot; pure sunshine trapped in a can.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 4.0,
+    "numItems" : 1,
+    "perItemPrice" : 3.75,
+    "available" : true,
+    "categories" : [ "Sours / Gose" ],
+    "new" : false,
+    "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/06/sb-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
+    "url" : "https://shop.pollysbrew.co/product/slow-burn-berliner-weisse-4-0/"
+  }, {
+    "brewery" : "Polly's Brew",
+    "name" : "Transit Culture",
+    "summary" : "West Coast IPA",
+    "desc" : "Transit Culture\nOur head of sales will shout until the cows come home about how Sierra Nevada changed his entire perception of what beer could be. We paid homage to his favourite brewery early on in lockdown with Change, Irreversible – a riff on Sierra Nevada Pale. Never one to rest on his laurels, Arron decided that based on the feedback to that beer, it’s naturally time to riff on Torpedo. Transit Culture is our unashamed attempt at a West Coast IPA in the same mould – loaded with Chinook, Cascade, and Amarillo, this is everything we want from our efforts at replicating those beers that changed the landscape. Sweet, malty biscuit notes lure you in before an all out attack of sticky, piney and resinous hops, that get a full on seal of approval from our Westie loving head of sales.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 7.2,
+    "numItems" : 1,
+    "perItemPrice" : 4.5,
+    "available" : true,
+    "categories" : [ "Pale", "IPA" ],
+    "new" : false,
+    "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/07/TC-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
+    "url" : "https://shop.pollysbrew.co/product/transit-culture-west-coast-ipa-7-2/"
   }, {
     "brewery" : "Pressure Drop",
     "name" : "Behind Door Number 3",
