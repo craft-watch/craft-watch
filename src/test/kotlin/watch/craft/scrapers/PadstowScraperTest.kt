@@ -10,7 +10,7 @@ import java.net.URI
 
 class PadstowScraperTest {
   companion object {
-    private val ITEMS = executeScraper(PadstowScraper())
+    private val ITEMS = executeScraper(PadstowScraper(), dateString = "2020-07-03")
   }
 
   @Test
