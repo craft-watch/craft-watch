@@ -9,40 +9,34 @@ import watch.craft.executeScraper
 import watch.craft.noDesc
 import java.net.URI
 
-class PollysScraperTest {
+class UnityScraperTest {
   companion object {
-    private val ITEMS = executeScraper(PollysScraper())
+    private val ITEMS = executeScraper(UnityScraper())
   }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(5, ITEMS.size)
+    assertEquals(3, ITEMS.size)
   }
 
   @Test
   fun `extracts beer details`() {
     assertEquals(
       ScrapedItem(
-        name = "Mylar",
-        summary = "IPA",
-        abv = 6.3,
+        name = "Conflux Pale Ale",
+        abv = 4.8,
         sizeMl = 440,
-        price = 4.50,
+        price = 3.80,
         available = true,
-        thumbnailUrl = URI("https://craftpeak-commerce-images.imgix.net/2020/07/MYL-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0340/2829/0107/products/CONFLUX_can_345x345.jpg")
       ),
-      ITEMS.byName("Mylar").noDesc()
+      ITEMS.byName("Conflux Pale Ale").noDesc()
     )
   }
 
   @Test
   fun `sanitises description`() {
-    assertFalse(ITEMS.byName("Mylar").desc!!.contains("~"))
-  }
-
-  @Test
-  fun `identifies sold out`() {
-    assertFalse(ITEMS.byName("DDH Spur").available)
+    assertFalse(ITEMS.byName("Conflux Pale Ale").desc!!.contains("~"))
   }
 }
 
