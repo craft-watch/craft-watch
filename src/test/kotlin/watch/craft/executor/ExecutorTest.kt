@@ -54,22 +54,6 @@ class ExecutorTest {
 
     assertEquals(
       listOf(
-        with(product("Foo")) {
-          Item(
-            brewery = BREWERY,
-            name = name,
-            summary = summary,
-            desc = desc,
-            keg = keg,
-            mixed = mixed,
-            sizeMl = sizeMl,
-            abv = abv,
-            perItemPrice = price,
-            available = available,
-            thumbnailUrl = thumbnailUrl.toString(),
-            url = productUrl("a").toString()
-          )
-        },
         with(product("Bar")) {
           Item(
             brewery = BREWERY,
@@ -84,6 +68,22 @@ class ExecutorTest {
             available = available,
             thumbnailUrl = thumbnailUrl.toString(),
             url = productUrl("b").toString()
+          )
+        },
+        with(product("Foo")) {
+          Item(
+            brewery = BREWERY,
+            name = name,
+            summary = summary,
+            desc = desc,
+            keg = keg,
+            mixed = mixed,
+            sizeMl = sizeMl,
+            abv = abv,
+            perItemPrice = price,
+            available = available,
+            thumbnailUrl = thumbnailUrl.toString(),
+            url = productUrl("a").toString()
           )
         }
       ),
@@ -155,7 +155,7 @@ class ExecutorTest {
     }
 
     assertEquals(
-      listOf("Foo", "Bar"),
+      listOf("Bar", "Foo"),
       executor.scrape(badScraper, scraper).items.map { it.name } // Execute good and bad scrapers
     )
   }
@@ -169,7 +169,7 @@ class ExecutorTest {
     )
 
     assertEquals(
-      listOf("Foo", "Bar"),
+      listOf("Bar", "Foo"),
       executor.scrape(scraper).items.map { it.name }
     )
   }
@@ -183,7 +183,7 @@ class ExecutorTest {
     )
 
     assertEquals(
-      listOf("Foo", "Bar"),
+      listOf("Bar", "Foo"),
       executor.scrape(scraper).items.map { it.name }
     )
   }
