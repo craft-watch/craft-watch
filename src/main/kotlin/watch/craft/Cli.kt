@@ -8,8 +8,6 @@ import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.types.choice
 import watch.craft.executor.Executor
 import watch.craft.scrapers.*
-import watch.craft.storage.*
-import java.time.Instant
 
 class Cli : CliktCommand(name = "scraper") {
   private val listScrapers by option("--list-scrapers", "-l").flag()
@@ -30,12 +28,8 @@ class Cli : CliktCommand(name = "scraper") {
   private fun executeScrape() {
     val setup = Setup(dateString)
     val executor = Executor(setup.getter)
-
-    val mapper = mapper()
     val inventory = executor.scrape(*scrapers.ifEmpty { SCRAPERS.values }.toTypedArray())
-    setup.structure.results.write("inventory.json", mapper.writeValueAsBytes(inventory))
-    INVENTORY_JSON_FILE.outputStream().use { mapper.writeValue(it, inventory) }
-    // TODO - log
+    ResultsManager(setup).write(inventory)
   }
 
   companion object {

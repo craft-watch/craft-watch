@@ -8,16 +8,13 @@ class StoreStructure(
   store: ObjectStore,
   start: Instant
 ) {
-  private val todayDir = DATE_FORMAT.format(start)
-
-  val cache = SubObjectStore(store, "$todayDir/$CACHE_DIRNAME")
-  val results = SubObjectStore(store, "$todayDir/$RESULTS_DIRNAME/${TIME_FORMAT.format(start)}")
+  val downloads = SubObjectStore(store, "${DOWNLOADS_DIR}/${DATE_FORMAT.format(start)}")
+  val results = SubObjectStore(store, RESULTS_DIRNAME)
 
   companion object {
-    const val CACHE_DIRNAME = "cache"
+    const val DOWNLOADS_DIR = "downloads"
     const val RESULTS_DIRNAME = "results"
 
     private val DATE_FORMAT = DateTimeFormatter.ofPattern("YYYY-MM-dd").withZone(UTC)
-    private val TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm:ss").withZone(UTC)
   }
 }

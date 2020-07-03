@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-03T10:34:56.379032Z"
+    "capturedAt" : "2020-07-03T12:13:18.236786Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Sours / Gose", "Cider" ],
   "items" : [ {
@@ -890,21 +890,6 @@
     "url" : "https://www.howlinghops.co.uk/product/drag-race-johnny-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "FINAL 12 Beer Mega Pack",
-    "summary" : null,
-    "desc" : "FINAL 12 Beer Mega Pack 24 x 440ml\nThe last ever mega mixed case! Loads of new beers straight off the canning line and some fresh, firm favourites. Each case of 24 cans will consist of 12 different beers, in quantities subject to availability. Cases cannot be customised. All the beer is superfresh! Beers included:\nFLASHPOINT – NEIPA (CITRA TOPAZ ENIGMA) – 6.2% ABV\nPUSH PUSH – DDH PALE (CITRA AZACCA SABRO) – 5.8% ABV\nOFF RAMP – DIPA (HBC 692 CRYO MOSAIC CITRA) – 8.0% ABV\nBLANKETS – PALE ALE (CITRA COLUMBUS CASCADE) – 4.2% ABV\nPOCKET ROCKET – TINY IPA (CITRA SIMCOE IDAHO 7) – 2.7% ABV\nHOUSE IPA – INDIA PALE ALE – 6.9% ABV\nBUCKLE DOWN – DDH PALE ALE (CITRA AMARILLO COLUMBUS) – 5.0% ABV\nDRAG RACE JOHNNY – NEIPA (AZACCA CITRA SIMCOE) – 6.7% ABV\nBIRD TALK – PALE ALE (AMARILLO CENTENNIAL COLUMBUS) – 4.4% ABV\nPACKETS – KELLER LAGER – 4.2% ABV\nTROPICAL DELUXE – PALE ALE – 3.8% ABV\nPASSIONFRUIT GOSE – FRUIT SOUR – 4.5% ABV",
-    "keg" : false,
-    "mixed" : true,
-    "sizeMl" : 440,
-    "abv" : null,
-    "numItems" : 24,
-    "perItemPrice" : 2.9,
-    "available" : true,
-    "categories" : [ "IPA", "Pils / Lager", "Sours / Gose" ],
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/june-beer-case-4-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/new-12-beer-24-x-440ml/"
-  }, {
-    "brewery" : "Howling Hops",
     "name" : "Flashpoint",
     "summary" : "NEIPA",
     "desc" : "Flashpoint / NEIPA / 4 x 440ml  / 6.2% ABV\nSuitable for vegans.\nShowcasing Citra alongside some Aussie pals Topaz and Enigma, Flashpoint is a full-bodied New England IPA with a hop character far in excess of its 6.2% ABV. Peach and pineapple notes are balanced by snappy dankness.\n\nOne 4-pack leaves 20 can slots left in your case!",
@@ -918,6 +903,21 @@
     "categories" : [ "IPA" ],
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/flashpoint-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/flashpoint-4-x-440ml/"
+  }, {
+    "brewery" : "Howling Hops",
+    "name" : "NEW 12 Beer Mega Pack",
+    "summary" : null,
+    "desc" : "NEW 12 Beer Mega Pack 24 x 440ml\nLoads of new beers straight off the canning line and some fresh, firm favourites. Each case of 24 cans will consist of 12 different beers, in quantities subject to availability. Cases cannot be customised. All the beer is superfresh! Beers included:\nFLASHPOINT – NEIPA (CITRA TOPAZ ENIGMA) – 6.2% ABV\nPUSH PUSH – DDH PALE (CITRA AZACCA SABRO) – 5.8% ABV\nOFF RAMP – DIPA (HBC 692 CRYO MOSAIC CITRA) – 8.0% ABV\nBLANKETS – PALE ALE (CITRA COLUMBUS CASCADE) – 4.2% ABV\nPOCKET ROCKET – TINY IPA (CITRA SIMCOE IDAHO 7) – 2.7% ABV\nHOUSE IPA – INDIA PALE ALE – 6.9% ABV\nBUCKLE DOWN – DDH PALE ALE (CITRA AMARILLO COLUMBUS) – 5.0% ABV\nDRAG RACE JOHNNY – NEIPA (AZACCA CITRA SIMCOE) – 6.7% ABV\nBIRD TALK – PALE ALE (AMARILLO CENTENNIAL COLUMBUS) – 4.4% ABV\nPACKETS – KELLER LAGER – 4.2% ABV\nTROPICAL DELUXE – PALE ALE – 3.8% ABV\nPASSIONFRUIT GOSE – FRUIT SOUR – 4.5% ABV",
+    "keg" : false,
+    "mixed" : true,
+    "sizeMl" : 440,
+    "abv" : null,
+    "numItems" : 24,
+    "perItemPrice" : 2.9,
+    "available" : true,
+    "categories" : [ "IPA", "Pils / Lager", "Sours / Gose" ],
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/june-beer-case-4-324x324.png",
+    "url" : "https://www.howlinghops.co.uk/product/new-12-beer-24-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
     "name" : "Packets",
@@ -1293,21 +1293,6 @@
     "categories" : [ "Pale" ],
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/05/Pint-2_1531-e1589904569823-300x300.jpg",
     "url" : "https://marblebeers.com/shop-home/pint-metric-5l-mini-cask-local-delivery-only/"
-  }, {
-    "brewery" : "Marble",
-    "name" : "Pro Aqua",
-    "summary" : "Bitter",
-    "desc" : "Brewed with our friends at Young Master from Hong Kong after reminiscing about our love of bitters, it seemed fitting to brew a very sessionable style in ‘boys bitter, updated with a strong Marble identity. This historically low-strength bitter which balances the finest English malts with a decisive hop character is sessionable and moreish.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 500,
-    "abv" : 3.2,
-    "numItems" : 1,
-    "perItemPrice" : 2.3,
-    "available" : true,
-    "categories" : [ "Bitter" ],
-    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/05/500ml-Can-Boys-Bitter-e1588692635192-234x300.png",
-    "url" : "https://marblebeers.com/shop-home/pro-aqua/"
   }, {
     "brewery" : "Marble",
     "name" : "Sour Blonde Ale",
@@ -2450,21 +2435,6 @@
     "url" : "https://www.stewartbrewing.co.uk/item/267/StewartBrewing/Session-IPA.html"
   }, {
     "brewery" : "Stewart Brewing",
-    "name" : "St Giles",
-    "summary" : "Scotch Ale",
-    "desc" : null,
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 330,
-    "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 1.8,
-    "available" : true,
-    "categories" : [ ],
-    "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-st-giles-1592389432330ml-StGiles.png",
-    "url" : "https://www.stewartbrewing.co.uk/item/254/StewartBrewing/St-Giles.html"
-  }, {
-    "brewery" : "Stewart Brewing",
     "name" : "Stewart's 80/-",
     "summary" : "Scotch Ale",
     "desc" : null,
@@ -2639,7 +2609,7 @@
     "abv" : 6.2,
     "numItems" : 1,
     "perItemPrice" : 2.2,
-    "available" : true,
+    "available" : false,
     "categories" : [ "Dark", "IPA" ],
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Myddlemockup_colouredbackground_300x300.jpg?v=1587639749",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/myddle-6-2-american-red-ipa"

@@ -15,7 +15,7 @@ class ThornbridgeScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(15, ITEMS.size)
+    assertEquals(13, ITEMS.size)
   }
 
   @Test
@@ -27,8 +27,8 @@ class ThornbridgeScraperTest {
         sizeMl = 330,
         abv = 5.9,
         price = 2.00,
-        available = false,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_bottle_mockup_for_website_300x300.jpg?v=1583153726")
+        available = true,
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_can_mockup_coloured_background_300x300.jpg?v=1583154011")
       ),
       ITEMS.byName("Jaipur").noDesc()
     )
