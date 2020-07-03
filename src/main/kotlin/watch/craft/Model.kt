@@ -28,3 +28,12 @@ data class Item(
   val thumbnailUrl: String,
   val url: String
 )
+
+data class MinimalInventory(
+  val items: List<MinimalItem>
+)
+
+data class MinimalItem(
+  val brewery: String,
+  val name: String
+)
