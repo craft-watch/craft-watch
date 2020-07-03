@@ -6,4 +6,7 @@ interface ObjectStore {
 
   @Throws(FileDoesntExistException::class)
   fun read(key: String): ByteArray
+
+//  /** Lists direct children. */
+//  fun list(key: String): List<String>
 }

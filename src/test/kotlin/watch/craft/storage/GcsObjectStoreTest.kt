@@ -1,7 +1,10 @@
 package watch.craft.storage
 
+import com.google.cloud.storage.Blob
+import com.google.cloud.storage.Bucket
+import com.google.cloud.storage.Bucket.BlobTargetOption
+import com.google.cloud.storage.Bucket.BlobTargetOption.doesNotExist
 import com.google.cloud.storage.Storage
-import com.google.cloud.storage.Storage.BlobTargetOption.doesNotExist
 import com.google.cloud.storage.StorageException
 import com.nhaarman.mockitokotlin2.*
 import org.junit.jupiter.api.Assertions.assertArrayEquals
@@ -10,19 +13,22 @@ import org.junit.jupiter.api.assertThrows
 import watch.craft.FatalScraperException
 
 class GcsObjectStoreTest {
-  private val storage = mock<Storage>()
+  private val bucket = mock<Bucket>()
+  private val storage = mock<Storage> {
+    on { get(NICE_BUCKET) } doReturn bucket
+  }
   private val store = GcsObjectStore(NICE_BUCKET, storage)
 
   @Test
   fun `writes data to GCS if not already present`() {
     store.write(NICE_KEY, NICE_DATA)
 
-    verify(storage).create(any(), eq(NICE_DATA), eq(doesNotExist()))
+    verify(bucket).create(NICE_KEY, NICE_DATA, doesNotExist())
   }
 
   @Test
   fun `throws if file already present`() {
-    whenever(storage.create(any(), any<ByteArray>(), any())) doThrow StorageException(412, "Uh oh")
+    whenever(bucket.create(any(), any(), any<BlobTargetOption>())) doThrow StorageException(412, "Uh oh")
 
     assertThrows<FileExistsException> {
       store.write(NICE_KEY, NICE_DATA)
@@ -31,7 +37,7 @@ class GcsObjectStoreTest {
 
   @Test
   fun `throws if unexpected error on write`() {
-    whenever(storage.create(any(), any<ByteArray>(), any())) doThrow StorageException(401, "Double uh oh")
+    whenever(bucket.create(any(), any(), any<BlobTargetOption>())) doThrow StorageException(401, "Double uh oh")
 
     assertThrows<FatalScraperException> {
       store.write(NICE_KEY, NICE_DATA)
@@ -40,14 +46,17 @@ class GcsObjectStoreTest {
 
   @Test
   fun `reads data if present`() {
-    whenever(storage.readAllBytes(any())) doReturn NICE_DATA
+    val blob = mock<Blob> {
+      on { getContent() } doReturn NICE_DATA
+    }
+    whenever(bucket.get(NICE_KEY)) doReturn blob
 
     assertArrayEquals(NICE_DATA, store.read(NICE_KEY))
   }
 
   @Test
   fun `throws if file not present`() {
-    whenever(storage.readAllBytes(any())) doThrow StorageException(404, "Uh oh")
+    whenever(bucket.get(NICE_KEY)) doThrow StorageException(404, "Uh oh")
 
     assertThrows<FileDoesntExistException> {
       store.read(NICE_KEY)
@@ -56,7 +65,7 @@ class GcsObjectStoreTest {
 
   @Test
   fun `throws if unexpected error on read`() {
-    whenever(storage.readAllBytes(any())) doThrow StorageException(401, "Double uh oh")
+    whenever(bucket.get(NICE_KEY)) doThrow StorageException(401, "Double uh oh")
 
     assertThrows<FatalScraperException> {
       store.read(NICE_KEY)
