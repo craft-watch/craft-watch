@@ -13,6 +13,7 @@ import java.time.Instant
 
 class Cli : CliktCommand(name = "scraper") {
   private val listScrapers by option("--list-scrapers", "-l").flag()
+  private val dateString by option("--date", "-d")
   private val scrapers by argument().choice(SCRAPERS).multiple()
 
   override fun run() {
@@ -27,17 +28,12 @@ class Cli : CliktCommand(name = "scraper") {
   }
 
   private fun executeScrape() {
-    val store = WriteThroughObjectStore(
-      firstLevel = LocalObjectStore(CACHE_DIR),
-      secondLevel = GcsObjectStore(GCS_BUCKET)
-    )
-    val structure = StoreStructure(store, Instant.now())
-    val getter = CachingGetter(structure.cache)
-    val executor = Executor(getter)
+    val setup = Setup(dateString)
+    val executor = Executor(setup.getter)
 
     val mapper = mapper()
     val inventory = executor.scrape(*scrapers.ifEmpty { SCRAPERS.values }.toTypedArray())
-    structure.results.write("inventory.json", mapper.writeValueAsBytes(inventory))
+    setup.structure.results.write("inventory.json", mapper.writeValueAsBytes(inventory))
     INVENTORY_JSON_FILE.outputStream().use { mapper.writeValue(it, inventory) }
     // TODO - log
   }
