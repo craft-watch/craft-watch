@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-03T20:28:44.176735Z"
+    "capturedAt" : "2020-07-04T10:43:47.640096Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "items" : [ {
@@ -269,7 +269,7 @@
     "abv" : 4.2,
     "numItems" : 1,
     "perItemPrice" : 2.5,
-    "available" : false,
+    "available" : true,
     "categories" : [ "Pale" ],
     "newFromBrewer" : false,
     "newToUs" : false,
@@ -439,7 +439,7 @@
     "abv" : 4.8,
     "numItems" : 12,
     "perItemPrice" : 1.8,
-    "available" : true,
+    "available" : false,
     "categories" : [ "Dark", "Bitter" ],
     "newFromBrewer" : false,
     "newToUs" : false,
@@ -475,8 +475,8 @@
     "perItemPrice" : 4.0,
     "available" : true,
     "categories" : [ "Sours / Gose" ],
-    "newFromBrewer" : true,
-    "newToUs" : true,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_carnivalcoconutlimesour_1593005364CarnivalRenderCMYK.png",
     "url" : "https://www.fourpure.com/item/304/Fourpure/Carnival-Coconut--Lime-Sour.html"
   }, {
@@ -492,8 +492,8 @@
     "perItemPrice" : 5.5,
     "available" : true,
     "categories" : [ "IPA" ],
-    "newFromBrewer" : true,
-    "newToUs" : true,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_castawaymaitaidipa_1593005177CastawayRenderCMYK.png",
     "url" : "https://www.fourpure.com/item/303/Fourpure/Castaway-Mai-Tai-DIPA-.html"
   }, {
@@ -509,8 +509,8 @@
     "perItemPrice" : 4.3,
     "available" : true,
     "categories" : [ "Sours / Gose" ],
-    "newFromBrewer" : true,
-    "newToUs" : true,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_cosmiccafcoffeesour_1593006028CosmicCafeRenderCMYK.png",
     "url" : "https://www.fourpure.com/item/306/Fourpure/Cosmic-Caf-Coffee-Sour.html"
   }, {
@@ -577,8 +577,8 @@
     "perItemPrice" : 4.8,
     "available" : true,
     "categories" : [ "Dark" ],
-    "newFromBrewer" : true,
-    "newToUs" : true,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_jazzageespressomartinistout_1593004843JazzAgeRenderCMYK.png",
     "url" : "https://www.fourpure.com/item/301/Fourpure/Jazz-Age-Espresso-Martini-Stout.html"
   }, {
@@ -628,8 +628,8 @@
     "perItemPrice" : 3.5,
     "available" : true,
     "categories" : [ "IPA" ],
-    "newFromBrewer" : true,
-    "newToUs" : true,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_lanternearlgreysessionipa_1593004970LanternRenderCMYK.png",
     "url" : "https://www.fourpure.com/item/302/Fourpure/Lantern-Earl-Grey-Session-IPA.html"
   }, {
@@ -662,8 +662,8 @@
     "perItemPrice" : 4.5,
     "available" : true,
     "categories" : [ "Sours / Gose" ],
-    "newFromBrewer" : true,
-    "newToUs" : true,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_midsummerpinotnoirgose_1593013689MidsummerRender.png",
     "url" : "https://www.fourpure.com/item/305/Fourpure/Midsummer-Pinot-Noir-Gose.html"
   }, {
@@ -974,6 +974,23 @@
     "url" : "https://gipsyhillbrew.com/product/ranger/"
   }, {
     "brewery" : "Howling Hops",
+    "name" : "Barleypop",
+    "summary" : "Lite Lager",
+    "desc" : "Barleypop / Lite Lager / 4 x 440ml  / 4.4% ABV\nSuitable for vegans.\nPOP-POP! Barleypop is our new 4.4% Lite Lager. Putting some polish on the well-worn everyday light lager, this is an extremely sunny beer designed for drinking with grass between your toes.\n\nOne 4-pack leaves 20 can slots left in your case!",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 4.4,
+    "numItems" : 4,
+    "perItemPrice" : 3.5,
+    "available" : true,
+    "categories" : [ "Pils / Lager" ],
+    "newFromBrewer" : true,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/Can-Template-440ml-324x324.png",
+    "url" : "https://www.howlinghops.co.uk/product/barleypop-lite-lager-4-x-440ml/"
+  }, {
+    "brewery" : "Howling Hops",
     "name" : "Blankets",
     "summary" : "Pale Ale",
     "desc" : "Blankets / Pale Ale / 4 x 440ml  / 4.5% ABV\nSuitable for vegans.\nBlankets is the newest soft and fluffy creation from the Pale Ale department. Citra, Columbus and Cascade in sheer suppable balance. Pure, silky comfort.\n\n\nOne 4-pack leaves 20 can slots left in your case!",
@@ -991,21 +1008,21 @@
     "url" : "https://www.howlinghops.co.uk/product/blankets-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Drag Race Johnny",
-    "summary" : "NEIPA",
-    "desc" : "Drag Race Johnny / NEIPA / 4 x 440ml  / 6.7% ABV\nSuitable for vegans.\nDrag Race Johnny is a NEIPA that rides the racing line between sticky stonefruit and pithy bitterness. Azacca, Citra, Simcoe and no brakes.\n\nOne 4-pack leaves 20 can slots left in your case!",
+    "name" : "Curiosity Vendor",
+    "summary" : "DDH Pale Ale",
+    "desc" : "Curiosity Vendor / DDH Pale Ale / 4 x 440ml  / 6.0% ABV\nSuitable for vegans.\nCuriosity Vendor is a new DDH Pale hopped with Citra, Chinook and Topaz. Bursting with citrus and passionfruit, this hazy pale has a super-soft, full-bodied texture.\n\nOne 4-pack leaves 20 can slots left in your case!",
     "keg" : false,
     "mixed" : false,
     "sizeMl" : 440,
-    "abv" : 6.7,
+    "abv" : 6.0,
     "numItems" : 4,
-    "perItemPrice" : 4.5,
+    "perItemPrice" : 4.0,
     "available" : true,
-    "categories" : [ "IPA" ],
-    "newFromBrewer" : false,
-    "newToUs" : false,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/drag-race-johnny-440ml-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/drag-race-johnny-4-x-440ml/"
+    "categories" : [ "Pale", "IPA" ],
+    "newFromBrewer" : true,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/Curiosity-Vendor-440ml-324x324.png",
+    "url" : "https://www.howlinghops.co.uk/product/curiosity-vendor-ddh-pale-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
     "name" : "Flashpoint",
@@ -1025,9 +1042,77 @@
     "url" : "https://www.howlinghops.co.uk/product/flashpoint-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
+    "name" : "Free Fall",
+    "summary" : "NEIPA",
+    "desc" : "Free Fall / NEIPA / 4 x 440ml  / 7.3% ABV\nSuitable for vegans.\nFree Fall is a brand new 7.3% NEIPA using Mosaic, Citra and Idaho 7. Expect lots of mango and tropical vibes in this soft and super-balanced IPA!\n\nOne 4-pack leaves 20 can slots left in your case!",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 7.3,
+    "numItems" : 4,
+    "perItemPrice" : 4.5,
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "newFromBrewer" : true,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/FREE-FALL-440ml-324x324.png",
+    "url" : "https://www.howlinghops.co.uk/product/free-fall-neipa-4-x-440ml/"
+  }, {
+    "brewery" : "Howling Hops",
+    "name" : "Grisette",
+    "summary" : "Farmhouse Pale",
+    "desc" : "Grisette / Farmhouse Pale / 4 x 440ml  / 4.4% ABV\nSuitable for vegans.\nGrisette is our light, floral and citrusy Farmhouse Pale at 4.4% ABV. This is your ideal companion for working-in-the-sun (or just drinking-in-the-sun).\n\nOne 4-pack leaves 20 can slots left in your case!",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 4.4,
+    "numItems" : 4,
+    "perItemPrice" : 3.5,
+    "available" : true,
+    "categories" : [ "Pale" ],
+    "newFromBrewer" : true,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/GRISETTE-324x324.png",
+    "url" : "https://www.howlinghops.co.uk/product/grisette-4-x-440ml/"
+  }, {
+    "brewery" : "Howling Hops",
+    "name" : "House IPA",
+    "summary" : "India Pale Ale",
+    "desc" : "House IPA / India Pale Ale / 4 x 440ml  / 6.9% ABV\nSuitable for vegans.\n\nHouse IPA is a New England IPA with a light and fluffy body,  delicate carbonation, and a big-hitting dry-hop combo of Mosaic and Motueka. Aromas of mango and pineapple. More tropical fruit on the tongue. Super drinkable and very moreish.\n\nOne 4-pack leaves 20 can slots left in your case!",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 6.9,
+    "numItems" : 4,
+    "perItemPrice" : 4.5,
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "newFromBrewer" : false,
+    "newToUs" : false,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/05/house-ipa-440ml-324x324.png",
+    "url" : "https://www.howlinghops.co.uk/product/house-ipa-4-x-440ml/"
+  }, {
+    "brewery" : "Howling Hops",
+    "name" : "Lend Me Your Ears",
+    "summary" : "DIPA",
+    "desc" : "Lend Me Your Ears / DIPA / 4 x 440ml  / 8.0% ABV\nSuitable for vegans.\nCombining all the experimental Yakima Chief hops from the Friends, Romans, Countrymen series – Lend Me Your Ears is a new 8% DIPA packing HBC-522, 586 and 692! A truly juicy prince of dankness.\n\n\nOne 4-pack leaves 20 can slots left in your case!",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 8.0,
+    "numItems" : 4,
+    "perItemPrice" : 5.0,
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "newFromBrewer" : true,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/Lend-Me-Your-Ears-440ml-324x324.png",
+    "url" : "https://www.howlinghops.co.uk/product/lend-me-your-ears-dipa-4-x-440ml/"
+  }, {
+    "brewery" : "Howling Hops",
     "name" : "NEW 12 Beer Mega Pack",
     "summary" : null,
-    "desc" : "NEW 12 Beer Mega Pack 24 x 440ml\nLoads of new beers straight off the canning line and some fresh, firm favourites. Each case of 24 cans will consist of 12 different beers, in quantities subject to availability. Cases cannot be customised. All the beer is superfresh! Beers included:\nFLASHPOINT – NEIPA (CITRA TOPAZ ENIGMA) – 6.2% ABV\nPUSH PUSH – DDH PALE (CITRA AZACCA SABRO) – 5.8% ABV\nOFF RAMP – DIPA (HBC 692 CRYO MOSAIC CITRA) – 8.0% ABV\nBLANKETS – PALE ALE (CITRA COLUMBUS CASCADE) – 4.2% ABV\nPOCKET ROCKET – TINY IPA (CITRA SIMCOE IDAHO 7) – 2.7% ABV\nHOUSE IPA – INDIA PALE ALE – 6.9% ABV\nBUCKLE DOWN – DDH PALE ALE (CITRA AMARILLO COLUMBUS) – 5.0% ABV\nDRAG RACE JOHNNY – NEIPA (AZACCA CITRA SIMCOE) – 6.7% ABV\nBIRD TALK – PALE ALE (AMARILLO CENTENNIAL COLUMBUS) – 4.4% ABV\nPACKETS – KELLER LAGER – 4.2% ABV\nTROPICAL DELUXE – PALE ALE – 3.8% ABV\nPASSIONFRUIT GOSE – FRUIT SOUR – 4.5% ABV",
+    "desc" : "NEW 12 Beer Mega Pack 24 x 440ml\nLoads of new beers straight off the canning line and some fresh, firm favourites. Each case of 24 cans will consist of 12 different beers, in quantities subject to availability. Cases cannot be customised. All the beer is superfresh! Beers included:\nLEND ME YOUR EARS – DIPA (HBC-522, 586, 692) – 8.0% ABV\nWIND AND SEA SURF CLUB – PALE ALE (AZACCA SIMCOE) – 4.5% ABV\nFLASHPOINT – NEIPA (CITRA TOPAZ ENIGMA) – 6.2% ABV\nPUSH PUSH – DDH PALE (CITRA AZACCA SABRO) – 5.8% ABV\nBLANKETS – PALE ALE (CITRA COLUMBUS CASCADE) – 4.2% ABV\nPOCKET ROCKET – TINY IPA (CITRA SIMCOE IDAHO 7) – 2.7% ABV\nHOUSE IPA – INDIA PALE ALE – 6.9% ABV\nBUCKLE DOWN – DDH PALE ALE (CITRA AMARILLO COLUMBUS) – 5.0% ABV\nDRAG RACE JOHNNY – NEIPA (AZACCA CITRA SIMCOE) – 6.7% ABV\nBIRD TALK – PALE ALE (AMARILLO CENTENNIAL COLUMBUS) – 4.4% ABV\nPACKETS – KELLER LAGER – 4.2% ABV\nPASSIONFRUIT GOSE – FRUIT SOUR – 4.5% ABV",
     "keg" : false,
     "mixed" : true,
     "sizeMl" : 440,
@@ -1038,8 +1123,8 @@
     "categories" : [ "IPA", "Pils / Lager", "Sours / Gose" ],
     "newFromBrewer" : false,
     "newToUs" : false,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/june-beer-case-4-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/new-12-beer-24-x-440ml/"
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/june-beer-case-5-324x324.png",
+    "url" : "https://www.howlinghops.co.uk/product/new-12-beer-mega-pack-24-x-440ml-2/"
   }, {
     "brewery" : "Howling Hops",
     "name" : "Packets",
@@ -1061,19 +1146,19 @@
     "brewery" : "Howling Hops",
     "name" : "Passionfruit Gose",
     "summary" : "Fruit Sour",
-    "desc" : "Passionfruit Gose / Fruit Sour / 24 x 440ml  / 4.5% ABV\nSuitable for vegans.\nTangy, tropical, tart and tasty. A light and snappy Gose-style sour beer, infused with passionfruit.",
+    "desc" : "Passionfruit Gose / Fruit Sour / 4 x 440ml  / 4.5% ABV\nSuitable for vegans.\nTangy, tropical, tart and tasty. A light and snappy Gose-style sour beer, infused with passionfruit.\n\n\nOne 4-pack leaves 20 can slots left in your case!",
     "keg" : false,
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.5,
-    "numItems" : 24,
-    "perItemPrice" : 2.75,
+    "numItems" : 4,
+    "perItemPrice" : 3.5,
     "available" : true,
     "categories" : [ "Sours / Gose" ],
     "newFromBrewer" : false,
     "newToUs" : false,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/PFG-24-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/passionfruit-gose-24-x-440ml/"
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2019/01/Passionfruit-Gose-324x324.jpg",
+    "url" : "https://www.howlinghops.co.uk/product/passionfruit-gose-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
     "name" : "Pocket Rocket",
@@ -1108,6 +1193,23 @@
     "newToUs" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/push-push-4-x-440ml/"
+  }, {
+    "brewery" : "Howling Hops",
+    "name" : "Wind and Sea Surf Club",
+    "summary" : "Pale Ale",
+    "desc" : "Wind and Sea Surf Club / Pale Ale / 4 x 440ml  / 4.5% ABV\nSuitable for vegans.\nThis new hoppy Pale Ale using Azacca and Simcoe is big on snappy pineapple and zesty grapefruit flavours, with a clean, dry finish. Breezey and refreshing like a day on the beach.\n\n\nOne 4-pack leaves 20 can slots left in your case!",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 4.5,
+    "numItems" : 4,
+    "perItemPrice" : 3.5,
+    "available" : true,
+    "categories" : [ "Pale" ],
+    "newFromBrewer" : true,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/05/wind-and-sea-440ml-324x324.png",
+    "url" : "https://www.howlinghops.co.uk/product/wind-sea-surf-club-4-x-440ml/"
   }, {
     "brewery" : "Marble",
     "name" : "Alf",
@@ -2642,7 +2744,7 @@
     "brewery" : "Redchurch",
     "name" : "The Specials One",
     "summary" : null,
-    "desc" : "Deck Chair Pale Ale\nMarz Atak Marzden\nStort Valley Kolsch\n\nOld Ford Export Stout\n\n\n \n330ml Bottles",
+    "desc" : "Deck Chair Pale Ale\nMarz Atak Marzen\nStort Valley Kolsch\n\nOld Ford Export Stout\n\n\n \n330ml Bottles",
     "keg" : false,
     "mixed" : true,
     "sizeMl" : 330,
@@ -3159,7 +3261,7 @@
     "abv" : 5.4,
     "numItems" : 12,
     "perItemPrice" : 2.68,
-    "available" : true,
+    "available" : false,
     "categories" : [ "IPA" ],
     "newFromBrewer" : false,
     "newToUs" : false,
