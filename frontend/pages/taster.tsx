@@ -13,20 +13,7 @@ const ThisPage = (): JSX.Element => {
   // TODO - is there a better way to avoid this being captured by SSG?
   useEffect(() => {
     const sample = generateFairTasterMenu(inventoryItems);
-
-    // Sorted, but then brewery order is randomised
-    setItems(
-      _.flatten(
-        _.values(
-          _.shuffle(
-            _.groupBy(
-              _.sortBy(sample, item => item.name),
-              item => item.brewery
-            )
-          )
-        )
-      )
-    );
+    setItems(_.sortBy(_.sortBy(sample, item => item.name), item => item.brewery));
   }, []);
 
   return (
@@ -46,25 +33,26 @@ const generateFairTasterMenu = (items: Array<Item>): Array<Item> => {
 
   const byBrewery = _.groupBy(relevant, item => item.brewery);
 
-  // Generate a weighted array of breweries to sample from.
+  // Pick breweries with *almost* uniform distribution.
   // We allow breweries with lots of beers to feature *slightly* more.
-  const weightedRepeats = _.flatten(
-    _.map(byBrewery, (items, brewery) => {
-      const count = _.size(items);
-      const rep =
-        (count >= 10) ? 6 :
-        (count >= 5) ? 5 :
-        4;
-      return _.times(rep, () => brewery);
-    })
+  const breweryPicks = _.shuffle(
+    _.flatten(
+      _.map(byBrewery, (items, brewery) => {
+        const count = _.size(items);
+        const rep =
+          (count >= 10) ? 6 :
+          (count >= 5) ? 5 :
+          4;
+        return _.times(rep, () => brewery);
+      })
+    )
   );
 
   // TODO - what if TASTER_MENU_SIZE < num items?
   const picked = new Set<Item>();
+  let idx = 0;
   while (picked.size < TASTER_MENU_SIZE) {
-    const brewery = _.sample(weightedRepeats);
-    const candidate = _.sample(byBrewery[brewery]);
-    picked.add(candidate);
+    picked.add(_.sample(byBrewery[breweryPicks[idx++]]));
   }
   return Array.from(picked);
 };
