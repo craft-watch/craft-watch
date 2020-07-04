@@ -7,6 +7,12 @@ import java.net.URISyntaxException
 import kotlin.math.round
 import kotlin.text.RegexOption.DOT_MATCHES_ALL
 
+fun Element.normaliseParagraphsFrom(cssQuery: String = ":root") = selectFrom(cssQuery)
+  .selectMultipleFrom("p")
+  .map { it.text() }
+  .filterNot { it.isBlank() }
+  .joinToString("\n")
+
 fun Element.priceFrom(cssQuery: String = ":root") = extractFrom(cssQuery, "\\d+(\\.\\d+)?")[0].toDouble()
 
 fun Element.extractFrom(cssQuery: String = ":root", regex: String) = textFrom(cssQuery).extract(regex)
