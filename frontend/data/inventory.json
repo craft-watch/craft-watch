@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-04T12:50:15.558075Z"
+    "capturedAt" : "2020-07-04T21:30:34.329208Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "items" : [ {
@@ -3947,5 +3947,90 @@
     "newToUs" : true,
     "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_385c0547b04148f6a2e2ceb8edb4ddd5~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_385c0547b04148f6a2e2ceb8edb4ddd5~mv2.jpg",
     "url" : "https://www.wanderbeyondbrewing.com/product-page/vegan-mixed-case"
+  }, {
+    "brewery" : "Wiper and True",
+    "name" : "Kaleidoscope",
+    "summary" : "Pale Ale",
+    "desc" : "12x 440ml cans of 4.2% Pale Ale.\nKaleidoscope combines three different hops to create a seasonally evolving flavour profile. Whilst the hops may change, our intention remains the same - to create a beer that is harmonious, bright and refreshing.\nSuitable for vegans.\nWe’re offering a 10% discount for all NHS staff. Please check out using your NHS email address and the code ‘NHS10’.\nPlease note that we can only deliver to the UK mainland, excluding Northern and Mainland Ireland, Guernsey and Jersey.\nPlease take care to select the correct shipping option when checking out. Free Bristol delivery takes 1 - 2 working days and applies to the following postcodes: BS1, BS2, BS3, BS4, BS5, BS6, BS7, BS8, BS9, BS10, BS13, BS14, BS15, BS16, BS32, BS34, BS35, BS36 and BS37. Within BS8, free delivery includes BS8 1, BS8 2 and BS8 4. Please only select the option for free Bristol delivery to these postcodes; otherwise we will have to refund your order and you’ll need to order again using nationwide delivery, since we use a separate courier service for nationwide drop-offs.\nNationwide delivery takes 2-3 working days.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 4.2,
+    "numItems" : 12,
+    "perItemPrice" : 3.0,
+    "available" : true,
+    "categories" : [ "Pale" ],
+    "newFromBrewer" : false,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1584966464385-U7BZ745QMLX1E7PA1U5Y/ke17ZwdGBToddI8pDm48kIzNWfZh9v0nvEHU3WAJ1tF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0ooWhOa5cxQSJsU3rXf8luXAp4RuSF8fCIvAJcvjt_IcZoixb7Wm7IaIkEuLM8C6Ew/Kaleidoscope440.jpg",
+    "url" : "https://wiperandtrue.com/order-beer-online/kaleidoscope-case-12x-440ml-cans"
+  }, {
+    "brewery" : "Wiper and True",
+    "name" : "Milk Shake",
+    "summary" : "Milk Stout",
+    "desc" : "12x 330ml cans of 5.6% Milk Stout.\nMilk Shake is brewed with sugar from cow’s milk to give the beer a sweet, creamy tone. The beer combines copious chocolate malts laced with vanilla and cacao to create a luxurious, milkshake-rich and satisfyingly dark beer.\nWe’re offering a 10% discount for all NHS staff. Please check out using your NHS email address and the code ‘NHS10’.\nPlease note that we can only deliver to the UK mainland, excluding Northern and Mainland Ireland, Guernsey and Jersey.\nPlease take care to select the correct shipping option when checking out. Free Bristol delivery takes 1 - 2 working days and applies to the following postcodes: BS1, BS2, BS3, BS4, BS5, BS6, BS7, BS8, BS9, BS10, BS13, BS14, BS15, BS16, BS32, BS34, BS35, BS36 and BS37. Within BS8, free delivery includes BS8 1, BS8 2 and BS8 4. Please only select the option for free Bristol delivery to these postcodes; otherwise we will have to refund your order and you’ll need to order again using nationwide delivery, since we use a separate courier service for nationwide drop-offs.\nNationwide delivery takes 2-3 working days.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 330,
+    "abv" : 5.6,
+    "numItems" : 12,
+    "perItemPrice" : 2.83,
+    "available" : true,
+    "categories" : [ "Dark" ],
+    "newFromBrewer" : false,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1593764481127-4EB6WMVDWT93QO4KIL8A/ke17ZwdGBToddI8pDm48kIzNWfZh9v0nvEHU3WAJ1tF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0ooWhOa5cxQSJsU3rXf8luXAp4RuSF8fCIvAJcvjt_IcZoixb7Wm7IaIkEuLM8C6Ew/MilkShake330.jpg",
+    "url" : "https://wiperandtrue.com/order-beer-online/milk-shake-case-12x-330ml-cans"
+  }, {
+    "brewery" : "Wiper and True",
+    "name" : "Mixed",
+    "summary" : null,
+    "desc" : "6 x 440ml cans of Kaleidoscope 4.2% Pale Ale, 6 x 440ml cans of 2.7% Small Beer Light Pale Ale.\nSmall Beer is an exceptionally satisfying and full-bodied beer for its stature, with the same big hop hit you may expect from our more muscular Pale Ales. Small Beer is vibrant with citrus, tropical fruit and hedgerow berry flavours, meandering to a gentle bitter finish.\nKaleidoscope combines three different hops to create a seasonally evolving flavour profile. Whilst the hops may change, our intention remains the same - to create a beer that is harmonious, bright and refreshing.\nBoth beers are suitable for vegans.\nWe’re offering a 10% discount for all NHS staff. Please check out using your NHS email address and the code ‘NHS10’.\nPlease note that we can only deliver to the UK mainland, excluding Northern and Mainland Ireland, Guernsey and Jersey.\nPlease take care to select the correct shipping option when checking out. Free Bristol delivery takes 1 - 2 working days and applies to the following postcodes: BS1, BS2, BS3, BS4, BS5, BS6, BS7, BS8, BS9, BS10, BS13, BS14, BS15, BS16, BS32, BS34, BS35, BS36 and BS37. Within BS8, free delivery includes BS8 1, BS8 2 and BS8 4. Please only select the option for free Bristol delivery to these postcodes; otherwise we will have to refund your order and you’ll need to order again using nationwide delivery, since we use a separate courier service for nationwide drop-offs.\nNationwide delivery takes 2-3 working days.",
+    "keg" : false,
+    "mixed" : true,
+    "sizeMl" : null,
+    "abv" : null,
+    "numItems" : 12,
+    "perItemPrice" : 2.8,
+    "available" : true,
+    "categories" : [ "Pale", "Bitter" ],
+    "newFromBrewer" : false,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1593768387356-ULTW79A5HWP9XLXGME25/ke17ZwdGBToddI8pDm48kFQQgP34qnCpeHaeAOzTt7pZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIedjZT6_OBzi2ofH1EqNdNeCRxNMlbxs9807lIebBlcA/Small+Kal+440.png",
+    "url" : "https://wiperandtrue.com/order-beer-online/mixed-case-kaleidoscope-and-small-beer"
+  }, {
+    "brewery" : "Wiper and True",
+    "name" : "Small Beer",
+    "summary" : "Light Pale Ale",
+    "desc" : "12x 440ml cans of 2.7% Light Pale Ale.\nSmall Beer is an exceptionally satisfying and full-bodied beer for its stature, with the same big hop hit you may expect from our more muscular Pale Ales. Small Beer is vibrant with citrus, tropical fruit and hedgerow berry flavours, meandering to a gentle bitter finish.\nSuitable for vegans.\nWe’re offering a 10% discount for all NHS staff. Please check out using your NHS email address and the code ‘NHS10’.\nPlease note that we can only deliver to the UK mainland, excluding Northern and Mainland Ireland, Guernsey and Jersey.\nPlease take care to select the correct shipping option when checking out. Free Bristol delivery takes 1 - 2 working days and applies to the following postcodes: BS1, BS2, BS3, BS4, BS5, BS6, BS7, BS8, BS9, BS10, BS13, BS14, BS15, BS16, BS32, BS34, BS35, BS36 and BS37. Within BS8, free delivery includes BS8 1, BS8 2 and BS8 4. Please only select the option for free Bristol delivery to these postcodes; otherwise we will have to refund your order and you’ll need to order again using nationwide delivery, since we use a separate courier service for nationwide drop-offs.\nNationwide delivery takes 2-3 working days.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 2.7,
+    "numItems" : 12,
+    "perItemPrice" : 2.6,
+    "available" : true,
+    "categories" : [ "Pale", "Bitter" ],
+    "newFromBrewer" : false,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1584976610822-3ULOIXOZFG1FC4ZN1EZJ/ke17ZwdGBToddI8pDm48kIzNWfZh9v0nvEHU3WAJ1tF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0ooWhOa5cxQSJsU3rXf8luXAp4RuSF8fCIvAJcvjt_IcZoixb7Wm7IaIkEuLM8C6Ew/SmallBeer440.jpg",
+    "url" : "https://wiperandtrue.com/order-beer-online/small-beer-case-12x-440ml-cans"
+  }, {
+    "brewery" : "Wiper and True",
+    "name" : "Sundance",
+    "summary" : "India Pale Ale",
+    "desc" : "12x 330ml cans of 5.6% India Pale Ale.\nBursting with juicy tropical fruit flavours such as mango, pineapple and papaya and layered with berry and citrus notes, Sundance combines the finest US and UK hops to create a crisp, complex and highly refreshing IPA.\nSuitable for vegans.\nWe’re offering a 10% discount for all NHS staff. Please check out using your NHS email address and the code ‘NHS10’.\nPlease note that we can only deliver to the UK mainland, excluding Northern and Mainland Ireland, Guernsey and Jersey.\nPlease take care to select the correct shipping option when checking out. Free Bristol delivery takes 1 - 2 working days and applies to the following postcodes: BS1, BS2, BS3, BS4, BS5, BS6, BS7, BS8, BS9, BS10, BS13, BS14, BS15, BS16, BS32, BS34, BS35, BS36 and BS37. Within BS8, free delivery includes BS8 1, BS8 2 and BS8 4. Please only select the option for free Bristol delivery to these postcodes; otherwise we will have to refund your order and you’ll need to order again using nationwide delivery, since we use a separate courier service for nationwide drop-offs.\nNationwide delivery takes 2-3 working days.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 330,
+    "abv" : 5.6,
+    "numItems" : 12,
+    "perItemPrice" : 2.83,
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "newFromBrewer" : false,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1593764819140-LYD57TK416V65H35KU9K/ke17ZwdGBToddI8pDm48kH7bHF972s0BMy8FJS7_5eh7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Udkb9EYnQod1oo25oIrfEHqqJxs3PTnNIpDd2Nj8pGws6ary7BfG6-GuG8rvj_sKiw/Sundance330.jpg",
+    "url" : "https://wiperandtrue.com/order-beer-online/sundance-case-12x-330ml-cans"
   } ]
 }

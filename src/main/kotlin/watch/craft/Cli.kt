@@ -52,7 +52,8 @@ class Cli : CliktCommand(name = "scraper") {
       ThornbridgeScraper(),
       UnityScraper(),
       VillagesScraper(),
-      WanderScraper()
+      WanderScraper(),
+      WiperAndTrueScraper()
     ).associateBy { it.name.toSafeName() }
 
     private fun String.toSafeName() = toLowerCase().replace("[^0-9a-z]".toRegex(), "-")
