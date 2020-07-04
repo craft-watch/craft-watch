@@ -30,6 +30,8 @@ fun Element.hrefFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:href"
 
 fun Element.srcFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:src").toUri()
 
+fun Element.dataSrcFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:data-src").toUri()
+
 fun Element.attrFrom(cssQuery: String = ":root", attr: String) = selectFrom(cssQuery).attr(attr)
   .ifBlank { throw MalformedInputException("Attribute blank or not present: ${attr}") }!!
 
