@@ -11,7 +11,6 @@ import watch.craft.SkipItemException
 import watch.craft.storage.CachingGetter
 import java.net.URI
 import java.util.stream.Collectors
-import java.util.stream.Collectors.*
 
 class ScraperExecutor(
   private val getter: CachingGetter,

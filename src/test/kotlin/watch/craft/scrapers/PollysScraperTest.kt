@@ -1,7 +1,6 @@
 package watch.craft.scrapers
 
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
@@ -36,8 +35,8 @@ class PollysScraperTest {
   }
 
   @Test
-  fun `sanitises description`() {
-    assertFalse(ITEMS.byName("Mylar").desc!!.contains("~"))
+  fun `extracts description`() {
+    assertNotNull(ITEMS.byName("Mylar").desc)
   }
 
   @Test

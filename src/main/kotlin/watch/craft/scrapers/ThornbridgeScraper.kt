@@ -33,7 +33,7 @@ class ThornbridgeScraper : Scraper {
           thumbnailUrl = doc.srcFrom(".product__image-wrapper img"),
           name = parts[1].replace(" (bottle|can)$".toRegex(IGNORE_CASE), ""),
           summary = parts[4],
-          desc = desc.selectMultipleFrom("p").joinToString("\n") { it.text() },
+          desc = desc.normaliseParagraphsFrom(),
           mixed = false,
           sizeMl = desc.maybeExtractFrom(regex = "(\\d+)ml")?.get(1)?.toInt(),
           abv = parts[2].toDouble(),

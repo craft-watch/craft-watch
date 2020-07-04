@@ -85,7 +85,6 @@ const renderName: Renderer<Item> = item => (
   </div>
 );
 
-// TODO - collapse successive newlines
 const renderTooltipText = (item: Item): JSX.Element => (
   <span className="tooltip-text" style={{ display: "hidden" }}>
     {(item.desc !== null) && _.map(item.desc.split("\n"), (para, idx) => <p key={idx}>{para}</p>)}
