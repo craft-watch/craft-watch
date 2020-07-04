@@ -17,20 +17,25 @@ class SirenScraper : Scraper {
       val rawName = itemName.text()
 
       IndexEntry(rawName, itemName.hrefFrom("a")) { doc ->
+        if (rawName.contains("Mixed", ignoreCase = true)) {
+          throw SkipItemException("Can't deal with mixed cases yet")    // TODO
+        }
+
+        val detailsText = doc.textFrom(".itemTitle .small")
+        if (detailsText.contains("Mixed", ignoreCase = true)) {
+          throw SkipItemException("Can't deal with mixed cases yet")    // TODO
+        }
+        val details = detailsText.extract("(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+(\\d+)")
+
         val keg = rawName.contains("Mini Keg", ignoreCase = true)
 
-        val details = doc.extractFrom(".itemTitle .small", "(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+(\\d+)")
-
-        println(details)
-
-
         ScrapedItem(
-          name = rawName,
-          summary = details[1],
-          desc = null,    // doc.normaliseParagraphsFrom(".about")
+          name = rawName.replace("(\\d+)L Mini Keg - ".toRegex(), ""),
+          summary = if (keg) null else details[1],
+          desc = doc.normaliseParagraphsFrom(".about"),
           keg = keg,
           mixed = false,
-          sizeMl = details[4].toInt(),
+          sizeMl = if (keg) 5000 else details[4].toInt(),
           abv = details[2].toDouble(),
           available = true,
           numItems = 1,
