@@ -7,7 +7,6 @@ import { items as inventoryItems, capturedAt, categories } from "../utils/invent
 
 const TASTER_MENU_SIZE = 20;
 
-
 const ThisPage = (): JSX.Element => {
   const [items, setItems] = useState<Array<Item>>([]);
 
@@ -40,7 +39,6 @@ const ThisPage = (): JSX.Element => {
   );
 };
 
-
 // Avoid over-representing breweries that have a ton of beers.
 const generateFairTasterMenu = (items: Array<Item>): Array<Item> => {
   // Remove inappropriate items for a taster menu
@@ -70,6 +68,5 @@ const generateFairTasterMenu = (items: Array<Item>): Array<Item> => {
   }
   return Array.from(picked);
 };
-
 
 export default ThisPage;
