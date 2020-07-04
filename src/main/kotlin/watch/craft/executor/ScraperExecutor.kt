@@ -11,6 +11,7 @@ import watch.craft.SkipItemException
 import watch.craft.storage.CachingGetter
 import java.net.URI
 import java.util.stream.Collectors
+import java.util.stream.Collectors.*
 
 class ScraperExecutor(
   private val getter: CachingGetter,
@@ -27,17 +28,17 @@ class ScraperExecutor(
 
   fun execute(): List<Result> {
     val entries = scraper.rootUrls
-      .parallelStream()
-      .map { scrapeIndexSafely(scraper, it) }
-      .collect(Collectors.toList())
+      .parallelMap { scrapeIndexSafely(scraper, it) }
       .flatten()
 
     return entries
-      .parallelStream()
-      .map { entry -> scrapeItemSafely(entry)?.let { Result(brewery, entry, it) } }
-      .collect(Collectors.toList())
+      .parallelMap { entry -> scrapeItemSafely(entry)?.let { Result(brewery, entry, it) } }
       .filterNotNull()
   }
+
+  private fun <T, R> List<T>.parallelMap(transform: (T) -> R): List<R> = parallelStream()
+    .map(transform)
+    .collect(Collectors.toList())
 
   private fun scrapeIndexSafely(scraper: Scraper, url: URI): List<IndexEntry> {
     logger.info("[${brewery}] Scraping index: ${url}")
