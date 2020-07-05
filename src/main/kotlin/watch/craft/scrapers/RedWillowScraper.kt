@@ -18,16 +18,19 @@ class RedWillowScraper : Scraper {
 
       IndexEntry(rawName, el.hrefFrom("a.ProductList-item-link")) { doc ->
 
+        val parts = rawName.extract("([^0-9]+)\\s+(\\d(\\.\\d+)?)%")//\\s(.*?)")
+        println(parts)
+
         ScrapedItem(
           name = rawName,
           summary = null,
-          desc = null,
+          desc = doc.normaliseParagraphsFrom(".ProductItem-details-excerpt"),
           sizeMl = null,
           abv = null,
           available = true,
           numItems = 1,
           price = 0.00,
-          thumbnailUrl = el.srcFrom("img.ProductList-image")
+          thumbnailUrl = el.dataSrcFrom("img.ProductList-image")
         )
       }
     }
