@@ -17,20 +17,18 @@ workflows:
   daily_scrape:
     triggers:
       - schedule:
-          cron: "27 23 * * *"
+          cron: "0 11 * * *"
           filters:
             branches:
-              only: daily-ci-build
+              only: master
 
     jobs:
       - run_backend
 
-jobs:
-  test_backend:
-    docker:
-      - image: circleci/openjdk
+
+commands:
+  setup_backend:
     steps:
-      - checkout
       - run:
           name: Create service key
           command: |
@@ -44,6 +42,15 @@ jobs:
             - v4-gradle-{{ .Branch }}-{{ checksum "build.gradle.kts" }}
             - v4-gradle-{{ .Branch }}-
             - v4-gradle-
+
+
+jobs:
+  test_backend:
+    docker:
+      - image: circleci/openjdk
+    steps:
+      - checkout
+      - setup_backend
       - run:
           name: Run tests
           command: ./gradlew check
@@ -66,19 +73,7 @@ jobs:
       - image: circleci/openjdk
     steps:
       - checkout
-      - run:
-          name: Create service key
-          command: |
-            KEY_FILE="${HOME}/service-key.json"
-            echo "${GCLOUD_SERVICE_KEY}" > "${KEY_FILE}"
-            echo "export GOOGLE_APPLICATION_CREDENTIALS=${KEY_FILE}" >> "${BASH_ENV}"
-      - restore_cache:
-          key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
-      - restore_cache:
-          keys:
-            - v4-gradle-{{ .Branch }}-{{ checksum "build.gradle.kts" }}
-            - v4-gradle-{{ .Branch }}-
-            - v4-gradle-
+      - setup_backend
       - run:
           name: Run scraper application
           command: ./gradlew run
