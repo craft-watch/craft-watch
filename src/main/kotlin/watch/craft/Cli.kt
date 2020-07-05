@@ -35,6 +35,7 @@ class Cli : CliktCommand(name = "scraper") {
 
   companion object {
     private val SCRAPERS = listOf(
+      BeakScraper(),
       BoxcarScraper(),
       CanopyScraper(),
       FivePointsScraper(),

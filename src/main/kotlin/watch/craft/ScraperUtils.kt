@@ -6,6 +6,7 @@ import java.net.URI
 import java.net.URISyntaxException
 import kotlin.math.round
 import kotlin.text.RegexOption.DOT_MATCHES_ALL
+import kotlin.text.RegexOption.IGNORE_CASE
 
 fun Element.normaliseParagraphsFrom(cssQuery: String = ":root") = selectFrom(cssQuery)
   .selectMultipleFrom("p")
@@ -44,9 +45,15 @@ fun Element.selectMultipleFrom(cssQuery: String) = maybeSelectMultipleFrom(cssQu
 fun Element.maybeSelectMultipleFrom(cssQuery: String): Elements = select(cssQuery)
 
 
-fun String.extract(regex: String) = maybeExtract(regex)
+fun String.extract(regex: String, ignoreCase: Boolean = false) = maybeExtract(regex, ignoreCase)
   ?: throw MalformedInputException("Can't extract regex: ${regex}")
-fun String.maybeExtract(regex: String) = regex.toRegex(DOT_MATCHES_ALL).find(this)?.groupValues
+fun String.maybeExtract(regex: String, ignoreCase: Boolean = false) = regex.toRegex(regexOptions(ignoreCase)).find(this)?.groupValues
+
+private fun regexOptions(ignoreCase: Boolean = false) = if (ignoreCase) {
+  setOf(DOT_MATCHES_ALL, IGNORE_CASE)
+} else {
+  setOf(DOT_MATCHES_ALL)
+}
 
 fun String.toTitleCase(): String = split(" ").joinToString(" ") {
   if (it in BEER_ACRONYMS) it else it.toLowerCase().capitalize()

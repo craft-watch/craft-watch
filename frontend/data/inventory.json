@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-05T14:54:20.710196Z"
+    "capturedAt" : "2020-07-05T15:00:08.900721Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "items" : [ {
@@ -139,6 +139,40 @@
     "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/20200407_100153_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/table-beer"
+  }, {
+    "brewery" : "Break",
+    "name" : "Lulla",
+    "summary" : null,
+    "desc" : "A super sessionable 3.5% pale nomadically brewed at Burning Sky using London Fog yeast, oats, wheat and tonnes of Citra and Simcoe for flavours of yellow starburst; black pepper; dandelion; salted lime; pine sap and lemon pith.\nWe’re offering free nationwide shipping for orders over £50 and free local deliveries for orders over £30 (both for arrival next week), plus a Click + Collect service from our brewery door this Saturday (27th; midday - 6pm) - we’d love to see you.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 3.5,
+    "numItems" : 1,
+    "perItemPrice" : 3.99,
+    "available" : true,
+    "categories" : [ "Pale" ],
+    "newFromBrewer" : false,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0286/3471/0061/products/Cans_800x800_crop_center.jpg?v=1593009635",
+    "url" : "https://beakbrewery.com/products/lulla-citra-simcoe-pale-3-5"
+  }, {
+    "brewery" : "Break",
+    "name" : "Parade",
+    "summary" : null,
+    "desc" : "The latest iteration of The Beak’s mercurial house IPA was nomadically brewed with our friends at Burning Sky with London Fog yeast and three of our favourite hop varieties, Citra, Mosaic and Idaho 7, resulting in fruit bubblegum flavours of mango, orange peel, pineapple and ripe flat peaches. Take part in our pre-sale and receive these perks!\n*This is a pre-sale product and will be delivered as soon as it is packaged, which we expect to be week commencing 8 June. For full shipping details, please click here.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 6.0,
+    "numItems" : 6,
+    "perItemPrice" : 4.8,
+    "available" : false,
+    "categories" : [ "IPA" ],
+    "newFromBrewer" : false,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0286/3471/0061/products/Parade_800x800_crop_center.jpg?v=1589466329",
+    "url" : "https://beakbrewery.com/products/parade-ddh-ipa-mosaic-citra-idaho-7"
   }, {
     "brewery" : "Canopy",
     "name" : "A Rising Tide Nelson & Motueka IPA",
