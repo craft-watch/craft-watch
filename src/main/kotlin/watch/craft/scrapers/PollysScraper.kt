@@ -7,7 +7,12 @@ import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class PollysScraper : Scraper {
-  override val name = "Polly's Brew"
+  override val brewery = Brewery(
+    shortName = "Polly's Brew",
+    name = "Polly's Brew Co",
+    location = "Mold, Flintshire",
+    websiteUrl = URI("https://pollysbrew.co/")
+  )
   override val rootUrls = listOf(URI("https://shop.pollysbrew.co/"))
 
   override fun scrapeIndex(root: Document) = root

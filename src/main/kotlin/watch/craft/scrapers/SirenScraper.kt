@@ -7,7 +7,12 @@ import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class SirenScraper : Scraper {
-  override val name = "Siren Craft"
+  override val brewery = Brewery(
+    shortName = "Siren Craft",
+    name = "Siren Craft Brew",
+    location = "Finchampstead, Berkshire",
+    websiteUrl = URI("https://www.sirencraftbrew.com/")
+  )
   override val rootUrls = listOf(URI("https://www.sirencraftbrew.com/browse/c-Beers-11"))
 
   override fun scrapeIndex(root: Document) = root

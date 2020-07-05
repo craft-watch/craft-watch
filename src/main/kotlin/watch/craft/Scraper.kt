@@ -4,7 +4,7 @@ import org.jsoup.nodes.Document
 import java.net.URI
 
 interface Scraper {
-  val name: String
+  val brewery: Brewery
   val rootUrls: List<URI>
 
   fun scrapeIndex(root: Document): List<IndexEntry>

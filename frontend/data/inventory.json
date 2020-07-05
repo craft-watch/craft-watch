@@ -1,8 +1,109 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-05T15:13:36.915070Z"
+    "capturedAt" : "2020-07-05T19:46:37.661153Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
+  "breweries" : [ {
+    "shortName" : "Beak",
+    "name" : "Beak Brewery",
+    "location" : "Lewes, East Sussex",
+    "websiteUrl" : "https://beakbrewery.com/"
+  }, {
+    "shortName" : "Boxcar",
+    "name" : "Boxcar Brewery",
+    "location" : "Bethnal Green, London",
+    "websiteUrl" : "https://boxcarbrewery.co.uk/"
+  }, {
+    "shortName" : "Canopy",
+    "name" : "Canopy Beer Co",
+    "location" : "Brockwell, London",
+    "websiteUrl" : "https://www.canopybeer.com/"
+  }, {
+    "shortName" : "Five Points",
+    "name" : "The Five Points Brewing Co",
+    "location" : "Hackney, London",
+    "websiteUrl" : "https://fivepointsbrewing.co.uk/"
+  }, {
+    "shortName" : "Fourpure",
+    "name" : "Fourpure Brewing Co",
+    "location" : "Bermondesy, London",
+    "websiteUrl" : "https://www.fourpure.com/"
+  }, {
+    "shortName" : "Gipsy Hill",
+    "name" : "Gipsy Hill Brewing",
+    "location" : "Gispy Hill, London",
+    "websiteUrl" : "https://gipsyhillbrew.com/"
+  }, {
+    "shortName" : "Howling Hops",
+    "name" : "Howling Hops",
+    "location" : "Hackney Wick, London",
+    "websiteUrl" : "https://www.howlinghops.co.uk/"
+  }, {
+    "shortName" : "Marble",
+    "name" : "Marble Beers",
+    "location" : "Salford, Greater Manchester",
+    "websiteUrl" : "https://marblebeers.com/"
+  }, {
+    "shortName" : "Padstow",
+    "name" : "Padstow Brewing Co",
+    "location" : "Padstow, Cornwall",
+    "websiteUrl" : "https://www.padstowbrewing.co.uk/"
+  }, {
+    "shortName" : "Pillars",
+    "name" : "Pillars Brewery",
+    "location" : "Walthamstow, London",
+    "websiteUrl" : "https://www.pillarsbrewery.com/"
+  }, {
+    "shortName" : "Polly's Brew",
+    "name" : "Polly's Brew Co",
+    "location" : "Mold, Flintshire",
+    "websiteUrl" : "https://pollysbrew.co/"
+  }, {
+    "shortName" : "Pressure Drop",
+    "name" : "Pressure Drop Brewing",
+    "location" : "Tottenham, London",
+    "websiteUrl" : "https://pressuredropbrewing.co.uk/"
+  }, {
+    "shortName" : "Redchurch",
+    "name" : "Redchurch Brewery",
+    "location" : "Harlow, Essex",
+    "websiteUrl" : "https://redchurch.beer/"
+  }, {
+    "shortName" : "Siren Craft",
+    "name" : "Siren Craft Brew",
+    "location" : "Finchampstead, Berkshire",
+    "websiteUrl" : "https://www.sirencraftbrew.com/"
+  }, {
+    "shortName" : "Stewart Brewing",
+    "name" : "Stewart Brewing",
+    "location" : "Loanhead, Midlothian",
+    "websiteUrl" : "https://www.stewartbrewing.co.uk/"
+  }, {
+    "shortName" : "Thornbridge",
+    "name" : "Thornbridge Brewery",
+    "location" : "Bakewell, Derbyshire",
+    "websiteUrl" : "https://thornbridgebrewery.co.uk/"
+  }, {
+    "shortName" : "Unity",
+    "name" : "Unity Brewing Co",
+    "location" : "Southampton",
+    "websiteUrl" : "https://unitybrewingco.com/"
+  }, {
+    "shortName" : "Villages",
+    "name" : "Villages Brewery",
+    "location" : "Deptford, London",
+    "websiteUrl" : "https://villagesbrewery.com/"
+  }, {
+    "shortName" : "Wander Beyond",
+    "name" : "Wander Beyond Brewing",
+    "location" : "Manchester",
+    "websiteUrl" : "https://www.wanderbeyondbrewing.com/"
+  }, {
+    "shortName" : "Wiper and True",
+    "name" : "Wiper and True",
+    "location" : "Bristol",
+    "websiteUrl" : "https://wiperandtrue.com/"
+  } ],
   "items" : [ {
     "brewery" : "Beak",
     "name" : "Lulla",

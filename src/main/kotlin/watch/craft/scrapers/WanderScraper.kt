@@ -7,7 +7,12 @@ import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class WanderScraper : Scraper {
-  override val name = "Wander Beyond"
+  override val brewery = Brewery(
+    shortName = "Wander Beyond",
+    name = "Wander Beyond Brewing",
+    location = "Manchester",
+    websiteUrl = URI("https://www.wanderbeyondbrewing.com/")
+  )
   override val rootUrls = listOf(URI("https://www.wanderbeyondbrewing.com/shop"))
 
   override fun scrapeIndex(root: Document) = root

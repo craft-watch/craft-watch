@@ -5,6 +5,7 @@ import org.jsoup.nodes.Document
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.mockito.Mockito.RETURNS_DEEP_STUBS
 import watch.craft.*
 import watch.craft.Scraper.IndexEntry
 import watch.craft.storage.CachingGetter
@@ -19,8 +20,8 @@ class ExecutorTest {
     on { request(any()) } doAnswer { "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>".toByteArray() }
   }
   private val executor = Executor(results, getter, Clock.fixed(NOW, ZoneId.systemDefault()))
-  private val scraper = mock<Scraper> {
-    on { name } doReturn BREWERY
+  private val scraper = mock<Scraper>(defaultAnswer = RETURNS_DEEP_STUBS) {
+    on { brewery.shortName } doReturn BREWERY_NAME
     on { rootUrls } doReturn listOf(ROOT_URL_BEERS, ROOT_URL_PACKS)
   }
 
@@ -57,7 +58,7 @@ class ExecutorTest {
       listOf(
         with(product("Bar")) {
           Item(
-            brewery = BREWERY,
+            brewery = BREWERY_NAME,
             name = name,
             summary = summary,
             desc = desc,
@@ -74,7 +75,7 @@ class ExecutorTest {
         },
         with(product("Foo")) {
           Item(
-            brewery = BREWERY,
+            brewery = BREWERY_NAME,
             name = name,
             summary = summary,
             desc = desc,
@@ -151,8 +152,8 @@ class ExecutorTest {
       indexEntry("b") { product("Bar") }
     )
 
-    val badScraper = mock<Scraper> {
-      on { name } doReturn "Bad Brewing"
+    val badScraper = mock<Scraper>(defaultAnswer = RETURNS_DEEP_STUBS) {
+      on { brewery.shortName } doReturn "Bad Brewing"
       on { rootUrls } doReturn listOf(URI("http://bad.invalid"))
       on { scrapeIndex(any()) } doThrow MalformedInputException("Noooo")
     }
@@ -192,7 +193,7 @@ class ExecutorTest {
   }
 
   companion object {
-    private const val BREWERY = "Foo Bar"
+    private const val BREWERY_NAME = "Foo Bar"
     private val ROOT_URL_BEERS = URI("https://example.invalid/beers")
     private val ROOT_URL_PACKS = URI("https://example.invalid/packs")
     private const val DECENT_PRICE = 2.46

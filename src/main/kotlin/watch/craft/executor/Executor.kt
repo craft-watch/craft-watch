@@ -8,7 +8,6 @@ import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.storage.CachingGetter
 import java.time.Clock
 import java.time.Instant
-import java.util.Comparator
 
 class Executor(
   private val results: ResultsManager,
@@ -33,6 +32,7 @@ class Executor(
     return Inventory(
       metadata = Metadata(capturedAt = now),
       categories = CATEGORY_KEYWORDS.keys.toList(),
+      breweries = scrapers.map { it.brewery },
       items = items
     )
   }
@@ -41,10 +41,10 @@ class Executor(
     try {
       it.normalise()
     } catch (e: InvalidItemException) {
-      logger.warn("[${it.brewery}] Invalid item [${it.entry.rawName}]", e)
+      logger.warn("[${it.breweryName}] Invalid item [${it.entry.rawName}]", e)
       null
     } catch (e: Exception) {
-      logger.warn("[${it.brewery}] Unexpected error while validating [${it.entry.rawName}]", e)
+      logger.warn("[${it.breweryName}] Unexpected error while validating [${it.entry.rawName}]", e)
       null
     }
   }

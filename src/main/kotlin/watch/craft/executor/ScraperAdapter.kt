@@ -17,18 +17,18 @@ class ScraperAdapter(
   private val scraper: Scraper
 ) {
   data class Result(
-    val brewery: String,
+    val breweryName: String,
     val entry: IndexEntry,
     val item: ScrapedItem
   )
 
   private val logger = KotlinLogging.logger {}
-  private val brewery = scraper.name
+  private val breweryName = scraper.brewery.shortName
 
   val indexTasks = scraper.rootUrls.map { url ->
     {
       scrapeIndexSafely(url).map { entry ->
-        { scrapeItemSafely(entry)?.let { Result(brewery, entry, it) } }
+        { scrapeItemSafely(entry)?.let { Result(breweryName, entry, it) } }
       }
     }
   }
@@ -39,7 +39,7 @@ class ScraperAdapter(
       .flatten()
 
     return entries
-      .parallelMap { entry -> scrapeItemSafely(entry)?.let { Result(brewery, entry, it) } }
+      .parallelMap { entry -> scrapeItemSafely(entry)?.let { Result(breweryName, entry, it) } }
       .filterNotNull()
   }
 
@@ -48,36 +48,36 @@ class ScraperAdapter(
     .collect(Collectors.toList())
 
   private fun scrapeIndexSafely(url: URI): List<IndexEntry> {
-    logger.info("[${brewery}] Scraping index: ${url}")
+    logger.info("[${breweryName}] Scraping index: ${url}")
     return try {
       scraper.scrapeIndex(request(url))
     } catch (e: NonFatalScraperException) {
-      logger.warn("[${brewery}] Error while scraping brewery", e)
+      logger.warn("[${breweryName}] Error while scraping brewery", e)
       emptyList()
     } catch (e: FatalScraperException) {
-      logger.error("[${brewery}] Fatal error while scraping brewery", e)
+      logger.error("[${breweryName}] Fatal error while scraping brewery", e)
       throw e
     } catch (e: Exception) {
-      logger.warn("[${brewery}] Unexpected error while scraping brewery", e)
+      logger.warn("[${breweryName}] Unexpected error while scraping brewery", e)
       emptyList()
     }
   }
 
   private fun scrapeItemSafely(entry: IndexEntry): ScrapedItem? {
-    logger.info("[${brewery}] Scraping [${entry.rawName}]")
+    logger.info("[${breweryName}] Scraping [${entry.rawName}]")
     return try {
       entry.scrapeItem(request(entry.url))
     } catch (e: SkipItemException) {
-      logger.info("[${brewery}] Skipping [${entry.rawName}] because: ${e.message}")
+      logger.info("[${breweryName}] Skipping [${entry.rawName}] because: ${e.message}")
       null
     } catch (e: NonFatalScraperException) {
-      logger.warn("[${brewery}] Error while scraping [${entry.rawName}]", e)
+      logger.warn("[${breweryName}] Error while scraping [${entry.rawName}]", e)
       null
     } catch (e: FatalScraperException) {
-      logger.error("[${brewery}] Error while scraping [${entry.rawName}]", e)
+      logger.error("[${breweryName}] Error while scraping [${entry.rawName}]", e)
       throw e
     } catch (e: Exception) {
-      logger.warn("[${brewery}] Unexpected error while scraping [${entry.rawName}]", e)
+      logger.warn("[${breweryName}] Unexpected error while scraping [${entry.rawName}]", e)
       null
     }
   }

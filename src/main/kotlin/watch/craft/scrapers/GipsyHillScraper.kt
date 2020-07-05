@@ -7,7 +7,12 @@ import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class GipsyHillScraper : Scraper {
-  override val name = "Gipsy Hill"
+  override val brewery = Brewery(
+    shortName = "Gipsy Hill",
+    name = "Gipsy Hill Brewing",
+    location = "Gispy Hill, London",
+    websiteUrl = URI("https://gipsyhillbrew.com/")
+  )
   override val rootUrls = listOf(URI("https://gipsyhillbrew.com"))
 
   override fun scrapeIndex(root: Document) = root
