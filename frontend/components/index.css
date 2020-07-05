@@ -41,7 +41,6 @@ html, body {
 }
 
 
-
 /* ----------------------
     Table
    ---------------------- */
@@ -196,6 +195,60 @@ img {
   width: auto;
   height: auto;
   border-radius: var(--sexy-radius);
+}
+
+
+/* ----------------------
+    Nav
+   ---------------------- */
+
+nav {
+  padding: 10px;
+  padding-left: 30px;
+
+  /* Overlay everything else */
+  z-index: 0;
+  position: fixed;
+  right: left;
+  top: 0;
+  min-width: 20vw;
+  height: 100vh;
+
+  /* No scroll */
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+nav h2 {
+  font-size: larger;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  margin: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: large;
+}
+
+nav a:link {
+  color: var(--sol-base01);
+}
+
+nav a:visited {
+  color: var(--sol-base00);
+}
+
+nav a:hover {
+  cursor: pointer;
+  color: var(--sol-magenta);
 }
 
 
@@ -405,7 +458,6 @@ img {
 
 @media (max-width: 768px) {
   /* Compress table layout */
-
   table {
     width: 100vw;
   }
@@ -431,8 +483,9 @@ img {
     width: 50vw;
   }
 
-  /* These are positioned all wrong on mobile, so diable for now */
+  /* These are positioned all wrong on mobile, so disable for now */
   .tooltip .tooltip-text {
+    display: none;
     visibility: hidden;
   }
 
@@ -444,5 +497,22 @@ img {
     text-align: center;
     font-size: smaller;
     padding: 5px 0;
+  }
+
+  nav {
+    position: inherit;
+    height: inherit;
+    background: var(--sol-base02);
+    color: var(--sol-base2);
+    text-align: center;
+    padding: 5px 0;
+  }
+
+  nav a {
+    font-size: smaller;
+  }
+
+  nav li {
+    display: inline;
   }
 }
