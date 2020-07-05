@@ -18,6 +18,8 @@ fun List<ScrapedItem>.byName(name: String) = first { it.name == name }
 
 fun ScrapedItem.noDesc() = copy(desc = null)    // Makes it easier to test item equality
 
+fun List<ScrapedItem>.display() = forEach { println(it.noDesc()) }
+
 val PROTOTYPE_ITEM = Item(
   brewery = "",
   name = "",
