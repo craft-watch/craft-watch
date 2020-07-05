@@ -8,6 +8,7 @@ import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.storage.CachingGetter
 import java.time.Clock
 import java.time.Instant
+import java.util.Comparator
 
 class Executor(
   private val results: ResultsManager,
@@ -25,8 +26,8 @@ class Executor(
       .normalise()
       .categorise()
       .newalyse(now)
-      .bestPricedItems()
       .sort()
+      .bestPricedItems()
       .also { it.logStats() }
 
     return Inventory(
@@ -60,7 +61,16 @@ class Executor(
       group.minBy { it.perItemPrice }!!
     }
 
-  private fun List<Item>.sort() = sortedBy { it.name }.sortedBy { it.brewery }
+  private fun List<Item>.sort() = sortedWith(
+    compareBy(
+      { it.brewery },
+      { it.name },
+      { it.available },
+      { it.sizeMl },
+      { it.keg },
+      { it.numItems }
+    )
+  )
 
   private fun List<Item>.logStats() {
     groupBy { it.brewery }.forEach { (key, group) -> logger.info("Scraped (${key}): ${group.size}") }
