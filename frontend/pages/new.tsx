@@ -6,7 +6,7 @@ import { items, capturedAt, categories } from "../utils/inventory";
 
 const ThisPage = (): JSX.Element => (
   <Page
-    title = "Craft Watch - new beers"
+    title = "Craft Watch - New beers"
     description = "Newly released beers from across UK brewery online shops"
   >
     <App
