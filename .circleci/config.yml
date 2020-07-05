@@ -18,9 +18,9 @@ workflows:
     triggers:
       - schedule:
           cron: "27 23 * * *"
-#          filters:
-#            branches:
-#              only: master
+          filters:
+            branches:
+              only: daily-ci-build
 
     jobs:
       - run_backend
