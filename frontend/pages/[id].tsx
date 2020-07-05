@@ -17,7 +17,12 @@ const ThisPage = (props: Props): JSX.Element => (
     title = {`Craft Watch - ${props.brewery}`}
     description = {`Daily updates of beer prices from ${props.brewery}`}
   >
-    <App capturedAt={capturedAt} items={props.items} categories={categories} />
+    <App
+      title={props.brewery}
+      capturedAt={capturedAt}
+      items={props.items}
+      categories={categories}
+    />
   </Page>
 );
 

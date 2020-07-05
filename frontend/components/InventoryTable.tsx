@@ -5,6 +5,7 @@ import { Item } from "../utils/model";
 import SortableTable, { Column, Renderer, Section } from "./SortableTable";
 import { toSafePathPart } from "../utils/stuff";
 import { OUT_OF_STOCK, MINIKEG, MIXED_CASE } from "../utils/strings";
+import { splitToParagraphs } from "../utils/reactUtils";
 
 interface Props {
   items: Array<Item>;
@@ -87,7 +88,7 @@ const renderName: Renderer<Item> = item => (
 
 const renderTooltipText = (item: Item): JSX.Element => (
   <span className="tooltip-text" style={{ display: "hidden" }}>
-    {(item.desc !== null) && _.map(item.desc.split("\n"), (para, idx) => <p key={idx}>{para}</p>)}
+    {(item.desc !== null) && splitToParagraphs(item.desc)}
     <div className="disclaimer">© {item.brewery}</div>
   </span>
 );

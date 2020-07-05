@@ -8,6 +8,8 @@ import { Moment } from "moment";
 import Link from "next/link";
 
 interface Props {
+  title: string;
+  desc?: JSX.Element | string;
   capturedAt: Moment;
   items: Array<Item>;
   categories: Array<string>;
@@ -41,14 +43,22 @@ class App extends React.Component<Props, State> {
   render(): JSX.Element {
     return (
       <div>
-        <nav>
-          <h2 className="hide-on-mobile">Explore</h2>
-          <ul>
-            <li><Link href="/new"><a>New beers</a></Link></li>
-            <li><Link href="/taster"><a>Taster menu</a></Link></li>
-            <li><Link href="/"><a>Full menu</a></Link></li>
-          </ul>
-        </nav>
+        <div className="info">
+          <nav>
+            <h2 className="hide-on-mobile">Explore ...</h2>
+            <ul>
+              <li><Link href="/new"><a>New beers</a></Link></li>
+              <li><Link href="/taster"><a>Taster menu</a></Link></li>
+              <li><Link href="/"><a>Full menu</a></Link></li>
+            </ul>
+          </nav>
+
+          <h1>{this.props.title}</h1>
+          <div className="desc">
+            {this.props.desc}
+          </div>
+
+        </div>
 
         <div className="how-to-use">
           Click on an image to go to the brewery shop!
@@ -79,7 +89,9 @@ class App extends React.Component<Props, State> {
           }
         </Menu>
 
-        <InventoryTable items={this.filterItems()} categories={this.props.categories} />
+        <main>
+          <InventoryTable items={this.filterItems()} categories={this.props.categories} />
+        </main>
       </div>
     );
   }

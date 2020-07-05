@@ -8,7 +8,24 @@ const ThisPage = (): JSX.Element => (
     title = "Craft Watch - Beer prices from UK breweries"
     description = "Daily updates of beer prices from across UK brewery online shops"
   >
-    <App capturedAt={capturedAt} items={items} categories={categories} />
+    <App
+      title="Full menu"
+      desc={
+        (
+          <>
+            <p>
+              This is the full selection of beer prices from across UK breweries that sell direct to your doorstep.
+            </p>
+            <p>
+              Updated daily!
+            </p>
+          </>
+        )
+      }
+      capturedAt={capturedAt}
+      items={items}
+      categories={categories}
+    />
   </Page>
 );
 

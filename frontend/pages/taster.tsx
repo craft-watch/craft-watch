@@ -21,7 +21,24 @@ const ThisPage = (): JSX.Element => {
       title = "Craft Watch - Taster menu"
       description = "Taster menu of beer prices from across the UK"
     >
-      <App capturedAt={capturedAt} items={items} categories={categories} />
+      <App
+        title="Taster menu"
+        desc={
+          (
+            <>
+              <p>
+                We've put together a randomly curated selection of {TASTER_MENU_SIZE} beers to inspire you.
+              </p>
+              <p>
+                Refresh the page to get another selection!
+              </p>
+            </>
+          )
+        }
+        capturedAt={capturedAt}
+        items={items}
+        categories={categories}
+      />
     </Page>
   );
 };

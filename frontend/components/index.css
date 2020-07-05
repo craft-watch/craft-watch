@@ -49,7 +49,7 @@ table {
   margin-left: auto;
   margin-right: auto;
   border-collapse: collapse;
-  min-width: 50vw;
+  width: 50vw;
 }
 
 thead th {
@@ -202,16 +202,14 @@ img {
     Nav
    ---------------------- */
 
-nav {
+.info {
   padding: 10px;
   padding-left: 30px;
 
-  /* Overlay everything else */
-  z-index: 0;
   position: fixed;
   right: left;
   top: 0;
-  min-width: 20vw;
+  width: 20vw;
   height: 100vh;
 
   /* No scroll */
@@ -219,7 +217,16 @@ nav {
   overflow-y: hidden;
 }
 
-nav h2 {
+.info .desc {
+  line-height: 1.5em;
+  font-size: normal;
+}
+
+nav {
+  margin-bottom: 40px;
+}
+
+h1, h2 {
   font-size: larger;
 }
 
@@ -235,7 +242,7 @@ nav li {
 
 nav a {
   text-decoration: none;
-  font-size: large;
+  font-size: normal;
 }
 
 nav a:link {
