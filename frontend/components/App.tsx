@@ -43,9 +43,9 @@ class App extends React.Component<Props, State> {
   render(): JSX.Element {
     return (
       <div>
-        <div className="info">
+        <div className="sidebar">
           <nav>
-            <h2 className="hide-on-mobile">Explore ...</h2>
+            <h2 className="hide-small">Explore ...</h2>
             <ul>
               <li><Link href="/new"><a>New beers</a></Link></li>
               <li><Link href="/taster"><a>Taster menu</a></Link></li>
@@ -53,11 +53,12 @@ class App extends React.Component<Props, State> {
             </ul>
           </nav>
 
-          <h1>{this.props.title}</h1>
-          <div className="desc">
-            {this.props.desc}
+          <div className="info hide-medium">
+            <h1>{this.props.title}</h1>
+            <div className="desc">
+              {this.props.desc}
+            </div>
           </div>
-
         </div>
 
         <div className="how-to-use">

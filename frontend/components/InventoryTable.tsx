@@ -31,13 +31,13 @@ const InventoryTable: React.FC<Props> = (props) => (
     />
     <Column
       name="ABV"
-      className="hide-on-mobile"
+      className="hide-small"
       render={renderAbv}
       selector={(item) => item.abv}
     />
     <Column
       name="Size"
-      className="size hide-on-mobile"
+      className="size hide-medium"
       render={renderSize}
       selector={(item) => item.sizeMl}
     />
@@ -86,8 +86,9 @@ const renderName: Renderer<Item> = item => (
   </div>
 );
 
+// These are positioned all wrong on mobile, so disable when things get small
 const renderTooltipText = (item: Item): JSX.Element => (
-  <span className="tooltip-text" style={{ display: "hidden" }}>
+  <span className="tooltip-text hide-small" style={{ display: "hidden" }}>
     {(item.desc !== null) && splitToParagraphs(item.desc)}
     <div className="disclaimer">© {item.brewery}</div>
   </span>
