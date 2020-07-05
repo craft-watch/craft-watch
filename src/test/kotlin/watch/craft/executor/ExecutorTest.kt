@@ -69,8 +69,8 @@ class ExecutorTest {
             perItemPrice = price,
             available = available,
             newToUs = true,
-            thumbnailUrl = thumbnailUrl.toString(),
-            url = productUrl("b").toString()
+            thumbnailUrl = thumbnailUrl,
+            url = productUrl("b")
           )
         },
         with(product("Foo")) {
@@ -86,8 +86,8 @@ class ExecutorTest {
             perItemPrice = price,
             available = available,
             newToUs = true,
-            thumbnailUrl = thumbnailUrl.toString(),
-            url = productUrl("a").toString()
+            thumbnailUrl = thumbnailUrl,
+            url = productUrl("a")
           )
         }
       ),
