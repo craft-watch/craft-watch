@@ -1,11 +1,19 @@
 export interface Inventory {
   metadata: Metadata;
   categories: Array<string>;
+  breweries: Array<Brewery>;
   items: Array<Item>;
 }
 
 export interface Metadata {
   capturedAt: string;   // TODO - can we specify this as Date directly?
+}
+
+export interface Brewery {
+  shortName: string;
+  name: string;
+  location: string;
+  websiteUrl: string;
 }
 
 export interface Item {

@@ -27,7 +27,7 @@ const ThisPage = (): JSX.Element => {
           (
             <>
               <p>
-                We've put together a randomly curated selection of {TASTER_MENU_SIZE} beers to inspire you.
+                We&apos;ve put together a randomly curated selection of {TASTER_MENU_SIZE} beers to inspire you.
               </p>
               <p>
                 Refresh the page to get another selection!

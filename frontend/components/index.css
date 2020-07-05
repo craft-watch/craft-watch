@@ -224,6 +224,25 @@ img {
   font-size: medium;
 }
 
+.desc a {
+  text-decoration: none;
+  color: var(--sol-base00);
+}
+
+.desc a:link {
+  color: var(--sol-base01);
+}
+
+.desc a:visited {
+  color: var(--sol-base00);
+}
+
+.desc a:hover {
+  cursor: pointer;
+  color: var(--sol-magenta);
+}
+
+
 nav {
   margin-bottom: 40px;
 }
@@ -244,7 +263,6 @@ nav li {
 
 nav a {
   text-decoration: none;
-  font-size: normal;
   color: var(--sol-base00);
 }
 
