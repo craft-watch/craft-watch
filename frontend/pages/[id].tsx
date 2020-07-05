@@ -32,6 +32,9 @@ const ThisPage = (props: Props): JSX.Element => {
                 Daily updates of beer prices from {brewery.name}, a brewery based in {brewery.location}.
               </p>
               <p>
+                Every item here can be delivered directly to your doorstep from their online shop.
+              </p>
+              <p>
                 <a href={brewery.websiteUrl}>{brewery.websiteUrl}</a>
               </p>
             </>

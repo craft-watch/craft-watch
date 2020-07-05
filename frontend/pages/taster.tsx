@@ -32,6 +32,9 @@ const ThisPage = (): JSX.Element => {
               <p>
                 Refresh the page to get another selection!
               </p>
+              <p>
+                Every item here can be delivered directly to your doorstep from the brewery&apos;s online shop.
+              </p>
             </>
           )
         }
