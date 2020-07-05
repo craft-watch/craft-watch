@@ -1,5 +1,8 @@
 package watch.craft
 
+import com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.kotlin.readValue
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 import java.net.URI
@@ -7,6 +10,16 @@ import java.net.URISyntaxException
 import kotlin.math.round
 import kotlin.text.RegexOption.DOT_MATCHES_ALL
 import kotlin.text.RegexOption.IGNORE_CASE
+
+inline fun <reified T: Any> Element.jsonFrom(cssQuery: String = ":root") = selectFrom(cssQuery).data().run {
+  try {
+    jacksonObjectMapper()
+      .disable(FAIL_ON_UNKNOWN_PROPERTIES)
+      .readValue<T>(this)
+  } catch (e: Exception) {
+    throw MalformedInputException("Couldn't read JSON data", e)
+  }
+}
 
 fun Element.normaliseParagraphsFrom(cssQuery: String = ":root") = selectFrom(cssQuery)
   .selectMultipleFrom("p")
@@ -70,6 +83,10 @@ fun String.toUri() = try {
 
 fun <K, V> Map<K, V>.grab(key: K) = maybeGrab(key) ?: throw MalformedInputException("Key not present: ${key}")
 fun <K, V> Map<K, V>.maybeGrab(key: K) = this[key]
+
+const val INT_REGEX = "(\\d+)"
+const val DOUBLE_REGEX = "(\\d+(?:\\.\\d+)?)"
+const val ABV_REGEX = "${DOUBLE_REGEX}\\s*%"
 
 private val BEER_ACRONYMS = listOf(
   "IPL",
