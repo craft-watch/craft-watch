@@ -4,7 +4,7 @@ import mu.KotlinLogging
 import watch.craft.*
 import watch.craft.enrichers.Categoriser
 import watch.craft.enrichers.Newalyser
-import watch.craft.executor.ScraperExecutor.Result
+import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.storage.CachingGetter
 import java.time.Clock
 import java.time.Instant
@@ -12,27 +12,18 @@ import java.util.concurrent.Executors.newFixedThreadPool
 
 class Executor(
   private val results: ResultsManager,
-  private val getter: CachingGetter,
+  getter: CachingGetter,
   private val clock: Clock = Clock.systemUTC()
 ) {
   private val logger = KotlinLogging.logger {}
 
   private val executor = newFixedThreadPool(4)
+  private val thinger = ParallelThinger(4, getter)
 
   fun scrape(vararg scrapers: Scraper): Inventory {
     val now = clock.instant()
 
-    val adapters = scrapers.map { ScraperExecutor(getter, it) }
-
-    val indexTasks = adapters.flatMap { it.indexTasks }
-
-    val itemTasks = indexTasks
-      .map { executor.submit(it) }
-      .flatMap { it.get() }
-
-    val items = itemTasks
-      .map { executor.submit(it) }
-      .mapNotNull { it.get() }
+    val items = thinger.execute(scrapers.toList())
       .normalise()
       .categorise()
       .newalyse(now)
@@ -46,6 +37,8 @@ class Executor(
       items = items
     )
   }
+
+  private fun <R> List<() -> R>.executeParallel() = map { executor.submit(it) }.map { it.get() }
 
   private fun List<Result>.normalise() = mapNotNull {
     try {

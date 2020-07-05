@@ -12,7 +12,7 @@ import watch.craft.storage.CachingGetter
 import java.net.URI
 import java.util.stream.Collectors
 
-class ScraperExecutor(
+class ScraperAdapter(
   private val getter: CachingGetter,
   private val scraper: Scraper
 ) {
