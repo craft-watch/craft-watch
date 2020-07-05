@@ -5,6 +5,7 @@ import Menu, { Selections, Section as MenuSection } from "./Menu";
 import InventoryTable from "./InventoryTable";
 import { MIXED_CASE, MINIKEG, REGULAR, OUT_OF_STOCK } from "../utils/strings";
 import { Moment } from "moment";
+import Link from "next/link";
 
 interface Props {
   capturedAt: Moment;
@@ -40,6 +41,15 @@ class App extends React.Component<Props, State> {
   render(): JSX.Element {
     return (
       <div>
+        <nav>
+          <h2 className="hide-on-mobile">Explore</h2>
+          <ul>
+            <li><Link href="/new"><a>New beers</a></Link></li>
+            <li><Link href="/taster"><a>Taster menu</a></Link></li>
+            <li><Link href="/"><a>Full menu</a></Link></li>
+          </ul>
+        </nav>
+
         <div className="how-to-use">
           Click on an image to go to the brewery shop!
         </div>
