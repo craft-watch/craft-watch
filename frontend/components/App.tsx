@@ -47,9 +47,9 @@ class App extends React.Component<Props, State> {
           <nav>
             <h2 className="hide-medium">Explore ...</h2>
             <ul>
-              <li><Link href="/new"><a>New beers</a></Link></li>
+              <li><Link href="/"><a>New beers</a></Link></li>
               <li><Link href="/taster"><a>Taster menu</a></Link></li>
-              <li><Link href="/"><a>Full menu</a></Link></li>
+              <li><Link href="/full"><a>Full menu</a></Link></li>
             </ul>
           </nav>
 

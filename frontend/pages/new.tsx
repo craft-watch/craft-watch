@@ -6,8 +6,8 @@ import { items, capturedAt, categories } from "../utils/inventory";
 
 const ThisPage = (): JSX.Element => (
   <Page
-    title = "Craft Watch - New beers"
-    description = "Newly released beers from across UK brewery online shops"
+    title = "Craft Watch - New beers from UK breweries"
+    description = "Daily updates and prices of new beers from across UK brewery online shops"
   >
     <App
       title="New beers"
@@ -15,10 +15,10 @@ const ThisPage = (): JSX.Element => (
         (
           <>
             <p>
-              These are the latest releases from breweries, along with new additions to Craft Watch itself.
+              These are the latest beer and cider releases from breweries, updated daily!
             </p>
             <p>
-              Updated daily!
+              Every item here can be delivered directly to your doorstep from the brewery&apos;s online shop.
             </p>
           </>
         )
