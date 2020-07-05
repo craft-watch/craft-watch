@@ -30,7 +30,7 @@ class ThornbridgeScraperTest {
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_can_mockup_coloured_background_300x300.jpg?v=1583154011")
       ),
-      ITEMS.byName("Jaipur").noDesc()
+      ITEMS.first { it.name == "Jaipur" && it.thumbnailUrl.toString().contains("can") }.noDesc()
     )
   }
 
