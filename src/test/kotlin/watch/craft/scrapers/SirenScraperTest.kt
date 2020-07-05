@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
@@ -10,12 +11,11 @@ import java.net.URI
 
 class SirenScraperTest {
   companion object {
-    private val ITEMS = executeScraper(SirenScraper(), dateString = "2020-07-04")
+    private val ITEMS = executeScraper(SirenScraper(), dateString = "2020-07-05")
   }
 
   @Test
   fun `finds all the beers`() {
-    ITEMS.forEach(::println)
     assertEquals(21, ITEMS.size)
   }
 
@@ -47,6 +47,11 @@ class SirenScraperTest {
     assertFalse(kegs.isEmpty())
     assertTrue(kegs.all { it.sizeMl!! >= 1000 })
     assertTrue(kegs.none { it.name.contains("keg", ignoreCase = true) })
+  }
+
+  @Test
+  fun `identifies sold out`() {
+    assertFalse(ITEMS.byName("Much Ado about Muffin").available)
   }
 }
 
