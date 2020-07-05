@@ -1,11 +1,34 @@
-version: 2
+version: 2.1
 
-jobs:
-  test_backend:
-    docker:
-      - image: circleci/openjdk
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - test_backend
+      - run_backend
+      - build_frontend
+      - deploy:
+          requires:
+            - build_frontend
+          filters:
+            branches:
+              only: master
+
+  daily_scrape:
+    triggers:
+      - schedule:
+          cron: "0 11 * * *"
+          filters:
+            branches:
+              only: master
+
+    jobs:
+      - run_backend
+
+
+commands:
+  setup_backend:
     steps:
-      - checkout
       - run:
           name: Create service key
           command: |
@@ -19,12 +42,18 @@ jobs:
             - v4-gradle-{{ .Branch }}-{{ checksum "build.gradle.kts" }}
             - v4-gradle-{{ .Branch }}-
             - v4-gradle-
+
+
+jobs:
+  test_backend:
+    docker:
+      - image: circleci/openjdk
+    steps:
+      - checkout
+      - setup_backend
       - run:
           name: Run tests
           command: ./gradlew check
-      - run:
-          name: Run scraper application
-          command: ./gradlew run
       - save_cache:
           paths:
             - ~/.gradle/wrapper
@@ -38,6 +67,16 @@ jobs:
       - store_artifacts:
           path: build/test-results/test
           when: always
+
+  run_backend:
+    docker:
+      - image: circleci/openjdk
+    steps:
+      - checkout
+      - setup_backend
+      - run:
+          name: Run scraper application
+          command: ./gradlew run
 
   build_frontend:
     docker:
@@ -80,16 +119,3 @@ jobs:
       - run:
           name: Deploy
           command: ./scripts/deploy.sh
-
-workflows:
-  version: 2
-  build_and_deploy:
-    jobs:
-      - test_backend
-      - build_frontend
-      - deploy:
-          requires:
-            - build_frontend
-          filters:
-            branches:
-              only: master
