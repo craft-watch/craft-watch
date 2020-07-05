@@ -1,12 +1,12 @@
 package watch.craft
 
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.executor.ParallelThinger
+import watch.craft.executor.ConcurrentRawScraperExecutor
 
 private const val GOLDEN_DATE = "2020-07-03"
 
 fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE) =
-  ParallelThinger(4, Setup(dateString).getter)
+  ConcurrentRawScraperExecutor(4, Setup(dateString).getter)
     .execute(listOf(scraper))
     .map { it.item }
 

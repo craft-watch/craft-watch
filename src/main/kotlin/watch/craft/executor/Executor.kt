@@ -8,7 +8,6 @@ import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.storage.CachingGetter
 import java.time.Clock
 import java.time.Instant
-import java.util.concurrent.Executors.newFixedThreadPool
 
 class Executor(
   private val results: ResultsManager,
@@ -17,13 +16,12 @@ class Executor(
 ) {
   private val logger = KotlinLogging.logger {}
 
-  private val executor = newFixedThreadPool(4)
-  private val thinger = ParallelThinger(4, getter)
+  private val rawExecutor = ConcurrentRawScraperExecutor(16, getter)
 
   fun scrape(vararg scrapers: Scraper): Inventory {
     val now = clock.instant()
 
-    val items = thinger.execute(scrapers.toList())
+    val items = rawExecutor.execute(scrapers.toList())
       .normalise()
       .categorise()
       .newalyse(now)
@@ -37,8 +35,6 @@ class Executor(
       items = items
     )
   }
-
-  private fun <R> List<() -> R>.executeParallel() = map { executor.submit(it) }.map { it.get() }
 
   private fun List<Result>.normalise() = mapNotNull {
     try {
