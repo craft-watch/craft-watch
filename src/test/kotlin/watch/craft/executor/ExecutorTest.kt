@@ -128,7 +128,7 @@ class ExecutorTest {
   fun `dies on fatal index-scrape failure`() {
     whenever(scraper.scrapeIndex(any())) doThrow FatalScraperException("Noooo")
 
-    assertThrows<FatalScraperException> {
+    assertThrows<Exception> {
       executor.scrape(scraper)
     }
   }
@@ -139,7 +139,7 @@ class ExecutorTest {
       indexEntry("a") { throw FatalScraperException("Noooo") }
     )
 
-    assertThrows<FatalScraperException> {
+    assertThrows<Exception> {
       executor.scrape(scraper)
     }
   }

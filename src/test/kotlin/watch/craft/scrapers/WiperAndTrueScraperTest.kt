@@ -31,7 +31,7 @@ class WiperAndTrueScraperTest {
         available = true,
         thumbnailUrl = URI("https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1593764819140-LYD57TK416V65H35KU9K/ke17ZwdGBToddI8pDm48kH7bHF972s0BMy8FJS7_5eh7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Udkb9EYnQod1oo25oIrfEHqqJxs3PTnNIpDd2Nj8pGws6ary7BfG6-GuG8rvj_sKiw/Sundance330.jpg")
       ),
-      ITEMS.byName("Sundance").noDesc()
+      ITEMS.first { it.name == "Sundance" && it.sizeMl == 330 }.noDesc()
     )
   }
 

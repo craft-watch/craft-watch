@@ -81,7 +81,7 @@ class ItemNormalisationTest {
     item: Scraper.ScrapedItem = prototype,
     brewery: String = "Foo Bar",
     url: URI = URI("https://example.invalid/shop")
-  ) = ScraperExecutor.Result(
+  ) = ScraperAdapter.Result(
     brewery = brewery,
     entry = Scraper.IndexEntry(rawName = "", url = url) { throw RuntimeException() },
     item = item

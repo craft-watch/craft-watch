@@ -12,7 +12,7 @@ import watch.craft.storage.CachingGetter
 import java.net.URI
 import java.util.stream.Collectors
 
-class ScraperExecutor(
+class ScraperAdapter(
   private val getter: CachingGetter,
   private val scraper: Scraper
 ) {
@@ -25,9 +25,17 @@ class ScraperExecutor(
   private val logger = KotlinLogging.logger {}
   private val brewery = scraper.name
 
+  val indexTasks = scraper.rootUrls.map { url ->
+    {
+      scrapeIndexSafely(url).map { entry ->
+        { scrapeItemSafely(entry)?.let { Result(brewery, entry, it) } }
+      }
+    }
+  }
+
   fun execute(): List<Result> {
     val entries = scraper.rootUrls
-      .parallelMap { scrapeIndexSafely(scraper, it) }
+      .parallelMap { scrapeIndexSafely(it) }
       .flatten()
 
     return entries
@@ -39,7 +47,7 @@ class ScraperExecutor(
     .map(transform)
     .collect(Collectors.toList())
 
-  private fun scrapeIndexSafely(scraper: Scraper, url: URI): List<IndexEntry> {
+  private fun scrapeIndexSafely(url: URI): List<IndexEntry> {
     logger.info("[${brewery}] Scraping index: ${url}")
     return try {
       scraper.scrapeIndex(request(url))

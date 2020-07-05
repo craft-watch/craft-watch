@@ -4,31 +4,29 @@ import mu.KotlinLogging
 import watch.craft.*
 import watch.craft.enrichers.Categoriser
 import watch.craft.enrichers.Newalyser
-import watch.craft.executor.ScraperExecutor.Result
+import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.storage.CachingGetter
 import java.time.Clock
 import java.time.Instant
 
 class Executor(
   private val results: ResultsManager,
-  private val getter: CachingGetter,
+  getter: CachingGetter,
   private val clock: Clock = Clock.systemUTC()
 ) {
   private val logger = KotlinLogging.logger {}
 
+  private val rawExecutor = ConcurrentRawScraperExecutor(16, getter)
+
   fun scrape(vararg scrapers: Scraper): Inventory {
     val now = clock.instant()
 
-    val items = scrapers
-      .flatMap { scraper ->
-        ScraperExecutor(getter, scraper)
-          .execute()
-          .normalise()
-          .sortedBy { it.name }
-      }
+    val items = rawExecutor.execute(scrapers.toList())
+      .normalise()
       .categorise()
       .newalyse(now)
       .bestPricedItems()
+      .sort()
       .also { it.logStats() }
 
     return Inventory(
@@ -61,6 +59,8 @@ class Executor(
       }
       group.minBy { it.perItemPrice }!!
     }
+
+  private fun List<Item>.sort() = sortedBy { it.name }.sortedBy { it.brewery }
 
   private fun List<Item>.logStats() {
     groupBy { it.brewery }.forEach { (key, group) -> logger.info("Scraped (${key}): ${group.size}") }

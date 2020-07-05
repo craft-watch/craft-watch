@@ -30,7 +30,7 @@ class PadstowScraperTest {
         available = true,
         thumbnailUrl = URI("https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Pocket-Rocket-Can-1.jpg")
       ),
-      ITEMS.byName("Pocket Rocket").noDesc()
+      ITEMS.first { it.name == "Pocket Rocket" && !it.keg }.noDesc()
     )
   }
 
