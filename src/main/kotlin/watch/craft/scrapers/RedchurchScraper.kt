@@ -1,7 +1,5 @@
 package watch.craft.scrapers
 
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import com.fasterxml.jackson.module.kotlin.readValue
 import org.jsoup.nodes.Document
 import watch.craft.*
 import watch.craft.Scraper.IndexEntry
@@ -16,8 +14,6 @@ class RedchurchScraper : Scraper {
     websiteUrl = URI("https://redchurch.beer/")
   )
   override val rootUrls = listOf(URI("https://redchurch.store/"))
-
-  private val objectMapper = jacksonObjectMapper()
 
   override fun scrapeIndex(root: Document) = root
     .selectMultipleFrom(".product")
@@ -55,12 +51,10 @@ class RedchurchScraper : Scraper {
     }
 
   private fun Document.extractBestDeal(): ItemPrice {
-    val json = selectFrom("#ProductJson-product-template")
-
     @Suppress("UNCHECKED_CAST")
-    val winner = (objectMapper.readValue<Map<String, Any>>(json.data())["variants"] as List<Map<String, Any>>)
+    val winner = (jsonFrom<Data>("#ProductJson-product-template").variants)
       .map {
-        Variant(title = it["title"] as String, price = (it["price"] as Int) / 100.0)
+        Variant(title = it.title, price = it.price / 100.0)
       }
       .maxBy { it.price }!!   // Assume highest price gives us the best deal
 
@@ -80,4 +74,13 @@ class RedchurchScraper : Scraper {
     val numItems: Int,
     val price: Double
   )
+
+  private data class Data(
+    val variants: List<Variant>
+  ) {
+    data class Variant(
+      val title: String,
+      val price: Int
+    )
+  }
 }
