@@ -31,13 +31,13 @@ const InventoryTable: React.FC<Props> = (props) => (
     />
     <Column
       name="ABV"
-      className="hide-small"
+      className="hide-tiny"
       render={renderAbv}
       selector={(item) => item.abv}
     />
     <Column
       name="Size"
-      className="size hide-medium"
+      className="size hide-small"
       render={renderSize}
       selector={(item) => item.sizeMl}
     />

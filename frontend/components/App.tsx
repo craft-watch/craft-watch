@@ -45,7 +45,7 @@ class App extends React.Component<Props, State> {
       <div>
         <div className="sidebar">
           <nav>
-            <h2 className="hide-small">Explore ...</h2>
+            <h2 className="hide-medium">Explore ...</h2>
             <ul>
               <li><Link href="/new"><a>New beers</a></Link></li>
               <li><Link href="/taster"><a>Taster menu</a></Link></li>

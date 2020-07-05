@@ -209,7 +209,7 @@ img {
   position: fixed;
   right: left;
   top: 0;
-  width: 20vw;
+  width: 15vw;
   height: 100vh;
 
   /* No scroll */
@@ -457,16 +457,22 @@ nav a:hover {
 
 
 /* ----------------------
-    Mobile adjustments
+    Responsive adjustments
    ---------------------- */
 
-@media (max-width: 480px) {
-  .hide-small {
+@media (max-width: 512px) {
+  .hide-tiny {
     display: none;
   }
 }
 
 @media (max-width: 768px) {
+  .hide-small {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
   .hide-medium {
     display: none;
   }
