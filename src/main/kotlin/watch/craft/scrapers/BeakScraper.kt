@@ -7,7 +7,7 @@ import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class BeakScraper : Scraper {
-  override val name = "Break"
+  override val name = "Beak"
   override val rootUrls = listOf(URI("https://beakbrewery.com/collections/beer"))
 
   override fun scrapeIndex(root: Document) = root
