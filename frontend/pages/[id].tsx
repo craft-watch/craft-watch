@@ -20,8 +20,8 @@ const ThisPage = (props: Props): JSX.Element => {
 
   return (
     <Page
-      title = {`Craft Watch - ${props.brewery}`}
-      description = {`Daily updates of beer prices from ${props.brewery}`}
+      title = {`Craft Watch - ${brewery.name}`}
+      description = {`Daily updates of beer prices from ${brewery.name}`}
     >
       <App
         title={brewery.name}
@@ -29,7 +29,7 @@ const ThisPage = (props: Props): JSX.Element => {
           (
             <>
               <p>
-                Based in {brewery.location}.
+                Daily updates of beer prices from {brewery.name}, a brewery based in {brewery.location}.
               </p>
               <p>
                 <a href={brewery.websiteUrl}>{brewery.websiteUrl}</a>
