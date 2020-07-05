@@ -1,7 +1,6 @@
 package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
