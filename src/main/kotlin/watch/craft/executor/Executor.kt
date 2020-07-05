@@ -8,6 +8,7 @@ import watch.craft.executor.ScraperExecutor.Result
 import watch.craft.storage.CachingGetter
 import java.time.Clock
 import java.time.Instant
+import java.util.concurrent.Executors.newFixedThreadPool
 
 class Executor(
   private val results: ResultsManager,
@@ -16,19 +17,27 @@ class Executor(
 ) {
   private val logger = KotlinLogging.logger {}
 
+  private val executor = newFixedThreadPool(4)
+
   fun scrape(vararg scrapers: Scraper): Inventory {
     val now = clock.instant()
 
-    val items = scrapers
-      .flatMap { scraper ->
-        ScraperExecutor(getter, scraper)
-          .execute()
-          .normalise()
-          .sortedBy { it.name }
-      }
+    val adapters = scrapers.map { ScraperExecutor(getter, it) }
+
+    val indexTasks = adapters.flatMap { it.indexTasks }
+
+    val itemTasks = indexTasks
+      .map { executor.submit(it) }
+      .flatMap { it.get() }
+
+    val items = itemTasks
+      .map { executor.submit(it) }
+      .mapNotNull { it.get() }
+      .normalise()
       .categorise()
       .newalyse(now)
       .bestPricedItems()
+      .sort()
       .also { it.logStats() }
 
     return Inventory(
@@ -61,6 +70,8 @@ class Executor(
       }
       group.minBy { it.perItemPrice }!!
     }
+
+  private fun List<Item>.sort() = sortedBy { it.name }.sortedBy { it.brewery }
 
   private fun List<Item>.logStats() {
     groupBy { it.brewery }.forEach { (key, group) -> logger.info("Scraped (${key}): ${group.size}") }
