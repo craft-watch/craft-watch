@@ -14,6 +14,17 @@ workflows:
             branches:
               only: master
 
+  daily_scrape:
+    triggers:
+      - schedule:
+          cron: "27 23 * * *"
+          filters:
+            branches:
+              only: master
+
+    jobs:
+      - run_backend
+
 jobs:
   test_backend:
     docker:
