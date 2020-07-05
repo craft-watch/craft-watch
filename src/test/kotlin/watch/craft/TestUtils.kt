@@ -2,6 +2,7 @@ package watch.craft
 
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.executor.ConcurrentRawScraperExecutor
+import java.net.URI
 
 private const val GOLDEN_DATE = "2020-07-03"
 
@@ -19,6 +20,6 @@ val PROTOTYPE_ITEM = Item(
   name = "",
   perItemPrice = 0.00,
   available = false,
-  thumbnailUrl = "",
-  url = ""
+  thumbnailUrl = URI(""),
+  url = URI("")
 )

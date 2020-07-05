@@ -82,7 +82,7 @@ class ItemNormalisationTest {
     brewery: String = "Foo Bar",
     url: URI = URI("https://example.invalid/shop")
   ) = ScraperAdapter.Result(
-    brewery = brewery,
+    breweryName = brewery,
     entry = Scraper.IndexEntry(rawName = "", url = url) { throw RuntimeException() },
     item = item
   ).normalise()

@@ -1,17 +1,19 @@
 package watch.craft.scrapers
 
 import org.jsoup.nodes.Document
-import watch.craft.Scraper
+import watch.craft.*
 import watch.craft.Scraper.IndexEntry
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.extract
-import watch.craft.maybeWholeTextFrom
-import watch.craft.shopifyItems
 import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
 class BoxcarScraper : Scraper {
-  override val name = "Boxcar"
+  override val brewery = Brewery(
+    shortName = "Boxcar",
+    name = "Boxcar Brewery",
+    location = "Bethnal Green, London",
+    websiteUrl = URI("https://boxcarbrewery.co.uk/")
+  )
   override val rootUrls = listOf(URI("https://shop.boxcarbrewery.co.uk/collections/beer"))
 
   override fun scrapeIndex(root: Document) = root

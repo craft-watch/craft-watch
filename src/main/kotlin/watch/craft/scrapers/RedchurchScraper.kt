@@ -9,7 +9,12 @@ import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class RedchurchScraper : Scraper {
-  override val name = "Redchurch"
+  override val brewery = Brewery(
+    shortName = "Redchurch",
+    name = "Redchurch Brewery",
+    location = "Harlow, Essex",
+    websiteUrl = URI("https://redchurch.beer/")
+  )
   override val rootUrls = listOf(URI("https://redchurch.store/"))
 
   private val objectMapper = jacksonObjectMapper()

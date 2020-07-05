@@ -7,7 +7,12 @@ import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class PressureDropScraper : Scraper {
-  override val name = "Pressure Drop"
+  override val brewery = Brewery(
+    shortName = "Pressure Drop",
+    name = "Pressure Drop Brewing",
+    location = "Tottenham, London",
+    websiteUrl = URI("https://pressuredropbrewing.co.uk/")
+  )
   override val rootUrls = listOf(URI("https://pressuredropbrewing.co.uk/collections/beers"))
 
   override fun scrapeIndex(root: Document) = root

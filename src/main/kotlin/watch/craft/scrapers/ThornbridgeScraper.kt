@@ -8,7 +8,12 @@ import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
 class ThornbridgeScraper : Scraper {
-  override val name = "Thornbridge"
+  override val brewery = Brewery(
+    shortName = "Thornbridge",
+    name = "Thornbridge Brewery",
+    location = "Bakewell, Derbyshire",
+    websiteUrl = URI("https://thornbridgebrewery.co.uk/")
+  )
   // TODO - URI("https://shop.thornbridgebrewery.co.uk/collections/smart-collection?view=list")
   override val rootUrls = listOf(
     URI("https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers?view=list")

@@ -4,7 +4,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import Page from "../components/Page";
 import App from "../components/App";
 import { Item } from "../utils/model";
-import { items, capturedAt, categories } from "../utils/inventory";
+import { items, capturedAt, categories, breweries } from "../utils/inventory";
 import { toSafePathPart } from "../utils/stuff";
 
 interface Props {
@@ -12,14 +12,38 @@ interface Props {
   items: Array<Item>;
 }
 
-const ThisPage = (props: Props): JSX.Element => (
-  <Page
-    title = {`Craft Watch - ${props.brewery}`}
-    description = {`Daily updates of beer prices from ${props.brewery}`}
-  >
-    <App capturedAt={capturedAt} items={props.items} categories={categories} />
-  </Page>
-);
+const ThisPage = (props: Props): JSX.Element => {
+  const brewery = _.find(breweries, brewery => brewery.shortName === props.brewery);
+  if (!brewery) {
+    throw new Error("Unknown brewery");
+  }
+
+  return (
+    <Page
+      title = {`Craft Watch - ${brewery.name}`}
+      description = {`Daily updates of beer prices from ${brewery.name}`}
+    >
+      <App
+        title={brewery.name}
+        desc={
+          (
+            <>
+              <p>
+                Daily updates of beer prices from {brewery.name}, a brewery based in {brewery.location}.
+              </p>
+              <p>
+                <a href={brewery.websiteUrl}>{brewery.websiteUrl}</a>
+              </p>
+            </>
+          )
+        }
+        capturedAt={capturedAt}
+        items={props.items}
+        categories={categories}
+      />
+    </Page>
+  );
+};
 
 export default ThisPage;
 

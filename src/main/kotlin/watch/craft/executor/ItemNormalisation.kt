@@ -6,7 +6,7 @@ import watch.craft.divideAsPrice
 import watch.craft.executor.ScraperAdapter.Result
 
 fun Result.normalise() = Item(
-  brewery = brewery
+  brewery = breweryName
     .trim()
     .validate("non-blank brewery name") { it.isNotBlank() },
   name = item.name
@@ -31,11 +31,9 @@ fun Result.normalise() = Item(
     },
   available = item.available,
   thumbnailUrl = item.thumbnailUrl
-    .validate("absolute thumbnail URL") { it.isAbsolute }
-    .toString(),
+    .validate("absolute thumbnail URL") { it.isAbsolute },
   url = entry.url
     .validate("absolute URL") { it.isAbsolute }
-    .toString()
 )
 
 private fun <T> T.validate(name: String, predicate: (T) -> Boolean): T {

@@ -49,7 +49,7 @@ table {
   margin-left: auto;
   margin-right: auto;
   border-collapse: collapse;
-  min-width: 50vw;
+  width: 50vw;
 }
 
 thead th {
@@ -199,27 +199,55 @@ img {
 
 
 /* ----------------------
-    Nav
+    Sidebar
    ---------------------- */
 
-nav {
+.sidebar {
   padding: 10px;
   padding-left: 30px;
 
-  /* Overlay everything else */
-  z-index: 0;
   position: fixed;
   right: left;
   top: 0;
-  min-width: 20vw;
+  width: 15vw;
   height: 100vh;
 
   /* No scroll */
   overflow-x: hidden;
   overflow-y: hidden;
+
+  word-wrap: break-word;
 }
 
-nav h2 {
+.info .desc {
+  line-height: 1.5em;
+  font-size: medium;
+}
+
+.desc a {
+  text-decoration: none;
+  color: var(--sol-base00);
+}
+
+.desc a:link {
+  color: var(--sol-base01);
+}
+
+.desc a:visited {
+  color: var(--sol-base00);
+}
+
+.desc a:hover {
+  cursor: pointer;
+  color: var(--sol-magenta);
+}
+
+
+nav {
+  margin-bottom: 40px;
+}
+
+h1, h2 {
   font-size: larger;
 }
 
@@ -235,7 +263,7 @@ nav li {
 
 nav a {
   text-decoration: none;
-  font-size: large;
+  color: var(--sol-base00);
 }
 
 nav a:link {
@@ -447,16 +475,26 @@ nav a:hover {
 
 
 /* ----------------------
-    Mobile adjustments
+    Responsive adjustments
    ---------------------- */
 
-@media (max-width: 480px) {
-  .hide-on-mobile {
+@media (max-width: 512px) {
+  .hide-tiny {
     display: none;
   }
 }
 
 @media (max-width: 768px) {
+  .hide-small {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hide-medium {
+    display: none;
+  }
+
   /* Compress table layout */
   table {
     width: 100vw;
@@ -483,12 +521,6 @@ nav a:hover {
     width: 50vw;
   }
 
-  /* These are positioned all wrong on mobile, so disable for now */
-  .tooltip .tooltip-text {
-    display: none;
-    visibility: hidden;
-  }
-
   /* Useful when no affordance from hover */
   .how-to-use {
     display: inherit;
@@ -499,20 +531,40 @@ nav a:hover {
     padding: 5px 0;
   }
 
-  nav {
+  .sidebar {
     position: inherit;
     height: inherit;
-    background: var(--sol-base02);
-    color: var(--sol-base2);
-    text-align: center;
-    padding: 5px 0;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
   }
 
-  nav a {
-    font-size: normal;
+  nav {
+    background: var(--sol-base02);
+    text-align: center;
+    padding: 5px 0;
+    margin: 0;
   }
 
   nav li {
     display: inline;
+  }
+
+  nav a {
+    color: var(--sol-base2);
+    font-weight: var(--bold-weight);
+  }
+
+  nav a:link {
+    color: var(--sol-base2);
+  }
+
+  nav a:visited {
+    color: var(--sol-base2);
+  }
+
+  nav a:hover {
+    cursor: pointer;
+    color: var(--sol-base1);
   }
 }

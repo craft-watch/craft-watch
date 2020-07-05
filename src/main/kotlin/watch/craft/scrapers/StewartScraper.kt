@@ -7,7 +7,12 @@ import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class StewartScraper : Scraper {
-  override val name = "Stewart Brewing"
+  override val brewery = Brewery(
+    shortName = "Stewart Brewing",
+    name = "Stewart Brewing",
+    location = "Loanhead, Midlothian",
+    websiteUrl = URI("https://www.stewartbrewing.co.uk/")
+  )
   override val rootUrls = listOf(URI("https://www.stewartbrewing.co.uk/browse/c-Build-Your-Own-12-Pack-37?view_all=true"))
 
   override fun scrapeIndex(root: Document) = root

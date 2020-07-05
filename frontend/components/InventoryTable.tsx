@@ -5,6 +5,7 @@ import { Item } from "../utils/model";
 import SortableTable, { Column, Renderer, Section } from "./SortableTable";
 import { toSafePathPart } from "../utils/stuff";
 import { OUT_OF_STOCK, MINIKEG, MIXED_CASE } from "../utils/strings";
+import { splitToParagraphs } from "../utils/reactUtils";
 
 interface Props {
   items: Array<Item>;
@@ -30,13 +31,13 @@ const InventoryTable: React.FC<Props> = (props) => (
     />
     <Column
       name="ABV"
-      className="hide-on-mobile"
+      className="hide-tiny"
       render={renderAbv}
       selector={(item) => item.abv}
     />
     <Column
       name="Size"
-      className="size hide-on-mobile"
+      className="size hide-small"
       render={renderSize}
       selector={(item) => item.sizeMl}
     />
@@ -85,9 +86,10 @@ const renderName: Renderer<Item> = item => (
   </div>
 );
 
+// These are positioned all wrong on mobile, so disable when things get small
 const renderTooltipText = (item: Item): JSX.Element => (
-  <span className="tooltip-text" style={{ display: "hidden" }}>
-    {(item.desc !== null) && _.map(item.desc.split("\n"), (para, idx) => <p key={idx}>{para}</p>)}
+  <span className="tooltip-text hide-small" style={{ display: "hidden" }}>
+    {(item.desc !== null) && splitToParagraphs(item.desc)}
     <div className="disclaimer">© {item.brewery}</div>
   </span>
 );

@@ -8,7 +8,12 @@ import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class WiperAndTrueScraper : Scraper {
-  override val name = "Wiper and True"
+  override val brewery = Brewery(
+    shortName = "Wiper and True",
+    name = "Wiper and True",
+    location = "Bristol",
+    websiteUrl = URI("https://wiperandtrue.com/")
+  )
   override val rootUrls = listOf(URI("https://wiperandtrue.com/order-beer-online"))
 
   override fun scrapeIndex(root: Document) = root

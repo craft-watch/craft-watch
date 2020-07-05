@@ -1,15 +1,24 @@
 package watch.craft
 
+import java.net.URI
 import java.time.Instant
 
 data class Inventory(
   val metadata: Metadata,
   val categories: List<String>,
+  val breweries: List<Brewery>,
   val items: List<Item>
 )
 
 data class Metadata(
   val capturedAt: Instant
+)
+
+data class Brewery(
+  val shortName: String,
+  val name: String,
+  val location: String,
+  val websiteUrl: URI
 )
 
 data class Item(
@@ -27,8 +36,8 @@ data class Item(
   val categories: Set<String> = emptySet(),
   val newFromBrewer: Boolean = false,
   val newToUs: Boolean = false,
-  val thumbnailUrl: String,
-  val url: String
+  val thumbnailUrl: URI,
+  val url: URI
 )
 
 data class MinimalInventory(
