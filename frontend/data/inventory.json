@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-04T21:30:34.329208Z"
+    "capturedAt" : "2020-07-05T10:22:21.271332Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "items" : [ {
@@ -82,7 +82,7 @@
     "abv" : 4.2,
     "numItems" : 1,
     "perItemPrice" : 3.95,
-    "available" : true,
+    "available" : false,
     "categories" : [ "Bitter", "Pale" ],
     "newFromBrewer" : false,
     "newToUs" : false,
@@ -702,23 +702,6 @@
     "url" : "https://www.fourpure.com/item/7/Fourpure/Shapeshifter-IPA.html"
   }, {
     "brewery" : "Gipsy Hill",
-    "name" : "Baller",
-    "summary" : "India Pale Ale",
-    "desc" : "This is a single 330ml can of Baller.\n\nAn IPA. We took everything we’ve learnt about making IPAs and put it into this beer. Lots of hops, big bright flavours, smooth body. It’s our go-to IPA.\nGoes well with big livin and splashing out.\nThis is Charlie. He’s a Gipsy Hill co-founder. He likes city life and fast pedalling.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 330,
-    "abv" : 5.4,
-    "numItems" : 1,
-    "perItemPrice" : 2.7,
-    "available" : true,
-    "categories" : [ "IPA" ],
-    "newFromBrewer" : false,
-    "newToUs" : false,
-    "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/BALLER.png?resize=300%2C300&ssl=1",
-    "url" : "https://gipsyhillbrew.com/product/baller/"
-  }, {
-    "brewery" : "Gipsy Hill",
     "name" : "Bandit",
     "summary" : "Gluten Free Pale Ale",
     "desc" : "This is a single 330ml can of Bandit.\n\nA Gluten Free Pale Ale. We took our beloved Beatnik and stole the gluten out. It’s a light, refreshing pale. Still fruity, still floral. Loads of flavour, just gluten free.\nGoes well with high revs and breeze in your hair.\nThis is Sam. He’s a Gipsy Hill co-founder. He likes long and windy roads.",
@@ -804,23 +787,6 @@
     "url" : "https://gipsyhillbrew.com/product/carver/"
   }, {
     "brewery" : "Gipsy Hill",
-    "name" : "Core Range 24 Pack",
-    "summary" : null,
-    "desc" : "This pack contains 24 x 330ml cans from our core range.\nEach pack includes:\n4 x Hepcat – Session IPA – 4.6%\n4 x Baller – IPA – 5.4%\n4 x Hunter – Helles Lager – 4.8%\n4 x Carver – Micro IPA – 2.8%\n4 x Ranger – Pale Ale – 4.2%\n4 x Bandit – Gluten Free Pale – 3.8%",
-    "keg" : false,
-    "mixed" : true,
-    "sizeMl" : 330,
-    "abv" : null,
-    "numItems" : 24,
-    "perItemPrice" : 2.33,
-    "available" : true,
-    "categories" : [ "Pale", "Pils / Lager", "IPA" ],
-    "newFromBrewer" : false,
-    "newToUs" : false,
-    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/03/Copy-of-Core-range-6-pack-31.png?resize=300%2C300&ssl=1",
-    "url" : "https://gipsyhillbrew.com/product/core-range-24-pack/"
-  }, {
-    "brewery" : "Gipsy Hill",
     "name" : "DJ BBQ Box",
     "summary" : null,
     "desc" : "This is a 12 pack of 330ml cans and 1 x Burger Book.\n\nA perfect box for an evening cooking over the grill. DJ BBQ is the king of the coals and starting parties. He’s picked two of his favourite Gipsy Hill tinnies – Hepcat and Hunter, and signed 24 copies of his incredible Burger Book.\nGo check him out on Instagram for the live cooking, lessons and sweet beats.\nCase contents listed below.",
@@ -866,8 +832,8 @@
     "perItemPrice" : 2.4,
     "available" : true,
     "categories" : [ "IPA" ],
-    "newFromBrewer" : true,
-    "newToUs" : true,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/04/Copy-of-Core-range-6-pack-34.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/hepcat-case-24-cans/"
   }, {
@@ -2631,7 +2597,7 @@
     "sizeMl" : 330,
     "abv" : 4.7,
     "numItems" : 24,
-    "perItemPrice" : 0.92,
+    "perItemPrice" : 1.04,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "newFromBrewer" : false,
@@ -2853,7 +2819,7 @@
     "abv" : 4.8,
     "numItems" : 1,
     "perItemPrice" : 4.0,
-    "available" : true,
+    "available" : false,
     "categories" : [ "Pils / Lager" ],
     "newFromBrewer" : false,
     "newToUs" : true,
@@ -2972,7 +2938,7 @@
     "abv" : 5.5,
     "numItems" : 1,
     "perItemPrice" : 3.95,
-    "available" : true,
+    "available" : false,
     "categories" : [ "Pale" ],
     "newFromBrewer" : false,
     "newToUs" : true,
@@ -3380,7 +3346,7 @@
     "abv" : 4.3,
     "numItems" : 1,
     "perItemPrice" : 2.0,
-    "available" : true,
+    "available" : false,
     "categories" : [ "Pale", "IPA" ],
     "newFromBrewer" : false,
     "newToUs" : false,
