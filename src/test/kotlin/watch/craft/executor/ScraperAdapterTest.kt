@@ -2,6 +2,7 @@ package watch.craft.executor
 
 import com.nhaarman.mockitokotlin2.*
 import kotlinx.coroutines.runBlocking
+import org.jsoup.nodes.Document
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -16,12 +17,8 @@ import watch.craft.storage.CachingGetter
 import java.net.URI
 
 class ScraperAdapterTest {
-  // TODO - test that doc gets passed in
-  // TODO - error-handling
-  // TODO - test structured concurrency on error
-
   private val getter = mock<CachingGetter> {
-    on { request(any()) } doReturn "<html><body><h1>Hello</h1></body></html>".toByteArray()
+    on { request(any()) } doAnswer { "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>".toByteArray() }
   }
 
   private val itemA = mock<ScrapedItem>()
@@ -39,6 +36,22 @@ class ScraperAdapterTest {
       ),
       retrieveResults(adapter)
     )
+  }
+
+  @Test
+  fun `passes correct URLs and HTML around`() {
+    val work = mock<(Document) -> ScrapedItem> {
+      on { invoke(any()) } doThrow SkipItemException("Emo town")
+    }
+
+    val adapter = ScraperAdapter(getter, MyScraper(listOf(
+      Leaf(rawName = "A", url = URL_A, work = work)
+    )))
+
+    retrieveResults(adapter)
+
+    verify(getter).request(URL_A)
+    verify(work)(docWithHeaderMatching(URL_A.toString()))
   }
 
   @Nested
@@ -149,9 +162,10 @@ class ScraperAdapterTest {
     }
   }
 
-
   private fun retrieveResults(adapter: ScraperAdapter) = runBlocking { adapter.execute() }.toSet()
   private fun retrieveItems(adapter: ScraperAdapter) = runBlocking { adapter.execute() }.map { it.item }.toSet()
+
+  private fun docWithHeaderMatching(header: String): Document = argForWhich { textFrom("h1") == header }
 
   private class MyScraper(override val jobs: List<Job>) : Scraper {
     override val brewery = mock<Brewery> { on { shortName } doReturn BREWERY_NAME }
