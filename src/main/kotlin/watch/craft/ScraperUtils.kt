@@ -73,9 +73,43 @@ private fun regexOptions(ignoreCase: Boolean = false) = if (ignoreCase) {
   setOf(DOT_MATCHES_ALL)
 }
 
-fun String.toTitleCase(): String = split(" ").joinToString(" ") {
-  if (it in BEER_ACRONYMS) it else it.toLowerCase().capitalize()
+fun String.toTitleCase() = tokenize()
+  .joinToString("") { token ->
+    if (token.wordy && token.text !in BEER_ACRONYMS) {
+      token.text.toLowerCase().capitalize()
+    } else {
+      token.text
+    }
+  }
+
+private fun String.tokenize(): List<Token> {
+  if (length == 0) {
+    return emptyList()
+  }
+
+  fun wordy(c: Char) = Character.isAlphabetic(c.toInt()) || (c == '\'')
+
+  val chars = toCharArray()
+  val tokens = mutableListOf<Token>()
+  var iStart = 0
+  var wordy = wordy(chars[0])
+  for (i in 1 until length) {
+    val nextWordy = wordy(chars[i])
+    if (nextWordy != wordy) {
+      tokens.add(Token(substring(iStart, i), wordy))
+      iStart = i
+    }
+    wordy = nextWordy
+  }
+  tokens.add(Token(substring(iStart, length), wordy))
+  return tokens
 }
+
+private data class Token(
+  val text: String,
+  val wordy: Boolean
+)
+
 
 // I *know* this doesn't really work for floating-point.  But it's good enough for our purposes.
 fun Double.divideAsPrice(denominator: Int) = round(100 * this / denominator) / 100
