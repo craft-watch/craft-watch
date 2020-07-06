@@ -21,7 +21,8 @@ class ScraperAdapter(
 ) {
   data class Result(
     val breweryName: String,
-    val entry: IndexEntry,
+    val rawName: String,
+    val url: URI,
     val item: ScrapedItem
   )
 
@@ -32,11 +33,11 @@ class ScraperAdapter(
     scraper.rootUrls
       .map { rootUrl ->
         async {
-          onIoThread { scrapeIndexSafely(rootUrl) }
+          scrapeIndexSafely(rootUrl)
             .mapIndexed { idx, entry ->
               async {
                 delay(idx * rateLimitPeriodMillis.toLong())
-                onIoThread { scrapeItemSafely(entry)?.let { Result(breweryName, entry, it) } }
+                scrapeItemSafely(entry)
               }
             }
             .mapNotNull { it.await() }
@@ -45,7 +46,7 @@ class ScraperAdapter(
       .flatMap { it.await() }
   }
 
-  private fun scrapeIndexSafely(url: URI): List<IndexEntry> {
+  private suspend fun scrapeIndexSafely(url: URI): List<IndexEntry> {
     logger.info("[${breweryName}] Scraping index: ${url}")
     return try {
       scraper.scrapeIndex(request(url))
@@ -61,10 +62,15 @@ class ScraperAdapter(
     }
   }
 
-  private fun scrapeItemSafely(entry: IndexEntry): ScrapedItem? {
+  private suspend fun scrapeItemSafely(entry: IndexEntry): Result? {
     logger.info("[${breweryName}] Scraping [${entry.rawName}]")
     return try {
-      entry.scrapeItem(request(entry.url))
+      Result(
+        breweryName = breweryName,
+        rawName = entry.rawName,
+        url = entry.url,
+        item = entry.scrapeItem(request(entry.url))
+      )
     } catch (e: SkipItemException) {
       logger.info("[${breweryName}] Skipping [${entry.rawName}] because: ${e.message}")
       null
@@ -80,8 +86,13 @@ class ScraperAdapter(
     }
   }
 
-  private fun request(url: URI) = try {
-    Jsoup.parse(String(getter.request(url)), url.toString())!!
+  private suspend fun request(url: URI) = try {
+    Jsoup.parse(
+      String(
+        onIoThread { getter.request(url) }
+      ),
+      url.toString()
+    )!!
   } catch (e: Exception) {
     throw FatalScraperException("Could not read page: ${url}", e)
   }

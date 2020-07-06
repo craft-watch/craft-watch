@@ -51,10 +51,10 @@ class Executor(
     try {
       it.normalise()
     } catch (e: InvalidItemException) {
-      logger.warn("[${it.breweryName}] Invalid item [${it.entry.rawName}]", e)
+      logger.warn("[${it.breweryName}] Invalid item [${it.rawName}]", e)
       null
     } catch (e: Exception) {
-      logger.warn("[${it.breweryName}] Unexpected error while validating [${it.entry.rawName}]", e)
+      logger.warn("[${it.breweryName}] Unexpected error while validating [${it.rawName}]", e)
       null
     }
   }
