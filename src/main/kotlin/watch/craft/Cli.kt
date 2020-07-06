@@ -28,7 +28,8 @@ class Cli : CliktCommand(name = "scraper") {
   private fun executeScrape() {
     val setup = Setup(dateString)
     val results = ResultsManager(setup)
-    val executor = Executor(rateLimitPeriodMillis = 3000,
+    val executor = Executor(
+      rateLimitPeriodMillis = 1000,   // TODO - make this vary based on whether in cache or not
       results = results,
       getter = setup.getter
     )
