@@ -170,6 +170,7 @@ fun <K, V> Map<K, V>.maybeGrab(key: K) = this[key]
 const val INT_REGEX = "(\\d+)"
 const val DOUBLE_REGEX = "(\\d+(?:\\.\\d+)?)"
 const val ABV_REGEX = "${DOUBLE_REGEX}\\s*%"
+const val SIZE_REGEX = "${INT_REGEX}\\s*(?:ml|ML)"   // TODO - expand to other units
 
 private val BEER_ACRONYMS = listOf(
   "IPL",

@@ -10,7 +10,7 @@ import java.net.URI
 
 class NorthernMonkScraperTest {
   companion object {
-    private val ITEMS = executeScraper(NorthernMonkScraper(), dateString = null)
+    private val ITEMS = executeScraper(NorthernMonkScraper(), dateString = "2020-07-06")
   }
 
   @Test
