@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-06T11:04:46.796907Z"
+    "capturedAt" : "2020-07-06T18:24:19.569524Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -1624,7 +1624,7 @@
     "url" : "https://marblebeers.com/shop-home/marble-stout/"
   }, {
     "brewery" : "Marble",
-    "name" : "Metric (pint-ish)",
+    "name" : "Metric (Pint-Ish)",
     "summary" : "Pale",
     "desc" : "Our 3.9% session ale is brewed with an all pale malt bill and then hopped with a blend of New Zealand and US hops. Our benchmark beer promises a burst of zesty aromas, uplifting grapefruit flavours and a subtle lemongrass finish.",
     "keg" : false,
@@ -1641,7 +1641,7 @@
     "url" : "https://marblebeers.com/shop-home/metric-pint-ish-case-24-cans/"
   }, {
     "brewery" : "Marble",
-    "name" : "North-south",
+    "name" : "North-South",
     "summary" : "Petite IPA",
     "desc" : "The tenth beer in our 2018 hop-forward series,  North-South is a ‘petite IPA’. Lots of Enigma backed by Amarillo,  Azacca & Lemon Drop, brings flavours and aromas of soft stone fruit and zesty lemon & orange, whilst wheat and Vienna provide a full, rounded malt base.",
     "keg" : false,
@@ -1658,7 +1658,7 @@
     "url" : "https://marblebeers.com/shop-home/north-south/"
   }, {
     "brewery" : "Marble",
-    "name" : "Pint (metric)",
+    "name" : "Pint (Metric)",
     "summary" : "Pale Ale",
     "desc" : "Our 3.9% session ale is brewed with an all pale malt bill and then hopped with a blend of New Zealand and US hops. Our benchmark beer promises a burst of zesty aromas, uplifting grapefruit flavours and a subtle lemongrass finish.\nCONTAINS LIVE YEAST, ALLOW NATURAL SETTLING. ONCE VENTED CONSUME WITHIN 3 DAYS. KEEP AS CLOSE TO 8°C",
     "keg" : true,
