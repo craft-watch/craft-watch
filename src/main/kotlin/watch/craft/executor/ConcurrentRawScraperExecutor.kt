@@ -1,27 +1,31 @@
 package watch.craft.executor
 
-import watch.craft.Scraper
+import kotlinx.coroutines.*
 import watch.craft.executor.ScraperAdapter.Result
-import watch.craft.storage.CachingGetter
-import java.util.concurrent.Executors.newFixedThreadPool
 
 class ConcurrentRawScraperExecutor(
-  private val concurrency: Int = 4,
-  private val getter: CachingGetter
+  private val rateLimitPeriodMillis: Int = 10
 ) {
-  fun execute(scrapers: List<Scraper>): List<Result> {
-    val executor = newFixedThreadPool(concurrency)
-    return try {
-      scrapers
-        .flatMap { ScraperAdapter(getter, it).indexTasks }
-        .map { executor.submit(it) }
-        .flatMap { it.get() }
-        .shuffled()   // Spread out requests to each brewery
-        .map { executor.submit(it) }
-        .mapNotNull { it.get() }
-    } finally {
-      executor.shutdownNow()
+  fun execute(adapters: List<ScraperAdapter>): Set<Result> {
+    return runBlocking {
+      adapters
+        .flatMap { it.indexTasks }
+        .map { rootTask ->
+          async {
+            onIoThread(rootTask)
+              .mapIndexed { idx, itemTask ->
+                async {
+                  delay(idx * rateLimitPeriodMillis.toLong())
+                  onIoThread(itemTask)
+                }
+              }
+              .mapNotNull { it.await() }
+          }
+        }
+        .flatMap { it.await() }
+        .toSet()  // To make clear that order is not important
     }
   }
 
+  private suspend fun <R> onIoThread(task: () -> R) = withContext(Dispatchers.IO) { task() }
 }

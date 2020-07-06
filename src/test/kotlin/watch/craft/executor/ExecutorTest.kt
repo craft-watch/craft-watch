@@ -19,7 +19,11 @@ class ExecutorTest {
   private val getter = mock<CachingGetter> {
     on { request(any()) } doAnswer { "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>".toByteArray() }
   }
-  private val executor = Executor(results, getter, Clock.fixed(NOW, ZoneId.systemDefault()))
+  private val executor = Executor(
+    results = results,
+    getter = getter,
+    clock = Clock.fixed(NOW, ZoneId.systemDefault())
+  )
   private val scraper = mock<Scraper>(defaultAnswer = RETURNS_DEEP_STUBS) {
     on { brewery.shortName } doReturn BREWERY_NAME
     on { rootUrls } doReturn listOf(ROOT_URL_BEERS, ROOT_URL_PACKS)
@@ -35,7 +39,7 @@ class ExecutorTest {
       listOf(indexEntry("b", callback))
     )
 
-    executor.scrape(scraper)
+    executor.scrape(listOf(scraper))
 
     verify(getter).request(ROOT_URL_BEERS)
     verify(getter).request(ROOT_URL_PACKS)
@@ -91,7 +95,7 @@ class ExecutorTest {
           )
         }
       ),
-      executor.scrape(scraper).items
+      executor.scrape(listOf(scraper)).items
     )
   }
 
@@ -106,7 +110,7 @@ class ExecutorTest {
     // Only one item returned
     assertEquals(
       listOf("Foo"),
-      executor.scrape(scraper).items.map { it.name }
+      executor.scrape(listOf(scraper)).items.map { it.name }
     )
   }
 
@@ -121,7 +125,7 @@ class ExecutorTest {
     // Only one item returned, with best price
     assertEquals(
       listOf(DECENT_PRICE / 2),
-      executor.scrape(scraper).items.map { it.perItemPrice }
+      executor.scrape(listOf(scraper)).items.map { it.perItemPrice }
     )
   }
 
@@ -130,7 +134,7 @@ class ExecutorTest {
     whenever(scraper.scrapeIndex(any())) doThrow FatalScraperException("Noooo")
 
     assertThrows<Exception> {
-      executor.scrape(scraper)
+      executor.scrape(listOf(scraper))
     }
   }
 
@@ -141,7 +145,7 @@ class ExecutorTest {
     )
 
     assertThrows<Exception> {
-      executor.scrape(scraper)
+      executor.scrape(listOf(scraper))
     }
   }
 
@@ -160,7 +164,7 @@ class ExecutorTest {
 
     assertEquals(
       listOf("Bar", "Foo"),
-      executor.scrape(badScraper, scraper).items.map { it.name } // Execute good and bad scrapers
+      executor.scrape(listOf(badScraper, scraper)).items.map { it.name } // Execute good and bad scrapers
     )
   }
 
@@ -174,7 +178,7 @@ class ExecutorTest {
 
     assertEquals(
       listOf("Bar", "Foo"),
-      executor.scrape(scraper).items.map { it.name }
+      executor.scrape(listOf(scraper)).items.map { it.name }
     )
   }
 
@@ -188,7 +192,7 @@ class ExecutorTest {
 
     assertEquals(
       listOf("Bar", "Foo"),
-      executor.scrape(scraper).items.map { it.name }
+      executor.scrape(listOf(scraper)).items.map { it.name }
     )
   }
 
