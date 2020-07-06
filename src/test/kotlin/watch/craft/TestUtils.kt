@@ -8,7 +8,7 @@ import java.net.URI
 private const val GOLDEN_DATE = "2020-07-03"
 
 fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE) =
-  ConcurrentRawScraperExecutor(rateLimitPeriodMillis = 100)
+  ConcurrentRawScraperExecutor()
     .execute(listOf(ScraperAdapter(Setup(dateString).getter, scraper)))
     .map { it.item }
 

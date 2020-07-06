@@ -10,12 +10,13 @@ import java.time.Clock
 import java.time.Instant
 
 class Executor(
+  rateLimitPeriodMillis: Int = 10,
   private val results: ResultsManager,
   private val getter: CachingGetter,
   private val clock: Clock = Clock.systemUTC()
 ) {
   private val logger = KotlinLogging.logger {}
-  private val rawExecutor = ConcurrentRawScraperExecutor()
+  private val rawExecutor = ConcurrentRawScraperExecutor(rateLimitPeriodMillis = rateLimitPeriodMillis)
 
   fun scrape(scrapers: Collection<Scraper>): Inventory {
     val now = clock.instant()

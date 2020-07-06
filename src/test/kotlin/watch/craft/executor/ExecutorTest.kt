@@ -19,7 +19,11 @@ class ExecutorTest {
   private val getter = mock<CachingGetter> {
     on { request(any()) } doAnswer { "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>".toByteArray() }
   }
-  private val executor = Executor(results, getter, Clock.fixed(NOW, ZoneId.systemDefault()))
+  private val executor = Executor(
+    results = results,
+    getter = getter,
+    clock = Clock.fixed(NOW, ZoneId.systemDefault())
+  )
   private val scraper = mock<Scraper>(defaultAnswer = RETURNS_DEEP_STUBS) {
     on { brewery.shortName } doReturn BREWERY_NAME
     on { rootUrls } doReturn listOf(ROOT_URL_BEERS, ROOT_URL_PACKS)

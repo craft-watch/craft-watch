@@ -4,7 +4,7 @@ import kotlinx.coroutines.*
 import watch.craft.executor.ScraperAdapter.Result
 
 class ConcurrentRawScraperExecutor(
-  private val rateLimitPeriodMillis: Int = 3000
+  private val rateLimitPeriodMillis: Int = 10
 ) {
   fun execute(adapters: List<ScraperAdapter>): Set<Result> {
     return runBlocking {
