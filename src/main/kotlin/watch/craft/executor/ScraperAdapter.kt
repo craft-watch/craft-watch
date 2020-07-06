@@ -2,6 +2,7 @@ package watch.craft.executor
 
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import mu.KotlinLogging
 import org.jsoup.Jsoup
 import watch.craft.FatalScraperException
@@ -34,7 +35,12 @@ class ScraperAdapter(
 
   private suspend fun List<Job>.executeAll() = coroutineScope {
     this@executeAll
-      .map { job -> async { job.execute() } }
+      .mapIndexed { idx, job ->
+        async {
+          delay(idx * rateLimitPeriodMillis.toLong())
+          job.execute()
+        }
+      }
       .flatMap { it.await() }
   }
 
