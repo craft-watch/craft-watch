@@ -1,5 +1,7 @@
 package watch.craft.executor
 
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
 import watch.craft.*
 import watch.craft.enrichers.Categoriser
@@ -10,13 +12,12 @@ import java.time.Clock
 import java.time.Instant
 
 class Executor(
-  rateLimitPeriodMillis: Int = 10,
+  private val rateLimitPeriodMillis: Int = 10,
   private val results: ResultsManager,
   private val getter: CachingGetter,
   private val clock: Clock = Clock.systemUTC()
 ) {
   private val logger = KotlinLogging.logger {}
-  private val rawExecutor = ConcurrentRawScraperExecutor(rateLimitPeriodMillis = rateLimitPeriodMillis)
 
   fun scrape(scrapers: Collection<Scraper>): Inventory {
     val now = clock.instant()
@@ -38,7 +39,13 @@ class Executor(
     )
   }
 
-  private fun Collection<Scraper>.execute() = rawExecutor.execute(map { ScraperAdapter(getter, it) })
+  private fun Collection<Scraper>.execute() = runBlocking {
+    this@execute
+      .map { ScraperAdapter(getter, it, rateLimitPeriodMillis) }
+      .map { async { it.execute() } }
+      .flatMap { it.await() }
+      .toSet()  // To make clear that order is not important
+  }
 
   private fun Collection<Result>.normalise() = mapNotNull {
     try {

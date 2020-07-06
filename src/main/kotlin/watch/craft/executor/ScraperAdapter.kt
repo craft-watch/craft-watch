@@ -1,5 +1,8 @@
 package watch.craft.executor
 
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import mu.KotlinLogging
 import org.jsoup.Jsoup
 import watch.craft.FatalScraperException
@@ -13,7 +16,8 @@ import java.net.URI
 
 class ScraperAdapter(
   private val getter: CachingGetter,
-  private val scraper: Scraper
+  private val scraper: Scraper,
+  private val rateLimitPeriodMillis: Int = 10
 ) {
   data class Result(
     val breweryName: String,
@@ -24,12 +28,21 @@ class ScraperAdapter(
   private val logger = KotlinLogging.logger {}
   private val breweryName = scraper.brewery.shortName
 
-  val indexTasks = scraper.rootUrls.map { url ->
-    {
-      scrapeIndexSafely(url).map { entry ->
-        { scrapeItemSafely(entry)?.let { Result(breweryName, entry, it) } }
+  suspend fun execute() = coroutineScope {
+    scraper.rootUrls
+      .map { rootUrl ->
+        async {
+          onIoThread { scrapeIndexSafely(rootUrl) }
+            .mapIndexed { idx, entry ->
+              async {
+                delay(idx * rateLimitPeriodMillis.toLong())
+                onIoThread { scrapeItemSafely(entry)?.let { Result(breweryName, entry, it) } }
+              }
+            }
+            .mapNotNull { it.await() }
+        }
       }
-    }
+      .flatMap { it.await() }
   }
 
   private fun scrapeIndexSafely(url: URI): List<IndexEntry> {
