@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-05T22:21:55.587178Z"
+    "capturedAt" : "2020-07-06T11:04:46.796907Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -2213,8 +2213,8 @@
     "perItemPrice" : 3.5,
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale" ],
-    "newFromBrewer" : true,
-    "newToUs" : true,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/07/1881-CAN-RENDER-new-1024x549.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/1881-lager-support-the-fishermens-mission/"
   }, {
@@ -2230,8 +2230,8 @@
     "perItemPrice" : 29.5,
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale" ],
-    "newFromBrewer" : true,
-    "newToUs" : true,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/07/1881-CAN-RENDER-new-1024x549.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/1881-lager-support-the-fishermens-mission-minikeg/"
   }, {
@@ -2468,8 +2468,8 @@
     "perItemPrice" : 4.95,
     "available" : true,
     "categories" : [ "IPA" ],
-    "newFromBrewer" : true,
-    "newToUs" : true,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_0021_large.jpg?v=1593692581",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/circuits-citra-ekuanot-neipa"
   }, {
@@ -3129,7 +3129,7 @@
     "abv" : 5.0,
     "numItems" : 1,
     "perItemPrice" : 2.1,
-    "available" : true,
+    "available" : false,
     "categories" : [ "Pils / Lager" ],
     "newFromBrewer" : false,
     "newToUs" : true,
@@ -3777,8 +3777,8 @@
     "perItemPrice" : 2.68,
     "available" : true,
     "categories" : [ "Pale" ],
-    "newFromBrewer" : true,
-    "newToUs" : true,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_TOTO_AMERICAN_PALE_330ML_CAN_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/toto-american-pale"
   }, {
