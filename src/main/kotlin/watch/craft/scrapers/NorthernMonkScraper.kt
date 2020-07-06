@@ -30,7 +30,6 @@ class NorthernMonkScraper : Scraper {
   }
 
   // TODO - use change in caps style to identify more summaries
-  // TODO - repeating description for Sandy Kerr
 
   private fun getItemJobs(root: Document): List<Leaf> {
     return root

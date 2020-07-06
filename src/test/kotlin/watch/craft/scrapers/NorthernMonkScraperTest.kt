@@ -15,34 +15,48 @@ class NorthernMonkScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    ITEMS.forEach { println(it.noDesc()) }
-//    assertEquals(5, ITEMS.size)
+    assertEquals(15, ITEMS.size)
   }
 
-//  @Test
-//  fun `extracts beer details`() {
-//    assertEquals(
-//      ScrapedItem(
-//        name = "Mylar",
-//        summary = "IPA",
-//        abv = 6.3,
-//        sizeMl = 440,
-//        price = 4.50,
-//        available = true,
-//        thumbnailUrl = URI("https://craftpeak-commerce-images.imgix.net/2020/07/MYL-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail")
-//      ),
-//      ITEMS.byName("Mylar").noDesc()
-//    )
-//  }
-//
-//  @Test
-//  fun `extracts description`() {
-//    assertNotNull(ITEMS.byName("Mylar").desc)
-//  }
-//
-//  @Test
-//  fun `identifies sold out`() {
-//    assertFalse(ITEMS.byName("DDH Spur").available)
-//  }
+  @Test
+  fun `extracts beer details`() {
+    assertEquals(
+      ScrapedItem(
+        name = "Retro Faith",
+        summary = "Hazy Pale Ale",
+        abv = 5.4,
+        sizeMl = 440,
+        price = 3.10,
+        available = true,
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/2213/3151/products/RETRO_FAITH_440_180x.jpg?v=1592465054")
+      ),
+      ITEMS.byName("Retro Faith").noDesc()
+    )
+  }
+
+  @Test
+  fun `extracts description`() {
+    assertNotNull(ITEMS.byName("Retro Faith").desc)
+  }
+
+  @Test
+  fun `identifies multi-packs`() {
+    assertEquals(12, ITEMS.byName("Keep The Faith").numItems)
+  }
+
+  @Test
+  fun `identifies mixed cases`() {
+    assertTrue(ITEMS.byName("Enter The Haze").mixed)
+  }
+
+  @Test
+  fun `ignores things that aren't beers`() {
+    assertFalse(ITEMS.any { it.name.contains("gift", ignoreCase = true) })
+  }
+
+  @Test
+  fun `no nonsense in names`() {
+    assertFalse(ITEMS.any { it.name.contains("//") || it.name.contains("pack", ignoreCase = true) })
+  }
 }
 
