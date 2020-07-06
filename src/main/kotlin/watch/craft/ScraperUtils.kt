@@ -6,6 +6,7 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
+import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.*
 import java.net.URI
 import java.net.URISyntaxException
@@ -13,7 +14,7 @@ import kotlin.math.round
 import kotlin.text.RegexOption.DOT_MATCHES_ALL
 import kotlin.text.RegexOption.IGNORE_CASE
 
-fun forRootUrls(vararg urls: URI, work: (Document) -> List<Unit>) = urls.map { More(it, work) }
+fun forRootUrls(vararg urls: URI, work: (Document) -> List<Job>) = urls.map { More(it, work) }
 
 inline fun <reified T: Any> Element.jsonFrom(cssQuery: String = ":root") = selectFrom(cssQuery).data().run {
   try {
