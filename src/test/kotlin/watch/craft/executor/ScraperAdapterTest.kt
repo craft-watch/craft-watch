@@ -1,13 +1,12 @@
 package watch.craft.executor
 
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.*
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import watch.craft.Brewery
-import watch.craft.Scraper
+import org.junit.jupiter.api.assertThrows
+import watch.craft.*
 import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.Job.More
@@ -42,56 +41,114 @@ class ScraperAdapterTest {
     )
   }
 
-  @Test
-  fun `executes and collates multiple items`() {
-    val adapter = ScraperAdapter(getter, MyScraper(listOf(
-      Leaf(rawName = "A", url = URL_A) { itemA },
-      Leaf(rawName = "A", url = URL_B) { itemB }
-    )))
+  @Nested
+  inner class Traversal {
+    @Test
+    fun `multiple flat items`() {
+      val adapter = ScraperAdapter(getter, MyScraper(listOf(
+        Leaf(rawName = "A", url = URL_A) { itemA },
+        Leaf(rawName = "A", url = URL_B) { itemB }
+      )))
 
-    assertEquals(
-      setOf(itemA, itemB),
-      retrieveItems(adapter)
-    )
+      assertEquals(setOf(itemA, itemB), retrieveItems(adapter))
+    }
+
+    @Test
+    fun `non-leaf node`() {
+      val adapter = ScraperAdapter(getter, MyScraper(listOf(
+        More(url = ROOT_URL) {
+          listOf(
+            Leaf(rawName = "A", url = URL_A) { itemA },
+            Leaf(rawName = "A", url = URL_B) { itemB }
+          )
+        }
+      )))
+
+      assertEquals(setOf(itemA, itemB), retrieveItems(adapter))
+    }
+
+    @Test
+    fun `multiple non-leaf nodes`() {
+      val adapter = ScraperAdapter(getter, MyScraper(listOf(
+        More(url = ROOT_URL) {
+          listOf(
+            Leaf(rawName = "A", url = URL_A) { itemA },
+            More(url = PAGE_2_URL) {
+              listOf(
+                Leaf(rawName = "A", url = URL_B) { itemB }
+              )
+            }
+          )
+        }
+      )))
+
+      assertEquals(setOf(itemA, itemB), retrieveItems(adapter))
+    }
   }
 
-  @Test
-  fun `traverses non-leaf node to obtain items`() {
-    val adapter = ScraperAdapter(getter, MyScraper(listOf(
-      More(url = ROOT_URL) {
-        listOf(
-          Leaf(rawName = "A", url = URL_A) { itemA },
-          Leaf(rawName = "A", url = URL_B) { itemB }
-        )
+  @Nested
+  inner class ErrorHandling {
+    @Test
+    fun `fatal exception during request kills everything`() {
+      whenever(getter.request(any())) doThrow FatalScraperException("Uh oh")
+
+      val adapter = ScraperAdapter(getter, MyScraper(listOf(
+        More(url = ROOT_URL) {
+          listOf(
+            Leaf(rawName = "A", url = URL_A) { itemA },
+            Leaf(rawName = "A", url = URL_B) { itemB }
+          )
+        }
+      )))
+
+      assertThrows<FatalScraperException> {
+        retrieveResults(adapter)
       }
-    )))
+    }
 
-    assertEquals(
-      setOf(itemA, itemB),
-      retrieveItems(adapter)
-    )
+    @Test
+    fun `non-fatal exception during non-leaf scrape doesn't kill everything`() {
+      val adapter = ScraperAdapter(getter, MyScraper(listOf(
+        More(url = ROOT_URL) {
+          listOf(
+            Leaf(rawName = "A", url = URL_A) { itemA },
+            More(url = PAGE_2_URL) { throw MalformedInputException("Uh oh") }
+          )
+        }
+      )))
+
+      assertEquals(setOf(itemA), retrieveItems(adapter))    // Other item is returned
+    }
+
+    @Test
+    fun `non-fatal exception during leaf scrape doesn't kill everything`() {
+      val adapter = ScraperAdapter(getter, MyScraper(listOf(
+        More(url = ROOT_URL) {
+          listOf(
+            Leaf(rawName = "A", url = URL_A) { throw MalformedInputException("Uh oh") },
+            Leaf(rawName = "A", url = URL_B) { itemB }
+          )
+        }
+      )))
+
+      assertEquals(setOf(itemB), retrieveItems(adapter))    // Other item is returned
+    }
+
+    @Test
+    fun `skip exception during leaf scrape doesn't kill everything`() {
+      val adapter = ScraperAdapter(getter, MyScraper(listOf(
+        More(url = ROOT_URL) {
+          listOf(
+            Leaf(rawName = "A", url = URL_A) { throw SkipItemException("Don't care") },
+            Leaf(rawName = "A", url = URL_B) { itemB }
+          )
+        }
+      )))
+
+      assertEquals(setOf(itemB), retrieveItems(adapter))    // Other item is returned
+    }
   }
 
-  @Test
-  fun `traverses multiple non-leaf nodes to obtain all items`() {
-    val adapter = ScraperAdapter(getter, MyScraper(listOf(
-      More(url = ROOT_URL) {
-        listOf(
-          Leaf(rawName = "A", url = URL_A) { itemA },
-          More(url = PAGE_2_URL) {
-            listOf(
-              Leaf(rawName = "A", url = URL_B) { itemB }
-            )
-          }
-        )
-      }
-    )))
-
-    assertEquals(
-      setOf(itemA, itemB),
-      retrieveItems(adapter)
-    )
-  }
 
   private fun retrieveResults(adapter: ScraperAdapter) = runBlocking { adapter.execute() }.toSet()
   private fun retrieveItems(adapter: ScraperAdapter) = runBlocking { adapter.execute() }.map { it.item }.toSet()
