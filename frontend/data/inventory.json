@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-06T19:38:39.256964Z"
+    "capturedAt" : "2020-07-06T19:55:49.667564Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -1748,8 +1748,8 @@
     "url" : "https://northernmonkshop.com/collections/beer/products/enter-the-haze-12-pack"
   }, {
     "brewery" : "Northern Monk",
-    "name" : "Eternal™ Session IPA",
-    "summary" : null,
+    "name" : "Eternal",
+    "summary" : "Session IPA",
     "desc" : "ABV: 4.1% ABV // 11.00 EBC // IBU: 45 IBU // OG: 1.05 OG // 330ml\nINGREDIENTS: WATER, Malted BARLEY (GLUTEN), HOPS, YEAST\nA product brewed for almost 7,000 years, a quest for perfection that never ends. Citrusy, light and refreshing. To Eternity.\nSUITABLE FOR VEGANS",
     "keg" : false,
     "mixed" : false,
@@ -1782,8 +1782,8 @@
     "url" : "https://northernmonkshop.com/collections/beer/products/great-northern-lager-6-pack"
   }, {
     "brewery" : "Northern Monk",
-    "name" : "Heathen™ IPA",
-    "summary" : null,
+    "name" : "Heathen",
+    "summary" : "IPA",
     "desc" : "ABV: 7.2% ABV // 11.00 EBC // 30 IBU // 1.04 OG // 440ML\nINGREDIENTS: WATER, Malted BARLEY (GLUTEN), WHEAT, OATS (GLUTEN), HOPS, YEAST\nA bold yet balanced New England IPA. Soft, resinous and tropical. For the Heathens.\nSUITABLE FOR VEGANS",
     "keg" : false,
     "mixed" : false,
@@ -1816,8 +1816,8 @@
     "url" : "https://northernmonkshop.com/collections/beer/products/keep-the-faith-12-pack"
   }, {
     "brewery" : "Northern Monk",
-    "name" : "New World IPA™ India Pale Ale",
-    "summary" : null,
+    "name" : "New World IPA",
+    "summary" : "India Pale Ale",
     "desc" : "ABV: 6.2% ABV // 14.00 EBC // 60 IBU // 1.06 OG // 330ML\nINGREDIENTS: WATER, Malted BARLEY (GLUTEN), HOPS, YEAST\nThe first hops from the new world arrived on UK shores in the 1800’s. Packed with a new world of flavour. Citrus, zest and pine. This is our tribute.\nSUITABLE FOR VEGANS",
     "keg" : false,
     "mixed" : false,
@@ -1850,8 +1850,8 @@
     "url" : "https://northernmonkshop.com/collections/beer/products/northern-heros-12-pack"
   }, {
     "brewery" : "Northern Monk",
-    "name" : "Origin™ Gluten Free IPA",
-    "summary" : null,
+    "name" : "Origin",
+    "summary" : "Gluten Free IPA",
     "desc" : "ABV: 5.7% ABV // 11.00 EBC // 45 IBU // 1.05 OG // 330ML\nINGREDIENTS: WATER, Malted BARLEY (GLUTEN), HOPS, YEAST\nA homage to the origins of IPA and the evolution of this style. Piney, juicy and crisp, Gluten-free and Vegan. The evolution of tradition.\nSUITABLE FOR VEGANS",
     "keg" : false,
     "mixed" : false,
@@ -2559,7 +2559,7 @@
     "available" : false,
     "categories" : [ "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/07/DDHS-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
     "url" : "https://shop.pollysbrew.co/product/ddh-spur-triple-ipa-10-0/"
   }, {
@@ -2576,7 +2576,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/07/MYL-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
     "url" : "https://shop.pollysbrew.co/product/mylar-ipa-6-3/"
   }, {
@@ -2593,7 +2593,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/07/NM-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
     "url" : "https://shop.pollysbrew.co/product/naive-melody-double-ipa-8-2/"
   }, {
@@ -2610,7 +2610,7 @@
     "available" : true,
     "categories" : [ "Weisse", "Sours / Gose" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/06/sb-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
     "url" : "https://shop.pollysbrew.co/product/slow-burn-berliner-weisse-4-0/"
   }, {
@@ -2627,7 +2627,7 @@
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/07/TC-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
     "url" : "https://shop.pollysbrew.co/product/transit-culture-west-coast-ipa-7-2/"
   }, {

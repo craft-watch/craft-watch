@@ -30,8 +30,6 @@ class NorthernMonkScraper : Scraper {
     }
   }
 
-  // TODO - use change in caps style to identify more summaries
-
   private fun getItemJobs(root: Document): List<Leaf> {
     return root
       .selectMultipleFrom(".card")
@@ -49,12 +47,19 @@ class NorthernMonkScraper : Scraper {
             throw SkipItemException("Assume that lack of ABV for non-mixed means not a beer product")
           }
 
+          val nameParts = rawName
+            .replace(PACK_REGEX.toRegex(IGNORE_CASE), "")
+            .split("//")[0]
+            .split("™")
+            .map { it.trim() }
+
           ScrapedItem(
-            name = rawName
-              .replace(PACK_REGEX.toRegex(IGNORE_CASE), "")
-              .split("//")[0]
-              .trim(),
-            summary = rawName.maybeExtract("[^/]+\\s+//\\s+(.*)")?.get(1),
+            name = nameParts[0],
+            summary = if (nameParts.size > 1) {
+              nameParts[1]
+            } else {
+              rawName.maybeExtract("[^/]+\\s+//\\s+(.*)")?.get(1)
+            },
             desc = desc.normaliseParagraphsFrom(),
             mixed = mixed,
             sizeMl = sizeMl,

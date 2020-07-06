@@ -7,6 +7,7 @@ import watch.craft.byName
 import watch.craft.executeScraper
 import watch.craft.noDesc
 import java.net.URI
+import kotlin.text.RegexOption.IGNORE_CASE
 
 class NorthernMonkScraperTest {
   companion object {
@@ -22,21 +23,26 @@ class NorthernMonkScraperTest {
   fun `extracts beer details`() {
     assertEquals(
       ScrapedItem(
-        name = "Retro Faith",
-        summary = "Hazy Pale Ale",
-        abv = 5.4,
+        name = "Great Northern Lager",
+        abv = 4.3,
         sizeMl = 440,
-        price = 3.10,
+        price = 3.00,
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/2213/3151/products/RETRO_FAITH_440_180x.jpg?v=1592465054")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/2213/3151/products/2020-NMBC_Great-Northern-Lager-29_180x.jpg?v=1589212703")
       ),
-      ITEMS.byName("Retro Faith").noDesc()
+      ITEMS.first { it.name == "Great Northern Lager" && it.numItems == 1 }.noDesc()
     )
   }
 
   @Test
   fun `extracts description`() {
     assertNotNull(ITEMS.byName("Retro Faith").desc)
+  }
+
+  @Test
+  fun `extracts summaries from various places`() {
+    assertEquals("Gluten Free IPA", ITEMS.byName("Origin").summary)   // Extracted from after "TM"
+    assertEquals("Hazy Pale Ale", ITEMS.byName("Retro Faith").summary)  // Extracted from after "//"
   }
 
   @Test
@@ -56,7 +62,7 @@ class NorthernMonkScraperTest {
 
   @Test
   fun `no nonsense in names`() {
-    assertFalse(ITEMS.any { it.name.contains("//") || it.name.contains("pack", ignoreCase = true) })
+    assertFalse(ITEMS.any { it.name.contains("//|pack|™".toRegex(IGNORE_CASE)) })
   }
 }
 
