@@ -29,7 +29,7 @@ class Cli : CliktCommand(name = "scraper") {
     val setup = Setup(dateString)
     val results = ResultsManager(setup)
     val executor = Executor(results, setup.getter)
-    val inventory = executor.scrape(*scrapers.ifEmpty { SCRAPERS.values }.toTypedArray())
+    val inventory = executor.scrape(scrapers.ifEmpty { SCRAPERS.values.toList() })
     results.write(inventory)
   }
 

@@ -1,27 +1,24 @@
 package watch.craft.executor
 
-import watch.craft.Scraper
 import watch.craft.executor.ScraperAdapter.Result
-import watch.craft.storage.CachingGetter
 import java.util.concurrent.Executors.newFixedThreadPool
 
 class ConcurrentRawScraperExecutor(
-  private val concurrency: Int = 4,
-  private val getter: CachingGetter
+  private val concurrency: Int = 4
 ) {
-  fun execute(scrapers: List<Scraper>): List<Result> {
+  fun execute(adapters: List<ScraperAdapter>): Set<Result> {
     val executor = newFixedThreadPool(concurrency)
     return try {
-      scrapers
-        .flatMap { ScraperAdapter(getter, it).indexTasks }
+      adapters
+        .flatMap { it.indexTasks }
         .map { executor.submit(it) }
         .flatMap { it.get() }
         .shuffled()   // Spread out requests to each brewery
         .map { executor.submit(it) }
         .mapNotNull { it.get() }
+        .toSet()  // To make clear that order is not important
     } finally {
       executor.shutdownNow()
     }
   }
-
 }

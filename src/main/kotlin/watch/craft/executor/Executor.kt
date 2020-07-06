@@ -11,17 +11,17 @@ import java.time.Instant
 
 class Executor(
   private val results: ResultsManager,
-  getter: CachingGetter,
+  private val getter: CachingGetter,
   private val clock: Clock = Clock.systemUTC()
 ) {
   private val logger = KotlinLogging.logger {}
+  private val rawExecutor = ConcurrentRawScraperExecutor(16)
 
-  private val rawExecutor = ConcurrentRawScraperExecutor(16, getter)
-
-  fun scrape(vararg scrapers: Scraper): Inventory {
+  fun scrape(scrapers: Collection<Scraper>): Inventory {
     val now = clock.instant()
 
-    val items = rawExecutor.execute(scrapers.toList())
+    val items = scrapers
+      .execute()
       .normalise()
       .categorise()
       .newalyse(now)
@@ -37,7 +37,9 @@ class Executor(
     )
   }
 
-  private fun List<Result>.normalise() = mapNotNull {
+  private fun Collection<Scraper>.execute() = rawExecutor.execute(map { ScraperAdapter(getter, it) })
+
+  private fun Collection<Result>.normalise() = mapNotNull {
     try {
       it.normalise()
     } catch (e: InvalidItemException) {
@@ -49,19 +51,11 @@ class Executor(
     }
   }
 
-  private fun List<Item>.categorise() = map(Categoriser(CATEGORY_KEYWORDS)::enrich)
+  private fun Collection<Item>.categorise() = map(Categoriser(CATEGORY_KEYWORDS)::enrich)
 
-  private fun List<Item>.newalyse(now: Instant) = map(Newalyser(results, now)::enrich)
+  private fun Collection<Item>.newalyse(now: Instant) = map(Newalyser(results, now)::enrich)
 
-  private fun List<Item>.bestPricedItems() = groupBy { ItemGroupFields(it.brewery, it.name, it.keg) }
-    .map { (key, group) ->
-      if (group.size > 1) {
-        logger.info("[${key.brewery}] Eliminating ${group.size - 1} more expensive item(s) for [${key.name}]")
-      }
-      group.minBy { it.perItemPrice }!!
-    }
-
-  private fun List<Item>.sort() = sortedWith(
+  private fun Collection<Item>.sort() = sortedWith(
     compareBy(
       { it.brewery },
       { it.name },
@@ -71,6 +65,14 @@ class Executor(
       { it.numItems }
     )
   )
+
+  private fun List<Item>.bestPricedItems() = groupBy { ItemGroupFields(it.brewery, it.name, it.keg) }
+    .map { (key, group) ->
+      if (group.size > 1) {
+        logger.info("[${key.brewery}] Eliminating ${group.size - 1} more expensive item(s) for [${key.name}]")
+      }
+      group.minBy { it.perItemPrice }!!
+    }
 
   private fun List<Item>.logStats() {
     groupBy { it.brewery }.forEach { (key, group) -> logger.info("Scraped (${key}): ${group.size}") }

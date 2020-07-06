@@ -2,13 +2,14 @@ package watch.craft
 
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.executor.ConcurrentRawScraperExecutor
+import watch.craft.executor.ScraperAdapter
 import java.net.URI
 
 private const val GOLDEN_DATE = "2020-07-03"
 
 fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE) =
-  ConcurrentRawScraperExecutor(4, Setup(dateString).getter)
-    .execute(listOf(scraper))
+  ConcurrentRawScraperExecutor(4)
+    .execute(listOf(ScraperAdapter(Setup(dateString).getter, scraper)))
     .map { it.item }
 
 fun List<ScrapedItem>.byName(name: String) = first { it.name == name }
