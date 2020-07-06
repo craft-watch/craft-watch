@@ -3,7 +3,7 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import watch.craft.*
-import watch.craft.Scraper.IndexEntry
+import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
@@ -14,32 +14,33 @@ class FourpureScraper : Scraper {
     location = "Bermondesy, London",
     websiteUrl = URI("https://www.fourpure.com/")
   )
-  override val rootUrls = listOf(URI("https://www.fourpure.com/browse/c-Our-Beers-5/"))
 
-  override fun scrapeIndex(root: Document) = root
-    .selectMultipleFrom(".itemsBrowse li")
-    .map { el ->
-      val a = el.selectFrom("a")
-      val rawName = el.textFrom(".content h3")
+  override val jobs = forRootUrls(ROOT_URL) { root ->
+    root
+      .selectMultipleFrom(".itemsBrowse li")
+      .map { el ->
+        val a = el.selectFrom("a")
+        val rawName = el.textFrom(".content h3")
 
-      IndexEntry(rawName, a.hrefFrom()) { doc ->
-        if (el.title().contains("pack", ignoreCase = true)) {
-          throw SkipItemException("Can't calculate price-per-can for packs")
+        Leaf(rawName, a.hrefFrom()) { doc ->
+          if (el.title().contains("pack", ignoreCase = true)) {
+            throw SkipItemException("Can't calculate price-per-can for packs")
+          }
+
+          val parts = extractVariableParts(doc)
+          ScrapedItem(
+            thumbnailUrl = a.srcFrom("img"),
+            name = parts.name,
+            desc = doc.maybeWholeTextFrom(".productDetailsWrap .innerContent"),
+            abv = doc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+(\\.\\d+)?)")[1].toDouble(),
+            keg = parts.keg,
+            sizeMl = parts.sizeMl,
+            available = true,
+            price = el.selectFrom(".priceNow, .priceStandard").priceFrom(".GBP")
+          )
         }
-
-        val parts = extractVariableParts(doc)
-        ScrapedItem(
-          thumbnailUrl = a.srcFrom("img"),
-          name = parts.name,
-          desc = doc.maybeWholeTextFrom(".productDetailsWrap .innerContent"),
-          abv = doc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+(\\.\\d+)?)")[1].toDouble(),
-          keg = parts.keg,
-          sizeMl = parts.sizeMl,
-          available = true,
-          price = el.selectFrom(".priceNow, .priceStandard").priceFrom(".GBP")
-        )
       }
-    }
+  }
 
   private data class VariableParts(
     val name: String,
@@ -65,4 +66,8 @@ class FourpureScraper : Scraper {
   }
 
   private fun Element.title() = textFrom("h3")
+
+  companion object {
+    private val ROOT_URL = URI("https://www.fourpure.com/browse/c-Our-Beers-5/")
+  }
 }

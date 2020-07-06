@@ -1,8 +1,7 @@
 package watch.craft.scrapers
 
-import org.jsoup.nodes.Document
 import watch.craft.*
-import watch.craft.Scraper.IndexEntry
+import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
@@ -13,32 +12,34 @@ class PillarsScraper : Scraper {
     location = "Walthamstow, London",
     websiteUrl = URI("https://www.pillarsbrewery.com/")
   )
-  override val rootUrls = listOf(URI("https://shop.pillarsbrewery.com/collections/pillars-beers"))
 
-  override fun scrapeIndex(root: Document) = root
-    .shopifyItems()
-    .map { details ->
-      IndexEntry(details.title, details.url) { doc ->
-        val titleParts = extractTitleParts(details.title)
-        val descParts = doc.maybeExtractFrom(
-          ".product-single__description",
-          "STYLE:\\s+(.+?)\\s+ABV:\\s+(\\d\\.\\d+)%"
-        ) ?: throw SkipItemException("Couldn't find style or ABV")  // If we don't see these fields, assume we're not looking at a beer product
+  override val jobs = forRootUrls(ROOT_URL) { root ->
+    root
+      .shopifyItems()
+      .map { details ->
+        Leaf(details.title, details.url) { doc ->
+          val titleParts = extractTitleParts(details.title)
+          val descParts = doc.maybeExtractFrom(
+            ".product-single__description",
+            "STYLE:\\s+(.+?)\\s+ABV:\\s+(\\d\\.\\d+)%"
+          )
+            ?: throw SkipItemException("Couldn't find style or ABV")  // If we don't see these fields, assume we're not looking at a beer product
 
-        ScrapedItem(
-          thumbnailUrl = details.thumbnailUrl,
-          name = titleParts.name,
-          summary = descParts[1].toTitleCase(),
-          desc = doc.maybeWholeTextFrom(".product-single__description")?.extract("(.*?)STYLE:")?.get(1),
-          keg = titleParts.keg,
-          sizeMl = titleParts.sizeMl,
-          abv = descParts[2].toDouble(),
-          available = details.available,
-          numItems = titleParts.numItems,
-          price = details.price
-        )
+          ScrapedItem(
+            thumbnailUrl = details.thumbnailUrl,
+            name = titleParts.name,
+            summary = descParts[1].toTitleCase(),
+            desc = doc.maybeWholeTextFrom(".product-single__description")?.extract("(.*?)STYLE:")?.get(1),
+            keg = titleParts.keg,
+            sizeMl = titleParts.sizeMl,
+            abv = descParts[2].toDouble(),
+            available = details.available,
+            numItems = titleParts.numItems,
+            price = details.price
+          )
+        }
       }
-    }
+  }
 
   private data class TitleParts(
     val name: String,
@@ -57,5 +58,9 @@ class PillarsScraper : Scraper {
       TitleParts(name = parts[1], sizeMl = parts[2].toInt() * 1000, keg = true)
     }
     else -> TitleParts(name = title)
+  }
+
+  companion object {
+    private val ROOT_URL = URI("https://shop.pillarsbrewery.com/collections/pillars-beers")
   }
 }

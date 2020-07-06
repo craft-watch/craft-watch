@@ -5,15 +5,20 @@ import java.net.URI
 
 interface Scraper {
   val brewery: Brewery
-  val rootUrls: List<URI>
+  val jobs: List<Job>
 
-  fun scrapeIndex(root: Document): List<IndexEntry>
+  sealed class Job {
+    data class More(
+      val url: URI,
+      val work: (doc: Document) -> List<Job>
+    ) : Job()
 
-  data class IndexEntry(
-    val rawName: String,
-    val url: URI,
-    val scrapeItem: (doc: Document) -> ScrapedItem
-  )
+    data class Leaf(
+      val rawName: String,
+      val url: URI,
+      val work: (doc: Document) -> ScrapedItem
+    ) : Job()
+  }
 
   data class ScrapedItem(
     val name: String,

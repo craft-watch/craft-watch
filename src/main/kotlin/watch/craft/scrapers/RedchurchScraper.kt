@@ -2,7 +2,7 @@ package watch.craft.scrapers
 
 import org.jsoup.nodes.Document
 import watch.craft.*
-import watch.craft.Scraper.IndexEntry
+import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
@@ -13,42 +13,43 @@ class RedchurchScraper : Scraper {
     location = "Harlow, Essex",
     websiteUrl = URI("https://redchurch.beer/")
   )
-  override val rootUrls = listOf(URI("https://redchurch.store/"))
 
-  override fun scrapeIndex(root: Document) = root
-    .selectMultipleFrom(".product")
-    .map { el ->
-      val title = el.selectFrom(".product__title")
-      val rawName = title.text()
+  override val jobs = forRootUrls(ROOT_URL) { root ->
+    root
+      .selectMultipleFrom(".product")
+      .map { el ->
+        val title = el.selectFrom(".product__title")
+        val rawName = title.text()
 
-      IndexEntry(rawName, title.hrefFrom("a")) { doc ->
-        val nameParts = rawName.extract(regex = "(Mixed Case - )?(.*)")
-        val mixed = !nameParts[1].isBlank()
-        val sizeMl = doc.maybeExtractFrom(regex = "(\\d+)(ML|ml)")?.get(1)?.toInt()
-        val abv = doc.maybeExtractFrom(regex = "(\\d+(\\.\\d+)?)%")?.get(1)?.toDouble()
+        Leaf(rawName, title.hrefFrom("a")) { doc ->
+          val nameParts = rawName.extract(regex = "(Mixed Case - )?(.*)")
+          val mixed = !nameParts[1].isBlank()
+          val sizeMl = doc.maybeExtractFrom(regex = "(\\d+)(ML|ml)")?.get(1)?.toInt()
+          val abv = doc.maybeExtractFrom(regex = "(\\d+(\\.\\d+)?)%")?.get(1)?.toDouble()
 
-        if (!mixed && sizeMl == null && abv == null) {
-          throw SkipItemException("Can't identify ABV or size for non-mixed case, so assume it's not a beer")
+          if (!mixed && sizeMl == null && abv == null) {
+            throw SkipItemException("Can't identify ABV or size for non-mixed case, so assume it's not a beer")
+          }
+
+          val bestDeal = doc.extractBestDeal()
+
+          ScrapedItem(
+            thumbnailUrl = doc.srcFrom(".product-single__photo")
+              .toString()
+              .replace("\\?.*".toRegex(), "")
+              .toUri(),
+            name = nameParts[2],
+            desc = doc.maybeWholeTextFrom(".product-single__description"),
+            mixed = mixed,
+            sizeMl = sizeMl,
+            abv = abv,
+            available = el.maybeSelectFrom(".sold-out-text") == null,
+            numItems = bestDeal.numItems,
+            price = bestDeal.price
+          )
         }
-
-        val bestDeal = doc.extractBestDeal()
-
-        ScrapedItem(
-          thumbnailUrl = doc.srcFrom(".product-single__photo")
-            .toString()
-            .replace("\\?.*".toRegex(), "")
-            .toUri(),
-          name = nameParts[2],
-          desc = doc.maybeWholeTextFrom(".product-single__description"),
-          mixed = mixed,
-          sizeMl = sizeMl,
-          abv = abv,
-          available = el.maybeSelectFrom(".sold-out-text") == null,
-          numItems = bestDeal.numItems,
-          price = bestDeal.price
-        )
       }
-    }
+  }
 
   private fun Document.extractBestDeal(): ItemPrice {
     @Suppress("UNCHECKED_CAST")
@@ -82,5 +83,9 @@ class RedchurchScraper : Scraper {
       val title: String,
       val price: Int
     )
+  }
+
+  companion object {
+    private val ROOT_URL = URI("https://redchurch.store/")
   }
 }

@@ -8,7 +8,9 @@ import org.jsoup.Jsoup
 import watch.craft.FatalScraperException
 import watch.craft.NonFatalScraperException
 import watch.craft.Scraper
-import watch.craft.Scraper.IndexEntry
+import watch.craft.Scraper.Job
+import watch.craft.Scraper.Job.Leaf
+import watch.craft.Scraper.Job.More
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.storage.CachingGetter
@@ -29,60 +31,68 @@ class ScraperAdapter(
   private val logger = KotlinLogging.logger {}
   private val breweryName = scraper.brewery.shortName
 
-  suspend fun execute() = coroutineScope {
-    scraper.rootUrls
-      .map { rootUrl ->
+  suspend fun execute() = scraper.jobs.executeAll()
+
+  private suspend fun List<Job>.executeAll() = coroutineScope {
+    this@executeAll
+      .mapIndexed { idx, job ->
         async {
-          scrapeIndexSafely(rootUrl)
-            .mapIndexed { idx, entry ->
-              async {
-                delay(idx * rateLimitPeriodMillis.toLong())
-                scrapeItemSafely(entry)
-              }
-            }
-            .mapNotNull { it.await() }
+          delay(idx * rateLimitPeriodMillis.toLong())
+          job.execute()
         }
       }
       .flatMap { it.await() }
   }
 
-  private suspend fun scrapeIndexSafely(url: URI): List<IndexEntry> {
-    logger.info("[${breweryName}] Scraping index: ${url}")
-    return try {
-      scraper.scrapeIndex(request(url))
-    } catch (e: NonFatalScraperException) {
-      logger.warn("[${breweryName}] Error while scraping brewery", e)
-      emptyList()
-    } catch (e: FatalScraperException) {
-      logger.error("[${breweryName}] Fatal error while scraping brewery", e)
-      throw e
-    } catch (e: Exception) {
-      logger.warn("[${breweryName}] Unexpected error while scraping brewery", e)
-      emptyList()
-    }
+  // TODO - rate-limiting
+  private suspend fun Job.execute(): List<Result> = when (this@execute) {
+    is More -> execute()
+    is Leaf -> execute()
   }
 
-  private suspend fun scrapeItemSafely(entry: IndexEntry): Result? {
-    logger.info("[${breweryName}] Scraping [${entry.rawName}]")
-    return try {
-      Result(
-        breweryName = breweryName,
-        rawName = entry.rawName,
-        url = entry.url,
-        item = entry.scrapeItem(request(entry.url))
-      )
-    } catch (e: SkipItemException) {
-      logger.info("[${breweryName}] Skipping [${entry.rawName}] because: ${e.message}")
-      null
-    } catch (e: NonFatalScraperException) {
-      logger.warn("[${breweryName}] Error while scraping [${entry.rawName}]", e)
-      null
+  private suspend fun More.execute(): List<Result> {
+    logger.info("Scraping: $url".prefixed())
+    val doc = request(url)
+
+    val children: List<Job> = try {
+      work(doc)
     } catch (e: FatalScraperException) {
-      logger.error("[${breweryName}] Error while scraping [${entry.rawName}]", e)
       throw e
+    } catch (e: NonFatalScraperException) {
+      logger.warn("${errorClause}: $url".prefixed(), e)
+      emptyList()
     } catch (e: Exception) {
-      logger.warn("[${breweryName}] Unexpected error while scraping [${entry.rawName}]", e)
-      null
+      logger.warn("${unexpectedErrorClause}: $url".prefixed(), e)
+      emptyList()
+    }
+
+    return children.executeAll()
+  }
+
+  private suspend fun Leaf.execute(): List<Result> {
+    logger.info("Scraping leaf [$rawName]: $url".prefixed())
+    val doc = request(url)
+
+    return try {
+      listOf(
+        Result(
+          breweryName = breweryName,
+          rawName = rawName,
+          url = url,
+          item = this.work(doc)
+        )
+      )
+    } catch (e: FatalScraperException) {
+      throw e
+    } catch (e: SkipItemException) {
+      logger.info("Skipping leaf [$rawName] because: ${e.message}".prefixed())
+      emptyList()
+    } catch (e: NonFatalScraperException) {
+      logger.warn("${errorClause} leaf [$rawName]".prefixed(), e)
+      emptyList()
+    } catch (e: Exception) {
+      logger.warn("${unexpectedErrorClause} leaf [$rawName]".prefixed(), e)
+      emptyList()
     }
   }
 
@@ -94,6 +104,13 @@ class ScraperAdapter(
       url.toString()
     )!!
   } catch (e: Exception) {
-    throw FatalScraperException("Could not read page: ${url}", e)
+    throw FatalScraperException("Could not read page: ${url}".prefixed(), e)
+  }
+
+  private fun String.prefixed() = "[$breweryName] ${this}"
+
+  companion object {
+    private const val errorClause = "Error while scraping"
+    private const val unexpectedErrorClause = "Unexpected error while scraping"
   }
 }

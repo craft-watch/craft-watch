@@ -1,8 +1,7 @@
 package watch.craft.scrapers
 
-import org.jsoup.nodes.Document
 import watch.craft.*
-import watch.craft.Scraper.IndexEntry
+import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
@@ -13,28 +12,29 @@ class VillagesScraper : Scraper {
     location = "Deptford, London",
     websiteUrl = URI("https://villagesbrewery.com/")
   )
-  override val rootUrls = listOf(URI("https://villagesbrewery.com/collections/buy-beer"))
 
-  override fun scrapeIndex(root: Document) = root
-    .shopifyItems()
-    .map { details ->
-      IndexEntry(details.title, details.url) { doc ->
-        val parts = extractVariableParts(details.title)
+  override val jobs = forRootUrls(ROOT_URL) { root ->
+    root
+      .shopifyItems()
+      .map { details ->
+        Leaf(details.title, details.url) { doc ->
+          val parts = extractVariableParts(details.title)
 
-        ScrapedItem(
-          name = parts.name.toTitleCase(),
-          summary = parts.summary,
-          desc = doc.maybeWholeTextFrom(".product-single__description")?.split("~")?.get(0),
-          mixed = parts.mixed,
-          sizeMl = doc.maybeExtractFrom(regex = "(\\d+)ml")?.get(1)?.toInt(),
-          abv = parts.abv,
-          available = details.available,
-          numItems = parts.numCans,
-          price = details.price,
-          thumbnailUrl = details.thumbnailUrl
-        )
+          ScrapedItem(
+            name = parts.name.toTitleCase(),
+            summary = parts.summary,
+            desc = doc.maybeWholeTextFrom(".product-single__description")?.split("~")?.get(0),
+            mixed = parts.mixed,
+            sizeMl = doc.maybeExtractFrom(regex = "(\\d+)ml")?.get(1)?.toInt(),
+            abv = parts.abv,
+            available = details.available,
+            numItems = parts.numCans,
+            price = details.price,
+            thumbnailUrl = details.thumbnailUrl
+          )
+        }
       }
-    }
+  }
 
   private data class VariableParts(
     val name: String,
@@ -59,5 +59,9 @@ class VillagesScraper : Scraper {
       numCans = 12,
       abv = parts[4].toDouble()
     )
+  }
+
+  companion object {
+    private val ROOT_URL = URI("https://villagesbrewery.com/collections/buy-beer")
   }
 }
