@@ -5,7 +5,11 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
+import org.jsoup.nodes.Node
+import org.jsoup.nodes.TextNode
 import org.jsoup.select.Elements
+import org.jsoup.select.NodeTraversor
+import org.jsoup.select.NodeVisitor
 import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.More
 import java.net.URI
@@ -26,11 +30,49 @@ inline fun <reified T: Any> Element.jsonFrom(cssQuery: String = ":root") = selec
   }
 }
 
-fun Element.normaliseParagraphsFrom(cssQuery: String = ":root") = selectFrom(cssQuery)
-  .selectMultipleFrom("p")
-  .map { it.text() }
-  .filterNot { it.isBlank() }
-  .joinToString("\n")
+fun Element.normaliseParagraphsFrom(cssQuery: String = ":root") = with(MyVisitor()) {
+  NodeTraversor.traverse(this, selectFirst(cssQuery))
+  toString()
+}
+
+private class MyVisitor : NodeVisitor {
+  private val sbOut = StringBuilder()
+  private val sbWorking = StringBuilder()
+
+  override fun head(node: Node, depth: Int) {
+    when {
+      node is TextNode -> sbWorking.append(node.text())
+      node.nodeName() in (COMMIT_NODES + DROP_NODES) -> commit() // Commit anything we've seen so far
+    }
+  }
+
+  override fun tail(node: Node, depth: Int) {
+    when {
+      node.nodeName() in COMMIT_NODES -> commit()
+      node.nodeName() in DROP_NODES -> drop()
+    }
+  }
+
+  private fun commit() {
+    val para = sbWorking.toString().trim()
+    if (para.isNotBlank()) {
+      sbOut.append(para)
+      sbOut.append("\n")
+    }
+    sbWorking.clear()
+  }
+
+  private fun drop() {
+    sbWorking.clear()
+  }
+
+  override fun toString() = sbOut.toString()
+
+  companion object {
+    private val COMMIT_NODES = listOf("div", "p", "br")
+    private val DROP_NODES = listOf("h1", "h2", "h3", "h4", "h5", "h6")
+  }
+}
 
 fun Element.priceFrom(cssQuery: String = ":root") = extractFrom(cssQuery, "\\d+(\\.\\d+)?")[0].toDouble()
 
