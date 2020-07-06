@@ -3,13 +3,17 @@ package watch.craft
 import com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
+import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
+import watch.craft.Scraper.Job.*
 import java.net.URI
 import java.net.URISyntaxException
 import kotlin.math.round
 import kotlin.text.RegexOption.DOT_MATCHES_ALL
 import kotlin.text.RegexOption.IGNORE_CASE
+
+fun forRootUrls(vararg urls: URI, work: (Document) -> List<Unit>) = urls.map { More(it, work) }
 
 inline fun <reified T: Any> Element.jsonFrom(cssQuery: String = ":root") = selectFrom(cssQuery).data().run {
   try {

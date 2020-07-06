@@ -1,8 +1,7 @@
 package watch.craft.scrapers
 
-import org.jsoup.nodes.Document
 import watch.craft.*
-import watch.craft.Scraper.IndexEntry
+import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
@@ -13,28 +12,33 @@ class UnityScraper : Scraper {
     location = "Southampton",
     websiteUrl = URI("https://unitybrewingco.com/")
   )
-  override val rootUrls = listOf(URI("https://unitybrewingco.com/collections/unity-beer"))
 
-  override fun scrapeIndex(root: Document) = root
-    .shopifyItems()
-    .map { details ->
+  override val jobs = forRootUrls(ROOT_URL) { root ->
+    root
+      .shopifyItems()
+      .map { details ->
 
-      IndexEntry(details.title, details.url) { doc ->
-        val desc = doc.textFrom(".product-single__description")
-        val parts = desc.extract("(\\d+)ml / (\\d(\\.\\d+)?)%")
+        Leaf(details.title, details.url) { doc ->
+          val desc = doc.textFrom(".product-single__description")
+          val parts = desc.extract("(\\d+)ml / (\\d(\\.\\d+)?)%")
 
-        ScrapedItem(
-          name = details.title,
-          summary = null,
-          desc = desc,
-          mixed = false,
-          sizeMl = parts[1].toInt(),
-          abv = parts[2].toDouble(),
-          available = details.available,
-          numItems = 1,
-          price = details.price,
-          thumbnailUrl = details.thumbnailUrl
-        )
+          ScrapedItem(
+            name = details.title,
+            summary = null,
+            desc = desc,
+            mixed = false,
+            sizeMl = parts[1].toInt(),
+            abv = parts[2].toDouble(),
+            available = details.available,
+            numItems = 1,
+            price = details.price,
+            thumbnailUrl = details.thumbnailUrl
+          )
+        }
       }
-    }
+  }
+
+  companion object {
+    private val ROOT_URL = URI("https://unitybrewingco.com/collections/unity-beer")
+  }
 }

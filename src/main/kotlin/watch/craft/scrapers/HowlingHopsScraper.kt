@@ -1,8 +1,7 @@
 package watch.craft.scrapers
 
-import org.jsoup.nodes.Document
 import watch.craft.*
-import watch.craft.Scraper.IndexEntry
+import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
@@ -13,36 +12,37 @@ class HowlingHopsScraper : Scraper {
     location = "Hackney Wick, London",
     websiteUrl = URI("https://www.howlinghops.co.uk/")
   )
-  override val rootUrls = listOf(URI("https://www.howlinghops.co.uk/shop"))
 
-  override fun scrapeIndex(root: Document) = root
-    .selectFrom(".wc-block-handpicked-products") // Avoid apparel
-    .selectMultipleFrom(".wc-block-grid__product")
-    .map { el ->
-      val a = el.selectFrom(".wc-block-grid__product-link")
-      val rawName = el.textFrom(".wc-block-grid__product-title")
+  override val jobs = forRootUrls(ROOT_URL) { root ->
+    root
+      .selectFrom(".wc-block-handpicked-products") // Avoid apparel
+      .selectMultipleFrom(".wc-block-grid__product")
+      .map { el ->
+        val a = el.selectFrom(".wc-block-grid__product-link")
+        val rawName = el.textFrom(".wc-block-grid__product-title")
 
-      IndexEntry(rawName, a.hrefFrom()) { doc ->
-        val parts = extractVariableParts(doc.textFrom(".woocommerce-product-details__short-description"))
+        Leaf(rawName, a.hrefFrom()) { doc ->
+          val parts = extractVariableParts(doc.textFrom(".woocommerce-product-details__short-description"))
 
-        ScrapedItem(
-          thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
-          name = parts.name,
-          summary = parts.summary,
-          desc = doc.maybeWholeTextFrom(".woocommerce-product-details__short-description"),
-          mixed = parts.mixed,
-          available = doc.textFrom(".stock") == "In stock",
-          sizeMl = parts.sizeMl,
-          abv = parts.abv,
-          numItems = parts.numCans,
-          price = el.selectMultipleFrom(".woocommerce-Price-amount")
-            .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
-            .first()
-            .ownText()
-            .toDouble()
-        )
+          ScrapedItem(
+            thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
+            name = parts.name,
+            summary = parts.summary,
+            desc = doc.maybeWholeTextFrom(".woocommerce-product-details__short-description"),
+            mixed = parts.mixed,
+            available = doc.textFrom(".stock") == "In stock",
+            sizeMl = parts.sizeMl,
+            abv = parts.abv,
+            numItems = parts.numCans,
+            price = el.selectMultipleFrom(".woocommerce-Price-amount")
+              .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
+              .first()
+              .ownText()
+              .toDouble()
+          )
+        }
       }
-    }
+  }
 
   private data class VariableParts(
     val name: String,
@@ -73,5 +73,9 @@ class HowlingHopsScraper : Scraper {
         mixed = true
       )
     }
+  }
+
+  companion object {
+    private val ROOT_URL = URI("https://www.howlinghops.co.uk/shop")
   }
 }

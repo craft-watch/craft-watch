@@ -1,8 +1,7 @@
 package watch.craft.scrapers
 
-import org.jsoup.nodes.Document
 import watch.craft.*
-import watch.craft.Scraper.IndexEntry
+import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
@@ -13,40 +12,45 @@ class SirenScraper : Scraper {
     location = "Finchampstead, Berkshire",
     websiteUrl = URI("https://www.sirencraftbrew.com/")
   )
-  override val rootUrls = listOf(URI("https://www.sirencraftbrew.com/browse/c-Beers-11"))
 
-  override fun scrapeIndex(root: Document) = root
-    .selectMultipleFrom(".itemsBrowse .itemWrap")
-    .map { el ->
-      val itemName = el.selectFrom(".itemName")
-      val rawName = itemName.text()
+  override val jobs = forRootUrls(ROOT_URL) { root ->
+    root
+      .selectMultipleFrom(".itemsBrowse .itemWrap")
+      .map { el ->
+        val itemName = el.selectFrom(".itemName")
+        val rawName = itemName.text()
 
-      IndexEntry(rawName, itemName.hrefFrom("a")) { doc ->
-        if (rawName.contains("Mixed", ignoreCase = true)) {
-          throw SkipItemException("Can't deal with mixed cases yet")    // TODO
+        Leaf(rawName, itemName.hrefFrom("a")) { doc ->
+          if (rawName.contains("Mixed", ignoreCase = true)) {
+            throw SkipItemException("Can't deal with mixed cases yet")    // TODO
+          }
+
+          val detailsText = doc.textFrom(".itemTitle .small")
+          if (detailsText.contains("Mixed", ignoreCase = true)) {
+            throw SkipItemException("Can't deal with mixed cases yet")    // TODO
+          }
+          val details = detailsText.extract("(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+(\\d+)")
+
+          val keg = rawName.contains("Mini Keg", ignoreCase = true)
+
+          ScrapedItem(
+            name = rawName.replace("(\\d+)L Mini Keg - ".toRegex(), ""),
+            summary = if (keg) null else details[1],
+            desc = doc.normaliseParagraphsFrom(".about"),
+            keg = keg,
+            mixed = false,
+            sizeMl = if (keg) 5000 else details[4].toInt(),
+            abv = details[2].toDouble(),
+            available = doc.maybeSelectFrom(".unavailableItemWrap") == null,
+            numItems = 1,
+            price = el.priceFrom(".itemPriceWrap"),
+            thumbnailUrl = el.srcFrom(".imageInnerWrap img")
+          )
         }
-
-        val detailsText = doc.textFrom(".itemTitle .small")
-        if (detailsText.contains("Mixed", ignoreCase = true)) {
-          throw SkipItemException("Can't deal with mixed cases yet")    // TODO
-        }
-        val details = detailsText.extract("(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+(\\d+)")
-
-        val keg = rawName.contains("Mini Keg", ignoreCase = true)
-
-        ScrapedItem(
-          name = rawName.replace("(\\d+)L Mini Keg - ".toRegex(), ""),
-          summary = if (keg) null else details[1],
-          desc = doc.normaliseParagraphsFrom(".about"),
-          keg = keg,
-          mixed = false,
-          sizeMl = if (keg) 5000 else details[4].toInt(),
-          abv = details[2].toDouble(),
-          available = doc.maybeSelectFrom(".unavailableItemWrap") == null,
-          numItems = 1,
-          price = el.priceFrom(".itemPriceWrap"),
-          thumbnailUrl = el.srcFrom(".imageInnerWrap img")
-        )
       }
-    }
+  }
+
+  companion object {
+    private val ROOT_URL = URI("https://www.sirencraftbrew.com/browse/c-Beers-11")
+  }
 }

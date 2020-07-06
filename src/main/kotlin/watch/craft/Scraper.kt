@@ -1,25 +1,11 @@
 package watch.craft
 
 import org.jsoup.nodes.Document
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.Job.More
 import java.net.URI
 
 interface Scraper {
   val brewery: Brewery
-  val rootUrls: List<URI>
-
-  fun scrapeIndex(root: Document): List<IndexEntry>
-
-  // TODO - eliminate this
-  val rootJobs: List<Job> get() = rootUrls
-    .map { url ->
-      More(url = url) { doc ->
-        scrapeIndex(doc).map { entry ->
-          Leaf(rawName = entry.rawName, url = entry.url, work = entry.scrapeItem)
-        }
-      }
-    }
+  val jobs: List<Job>
 
   sealed class Job {
     data class More(
@@ -33,12 +19,6 @@ interface Scraper {
       val work: (doc: Document) -> ScrapedItem
     ) : Job()
   }
-
-  data class IndexEntry(
-    val rawName: String,
-    val url: URI,
-    val scrapeItem: (doc: Document) -> ScrapedItem
-  )
 
   data class ScrapedItem(
     val name: String,

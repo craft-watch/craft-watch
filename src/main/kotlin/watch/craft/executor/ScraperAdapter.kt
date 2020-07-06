@@ -8,8 +8,7 @@ import watch.craft.FatalScraperException
 import watch.craft.NonFatalScraperException
 import watch.craft.Scraper
 import watch.craft.Scraper.*
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.Job.More
+import watch.craft.Scraper.Job.*
 import watch.craft.SkipItemException
 import watch.craft.storage.CachingGetter
 import java.net.URI
@@ -29,7 +28,7 @@ class ScraperAdapter(
   private val logger = KotlinLogging.logger {}
   private val breweryName = scraper.brewery.shortName
 
-  suspend fun execute() = scraper.rootJobs.executeAll()
+  suspend fun execute() = scraper.jobs.executeAll()
 
   private suspend fun List<Job>.executeAll() = coroutineScope {
     this@executeAll
