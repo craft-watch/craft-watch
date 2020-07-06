@@ -88,11 +88,13 @@ fun Element.maybeWholeTextFrom(cssQuery: String = ":root") = maybeSelectFrom(css
 fun Element.ownTextFrom(cssQuery: String = ":root") = selectFrom(cssQuery).ownText().trim()
 
 fun Element.hrefFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:href").toUri()
+fun Element.maybeHrefFrom(cssQuery: String = ":root") = maybeAttrFrom(cssQuery, "abs:href")?.toUri()
 
 fun Element.srcFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:src").toUri()
 
 fun Element.dataSrcFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:data-src").toUri()
 
+fun Element.maybeAttrFrom(cssQuery: String = ":root", attr: String) = maybeSelectFrom(cssQuery)?.attr(attr)
 fun Element.attrFrom(cssQuery: String = ":root", attr: String) = selectFrom(cssQuery).attr(attr)
   .ifBlank { throw MalformedInputException("Attribute blank or not present: ${attr}") }!!
 
