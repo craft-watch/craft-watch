@@ -7,7 +7,7 @@ import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 import watch.craft.Scraper.Job
-import watch.craft.Scraper.Job.*
+import watch.craft.Scraper.Job.More
 import java.net.URI
 import java.net.URISyntaxException
 import kotlin.math.round

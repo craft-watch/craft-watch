@@ -7,8 +7,10 @@ import org.jsoup.Jsoup
 import watch.craft.FatalScraperException
 import watch.craft.NonFatalScraperException
 import watch.craft.Scraper
-import watch.craft.Scraper.*
-import watch.craft.Scraper.Job.*
+import watch.craft.Scraper.Job
+import watch.craft.Scraper.Job.Leaf
+import watch.craft.Scraper.Job.More
+import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.storage.CachingGetter
 import java.net.URI
