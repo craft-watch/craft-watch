@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import watch.craft.InvalidItemException
-import watch.craft.Scraper
+import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
 class ItemNormalisationTest {
@@ -65,29 +65,30 @@ class ItemNormalisationTest {
     assertValidationFailure(prototype.copy(price = 20.0))
   }
 
-  private fun assertNoValidationFailure(item: Scraper.ScrapedItem) {
+  private fun assertNoValidationFailure(item: ScrapedItem) {
     assertDoesNotThrow {
       normalise(item)
     }
   }
 
-  private fun assertValidationFailure(item: Scraper.ScrapedItem) {
+  private fun assertValidationFailure(item: ScrapedItem) {
     assertThrows<InvalidItemException> {
       normalise(item)
     }
   }
 
   private fun normalise(
-    item: Scraper.ScrapedItem = prototype,
+    item: ScrapedItem = prototype,
     brewery: String = "Foo Bar",
     url: URI = URI("https://example.invalid/shop")
   ) = ScraperAdapter.Result(
     breweryName = brewery,
-    entry = Scraper.IndexEntry(rawName = "", url = url) { throw RuntimeException() },
+    rawName = "",
+    url = url,
     item = item
   ).normalise()
 
-  private val prototype = Scraper.ScrapedItem(
+  private val prototype = ScrapedItem(
     name = "Ted Shandy",
     summary = "Awful",
     numItems = 2,

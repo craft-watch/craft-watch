@@ -1,16 +1,15 @@
 package watch.craft
 
+import kotlinx.coroutines.runBlocking
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.executor.ConcurrentRawScraperExecutor
 import watch.craft.executor.ScraperAdapter
 import java.net.URI
 
 private const val GOLDEN_DATE = "2020-07-03"
 
-fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE) =
-  ConcurrentRawScraperExecutor()
-    .execute(listOf(ScraperAdapter(Setup(dateString).getter, scraper)))
-    .map { it.item }
+fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE) = runBlocking {
+  ScraperAdapter(Setup(dateString).getter, scraper).execute().map { it.item }
+}
 
 fun List<ScrapedItem>.byName(name: String) = first { it.name == name }
 

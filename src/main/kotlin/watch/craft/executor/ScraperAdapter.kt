@@ -1,5 +1,8 @@
 package watch.craft.executor
 
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import mu.KotlinLogging
 import org.jsoup.Jsoup
 import watch.craft.FatalScraperException
@@ -13,26 +16,37 @@ import java.net.URI
 
 class ScraperAdapter(
   private val getter: CachingGetter,
-  private val scraper: Scraper
+  private val scraper: Scraper,
+  private val rateLimitPeriodMillis: Int = 10
 ) {
   data class Result(
     val breweryName: String,
-    val entry: IndexEntry,
+    val rawName: String,
+    val url: URI,
     val item: ScrapedItem
   )
 
   private val logger = KotlinLogging.logger {}
   private val breweryName = scraper.brewery.shortName
 
-  val indexTasks = scraper.rootUrls.map { url ->
-    {
-      scrapeIndexSafely(url).map { entry ->
-        { scrapeItemSafely(entry)?.let { Result(breweryName, entry, it) } }
+  suspend fun execute() = coroutineScope {
+    scraper.rootUrls
+      .map { rootUrl ->
+        async {
+          scrapeIndexSafely(rootUrl)
+            .mapIndexed { idx, entry ->
+              async {
+                delay(idx * rateLimitPeriodMillis.toLong())
+                scrapeItemSafely(entry)
+              }
+            }
+            .mapNotNull { it.await() }
+        }
       }
-    }
+      .flatMap { it.await() }
   }
 
-  private fun scrapeIndexSafely(url: URI): List<IndexEntry> {
+  private suspend fun scrapeIndexSafely(url: URI): List<IndexEntry> {
     logger.info("[${breweryName}] Scraping index: ${url}")
     return try {
       scraper.scrapeIndex(request(url))
@@ -48,10 +62,15 @@ class ScraperAdapter(
     }
   }
 
-  private fun scrapeItemSafely(entry: IndexEntry): ScrapedItem? {
+  private suspend fun scrapeItemSafely(entry: IndexEntry): Result? {
     logger.info("[${breweryName}] Scraping [${entry.rawName}]")
     return try {
-      entry.scrapeItem(request(entry.url))
+      Result(
+        breweryName = breweryName,
+        rawName = entry.rawName,
+        url = entry.url,
+        item = entry.scrapeItem(request(entry.url))
+      )
     } catch (e: SkipItemException) {
       logger.info("[${breweryName}] Skipping [${entry.rawName}] because: ${e.message}")
       null
@@ -67,8 +86,13 @@ class ScraperAdapter(
     }
   }
 
-  private fun request(url: URI) = try {
-    Jsoup.parse(String(getter.request(url)), url.toString())!!
+  private suspend fun request(url: URI) = try {
+    Jsoup.parse(
+      String(
+        onIoThread { getter.request(url) }
+      ),
+      url.toString()
+    )!!
   } catch (e: Exception) {
     throw FatalScraperException("Could not read page: ${url}", e)
   }
