@@ -151,7 +151,7 @@ td.thumbnail {
   margin-right: 5px;
   padding: 2px 10px;
   border-radius: var(--sexy-radius);
-  word-wrap: none;
+  white-space: nowrap;
 }
 
 .violet {
@@ -215,8 +215,6 @@ img {
   /* No scroll */
   overflow-x: hidden;
   overflow-y: hidden;
-
-  word-wrap: break-word;
 }
 
 .info .desc {
@@ -481,6 +479,10 @@ nav a:hover {
 @media (max-width: 512px) {
   .hide-tiny {
     display: none;
+  }
+
+  .pill {
+    display: inline-block;
   }
 }
 
