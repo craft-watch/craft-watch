@@ -15,7 +15,7 @@ class Executor(
   private val clock: Clock = Clock.systemUTC()
 ) {
   private val logger = KotlinLogging.logger {}
-  private val rawExecutor = ConcurrentRawScraperExecutor(16)
+  private val rawExecutor = ConcurrentRawScraperExecutor()
 
   fun scrape(scrapers: Collection<Scraper>): Inventory {
     val now = clock.instant()

@@ -1,24 +1,31 @@
 package watch.craft.executor
 
+import kotlinx.coroutines.*
 import watch.craft.executor.ScraperAdapter.Result
-import java.util.concurrent.Executors.newFixedThreadPool
 
 class ConcurrentRawScraperExecutor(
-  private val concurrency: Int = 4
+  private val rateLimitPeriodMillis: Int = 3000
 ) {
   fun execute(adapters: List<ScraperAdapter>): Set<Result> {
-    val executor = newFixedThreadPool(concurrency)
-    return try {
+    return runBlocking {
       adapters
         .flatMap { it.indexTasks }
-        .map { executor.submit(it) }
-        .flatMap { it.get() }
-        .shuffled()   // Spread out requests to each brewery
-        .map { executor.submit(it) }
-        .mapNotNull { it.get() }
+        .map { rootTask ->
+          async {
+            onIoThread(rootTask)
+              .mapIndexed { idx, itemTask ->
+                async {
+                  delay(idx * rateLimitPeriodMillis.toLong())
+                  onIoThread(itemTask)
+                }
+              }
+              .mapNotNull { it.await() }
+          }
+        }
+        .flatMap { it.await() }
         .toSet()  // To make clear that order is not important
-    } finally {
-      executor.shutdownNow()
     }
   }
+
+  private suspend fun <R> onIoThread(task: () -> R) = withContext(Dispatchers.IO) { task() }
 }

@@ -16,6 +16,7 @@ repositories {
 
 dependencies {
   implementation(kotlin("stdlib"))
+  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
   implementation("io.github.microutils:kotlin-logging:1.7.10")
   implementation("org.jsoup:jsoup:1.13.1")
   implementation(platform("com.fasterxml.jackson:jackson-bom:2.11.0"))

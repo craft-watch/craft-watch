@@ -8,11 +8,12 @@ import watch.craft.Scraper.ScrapedItem
 import watch.craft.executor.ScraperAdapter.Result
 
 class ConcurrentRawScraperExecutorTest {
-  private val exec = ConcurrentRawScraperExecutor(concurrency = 4)
+  private val exec = ConcurrentRawScraperExecutor(rateLimitPeriodMillis = 10)
 
   private val itemA = mock<ScrapedItem>()
   private val itemB = mock<ScrapedItem>()
 
+  // TODO - test structured concurrency on error
 
   @Test
   fun `executes single item`() {
