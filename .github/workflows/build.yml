@@ -24,8 +24,12 @@ jobs:
         env:
           GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
 
+#      - name: Run tests
+#        run: ./gradlew check
+#        env:
+#          GOOGLE_APPLICATION_CREDENTIALS: "${GITHUB_WORKSPACE}/service-key.json"
+
       - name: Run tests
-        run: ./gradlew check -i
+        run: cat "${GOOGLE_APPLICATION_CREDENTIALS}"
         env:
           GOOGLE_APPLICATION_CREDENTIALS: "${GITHUB_WORKSPACE}/service-key.json"
-
