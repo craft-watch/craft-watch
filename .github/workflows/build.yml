@@ -1,7 +1,6 @@
 name: Build
 on: [push]
 
-# TODO - Gradle cache
 # TODO - job for Run scraper
 # TODO - ensure new commit cancels active runs
 
@@ -22,10 +21,19 @@ jobs:
         env:
           GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
 
-      - uses: actions/cache@v2
+      - name: Cache Gradle wrapper
+        uses: actions/cache@v2
         with:
           path: ~/.gradle/wrapper
           key: v1-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+
+      - name: Cache Gradle caches
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/caches
+          key: v1-gradle-caches-{{ hashFiles('build.gradle.kts') }}
+          restore-keys:
+            - v1-gradle-caches-
 
       - name: Run tests
         run: |
