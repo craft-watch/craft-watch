@@ -29,7 +29,14 @@ jobs:
 #        env:
 #          GOOGLE_APPLICATION_CREDENTIALS: "${GITHUB_WORKSPACE}/service-key.json"
 
-      - name: Run tests
-        run: cat "${GOOGLE_APPLICATION_CREDENTIALS}"
+      - name: Wat
+        run: ls -l "${GITHUB_WORKSPACE}"
+        shell: bash
         env:
           GOOGLE_APPLICATION_CREDENTIALS: "${GITHUB_WORKSPACE}/service-key.json"
+
+      - name: Wat 2
+        run: ls -l "${GOOGLE_APPLICATION_CREDENTIALS}"
+        shell: bash
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: "${GITHUB_WORKSPACE}"
