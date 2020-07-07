@@ -12,7 +12,6 @@ import java.time.Clock
 import java.time.Instant
 
 class Executor(
-  private val rateLimitPeriodMillis: Int = 10,
   private val results: ResultsManager,
   private val getter: CachingGetter,
   private val clock: Clock = Clock.systemUTC()
@@ -41,7 +40,7 @@ class Executor(
 
   private fun Collection<Scraper>.execute() = runBlocking {
     this@execute
-      .map { ScraperAdapter(getter, it, rateLimitPeriodMillis) }
+      .map { ScraperAdapter(getter, it) }
       .map { async { it.execute() } }
       .flatMap { it.await() }
       .toSet()  // To make clear that order is not important

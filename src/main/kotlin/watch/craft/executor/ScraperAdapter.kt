@@ -18,8 +18,7 @@ import java.net.URI
 
 class ScraperAdapter(
   private val getter: CachingGetter,
-  private val scraper: Scraper,
-  private val rateLimitPeriodMillis: Int = 10
+  private val scraper: Scraper
 ) {
   data class Result(
     val breweryName: String,
@@ -37,7 +36,7 @@ class ScraperAdapter(
     this@executeAll
       .mapIndexed { idx, job ->
         async {
-          delay(idx * rateLimitPeriodMillis.toLong())
+          delay(idx * scraper.rateLimitPeriodMillis.toLong())
           job.execute()
         }
       }
