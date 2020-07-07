@@ -88,7 +88,7 @@ resource "github_actions_secret" "gcloud_service_key" {
 
 resource "github_actions_secret" "github_deploy_key" {
   repository       = "craft-watch"
-  secret_name      = "DEPLOY_KEY"
+  secret_name      = "SSH_PRIVATE_DEPLOY_KEY"
   plaintext_value  = tls_private_key.github_deploy.private_key_pem
 }
 
