@@ -5,7 +5,7 @@ Mostly notes for myself right now.
 
 ## GitHub actions
 
-**TODO: created PAT with workflow scope**
+**TODO: created PAT with public_repo + workflow scopes**
 
 
 ## CircleCI

@@ -1,20 +1,25 @@
 name: Build
 on: [push]
 
-# TODO - Service-account secret
 # TODO - Gradle cache
 # TODO - job for Run scraper
 # TODO - test results / logs
+
+env:
+  GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
+  GOOGLE_APPLICATION_CREDENTIALS: ${HOME}/service-key.json
 
 jobs:
 
   test_backend:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v1
         with:
           java-version: 13.0.1
+      - name: Create file for service key
+        run: echo "${GCLOUD_SERVICE_KEY}" > "GOOGLE_APPLICATION_CREDENTIALS"
       - name: Run tests
         run: ./gradlew check
+

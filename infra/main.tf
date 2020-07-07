@@ -15,8 +15,8 @@ provider "google" {
 
 provider "github" {
   version      = "~> 2.9.1"
-  token        = file(".credentials/github-token")
-  individual   = true
+  token        = trimspace(file(".credentials/github-token"))
+  organization = "craft-watch"
 }
 
 resource "google_storage_bucket" "backend" {
@@ -66,7 +66,7 @@ resource "google_storage_bucket_iam_policy" "policy" {
 }
 
 resource "github_actions_secret" "gcloud_service_key" {
-  repository       = "oliver-charlesworth/craft-watch"
+  repository       = "craft-watch"
   secret_name      = "GCLOUD_SERVICE_KEY"
   plaintext_value  = base64decode(google_service_account_key.circleci.private_key)
 }
