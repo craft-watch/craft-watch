@@ -17,9 +17,9 @@ Requires the following secret things:
     2. Copy the output and create a `GCLOUD_SERVICE_KEY` environment variable for the CircleCI
        project [here][circleci-env-var].
 
-[create-deploy-key]: https://github.com/oliver-charlesworth/oliver-charlesworth.github.io/settings/keys/new
-[register-key]: https://app.circleci.com/settings/project/github/oliver-charlesworth/craft-watch/ssh
-[circleci-env-var]: https://app.circleci.com/settings/project/github/oliver-charlesworth/craft-watch/environment-variables
+[create-deploy-key]: https://github.com/craft-watch/craft-watch.github.io/settings/keys/new
+[register-key]: https://app.circleci.com/settings/project/github/craft-watch/craft-watch/ssh
+[circleci-env-var]: https://app.circleci.com/settings/project/github/craft-watch/craft-watch/environment-variables
 
 
 ## Backend
