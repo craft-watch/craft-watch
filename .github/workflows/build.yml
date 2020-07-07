@@ -28,3 +28,9 @@ jobs:
         run: |
           export GOOGLE_APPLICATION_CREDENTIALS="${GITHUB_WORKSPACE}/service-key.json"
           ./gradlew check
+
+      - name: Capture test results
+        uses: actions/upload-artifact@v1
+          with:
+            name: test-results
+            path: build/test-results/test
