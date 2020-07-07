@@ -10,10 +10,6 @@ on: [push]
 jobs:
 
   test_backend:
-    env:
-      GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
-      GOOGLE_APPLICATION_CREDENTIALS: ${GITHUB_WORKSPACE}/service-key.json
-
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -23,9 +19,13 @@ jobs:
           java-version: 13.0.1
 
       - name: Create file for service key
-        run: echo "${GCLOUD_SERVICE_KEY}" > "${GOOGLE_APPLICATION_CREDENTIALS}"
+        run: echo "${GCLOUD_SERVICE_KEY}" > "${GITHUB_WORKSPACE}/service-key.json"
         shell: bash
+        env:
+          GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
 
       - name: Run tests
         run: ./gradlew check
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${GITHUB_WORKSPACE}/service-key.json
 
