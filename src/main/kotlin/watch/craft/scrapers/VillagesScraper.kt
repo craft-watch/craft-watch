@@ -20,8 +20,6 @@ class VillagesScraper : Scraper {
         Leaf(details.title, details.url) { doc ->
           val parts = extractVariableParts(details.title)
 
-
-
           ScrapedItem(
             name = parts.name.toTitleCase(),
             summary = parts.summary,
