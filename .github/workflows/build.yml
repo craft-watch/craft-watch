@@ -5,7 +5,7 @@ on: [push]
 # TODO - job for Run scraper
 # TODO - test results / logs
 # TODO - ensure new commit cancels active runs
-
+# TODO - no gradle daemon
 
 jobs:
 
@@ -25,7 +25,7 @@ jobs:
           GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
 
       - name: Run tests
-        run: ./gradlew check
+        run: ./gradlew check -i
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${GITHUB_WORKSPACE}/service-key.json
+          GOOGLE_APPLICATION_CREDENTIALS: "${GITHUB_WORKSPACE}/service-key.json"
 
