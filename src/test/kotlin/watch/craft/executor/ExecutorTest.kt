@@ -28,8 +28,8 @@ class ExecutorTest {
   @Test
   fun `scrapes products`() {
     val scraper = MyScraper(listOf(
-      Leaf(rawName = "A", url = productUrl("a")) { product("Foo") },
-      Leaf(rawName = "B", url = productUrl("b")) { product("Bar") }
+      Leaf(name = "A", url = productUrl("a")) { product("Foo") },
+      Leaf(name = "B", url = productUrl("b")) { product("Bar") }
     ))
 
     assertEquals(
@@ -76,9 +76,9 @@ class ExecutorTest {
   @Test
   fun `de-duplicates by picking best price`() {
     val scraper = MyScraper(listOf(
-      Leaf(rawName = "A", url = productUrl("a")) { product("Foo") },
-      Leaf(rawName = "B", url = productUrl("b")) { product("Foo").copy(price = DECENT_PRICE / 2) },
-      Leaf(rawName = "C", url = productUrl("c")) { product("Foo").copy(price = DECENT_PRICE * 2) }
+      Leaf(name = "A", url = productUrl("a")) { product("Foo") },
+      Leaf(name = "B", url = productUrl("b")) { product("Foo").copy(price = DECENT_PRICE / 2) },
+      Leaf(name = "C", url = productUrl("c")) { product("Foo").copy(price = DECENT_PRICE * 2) }
     ))
 
     // Only one item returned, with best price
@@ -91,9 +91,9 @@ class ExecutorTest {
   @Test
   fun `continues after validation failure`() {
     val scraper = MyScraper(listOf(
-      Leaf(rawName = "A", url = productUrl("a")) { product("Foo") },
-      Leaf(rawName = "B", url = productUrl("b")) { product("Foo").copy(name = "") },  // Invalid name
-      Leaf(rawName = "C", url = productUrl("c")) { product("Bar") }
+      Leaf(name = "A", url = productUrl("a")) { product("Foo") },
+      Leaf(name = "B", url = productUrl("b")) { product("Foo").copy(name = "") },  // Invalid name
+      Leaf(name = "C", url = productUrl("c")) { product("Bar") }
     ))
 
     assertEquals(

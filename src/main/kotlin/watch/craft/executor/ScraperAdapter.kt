@@ -6,6 +6,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import mu.KotlinLogging
 import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
 import watch.craft.FatalScraperException
 import watch.craft.NonFatalScraperException
 import watch.craft.Scraper
@@ -44,56 +45,38 @@ class ScraperAdapter(
       .flatMap { it.await() }
   }
 
-  // TODO - rate-limiting
-  private suspend fun Job.execute(): List<Result> = when (this@execute) {
-    is More -> execute()
-    is Leaf -> execute()
-  }
-
-  private suspend fun More.execute(): List<Result> {
-    logger.info("Scraping: $url".prefixed())
+  private suspend fun Job.execute(): List<Result> {
+    logger.info("Scraping${suffix()}: $url".prefixed())
     val doc = request(url)
 
-    val children: List<Job> = try {
-      work(doc)
-    } catch (e: FatalScraperException) {
-      throw e
-    } catch (e: NonFatalScraperException) {
-      logger.warn("${errorClause}: $url".prefixed(), e)
-      emptyList()
-    } catch (e: Exception) {
-      logger.warn("${unexpectedErrorClause}: $url".prefixed(), e)
-      emptyList()
-    }
-
-    return children.executeAll()
-  }
-
-  private suspend fun Leaf.execute(): List<Result> {
-    logger.info("Scraping leaf [$rawName]: $url".prefixed())
-    val doc = request(url)
-
-    return try {
-      listOf(
-        Result(
-          breweryName = breweryName,
-          rawName = rawName,
-          url = url,
-          item = this.work(doc)
+    return when (this@execute) {
+      is More -> processGracefully(doc, emptyList()) { work(doc) }.executeAll()
+      is Leaf -> processGracefully(doc, emptyList()) {
+        listOf(
+          Result(
+            breweryName = breweryName,
+            rawName = name,
+            url = url,
+            item = work(doc)
+          )
         )
-      )
-    } catch (e: FatalScraperException) {
-      throw e
-    } catch (e: SkipItemException) {
-      logger.info("Skipping leaf [$rawName] because: ${e.message}".prefixed())
-      emptyList()
-    } catch (e: NonFatalScraperException) {
-      logger.warn("${errorClause} leaf [$rawName]".prefixed(), e)
-      emptyList()
-    } catch (e: Exception) {
-      logger.warn("${unexpectedErrorClause} leaf [$rawName]".prefixed(), e)
-      emptyList()
+      }
     }
+  }
+
+  private fun <R> Job.processGracefully(doc: Document, default: R, block: (Document) -> R) = try {
+    block(doc)
+  } catch (e: FatalScraperException) {
+    throw e
+  } catch (e: SkipItemException) {
+    logger.info("Skipping${suffix()} because: ${e.message}".prefixed())
+    default
+  } catch (e: NonFatalScraperException) {
+    logger.warn("${errorClause}${suffix()}".prefixed(), e)
+    default
+  } catch (e: Exception) {
+    logger.warn("${unexpectedErrorClause}${suffix()}".prefixed(), e)
+    default
   }
 
   private suspend fun request(url: URI) = try {
@@ -108,6 +91,8 @@ class ScraperAdapter(
   } catch (e: Exception) {
     throw FatalScraperException("Could not read page: ${url}".prefixed(), e)
   }
+
+  private fun Job.suffix() = if (name != null) " [${name}]" else ""
 
   private fun String.prefixed() = "[$breweryName] ${this}"
 
