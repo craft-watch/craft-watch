@@ -110,10 +110,6 @@ fun Element.extractFrom(cssQuery: String = ":root", regex: String) = textFrom(cs
 
 fun Element.textFrom(cssQuery: String = ":root") = selectFrom(cssQuery).text().trim()
 
-fun Element.wholeTextFrom(cssQuery: String = ":root") = selectFrom(cssQuery).wholeText().trim()
-
-fun Element.ownTextFrom(cssQuery: String = ":root") = selectFrom(cssQuery).ownText().trim()
-
 fun Element.hrefFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:href").toUri()
 
 fun Element.srcFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:src").toUri()

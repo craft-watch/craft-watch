@@ -27,7 +27,7 @@ class PillarsScraper : Scraper {
             thumbnailUrl = details.thumbnailUrl,
             name = titleParts.name,
             summary = descParts[1].toTitleCase(),
-            desc = doc.maybe { wholeTextFrom(".product-single__description") }?.extract("(.*?)STYLE:")?.get(1),
+            desc = doc.maybe { formattedTextFrom(".product-single__description") },
             keg = titleParts.keg,
             sizeMl = titleParts.sizeMl,
             abv = descParts[2].toDouble(),

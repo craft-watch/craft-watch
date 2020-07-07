@@ -38,13 +38,13 @@ class GipsyHillScraper : Scraper {
             thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
             name = name,
             summary = if (mixed) null else style,
-            desc = doc.maybe { wholeTextFrom(".description") },
+            desc = doc.maybe { formattedTextFrom(".description") },
             mixed = mixed,
             available = true, // TODO
             abv = if (mixed) null else rawSummary.maybe { abvFrom(prefix = "ABV: ", optionalPercent = true) },
             sizeMl = rawSummary.maybe { sizeMlFrom() },
             numItems = numCans,
-            price = el.ownTextFrom(".woocommerce-Price-amount").toDouble()
+            price = el.priceFrom(".woocommerce-Price-amount")
           )
         }
       }

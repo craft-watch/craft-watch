@@ -23,7 +23,7 @@ class VillagesScraper : Scraper {
           ScrapedItem(
             name = parts.name.toTitleCase(),
             summary = parts.summary,
-            desc = doc.maybe { wholeTextFrom(".product-single__description") }?.split("~")?.get(0),
+            desc = doc.maybe { formattedTextFrom(".product-single__description") },
             mixed = parts.mixed,
             sizeMl = doc.maybe { sizeMlFrom() },
             abv = parts.abv,

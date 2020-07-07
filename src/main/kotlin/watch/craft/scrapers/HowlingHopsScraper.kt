@@ -29,7 +29,7 @@ class HowlingHopsScraper : Scraper {
             thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
             name = parts.name,
             summary = parts.summary,
-            desc = doc.maybe { wholeTextFrom(".woocommerce-product-details__short-description") },
+            desc = doc.maybe { formattedTextFrom(".woocommerce-product-details__short-description") },
             mixed = parts.mixed,
             available = doc.textFrom(".stock") == "In stock",
             sizeMl = desc.sizeMlFrom(),
