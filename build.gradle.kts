@@ -52,8 +52,10 @@ tasks.test {
 
 idea {
   module {
-    excludeDirs.add(rootDir.resolve("frontend/node_modules"))
-    excludeDirs.add(rootDir.resolve("frontend/.next"))
-    excludeDirs.add(rootDir.resolve("frontend/out"))
+    excludeDirs = excludeDirs + listOf(
+      rootDir.resolve("frontend/.next/"),
+      rootDir.resolve("frontend/node_modules/"),
+      rootDir.resolve("frontend/out/")
+    )
   }
 }
