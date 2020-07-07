@@ -6,13 +6,14 @@ on: [push]
 # TODO - test results / logs
 # TODO - ensure new commit cancels active runs
 
-env:
-  GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
-  GOOGLE_APPLICATION_CREDENTIALS: ${GITHUB_WORKSPACE}/service-key.json
 
 jobs:
 
   test_backend:
+    env:
+      GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
+      GOOGLE_APPLICATION_CREDENTIALS: ${GITHUB_WORKSPACE}/service-key.json
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
