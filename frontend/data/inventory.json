@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-06T19:55:49.667564Z"
+    "capturedAt" : "2020-07-07T15:20:23.763323Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -152,7 +152,7 @@
     "brewery" : "Boxcar",
     "name" : "Avatar State",
     "summary" : "West Coast IPA",
-    "desc" : "Welcome to the Neon Sky level.\nAmarillo | Simcoe | Chinook | Centennial",
+    "desc" : "Save 10% when you buy 12 ! (Mix & Match)\nWelcome to the Neon Sky level.\nAmarillo | Simcoe | Chinook | Centennial",
     "keg" : false,
     "mixed" : false,
     "sizeMl" : 440,
@@ -220,14 +220,14 @@
     "brewery" : "Boxcar",
     "name" : "Golden Ale",
     "summary" : "English Pale Ale",
-    "desc" : "One more step along the golden path; windswept memories of garden beers.\nGolden Promise barley with Goldings and Pilgrim hops.",
+    "desc" : "Save 10% when you buy 12 ! (Mix & Match)\nOne more step along the golden path; windswept memories of garden beers.\nGolden Promise barley with Goldings and Pilgrim hops.",
     "keg" : false,
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.2,
     "numItems" : 1,
     "perItemPrice" : 3.95,
-    "available" : false,
+    "available" : true,
     "categories" : [ "Bitter", "Pale" ],
     "newFromBrewer" : false,
     "newToUs" : false,
@@ -1096,8 +1096,8 @@
     "perItemPrice" : 3.5,
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "newFromBrewer" : true,
-    "newToUs" : true,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/Can-Template-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/barleypop-lite-lager-4-x-440ml/"
   }, {
@@ -1130,8 +1130,8 @@
     "perItemPrice" : 4.0,
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
-    "newFromBrewer" : true,
-    "newToUs" : true,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/Curiosity-Vendor-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/curiosity-vendor-ddh-pale-4-x-440ml/"
   }, {
@@ -1162,10 +1162,10 @@
     "abv" : 7.3,
     "numItems" : 4,
     "perItemPrice" : 4.5,
-    "available" : true,
+    "available" : false,
     "categories" : [ "IPA" ],
-    "newFromBrewer" : true,
-    "newToUs" : true,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/FREE-FALL-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/free-fall-neipa-4-x-440ml/"
   }, {
@@ -1181,8 +1181,8 @@
     "perItemPrice" : 3.5,
     "available" : true,
     "categories" : [ "Pale" ],
-    "newFromBrewer" : true,
-    "newToUs" : true,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/GRISETTE-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/grisette-4-x-440ml/"
   }, {
@@ -1213,10 +1213,10 @@
     "abv" : 8.0,
     "numItems" : 4,
     "perItemPrice" : 5.0,
-    "available" : true,
+    "available" : false,
     "categories" : [ "IPA" ],
-    "newFromBrewer" : true,
-    "newToUs" : true,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/Lend-Me-Your-Ears-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/lend-me-your-ears-dipa-4-x-440ml/"
   }, {
@@ -1236,6 +1236,23 @@
     "newToUs" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/june-beer-case-5-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/new-12-beer-mega-pack-24-x-440ml-2/"
+  }, {
+    "brewery" : "Howling Hops",
+    "name" : "Off Ramp",
+    "summary" : "DIPA",
+    "desc" : "Off Ramp / DIPA / 4 x 440ml  / 8.0% ABV\nSuitable for vegans.\nOff Ramp is a new 8% DIPA hopped with Cryo Mosaic, Citra and HBC-692 (last seen in Countrymen)! This a specdankular bit of murkology, not for the faint of heart.\n\n\nOne 4-pack leaves 20 can slots left in your case!",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 8.0,
+    "numItems" : 4,
+    "perItemPrice" : 5.0,
+    "available" : false,
+    "categories" : [ "IPA" ],
+    "newFromBrewer" : false,
+    "newToUs" : false,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/offramp-440ml-324x324.png",
+    "url" : "https://www.howlinghops.co.uk/product/off-ramp-dipa-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
     "name" : "Packets",
@@ -1317,8 +1334,8 @@
     "perItemPrice" : 3.5,
     "available" : true,
     "categories" : [ "Pale" ],
-    "newFromBrewer" : true,
-    "newToUs" : true,
+    "newFromBrewer" : false,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/05/wind-and-sea-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/wind-sea-surf-club-4-x-440ml/"
   }, {
@@ -1450,12 +1467,12 @@
     "sizeMl" : 500,
     "abv" : null,
     "numItems" : 24,
-    "perItemPrice" : 2.72,
+    "perItemPrice" : 2.71,
     "available" : true,
     "categories" : [ ],
     "newFromBrewer" : false,
     "newToUs" : false,
-    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/03/Mixed2_24_pack_Cans-234x300.png",
+    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/03/Core-Range-500ml-4Cans02-2-300x300.png",
     "url" : "https://marblebeers.com/shop-home/core-range-mixed-case-24-cans/"
   }, {
     "brewery" : "Marble",
@@ -2396,7 +2413,7 @@
     "brewery" : "Padstow",
     "name" : "Support the Fishermen’s Mission",
     "summary" : "Patiently fermented, unfiltered craft lager",
-    "desc" : "Brewed in support of the Fishermen's Mission, 1881 commemorates the year of their founding and helps to raise money towards their vital work in the present. A pale, refreshing, unfiltered lager, 1881 has been patiently fermented and packaged to maximise its clean flavour. This beer is suitable for vegans. It contains barley, wheat and oats. ** Also available in a 5 litre mini-keg **",
+    "desc" : "Brewed in support of the Fishermen's Mission, 1881 commemorates the year of their founding and helps to raise money towards their vital work in the present. Find out more at https://www.fishermensmission.org.uk/ A pale, refreshing, unfiltered lager, 1881 has been patiently fermented and packaged to maximise its clean flavour. This can continues our relationship with Falmouth University and features the wonderful artwork of Esme Fergusson @esmefineart This beer is suitable for vegans. It contains barley, wheat and oats. ** Also available in a 5 litre mini-keg **",
     "keg" : false,
     "mixed" : false,
     "sizeMl" : 440,
@@ -2413,7 +2430,7 @@
     "brewery" : "Padstow",
     "name" : "Support the Fishermen’s Mission",
     "summary" : "Patiently fermented, unfiltered craft lager",
-    "desc" : "Brewed in support of the Fishermen's Mission, 1881 commemorates the year of their founding and helps to raise money towards their vital work in the present. A pale, refreshing, unfiltered lager, 1881 has been patiently fermented and packaged to maximise its clean flavour. This beer is suitable for vegans. It contains barley, wheat and oats. ** Also available in 440ml cans **",
+    "desc" : "Brewed in support of the Fishermen's Mission, 1881 commemorates the year of their founding and helps to raise money towards their vital work in the present. Find out more at https://www.fishermensmission.org.uk/ A pale, refreshing, unfiltered lager, 1881 has been patiently fermented and packaged to maximise its clean flavour. This beer is suitable for vegans. It contains barley, wheat and oats. ** Also available in 440ml cans **",
     "keg" : true,
     "mixed" : false,
     "sizeMl" : 5000,
@@ -2424,7 +2441,7 @@
     "categories" : [ "Pils / Lager", "Pale" ],
     "newFromBrewer" : false,
     "newToUs" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/07/1881-CAN-RENDER-new-1024x549.jpg",
+    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/04/minikeg-front.jpg",
     "url" : "https://www.padstowbrewing.co.uk/product/1881-lager-support-the-fishermens-mission-minikeg/"
   }, {
     "brewery" : "Padstow",
@@ -2545,23 +2562,6 @@
     "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/a1df4143-6f3e-444f-876f-403e4646de81_e0ca1731-5b0e-436d-9697-af4d723dcafd_250x250.png",
     "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/untraditional-lager-case-of-24"
-  }, {
-    "brewery" : "Polly's Brew",
-    "name" : "DDH Spur",
-    "summary" : "Triple IPA",
-    "desc" : "DDH Spur\nHere it is, the big one. We’ve always had it in the back of our minds that a TIPA would be a natural progression after nailing down our DIPA game, but never knew where to wrangle it into our plans. The biggest beer we’ve ever brewed by a country mile; in-house favourite Spur is amplified to the max, with an insane 60kg of Azacca, Simcoe and Citra thrown in for a dry hop rate of 29g/l giving massive amounts of stone fruit, peach, mango, and passionfruit flavours bursting throughout. A beer perfect for our new water profile directly influenced by the profile used at Other Half NYC, and fermented with our house strain of LA3 for maximum suspension. Expect juice to the nines, complimented by a soft but full bodied mouthfeel.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 10.0,
-    "numItems" : 1,
-    "perItemPrice" : 5.75,
-    "available" : false,
-    "categories" : [ "IPA" ],
-    "newFromBrewer" : false,
-    "newToUs" : false,
-    "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/07/DDHS-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
-    "url" : "https://shop.pollysbrew.co/product/ddh-spur-triple-ipa-10-0/"
   }, {
     "brewery" : "Polly's Brew",
     "name" : "Mylar",
@@ -3103,7 +3103,7 @@
     "available" : true,
     "categories" : [ "Dark" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-broken-dream-1563357983siren-craft-brew-broken-dream-can.png",
     "url" : "https://www.sirencraftbrew.com/item/217/SirenCraftBrew/Broken-Dream.html"
   }, {
@@ -3120,7 +3120,7 @@
     "available" : true,
     "categories" : [ "Sours / Gose" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-calypso-1563357950siren-craft-brew-calypso-can.png",
     "url" : "https://www.sirencraftbrew.com/item/216/SirenCraftBrew/Calypso.html"
   }, {
@@ -3137,7 +3137,7 @@
     "available" : true,
     "categories" : [ "Dark" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-5l-mini-keg-coldblooded-1593095692siren-mini-keg-coldblooded.png",
     "url" : "https://www.sirencraftbrew.com/item/363/SirenCraftBrew/5L-Mini-Keg-Coldblooded.html"
   }, {
@@ -3154,7 +3154,7 @@
     "available" : false,
     "categories" : [ "Pils / Lager" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-elusive-brewing-elusive-brewing-overflow-1591890757siren-craft-brew-elusive-overflow-440-can.png",
     "url" : "https://www.sirencraftbrew.com/item/351/ElusiveBrewing/Elusive-Brewing-Overflow.html"
   }, {
@@ -3168,10 +3168,10 @@
     "abv" : 4.8,
     "numItems" : 1,
     "perItemPrice" : 3.95,
-    "available" : true,
+    "available" : false,
     "categories" : [ "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-futurist-440-1565970386siren-craft-brew-futurist-440-can.png",
     "url" : "https://www.sirencraftbrew.com/item/231/SirenCraftBrew/Futurist.html"
   }, {
@@ -3188,7 +3188,7 @@
     "available" : true,
     "categories" : [ ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-5l-mini-keg-futurist-1590575108siren-mini-keg-futurist.png",
     "url" : "https://www.sirencraftbrew.com/item/331/SirenCraftBrew/5L-Mini-Keg-Futurist.html"
   }, {
@@ -3205,7 +3205,7 @@
     "available" : true,
     "categories" : [ "Sours / Gose" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-guava-script-1592918321siren-craft-brew-guava-brew-440.png",
     "url" : "https://www.sirencraftbrew.com/item/361/SirenCraftBrew/Guava-Script.html"
   }, {
@@ -3222,7 +3222,7 @@
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-heart-of-ice-1593593312siren-craft-brew-heart-of-ice-440.png",
     "url" : "https://www.sirencraftbrew.com/item/366/SirenCraftBrew/Heart-of-Ice.html"
   }, {
@@ -3239,7 +3239,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-i-left-my-wallet-in-el-dorado-1592487774siren-craft-brew-left-my-wallet-can.png",
     "url" : "https://www.sirencraftbrew.com/item/358/SirenCraftBrew/I-Left-My-Wallet-in-El-Dorado.html"
   }, {
@@ -3256,7 +3256,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-lumina-1592409480siren-craft-brew-lumina-can.png",
     "url" : "https://www.sirencraftbrew.com/item/356/SirenCraftBrew/Lumina.html"
   }, {
@@ -3273,7 +3273,7 @@
     "available" : false,
     "categories" : [ "Pale" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-much-ado-about-muffin-1584970374siren-craft-brew-much-ado-about-muffin-440-can.png",
     "url" : "https://www.sirencraftbrew.com/item/111/SirenCraftBrew/Much-Ado-about-Muffin.html"
   }, {
@@ -3290,7 +3290,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-on-the-bubble-1591782442siren-craft-brew-on-the-bubble-440-can.png",
     "url" : "https://www.sirencraftbrew.com/item/347/SirenCraftBrew/On-The-Bubble.html"
   }, {
@@ -3304,10 +3304,10 @@
     "abv" : 6.5,
     "numItems" : 1,
     "perItemPrice" : 4.0,
-    "available" : true,
+    "available" : false,
     "categories" : [ "Dark" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-rum-maple-broken-dream-1593444882siren-craft-rum-maple-broken-dream-440.png",
     "url" : "https://www.sirencraftbrew.com/item/364/SirenCraftBrew/Rum-Maple-Broken-Dream.html"
   }, {
@@ -3321,10 +3321,10 @@
     "abv" : 5.0,
     "numItems" : 1,
     "perItemPrice" : 2.1,
-    "available" : false,
+    "available" : true,
     "categories" : [ "Pils / Lager" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-santo-1563357898siren-craft-brew-santo-can.png",
     "url" : "https://www.sirencraftbrew.com/item/221/SirenCraftBrew/Santo.html"
   }, {
@@ -3341,7 +3341,7 @@
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-5l-mini-keg-santo-1591025215siren-mini-keg-santo.png",
     "url" : "https://www.sirencraftbrew.com/item/336/SirenCraftBrew/5L-Mini-Keg-Santo.html"
   }, {
@@ -3358,7 +3358,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-soundwave-1563358047siren-craft-brew-soundwave-can.png",
     "url" : "https://www.sirencraftbrew.com/item/214/SirenCraftBrew/Soundwave.html"
   }, {
@@ -3375,7 +3375,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-suspended-in-cans-1585062064siren-craft-brew-suspended-in-cans-440-can.png",
     "url" : "https://www.sirencraftbrew.com/item/306/SirenCraftBrew/Suspended-In-Cans.html"
   }, {
@@ -3392,7 +3392,7 @@
     "available" : true,
     "categories" : [ "Bitter" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-5l-mini-keg-suspended-in-cascade-1591783634siren-mini-keg-suspended-in-cascade.png",
     "url" : "https://www.sirencraftbrew.com/item/349/SirenCraftBrew/5L-Mini-Keg-Suspended-in-Cascade.html"
   }, {
@@ -3409,7 +3409,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-yu-lu-1546011576Siren-yu-lu-front.png",
     "url" : "https://www.sirencraftbrew.com/item/11/SirenCraftBrew/Yu-Lu.html"
   }, {
@@ -3426,7 +3426,7 @@
     "available" : true,
     "categories" : [ ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-5l-mini-keg-yu-lu-1591025048siren-mini-keg-yu-lu.png",
     "url" : "https://www.sirencraftbrew.com/item/335/SirenCraftBrew/5L-Mini-Keg-Yu-Lu.html"
   }, {
@@ -3771,23 +3771,6 @@
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/market-porter"
   }, {
     "brewery" : "Thornbridge",
-    "name" : "Myddle",
-    "summary" : "American Red IPA",
-    "desc" : "Why not make up your own case?\nWe have created Myddle with the award-winning Salopian brewery as part of\nour 15th birthday celebrations. Notes of sweet orange and light pine blend\nexquisitely with flavours of biscuit and burnt caramel from the robust malt.\nABV 6.2% / 330ml bottle\nHOPS  Centennial / Cascade / Mosaic\nMALTS Maris Otter / Munich / Wheat / Crystal / Dark Crystal / Caramalt\nThis item is bottle conditioned\nBottle conditioning has numerous benefits to the beer in bottle:\n- Oxygen reduction, keeping the beer fresher for longer.\n- Tighter CO2 bubbles, which gives a softer, more gentle feel in terms of\ncarbonation.\n- The beer is reseeded with live yeast; this means the yeast will be busy doing\nits own ’home improvements’ as the beer continues to mature in the bottle.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.\nYou must be 18 or over to purchase this product.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 330,
-    "abv" : 6.2,
-    "numItems" : 1,
-    "perItemPrice" : 2.2,
-    "available" : false,
-    "categories" : [ "Dark", "IPA" ],
-    "newFromBrewer" : false,
-    "newToUs" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Myddlemockup_colouredbackground_300x300.jpg?v=1587639749",
-    "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/myddle-6-2-american-red-ipa"
-  }, {
-    "brewery" : "Thornbridge",
     "name" : "Pondera",
     "summary" : "West Coast IPA 440ml Can",
     "desc" : "Pondera is a result of an exciting collaboration with the hugely respected Firestone Walker. Expect a fantastically drinkable West Coast IPA with a refreshing bitterness and flavours of kiwi, passion fruit and guava.\nABV 6.7% / 440ml Can\nHops Idaho 7 / Mosaic / Cashmere / El Dorado / Simcoe\nYou must be 18 or over to buy this product.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.",
@@ -3834,7 +3817,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0340/2829/0107/products/CONFLUX_can_345x345.jpg",
     "url" : "https://unitybrewingco.com/collections/unity-beer/products/conflux-pale-ale"
   }, {
@@ -3851,7 +3834,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0340/2829/0107/products/image_b557f02a-0c75-40af-92aa-d9b0788558af_345x345.jpg",
     "url" : "https://unitybrewingco.com/collections/unity-beer/products/this-must-be-the-place-simcoe-pale-ale"
   }, {
@@ -3868,7 +3851,7 @@
     "available" : true,
     "categories" : [ "Bitter", "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0340/2829/0107/products/image_e5e7654b-3a09-4b87-9ced-aa3260fea001_345x345.jpg",
     "url" : "https://unitybrewingco.com/collections/unity-beer/products/wowee-zowee-west-coast-ipa"
   }, {
@@ -4021,7 +4004,7 @@
     "available" : true,
     "categories" : [ "Dark" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_5d8391d0061742638bbe854e5971a1d6~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_5d8391d0061742638bbe854e5971a1d6~mv2.jpg",
     "url" : "https://www.wanderbeyondbrewing.com/product-page/black-sands"
   }, {
@@ -4038,7 +4021,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_611c84c56c8f42e2bc33abe5a2380304~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_611c84c56c8f42e2bc33abe5a2380304~mv2.jpg",
     "url" : "https://www.wanderbeyondbrewing.com/product-page/gasp"
   }, {
@@ -4055,7 +4038,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_e2d8b9df0b1944b18b6e71c20510e0a4~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_e2d8b9df0b1944b18b6e71c20510e0a4~mv2.jpg",
     "url" : "https://www.wanderbeyondbrewing.com/product-page/lutra-lutra"
   }, {
@@ -4072,7 +4055,7 @@
     "available" : true,
     "categories" : [ "Dark" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_ef7f841f52a44126baf62183697d36b9~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_ef7f841f52a44126baf62183697d36b9~mv2.jpg",
     "url" : "https://www.wanderbeyondbrewing.com/product-page/maple-dream"
   }, {
@@ -4089,7 +4072,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_15a4d99ac1d34c4fb246629800b40b39~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_15a4d99ac1d34c4fb246629800b40b39~mv2.jpg",
     "url" : "https://www.wanderbeyondbrewing.com/product-page/mini-city-of-gold"
   }, {
@@ -4106,7 +4089,7 @@
     "available" : true,
     "categories" : [ "Bitter", "Dark", "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_4f43a15d21954bebadf43c134aa3b1ca~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_4f43a15d21954bebadf43c134aa3b1ca~mv2.jpg",
     "url" : "https://www.wanderbeyondbrewing.com/product-page/mixed-12-pack-2"
   }, {
@@ -4123,7 +4106,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_3a27ac94884c49389957a942ef2c86eb~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_3a27ac94884c49389957a942ef2c86eb~mv2.jpg",
     "url" : "https://www.wanderbeyondbrewing.com/product-page/octo-pie"
   }, {
@@ -4140,7 +4123,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_fbf6a778d4f74d098b8c5f4d92325411~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_fbf6a778d4f74d098b8c5f4d92325411~mv2.jpg",
     "url" : "https://www.wanderbeyondbrewing.com/product-page/peak"
   }, {
@@ -4157,7 +4140,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_3cdc986c30f849df8d6e0db67141c68e~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_3cdc986c30f849df8d6e0db67141c68e~mv2.jpg",
     "url" : "https://www.wanderbeyondbrewing.com/product-page/pursuit"
   }, {
@@ -4174,7 +4157,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_bf5cf76553bb430f8cd4eab3633a9dbd~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_bf5cf76553bb430f8cd4eab3633a9dbd~mv2.jpg",
     "url" : "https://www.wanderbeyondbrewing.com/product-page/ramble"
   }, {
@@ -4191,7 +4174,7 @@
     "available" : true,
     "categories" : [ "Dark" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_3d3f6b85391144bba502718a58b802cc~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_3d3f6b85391144bba502718a58b802cc~mv2.jpg",
     "url" : "https://www.wanderbeyondbrewing.com/product-page/raspberry-crash"
   }, {
@@ -4208,7 +4191,7 @@
     "available" : true,
     "categories" : [ "Bitter", "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_ac56245a81b740ab9c45de5aa7c4008a~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_ac56245a81b740ab9c45de5aa7c4008a~mv2.jpg",
     "url" : "https://www.wanderbeyondbrewing.com/product-page/sleepy-hollow"
   }, {
@@ -4225,7 +4208,7 @@
     "available" : true,
     "categories" : [ "Dark" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_d1cf59d6d75c4484aaf77d4ba7ebb3b8~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_d1cf59d6d75c4484aaf77d4ba7ebb3b8~mv2.jpg",
     "url" : "https://www.wanderbeyondbrewing.com/product-page/storm-kats"
   }, {
@@ -4242,7 +4225,7 @@
     "available" : true,
     "categories" : [ "Pale", "Dark", "Bitter", "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_385c0547b04148f6a2e2ceb8edb4ddd5~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_385c0547b04148f6a2e2ceb8edb4ddd5~mv2.jpg",
     "url" : "https://www.wanderbeyondbrewing.com/product-page/vegan-mixed-case"
   }, {
@@ -4290,7 +4273,7 @@
     "abv" : null,
     "numItems" : 12,
     "perItemPrice" : 2.8,
-    "available" : true,
+    "available" : false,
     "categories" : [ "Pale", "Bitter" ],
     "newFromBrewer" : false,
     "newToUs" : true,
