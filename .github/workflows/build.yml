@@ -3,9 +3,7 @@ on: [push]
 
 # TODO - Gradle cache
 # TODO - job for Run scraper
-# TODO - test results / logs
 # TODO - ensure new commit cancels active runs
-# TODO - no gradle daemon
 
 jobs:
 
@@ -24,10 +22,15 @@ jobs:
         env:
           GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
 
+      - uses: actions/cache@v2
+        with:
+          path: ~/.gradle/wrapper
+          key: v1-gradle-wrapper-${{ hashFiles("gradle/wrapper/gradle-wrapper.properties") }}
+
       - name: Run tests
         run: |
           export GOOGLE_APPLICATION_CREDENTIALS="${GITHUB_WORKSPACE}/service-key.json"
-          ./gradlew check
+          ./gradlew --no-daemon check
 
       - name: Capture test results
         uses: actions/upload-artifact@v1
