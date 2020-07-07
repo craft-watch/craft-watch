@@ -1,16 +1,15 @@
 name: Build
 on: [push]
 
-# TODO - job for frontend deploy
-# TODO - deploy only on master
 # TODO - job for Run scraper
 # TODO - cron schedule for scraper on master
 # TODO - refactor common bits?
-# TODO - ensure new commit cancels active runs
 
 jobs:
 
   test_backend:
+    if: ${{ github.ref != 'master' }}
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,8 +18,10 @@ jobs:
           java-version: 13.0.1
 
       - name: Create file for service key
-        run: echo "${{ secrets.GCLOUD_SERVICE_KEY }}" > "~/service-key.json"
+        run: echo "${GCLOUD_SERVICE_KEY}" > "~/service-key.json"
         shell: bash
+        env:
+          GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
 
       - name: Cache (Gradle wrapper)
         uses: actions/cache@v2
@@ -82,7 +83,9 @@ jobs:
           path: frontend/out
 
   deploy_frontend:
+    if: ${{ github.ref == 'master' }}
     needs: build_frontend
+
     runs-on: ubuntu-latest
 
     steps:
