@@ -41,7 +41,7 @@ class MarbleScraper : Scraper {
             keg = attributes.maybeGrab("Packaging")?.contains("keg", ignoreCase = true) ?: false,
             sizeMl = volumeDetails.sizeMl,
             abv = attributes.grab("ABV").maybeExtract("(\\d+(\\.\\d+)?)")?.get(1)?.toDouble(),
-            available = doc.maybeSelectFrom(".out-of-stock") == null,
+            available = ".out-of-stock" !in doc,
             numItems = volumeDetails.numItems,
             price = doc.priceFrom(".price")
           )

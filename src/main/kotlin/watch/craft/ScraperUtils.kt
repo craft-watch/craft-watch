@@ -97,6 +97,8 @@ fun String.sizeMlFrom() = maybeExtract("${INT_REGEX}\\s*ml(?:\\W|$)")?.let { it[
   ?: maybeExtract("${INT_REGEX}\\s*l(?:\\W|$)")?.let { it[1].toInt() * 1000 }
   ?: throw MalformedInputException("Can't extract size")
 
+operator fun Element.contains(cssQuery: String) = selectFirst(cssQuery) != null
+
 fun Element.extractFrom(cssQuery: String = ":root", regex: String) = textFrom(cssQuery).extract(regex)
 
 fun Element.textFrom(cssQuery: String = ":root") = selectFrom(cssQuery).text().trim()
@@ -106,17 +108,14 @@ fun Element.wholeTextFrom(cssQuery: String = ":root") = selectFrom(cssQuery).who
 fun Element.ownTextFrom(cssQuery: String = ":root") = selectFrom(cssQuery).ownText().trim()
 
 fun Element.hrefFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:href").toUri()
-fun Element.maybeHrefFrom(cssQuery: String = ":root") = maybeAttrFrom(cssQuery, "abs:href")?.toUri()
 
 fun Element.srcFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:src").toUri()
 
 fun Element.dataSrcFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:data-src").toUri()
 
-fun Element.maybeAttrFrom(cssQuery: String = ":root", attr: String) = maybeSelectFrom(cssQuery)?.attr(attr)
 fun Element.attrFrom(cssQuery: String = ":root", attr: String) = selectFrom(cssQuery).attr(attr)
   .ifBlank { throw MalformedInputException("Attribute blank or not present: ${attr}") }!!
 
-fun Element.maybeSelectFrom(cssQuery: String): Element? = selectFirst(cssQuery)
 fun Element.selectFrom(cssQuery: String) = selectFirst(cssQuery)
   ?: throw MalformedInputException("Element not present: ${cssQuery}")
 

@@ -43,7 +43,7 @@ class RedchurchScraper : Scraper {
             mixed = mixed,
             sizeMl = sizeMl,
             abv = abv,
-            available = el.maybeSelectFrom(".sold-out-text") == null,
+            available = ".sold-out-text" !in el,
             numItems = bestDeal.numItems,
             price = bestDeal.price
           )

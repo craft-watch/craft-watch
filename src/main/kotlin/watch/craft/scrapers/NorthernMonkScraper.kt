@@ -22,7 +22,7 @@ class NorthernMonkScraper : Scraper {
   private fun scrapeRoot(root: Document) = maybeGetNextPageJob(root) + getItemJobs(root)
 
   private fun maybeGetNextPageJob(root: Document): List<Job> {
-    val next = root.maybeHrefFrom("link[rel=next]")
+    val next = root.maybe { hrefFrom("link[rel=next]") }
     return if (next != null) {
       forRootUrls(next, work = ::scrapeRoot)
     } else {

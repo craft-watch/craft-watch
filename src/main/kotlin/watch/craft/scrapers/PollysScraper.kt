@@ -34,7 +34,7 @@ class PollysScraper : Scraper {
             mixed = false,
             sizeMl = POLLYS_CAN_SIZE_ML,
             abv = parts[3].toDouble(),
-            available = doc.maybeSelectFrom(".out-of-stock") == null,
+            available = ".out-of-stock" !in doc,
             numItems = 1,
             price = doc.priceFrom("#main .woocommerce-Price-amount"),
             thumbnailUrl = a.srcFrom("img")

@@ -33,7 +33,7 @@ class WiperAndTrueScraper : Scraper {
             mixed = parts.mixed,
             sizeMl = parts.sizeMl,
             abv = parts.abv,
-            available = el.maybeSelectFrom(".sold-out") == null,
+            available = ".sold-out" !in el,
             numItems = parts.numItems,
             price = el.priceFrom(".product-price"),
             thumbnailUrl = el.dataSrcFrom(".product-image img")

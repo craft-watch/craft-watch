@@ -34,7 +34,7 @@ class FivePointsScraper : Scraper {
             keg = (sizeMl >= 1000),
             abv = parts[2].toDouble(),
             sizeMl = sizeMl,
-            available = doc.maybeSelectFrom(".unavailableItemWrap") == null,
+            available = ".unavailableItemWrap" !in doc,
             numItems = parts[5].ifBlank { "1" }.toInt(),
             price = el.extractFrom(".priceStandard", "£(\\d+\\.\\d+)")[1].toDouble()
           )

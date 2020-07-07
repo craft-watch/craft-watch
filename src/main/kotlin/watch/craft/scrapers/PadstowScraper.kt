@@ -21,7 +21,7 @@ class PadstowScraper : Scraper {
         val rawName = el.textFrom("h3")
 
         Leaf(rawName, el.hrefFrom(".woocommerce-LoopProduct-link")) { doc ->
-          if (doc.maybeSelectFrom(".stat") == null) {
+          if (".stat" !in doc) {
             throw SkipItemException("Not an actual beer")
           }
 

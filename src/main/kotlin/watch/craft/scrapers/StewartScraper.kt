@@ -20,21 +20,15 @@ class StewartScraper : Scraper {
         val a = el.selectFrom("h2 a")
 
         Leaf(a.text(), a.hrefFrom()) { doc ->
-          val alco = doc.maybeSelectFrom(".alco")
-          val sizeMl = doc.maybe { sizeMlFrom(".volume") }
-
-          if (alco == null || sizeMl == null) {
-            throw SkipItemException("Couldn't find ABV or volume")
-          }
 
           ScrapedItem(
             thumbnailUrl = el.srcFrom(".imageInnerWrap img"),
             name = removeSizeSuffix(a.text()),
             summary = el.maybe { textFrom(".itemStyle") },
-            abv = alco.extractFrom(regex = "(\\d+(\\.\\d+)?)%")[1].toDouble(),
-            sizeMl = sizeMl,
+            abv = doc.orSkip("Couldn't find ABV") { abvFrom(".alco") },
+            sizeMl = doc.orSkip("Couldn't find size") { sizeMlFrom(".volume") },
             available = true,
-            price = doc.extractFrom(".priceNow", "£(\\d+\\.\\d+)")[1].toDouble()
+            price = doc.priceFrom(".priceNow")
           )
         }
       }
