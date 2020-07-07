@@ -27,11 +27,11 @@ class BeakScraper : Scraper {
           ScrapedItem(
             name = rawName.split(" ")[0].toTitleCase(),
             summary = null,
-            desc = desc.normaliseParagraphsFrom(),
-            sizeMl = allTheText.extract(ML_REGEX, ignoreCase = true)[1].toInt(),
-            abv = allTheText.extract(ABV_REGEX)[1].toDouble(),
+            desc = desc.formattedTextFrom(),
+            sizeMl = allTheText.sizeMlFrom(),
+            abv = allTheText.abvFrom(),
             available = !a.text().contains("Sold Out", ignoreCase = true),
-            numItems = allTheText.maybeExtract(NUM_ITEMS_REGEX, ignoreCase = true)?.get(1)?.toInt() ?: 1,
+            numItems = allTheText.maybe { extract(NUM_ITEMS_REGEX) }?.get(1)?.toInt() ?: 1,
             price = a.priceFrom(".price"),
             thumbnailUrl = a.srcFrom("img")
           )
@@ -40,8 +40,6 @@ class BeakScraper : Scraper {
   }
 
   companion object {
-    const val ML_REGEX = "(\\d+)\\s*ml"
-    const val ABV_REGEX = "(\\d+(\\.\\d+)?)\\s*%"
     const val NUM_ITEMS_REGEX = "(\\d+)\\s*x"
 
     val ROOT_URL = URI("https://beakbrewery.com/collections/beer")

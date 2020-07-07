@@ -25,7 +25,7 @@ class MarbleScraper : Scraper {
           val attributes = doc.extractAttributes()
           val volumeDetails = attributes.extractVolumeDetails()
 
-          val style = attributes.maybeGrab("Style")
+          val style = attributes.maybe { grab("Style") }
           val mixed = style?.contains("mixed", ignoreCase = true) ?: false
 
           ScrapedItem(
@@ -36,12 +36,12 @@ class MarbleScraper : Scraper {
               .replace("\\d+$".toRegex(), "")
               .toTitleCase(),
             summary = if (mixed) null else style,
-            desc = doc.maybeWholeTextFrom(".woocommerce-product-details__short-description"),
+            desc = doc.maybe { formattedTextFrom(".woocommerce-product-details__short-description") }?.ifBlank { null },
             mixed = mixed,
-            keg = attributes.maybeGrab("Packaging")?.contains("keg", ignoreCase = true) ?: false,
+            keg = attributes.maybe { grab("Packaging") }?.contains("keg", ignoreCase = true) ?: false,
             sizeMl = volumeDetails.sizeMl,
-            abv = attributes.grab("ABV").maybeExtract("(\\d+(\\.\\d+)?)")?.get(1)?.toDouble(),
-            available = doc.maybeSelectFrom(".out-of-stock") == null,
+            abv = attributes.grab("ABV").maybe { extract("(\\d+(\\.\\d+)?)") }?.get(1)?.toDouble(),
+            available = ".out-of-stock" !in doc,
             numItems = volumeDetails.numItems,
             price = doc.priceFrom(".price")
           )
@@ -55,20 +55,18 @@ class MarbleScraper : Scraper {
   )
 
   private fun Map<String, String>.extractVolumeDetails(): VolumeDetails {
-    val rawVolume = maybeGrab("Volume") ?: grab("Packaging")
-    val volumeParts = rawVolume.extract("((\\d+) x )?(((\\d+)ml)|((\\d+) Litre))")
+    val rawVolume = maybe { grab("Volume") } ?: grab("Packaging")
     return VolumeDetails(
-      sizeMl = volumeParts[5].toIntOrNull()
-        ?: (volumeParts[7].toInt() * 1000),
-      numItems = volumeParts[2].toIntOrNull()
-        ?: maybeGrab("Unit Size")?.toIntOrNull()
+      sizeMl = rawVolume.sizeMlFrom(),
+      numItems = rawVolume.maybe { extract("(\\d+) x") }?.let { it[1].toInt() }
+        ?: maybe { grab("Unit Size") }?.toIntOrNull()
         ?: 1
     )
   }
 
-  private fun Document.extractAttributes() = maybeSelectMultipleFrom(".shop_attributes tr")
-    .ifEmpty { throw SkipItemException("No attributes, so can't process") }
-    .associate { it.textFrom("th") to it.textFrom("td") }
+  private fun Document.extractAttributes() = orSkip("No attributes, so can't process") {
+    selectMultipleFrom(".shop_attributes tr")
+  }.associate { it.textFrom("th") to it.textFrom("td") }
 
   companion object {
     private val ROOT_URL = URI("https://marblebeers.com/product-category/?term=beers")

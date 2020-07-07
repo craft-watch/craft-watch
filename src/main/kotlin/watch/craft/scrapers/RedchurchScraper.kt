@@ -24,8 +24,8 @@ class RedchurchScraper : Scraper {
         Leaf(rawName, title.hrefFrom("a")) { doc ->
           val nameParts = rawName.extract(regex = "(Mixed Case - )?(.*)")
           val mixed = !nameParts[1].isBlank()
-          val sizeMl = doc.maybeExtractFrom(regex = "(\\d+)(ML|ml)")?.get(1)?.toInt()
-          val abv = doc.maybeExtractFrom(regex = "(\\d+(\\.\\d+)?)%")?.get(1)?.toDouble()
+          val sizeMl = doc.maybe { sizeMlFrom() }
+          val abv = doc.maybe { abvFrom() }
 
           if (!mixed && sizeMl == null && abv == null) {
             throw SkipItemException("Can't identify ABV or size for non-mixed case, so assume it's not a beer")
@@ -39,11 +39,11 @@ class RedchurchScraper : Scraper {
               .replace("\\?.*".toRegex(), "")
               .toUri(),
             name = nameParts[2],
-            desc = doc.maybeWholeTextFrom(".product-single__description"),
+            desc = doc.maybe { formattedTextFrom(".product-single__description") },
             mixed = mixed,
             sizeMl = sizeMl,
             abv = abv,
-            available = el.maybeSelectFrom(".sold-out-text") == null,
+            available = ".sold-out-text" !in el,
             numItems = bestDeal.numItems,
             price = bestDeal.price
           )
@@ -60,7 +60,7 @@ class RedchurchScraper : Scraper {
       .maxBy { it.price }!!   // Assume highest price gives us the best deal
 
     return ItemPrice(
-      numItems = winner.title.maybeExtract("^(\\d+)")?.get(1)?.toInt()
+      numItems = winner.title.maybe { extract("^(\\d+)") }?.get(1)?.toInt()
         ?: throw SkipItemException("Don't know how to identify number of items"),
       price = winner.price
     )

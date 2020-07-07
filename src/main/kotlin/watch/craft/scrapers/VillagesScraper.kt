@@ -23,9 +23,9 @@ class VillagesScraper : Scraper {
           ScrapedItem(
             name = parts.name.toTitleCase(),
             summary = parts.summary,
-            desc = doc.maybeWholeTextFrom(".product-single__description")?.split("~")?.get(0),
+            desc = doc.maybe { formattedTextFrom(".product-single__description") },
             mixed = parts.mixed,
-            sizeMl = doc.maybeExtractFrom(regex = "(\\d+)ml")?.get(1)?.toInt(),
+            sizeMl = doc.maybe { sizeMlFrom() },
             abv = parts.abv,
             available = details.available,
             numItems = parts.numCans,
@@ -52,12 +52,12 @@ class VillagesScraper : Scraper {
       mixed = true
     )
   } else {
-    val parts = title.extract("^([^ ]*) (.*)? ((.*)%)?.*$")
+    val parts = title.extract("^([^ ]*) (.*)? .*%")
     VariableParts(
       name = parts[1],
       summary = parts[2],
       numCans = 12,
-      abv = parts[4].toDouble()
+      abv = title.abvFrom()
     )
   }
 

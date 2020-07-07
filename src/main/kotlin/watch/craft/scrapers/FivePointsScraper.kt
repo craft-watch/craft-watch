@@ -20,21 +20,21 @@ class FivePointsScraper : Scraper {
         val a = el.selectFrom("h2 a")
 
         Leaf(a.text(), a.hrefFrom()) { doc ->
-          val parts = doc.maybeExtractFrom(
-            ".itemTitle .small",
-            "(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+((\\d+)\\s+x\\s+)?(\\d+)(ml|L)"
-          ) ?: throw SkipItemException("Could not extract details")
+          val title = doc.maybe { selectFrom(".itemTitle .small") }
+          val parts = title?.maybe {
+            extractFrom(regex = "(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+((\\d+)\\s+x\\s+)?")
+          } ?: throw SkipItemException("Could not extract details")
 
-          val sizeMl = parts[6].toInt() * (if (parts[7] == "L") 1000 else 1)
+          val sizeMl = title.sizeMlFrom()
           ScrapedItem(
             thumbnailUrl = el.srcFrom(".imageInnerWrap img"),
             name = a.extractFrom(regex = "([^(]+)")[1].trim().toTitleCase(),
             summary = parts[1],
-            desc = doc.normaliseParagraphsFrom(".about"),
+            desc = doc.formattedTextFrom(".about"),
             keg = (sizeMl >= 1000),
             abv = parts[2].toDouble(),
             sizeMl = sizeMl,
-            available = doc.maybeSelectFrom(".unavailableItemWrap") == null,
+            available = ".unavailableItemWrap" !in doc,
             numItems = parts[5].ifBlank { "1" }.toInt(),
             price = el.extractFrom(".priceStandard", "£(\\d+\\.\\d+)")[1].toDouble()
           )

@@ -29,11 +29,11 @@ class WiperAndTrueScraper : Scraper {
           ScrapedItem(
             name = rawName.extract("(.*?) Case")[1],
             summary = parts.summary,
-            desc = desc.normaliseParagraphsFrom(),
+            desc = desc.formattedTextFrom(),
             mixed = parts.mixed,
             sizeMl = parts.sizeMl,
             abv = parts.abv,
-            available = el.maybeSelectFrom(".sold-out") == null,
+            available = ".sold-out" !in el,
             numItems = parts.numItems,
             price = el.priceFrom(".product-price"),
             thumbnailUrl = el.dataSrcFrom(".product-image img")
@@ -49,13 +49,14 @@ class WiperAndTrueScraper : Scraper {
         numItems = 12    // TODO - hardcoded
       )
     } else {
-      val parts = desc.maybeExtractFrom("p", "(\\d+)x\\s+(\\d+)ml.*?(\\d(\\.\\d+)?)%\\s+(.*)\\.")
-        ?: throw SkipItemException("Can't find details, so assuming it's not a beer")
+      val parts = desc.orSkip("Can't find details, so assuming it's not a beer") {
+        extractFrom("p", "(\\d+).*?%\\s+(.*)\\.")
+      }
       VariableParts(
         mixed = false,
-        summary = parts[5],
-        abv = parts[3].toDouble(),
-        sizeMl = parts[2].toInt(),
+        summary = parts[2],
+        abv = desc.abvFrom(),
+        sizeMl = desc.sizeMlFrom(),
         numItems = parts[1].toInt()
       )
     }

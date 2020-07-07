@@ -19,16 +19,16 @@ class BoxcarScraper : Scraper {
       .shopifyItems()
       .map { details ->
         Leaf(details.title, details.url) { doc ->
-          val parts = details.title.extract("^(.*?) // (.*?)% *(.*?)? // (.*?)ml$")
+          val parts = details.title.extract("^(.*?) // (.*?)% *(.*?)? //")
 
           ScrapedItem(
             thumbnailUrl = details.thumbnailUrl,
             name = parts[1],
             abv = parts[2].toDouble(),
             summary = parts[3].ifBlank { null },
-            desc = doc.maybeWholeTextFrom(".product-single__description")
+            desc = doc.maybe { formattedTextFrom(".product-single__description") }
               ?.replace("^DESCRIPTION".toRegex(IGNORE_CASE), ""),
-            sizeMl = parts[4].toInt(),
+            sizeMl = details.title.sizeMlFrom(),
             available = details.available,
             price = details.price
           )

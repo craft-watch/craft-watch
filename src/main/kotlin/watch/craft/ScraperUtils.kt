@@ -7,7 +7,6 @@ import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import org.jsoup.nodes.Node
 import org.jsoup.nodes.TextNode
-import org.jsoup.select.Elements
 import org.jsoup.select.NodeTraversor
 import org.jsoup.select.NodeVisitor
 import watch.craft.Scraper.Job
@@ -30,7 +29,7 @@ inline fun <reified T: Any> Element.jsonFrom(cssQuery: String = ":root") = selec
   }
 }
 
-fun Element.normaliseParagraphsFrom(cssQuery: String = ":root") = with(MyVisitor()) {
+fun Element.formattedTextFrom(cssQuery: String = ":root") = with(MyVisitor()) {
   NodeTraversor.traverse(this, selectFirst(cssQuery))
   toString()
 }
@@ -74,44 +73,62 @@ private class MyVisitor : NodeVisitor {
   }
 }
 
+fun <T, R> T.orSkip(message: String, block: T.() -> R) = try {
+  block(this)
+} catch (e: MalformedInputException) {
+  throw SkipItemException(message)
+}
+
+fun <T, R> T.maybe(block: T.() -> R) = try {
+  block(this)
+} catch (e: MalformedInputException) {
+  null
+}
+
 fun Element.priceFrom(cssQuery: String = ":root") = extractFrom(cssQuery, "\\d+(\\.\\d+)?")[0].toDouble()
 
+fun Element.abvFrom(
+  cssQuery: String = ":root",
+  prefix: String = "",
+  noPercent: Boolean = false
+) = textFrom(cssQuery).abvFrom(prefix, noPercent)
+fun String.abvFrom(
+  prefix: String = "",
+  optionalPercent: Boolean = false
+) = extract(prefix + DOUBLE_REGEX + (if (optionalPercent) "" else "\\s*%"))[1].toDouble()
+
+fun Element.sizeMlFrom(cssQuery: String = ":root") = textFrom(cssQuery).sizeMlFrom()
+fun String.sizeMlFrom() = maybe { extract("${INT_REGEX}\\s*ml(?:\\W|$)") }?.let { it[1].toInt() }
+  ?: maybe { extract("${INT_REGEX}(?:\\s*|-)litre(?:s?)(?:\\W|$)") }?.let { it[1].toInt() * 1000 }
+  ?: maybe { extract("${INT_REGEX}\\s*l(?:\\W|$)") }?.let { it[1].toInt() * 1000 }
+  ?: throw MalformedInputException("Can't extract size")
+
+operator fun Element.contains(cssQuery: String) = selectFirst(cssQuery) != null
+
 fun Element.extractFrom(cssQuery: String = ":root", regex: String) = textFrom(cssQuery).extract(regex)
-fun Element.maybeExtractFrom(cssQuery: String = ":root", regex: String) = maybeTextFrom(cssQuery)?.maybeExtract(regex)
 
 fun Element.textFrom(cssQuery: String = ":root") = selectFrom(cssQuery).text().trim()
-fun Element.maybeTextFrom(cssQuery: String = ":root") = maybeSelectFrom(cssQuery)?.text()?.trim()
-
-fun Element.wholeTextFrom(cssQuery: String = ":root") = selectFrom(cssQuery).wholeText().trim()
-fun Element.maybeWholeTextFrom(cssQuery: String = ":root") = maybeSelectFrom(cssQuery)?.wholeText()?.trim()
-
-fun Element.ownTextFrom(cssQuery: String = ":root") = selectFrom(cssQuery).ownText().trim()
 
 fun Element.hrefFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:href").toUri()
-fun Element.maybeHrefFrom(cssQuery: String = ":root") = maybeAttrFrom(cssQuery, "abs:href")?.toUri()
 
 fun Element.srcFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:src").toUri()
 
 fun Element.dataSrcFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:data-src").toUri()
 
-fun Element.maybeAttrFrom(cssQuery: String = ":root", attr: String) = maybeSelectFrom(cssQuery)?.attr(attr)
 fun Element.attrFrom(cssQuery: String = ":root", attr: String) = selectFrom(cssQuery).attr(attr)
   .ifBlank { throw MalformedInputException("Attribute blank or not present: ${attr}") }!!
 
-fun Element.maybeSelectFrom(cssQuery: String): Element? = selectFirst(cssQuery)
 fun Element.selectFrom(cssQuery: String) = selectFirst(cssQuery)
   ?: throw MalformedInputException("Element not present: ${cssQuery}")
 
-fun Element.selectMultipleFrom(cssQuery: String) = maybeSelectMultipleFrom(cssQuery)
+fun Element.selectMultipleFrom(cssQuery: String) = select(cssQuery)!!
   .ifEmpty { throw MalformedInputException("Element(s) not present: ${cssQuery}") }
-fun Element.maybeSelectMultipleFrom(cssQuery: String): Elements = select(cssQuery)
 
-
-fun String.extract(regex: String, ignoreCase: Boolean = false) = maybeExtract(regex, ignoreCase)
+fun String.extract(regex: String, ignoreCase: Boolean = true) = regex.toRegex(regexOptions(ignoreCase))
+  .find(this)?.groupValues
   ?: throw MalformedInputException("Can't extract regex: ${regex}")
-fun String.maybeExtract(regex: String, ignoreCase: Boolean = false) = regex.toRegex(regexOptions(ignoreCase)).find(this)?.groupValues
 
-private fun regexOptions(ignoreCase: Boolean = false) = if (ignoreCase) {
+private fun regexOptions(ignoreCase: Boolean) = if (ignoreCase) {
   setOf(DOT_MATCHES_ALL, IGNORE_CASE)
 } else {
   setOf(DOT_MATCHES_ALL)
@@ -164,13 +181,10 @@ fun String.toUri() = try {
   throw MalformedInputException("URL syntax error: ${this}", e)
 }
 
-fun <K, V> Map<K, V>.grab(key: K) = maybeGrab(key) ?: throw MalformedInputException("Key not present: ${key}")
-fun <K, V> Map<K, V>.maybeGrab(key: K) = this[key]
+fun <K, V> Map<K, V>.grab(key: K) = this[key] ?: throw MalformedInputException("Key not present: ${key}")
 
 const val INT_REGEX = "(\\d+)"
 const val DOUBLE_REGEX = "(\\d+(?:\\.\\d+)?)"
-const val ABV_REGEX = "${DOUBLE_REGEX}\\s*%"
-const val SIZE_REGEX = "${INT_REGEX}\\s*(?:ml|ML)"   // TODO - expand to other units
 
 private val BEER_ACRONYMS = listOf(
   "IPL",

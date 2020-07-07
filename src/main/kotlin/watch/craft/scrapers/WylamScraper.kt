@@ -23,23 +23,23 @@ class WylamScraper : Scraper {
         Leaf(rawName, a.hrefFrom()) { doc ->
           val data = doc.jsonFrom<Data>("script[type=application/ld+json]:not(.yoast-schema-graph)")
 
-          val abvParts = rawName.maybeExtract(ABV_REGEX)
-          val servingParts = rawName.maybeExtract("${INT_REGEX}\\s*x\\s*${INT_REGEX}")
+          val abv = rawName.maybe{ abvFrom() }
+          val numItems = rawName.maybe { extract("${INT_REGEX}\\s*x") }?.get(1)?.toInt()
 
-          if (abvParts == null || servingParts == null) {
+          if (abv == null || numItems == null) {
             throw SkipItemException("Couldn't extract all parts, so assume it's not a beer")
           }
 
-          val nameParts = rawName.extract("^([^(|]*)\\s*(?:\\((.*)\\))?", ignoreCase = true)
+          val nameParts = rawName.extract("^([^(|]*)\\s*(?:\\((.*)\\))?")
 
           ScrapedItem(
             name = nameParts[1].trim(),
             summary = nameParts[2].trim().ifBlank { null },
-            desc = doc.normaliseParagraphsFrom(".product-details__product-description"),
-            sizeMl = servingParts[2].toInt(),
-            abv = abvParts[1].toDouble(),
+            desc = doc.formattedTextFrom(".product-details__product-description"),
+            sizeMl = rawName.sizeMlFrom(),
+            abv = abv,
             available = data.offers.availability == "http://schema.org/InStock",
-            numItems = servingParts[1].toInt(),
+            numItems = numItems,
             price = data.offers.price,
             thumbnailUrl = el.srcFrom("img.grid-product__picture")
           )
