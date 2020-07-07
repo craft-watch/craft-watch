@@ -53,7 +53,10 @@ jobs:
 
   build_frontend:
     runs-on: ubuntu-latest
-    working-directory: frontend
+
+    defaults:
+      run:
+        working-directory: frontend
 
     steps:
       - uses: actions/checkout@v2
