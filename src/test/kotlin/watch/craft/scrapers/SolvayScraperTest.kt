@@ -10,43 +10,52 @@ import java.net.URI
 
 class SolvayScraperTest {
   companion object {
-    private val ITEMS = executeScraper(SolvayScraper(), dateString = null)
+    private val ITEMS = executeScraper(SolvayScraper(), dateString = "2020-07-07")
   }
 
   @Test
   fun `finds all the beers`() {
-    ITEMS.forEach { println(it.noDesc()) }
-//    assertEquals(2, ITEMS.size)
+//    ITEMS.forEach { println(it.noDesc()) }
+    assertEquals(8, ITEMS.size)
   }
 
-//  @Test
-//  fun `extracts beer details`() {
-//    assertEquals(
-//      ScrapedItem(
-//        name = "Lulla",
-//        abv = 3.5,
-//        sizeMl = 440,
-//        price = 3.99,
-//        available = true,
-//        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0286/3471/0061/products/Cans_800x800_crop_center.jpg?v=1593009635")
-//      ),
-//      ITEMS.byName("Lulla").noDesc()
-//    )
-//  }
-//
-//  @Test
-//  fun `extracts description`() {
-//    assertNotNull(ITEMS.byName("Lulla").desc)
-//  }
-//
-//  @Test
-//  fun `identifies multi-packs`() {
-//    assertEquals(6, ITEMS.byName("Parade").numItems)
-//  }
-//
-//  @Test
-//  fun `identifies sold out`() {
-//    assertFalse(ITEMS.byName("Parade").available)
-//  }
+  @Test
+  fun `extracts beer details`() {
+    assertEquals(
+      ScrapedItem(
+        name = "Charm",
+        summary = "Barrel-Aged Amber Ale",
+        abv = 6.3,
+        sizeMl = 750,
+        price = 12.80,
+        available = true,
+        thumbnailUrl = URI("https://static1.squarespace.com/static/5e3fd955244c110e4deb8fff/5eec7c5c91751c60400a0ed2/5eec941ff809127782259a36/1592567567620/")
+      ),
+      ITEMS.byName("Charm").noDesc()
+    )
+  }
+
+  @Test
+  fun `extracts description`() {
+    assertNotNull(ITEMS.byName("Charm").desc)
+  }
+
+  @Test
+  fun `identifies multi-packs`() {
+    assertEquals(6, ITEMS.byName("8:20").numItems)
+  }
+
+  @Test
+  fun `identifies mixed`() {
+    assertFalse(ITEMS.none { it.mixed })
+  }
+
+  @Test
+  fun `identifies kegs`() {
+    val items = ITEMS.filter { it.keg }
+
+    assertFalse(items.isEmpty())
+    assertTrue(items.all { it.sizeMl!! >= 1000 })
+  }
 }
 

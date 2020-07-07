@@ -13,7 +13,9 @@ val CATEGORY_KEYWORDS = mapOf(
     "Pale",
     "Pale Ale",
     "Blonde",
-    "Blonde Ale"
+    "Blonde Ale",
+    "Saison",
+    "Amber Ale"
   ),
   "IPA" to listOf(
     "IPA",

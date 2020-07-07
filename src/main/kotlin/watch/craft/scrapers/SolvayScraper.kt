@@ -20,20 +20,20 @@ class SolvayScraper : Scraper {
         val rawName = el.textFrom(".grid-title")
 
         Leaf(rawName, el.hrefFrom("a.grid-item-link")) { doc ->
-          val nameParts = rawName.extract("(.*?)\\s+\\|\\s+(.*?)\\s+${ABV_REGEX}")
-          // TODO - mixed pack
-
+          val nameParts = rawName.extract("(.*?)\\s+\\|\\s+(?:(.*?)\\s+\\d)?")
           val desc = doc.selectFrom(".ProductItem-details-excerpt")
-
+          val mixed = rawName.contains("mixed", ignoreCase = true)
 
           ScrapedItem(
             name = nameParts[1],
-            summary = nameParts[2],
+            summary = if (mixed) null else nameParts[2],
             desc = desc.formattedTextFrom(),
-            abv = nameParts[3].toDouble(),
-            sizeMl = desc.sizeMlFrom(),
+            mixed = mixed,
+            keg = rawName.contains("keg", ignoreCase = true),
+            abv = if (mixed) null else rawName.abvFrom(),
+            sizeMl = if (mixed) null else desc.sizeMlFrom(),
             available = true,
-            numItems = 1,
+            numItems = rawName.maybe { extract("(\\d+) pack") }?.get(1)?.toInt() ?: 1,
             price = el.priceFrom(".product-price"),
             thumbnailUrl = el.dataSrcFrom("img.grid-image-cover")
           )
