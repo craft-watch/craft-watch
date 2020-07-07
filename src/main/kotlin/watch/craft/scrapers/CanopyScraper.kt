@@ -36,7 +36,7 @@ class CanopyScraper : Scraper {
             summary = null,
             desc = doc.maybeWholeTextFrom(".product-description"),
             available = !(el.text().contains("Sold out", ignoreCase = true)),
-            sizeMl = doc.extractFrom(regex = "(\\d+)ml")[1].toInt(),
+            sizeMl = doc.sizeMlFrom(),
             abv = if (parts[2].isBlank()) null else parts[2].toDouble(),
             price = el.extractFrom(regex = "£(\\d+\\.\\d+)")[1].toDouble()
           )

@@ -39,7 +39,6 @@ class NorthernMonkScraper : Scraper {
         Leaf(rawName, el.hrefFrom(".card__wrapper")) { doc ->
           val desc = doc.selectFrom(".product__description")
           val abv = desc.maybeExtractFrom(regex = ABV_REGEX)?.get(1)?.toDouble()
-          val sizeMl = desc.maybeExtractFrom(regex = SIZE_REGEX)?.get(1)?.toInt()
           val mixed = desc.children()
             .count { it.text().contains(ITEM_MULTIPLE_REGEX.toRegex(IGNORE_CASE)) } > 1
 
@@ -60,12 +59,12 @@ class NorthernMonkScraper : Scraper {
             } else {
               rawName.maybeExtract("[^/]+\\s+//\\s+(.*)")?.get(1)
             },
-            desc = desc.normaliseParagraphsFrom(),
+            desc = desc.formattedTextFrom(),
             mixed = mixed,
-            sizeMl = sizeMl,
+            sizeMl = desc.maybe { sizeMlFrom() },
             abv = abv,
             available = true,
-            numItems = rawName.maybeExtract(PACK_REGEX, ignoreCase = true)?.get(1)?.toInt() ?: 1,
+            numItems = rawName.maybeExtract(PACK_REGEX)?.get(1)?.toInt() ?: 1,
             price = el.priceFrom(".card__price"),
             thumbnailUrl = URI(
               // The URLs are dynamically created

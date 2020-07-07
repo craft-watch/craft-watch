@@ -30,7 +30,7 @@ inline fun <reified T: Any> Element.jsonFrom(cssQuery: String = ":root") = selec
   }
 }
 
-fun Element.normaliseParagraphsFrom(cssQuery: String = ":root") = with(MyVisitor()) {
+fun Element.formattedTextFrom(cssQuery: String = ":root") = with(MyVisitor()) {
   NodeTraversor.traverse(this, selectFirst(cssQuery))
   toString()
 }
@@ -74,7 +74,19 @@ private class MyVisitor : NodeVisitor {
   }
 }
 
+fun <T, R> T.maybe(block: T.() -> R) = try {
+  block(this)
+} catch (e: MalformedInputException) {
+  null
+}
+
 fun Element.priceFrom(cssQuery: String = ":root") = extractFrom(cssQuery, "\\d+(\\.\\d+)?")[0].toDouble()
+
+fun Element.sizeMlFrom(cssQuery: String = ":root") = textFrom(cssQuery).sizeMlFrom()
+fun String.sizeMlFrom() = maybeExtract("${INT_REGEX}\\s*ml(?:\\W|$)")?.let { it[1].toInt() }
+  ?: maybeExtract("${INT_REGEX}(?:\\s*|-)litre(?:s?)(?:\\W|$)")?.let { it[1].toInt() * 1000 }
+  ?: maybeExtract("${INT_REGEX}\\s*l(?:\\W|$)")?.let { it[1].toInt() * 1000 }
+  ?: throw MalformedInputException("Can't extract size")
 
 fun Element.extractFrom(cssQuery: String = ":root", regex: String) = textFrom(cssQuery).extract(regex)
 fun Element.maybeExtractFrom(cssQuery: String = ":root", regex: String) = maybeTextFrom(cssQuery)?.maybeExtract(regex)
@@ -107,11 +119,11 @@ fun Element.selectMultipleFrom(cssQuery: String) = maybeSelectMultipleFrom(cssQu
 fun Element.maybeSelectMultipleFrom(cssQuery: String): Elements = select(cssQuery)
 
 
-fun String.extract(regex: String, ignoreCase: Boolean = false) = maybeExtract(regex, ignoreCase)
+fun String.extract(regex: String, ignoreCase: Boolean = true) = maybeExtract(regex, ignoreCase)
   ?: throw MalformedInputException("Can't extract regex: ${regex}")
-fun String.maybeExtract(regex: String, ignoreCase: Boolean = false) = regex.toRegex(regexOptions(ignoreCase)).find(this)?.groupValues
+fun String.maybeExtract(regex: String, ignoreCase: Boolean = true) = regex.toRegex(regexOptions(ignoreCase)).find(this)?.groupValues
 
-private fun regexOptions(ignoreCase: Boolean = false) = if (ignoreCase) {
+private fun regexOptions(ignoreCase: Boolean) = if (ignoreCase) {
   setOf(DOT_MATCHES_ALL, IGNORE_CASE)
 } else {
   setOf(DOT_MATCHES_ALL)

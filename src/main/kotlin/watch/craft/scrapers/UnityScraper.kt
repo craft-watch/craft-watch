@@ -20,15 +20,14 @@ class UnityScraper : Scraper {
 
         Leaf(details.title, details.url) { doc ->
           val desc = doc.textFrom(".product-single__description")
-          val parts = desc.extract("(\\d+)ml / (\\d(\\.\\d+)?)%")
 
           ScrapedItem(
             name = details.title,
             summary = null,
             desc = desc,
             mixed = false,
-            sizeMl = parts[1].toInt(),
-            abv = parts[2].toDouble(),
+            sizeMl = desc.sizeMlFrom(),
+            abv = desc.extract("(\\d(\\.\\d+)?)%")[1].toDouble(),
             available = details.available,
             numItems = 1,
             price = details.price,

@@ -21,9 +21,9 @@ class StewartScraper : Scraper {
 
         Leaf(a.text(), a.hrefFrom()) { doc ->
           val alco = doc.maybeSelectFrom(".alco")
-          val volume = doc.maybeSelectFrom(".volume")
+          val sizeMl = doc.maybe { sizeMlFrom(".volume") }
 
-          if (alco == null || volume == null) {
+          if (alco == null || sizeMl == null) {
             throw SkipItemException("Couldn't find ABV or volume")
           }
 
@@ -32,7 +32,7 @@ class StewartScraper : Scraper {
             name = removeSizeSuffix(a.text()),
             summary = el.maybeTextFrom(".itemStyle"),
             abv = alco.extractFrom(regex = "(\\d+(\\.\\d+)?)%")[1].toDouble(),
-            sizeMl = volume.extractFrom(regex = "(\\d+)ml")[1].toInt(),
+            sizeMl = sizeMl,
             available = true,
             price = doc.extractFrom(".priceNow", "£(\\d+\\.\\d+)")[1].toDouble()
           )

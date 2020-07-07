@@ -54,8 +54,11 @@ class PillarsScraper : Scraper {
       TitleParts(name = parts[1], numItems = parts[2].toInt())
     }
     title.contains("Keg") -> {
-      val parts = title.extract("(.*?) (\\d+)L")
-      TitleParts(name = parts[1], sizeMl = parts[2].toInt() * 1000, keg = true)
+      TitleParts(
+        name = title.extract("(.*?) \\d+")[1],
+        sizeMl = title.sizeMlFrom(),
+        keg = true
+      )
     }
     else -> TitleParts(name = title)
   }

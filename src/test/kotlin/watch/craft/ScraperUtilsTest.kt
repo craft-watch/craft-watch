@@ -4,26 +4,47 @@ import org.jsoup.Jsoup
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 class ScraperUtilsTest {
   @Nested
-  inner class NormaliseParagrahsFrom {
+  inner class SizeFrom {
+    @Test
+    fun millilitres() {
+      assertEquals(550, "550 ml".sizeMlFrom())
+      assertEquals(550, "550 mL".sizeMlFrom())
+      assertEquals(550, "550 ML".sizeMlFrom())
+      assertEquals(550, "550   ml".sizeMlFrom())
+      assertEquals(550, "550ml".sizeMlFrom())
+    }
 
     @Test
+    fun litres() {
+      assertEquals(3000, "3 litre".sizeMlFrom())
+      assertEquals(3000, "3 litres".sizeMlFrom())
+      assertEquals(3000, "3L".sizeMlFrom())
+      assertEquals(3000, "3l".sizeMlFrom())
+      assertEquals(3000, "3-litre".sizeMlFrom())
+    }
+
+    @Test
+    fun `true negatives`() {
+      assertThrows<MalformedInputException> { "3 llamas".sizeMlFrom() }
+      assertThrows<MalformedInputException> { "550 mlady".sizeMlFrom() }
+    }
+  }
+
+  @Nested
+  inner class FormattedTextFrom {
+    @Test
     fun `drops headers`() {
-      val doc = Jsoup.parse("""
-        <html>
-        <body>
-        <div class="desc">
-          <h1>Description</h1>
-          <p>Hello there.</p>
-          Wat.
-          <h2>Some other stuff</h2>
-          <p>Goodbye.</h2>
-        </div>
-        </body>
-        </html>
-      """.trimIndent())
+      val doc = docFromFragment("""
+        <h1>Description</h1>
+        <p>Hello there.</p>
+        Wat.
+        <h2>Some other stuff</h2>
+        <p>Goodbye.</h2>
+      """)
 
       assertEquals(
         listOf(
@@ -32,24 +53,18 @@ class ScraperUtilsTest {
           "Goodbye.",
           ""    // Due to trailing newline
         ),
-        doc.normaliseParagraphsFrom(".desc").split("\n")
+        doc.formattedTextFrom(TARGET).split("\n")
       )
     }
 
     @Test
     fun `handles br`() {
-      val doc = Jsoup.parse("""
-        <html>
-        <body>
-        <div class="desc">
-          <p>
-            Hello mummy. <br/>
-            What do you want?
-          </p>
-        </div>
-        </body>
-        </html>
-      """.trimIndent())
+      val doc = docFromFragment("""
+        <p>
+          Hello mummy. <br/>
+          What do you want?
+        </p>
+      """)
 
       assertEquals(
         listOf(
@@ -57,49 +72,43 @@ class ScraperUtilsTest {
           "What do you want?",
           ""    // Due to trailing newline
         ),
-        doc.normaliseParagraphsFrom(".desc").split("\n")
+        doc.formattedTextFrom(TARGET).split("\n")
       )
     }
 
     /** Derived from something seen for real on Northern Monk product page. */
     @Test
     fun `deals with complex mess`() {
-      val doc = Jsoup.parse("""
-        <html>
-        <body>
-        <div class="desc">
-          <p>
-            <span>
-              <strong>
-                Foo
-                <span>Bar</span>
-                <span>Baz</span>
-              </strong>
-            </span>
-          </p>
+      val doc = docFromFragment("""
+        <p>
+          <span>
+            <strong>
+              Foo
+              <span>Bar</span>
+              <span>Baz</span>
+            </strong>
+          </span>
+        </p>
 
-          <p>
-            <strong>Hello</strong>
-          </p>
+        <p>
+          <strong>Hello</strong>
+        </p>
 
+        <div>
           <div>
             <div>
               <div>
-                <div>
 
-                  <p><span>What. </span></p>
+                <p><span>What. </span></p>
 
-                  <p><span>Naughty </span>little men.</p>
+                <p><span>Naughty </span>little men.</p>
 
-                  <p><span>Goodbye </span></p>
-                </div>
+                <p><span>Goodbye </span></p>
               </div>
             </div>
           </div>
         </div>
-        </body>
-        </html>
-      """.trimIndent())
+      """)
 
       assertEquals(
         listOf(
@@ -110,7 +119,7 @@ class ScraperUtilsTest {
           "Goodbye",
           ""    // Due to trailing newline
         ),
-        doc.normaliseParagraphsFrom(".desc").split("\n")
+        doc.formattedTextFrom(TARGET).split("\n")
       )
     }
   }
@@ -162,4 +171,17 @@ class ScraperUtilsTest {
     }
   }
 
+  private fun docFromFragment(raw: String) = Jsoup.parse("""
+    <html>
+    <body>
+    <div class="${TARGET.removePrefix(".")}">
+      ${raw}
+    </div>
+    </body>
+    </html>
+  """.trimIndent())
+
+  companion object {
+    private const val TARGET = ".target"
+  }
 }

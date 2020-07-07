@@ -24,7 +24,7 @@ class RedchurchScraper : Scraper {
         Leaf(rawName, title.hrefFrom("a")) { doc ->
           val nameParts = rawName.extract(regex = "(Mixed Case - )?(.*)")
           val mixed = !nameParts[1].isBlank()
-          val sizeMl = doc.maybeExtractFrom(regex = "(\\d+)(ML|ml)")?.get(1)?.toInt()
+          val sizeMl = doc.maybe { sizeMlFrom() }
           val abv = doc.maybeExtractFrom(regex = "(\\d+(\\.\\d+)?)%")?.get(1)?.toDouble()
 
           if (!mixed && sizeMl == null && abv == null) {

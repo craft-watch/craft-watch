@@ -36,7 +36,7 @@ class SirenScraper : Scraper {
           ScrapedItem(
             name = rawName.replace("(\\d+)L Mini Keg - ".toRegex(), ""),
             summary = if (keg) null else details[1],
-            desc = doc.normaliseParagraphsFrom(".about"),
+            desc = doc.formattedTextFrom(".about"),
             keg = keg,
             mixed = false,
             sizeMl = if (keg) 5000 else details[4].toInt(),

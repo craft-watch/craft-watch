@@ -24,19 +24,19 @@ class WylamScraper : Scraper {
           val data = doc.jsonFrom<Data>("script[type=application/ld+json]:not(.yoast-schema-graph)")
 
           val abvParts = rawName.maybeExtract(ABV_REGEX)
-          val servingParts = rawName.maybeExtract("${INT_REGEX}\\s*x\\s*${INT_REGEX}")
+          val servingParts = rawName.maybeExtract("${INT_REGEX}\\s*x")
 
           if (abvParts == null || servingParts == null) {
             throw SkipItemException("Couldn't extract all parts, so assume it's not a beer")
           }
 
-          val nameParts = rawName.extract("^([^(|]*)\\s*(?:\\((.*)\\))?", ignoreCase = true)
+          val nameParts = rawName.extract("^([^(|]*)\\s*(?:\\((.*)\\))?")
 
           ScrapedItem(
             name = nameParts[1].trim(),
             summary = nameParts[2].trim().ifBlank { null },
-            desc = doc.normaliseParagraphsFrom(".product-details__product-description"),
-            sizeMl = servingParts[2].toInt(),
+            desc = doc.formattedTextFrom(".product-details__product-description"),
+            sizeMl = rawName.sizeMlFrom(),
             abv = abvParts[1].toDouble(),
             available = data.offers.availability == "http://schema.org/InStock",
             numItems = servingParts[1].toInt(),

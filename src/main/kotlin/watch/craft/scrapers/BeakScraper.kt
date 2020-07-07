@@ -27,11 +27,11 @@ class BeakScraper : Scraper {
           ScrapedItem(
             name = rawName.split(" ")[0].toTitleCase(),
             summary = null,
-            desc = desc.normaliseParagraphsFrom(),
-            sizeMl = allTheText.extract(ML_REGEX, ignoreCase = true)[1].toInt(),
+            desc = desc.formattedTextFrom(),
+            sizeMl = allTheText.sizeMlFrom(),
             abv = allTheText.extract(ABV_REGEX)[1].toDouble(),
             available = !a.text().contains("Sold Out", ignoreCase = true),
-            numItems = allTheText.maybeExtract(NUM_ITEMS_REGEX, ignoreCase = true)?.get(1)?.toInt() ?: 1,
+            numItems = allTheText.maybeExtract(NUM_ITEMS_REGEX)?.get(1)?.toInt() ?: 1,
             price = a.priceFrom(".price"),
             thumbnailUrl = a.srcFrom("img")
           )

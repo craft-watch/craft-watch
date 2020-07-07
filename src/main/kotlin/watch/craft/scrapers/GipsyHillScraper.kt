@@ -42,7 +42,7 @@ class GipsyHillScraper : Scraper {
             mixed = mixed,
             available = true, // TODO
             abv = if (mixed) null else rawSummary.maybeExtract("ABV: (\\d+(\\.\\d+)?)")?.get(1)?.toDouble(),
-            sizeMl = rawSummary.maybeExtract("(\\d+)ml")?.get(1)?.toInt(),
+            sizeMl = rawSummary.maybe { sizeMlFrom() },
             numItems = numCans,
             price = el.ownTextFrom(".woocommerce-Price-amount").toDouble()
           )

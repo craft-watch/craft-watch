@@ -30,7 +30,7 @@ class PollysScraper : Scraper {
           ScrapedItem(
             name = parts[1],
             summary = parts[2],
-            desc = doc.normaliseParagraphsFrom("#tab-description"),
+            desc = doc.formattedTextFrom("#tab-description"),
             mixed = false,
             sizeMl = POLLYS_CAN_SIZE_ML,
             abv = parts[3].toDouble(),

@@ -34,9 +34,9 @@ class ThornbridgeScraper : Scraper {
             thumbnailUrl = doc.srcFrom(".product__image-wrapper img"),
             name = parts[1].replace(" (bottle|can)$".toRegex(IGNORE_CASE), ""),
             summary = parts[4],
-            desc = desc.normaliseParagraphsFrom(),
+            desc = desc.formattedTextFrom(),
             mixed = false,
-            sizeMl = desc.maybeExtractFrom(regex = "(\\d+)ml")?.get(1)?.toInt(),
+            sizeMl = desc.maybe { sizeMlFrom() },
             abv = parts[2].toDouble(),
             available = "sold-out" !in el.classNames(),
             numItems = desc.maybeExtractFrom(regex = "(\\d+)\\s*x")?.get(1)?.toInt()

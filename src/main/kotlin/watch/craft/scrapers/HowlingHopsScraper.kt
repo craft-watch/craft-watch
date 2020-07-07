@@ -22,7 +22,8 @@ class HowlingHopsScraper : Scraper {
         val rawName = el.textFrom(".wc-block-grid__product-title")
 
         Leaf(rawName, a.hrefFrom()) { doc ->
-          val parts = extractVariableParts(doc.textFrom(".woocommerce-product-details__short-description"))
+          val desc = doc.textFrom(".woocommerce-product-details__short-description")
+          val parts = extractVariableParts(desc)
 
           ScrapedItem(
             thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
@@ -31,7 +32,7 @@ class HowlingHopsScraper : Scraper {
             desc = doc.maybeWholeTextFrom(".woocommerce-product-details__short-description"),
             mixed = parts.mixed,
             available = doc.textFrom(".stock") == "In stock",
-            sizeMl = parts.sizeMl,
+            sizeMl = desc.sizeMlFrom(),
             abv = parts.abv,
             numItems = parts.numCans,
             price = el.selectMultipleFrom(".woocommerce-Price-amount")
@@ -48,27 +49,24 @@ class HowlingHopsScraper : Scraper {
     val name: String,
     val summary: String? = null,
     val abv: Double? = null,
-    val sizeMl: Int,
     val numCans: Int,
     val mixed: Boolean = false
   )
 
   private fun extractVariableParts(desc: String): VariableParts {
-    val parts = desc.maybeExtract("([^/]*?) / ([^/]*?) / (\\d+) x (\\d+)ml / (\\d+(\\.\\d+)?)% ABV")
+    val parts = desc.maybeExtract("([^/]*?) / ([^/]*?) / (\\d+) (?:.*?) / (\\d+(\\.\\d+)?)% ABV")
     return if (parts != null) {
       VariableParts(
         name = parts[1],
         summary = parts[2],
-        sizeMl = parts[4].toInt(),
-        abv = parts[5].toDouble(),
+        abv = parts[4].toDouble(),
         numCans = parts[3].toInt()
       )
     } else {
-      val betterParts = desc.extract("(.*?) (\\d+) x (\\d+)ml")
+      val betterParts = desc.extract("(.*?) (\\d+) x")
       val numCans = betterParts[2].toInt()
       VariableParts(
         name = betterParts[1],
-        sizeMl = betterParts[3].toInt(),
         numCans = numCans,
         mixed = true
       )

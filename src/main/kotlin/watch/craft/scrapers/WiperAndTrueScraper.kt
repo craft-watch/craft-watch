@@ -29,7 +29,7 @@ class WiperAndTrueScraper : Scraper {
           ScrapedItem(
             name = rawName.extract("(.*?) Case")[1],
             summary = parts.summary,
-            desc = desc.normaliseParagraphsFrom(),
+            desc = desc.formattedTextFrom(),
             mixed = parts.mixed,
             sizeMl = parts.sizeMl,
             abv = parts.abv,
@@ -49,13 +49,13 @@ class WiperAndTrueScraper : Scraper {
         numItems = 12    // TODO - hardcoded
       )
     } else {
-      val parts = desc.maybeExtractFrom("p", "(\\d+)x\\s+(\\d+)ml.*?(\\d(\\.\\d+)?)%\\s+(.*)\\.")
+      val parts = desc.maybeExtractFrom("p", "(\\d+).*?(\\d(\\.\\d+)?)%\\s+(.*)\\.")
         ?: throw SkipItemException("Can't find details, so assuming it's not a beer")
       VariableParts(
         mixed = false,
-        summary = parts[5],
-        abv = parts[3].toDouble(),
-        sizeMl = parts[2].toInt(),
+        summary = parts[4],
+        abv = parts[2].toDouble(),
+        sizeMl = desc.sizeMlFrom(),
         numItems = parts[1].toInt()
       )
     }
