@@ -66,7 +66,8 @@ class MarbleScraper : Scraper {
     )
   }
 
-  private fun Document.extractAttributes() = selectMultipleFrom(".shop_attributes tr")
+  private fun Document.extractAttributes() = maybeSelectMultipleFrom(".shop_attributes tr")
+    .ifEmpty { throw SkipItemException("No attributes, so can't process") }
     .associate { it.textFrom("th") to it.textFrom("td") }
 
   companion object {
