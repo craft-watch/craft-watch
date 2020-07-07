@@ -1,6 +1,11 @@
 name: Build
 on: [push]
 
+# TODO - Service-account secret
+# TODO - Gradle cache
+# TODO - job for Run scraper
+# TODO - test results / logs
+
 jobs:
 
   test_backend:

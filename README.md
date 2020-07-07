@@ -3,6 +3,11 @@
 Mostly notes for myself right now.
 
 
+## GitHub actions
+
+**TODO: created PAT with workflow scope**
+
+
 ## CircleCI
 
 Requires the following secret things:
