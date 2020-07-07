@@ -3,6 +3,7 @@ package watch.craft.scrapers
 import watch.craft.*
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
+import watch.craft.utils.*
 import java.net.URI
 
 class WylamScraper : Scraper {
@@ -23,8 +24,8 @@ class WylamScraper : Scraper {
         Leaf(rawName, a.hrefFrom()) { doc ->
           val data = doc.jsonFrom<Data>("script[type=application/ld+json]:not(.yoast-schema-graph)")
 
-          val abv = rawName.maybe{ abvFrom() }
-          val numItems = rawName.maybe { extract("${INT_REGEX}\\s*x") }?.get(1)?.toInt()
+          val abv = rawName.maybe { abvFrom() }
+          val numItems = rawName.maybe { extract("$INT_REGEX\\s*x") }?.get(1)?.toInt()
 
           if (abv == null || numItems == null) {
             throw SkipItemException("Couldn't extract all parts, so assume it's not a beer")

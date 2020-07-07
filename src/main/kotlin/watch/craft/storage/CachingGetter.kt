@@ -1,7 +1,7 @@
 package watch.craft.storage
 
 import mu.KotlinLogging
-import watch.craft.sha1
+import watch.craft.utils.sha1
 import java.net.URI
 
 class CachingGetter(

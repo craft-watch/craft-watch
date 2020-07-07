@@ -4,7 +4,7 @@ import com.nhaarman.mockitokotlin2.*
 import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
-import watch.craft.sha1
+import watch.craft.utils.sha1
 import java.net.URI
 
 class CachingGetterTest {

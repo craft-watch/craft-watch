@@ -5,6 +5,7 @@ import org.jsoup.nodes.Element
 import watch.craft.*
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
+import watch.craft.utils.*
 import java.net.URI
 
 class FourpureScraper : Scraper {

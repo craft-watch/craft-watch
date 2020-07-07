@@ -1,4 +1,4 @@
-package watch.craft
+package watch.craft.utils
 
 import org.jsoup.nodes.Document
 import java.net.URI
