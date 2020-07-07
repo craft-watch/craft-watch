@@ -55,8 +55,8 @@ class PillarsScraperTest {
   }
 
   @Test
-  fun `sanitises description`() {
-    assertFalse(ITEMS.byName("Pillars Icebock").desc!!.contains("STYLE"))
+  fun `extracts description`() {
+    assertNotNull(ITEMS.byName("Pillars Icebock").desc)
   }
 }
 
