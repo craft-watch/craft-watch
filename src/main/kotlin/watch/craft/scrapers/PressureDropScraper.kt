@@ -32,7 +32,7 @@ class PressureDropScraper : Scraper {
             thumbnailUrl = a.srcFrom("noscript img"),
             name = parts[1],
             summary = parts[3].ifBlank { null },
-            desc = doc.maybeWholeTextFrom(".product-description"),
+            desc = doc.maybe { wholeTextFrom(".product-description") },
             abv = itemText.maybeExtract("(\\d+(\\.\\d+)?)\\s*%")?.get(1)?.toDouble(),
             sizeMl = itemText.maybe { sizeMlFrom() },
             available = true,

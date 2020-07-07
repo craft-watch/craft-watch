@@ -39,7 +39,7 @@ class PadstowScraper : Scraper {
           ScrapedItem(
             thumbnailUrl = el.srcFrom(".attachment-woocommerce_thumbnail"),
             name = name,
-            summary = doc.maybeTextFrom(".tag_line")?.replace(" \\d+(\\.\\d+)?%$".toRegex(), ""),
+            summary = doc.maybe { textFrom(".tag_line") }?.replace(" \\d+(\\.\\d+)?%$".toRegex(), ""),
             desc = doc.textFrom(".post_content"),
             mixed = mixed,
             keg = rawName.contains("mini( ?)keg".toRegex(IGNORE_CASE)),

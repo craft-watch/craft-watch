@@ -74,6 +74,12 @@ private class MyVisitor : NodeVisitor {
   }
 }
 
+fun <T, R> T.orSkip(message: String, block: T.() -> R) = try {
+  block(this)
+} catch (e: MalformedInputException) {
+  throw SkipItemException(message)
+}
+
 fun <T, R> T.maybe(block: T.() -> R) = try {
   block(this)
 } catch (e: MalformedInputException) {
@@ -82,6 +88,9 @@ fun <T, R> T.maybe(block: T.() -> R) = try {
 
 fun Element.priceFrom(cssQuery: String = ":root") = extractFrom(cssQuery, "\\d+(\\.\\d+)?")[0].toDouble()
 
+fun Element.abvFrom(cssQuery: String = ":root") = textFrom(cssQuery).abvFrom()
+fun String.abvFrom() = extract(ABV_REGEX)[1].toDouble()
+
 fun Element.sizeMlFrom(cssQuery: String = ":root") = textFrom(cssQuery).sizeMlFrom()
 fun String.sizeMlFrom() = maybeExtract("${INT_REGEX}\\s*ml(?:\\W|$)")?.let { it[1].toInt() }
   ?: maybeExtract("${INT_REGEX}(?:\\s*|-)litre(?:s?)(?:\\W|$)")?.let { it[1].toInt() * 1000 }
@@ -89,13 +98,10 @@ fun String.sizeMlFrom() = maybeExtract("${INT_REGEX}\\s*ml(?:\\W|$)")?.let { it[
   ?: throw MalformedInputException("Can't extract size")
 
 fun Element.extractFrom(cssQuery: String = ":root", regex: String) = textFrom(cssQuery).extract(regex)
-fun Element.maybeExtractFrom(cssQuery: String = ":root", regex: String) = maybeTextFrom(cssQuery)?.maybeExtract(regex)
 
 fun Element.textFrom(cssQuery: String = ":root") = selectFrom(cssQuery).text().trim()
-fun Element.maybeTextFrom(cssQuery: String = ":root") = maybeSelectFrom(cssQuery)?.text()?.trim()
 
 fun Element.wholeTextFrom(cssQuery: String = ":root") = selectFrom(cssQuery).wholeText().trim()
-fun Element.maybeWholeTextFrom(cssQuery: String = ":root") = maybeSelectFrom(cssQuery)?.wholeText()?.trim()
 
 fun Element.ownTextFrom(cssQuery: String = ":root") = selectFrom(cssQuery).ownText().trim()
 

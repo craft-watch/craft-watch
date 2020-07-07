@@ -39,7 +39,7 @@ class ThornbridgeScraper : Scraper {
             sizeMl = desc.maybe { sizeMlFrom() },
             abv = parts[2].toDouble(),
             available = "sold-out" !in el.classNames(),
-            numItems = desc.maybeExtractFrom(regex = "(\\d+)\\s*x")?.get(1)?.toInt()
+            numItems = desc.maybe { extractFrom(regex = "(\\d+)\\s*x") }?.get(1)?.toInt()
               ?: rawName.maybeExtract(regex = "(\\d+)\\s*x")?.get(1)?.toInt()
               ?: 1,
             price = el.priceFrom(".product-item--price")

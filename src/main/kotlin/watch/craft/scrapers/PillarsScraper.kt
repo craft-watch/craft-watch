@@ -19,17 +19,15 @@ class PillarsScraper : Scraper {
       .map { details ->
         Leaf(details.title, details.url) { doc ->
           val titleParts = extractTitleParts(details.title)
-          val descParts = doc.maybeExtractFrom(
-            ".product-single__description",
-            "STYLE:\\s+(.+?)\\s+ABV:\\s+(\\d\\.\\d+)%"
-          )
-            ?: throw SkipItemException("Couldn't find style or ABV")  // If we don't see these fields, assume we're not looking at a beer product
+          val descParts = doc.orSkip("Couldn't find style or ABV") {
+            extractFrom(".product-single__description", "STYLE:\\s+(.+?)\\s+ABV:\\s+(\\d\\.\\d+)%")
+          }  // If we don't see these fields, assume we're not looking at a beer product
 
           ScrapedItem(
             thumbnailUrl = details.thumbnailUrl,
             name = titleParts.name,
             summary = descParts[1].toTitleCase(),
-            desc = doc.maybeWholeTextFrom(".product-single__description")?.extract("(.*?)STYLE:")?.get(1),
+            desc = doc.maybe { wholeTextFrom(".product-single__description") }?.extract("(.*?)STYLE:")?.get(1),
             keg = titleParts.keg,
             sizeMl = titleParts.sizeMl,
             abv = descParts[2].toDouble(),

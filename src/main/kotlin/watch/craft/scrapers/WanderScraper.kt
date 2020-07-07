@@ -28,7 +28,7 @@ class WanderScraper : Scraper {
 
           ScrapedItem(
             name = name,
-            summary = desc.maybeExtractFrom("p", ".+[ \u00A0]-[ \u00A0](.+)")?.get(1),  // Grotesque heterogeneous space characters
+            summary = desc.maybe { extractFrom("p", ".+[ \u00A0]-[ \u00A0](.+)") }?.get(1),  // Grotesque heterogeneous space characters
             desc = desc.formattedTextFrom(),
             mixed = mixed,
             sizeMl = descText.sizeMlFrom(),

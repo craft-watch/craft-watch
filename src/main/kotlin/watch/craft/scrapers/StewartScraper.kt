@@ -30,7 +30,7 @@ class StewartScraper : Scraper {
           ScrapedItem(
             thumbnailUrl = el.srcFrom(".imageInnerWrap img"),
             name = removeSizeSuffix(a.text()),
-            summary = el.maybeTextFrom(".itemStyle"),
+            summary = el.maybe { textFrom(".itemStyle") },
             abv = alco.extractFrom(regex = "(\\d+(\\.\\d+)?)%")[1].toDouble(),
             sizeMl = sizeMl,
             available = true,

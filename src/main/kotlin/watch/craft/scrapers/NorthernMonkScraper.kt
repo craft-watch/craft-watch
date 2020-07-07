@@ -38,7 +38,7 @@ class NorthernMonkScraper : Scraper {
 
         Leaf(rawName, el.hrefFrom(".card__wrapper")) { doc ->
           val desc = doc.selectFrom(".product__description")
-          val abv = desc.maybeExtractFrom(regex = ABV_REGEX)?.get(1)?.toDouble()
+          val abv = desc.maybe { extractFrom(regex = ABV_REGEX) }?.get(1)?.toDouble()
           val mixed = desc.children()
             .count { it.text().contains(ITEM_MULTIPLE_REGEX.toRegex(IGNORE_CASE)) } > 1
 

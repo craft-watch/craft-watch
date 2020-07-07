@@ -25,7 +25,7 @@ class RedchurchScraper : Scraper {
           val nameParts = rawName.extract(regex = "(Mixed Case - )?(.*)")
           val mixed = !nameParts[1].isBlank()
           val sizeMl = doc.maybe { sizeMlFrom() }
-          val abv = doc.maybeExtractFrom(regex = "(\\d+(\\.\\d+)?)%")?.get(1)?.toDouble()
+          val abv = doc.maybe { abvFrom() }
 
           if (!mixed && sizeMl == null && abv == null) {
             throw SkipItemException("Can't identify ABV or size for non-mixed case, so assume it's not a beer")
@@ -39,7 +39,7 @@ class RedchurchScraper : Scraper {
               .replace("\\?.*".toRegex(), "")
               .toUri(),
             name = nameParts[2],
-            desc = doc.maybeWholeTextFrom(".product-single__description"),
+            desc = doc.maybe { wholeTextFrom(".product-single__description") },
             mixed = mixed,
             sizeMl = sizeMl,
             abv = abv,

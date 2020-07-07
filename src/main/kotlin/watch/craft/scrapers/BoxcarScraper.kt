@@ -26,7 +26,7 @@ class BoxcarScraper : Scraper {
             name = parts[1],
             abv = parts[2].toDouble(),
             summary = parts[3].ifBlank { null },
-            desc = doc.maybeWholeTextFrom(".product-single__description")
+            desc = doc.maybe { wholeTextFrom(".product-single__description") }
               ?.replace("^DESCRIPTION".toRegex(IGNORE_CASE), ""),
             sizeMl = details.title.sizeMlFrom(),
             available = details.available,
