@@ -24,19 +24,7 @@ jobs:
         env:
           GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
 
-#      - name: Run tests
-#        run: ./gradlew check
-#        env:
-#          GOOGLE_APPLICATION_CREDENTIALS: "${GITHUB_WORKSPACE}/service-key.json"
-
-      - name: Wat
-        run: ls -l "${GITHUB_WORKSPACE}"
-        shell: bash
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: "${GITHUB_WORKSPACE}/service-key.json"
-
-      - name: Wat 2
-        run: ls -l "${GOOGLE_APPLICATION_CREDENTIALS}"
-        shell: bash
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: "${GITHUB_WORKSPACE}"
+      - name: Run tests
+        run: |
+          export GOOGLE_APPLICATION_CREDENTIALS="${GITHUB_WORKSPACE}/service-key.json"
+          ./gradlew check
