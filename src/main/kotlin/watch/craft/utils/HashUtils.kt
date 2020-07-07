@@ -1,4 +1,4 @@
-package watch.craft
+package watch.craft.utils
 
 import java.security.MessageDigest
 

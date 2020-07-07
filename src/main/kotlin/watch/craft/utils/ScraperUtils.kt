@@ -1,4 +1,4 @@
-package watch.craft
+package watch.craft.utils
 
 import com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
@@ -9,8 +9,10 @@ import org.jsoup.nodes.Node
 import org.jsoup.nodes.TextNode
 import org.jsoup.select.NodeTraversor
 import org.jsoup.select.NodeVisitor
+import watch.craft.MalformedInputException
 import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.More
+import watch.craft.SkipItemException
 import java.net.URI
 import java.net.URISyntaxException
 import kotlin.math.round
@@ -98,9 +100,9 @@ fun String.abvFrom(
 ) = extract(prefix + DOUBLE_REGEX + (if (optionalPercent) "" else "\\s*%"))[1].toDouble()
 
 fun Element.sizeMlFrom(cssQuery: String = ":root") = textFrom(cssQuery).sizeMlFrom()
-fun String.sizeMlFrom() = maybe { extract("${INT_REGEX}\\s*ml(?:\\W|$)") }?.let { it[1].toInt() }
-  ?: maybe { extract("${INT_REGEX}(?:\\s*|-)litre(?:s?)(?:\\W|$)") }?.let { it[1].toInt() * 1000 }
-  ?: maybe { extract("${INT_REGEX}\\s*l(?:\\W|$)") }?.let { it[1].toInt() * 1000 }
+fun String.sizeMlFrom() = maybe { extract("$INT_REGEX\\s*ml(?:\\W|$)") }?.let { it[1].toInt() }
+  ?: maybe { extract("$INT_REGEX(?:\\s*|-)litre(?:s?)(?:\\W|$)") }?.let { it[1].toInt() * 1000 }
+  ?: maybe { extract("$INT_REGEX\\s*l(?:\\W|$)") }?.let { it[1].toInt() * 1000 }
   ?: throw MalformedInputException("Can't extract size")
 
 operator fun Element.contains(cssQuery: String) = selectFirst(cssQuery) != null

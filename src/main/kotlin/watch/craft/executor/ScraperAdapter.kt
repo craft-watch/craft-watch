@@ -15,7 +15,7 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.Job.More
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
-import watch.craft.storage.CachingGetter
+import watch.craft.network.CachingGetter
 import java.net.URI
 
 class ScraperAdapter(

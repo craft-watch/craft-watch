@@ -2,6 +2,7 @@ package watch.craft
 
 import com.fasterxml.jackson.module.kotlin.readValue
 import watch.craft.storage.SubObjectStore
+import watch.craft.utils.mapper
 import java.time.Instant
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
@@ -15,13 +16,12 @@ class ResultsManager(private val setup: Setup) {
     // TODO - log
   }
 
-  fun listHistoricalResults(): List<Instant> = setup.structure.results.list().map { Instant.from(formatter.parse(it)) }
+  fun listHistoricalResults(): List<Instant> = setup.results.list().map { Instant.from(formatter.parse(it)) }
 
   fun readMinimalHistoricalResult(timestamp: Instant) =
     mapper.readValue<MinimalInventory>(dir(timestamp).read(INVENTORY_FILENAME))
 
-  private fun dir(timestamp: Instant) =
-    SubObjectStore(setup.structure.results, formatter.format(timestamp))
+  private fun dir(timestamp: Instant) = SubObjectStore(setup.results, formatter.format(timestamp))
 
   private val formatter = DateTimeFormatter.ISO_DATE_TIME.withZone(ZoneOffset.UTC)
 }

@@ -7,7 +7,7 @@ import watch.craft.*
 import watch.craft.enrichers.Categoriser
 import watch.craft.enrichers.Newalyser
 import watch.craft.executor.ScraperAdapter.Result
-import watch.craft.storage.CachingGetter
+import watch.craft.network.CachingGetter
 import java.time.Clock
 import java.time.Instant
 

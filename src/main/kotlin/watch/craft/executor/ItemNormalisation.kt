@@ -2,8 +2,8 @@ package watch.craft.executor
 
 import watch.craft.InvalidItemException
 import watch.craft.Item
-import watch.craft.divideAsPrice
 import watch.craft.executor.ScraperAdapter.Result
+import watch.craft.utils.divideAsPrice
 
 fun Result.normalise() = Item(
   brewery = breweryName

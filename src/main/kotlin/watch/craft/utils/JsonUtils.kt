@@ -1,4 +1,4 @@
-package watch.craft
+package watch.craft.utils
 
 import com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES
 import com.fasterxml.jackson.databind.ObjectMapper

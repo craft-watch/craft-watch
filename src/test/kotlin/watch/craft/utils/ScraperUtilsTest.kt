@@ -1,10 +1,11 @@
-package watch.craft
+package watch.craft.utils
 
 import org.jsoup.Jsoup
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import watch.craft.MalformedInputException
 
 class ScraperUtilsTest {
   @Nested

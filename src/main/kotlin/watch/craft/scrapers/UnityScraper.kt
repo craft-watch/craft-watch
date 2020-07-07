@@ -1,8 +1,10 @@
 package watch.craft.scrapers
 
-import watch.craft.*
+import watch.craft.Brewery
+import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
+import watch.craft.utils.*
 import java.net.URI
 
 class UnityScraper : Scraper {
