@@ -7,6 +7,10 @@ terraform {
   }
 }
 
+provider "tls" {
+  version     = "~> 2.1.1"
+}
+
 provider "google" {
   version     = "~> 3.27"
   project     = "craft-watch"
@@ -65,10 +69,27 @@ resource "google_storage_bucket_iam_policy" "policy" {
   policy_data = data.google_iam_policy.admin.policy_data
 }
 
+resource "tls_private_key" "github_deploy" {
+  algorithm   = "RSA"
+}
+
+resource "github_repository_deploy_key" "deploy_key" {
+  title      = "CI deploy key"
+  repository = "craft-watch.github.io"
+  key        = tls_private_key.github_deploy.public_key_openssh
+  read_only  = false
+}
+
 resource "github_actions_secret" "gcloud_service_key" {
   repository       = "craft-watch"
   secret_name      = "GCLOUD_SERVICE_KEY"
   plaintext_value  = base64decode(google_service_account_key.circleci.private_key)
+}
+
+resource "github_actions_secret" "github_deploy_key" {
+  repository       = "craft-watch"
+  secret_name      = "DEPLOY_KEY"
+  plaintext_value  = tls_private_key.github_deploy.private_key_pem
 }
 
 output "circleci_key" {

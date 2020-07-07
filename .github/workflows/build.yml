@@ -1,7 +1,8 @@
 name: Build
 on: [push]
 
-# TODO - job for frontend deploy (master only)
+# TODO - job for frontend deploy
+# TODO - deploy only on master
 # TODO - job for Run scraper
 # TODO - cron schedule for scraper on master
 # TODO - refactor common bits?
@@ -88,6 +89,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Obtain SSH key
+        run: ssh-add - <<< "${{ secrets.DEPLOY_KEY }}"
 
       - name: Download build output
         uses: actions/download-artifact@v1
