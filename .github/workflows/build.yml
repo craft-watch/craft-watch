@@ -70,7 +70,7 @@ jobs:
           key: v1-yarn-{{ hashFiles('frontend/yarn.lock') }}
           restore-keys: v1-yarn-
 
-    - name: Install dependencies
+      - name: Install dependencies
         run: yarn install
 
       - name: Lint
