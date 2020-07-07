@@ -15,7 +15,6 @@ class SolvayScraperTest {
 
   @Test
   fun `finds all the beers`() {
-//    ITEMS.forEach { println(it.noDesc()) }
     assertEquals(8, ITEMS.size)
   }
 
