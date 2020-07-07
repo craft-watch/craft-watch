@@ -6,6 +6,7 @@ import java.net.URI
 interface Scraper {
   val brewery: Brewery
   val jobs: List<Job>
+  val rateLimitPeriodMillis: Int get() = 50
 
   sealed class Job {
     data class More(
