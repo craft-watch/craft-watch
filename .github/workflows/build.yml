@@ -32,8 +32,7 @@ jobs:
         with:
           path: ~/.gradle/caches
           key: v1-gradle-caches-{{ hashFiles('build.gradle.kts') }}
-          restore-keys:
-            - v1-gradle-caches-
+          restore-keys: v1-gradle-caches-
 
       - name: Run tests
         run: |
