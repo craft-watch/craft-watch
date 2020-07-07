@@ -13,6 +13,12 @@ provider "google" {
   region      = "europe-west2"
 }
 
+provider "github" {
+  version      = "~> 2.9.1"
+  token        = file(".credentials/github-token")
+  individual   = true
+}
+
 resource "google_storage_bucket" "backend" {
   name          = "backend.craft.watch"
   location      = "europe-west2"
@@ -28,6 +34,7 @@ resource "google_storage_bucket" "backend" {
   }
 }
 
+# TODO - rename
 resource "google_service_account" "circleci" {
   account_id   = "circleci"
   display_name = "CircleCI service account"
@@ -56,6 +63,12 @@ data "google_iam_policy" "admin" {
 resource "google_storage_bucket_iam_policy" "policy" {
   bucket = google_storage_bucket.backend.name
   policy_data = data.google_iam_policy.admin.policy_data
+}
+
+resource "github_actions_secret" "gcloud_service_key" {
+  repository       = "oliver-charlesworth/craft-watch"
+  secret_name      = "GCLOUD_SERVICE_KEY"
+  plaintext_value  = base64decode(google_service_account_key.circleci.private_key)
 }
 
 output "circleci_key" {
