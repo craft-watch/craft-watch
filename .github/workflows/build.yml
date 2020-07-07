@@ -18,7 +18,7 @@ jobs:
           java-version: 13.0.1
 
       - name: Create file for service key
-        run: echo "${GCLOUD_SERVICE_KEY}" > "~/service-key.json"
+        run: echo "${GCLOUD_SERVICE_KEY}" > "${GITHUB_WORKSPACE}/service-key.json"
         shell: bash
         env:
           GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
@@ -38,7 +38,7 @@ jobs:
 
       - name: Run tests
         run: |
-          export GOOGLE_APPLICATION_CREDENTIALS="~/service-key.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="${GITHUB_WORKSPACE}/service-key.json"
           ./gradlew --no-daemon check
 
       - name: Capture test results
