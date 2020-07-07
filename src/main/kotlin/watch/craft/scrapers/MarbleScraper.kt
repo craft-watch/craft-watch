@@ -1,7 +1,8 @@
 package watch.craft.scrapers
 
 import org.jsoup.nodes.Document
-import watch.craft.*
+import watch.craft.Brewery
+import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.utils.*

@@ -1,6 +1,9 @@
-package watch.craft.storage
+package watch.craft.network
 
 import mu.KotlinLogging
+import watch.craft.storage.FileDoesntExistException
+import watch.craft.storage.FileExistsException
+import watch.craft.storage.SubObjectStore
 import watch.craft.utils.sha1
 import java.net.URI
 

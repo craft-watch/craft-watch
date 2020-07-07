@@ -13,7 +13,7 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.Job.More
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.executor.ScraperAdapter.Result
-import watch.craft.storage.CachingGetter
+import watch.craft.network.CachingGetter
 import watch.craft.utils.textFrom
 import java.net.URI
 

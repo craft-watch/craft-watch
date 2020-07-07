@@ -1,9 +1,14 @@
 package watch.craft
 
-import watch.craft.storage.*
+import watch.craft.network.CachingGetter
+import watch.craft.storage.GcsObjectStore
+import watch.craft.storage.LocalObjectStore
+import watch.craft.storage.SubObjectStore
+import watch.craft.storage.WriteThroughObjectStore
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
 
 class Setup(dateString: String? = null) {
   private val live = dateString == null
@@ -19,11 +24,19 @@ class Setup(dateString: String? = null) {
     secondLevel = GcsObjectStore(GCS_BUCKET)
   )
 
-  val structure = StoreStructure(store, instant)
+  private val downloads = SubObjectStore(store, "${DOWNLOADS_DIR}/${DATE_FORMAT.format(instant)}")
+  val results = SubObjectStore(store, RESULTS_DIRNAME)
 
   val getter = if (live) {
-    CachingGetter(structure.downloads)
+    CachingGetter(downloads)
   } else {
-    CachingGetter(structure.downloads) { throw FatalScraperException("Non-live tests should not perform network gets") }
+    CachingGetter(downloads) { throw FatalScraperException("Non-live tests should not perform network gets") }
+  }
+
+  companion object {
+    const val DOWNLOADS_DIR = "downloads"
+    const val RESULTS_DIRNAME = "results"
+
+    private val DATE_FORMAT = DateTimeFormatter.ofPattern("YYYY-MM-dd").withZone(ZoneOffset.UTC)
   }
 }
