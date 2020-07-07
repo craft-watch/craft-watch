@@ -1,7 +1,6 @@
 name: Build
 on: [push]
 
-# TODO - job for frontend build
 # TODO - job for frontend deploy (master only)
 # TODO - job for Run scraper
 # TODO - cron schedule for scraper on master
@@ -14,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
       - uses: actions/setup-java@v1
         with:
           java-version: 13.0.1
@@ -58,7 +56,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - uses: actions/setup-node@v1
         with:
           node-version: 14.4.0
@@ -78,3 +75,24 @@ jobs:
 
       - name: Build
         run: yarn build
+
+      - name: Capture build output
+        uses: actions/upload-artifact@v1
+        with:
+          name: frontend-build
+          path: frontend/out
+
+  deploy_frontend:
+    needs: build_frontend
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download build output
+        uses: actions/download-artifact@v1
+        with:
+          name: frontend-build
+
+      - name: Deploy
+        run: ./scripts/deploy.sh
