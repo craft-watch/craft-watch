@@ -88,13 +88,20 @@ fun <T, R> T.maybe(block: T.() -> R) = try {
 
 fun Element.priceFrom(cssQuery: String = ":root") = extractFrom(cssQuery, "\\d+(\\.\\d+)?")[0].toDouble()
 
-fun Element.abvFrom(cssQuery: String = ":root") = textFrom(cssQuery).abvFrom()
-fun String.abvFrom() = extract(ABV_REGEX)[1].toDouble()
+fun Element.abvFrom(
+  cssQuery: String = ":root",
+  prefix: String = "",
+  noPercent: Boolean = false
+) = textFrom(cssQuery).abvFrom(prefix, noPercent)
+fun String.abvFrom(
+  prefix: String = "",
+  optionalPercent: Boolean = false
+) = extract(prefix + DOUBLE_REGEX + (if (optionalPercent) "" else "\\s*%"))[1].toDouble()
 
 fun Element.sizeMlFrom(cssQuery: String = ":root") = textFrom(cssQuery).sizeMlFrom()
-fun String.sizeMlFrom() = maybeExtract("${INT_REGEX}\\s*ml(?:\\W|$)")?.let { it[1].toInt() }
-  ?: maybeExtract("${INT_REGEX}(?:\\s*|-)litre(?:s?)(?:\\W|$)")?.let { it[1].toInt() * 1000 }
-  ?: maybeExtract("${INT_REGEX}\\s*l(?:\\W|$)")?.let { it[1].toInt() * 1000 }
+fun String.sizeMlFrom() = maybe { extract("${INT_REGEX}\\s*ml(?:\\W|$)") }?.let { it[1].toInt() }
+  ?: maybe { extract("${INT_REGEX}(?:\\s*|-)litre(?:s?)(?:\\W|$)") }?.let { it[1].toInt() * 1000 }
+  ?: maybe { extract("${INT_REGEX}\\s*l(?:\\W|$)") }?.let { it[1].toInt() * 1000 }
   ?: throw MalformedInputException("Can't extract size")
 
 operator fun Element.contains(cssQuery: String) = selectFirst(cssQuery) != null
@@ -124,9 +131,9 @@ fun Element.selectMultipleFrom(cssQuery: String) = maybeSelectMultipleFrom(cssQu
 fun Element.maybeSelectMultipleFrom(cssQuery: String): Elements = select(cssQuery)
 
 
-fun String.extract(regex: String, ignoreCase: Boolean = true) = maybeExtract(regex, ignoreCase)
+fun String.extract(regex: String, ignoreCase: Boolean = true) = regex.toRegex(regexOptions(ignoreCase))
+  .find(this)?.groupValues
   ?: throw MalformedInputException("Can't extract regex: ${regex}")
-fun String.maybeExtract(regex: String, ignoreCase: Boolean = true) = regex.toRegex(regexOptions(ignoreCase)).find(this)?.groupValues
 
 private fun regexOptions(ignoreCase: Boolean) = if (ignoreCase) {
   setOf(DOT_MATCHES_ALL, IGNORE_CASE)
@@ -186,8 +193,6 @@ fun <K, V> Map<K, V>.maybeGrab(key: K) = this[key]
 
 const val INT_REGEX = "(\\d+)"
 const val DOUBLE_REGEX = "(\\d+(?:\\.\\d+)?)"
-const val ABV_REGEX = "${DOUBLE_REGEX}\\s*%"
-const val SIZE_REGEX = "${INT_REGEX}\\s*(?:ml|ML)"   // TODO - expand to other units
 
 private val BEER_ACRONYMS = listOf(
   "IPL",

@@ -29,7 +29,7 @@ class GipsyHillScraper : Scraper {
               map { it.extractFrom(regex = "(\\d+) ×")[1].toInt() }.sum()
             }
           }
-          val style = rawSummary.maybeExtract("Style: (.*) ABV")?.get(1)
+          val style = rawSummary.maybe { extract("Style: (.*) ABV") }?.get(1)
           val mixed = style in listOf("Various", "Mixed")
 
           val name = rawName.replace(" \\(.*\\)$".toRegex(), "")
@@ -41,7 +41,7 @@ class GipsyHillScraper : Scraper {
             desc = doc.maybe { wholeTextFrom(".description") },
             mixed = mixed,
             available = true, // TODO
-            abv = if (mixed) null else rawSummary.maybeExtract("ABV: (\\d+(\\.\\d+)?)")?.get(1)?.toDouble(),
+            abv = if (mixed) null else rawSummary.maybe { abvFrom(prefix = "ABV: ", optionalPercent = true) },
             sizeMl = rawSummary.maybe { sizeMlFrom() },
             numItems = numCans,
             price = el.ownTextFrom(".woocommerce-Price-amount").toDouble()

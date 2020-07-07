@@ -33,7 +33,7 @@ class PressureDropScraper : Scraper {
             name = parts[1],
             summary = parts[3].ifBlank { null },
             desc = doc.maybe { wholeTextFrom(".product-description") },
-            abv = itemText.maybeExtract("(\\d+(\\.\\d+)?)\\s*%")?.get(1)?.toDouble(),
+            abv = itemText.maybe { extract("(\\d+(\\.\\d+)?)\\s*%") }?.get(1)?.toDouble(),
             sizeMl = itemText.maybe { sizeMlFrom() },
             available = true,
             price = doc.priceFrom(".ProductPrice")

@@ -54,7 +54,7 @@ class HowlingHopsScraper : Scraper {
   )
 
   private fun extractVariableParts(desc: String): VariableParts {
-    val parts = desc.maybeExtract("([^/]*?) / ([^/]*?) / (\\d+) (?:.*?) / (\\d+(\\.\\d+)?)% ABV")
+    val parts = desc.maybe { extract("([^/]*?) / ([^/]*?) / (\\d+) (?:.*?) / (\\d+(\\.\\d+)?)% ABV") }
     return if (parts != null) {
       VariableParts(
         name = parts[1],
