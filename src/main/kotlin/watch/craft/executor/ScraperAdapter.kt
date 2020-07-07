@@ -1,5 +1,6 @@
 package watch.craft.executor
 
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
@@ -102,6 +103,8 @@ class ScraperAdapter(
       ),
       url.toString()
     )!!
+  } catch (e: CancellationException) {
+    throw e   // These must be propagated
   } catch (e: Exception) {
     throw FatalScraperException("Could not read page: ${url}".prefixed(), e)
   }
