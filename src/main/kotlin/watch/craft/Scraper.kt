@@ -9,14 +9,17 @@ interface Scraper {
   val rateLimitPeriodMillis: Int get() = 50
 
   sealed class Job {
+    open val name: String? = null
+    abstract val url: URI
+
     data class More(
-      val url: URI,
+      override val url: URI,
       val work: (doc: Document) -> List<Job>
     ) : Job()
 
     data class Leaf(
-      val rawName: String,
-      val url: URI,
+      override val name: String,
+      override val url: URI,
       val work: (doc: Document) -> ScrapedItem
     ) : Job()
   }

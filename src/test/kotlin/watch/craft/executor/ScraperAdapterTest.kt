@@ -27,7 +27,7 @@ class ScraperAdapterTest {
   @Test
   fun `enriches item with results info`() {
     val adapter = ScraperAdapter(getter, MyScraper(listOf(
-      Leaf(rawName = "A", url = URL_A) { itemA }
+      Leaf(name = "A", url = URL_A) { itemA }
     )))
 
     assertEquals(
@@ -45,7 +45,7 @@ class ScraperAdapterTest {
     }
 
     val adapter = ScraperAdapter(getter, MyScraper(listOf(
-      Leaf(rawName = "A", url = URL_A, work = work)
+      Leaf(name = "A", url = URL_A, work = work)
     )))
 
     retrieveResults(adapter)
@@ -59,8 +59,8 @@ class ScraperAdapterTest {
     @Test
     fun `multiple flat items`() {
       val adapter = ScraperAdapter(getter, MyScraper(listOf(
-        Leaf(rawName = "A", url = URL_A) { itemA },
-        Leaf(rawName = "A", url = URL_B) { itemB }
+        Leaf(name = "A", url = URL_A) { itemA },
+        Leaf(name = "A", url = URL_B) { itemB }
       )))
 
       assertEquals(setOf(itemA, itemB), retrieveItems(adapter))
@@ -71,8 +71,8 @@ class ScraperAdapterTest {
       val adapter = ScraperAdapter(getter, MyScraper(listOf(
         More(url = ROOT_URL) {
           listOf(
-            Leaf(rawName = "A", url = URL_A) { itemA },
-            Leaf(rawName = "A", url = URL_B) { itemB }
+            Leaf(name = "A", url = URL_A) { itemA },
+            Leaf(name = "A", url = URL_B) { itemB }
           )
         }
       )))
@@ -85,10 +85,10 @@ class ScraperAdapterTest {
       val adapter = ScraperAdapter(getter, MyScraper(listOf(
         More(url = ROOT_URL) {
           listOf(
-            Leaf(rawName = "A", url = URL_A) { itemA },
+            Leaf(name = "A", url = URL_A) { itemA },
             More(url = PAGE_2_URL) {
               listOf(
-                Leaf(rawName = "A", url = URL_B) { itemB }
+                Leaf(name = "A", url = URL_B) { itemB }
               )
             }
           )
@@ -108,8 +108,8 @@ class ScraperAdapterTest {
       val adapter = ScraperAdapter(getter, MyScraper(listOf(
         More(url = ROOT_URL) {
           listOf(
-            Leaf(rawName = "A", url = URL_A) { itemA },
-            Leaf(rawName = "A", url = URL_B) { itemB }
+            Leaf(name = "A", url = URL_A) { itemA },
+            Leaf(name = "A", url = URL_B) { itemB }
           )
         }
       )))
@@ -124,7 +124,7 @@ class ScraperAdapterTest {
       val adapter = ScraperAdapter(getter, MyScraper(listOf(
         More(url = ROOT_URL) {
           listOf(
-            Leaf(rawName = "A", url = URL_A) { itemA },
+            Leaf(name = "A", url = URL_A) { itemA },
             More(url = PAGE_2_URL) { throw MalformedInputException("Uh oh") }
           )
         }
@@ -138,8 +138,8 @@ class ScraperAdapterTest {
       val adapter = ScraperAdapter(getter, MyScraper(listOf(
         More(url = ROOT_URL) {
           listOf(
-            Leaf(rawName = "A", url = URL_A) { throw MalformedInputException("Uh oh") },
-            Leaf(rawName = "A", url = URL_B) { itemB }
+            Leaf(name = "A", url = URL_A) { throw MalformedInputException("Uh oh") },
+            Leaf(name = "A", url = URL_B) { itemB }
           )
         }
       )))
@@ -152,8 +152,8 @@ class ScraperAdapterTest {
       val adapter = ScraperAdapter(getter, MyScraper(listOf(
         More(url = ROOT_URL) {
           listOf(
-            Leaf(rawName = "A", url = URL_A) { throw SkipItemException("Don't care") },
-            Leaf(rawName = "A", url = URL_B) { itemB }
+            Leaf(name = "A", url = URL_A) { throw SkipItemException("Don't care") },
+            Leaf(name = "A", url = URL_B) { itemB }
           )
         }
       )))
