@@ -19,7 +19,7 @@ jobs:
           java-version: 13.0.1
 
       - name: Create file for service key
-        run: echo "${{ secrets.GCLOUD_SERVICE_KEY }}" > "${GITHUB_WORKSPACE}/service-key.json"
+        run: echo "${{ secrets.GCLOUD_SERVICE_KEY }}" > "~/service-key.json"
         shell: bash
 
       - name: Cache (Gradle wrapper)
@@ -37,7 +37,7 @@ jobs:
 
       - name: Run tests
         run: |
-          export GOOGLE_APPLICATION_CREDENTIALS="${GITHUB_WORKSPACE}/service-key.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="~/service-key.json"
           ./gradlew --no-daemon check
 
       - name: Capture test results
@@ -98,6 +98,7 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: frontend-build
+          path: frontend/out
 
       - name: Deploy
         run: ./scripts/deploy.sh
