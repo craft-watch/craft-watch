@@ -1,8 +1,14 @@
 name: Build
 on: [push]
 
+# TODO - job for frontend build
+# TODO - job for frontend deploy (master only)
 # TODO - job for Run scraper
+# TODO - cron schedule for scraper on master
+# TODO - refactor common bits?
 # TODO - ensure new commit cancels active runs
+
+# TODO - cache node_modules
 
 jobs:
 
@@ -21,13 +27,13 @@ jobs:
         env:
           GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
 
-      - name: Cache Gradle wrapper
+      - name: Cache (Gradle wrapper)
         uses: actions/cache@v2
         with:
           path: ~/.gradle/wrapper
           key: v1-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
 
-      - name: Cache Gradle caches
+      - name: Cache (Gradle caches)
         uses: actions/cache@v2
         with:
           path: ~/.gradle/caches
@@ -44,3 +50,23 @@ jobs:
         with:
           name: test-results
           path: build/test-results/test
+
+  build_frontend:
+    runs-on: ubuntu-latest
+    working-directory: frontend
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.4.0
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Build
+        run: yarn build
