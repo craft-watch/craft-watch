@@ -4,6 +4,7 @@ on: [push]
 # TODO - Gradle cache
 # TODO - job for Run scraper
 # TODO - test results / logs
+# TODO - ensure new commit cancels active runs
 
 env:
   GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
@@ -20,6 +21,7 @@ jobs:
           java-version: 13.0.1
       - name: Create file for service key
         run: echo "${GCLOUD_SERVICE_KEY}" > "${GOOGLE_APPLICATION_CREDENTIALS}"
+        shell: bash
       - name: Run tests
         run: ./gradlew check
 
