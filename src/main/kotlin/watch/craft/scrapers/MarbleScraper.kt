@@ -25,7 +25,7 @@ class MarbleScraper : Scraper {
           val attributes = doc.extractAttributes()
           val volumeDetails = attributes.extractVolumeDetails()
 
-          val style = attributes.maybeGrab("Style")
+          val style = attributes.maybe { grab("Style") }
           val mixed = style?.contains("mixed", ignoreCase = true) ?: false
 
           ScrapedItem(
@@ -38,7 +38,7 @@ class MarbleScraper : Scraper {
             summary = if (mixed) null else style,
             desc = doc.maybe { formattedTextFrom(".woocommerce-product-details__short-description") }?.ifBlank { null },
             mixed = mixed,
-            keg = attributes.maybeGrab("Packaging")?.contains("keg", ignoreCase = true) ?: false,
+            keg = attributes.maybe { grab("Packaging") }?.contains("keg", ignoreCase = true) ?: false,
             sizeMl = volumeDetails.sizeMl,
             abv = attributes.grab("ABV").maybe { extract("(\\d+(\\.\\d+)?)") }?.get(1)?.toDouble(),
             available = ".out-of-stock" !in doc,
@@ -55,18 +55,18 @@ class MarbleScraper : Scraper {
   )
 
   private fun Map<String, String>.extractVolumeDetails(): VolumeDetails {
-    val rawVolume = maybeGrab("Volume") ?: grab("Packaging")
+    val rawVolume = maybe { grab("Volume") } ?: grab("Packaging")
     return VolumeDetails(
       sizeMl = rawVolume.sizeMlFrom(),
       numItems = rawVolume.maybe { extract("(\\d+) x") }?.let { it[1].toInt() }
-        ?: maybeGrab("Unit Size")?.toIntOrNull()
+        ?: maybe { grab("Unit Size") }?.toIntOrNull()
         ?: 1
     )
   }
 
-  private fun Document.extractAttributes() = maybeSelectMultipleFrom(".shop_attributes tr")
-    .ifEmpty { throw SkipItemException("No attributes, so can't process") }
-    .associate { it.textFrom("th") to it.textFrom("td") }
+  private fun Document.extractAttributes() = orSkip("No attributes, so can't process") {
+    selectMultipleFrom(".shop_attributes tr")
+  }.associate { it.textFrom("th") to it.textFrom("td") }
 
   companion object {
     private val ROOT_URL = URI("https://marblebeers.com/product-category/?term=beers")

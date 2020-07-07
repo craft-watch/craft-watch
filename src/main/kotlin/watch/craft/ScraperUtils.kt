@@ -7,7 +7,6 @@ import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import org.jsoup.nodes.Node
 import org.jsoup.nodes.TextNode
-import org.jsoup.select.Elements
 import org.jsoup.select.NodeTraversor
 import org.jsoup.select.NodeVisitor
 import watch.craft.Scraper.Job
@@ -122,10 +121,8 @@ fun Element.attrFrom(cssQuery: String = ":root", attr: String) = selectFrom(cssQ
 fun Element.selectFrom(cssQuery: String) = selectFirst(cssQuery)
   ?: throw MalformedInputException("Element not present: ${cssQuery}")
 
-fun Element.selectMultipleFrom(cssQuery: String) = maybeSelectMultipleFrom(cssQuery)
+fun Element.selectMultipleFrom(cssQuery: String) = select(cssQuery)!!
   .ifEmpty { throw MalformedInputException("Element(s) not present: ${cssQuery}") }
-fun Element.maybeSelectMultipleFrom(cssQuery: String): Elements = select(cssQuery)
-
 
 fun String.extract(regex: String, ignoreCase: Boolean = true) = regex.toRegex(regexOptions(ignoreCase))
   .find(this)?.groupValues
@@ -184,8 +181,7 @@ fun String.toUri() = try {
   throw MalformedInputException("URL syntax error: ${this}", e)
 }
 
-fun <K, V> Map<K, V>.grab(key: K) = maybeGrab(key) ?: throw MalformedInputException("Key not present: ${key}")
-fun <K, V> Map<K, V>.maybeGrab(key: K) = this[key]
+fun <K, V> Map<K, V>.grab(key: K) = this[key] ?: throw MalformedInputException("Key not present: ${key}")
 
 const val INT_REGEX = "(\\d+)"
 const val DOUBLE_REGEX = "(\\d+(?:\\.\\d+)?)"
