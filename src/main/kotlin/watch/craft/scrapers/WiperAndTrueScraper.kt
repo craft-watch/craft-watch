@@ -50,12 +50,12 @@ class WiperAndTrueScraper : Scraper {
       )
     } else {
       val parts = desc.orSkip("Can't find details, so assuming it's not a beer") {
-        extractFrom("p", "(\\d+).*?(\\d(\\.\\d+)?)%\\s+(.*)\\.")
+        extractFrom("p", "(\\d+).*?%\\s+(.*)\\.")
       }
       VariableParts(
         mixed = false,
-        summary = parts[4],
-        abv = parts[2].toDouble(),
+        summary = parts[2],
+        abv = desc.abvFrom(),
         sizeMl = desc.sizeMlFrom(),
         numItems = parts[1].toInt()
       )

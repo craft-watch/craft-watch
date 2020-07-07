@@ -21,11 +21,9 @@ class ThornbridgeScraper : Scraper {
         val rawName = el.textFrom(".h6")
 
         Leaf(rawName, el.hrefFrom("a")) { doc ->
-          if (!rawName.contains("%")) {
-            throw SkipItemException("No ABV in title, so assume it's not a beer")
-          }
+          val abv = orSkip("No ABV in title, so assume it's not a beer") { rawName.abvFrom() }
 
-          val parts = rawName.extract("(.*?)\\W+(\\d(\\.\\d+)?)%\\W+(.*)")
+          val parts = rawName.extract("(.*?)\\W+\\d.*%\\W+(.*)")
           val desc = doc.selectFrom(".product-description")
 
           // TODO - identify mixed packs
@@ -33,11 +31,11 @@ class ThornbridgeScraper : Scraper {
           ScrapedItem(
             thumbnailUrl = doc.srcFrom(".product__image-wrapper img"),
             name = parts[1].replace(" (bottle|can)$".toRegex(IGNORE_CASE), ""),
-            summary = parts[4],
+            summary = parts[2],
             desc = desc.formattedTextFrom(),
             mixed = false,
             sizeMl = desc.maybe { sizeMlFrom() },
-            abv = parts[2].toDouble(),
+            abv = abv,
             available = "sold-out" !in el.classNames(),
             numItems = desc.maybe { extractFrom(regex = "(\\d+)\\s*x") }?.get(1)?.toInt()
               ?: rawName.maybe { extract(regex = "(\\d+)\\s*x") }?.get(1)?.toInt()

@@ -27,7 +27,7 @@ class UnityScraper : Scraper {
             desc = desc,
             mixed = false,
             sizeMl = desc.sizeMlFrom(),
-            abv = desc.extract("(\\d(\\.\\d+)?)%")[1].toDouble(),
+            abv = desc.abvFrom(),
             available = details.available,
             numItems = 1,
             price = details.price,

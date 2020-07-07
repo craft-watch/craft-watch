@@ -52,12 +52,12 @@ class VillagesScraper : Scraper {
       mixed = true
     )
   } else {
-    val parts = title.extract("^([^ ]*) (.*)? ((.*)%)?.*$")
+    val parts = title.extract("^([^ ]*) (.*)? .*%")
     VariableParts(
       name = parts[1],
       summary = parts[2],
       numCans = 12,
-      abv = parts[4].toDouble()
+      abv = title.abvFrom()
     )
   }
 
