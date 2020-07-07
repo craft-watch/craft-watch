@@ -7,6 +7,12 @@ terraform {
   }
 }
 
+provider "github" {
+  version      = "~> 2.9.1"
+  token        = trimspace(file(".credentials/github-token"))
+  organization = "craft-watch"
+}
+
 provider "google" {
   version     = "~> 3.27"
   project     = "craft-watch"
