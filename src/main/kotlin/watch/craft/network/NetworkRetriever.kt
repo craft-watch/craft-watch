@@ -6,11 +6,14 @@ import io.ktor.client.features.BrowserUserAgent
 import io.ktor.client.features.UserAgent
 import io.ktor.client.request.get
 import io.ktor.http.Url
+import io.ktor.util.KtorExperimentalAPI
 import mu.KotlinLogging
 import java.net.URI
 
 class NetworkRetriever : Retriever {
   private val logger = KotlinLogging.logger {}
+
+  @OptIn(KtorExperimentalAPI::class)
   private val client = HttpClient(CIO) {
     install(UserAgent) {
       agent = "CraftWatch Bot (https://craft.watch)"
