@@ -28,7 +28,7 @@ class PillarsScraperTest {
         abv = 8.0,
         price = 6.00,
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0367/7857/3883/products/Icebock_Shopify_1edf8964-413d-4ad8-9b05-9a9672a48796_250x250.png")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0367/7857/3883/products/Icebock_Shopify_1edf8964-413d-4ad8-9b05-9a9672a48796_250x250.png?v=1591904521")
       ),
       ITEMS.byName("Pillars Icebock").noDesc()
     )

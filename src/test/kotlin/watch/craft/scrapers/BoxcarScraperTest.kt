@@ -29,7 +29,7 @@ class BoxcarScraperTest {
         abv = 6.5,
         price = 4.95,
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/IMG-20200604-WA0003_345x345.jpg")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/IMG-20200604-WA0003_345x345.jpg?v=1591345860")
       ),
       ITEMS.byName("Dreamful").noDesc()
     )
@@ -44,7 +44,7 @@ class BoxcarScraperTest {
         abv = 3.6,
         price = 3.75,
         available = false,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/20200429_183043_345x345.jpg")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/20200429_183043_345x345.jpg?v=1588181467")
       ),
       ITEMS.byName("Dark Mild").noDesc()
     )

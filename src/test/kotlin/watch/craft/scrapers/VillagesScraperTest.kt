@@ -30,7 +30,7 @@ class VillagesScraperTest {
         numItems = 12,
         price = 25.60,
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345.jpg")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345.jpg?v=1587570539")
       ),
       ITEMS.byName("Rodeo").noDesc()
     )
@@ -47,7 +47,7 @@ class VillagesScraperTest {
         numItems = 24,
         price = 52.50,
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg?v=1593725278")
       ),
       ITEMS.byName("Villages Mixed Case").noDesc()
     )

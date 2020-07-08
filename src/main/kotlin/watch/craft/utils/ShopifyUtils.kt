@@ -18,7 +18,6 @@ fun Document.shopifyItems() = selectMultipleFrom(".product-card").map {
     thumbnailUrl = it.srcFrom("noscript .grid-view-item__image")
       .toString()
       .replace("@2x", "")
-      .replace("\\?.*".toRegex(), "")
       .toUri(),
     price = it.priceFrom(".price-item--sale"),
     available = "price--sold-out" !in it.selectFrom(".price").classNames()
