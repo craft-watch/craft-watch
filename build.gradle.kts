@@ -7,7 +7,7 @@ plugins {
   idea
 }
 
-group = "choliver.neapi"
+group = "watch.craft"
 version = "0.0.0"
 
 repositories {
@@ -18,6 +18,8 @@ dependencies {
   implementation(kotlin("stdlib"))
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
   implementation("io.github.microutils:kotlin-logging:1.7.10")
+  implementation("io.ktor:ktor-client-core:1.3.2")
+  implementation("io.ktor:ktor-client-apache:1.3.2")
   implementation("org.jsoup:jsoup:1.13.1")
   implementation(platform("com.fasterxml.jackson:jackson-bom:2.11.0"))
   implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
