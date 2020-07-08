@@ -13,13 +13,13 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.Job.More
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.executor.ScraperAdapter.Result
-import watch.craft.network.CachingGetter
+import watch.craft.network.Retriever
 import watch.craft.utils.textFrom
 import java.net.URI
 
 class ScraperAdapterTest {
-  private val getter = mock<CachingGetter> {
-    on { request(any()) } doAnswer { "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>".toByteArray() }
+  private val retriever = mock<Retriever> {
+    onBlocking { retrieve(any()) } doAnswer { "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>".toByteArray() }
   }
 
   private val itemA = mock<ScrapedItem>()
@@ -27,7 +27,7 @@ class ScraperAdapterTest {
 
   @Test
   fun `enriches item with results info`() {
-    val adapter = ScraperAdapter(getter, MyScraper(listOf(
+    val adapter = ScraperAdapter(retriever, MyScraper(listOf(
       Leaf(name = "A", url = URL_A) { itemA }
     )))
 
@@ -45,17 +45,13 @@ class ScraperAdapterTest {
       on { invoke(any()) } doThrow SkipItemException("Emo town")
     }
 
-    val adapter = ScraperAdapter(
-      getter, MyScraper(
-        listOf(
-          Leaf(name = "A", url = URL_A, work = work)
-        )
-      )
-    )
+    val adapter = ScraperAdapter(retriever, MyScraper(listOf(
+      Leaf(name = "A", url = URL_A, work = work)
+    )))
 
     retrieveResults(adapter)
 
-    verify(getter).request(URL_A)
+    verifyBlocking(retriever) { retrieve(URL_A) }
     verify(work)(docWithHeaderMatching(URL_A.toString()))
   }
 
@@ -63,7 +59,7 @@ class ScraperAdapterTest {
   inner class Traversal {
     @Test
     fun `multiple flat items`() {
-      val adapter = ScraperAdapter(getter, MyScraper(listOf(
+      val adapter = ScraperAdapter(retriever, MyScraper(listOf(
         Leaf(name = "A", url = URL_A) { itemA },
         Leaf(name = "A", url = URL_B) { itemB }
       )))
@@ -73,7 +69,7 @@ class ScraperAdapterTest {
 
     @Test
     fun `non-leaf node`() {
-      val adapter = ScraperAdapter(getter, MyScraper(listOf(
+      val adapter = ScraperAdapter(retriever, MyScraper(listOf(
         More(url = ROOT_URL) {
           listOf(
             Leaf(name = "A", url = URL_A) { itemA },
@@ -87,7 +83,7 @@ class ScraperAdapterTest {
 
     @Test
     fun `multiple non-leaf nodes`() {
-      val adapter = ScraperAdapter(getter, MyScraper(listOf(
+      val adapter = ScraperAdapter(retriever, MyScraper(listOf(
         More(url = ROOT_URL) {
           listOf(
             Leaf(name = "A", url = URL_A) { itemA },
@@ -108,9 +104,11 @@ class ScraperAdapterTest {
   inner class ErrorHandling {
     @Test
     fun `fatal exception during request kills everything`() {
-      whenever(getter.request(any())) doThrow FatalScraperException("Uh oh")
+      retriever.stub {
+        onBlocking { retriever.retrieve(any()) } doThrow FatalScraperException("Uh oh")
+      }
 
-      val adapter = ScraperAdapter(getter, MyScraper(listOf(
+      val adapter = ScraperAdapter(retriever, MyScraper(listOf(
         More(url = ROOT_URL) {
           listOf(
             Leaf(name = "A", url = URL_A) { itemA },
@@ -126,7 +124,7 @@ class ScraperAdapterTest {
 
     @Test
     fun `non-fatal exception during non-leaf scrape doesn't kill everything`() {
-      val adapter = ScraperAdapter(getter, MyScraper(listOf(
+      val adapter = ScraperAdapter(retriever, MyScraper(listOf(
         More(url = ROOT_URL) {
           listOf(
             Leaf(name = "A", url = URL_A) { itemA },
@@ -140,7 +138,7 @@ class ScraperAdapterTest {
 
     @Test
     fun `non-fatal exception during leaf scrape doesn't kill everything`() {
-      val adapter = ScraperAdapter(getter, MyScraper(listOf(
+      val adapter = ScraperAdapter(retriever, MyScraper(listOf(
         More(url = ROOT_URL) {
           listOf(
             Leaf(name = "A", url = URL_A) { throw MalformedInputException("Uh oh") },
@@ -154,7 +152,7 @@ class ScraperAdapterTest {
 
     @Test
     fun `skip exception during leaf scrape doesn't kill everything`() {
-      val adapter = ScraperAdapter(getter, MyScraper(listOf(
+      val adapter = ScraperAdapter(retriever, MyScraper(listOf(
         More(url = ROOT_URL) {
           listOf(
             Leaf(name = "A", url = URL_A) { throw SkipItemException("Don't care") },

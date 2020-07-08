@@ -19,8 +19,8 @@ import java.time.ZoneId
 class ExecutorTest {
   private val executor = Executor(
     results = mock(),
-    getter = mock {
-      on { request(any()) } doReturn "<html><body><h1>Hello</h1></body></html>".toByteArray()
+    retriever = mock {
+      onBlocking { retrieve(any()) } doReturn "<html><body><h1>Hello</h1></body></html>".toByteArray()
     },
     clock = Clock.fixed(NOW, ZoneId.systemDefault())
   )

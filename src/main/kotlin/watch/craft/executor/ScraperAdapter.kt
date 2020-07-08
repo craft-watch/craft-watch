@@ -15,11 +15,11 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.Job.More
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
-import watch.craft.network.CachingGetter
+import watch.craft.network.Retriever
 import java.net.URI
 
 class ScraperAdapter(
-  private val getter: CachingGetter,
+  private val retriever: Retriever,
   private val scraper: Scraper
 ) {
   data class Result(
@@ -81,9 +81,7 @@ class ScraperAdapter(
 
   private suspend fun request(url: URI) = try {
     Jsoup.parse(
-      String(
-        onIoThread { getter.request(url) }
-      ),
+      String(retriever.retrieve(url)),
       url.toString()
     )!!
   } catch (e: CancellationException) {
