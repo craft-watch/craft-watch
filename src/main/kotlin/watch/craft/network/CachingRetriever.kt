@@ -10,7 +10,7 @@ import java.net.URI
 
 class CachingRetriever(
   private val store: ObjectStore,
-  private val delegate: Retriever = NetworkRetriever()
+  private val delegate: Retriever
 ) : Retriever {
   private val logger = KotlinLogging.logger {}
 

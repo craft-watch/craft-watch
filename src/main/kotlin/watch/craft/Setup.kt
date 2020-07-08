@@ -2,6 +2,7 @@ package watch.craft
 
 import watch.craft.network.CachingRetriever
 import watch.craft.network.FailingRetriever
+import watch.craft.network.NetworkRetriever
 import watch.craft.network.Retriever
 import watch.craft.storage.GcsObjectStore
 import watch.craft.storage.LocalObjectStore
@@ -29,10 +30,11 @@ class Setup(dateString: String? = null) {
   private val downloads = SubObjectStore(store, "${DOWNLOADS_DIR}/${DATE_FORMAT.format(instant)}")
   val results = SubObjectStore(store, RESULTS_DIRNAME)
 
-  val retriever: Retriever = if (live) {
-    CachingRetriever(downloads)
-  } else {
-    CachingRetriever(downloads, delegate = FailingRetriever())
+  val createRetriever: () -> Retriever = {
+    CachingRetriever(
+      downloads,
+      if (live) NetworkRetriever() else FailingRetriever()
+    )
   }
 
   companion object {

@@ -8,7 +8,7 @@ import java.net.URI
 private const val GOLDEN_DATE = "2020-07-03"
 
 fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE) = runBlocking {
-  ScraperAdapter(Setup(dateString).retriever, scraper).execute().map { it.item }
+  ScraperAdapter(Setup(dateString).createRetriever(), scraper).execute().map { it.item }
 }
 
 fun List<ScrapedItem>.byName(name: String) = first { it.name == name }
