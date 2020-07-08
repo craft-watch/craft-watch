@@ -1,7 +1,7 @@
 import React from "react";
 import App from "../components/App";
 import Page from "../components/Page";
-import { items, capturedAt, categories } from "../utils/inventory";
+import { items, capturedAt, categories, breweries } from "../utils/inventory";
 
 const ThisPage = (): JSX.Element => (
   <Page
@@ -24,6 +24,7 @@ const ThisPage = (): JSX.Element => (
       }
       capturedAt={capturedAt}
       items={items}
+      allBreweries={breweries}
       categories={categories}
     />
   </Page>

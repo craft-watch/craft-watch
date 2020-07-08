@@ -3,7 +3,7 @@ import _ from "underscore";
 import Page from "../components/Page";
 import App from "../components/App";
 import { Item } from "../utils/model";
-import { items as inventoryItems, capturedAt, categories } from "../utils/inventory";
+import { items as inventoryItems, capturedAt, categories, breweries } from "../utils/inventory";
 
 const TASTER_MENU_SIZE = 20;
 
@@ -13,7 +13,7 @@ const ThisPage = (): JSX.Element => {
   // TODO - is there a better way to avoid this being captured by SSG?
   useEffect(() => {
     const sample = generateFairTasterMenu(inventoryItems);
-    setItems(_.sortBy(_.sortBy(sample, item => item.name), item => item.brewery));
+    setItems(_.sortBy(_.sortBy(sample, item => item.name), item => item.brewery.shortName));
   }, []);
 
   return (
@@ -40,6 +40,7 @@ const ThisPage = (): JSX.Element => {
         }
         capturedAt={capturedAt}
         items={items}
+        allBreweries={breweries}
         categories={categories}
       />
     </Page>
@@ -51,7 +52,7 @@ const generateFairTasterMenu = (items: Array<Item>): Array<Item> => {
   // Remove inappropriate items for a taster menu
   const relevant = _.filter(items, item => !item.keg && !item.mixed && item.available);
 
-  const byBrewery = _.groupBy(relevant, item => item.brewery);
+  const byBrewery = _.groupBy(relevant, item => item.brewery.shortName);
 
   // Pick breweries with *almost* uniform distribution.
   // We allow breweries with lots of beers to feature *slightly* more.

@@ -46,7 +46,7 @@ class ExecutorTest {
             abv = abv,
             perItemPrice = price,
             available = available,
-            newToUs = true,
+            new = true,
             thumbnailUrl = thumbnailUrl,
             url = productUrl("b")
           )
@@ -63,7 +63,7 @@ class ExecutorTest {
             abv = abv,
             perItemPrice = price,
             available = available,
-            newToUs = true,
+            new = true,
             thumbnailUrl = thumbnailUrl,
             url = productUrl("a")
           )

@@ -21,21 +21,15 @@ class Executor(
   fun scrape(scrapers: Collection<Scraper>): Inventory {
     val now = clock.instant()
 
-    val items = scrapers
+    return scrapers
       .execute()
       .normalise()
-      .categorise()
-      .newalyse(now)
+      .toInventory(scrapers, now)
+      .enrichWith(Categoriser(CATEGORY_KEYWORDS))
+      .enrichWith(Newalyser(results, now))
       .sort()
       .bestPricedItems()
       .also { it.logStats() }
-
-    return Inventory(
-      metadata = Metadata(capturedAt = now),
-      categories = CATEGORY_KEYWORDS.keys.toList(),
-      breweries = scrapers.map { it.brewery },
-      items = items
-    )
   }
 
   private fun Collection<Scraper>.execute() = runBlocking {
@@ -58,11 +52,19 @@ class Executor(
     }
   }
 
-  private fun Collection<Item>.categorise() = map(Categoriser(CATEGORY_KEYWORDS)::enrich)
+  private fun Collection<Item>.toInventory(scrapers: Collection<Scraper>, now: Instant) = Inventory(
+    metadata = Metadata(capturedAt = now),
+    categories = CATEGORY_KEYWORDS.keys.toList(),
+    breweries = scrapers.map { it.brewery },
+    items = toList()
+  )
 
-  private fun Collection<Item>.newalyse(now: Instant) = map(Newalyser(results, now)::enrich)
+  private fun Inventory.enrichWith(enricher: Enricher) = copy(
+    items = items.map(enricher::enrich),
+    breweries = breweries.map(enricher::enrich)
+  )
 
-  private fun Collection<Item>.sort() = sortedWith(
+  private fun Inventory.sort() = copy(items = items.sortedWith(
     compareBy(
       { it.brewery },
       { it.name },
@@ -71,19 +73,21 @@ class Executor(
       { it.keg },
       { it.numItems }
     )
-  )
+  ))
 
-  private fun List<Item>.bestPricedItems() = groupBy { ItemGroupFields(it.brewery, it.name, it.keg) }
+  private fun Inventory.bestPricedItems() = copy(items = items.groupBy { ItemGroupFields(it.brewery, it.name, it.keg) }
     .map { (key, group) ->
       if (group.size > 1) {
         logger.info("[${key.brewery}] Eliminating ${group.size - 1} more expensive item(s) for [${key.name}]")
       }
       group.minBy { it.perItemPrice }!!
     }
+  )
 
-  private fun List<Item>.logStats() {
-    groupBy { it.brewery }.forEach { (key, group) -> logger.info("Scraped (${key}): ${group.size}") }
-    logger.info("Scraped (TOTAL): ${size}")
+  private fun Inventory.logStats() {
+    items.groupBy { it.brewery }
+      .forEach { (key, group) -> logger.info("Scraped (${key}): ${group.size}") }
+    logger.info("Scraped (TOTAL): ${items.size}")
   }
 
   private data class ItemGroupFields(

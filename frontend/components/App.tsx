@@ -1,17 +1,18 @@
 import React from "react";
 import _ from "underscore";
-import { Item } from "../utils/model";
+import { Moment } from "moment";
+import { Item, Brewery } from "../utils/model";
 import Menu, { Selections, Section as MenuSection } from "./Menu";
 import InventoryTable from "./InventoryTable";
+import Sidebar from "./Sidebar";
 import { MIXED_CASE, MINIKEG, REGULAR, OUT_OF_STOCK } from "../utils/strings";
-import { Moment } from "moment";
-import Link from "next/link";
 
 interface Props {
   title: string;
   desc?: JSX.Element | string;
   capturedAt: Moment;
   items: Array<Item>;
+  allBreweries: Array<Brewery>;
   categories: Array<string>;
 }
 
@@ -43,23 +44,11 @@ class App extends React.Component<Props, State> {
   render(): JSX.Element {
     return (
       <div>
-        <div className="sidebar">
-          <nav>
-            <h2 className="hide-medium">Explore ...</h2>
-            <ul>
-              <li><Link href="/"><a>New beers</a></Link></li>
-              <li><Link href="/taster"><a>Taster menu</a></Link></li>
-              <li><Link href="/full"><a>Full menu</a></Link></li>
-            </ul>
-          </nav>
-
-          <div className="info hide-medium">
-            <h1>{this.props.title}</h1>
-            <div className="desc">
-              {this.props.desc}
-            </div>
-          </div>
-        </div>
+        <Sidebar
+          title={this.props.title}
+          desc={this.props.desc}
+          allBreweries={this.props.allBreweries}
+        />
 
         <div className="how-to-use">
           Click on an image to go to the brewery shop!
@@ -102,7 +91,7 @@ class App extends React.Component<Props, State> {
   );
 
   private brewerySelected = (item: Item): boolean =>
-    this.state.brewerySelections[item.brewery];
+    this.state.brewerySelections[item.brewery.shortName];
 
   private formatSelected = (item: Item): boolean =>
     (this.state.formatSelections[REGULAR] && !item.keg && !item.mixed) ||
@@ -162,7 +151,7 @@ class App extends React.Component<Props, State> {
 
   private initialSelections = (keys: Array<string>): Selections => _.object(_.map(keys, b => [b, true]));
 
-  private uniqueBreweries = (items: Array<Item>): Array<string> => _.uniq(_.map(items, item => item.brewery));
+  private uniqueBreweries = (items: Array<Item>): Array<string> => _.uniq(_.map(items, item => item.brewery.shortName));
 }
 
 export default App;
