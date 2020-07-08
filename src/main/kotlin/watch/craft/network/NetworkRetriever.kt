@@ -15,6 +15,9 @@ class NetworkRetriever : Retriever {
     install(UserAgent) {
       agent = "CraftWatch Bot (https://craft.watch)"
     }
+    engine {
+      threadsCount = 1
+    }
   }
 
   override suspend fun retrieve(url: URI): ByteArray {
