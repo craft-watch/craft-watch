@@ -15,20 +15,24 @@ class CloudwaterScraper : Scraper {
     websiteUrl = URI("https://cloudwaterbrew.co/")
   )
 
+  // TODO - mixed
+  // TODO - number of items
+  // TODO - eliminate size from summary
+
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectMultipleFrom(".product-collection .grid-item")
       .map { el ->
-        val a = el.selectFrom(".product-title")
-        val rawName = a.textFrom()
+        val a = el.selectFrom("a.product-title")
+        val nameLines = a.formattedTextFrom().split("\n")
 
-        Leaf(rawName, a.hrefFrom()) { doc ->
-          val desc = el.selectFrom(".short-description")
+        Leaf(nameLines[0], a.hrefFrom()) { doc ->
+          val desc = doc.selectFrom(".short-description")
 
           ScrapedItem(
-            name = rawName,
-            summary = null,
-            desc = null,
+            name = nameLines[0],
+            summary = if (nameLines.size > 1) nameLines[1] else null,
+            desc = desc.formattedTextFrom(),
             sizeMl = desc.sizeMlFrom(),
             abv = desc.abvFrom(),
             available = true,

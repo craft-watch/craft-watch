@@ -49,6 +49,7 @@ private class MyVisitor : NodeVisitor {
 
   override fun tail(node: Node, depth: Int) {
     when {
+      depth == 0 -> commit()  // Root node is a special case
       node.nodeName() in COMMIT_NODES -> commit()
       node.nodeName() in DROP_NODES -> drop()
     }
@@ -67,7 +68,7 @@ private class MyVisitor : NodeVisitor {
     sbWorking.clear()
   }
 
-  override fun toString() = sbOut.toString()
+  override fun toString() = sbOut.toString().trim()
 
   companion object {
     private val COMMIT_NODES = listOf("div", "p", "br")
