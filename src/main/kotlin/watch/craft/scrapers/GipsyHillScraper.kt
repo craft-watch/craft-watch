@@ -39,7 +39,7 @@ class GipsyHillScraper : Scraper {
             desc = doc.maybe { formattedTextFrom(".description") },
             mixed = mixed,
             available = true, // TODO
-            abv = if (mixed) null else rawSummary.maybe { abvFrom(prefix = "ABV: ", optionalPercent = true) },
+            abv = if (mixed) null else rawSummary.maybe { abvFrom(prefix = "ABV: ", noPercent = true) },
             sizeMl = rawSummary.maybe { sizeMlFrom() },
             numItems = numCans,
             price = el.priceFrom(".woocommerce-Price-amount")

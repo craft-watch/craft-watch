@@ -51,8 +51,7 @@ class ScraperUtilsTest {
         listOf(
           "Hello there.",
           "Wat.",
-          "Goodbye.",
-          ""    // Due to trailing newline
+          "Goodbye."
         ),
         doc.formattedTextFrom(TARGET).split("\n")
       )
@@ -70,8 +69,7 @@ class ScraperUtilsTest {
       assertEquals(
         listOf(
           "Hello mummy.",
-          "What do you want?",
-          ""    // Due to trailing newline
+          "What do you want?"
         ),
         doc.formattedTextFrom(TARGET).split("\n")
       )
@@ -117,9 +115,18 @@ class ScraperUtilsTest {
           "Hello",
           "What.",
           "Naughty little men.",
-          "Goodbye",
-          ""    // Due to trailing newline
+          "Goodbye"
         ),
+        doc.formattedTextFrom(TARGET).split("\n")
+      )
+    }
+
+    @Test
+    fun `retains all text in a top-level non-div`() {
+      val doc = docFromFragment("Hello there", topLevelTag = "a")
+
+      assertEquals(
+        listOf("Hello there"),
         doc.formattedTextFrom(TARGET).split("\n")
       )
     }
@@ -172,12 +179,10 @@ class ScraperUtilsTest {
     }
   }
 
-  private fun docFromFragment(raw: String) = Jsoup.parse("""
+  private fun docFromFragment(raw: String, topLevelTag: String = "div") = Jsoup.parse("""
     <html>
     <body>
-    <div class="${TARGET.removePrefix(".")}">
-      ${raw}
-    </div>
+    <${topLevelTag} class="${TARGET.removePrefix(".")}">${raw}</${topLevelTag}>
     </body>
     </html>
   """.trimIndent())
