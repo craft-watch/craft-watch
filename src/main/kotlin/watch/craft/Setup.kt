@@ -19,19 +19,18 @@ class Setup(dateString: String? = null) {
     LocalDate.parse(dateString).atStartOfDay(ZoneOffset.UTC).toInstant()
   }
 
-  private val store = NullObjectStore()
-//  WriteThroughObjectStore(
-//    firstLevel = LocalObjectStore(CACHE_DIR),
-//    secondLevel = GcsObjectStore(GCS_BUCKET)
-//  )
+  private val store = WriteThroughObjectStore(
+    firstLevel = LocalObjectStore(CACHE_DIR),
+    secondLevel = GcsObjectStore(GCS_BUCKET)
+  )
 
-  private val downloads = SubObjectStore(store, "${DOWNLOADS_DIR}/${DATE_FORMAT.format(instant)}")
+  private val downloads = NullObjectStore() // SubObjectStore(store, "${DOWNLOADS_DIR}/${DATE_FORMAT.format(instant)}")
   val results = SubObjectStore(store, RESULTS_DIRNAME)
 
-  val createRetriever: () -> Retriever = {
+  val createRetriever: (String) -> Retriever = { name ->
     CachingRetriever(
       downloads,
-      if (live) NetworkRetriever() else FailingRetriever()
+      if (live) NetworkRetriever(name) else FailingRetriever()
     )
   }
 

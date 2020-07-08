@@ -6,7 +6,7 @@ import java.net.URI
 interface Scraper {
   val brewery: Brewery
   val jobs: List<Job>
-  val rateLimitPeriodMillis: Int get() = 50
+  val rateLimitPeriodMillis: Int get() = 50   // TODO - eliminate this field?
 
   sealed class Job {
     open val name: String? = null

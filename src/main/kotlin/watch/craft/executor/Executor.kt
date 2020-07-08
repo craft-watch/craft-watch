@@ -13,7 +13,7 @@ import java.time.Instant
 
 class Executor(
   private val results: ResultsManager,
-  private val createRetriever: () -> Retriever,
+  private val createRetriever: (name: String) -> Retriever,
   private val clock: Clock = Clock.systemUTC()
 ) {
   private val logger = KotlinLogging.logger {}
@@ -39,7 +39,7 @@ class Executor(
       .toSet()  // To make clear that order is not important
   }
 
-  private suspend fun Scraper.execute() = createRetriever().use {
+  private suspend fun Scraper.execute() = createRetriever(brewery.shortName).use {
     ScraperAdapter(it, this).execute()
   }
 
