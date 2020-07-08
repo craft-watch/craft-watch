@@ -154,16 +154,20 @@ td.thumbnail {
   white-space: nowrap;
 }
 
-.violet {
-  background: var(--sol-violet);
-}
-
-.magenta {
+.pill.new {
   background: var(--sol-magenta);
 }
 
-.green {
+.pill.just-added {
+  background: var(--sol-base01);
+}
+
+.pill.keg {
   background: var(--sol-green);
+}
+
+.pill.mixed {
+  background: var(--sol-violet);
 }
 
 .size {
