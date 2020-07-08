@@ -15,38 +15,38 @@ class CloudwaterScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    ITEMS.forEach { println(it.noDesc()) }
-//    assertEquals(2, ITEMS.size)
+    assertEquals(24, ITEMS.size)
   }
 
-//  @Test
-//  fun `extracts beer details`() {
-//    assertEquals(
-//      ScrapedItem(
-//        name = "Lulla",
-//        abv = 3.5,
-//        sizeMl = 440,
-//        price = 3.99,
-//        available = true,
-//        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0286/3471/0061/products/Cans_800x800_crop_center.jpg?v=1593009635")
-//      ),
-//      ITEMS.byName("Lulla").noDesc()
-//    )
-//  }
-//
-//  @Test
-//  fun `extracts description`() {
-//    assertNotNull(ITEMS.byName("Lulla").desc)
-//  }
-//
-//  @Test
-//  fun `identifies multi-packs`() {
-//    assertEquals(6, ITEMS.byName("Parade").numItems)
-//  }
-//
-//  @Test
-//  fun `identifies sold out`() {
-//    assertFalse(ITEMS.byName("Parade").available)
-//  }
+  @Test
+  fun `extracts beer details`() {
+    assertEquals(
+      ScrapedItem(
+        name = "Bird Tweets Trump Trump Tweets",
+        summary = "DDH Pale",
+        abv = 5.0,
+        sizeMl = 440,
+        price = 4.75,
+        available = true,
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.873_1_800x.jpg?v=1591967414")
+      ),
+      ITEMS.byName("Bird Tweets Trump Trump Tweets").noDesc()
+    )
+  }
+
+  @Test
+  fun `extracts description`() {
+    assertNotNull(ITEMS.byName("DDH Pale").desc)
+  }
+
+  @Test
+  fun `identifies mixed`() {
+    val items = ITEMS.filter { it.mixed }
+
+    assertFalse(items.isEmpty())
+    assertFalse(items.any { it.numItems == 1})
+    assertFalse(items.any { it.sizeMl != null })
+    assertFalse(items.any { it.abv != null })
+  }
 }
 

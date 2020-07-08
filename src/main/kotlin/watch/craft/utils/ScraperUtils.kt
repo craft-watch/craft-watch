@@ -71,7 +71,7 @@ private class MyVisitor : NodeVisitor {
   override fun toString() = sbOut.toString().trim()
 
   companion object {
-    private val COMMIT_NODES = listOf("div", "p", "br")
+    private val COMMIT_NODES = listOf("div", "p", "br", "li")
     private val DROP_NODES = listOf("h1", "h2", "h3", "h4", "h5", "h6")
   }
 }
@@ -97,8 +97,8 @@ fun Element.abvFrom(
 ) = textFrom(cssQuery).abvFrom(prefix, noPercent)
 fun String.abvFrom(
   prefix: String = "",
-  optionalPercent: Boolean = false
-) = extract(prefix + DOUBLE_REGEX + (if (optionalPercent) "" else "\\s*%"))[1].toDouble()
+  noPercent: Boolean = false
+) = extract(prefix + DOUBLE_REGEX + (if (noPercent) "" else "\\s*%"))[1].toDouble()
 
 fun Element.sizeMlFrom(cssQuery: String = ":root") = textFrom(cssQuery).sizeMlFrom()
 fun String.sizeMlFrom() = maybe { extract("$INT_REGEX\\s*ml(?:\\W|$)") }?.let { it[1].toInt() }
@@ -109,13 +109,9 @@ fun String.sizeMlFrom() = maybe { extract("$INT_REGEX\\s*ml(?:\\W|$)") }?.let { 
 operator fun Element.contains(cssQuery: String) = selectFirst(cssQuery) != null
 
 fun Element.extractFrom(cssQuery: String = ":root", regex: String) = textFrom(cssQuery).extract(regex)
-
 fun Element.textFrom(cssQuery: String = ":root") = selectFrom(cssQuery).text().trim()
-
 fun Element.hrefFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:href").toUri()
-
 fun Element.srcFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:src").toUri()
-
 fun Element.dataSrcFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:data-src").toUri()
 
 fun Element.attrFrom(cssQuery: String = ":root", attr: String) = selectFrom(cssQuery).attr(attr)
