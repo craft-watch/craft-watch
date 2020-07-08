@@ -33,6 +33,7 @@ dependencies {
   testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
   // byte-buddy 1.9.10 (pulled in by Mockito) behaves badly with Java 13 - see https://github.com/mockk/mockk/issues/397
   testImplementation("net.bytebuddy:byte-buddy:1.10.6")
+  testImplementation("com.github.tomakehurst:wiremock-jre8-standalone:2.27.0")
 }
 
 application {
@@ -42,6 +43,7 @@ application {
 tasks.withType<KotlinCompile>().configureEach {
   kotlinOptions {
     jvmTarget = "1.8"
+    freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
   }
 }
 

@@ -10,11 +10,13 @@ import java.net.URI
 
 class CachingRetriever(
   private val store: ObjectStore,
-  private val delegate: Retriever = NetworkRetriever()
+  private val delegate: Retriever
 ) : Retriever {
   private val logger = KotlinLogging.logger {}
 
   override suspend fun retrieve(url: URI) = read(url) ?: delegate.retrieve(url).also { write(url, it) }
+
+  override fun close() = delegate.close()
 
   private suspend fun write(url: URI, content: ByteArray) {
     val key = key(url)

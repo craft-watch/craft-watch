@@ -1,6 +1,5 @@
 package watch.craft.executor
 
-import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -11,6 +10,7 @@ import watch.craft.Scraper
 import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
+import watch.craft.network.Retriever
 import java.net.URI
 import java.time.Clock
 import java.time.Instant
@@ -19,8 +19,10 @@ import java.time.ZoneId
 class ExecutorTest {
   private val executor = Executor(
     results = mock(),
-    retriever = mock {
-      onBlocking { retrieve(any()) } doReturn "<html><body><h1>Hello</h1></body></html>".toByteArray()
+    createRetriever = {
+      object : Retriever {
+        override suspend fun retrieve(url: URI) = "<html><body><h1>Hello</h1></body></html>".toByteArray()
+      }
     },
     clock = Clock.fixed(NOW, ZoneId.systemDefault())
   )

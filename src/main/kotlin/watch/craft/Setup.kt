@@ -2,17 +2,18 @@ package watch.craft
 
 import watch.craft.network.CachingRetriever
 import watch.craft.network.FailingRetriever
+import watch.craft.network.NetworkRetriever
 import watch.craft.network.Retriever
-import watch.craft.storage.GcsObjectStore
-import watch.craft.storage.LocalObjectStore
-import watch.craft.storage.SubObjectStore
-import watch.craft.storage.WriteThroughObjectStore
+import watch.craft.storage.*
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 
-class Setup(dateString: String? = null) {
+class Setup(
+  dateString: String? = null,
+  forceDownload: Boolean = false
+) {
   private val live = dateString == null
 
   private val instant = if (live) {
@@ -26,13 +27,21 @@ class Setup(dateString: String? = null) {
     secondLevel = GcsObjectStore(GCS_BUCKET)
   )
 
-  private val downloads = SubObjectStore(store, "${DOWNLOADS_DIR}/${DATE_FORMAT.format(instant)}")
   val results = SubObjectStore(store, RESULTS_DIRNAME)
 
-  val retriever: Retriever = if (live) {
-    CachingRetriever(downloads)
-  } else {
-    CachingRetriever(downloads, delegate = FailingRetriever())
+  val createRetriever: (String) -> Retriever = { name ->
+    CachingRetriever(
+      if (forceDownload) {
+        NullObjectStore()
+      } else {
+        SubObjectStore(store, "${DOWNLOADS_DIR}/${DATE_FORMAT.format(instant)}")
+      },
+      if (live) {
+        NetworkRetriever(name)
+      } else {
+        FailingRetriever()
+      }
+    )
   }
 
   companion object {
