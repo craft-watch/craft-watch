@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-07T21:00:20.764527Z"
+    "capturedAt" : "2020-07-08T11:32:19.697884Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -208,7 +208,7 @@
     "brewery" : "Boxcar",
     "name" : "Dreamful",
     "summary" : "IPA",
-    "desc" : "Do you remember the dream before you were born?\nWere we more awake then or now?\nAnyway... here's a lovely IPA. Enjoy x",
+    "desc" : "Save 10% when you buy 12 ! (Mix & Match)\nDo you remember the dream before you were born?\nWere we more awake then or now?\nAnyway... here's a lovely IPA. Enjoy x",
     "keg" : false,
     "mixed" : false,
     "sizeMl" : 440,
@@ -242,7 +242,7 @@
     "brewery" : "Boxcar",
     "name" : "Native Place",
     "summary" : "Pale Ale",
-    "desc" : "A delicate, sherbetty blend of fruity hops sitting on top of a soft and creamy base. Smooth, saturated and delicious.",
+    "desc" : "Save 10% when you buy 12 ! (Mix & Match)\nA delicate, sherbetty blend of fruity hops sitting on top of a soft and creamy base. Smooth, saturated and delicious.",
     "keg" : false,
     "mixed" : false,
     "sizeMl" : 440,
@@ -259,7 +259,7 @@
     "brewery" : "Boxcar",
     "name" : "Oh Ginkgo",
     "summary" : "IPA",
-    "desc" : "Ginkgo biloba, also known as the maidenhair tree, was eaten by dinosaurs the size of buildings. It has no known living relatives, having survived millions of years alone. It is a symbol of hope and peace.\nAlso, it looks cool on a beer can",
+    "desc" : "Save 10% when you buy 12 ! (Mix & Match)\nGinkgo biloba, also known as the maidenhair tree, was eaten by dinosaurs the size of buildings. It has no known living relatives, having survived millions of years alone. It is a symbol of hope and peace.\nAlso, it looks cool on a beer can",
     "keg" : false,
     "mixed" : false,
     "sizeMl" : 440,
@@ -351,7 +351,7 @@
     "abv" : 4.5,
     "numItems" : 1,
     "perItemPrice" : 2.5,
-    "available" : true,
+    "available" : false,
     "categories" : [ "Pils / Lager" ],
     "newFromBrewer" : false,
     "newToUs" : false,
@@ -402,7 +402,7 @@
     "abv" : 4.8,
     "numItems" : 1,
     "perItemPrice" : 2.5,
-    "available" : false,
+    "available" : true,
     "categories" : [ "IPA" ],
     "newFromBrewer" : false,
     "newToUs" : false,
@@ -497,6 +497,23 @@
     "brewery" : "Five Points",
     "name" : "Five Points Pale",
     "summary" : "Pale Ale",
+    "desc" : "NEW! EXPERIENCE DRAUGHT PALE AT HOME!\nOur Five Points Pale is a fresh, zesty, aromatic pale ale brewed with malted barley, a little wheat, and Amarillo and Citra hops from the West Coast of the USA. It’s our flagship beer, and its citrus, resinous notes make it a perfect easy-drinking beer for any occasion.\nThe first beer we ever brewed, our Pale proudly represents both the British ale tradition and the worldwide craft beer movement, resulting in an incredibly drinkable beer with tonnes of flavour.",
+    "keg" : true,
+    "mixed" : false,
+    "sizeMl" : 5000,
+    "abv" : 4.4,
+    "numItems" : 1,
+    "perItemPrice" : 25.0,
+    "available" : false,
+    "categories" : [ "Pale" ],
+    "newFromBrewer" : false,
+    "newToUs" : false,
+    "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-pale-5l-mini-keg-1591885265Pale-Mini-Cask-Mockup-SML2.jpg",
+    "url" : "https://shop.fivepointsbrewing.co.uk/item/41/FivePointsBrewing/FIVE-POINTS-PALE-5L-MINI-KEG.html"
+  }, {
+    "brewery" : "Five Points",
+    "name" : "Five Points Pale",
+    "summary" : "Pale Ale",
     "desc" : "Our Five Points Pale is a fresh, zesty, aromatic pale ale brewed with malted barley, a little wheat, and Amarillo and Citra hops from the West Coast of the USA. It’s our flagship beer, and its citrus, resinous notes make it a perfect easy-drinking beer for any occasion.\nThe first beer we ever brewed, our Pale proudly represents both the British ale tradition and the worldwide craft beer movement, resulting in an incredibly drinkable beer with tonnes of flavour.",
     "keg" : false,
     "mixed" : false,
@@ -510,23 +527,6 @@
     "newToUs" : false,
     "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-pale-1574871213Pale-Can-Mock-Up.png",
     "url" : "https://shop.fivepointsbrewing.co.uk/item/7/FivePointsBrewing/FIVE-POINTS-PALE-12-PACK.html"
-  }, {
-    "brewery" : "Five Points",
-    "name" : "Five Points Pale",
-    "summary" : "Pale Ale",
-    "desc" : "NEW! EXPERIENCE DRAUGHT PALE AT HOME!\nOur Five Points Pale is a fresh, zesty, aromatic pale ale brewed with malted barley, a little wheat, and Amarillo and Citra hops from the West Coast of the USA. It’s our flagship beer, and its citrus, resinous notes make it a perfect easy-drinking beer for any occasion.\nThe first beer we ever brewed, our Pale proudly represents both the British ale tradition and the worldwide craft beer movement, resulting in an incredibly drinkable beer with tonnes of flavour.",
-    "keg" : true,
-    "mixed" : false,
-    "sizeMl" : 5000,
-    "abv" : 4.4,
-    "numItems" : 1,
-    "perItemPrice" : 25.0,
-    "available" : true,
-    "categories" : [ "Pale" ],
-    "newFromBrewer" : false,
-    "newToUs" : false,
-    "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-pale-5l-mini-keg-1591885265Pale-Mini-Cask-Mockup-SML2.jpg",
-    "url" : "https://shop.fivepointsbrewing.co.uk/item/41/FivePointsBrewing/FIVE-POINTS-PALE-5L-MINI-KEG.html"
   }, {
     "brewery" : "Five Points",
     "name" : "Five Points Pils",
@@ -852,6 +852,23 @@
     "url" : "https://www.fourpure.com/item/7/Fourpure/Shapeshifter-IPA.html"
   }, {
     "brewery" : "Gipsy Hill",
+    "name" : "Baller",
+    "summary" : "India Pale Ale",
+    "desc" : "This is a single 330ml can of Baller.\nAn IPA. We took everything we’ve learnt about making IPAs and put it into this beer. Lots of hops, big bright flavours, smooth body. It’s our go-to IPA.\nGoes well with big livin and splashing out.\nThis is Charlie. He’s a Gipsy Hill co-founder. He likes city life and fast pedalling.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 330,
+    "abv" : 5.4,
+    "numItems" : 1,
+    "perItemPrice" : 2.7,
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "newFromBrewer" : false,
+    "newToUs" : false,
+    "thumbnailUrl" : "https://i2.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/BALLER.png?resize=300%2C300&ssl=1",
+    "url" : "https://gipsyhillbrew.com/product/baller/"
+  }, {
+    "brewery" : "Gipsy Hill",
     "name" : "Bandit",
     "summary" : "Gluten Free Pale Ale",
     "desc" : "This is a single 330ml can of Bandit.\nA Gluten Free Pale Ale. We took our beloved Beatnik and stole the gluten out. It’s a light, refreshing pale. Still fruity, still floral. Loads of flavour, just gluten free.\nGoes well with high revs and breeze in your hair.\nThis is Sam. He’s a Gipsy Hill co-founder. He likes long and windy roads.",
@@ -935,6 +952,23 @@
     "newToUs" : false,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/CARVER.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/carver/"
+  }, {
+    "brewery" : "Gipsy Hill",
+    "name" : "Core Range 24 Pack",
+    "summary" : null,
+    "desc" : "This pack contains 24 x 330ml cans from our core range.\nEach pack includes:\n4 x Hepcat – Session IPA – 4.6%\n4 x Baller – IPA – 5.4%\n4 x Hunter – Helles Lager – 4.8%\n4 x Carver – Micro IPA – 2.8%\n4 x Ranger – Pale Ale – 4.2%\n4 x Bandit – Gluten Free Pale – 3.8%",
+    "keg" : false,
+    "mixed" : true,
+    "sizeMl" : 330,
+    "abv" : null,
+    "numItems" : 24,
+    "perItemPrice" : 2.33,
+    "available" : true,
+    "categories" : [ "Pale", "Pils / Lager", "IPA" ],
+    "newFromBrewer" : false,
+    "newToUs" : false,
+    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/03/Copy-of-Core-range-6-pack-31.png?resize=300%2C300&ssl=1",
+    "url" : "https://gipsyhillbrew.com/product/core-range-24-pack/"
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "DJ BBQ Box",
@@ -1124,6 +1158,23 @@
     "url" : "https://www.howlinghops.co.uk/product/blankets-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
+    "name" : "Buckle Down",
+    "summary" : "DDH Pale Ale",
+    "desc" : "Buckle Down / DDH Pale Ale / 4 x 440ml / 5.0% ABV\nSuitable for vegans.\nA DDH Pale Ale dry hopped with Citra, Amarillo and Columbus. Flexing fruity sherbet and superfresh dankness above its 5% ABV. Keep on keeping on with this juicy treat.\nOne 4-pack leaves 20 can slots left in your case!",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 5.0,
+    "numItems" : 4,
+    "perItemPrice" : 4.0,
+    "available" : false,
+    "categories" : [ "Pale", "IPA" ],
+    "newFromBrewer" : true,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/BUCKLE-DOWN-440ml-1-324x324.png",
+    "url" : "https://www.howlinghops.co.uk/product/buckle-down-ddh-pale-4-x-440ml/"
+  }, {
+    "brewery" : "Howling Hops",
     "name" : "Curiosity Vendor",
     "summary" : "DDH Pale Ale",
     "desc" : "Curiosity Vendor / DDH Pale Ale / 4 x 440ml / 6.0% ABV\nSuitable for vegans.\nCuriosity Vendor is a new DDH Pale hopped with Citra, Chinook and Topaz. Bursting with citrus and passionfruit, this hazy pale has a super-soft, full-bodied texture.\nOne 4-pack leaves 20 can slots left in your case!",
@@ -1141,6 +1192,23 @@
     "url" : "https://www.howlinghops.co.uk/product/curiosity-vendor-ddh-pale-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
+    "name" : "Drag Race Johnny",
+    "summary" : "NEIPA",
+    "desc" : "Drag Race Johnny / NEIPA / 4 x 440ml / 6.7% ABV\nSuitable for vegans.\nDrag Race Johnny is a NEIPA that rides the racing line between sticky stonefruit and pithy bitterness. Azacca, Citra, Simcoe and no brakes.\nOne 4-pack leaves 20 can slots left in your case!",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 6.7,
+    "numItems" : 4,
+    "perItemPrice" : 4.5,
+    "available" : false,
+    "categories" : [ "IPA" ],
+    "newFromBrewer" : false,
+    "newToUs" : false,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/drag-race-johnny-440ml-324x324.png",
+    "url" : "https://www.howlinghops.co.uk/product/drag-race-johnny-4-x-440ml/"
+  }, {
+    "brewery" : "Howling Hops",
     "name" : "Flashpoint",
     "summary" : "NEIPA",
     "desc" : "Flashpoint / NEIPA / 4 x 440ml / 6.2% ABV\nSuitable for vegans.\nShowcasing Citra alongside some Aussie pals Topaz and Enigma, Flashpoint is a full-bodied New England IPA with a hop character far in excess of its 6.2% ABV. Peach and pineapple notes are balanced by snappy dankness.\nOne 4-pack leaves 20 can slots left in your case!",
@@ -1156,23 +1224,6 @@
     "newToUs" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/flashpoint-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/flashpoint-4-x-440ml/"
-  }, {
-    "brewery" : "Howling Hops",
-    "name" : "Free Fall",
-    "summary" : "NEIPA",
-    "desc" : "Free Fall / NEIPA / 4 x 440ml / 7.3% ABV\nSuitable for vegans.\nFree Fall is a brand new 7.3% NEIPA using Mosaic, Citra and Idaho 7. Expect lots of mango and tropical vibes in this soft and super-balanced IPA!\nOne 4-pack leaves 20 can slots left in your case!",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 7.3,
-    "numItems" : 4,
-    "perItemPrice" : 4.5,
-    "available" : false,
-    "categories" : [ "IPA" ],
-    "newFromBrewer" : false,
-    "newToUs" : false,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/FREE-FALL-440ml-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/free-fall-neipa-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
     "name" : "Grisette",
@@ -1209,26 +1260,9 @@
     "url" : "https://www.howlinghops.co.uk/product/house-ipa-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Lend Me Your Ears",
-    "summary" : "DIPA",
-    "desc" : "Lend Me Your Ears / DIPA / 4 x 440ml / 8.0% ABV\nSuitable for vegans.\nCombining all the experimental Yakima Chief hops from the Friends, Romans, Countrymen series – Lend Me Your Ears is a new 8% DIPA packing HBC-522, 586 and 692! A truly juicy prince of dankness.\nOne 4-pack leaves 20 can slots left in your case!",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 8.0,
-    "numItems" : 4,
-    "perItemPrice" : 5.0,
-    "available" : false,
-    "categories" : [ "IPA" ],
-    "newFromBrewer" : false,
-    "newToUs" : false,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/Lend-Me-Your-Ears-440ml-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/lend-me-your-ears-dipa-4-x-440ml/"
-  }, {
-    "brewery" : "Howling Hops",
     "name" : "NEW 12 Beer Mega Pack",
     "summary" : null,
-    "desc" : "NEW 12 Beer Mega Pack 24 x 440ml\nLoads of new beers straight off the canning line and some fresh, firm favourites. Each case of 24 cans will consist of 12 different beers, in quantities subject to availability. Cases cannot be customised. All the beer is superfresh! Beers included:\nLEND ME YOUR EARS – DIPA (HBC-522, 586, 692) – 8.0% ABV\nWIND AND SEA SURF CLUB – PALE ALE (AZACCA SIMCOE) – 4.5% ABV\nFLASHPOINT – NEIPA (CITRA TOPAZ ENIGMA) – 6.2% ABV\nPUSH PUSH – DDH PALE (CITRA AZACCA SABRO) – 5.8% ABV\nBLANKETS – PALE ALE (CITRA COLUMBUS CASCADE) – 4.2% ABV\nPOCKET ROCKET – TINY IPA (CITRA SIMCOE IDAHO 7) – 2.7% ABV\nHOUSE IPA – INDIA PALE ALE – 6.9% ABV\nBUCKLE DOWN – DDH PALE ALE (CITRA AMARILLO COLUMBUS) – 5.0% ABV\nDRAG RACE JOHNNY – NEIPA (AZACCA CITRA SIMCOE) – 6.7% ABV\nBIRD TALK – PALE ALE (AMARILLO CENTENNIAL COLUMBUS) – 4.4% ABV\nPACKETS – KELLER LAGER – 4.2% ABV\nPASSIONFRUIT GOSE – FRUIT SOUR – 4.5% ABV",
+    "desc" : "NEW 12 Beer Mega Pack 24 x 440ml\nLoads of new beers straight off the canning line and some fresh, firm favourites. Each case of 24 cans will consist of 12 different beers, in quantities subject to availability. Cases cannot be customised. All the beer is superfresh! Beers included*:\nCURIOSITY VENDOR – DDH PALE ALE (CITRA CHINOOK TOPAZ) – 6.0% ABV\nGRISETTE – FARMHOUSE PALE ALE – 4.4% ABV\nBUCKLE DOWN – DDH PALE ALE (CITRA AMARILLO COLUMBUS) – 5.0% ABV\nDRAG RACE JOHNNY – NEIPA (AZACCA CITRA SIMCOE) – 6.7% ABV\nWIND AND SEA SURF CLUB – PALE ALE (AZACCA SIMCOE) – 4.5% ABV\nFLASHPOINT – NEIPA (CITRA TOPAZ ENIGMA) – 6.2% ABV\nPUSH PUSH – DDH PALE (CITRA AZACCA SABRO) – 5.8% ABV\nBLANKETS – PALE ALE (CITRA COLUMBUS CASCADE) – 4.2% ABV\nPOCKET ROCKET – TINY IPA (CITRA SIMCOE IDAHO 7) – 2.7% ABV\nHOUSE IPA – INDIA PALE ALE – 6.9% ABV\nPACKETS – KELLER LAGER – 4.2% ABV\nPASSIONFRUIT GOSE – FRUIT SOUR – 4.5% ABV\n*Subject to availability. Beers may be swapped for new releases if out of stock.",
     "keg" : false,
     "mixed" : true,
     "sizeMl" : 440,
@@ -1239,8 +1273,8 @@
     "categories" : [ "IPA", "Pils / Lager", "Sours / Gose" ],
     "newFromBrewer" : false,
     "newToUs" : false,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/june-beer-case-5-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/new-12-beer-mega-pack-24-x-440ml-2/"
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/june-beer-case-7-324x324.png",
+    "url" : "https://www.howlinghops.co.uk/product/new-12-beer-mixed-case-24/"
   }, {
     "brewery" : "Howling Hops",
     "name" : "Off Ramp",
@@ -1327,23 +1361,6 @@
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/push-push-4-x-440ml/"
   }, {
-    "brewery" : "Howling Hops",
-    "name" : "Wind and Sea Surf Club",
-    "summary" : "Pale Ale",
-    "desc" : "Wind and Sea Surf Club / Pale Ale / 4 x 440ml / 4.5% ABV\nSuitable for vegans.\nThis new hoppy Pale Ale using Azacca and Simcoe is big on snappy pineapple and zesty grapefruit flavours, with a clean, dry finish. Breezey and refreshing like a day on the beach.\nOne 4-pack leaves 20 can slots left in your case!",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 4.5,
-    "numItems" : 4,
-    "perItemPrice" : 3.5,
-    "available" : true,
-    "categories" : [ "Pale" ],
-    "newFromBrewer" : false,
-    "newToUs" : false,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/05/wind-and-sea-440ml-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/wind-sea-surf-club-4-x-440ml/"
-  }, {
     "brewery" : "Marble",
     "name" : "Alf",
     "summary" : "Hazy IPA ;-)",
@@ -1354,12 +1371,29 @@
     "abv" : 5.4,
     "numItems" : 1,
     "perItemPrice" : 3.7,
-    "available" : false,
+    "available" : true,
     "categories" : [ "IPA" ],
     "newFromBrewer" : false,
     "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2019/01/ALF-500ml-Can-234x300.png",
     "url" : "https://marblebeers.com/shop-home/alf/"
+  }, {
+    "brewery" : "Marble",
+    "name" : "Alf",
+    "summary" : "IPA",
+    "desc" : "First brewed in collaboration with our friends at Amundsen Brewery, Oslo, Alf is a tongue in cheek, hazy pale ;-). Stone and tropical fruit character is brought by a heavy dry-hop of Mosaic, Enigma and Sultana, balanced on a light, drinkable body.",
+    "keg" : true,
+    "mixed" : false,
+    "sizeMl" : 5000,
+    "abv" : 5.4,
+    "numItems" : 1,
+    "perItemPrice" : 25.5,
+    "available" : true,
+    "categories" : [ "Pale", "IPA" ],
+    "newFromBrewer" : false,
+    "newToUs" : false,
+    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/07/ALF2_1652-e1594125090379-300x300.jpg",
+    "url" : "https://marblebeers.com/shop-home/alf-5l-mini-cask/"
   }, {
     "brewery" : "Marble",
     "name" : "American Pilsner",
@@ -1477,7 +1511,7 @@
     "categories" : [ ],
     "newFromBrewer" : false,
     "newToUs" : false,
-    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/03/Core-Range-500ml-4Cans02-2-300x300.png",
+    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/03/Core-Range-500ml-4Cans-1-234x300.png",
     "url" : "https://marblebeers.com/shop-home/core-range-mixed-case-24-cans/"
   }, {
     "brewery" : "Marble",
@@ -1496,23 +1530,6 @@
     "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2018/11/Cross-Collar-500ml-Can01-234x300.png",
     "url" : "https://marblebeers.com/shop-home/cross-collar/"
-  }, {
-    "brewery" : "Marble",
-    "name" : "Cross Collar Half",
-    "summary" : "West Coast Pale",
-    "desc" : "This West Coast-style pale ale first brewed in collaboration with, and with hops sourced by Brook House Hops in Herefordshire. Pine resin and grapefruit flavours and aromas are balanced by a biscuity malt body and bitter finish.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 500,
-    "abv" : 5.2,
-    "numItems" : 12,
-    "perItemPrice" : 3.33,
-    "available" : false,
-    "categories" : [ "Pale", "Bitter" ],
-    "newFromBrewer" : false,
-    "newToUs" : false,
-    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Cross_Collar_24_pack-234x300.png",
-    "url" : "https://marblebeers.com/shop-home/cross-collar-half-case-12-cans/"
   }, {
     "brewery" : "Marble",
     "name" : "Cubbio Damage",
@@ -1567,23 +1584,6 @@
   }, {
     "brewery" : "Marble",
     "name" : "Lagonda",
-    "summary" : "Pale",
-    "desc" : "Named after a classic car owned by the boss’s father, Lagonda has been a house beer since 1997. The beer was originally designated an IPA but we feel pale ale better reflects current beer definitions. Pale in colour, the malts provide a sturdy body on which is built a citrus and floral hop character.\nCONTAINS LIVE YEAST, ALLOW NATURAL SETTLING. ONCE VENTED CONSUME WITHIN 3 DAYS. KEEP AS CLOSE TO 8°C",
-    "keg" : true,
-    "mixed" : false,
-    "sizeMl" : 5000,
-    "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 22.25,
-    "available" : false,
-    "categories" : [ "Pale", "IPA" ],
-    "newFromBrewer" : false,
-    "newToUs" : false,
-    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/05/Lagonda-IMG_1534-e1589905679839-300x300.jpg",
-    "url" : "https://marblebeers.com/shop-home/lagonda-5l-mink-cask-local-delivery-only/"
-  }, {
-    "brewery" : "Marble",
-    "name" : "Lagonda",
     "summary" : "English Pale",
     "desc" : "Named after a classic car owned by the boss’s father, Lagonda has been a house beer since 1997. The beer was originally designated an IPA but we feel pale ale better reflects current beer definitions. Pale in colour, the malts provide a sturdy body on which is built a citrus and floral hop character.",
     "keg" : false,
@@ -1598,23 +1598,6 @@
     "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/04/Lagonda_24_pack-234x300.png",
     "url" : "https://marblebeers.com/shop-home/lagonda-case-24-cans/"
-  }, {
-    "brewery" : "Marble",
-    "name" : "Manchester Bitter",
-    "summary" : "Bitter",
-    "desc" : "Our most traditional core beer is inspired by a Manchester stalwart; a fondly-remembered original. Speciality malt gives the deep golden colour and robust base, balanced by crisp bitterness and a floral, lemony aroma.\nCONTAINS LIVE YEAST, ALLOW NATURAL SETTLING. ONCE VENTED CONSUME WITHIN 3 DAYS. KEEP AS CLOSE TO 8°C",
-    "keg" : true,
-    "mixed" : false,
-    "sizeMl" : 5000,
-    "abv" : 4.2,
-    "numItems" : 1,
-    "perItemPrice" : 19.5,
-    "available" : false,
-    "categories" : [ "Bitter" ],
-    "newFromBrewer" : false,
-    "newToUs" : false,
-    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/05/Manchester-Bitter-Mini-Keg-IMG_1532-e1589903747581-300x300.jpg",
-    "url" : "https://marblebeers.com/shop-home/manchester-bitter-5l-mini-cask-local-delivery-only/"
   }, {
     "brewery" : "Marble",
     "name" : "Manchester Bitter",
@@ -1717,23 +1700,6 @@
     "newToUs" : false,
     "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2018/07/blonde-234x300.png",
     "url" : "https://marblebeers.com/shop-home/sour-blonde-ale/"
-  }, {
-    "brewery" : "Marble",
-    "name" : "Stout",
-    "summary" : "Stout",
-    "desc" : "Roasty and robust.It is deep, dark and rich, with layers of malty complexity to be unravelled with each sip.",
-    "keg" : true,
-    "mixed" : false,
-    "sizeMl" : 5000,
-    "abv" : 5.7,
-    "numItems" : 1,
-    "perItemPrice" : 24.8,
-    "available" : false,
-    "categories" : [ "Dark" ],
-    "newFromBrewer" : false,
-    "newToUs" : false,
-    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/06/Stout-IMG_1600-e1591956607727-300x300.jpg",
-    "url" : "https://marblebeers.com/shop-home/stout-5l-mini-keg/"
   }, {
     "brewery" : "Northern Monk",
     "name" : "18.04 Sandy Kerr",
@@ -1870,6 +1836,23 @@
     "newToUs" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NorthernMonk_WebStore_NorthernHeroes_3000x1770px_4_180x.jpg?v=1592220409",
     "url" : "https://northernmonkshop.com/collections/beer/products/northern-heros-12-pack"
+  }, {
+    "brewery" : "Northern Monk",
+    "name" : "Ofs 005",
+    "summary" : "Incognito IPA",
+    "desc" : "7.0% ABV // 1.068 OG // 7 EBC // 18 IBU // 440ML\nINGREDIENTS: Water, Malted BARLEY (GLUTEN), Malted WHEAT (GLUTEN), OATS (GLUTEN), Dextrose, Hops, Yeast\nWe were given the opportunity to trial some ‘Incognito’ hops, which are basically hops in liquid form. As such, they should give us the ability to crop more out of our kettle at the Old Flax Store. This experimental beer saw us trial whether Incognito hops are a true representation of the real thing, and if they do result in an increase in yield. This beer is hopped with Incognito Citra in the whirlpool, and is dry hopped with Citra T90, Citra BBC, Mosaic and Bru-1 for a big pineapple punch.\n----\nIn 2014 we opened the doors to the Old Flax Store, a Grade II listed building that we found and renovated into the home of Northern Monk.\nWe grew significantly in the years to follow, but the Old Flax Store remains the heart of the operation. If you’ve ever visited us here, you’ll know that you can look through the ground floor window to see our original tanks still in operation. This is where we brew our smaller, more limited releases.\n2020 marks the year that we launch a brand-new beer series, a series dedicated to the exploratory, small-batch nature of brewing at OFS. We’ve released beers exclusive to the Old Flax Store before, but we’ve given this series a whole new identity.\nThe Old Flax Store Special series will push the boundaries of our brewing, allowing us to be completely experimental in approach. Since these beers will be limited in quantity, we’ve restricted can sales to two per person, to ensure that as many people as possible have the opportunity to try them.\nWe don’t expect these beers to hang around for long, so be quick if a release catches your eye. Follow our social media channels to make sure that you don’t miss out on a launch.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 7.0,
+    "numItems" : 1,
+    "perItemPrice" : 6.0,
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "newFromBrewer" : false,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NMBC_OFS005-1_180x.jpg?v=1594124416",
+    "url" : "https://northernmonkshop.com/collections/beer/products/ofs-005-incognito-ipa"
   }, {
     "brewery" : "Northern Monk",
     "name" : "Origin",
@@ -2671,6 +2654,23 @@
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/circuits-citra-ekuanot-neipa"
   }, {
     "brewery" : "Pressure Drop",
+    "name" : "Dreamlife",
+    "summary" : "New England Pale Ale",
+    "desc" : "New England Pale 4.6%\nLie down in the green grass, look up into the blue skies and contemplate life, dreams and everything in between. Dreamlife is a soft & hazy pale ale, made for easy drinking and easy dreaming.\nMade with hops from all corners of the globe, it’s a sessionable New England pale ale brewed with Nelson Sauvin from New Zealand, Amarillo from the U.S. and Mandarina Bavaria from Germany.\nIt has distinct citrus notes of orange and grapefruit imparted by the Amarillo and Manadarina hops, while the Huell Melon  gives the beer a green fruit & melon aroma which carries through into the palate.\nDream a little dream of Dreamlife.\nLabel artwork by Pressure Drop's own Sienna O'Rourke",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : null,
+    "abv" : 4.6,
+    "numItems" : 1,
+    "perItemPrice" : 4.0,
+    "available" : true,
+    "categories" : [ "Pale" ],
+    "newFromBrewer" : true,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/Screenshot_2019-07-24_at_14.55.16_large.png?v=1565337259",
+    "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/dreamlife-ddh-new-england-pale-ale"
+  }, {
+    "brewery" : "Pressure Drop",
     "name" : "Future Sunshine",
     "summary" : "Peach, Pineapple & Passionfruit Sour",
     "desc" : "6.5 % Peach, Pineapple & Passionfruit Sour 440ml CAN\n(contains lactose- not suitable for vegans)\nHow much fruit can you jam in one beer?\nA whole heckin' lot it turns out!\nFuture Sunshine tastes just like it you'd imagine, sweet and sour with a creamy body (thank you lactose).\nCheer up juice in a can.\nSHIPPING £5.99 per box\nBoxes hold up to 15 cans\nOur minimum order is 8 cans (these can be a mix of different beers)",
@@ -2686,23 +2686,6 @@
     "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9565_large.jpg?v=1589446938",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/future-sunshine-peach-pineapple-passionfruit-sour"
-  }, {
-    "brewery" : "Pressure Drop",
-    "name" : "Golden State",
-    "summary" : "New England Pale",
-    "desc" : "Amarillo Cryo & BBC New England Pale 5.2% 440ml Can\nAmarillo is one of our favourite hops, it's bright and full of citrusy joy. We regularly use it as a supporting player in our beers, but for Golden State we really let it shine and take centre stage. We've dry-hopped with both BBC & Cryo Amarillo & added a hint of orange zest in the whirlpool to round out this juicy New England Pale.\nShipping is £5.99 per box\nEach box can hold up to 15 beers\nMinimum order is 8 cans (can be made up of different beers)",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 5.2,
-    "numItems" : 1,
-    "perItemPrice" : 4.05,
-    "available" : true,
-    "categories" : [ "Pale" ],
-    "newFromBrewer" : false,
-    "newToUs" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9751_large.jpg?v=1592315629",
-    "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/golden-state-new-england-pale"
   }, {
     "brewery" : "Pressure Drop",
     "name" : "Great Heights",
@@ -2754,23 +2737,6 @@
     "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_7845_large.jpg?v=1588861254",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/pale-fire"
-  }, {
-    "brewery" : "Pressure Drop",
-    "name" : "Perfect Life",
-    "summary" : "New England Pale",
-    "desc" : "Amarillo, Ekuanot & Meridian New England Pale 4.6%\nDreaming of the park, longing for that holiday, craving a beer with pals in person… We’re all just wishing for the perfect life.\nUnfortunately we can't make any promises, beyond this lightly balanced little pale ale. Sherbetty fruits, a touch of bitterness, and a hint of dank.\nSpringtime juice for enjoying with good times.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : null,
-    "abv" : 4.6,
-    "numItems" : 1,
-    "perItemPrice" : 4.1,
-    "available" : true,
-    "categories" : [ "Pale" ],
-    "newFromBrewer" : false,
-    "newToUs" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9694_large.jpg?v=1591879961",
-    "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/perfect-life-new-england-pale"
   }, {
     "brewery" : "Pressure Drop",
     "name" : "The Rendezvous",
@@ -3300,21 +3266,21 @@
     "url" : "https://www.sirencraftbrew.com/item/347/SirenCraftBrew/On-The-Bubble.html"
   }, {
     "brewery" : "Siren Craft",
-    "name" : "Rum & Maple Broken Dream",
-    "summary" : "Twisted Breakfast Stout",
-    "desc" : "* Limit 2 per customer *\nAn indulgence of chocolate and speciality malts, Broken Dream is smooth, unctuous and moreish, brewed with milk sugar for balance and mouthfeel. As a special one-off, we've taken it a step further here, spinning the beer on maple wood along with our very own rum barrel aged coffee, developed in collaboration with Quarter Horse.",
-    "keg" : false,
+    "name" : "Santo",
+    "summary" : null,
+    "desc" : "NOTE - Due to high demand, if collecting from the brewery, please do not come to collect until you receive an email to say it's ready.\nFresh Siren keg beer at home in awesome 5L mini kegs!\nSanto is a distinctly Siren lager. Our take on the style is full of American hops, working in harmony to offer subtle tropical fruit notes and bright citrus flavours. It pours with a delicate haze and a striking aroma. Saintly fresh, but devilishly drinkable.\nKeep Cold. Serve Cool. Drink Fresh.\nUnfiltered / Unfined\nVegan Friendly\nMini kegs are stored refrigerated on site. Once received, keeps up to a recommended maximum of 10 days, drink within 3 days once opened. Drink soon, keep cold.",
+    "keg" : true,
     "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 6.5,
+    "sizeMl" : 5000,
+    "abv" : 5.0,
     "numItems" : 1,
-    "perItemPrice" : 4.0,
+    "perItemPrice" : 22.0,
     "available" : false,
-    "categories" : [ "Dark" ],
+    "categories" : [ "Pils / Lager" ],
     "newFromBrewer" : false,
     "newToUs" : false,
-    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-rum-maple-broken-dream-1593444882siren-craft-rum-maple-broken-dream-440.png",
-    "url" : "https://www.sirencraftbrew.com/item/364/SirenCraftBrew/Rum-Maple-Broken-Dream.html"
+    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-5l-mini-keg-santo-1591025215siren-mini-keg-santo.png",
+    "url" : "https://www.sirencraftbrew.com/item/336/SirenCraftBrew/5L-Mini-Keg-Santo.html"
   }, {
     "brewery" : "Siren Craft",
     "name" : "Santo",
@@ -3332,23 +3298,6 @@
     "newToUs" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-santo-1563357898siren-craft-brew-santo-can.png",
     "url" : "https://www.sirencraftbrew.com/item/221/SirenCraftBrew/Santo.html"
-  }, {
-    "brewery" : "Siren Craft",
-    "name" : "Santo",
-    "summary" : null,
-    "desc" : "NOTE - Due to high demand, if collecting from the brewery, please do not come to collect until you receive an email to say it's ready.\nFresh Siren keg beer at home in awesome 5L mini kegs!\nSanto is a distinctly Siren lager. Our take on the style is full of American hops, working in harmony to offer subtle tropical fruit notes and bright citrus flavours. It pours with a delicate haze and a striking aroma. Saintly fresh, but devilishly drinkable.\nKeep Cold. Serve Cool. Drink Fresh.\nUnfiltered / Unfined\nVegan Friendly\nMini kegs are stored refrigerated on site. Once received, keeps up to a recommended maximum of 10 days, drink within 3 days once opened. Drink soon, keep cold.",
-    "keg" : true,
-    "mixed" : false,
-    "sizeMl" : 5000,
-    "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 22.0,
-    "available" : true,
-    "categories" : [ "Pils / Lager" ],
-    "newFromBrewer" : false,
-    "newToUs" : false,
-    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-5l-mini-keg-santo-1591025215siren-mini-keg-santo.png",
-    "url" : "https://www.sirencraftbrew.com/item/336/SirenCraftBrew/5L-Mini-Keg-Santo.html"
   }, {
     "brewery" : "Siren Craft",
     "name" : "Soundwave",
@@ -3793,38 +3742,21 @@
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/florida-weisse"
   }, {
     "brewery" : "Thornbridge",
-    "name" : "Green Mountain",
-    "summary" : "Vermont Style Session IPA",
-    "desc" : "A beautiful hazy Vermont Session IPA. We generously dry hop with Galaxy, Mosaic, Citra and Amarillo hops, creating a hugely aromatic and juicy fruit bomb. This product is vegan friendly.\nABV 4.3% / 330ml can\nHops Galaxy / Mosaic / Citra / Amarillo\nMalts Pale / Wheat / Caramalt\nYou must be 18 or over to buy this product.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 330,
-    "abv" : 4.3,
-    "numItems" : 1,
-    "perItemPrice" : 2.0,
-    "available" : false,
-    "categories" : [ "Pale", "IPA" ],
-    "newFromBrewer" : false,
-    "newToUs" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Green_Mounain_can_mockup_coloured_background_300x300.jpg?v=1568808951",
-    "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/green-mountain"
-  }, {
-    "brewery" : "Thornbridge",
     "name" : "Jaipur",
     "summary" : "IPA",
-    "desc" : "With over 100 worldwide awards, this American style IPA has a complexity of flavour created by a six-dimensional hop experience.\nABV 5.9% / 330ml bottle\nHOPS Chinook / Centennial / Ahtanum / Simcoe / Columbus / Cascade\nMALTS Low Colour Maris Otter\nNOTABLE AWARDS\n2016 – 4 Stars. International Wine and Spirits Competition\n2016 – Bronze. International Beer Challenge\n2016 – Gold, IPA United Kingdom. World Beer Awards\n2015 – 3 Stars. Great Taste Awards\n2015 – UK Top 50 Food and Drink. Great Taste Awards\n2014 – 3 Stars. Great Taste Awards\n2013 – Europe’s Best IPA. World Beer Awards\n2013 – Gold, IPA. SIBA\n2011 – World’s Best Keg Ale. Brewing Industry Awards\nYou must be 18 or over to purchase this product.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.",
+    "desc" : "With over 100 worldwide awards, this American style IPA has a complexity of flavour created by a six-dimensional hop experience.\nABV 5.9% / 330ml can\nHOPS Chinook / Centennial / Ahtanum / Simcoe / Columbus / Cascade\nMALTS Maris Otter\nNOTABLE AWARDS\n2016 – 4 Stars. International Wine and Spirits Competition\n2016 – Bronze. International Beer Challenge\n2016 – Gold, IPA United Kingdom. World Beer Awards\n2015 – 3 Stars. Great Taste Awards\n2015 – UK Top 50 Food and Drink. Great Taste Awards\n2014 – 3 Stars. Great Taste Awards\n2013 – Europe’s Best IPA. World Beer Awards\n2013 – Gold, IPA. SIBA\n2011 – World’s Best Keg Ale. Brewing Industry Awards\nYou must be 18 or over to purchase this product.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.",
     "keg" : false,
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.9,
     "numItems" : 1,
     "perItemPrice" : 2.0,
-    "available" : false,
+    "available" : true,
     "categories" : [ "IPA" ],
     "newFromBrewer" : false,
     "newToUs" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_bottle_mockup_for_website_300x300.jpg?v=1583153726",
-    "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/jaipur"
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_can_mockup_coloured_background_300x300.jpg?v=1583154011",
+    "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/jaipur-can"
   }, {
     "brewery" : "Thornbridge",
     "name" : "Jamestown",
@@ -3944,6 +3876,40 @@
     "newToUs" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0340/2829/0107/products/CONFLUX_can_345x345.jpg",
     "url" : "https://unitybrewingco.com/collections/unity-beer/products/conflux-pale-ale"
+  }, {
+    "brewery" : "Unity",
+    "name" : "Dayspring Pilsner",
+    "summary" : null,
+    "desc" : "A dry, crisp and quenching lager, brewed with fine German Pilsner malt and generously hopped with citrussy Czech Kazbek. 440ml / 5.0% ABV ALLERGENS: Gluten (Barley) Unfiltered, unpasteurised - Vegan Friendly",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 5.0,
+    "numItems" : 1,
+    "perItemPrice" : 3.5,
+    "available" : true,
+    "categories" : [ "Pils / Lager" ],
+    "newFromBrewer" : true,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0340/2829/0107/products/image_23579aac-172f-4210-b087-a1e910fa95d2_345x345.jpg",
+    "url" : "https://unitybrewingco.com/collections/unity-beer/products/dayspring-pilsner"
+  }, {
+    "brewery" : "Unity",
+    "name" : "Nocturne Oatmeal Porter",
+    "summary" : null,
+    "desc" : "A full and silky Porter with liberal amounts of flaked oats and a complex blend of British and German roasted malts. 440ml / 5.0% ABV ALLERGENS: Gluten (Barley, Oats) Unfiltered, unpasteurised - Vegan Friendly",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 5.0,
+    "numItems" : 1,
+    "perItemPrice" : 3.4,
+    "available" : true,
+    "categories" : [ "Dark" ],
+    "newFromBrewer" : true,
+    "newToUs" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0340/2829/0107/products/image_fe8979ed-7482-4c34-a49f-f33ab5ff724e_345x345.jpg",
+    "url" : "https://unitybrewingco.com/collections/unity-beer/products/nocturne-oatmeal-porter"
   }, {
     "brewery" : "Unity",
     "name" : "This Must Be The Place Simcoe Pale Ale",
@@ -4366,7 +4332,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1584966464385-U7BZ745QMLX1E7PA1U5Y/ke17ZwdGBToddI8pDm48kIzNWfZh9v0nvEHU3WAJ1tF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0ooWhOa5cxQSJsU3rXf8luXAp4RuSF8fCIvAJcvjt_IcZoixb7Wm7IaIkEuLM8C6Ew/Kaleidoscope440.jpg",
     "url" : "https://wiperandtrue.com/order-beer-online/kaleidoscope-case-12x-440ml-cans"
   }, {
@@ -4383,26 +4349,9 @@
     "available" : true,
     "categories" : [ "Dark" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1593764481127-4EB6WMVDWT93QO4KIL8A/ke17ZwdGBToddI8pDm48kIzNWfZh9v0nvEHU3WAJ1tF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0ooWhOa5cxQSJsU3rXf8luXAp4RuSF8fCIvAJcvjt_IcZoixb7Wm7IaIkEuLM8C6Ew/MilkShake330.jpg",
     "url" : "https://wiperandtrue.com/order-beer-online/milk-shake-case-12x-330ml-cans"
-  }, {
-    "brewery" : "Wiper and True",
-    "name" : "Mixed",
-    "summary" : null,
-    "desc" : "6 x 440ml cans of Kaleidoscope 4.2% Pale Ale, 6 x 440ml cans of 2.7% Small Beer Light Pale Ale.\nSmall Beer is an exceptionally satisfying and full-bodied beer for its stature, with the same big hop hit you may expect from our more muscular Pale Ales. Small Beer is vibrant with citrus, tropical fruit and hedgerow berry flavours, meandering to a gentle bitter finish.\nKaleidoscope combines three different hops to create a seasonally evolving flavour profile. Whilst the hops may change, our intention remains the same - to create a beer that is harmonious, bright and refreshing.\nBoth beers are suitable for vegans.\nWe’re offering a 10% discount for all NHS staff. Please check out using your NHS email address and the code ‘NHS10’.\nPlease note that we can only deliver to the UK mainland, excluding Northern and Mainland Ireland, Guernsey and Jersey.\nPlease take care to select the correct shipping option when checking out. Free Bristol delivery takes 1 - 2 working days and applies to the following postcodes: BS1, BS2, BS3, BS4, BS5, BS6, BS7, BS8, BS9, BS10, BS13, BS14, BS15, BS16, BS32, BS34, BS35, BS36 and BS37. Within BS8, free delivery includes BS8 1, BS8 2 and BS8 4. Please only select the option for free Bristol delivery to these postcodes; otherwise we will have to refund your order and you’ll need to order again using nationwide delivery, since we use a separate courier service for nationwide drop-offs.\nNationwide delivery takes 2-3 working days.",
-    "keg" : false,
-    "mixed" : true,
-    "sizeMl" : null,
-    "abv" : null,
-    "numItems" : 12,
-    "perItemPrice" : 2.8,
-    "available" : false,
-    "categories" : [ "Pale", "Bitter" ],
-    "newFromBrewer" : false,
-    "newToUs" : true,
-    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1593768387356-ULTW79A5HWP9XLXGME25/ke17ZwdGBToddI8pDm48kFQQgP34qnCpeHaeAOzTt7pZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIedjZT6_OBzi2ofH1EqNdNeCRxNMlbxs9807lIebBlcA/Small+Kal+440.png",
-    "url" : "https://wiperandtrue.com/order-beer-online/mixed-case-kaleidoscope-and-small-beer"
   }, {
     "brewery" : "Wiper and True",
     "name" : "Small Beer",
@@ -4417,7 +4366,7 @@
     "available" : true,
     "categories" : [ "Pale", "Bitter" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1584976610822-3ULOIXOZFG1FC4ZN1EZJ/ke17ZwdGBToddI8pDm48kIzNWfZh9v0nvEHU3WAJ1tF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0ooWhOa5cxQSJsU3rXf8luXAp4RuSF8fCIvAJcvjt_IcZoixb7Wm7IaIkEuLM8C6Ew/SmallBeer440.jpg",
     "url" : "https://wiperandtrue.com/order-beer-online/small-beer-case-12x-440ml-cans"
   }, {
@@ -4434,7 +4383,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "newFromBrewer" : false,
-    "newToUs" : true,
+    "newToUs" : false,
     "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1593764819140-LYD57TK416V65H35KU9K/ke17ZwdGBToddI8pDm48kH7bHF972s0BMy8FJS7_5eh7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Udkb9EYnQod1oo25oIrfEHqqJxs3PTnNIpDd2Nj8pGws6ary7BfG6-GuG8rvj_sKiw/Sundance330.jpg",
     "url" : "https://wiperandtrue.com/order-beer-online/sundance-case-12x-330ml-cans"
   }, {
