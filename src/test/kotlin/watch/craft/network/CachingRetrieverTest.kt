@@ -1,6 +1,7 @@
 package watch.craft.network
 
 import com.nhaarman.mockitokotlin2.*
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
@@ -10,27 +11,33 @@ import watch.craft.storage.SubObjectStore
 import watch.craft.utils.sha1
 import java.net.URI
 
-class CachingGetterTest {
+class CachingRetrieverTest {
   private val store = mock<SubObjectStore>()
-  private val networkGet = mock<(URI) -> ByteArray>()
-  private val getter = CachingGetter(store, networkGet)
+  private val delegate = mock<Retriever>()
+  private val retriever = CachingRetriever(store, delegate)
 
   @Test
   fun `get from store and not from network if already in store`() {
-    whenever(store.read(NICE_KEY)) doReturn NICE_DATA
+    store.stub {
+      on { read(NICE_KEY) } doReturn NICE_DATA
+    }
 
-    val ret = getter.request(NICE_URL)
+    val ret = runBlocking { retriever.retrieve(NICE_URL) }
 
     assertArrayEquals(NICE_DATA, ret)
-    verify(networkGet, never())(any())
+    verifyBlocking(delegate, never()) { retrieve(any()) }
   }
 
   @Test
   fun `get from network and write to store if not already in store`() {
-    whenever(store.read(NICE_KEY)) doThrow FileDoesntExistException("oh")
-    whenever(networkGet(NICE_URL)) doReturn NICE_DATA
+    store.stub {
+      on { read(NICE_KEY) } doThrow FileDoesntExistException("oh")
+    }
+    delegate.stub {
+      onBlocking { retrieve(NICE_URL) } doReturn NICE_DATA
+    }
 
-    val ret = getter.request(NICE_URL)
+    val ret = runBlocking { retriever.retrieve(NICE_URL) }
 
     assertArrayEquals(NICE_DATA, ret)
     verify(store).write(NICE_KEY, NICE_DATA)
@@ -38,12 +45,16 @@ class CachingGetterTest {
 
   @Test
   fun `don't throw if data unexpectedly appears in store when we try to write it`() {
-    whenever(store.read(NICE_KEY)) doThrow FileDoesntExistException("oh")
-    whenever(store.write(any(), any())) doThrow FileExistsException("no")
-    whenever(networkGet(NICE_URL)) doReturn NICE_DATA
+    store.stub {
+      on { read(NICE_KEY) } doThrow FileDoesntExistException("oh")
+      on { store.write(any(), any()) } doThrow FileExistsException("no")
+    }
+    delegate.stub {
+      onBlocking { retrieve(NICE_URL) } doReturn NICE_DATA
+    }
 
     assertDoesNotThrow {
-      getter.request(NICE_URL)
+      runBlocking { retriever.retrieve(NICE_URL) }
     }
   }
 

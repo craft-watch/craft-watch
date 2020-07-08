@@ -7,13 +7,13 @@ import watch.craft.*
 import watch.craft.enrichers.Categoriser
 import watch.craft.enrichers.Newalyser
 import watch.craft.executor.ScraperAdapter.Result
-import watch.craft.network.CachingGetter
+import watch.craft.network.Retriever
 import java.time.Clock
 import java.time.Instant
 
 class Executor(
   private val results: ResultsManager,
-  private val getter: CachingGetter,
+  private val retriever: Retriever,
   private val clock: Clock = Clock.systemUTC()
 ) {
   private val logger = KotlinLogging.logger {}
@@ -34,7 +34,7 @@ class Executor(
 
   private fun Collection<Scraper>.execute() = runBlocking {
     this@execute
-      .map { ScraperAdapter(getter, it) }
+      .map { ScraperAdapter(retriever, it) }
       .map { async { it.execute() } }
       .flatMap { it.await() }
       .toSet()  // To make clear that order is not important
