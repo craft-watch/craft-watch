@@ -39,13 +39,15 @@ class ScraperUtilsTest {
   inner class FormattedTextFrom {
     @Test
     fun `drops headers`() {
-      val doc = docFromFragment("""
+      val doc = docFromFragment(
+        """
         <h1>Description</h1>
         <p>Hello there.</p>
         Wat.
         <h2>Some other stuff</h2>
         <p>Goodbye.</h2>
-      """)
+      """
+      )
 
       assertEquals(
         listOf(
@@ -59,12 +61,14 @@ class ScraperUtilsTest {
 
     @Test
     fun `handles br`() {
-      val doc = docFromFragment("""
+      val doc = docFromFragment(
+        """
         <p>
           Hello mummy. <br/>
           What do you want?
         </p>
-      """)
+      """
+      )
 
       assertEquals(
         listOf(
@@ -78,7 +82,8 @@ class ScraperUtilsTest {
     /** Derived from something seen for real on Northern Monk product page. */
     @Test
     fun `deals with complex mess`() {
-      val doc = docFromFragment("""
+      val doc = docFromFragment(
+        """
         <p>
           <span>
             <strong>
@@ -107,7 +112,8 @@ class ScraperUtilsTest {
             </div>
           </div>
         </div>
-      """)
+      """
+      )
 
       assertEquals(
         listOf(
@@ -179,13 +185,15 @@ class ScraperUtilsTest {
     }
   }
 
-  private fun docFromFragment(raw: String, topLevelTag: String = "div") = Jsoup.parse("""
+  private fun docFromFragment(raw: String, topLevelTag: String = "div") = Jsoup.parse(
+    """
     <html>
     <body>
     <${topLevelTag} class="${TARGET.removePrefix(".")}">${raw}</${topLevelTag}>
     </body>
     </html>
-  """.trimIndent())
+  """.trimIndent()
+  )
 
   companion object {
     private const val TARGET = ".target"
