@@ -10,7 +10,10 @@ import java.time.LocalDate
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 
-class Setup(dateString: String? = null) {
+class Setup(
+  dateString: String? = null,
+  forceDownload: Boolean = false
+) {
   private val live = dateString == null
 
   private val instant = if (live) {
@@ -24,13 +27,20 @@ class Setup(dateString: String? = null) {
     secondLevel = GcsObjectStore(GCS_BUCKET)
   )
 
-  private val downloads = NullObjectStore() // SubObjectStore(store, "${DOWNLOADS_DIR}/${DATE_FORMAT.format(instant)}")
   val results = SubObjectStore(store, RESULTS_DIRNAME)
 
   val createRetriever: (String) -> Retriever = { name ->
     CachingRetriever(
-      downloads,
-      if (live) NetworkRetriever(name) else FailingRetriever()
+      if (forceDownload) {
+        NullObjectStore()
+      } else {
+        SubObjectStore(store, "${DOWNLOADS_DIR}/${DATE_FORMAT.format(instant)}")
+      },
+      if (live) {
+        NetworkRetriever(name)
+      } else {
+        FailingRetriever()
+      }
     )
   }
 
