@@ -12,7 +12,6 @@ class Newalyser(
   private val logger = KotlinLogging.logger {}
 
 
-
   private val oldItems = results.listHistoricalResults()
     .filter { DAYS.between(it, now).toInt() in MIN_DAYS_AGO..MAX_DAYS_AGO }
     .flatMap {

@@ -44,7 +44,7 @@ class CloudwaterScraperTest {
     val items = ITEMS.filter { it.mixed }
 
     assertFalse(items.isEmpty())
-    assertFalse(items.any { it.numItems == 1})
+    assertFalse(items.any { it.numItems == 1 })
     assertFalse(items.any { it.sizeMl != null })
     assertFalse(items.any { it.abv != null })
   }

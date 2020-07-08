@@ -5,7 +5,10 @@ class WriteThroughObjectStore(
   private val secondLevel: ObjectStore
 ) : ObjectStore {
   override fun write(key: String, content: ByteArray) {
-    secondLevel.writeGracefully(key, content)  // Do this first, so we never end up with stuff in the primary that isn't in secondary
+    secondLevel.writeGracefully(
+      key,
+      content
+    )  // Do this first, so we never end up with stuff in the primary that isn't in secondary
     firstLevel.write(key, content)  // Allow this to throw
   }
 

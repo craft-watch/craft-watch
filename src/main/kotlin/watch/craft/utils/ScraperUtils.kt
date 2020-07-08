@@ -21,7 +21,7 @@ import kotlin.text.RegexOption.IGNORE_CASE
 
 fun forRootUrls(vararg urls: URI, work: (Document) -> List<Job>) = urls.map { More(it, work) }
 
-inline fun <reified T: Any> Element.jsonFrom(cssQuery: String = ":root") = selectFrom(cssQuery).data().run {
+inline fun <reified T : Any> Element.jsonFrom(cssQuery: String = ":root") = selectFrom(cssQuery).data().run {
   try {
     jacksonObjectMapper()
       .disable(FAIL_ON_UNKNOWN_PROPERTIES)
@@ -95,6 +95,7 @@ fun Element.abvFrom(
   prefix: String = "",
   noPercent: Boolean = false
 ) = textFrom(cssQuery).abvFrom(prefix, noPercent)
+
 fun String.abvFrom(
   prefix: String = "",
   noPercent: Boolean = false
