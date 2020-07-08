@@ -109,7 +109,7 @@ class App extends React.Component<Props, State> {
   );
 
   private brewerySelected = (item: Item): boolean =>
-    this.state.brewerySelections[item.brewery];
+    this.state.brewerySelections[item.brewery.shortName];
 
   private formatSelected = (item: Item): boolean =>
     (this.state.formatSelections[REGULAR] && !item.keg && !item.mixed) ||
@@ -169,7 +169,7 @@ class App extends React.Component<Props, State> {
 
   private initialSelections = (keys: Array<string>): Selections => _.object(_.map(keys, b => [b, true]));
 
-  private uniqueBreweries = (items: Array<Item>): Array<string> => _.uniq(_.map(items, item => item.brewery));
+  private uniqueBreweries = (items: Array<Item>): Array<string> => _.uniq(_.map(items, item => item.brewery.shortName));
 }
 
 export default App;

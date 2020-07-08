@@ -35,8 +35,7 @@ data class Item(
   val perItemPrice: Double,
   val available: Boolean,
   val categories: Set<String> = emptySet(),
-  val newFromBrewer: Boolean = false,
-  val newToUs: Boolean = false,
+  val new: Boolean = false,
   val thumbnailUrl: URI,
   val url: URI
 )

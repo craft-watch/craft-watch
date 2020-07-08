@@ -25,8 +25,8 @@ class Executor(
       .execute()
       .normalise()
       .toInventory(scrapers, now)
-      .categorise()
-      .newalyse(now)
+      .enrichWith(Categoriser(CATEGORY_KEYWORDS))
+      .enrichWith(Newalyser(results, now))
       .sort()
       .bestPricedItems()
       .also { it.logStats() }
@@ -59,9 +59,10 @@ class Executor(
     items = toList()
   )
 
-  private fun Inventory.categorise() = copy(items = items.map(Categoriser(CATEGORY_KEYWORDS)::enrich))
-
-  private fun Inventory.newalyse(now: Instant) = copy(items = items.map(Newalyser(results, now)::enrich))
+  private fun Inventory.enrichWith(enricher: Enricher) = copy(
+    items = items.map(enricher::enrich),
+    breweries = breweries.map(enricher::enrich)
+  )
 
   private fun Inventory.sort() = copy(items = items.sortedWith(
     compareBy(

@@ -2,7 +2,7 @@ export interface Inventory {
   metadata: Metadata;
   categories: Array<string>;
   breweries: Array<Brewery>;
-  items: Array<Item>;
+  items: Array<RawItem>;
 }
 
 export interface Metadata {
@@ -14,10 +14,10 @@ export interface Brewery {
   name: string;
   location: string;
   websiteUrl: string;
+  new: boolean;
 }
 
-export interface Item {
-  brewery: string;
+export interface BaseItem {
   name: string;
   summary: string | null;
   desc: string | null;
@@ -29,8 +29,11 @@ export interface Item {
   perItemPrice: number;
   available: boolean;
   categories: Array<string>;
-  newFromBrewer: boolean;
-  newToUs: boolean;
+  new: boolean;
   thumbnailUrl: string;
   url: string;
 }
+
+export type RawItem = BaseItem & { brewery: string; }
+export type Item = BaseItem & { brewery: Brewery }
+

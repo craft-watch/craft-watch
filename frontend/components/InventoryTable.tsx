@@ -58,8 +58,8 @@ const partitionItems = (items: Array<Item>, categories: Array<string>): Array<Se
 };
 
 const renderBrewery: Renderer<Item> = item => (
-  <Link href={`/${toSafePathPart(item.brewery)}`}>
-    <a>{item.brewery}</a>
+  <Link href={`/${toSafePathPart(item.brewery.shortName)}`}>
+    <a>{item.brewery.shortName}</a>
   </Link>
 );
 
@@ -77,8 +77,8 @@ const renderName: Renderer<Item> = item => (
       {item.summary}
     </p>
     <p className="summary">
-      {item.newFromBrewer && <span className="pill new">NEW !!!</span>}
-      {item.newToUs && !item.newFromBrewer && <span className="pill just-added">Just added</span>}
+      {item.new && !item.brewery.new && <span className="pill new">NEW !!!</span>}
+      {item.new && item.brewery.new && <span className="pill just-added">Just added</span>}
       {item.keg && <span className="pill keg">{MINIKEG}</span>}
       {item.mixed && <span className="pill mixed">{MIXED_CASE}</span>}
     </p>
@@ -90,7 +90,7 @@ const renderName: Renderer<Item> = item => (
 const renderTooltipText = (item: Item): JSX.Element => (
   <span className="tooltip-text hide-small" style={{ display: "hidden" }}>
     {(item.desc !== null) && splitToParagraphs(item.desc)}
-    <div className="disclaimer">© {item.brewery}</div>
+    <div className="disclaimer">© {item.brewery.shortName}</div>
   </span>
 );
 

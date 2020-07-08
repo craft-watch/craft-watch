@@ -1,10 +1,7 @@
 package watch.craft.enrichers
 
 import mu.KotlinLogging
-import watch.craft.Enricher
-import watch.craft.Item
-import watch.craft.MinimalItem
-import watch.craft.ResultsManager
+import watch.craft.*
 import java.time.Instant
 import java.time.temporal.ChronoUnit.DAYS
 
@@ -14,7 +11,9 @@ class Newalyser(
 ) : Enricher {
   private val logger = KotlinLogging.logger {}
 
-  private val oldInventory = results.listHistoricalResults()
+
+
+  private val oldItems = results.listHistoricalResults()
     .filter { DAYS.between(it, now).toInt() in MIN_DAYS_AGO..MAX_DAYS_AGO }
     .flatMap {
       logger.info("Collating old inventory from: ${it}")
@@ -25,18 +24,18 @@ class Newalyser(
     .toSet()
     .onEach { logger.info("Historical item: ${it}") }
 
-  private val oldBreweries = oldInventory
+  private val oldBreweries = oldItems
     .map { it.brewery }
     .distinct()
     .toSet()
 
-  override fun enrich(item: Item): Item {
-    val newAtAll = MinimalItem(brewery = item.brewery, name = item.name.toLowerCase()) !in oldInventory
-    return item.copy(
-      newFromBrewer = (item.brewery in oldBreweries) && newAtAll,
-      newToUs = newAtAll
-    )
-  }
+  override fun enrich(item: Item) = item.copy(
+    new = MinimalItem(brewery = item.brewery, name = item.name.toLowerCase()) !in oldItems
+  )
+
+  override fun enrich(brewery: Brewery) = brewery.copy(
+    new = brewery.shortName !in oldBreweries
+  )
 
   companion object {
     // TODO - modify range once we have more data
