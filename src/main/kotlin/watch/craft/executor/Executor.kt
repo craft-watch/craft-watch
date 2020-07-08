@@ -33,13 +33,14 @@ class Executor(
   }
 
   private fun Collection<Scraper>.execute() = runBlocking {
-    createRetriever().use { retriever ->
-      this@execute
-        .map { ScraperAdapter(retriever, it) }
-        .map { async { it.execute() } }
-        .flatMap { it.await() }
-        .toSet()  // To make clear that order is not important
-    }
+    this@execute
+      .map { async { it.execute() } }
+      .flatMap { it.await() }
+      .toSet()  // To make clear that order is not important
+  }
+
+  private suspend fun Scraper.execute() = createRetriever().use {
+    ScraperAdapter(it, this).execute()
   }
 
   private fun Collection<Result>.normalise() = mapNotNull {
