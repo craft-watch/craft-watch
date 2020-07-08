@@ -2,6 +2,7 @@ package watch.craft.network
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
+import io.ktor.client.engine.cio.endpoint
 import io.ktor.client.features.BrowserUserAgent
 import io.ktor.client.features.UserAgent
 import io.ktor.client.request.get
@@ -18,8 +19,14 @@ class NetworkRetriever : Retriever {
     install(UserAgent) {
       agent = "CraftWatch Bot (https://craft.watch)"
     }
+
     engine {
-      threadsCount = 1
+      requestTimeout = 30_000
+
+      endpoint {
+        connectTimeout = 15_000
+        connectRetryAttempts = 10
+      }
     }
   }
 

@@ -4,10 +4,7 @@ import watch.craft.network.CachingRetriever
 import watch.craft.network.FailingRetriever
 import watch.craft.network.NetworkRetriever
 import watch.craft.network.Retriever
-import watch.craft.storage.GcsObjectStore
-import watch.craft.storage.LocalObjectStore
-import watch.craft.storage.SubObjectStore
-import watch.craft.storage.WriteThroughObjectStore
+import watch.craft.storage.*
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneOffset
@@ -22,10 +19,11 @@ class Setup(dateString: String? = null) {
     LocalDate.parse(dateString).atStartOfDay(ZoneOffset.UTC).toInstant()
   }
 
-  private val store = WriteThroughObjectStore(
-    firstLevel = LocalObjectStore(CACHE_DIR),
-    secondLevel = GcsObjectStore(GCS_BUCKET)
-  )
+  private val store = NullObjectStore()
+//  WriteThroughObjectStore(
+//    firstLevel = LocalObjectStore(CACHE_DIR),
+//    secondLevel = GcsObjectStore(GCS_BUCKET)
+//  )
 
   private val downloads = SubObjectStore(store, "${DOWNLOADS_DIR}/${DATE_FORMAT.format(instant)}")
   val results = SubObjectStore(store, RESULTS_DIRNAME)

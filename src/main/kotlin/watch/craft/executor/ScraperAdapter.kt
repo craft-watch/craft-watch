@@ -36,13 +36,13 @@ class ScraperAdapter(
 
   private suspend fun List<Job>.executeAll() = coroutineScope {
     this@executeAll
-      .mapIndexed { idx, job ->
-        async {
-          delay(idx * scraper.rateLimitPeriodMillis.toLong())
-          job.execute()
-        }
-      }
-      .flatMap { it.await() }
+      .flatMap { job -> job.execute() }
+//        async {
+////          delay(idx * scraper.rateLimitPeriodMillis.toLong())
+//          job.execute()
+//        }
+//      }
+//      .flatMap { it.await() }
   }
 
   private suspend fun Job.execute(): List<Result> {
