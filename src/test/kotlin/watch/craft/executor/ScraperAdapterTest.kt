@@ -45,9 +45,13 @@ class ScraperAdapterTest {
       on { invoke(any()) } doThrow SkipItemException("Emo town")
     }
 
-    val adapter = ScraperAdapter(retriever, MyScraper(listOf(
-      Leaf(name = "A", url = URL_A, work = work)
-    )))
+    val adapter = ScraperAdapter(
+      retriever, MyScraper(
+        listOf(
+          Leaf(name = "A", url = URL_A, work = work)
+        )
+      )
+    )
 
     retrieveResults(adapter)
 
