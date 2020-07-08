@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-08T13:50:22.975119Z"
+    "capturedAt" : "2020-07-08T15:03:56.124800Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -162,7 +162,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0286/3471/0061/products/Cans_800x800_crop_center.jpg?v=1593009635",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0286/3471/0061/products/Cans_800x800_crop_center.jpg",
     "url" : "https://beakbrewery.com/products/lulla-citra-simcoe-pale-3-5"
   }, {
     "brewery" : "Beak",
@@ -178,7 +178,7 @@
     "available" : false,
     "categories" : [ "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0286/3471/0061/products/Parade_800x800_crop_center.jpg?v=1589466329",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0286/3471/0061/products/Parade_800x800_crop_center.jpg",
     "url" : "https://beakbrewery.com/products/parade-ddh-ipa-mosaic-citra-idaho-7"
   }, {
     "brewery" : "Boxcar",
@@ -322,7 +322,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-A-Rising-Tide-F_large.png?v=1591979218",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-A-Rising-Tide-F_large.png",
     "url" : "https://shop.canopybeer.com/products/a-rising-tide-nelson-motueka-ipa-6-5"
   }, {
     "brewery" : "Canopy",
@@ -338,7 +338,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-All-Together-F_large.png?v=1593006475",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-All-Together-F_large.png",
     "url" : "https://shop.canopybeer.com/products/copy-of-a-rising-tide-nelson-motueka-ipa-6-5"
   }, {
     "brewery" : "Canopy",
@@ -354,7 +354,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Brockwell-F_large.png?v=1539104364",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Brockwell-F_large.png",
     "url" : "https://shop.canopybeer.com/products/brockwell-ipa"
   }, {
     "brewery" : "Canopy",
@@ -370,7 +370,7 @@
     "available" : false,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Champion-F_large.png?v=1540475156",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Champion-F_large.png",
     "url" : "https://shop.canopybeer.com/products/champion-kolsch"
   }, {
     "brewery" : "Canopy",
@@ -386,7 +386,7 @@
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-LlopperF_large.png?v=1540568612",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-LlopperF_large.png",
     "url" : "https://shop.canopybeer.com/products/llopper-everyday-oyster-stout"
   }, {
     "brewery" : "Canopy",
@@ -402,7 +402,7 @@
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-Paceline-F_large.png?v=1585123486",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-440ml-Paceline-F_large.png",
     "url" : "https://shop.canopybeer.com/products/paceline-lime-salt-lager-4-0"
   }, {
     "brewery" : "Canopy",
@@ -418,7 +418,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Snapper-F_large.png?v=1540475255",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-Master-640x625-330ml-Snapper-F_large.png",
     "url" : "https://shop.canopybeer.com/products/snapper-session-ipa"
   }, {
     "brewery" : "Canopy",
@@ -434,7 +434,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-330ml-Sunray-F_large.png?v=1539104580",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0060/1574/6161/products/CB-Assets-Can-640x625-330ml-Sunray-F_large.png",
     "url" : "https://shop.canopybeer.com/products/sunray-pale-ale"
   }, {
     "brewery" : "Cloudwater",
@@ -450,7 +450,7 @@
     "available" : true,
     "categories" : [ ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.813_800x.jpg?v=1587382857",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.813_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/a-gentle-nod-to-welcome-visitors-modern-barley-wine"
   }, {
     "brewery" : "Cloudwater",
@@ -466,7 +466,7 @@
     "available" : true,
     "categories" : [ "Dark", "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.868_1_800x.jpg?v=1591022119",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.868_1_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/all-together-ipa-worldwide-collaboration"
   }, {
     "brewery" : "Cloudwater",
@@ -482,7 +482,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.858_800x.jpg?v=1589379768",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.858_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/are-you-the-brewer-crop-year-2019-ekuanot-10-single-hop-ipa"
   }, {
     "brewery" : "Cloudwater",
@@ -498,7 +498,7 @@
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.867_1_800x.jpg?v=1591021563",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.867_1_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/back-on-boogie-st-columbus-single-hop-ipa-crop-year-2019-series-13"
   }, {
     "brewery" : "Cloudwater",
@@ -514,7 +514,7 @@
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.873_1_800x.jpg?v=1591967414",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.873_1_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/bird-tweets-trump-trump-tweets-ddh-pale-crop-year-2019-series-18"
   }, {
     "brewery" : "Cloudwater",
@@ -530,7 +530,7 @@
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale", "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/cy19_pack_03_800x.jpg?v=1592835813",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/cy19_pack_03_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/crop-year-2019-15-19-4-pack"
   }, {
     "brewery" : "Cloudwater",
@@ -546,7 +546,7 @@
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/CLOUDWATERDDHPale_800x.jpg?v=1586511040",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/CLOUDWATERDDHPale_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/ddh-pale-2"
   }, {
     "brewery" : "Cloudwater",
@@ -562,7 +562,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.872_1_800x.jpg?v=1591967006",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.872_1_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/land-of-landings-ddh-ipa-crop-year-2019-series-17"
   }, {
     "brewery" : "Cloudwater",
@@ -578,7 +578,7 @@
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/CLOUDWATERHelles_c85a1278-636c-41dd-ba86-f78d182d66ba_800x.jpg?v=1586724513",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/CLOUDWATERHelles_c85a1278-636c-41dd-ba86-f78d182d66ba_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/helles-1"
   }, {
     "brewery" : "Cloudwater",
@@ -594,7 +594,7 @@
     "available" : true,
     "categories" : [ "Pale", "Pils / Lager" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/CLOUDWATER_Hoppy_Little_Lager_800x.jpg?v=1583935115",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/CLOUDWATER_Hoppy_Little_Lager_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/hoppy-little-lager"
   }, {
     "brewery" : "Cloudwater",
@@ -610,7 +610,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.864_800x.jpg?v=1590155045",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.864_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/just-the-right-shape-mosaic-single-hop-ipa-crop-year-2019-series-12"
   }, {
     "brewery" : "Cloudwater",
@@ -626,7 +626,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.545-bottle_800x.jpg?v=1593158619",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.545-bottle_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/la-deuxieme-saison-des-poires-750ml"
   }, {
     "brewery" : "Cloudwater",
@@ -642,7 +642,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.871_1_800x.jpg?v=1591966062",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.871_1_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/land-of-landings-ddh-ipa-crop-year-2019-series-16"
   }, {
     "brewery" : "Cloudwater",
@@ -658,7 +658,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.491b_800x.jpg?v=1591970110",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.491b_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/only-a-dream-can-kill-a-dream-fresh-funky-pale-ale-full-of-tropical-fruit-salad-flavours-750ml"
   }, {
     "brewery" : "Cloudwater",
@@ -674,7 +674,7 @@
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.869_800x.jpg?v=1591965613",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.869_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/our-highs-their-lows-pilsner-crop-year-2019-series-15"
   }, {
     "brewery" : "Cloudwater",
@@ -690,7 +690,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/CLOUDWATERPaleAle_800x.jpg?v=1586160165",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/CLOUDWATERPaleAle_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/pale-ale-1"
   }, {
     "brewery" : "Cloudwater",
@@ -706,7 +706,7 @@
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.862_800x.jpg?v=1590154680",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.862_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/ponderosa-pines-on-rainier-cascade-single-hop-ipa-crop-year-2019-series-11"
   }, {
     "brewery" : "Cloudwater",
@@ -722,7 +722,7 @@
     "available" : true,
     "categories" : [ "Pale", "Pils / Lager", "Dark", "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/2020LockdownSignature_800x.jpg?v=1592324329",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/2020LockdownSignature_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/signature-selection-pack"
   }, {
     "brewery" : "Cloudwater",
@@ -738,7 +738,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.870_1_800x.jpg?v=1591021762",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.870_1_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/singel-hopped-ipa-strata-single-hop-ipa-crop-year-2019-series-14"
   }, {
     "brewery" : "Cloudwater",
@@ -754,7 +754,7 @@
     "available" : true,
     "categories" : [ "Dark", "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/special_release_pack_2020_800x.jpg?v=1593616330",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/special_release_pack_2020_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/one-off-selection-8-pack"
   }, {
     "brewery" : "Cloudwater",
@@ -770,7 +770,7 @@
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.761a_800x.jpg?v=1590152875",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.761a_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/speyside-persistence-is-utile-speyside-ba-w-coffee-vanilla-375ml"
   }, {
     "brewery" : "Cloudwater",
@@ -786,7 +786,7 @@
     "available" : true,
     "categories" : [ "Bitter", "Dark" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.824_800x.jpg?v=1584355387",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.824_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/step-up"
   }, {
     "brewery" : "Cloudwater",
@@ -802,7 +802,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/gyle_no._860b_800x.jpg?v=1589790130",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/gyle_no._860b_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/the-edge-of-the-bread-ddh-ipa"
   }, {
     "brewery" : "Cloudwater",
@@ -818,7 +818,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.849_800x.jpg?v=1588245427",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.849_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/the-light-grey-one-dipa"
   }, {
     "brewery" : "Five Points",
@@ -2034,7 +2034,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NMBC_1804_NorthSeaSession-SandyKerr-3_180x.jpg?v=1593009130",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NMBC_1804_NorthSeaSession-SandyKerr-3_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/18-04-sandy-kerr-north-sea-sessions-burnt-mill-ddh-session-ipa"
   }, {
     "brewery" : "Northern Monk",
@@ -2050,7 +2050,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/thumbnail_image001_180x.jpg?v=1588589180",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/thumbnail_image001_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/enter-the-haze-12-pack"
   }, {
     "brewery" : "Northern Monk",
@@ -2066,7 +2066,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/ETERNAL_4_PACK_180x.jpg?v=1591607445",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/ETERNAL_4_PACK_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/eternal-session-ipa-4-pack"
   }, {
     "brewery" : "Northern Monk",
@@ -2082,7 +2082,7 @@
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NorthernMonk_WebStore_GNL_3000x1770px_1_180x.jpg?v=1588000810",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NorthernMonk_WebStore_GNL_3000x1770px_1_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/great-northern-lager-6-pack"
   }, {
     "brewery" : "Northern Monk",
@@ -2098,7 +2098,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NMBCo---Tom-Joy-_-NMB_6614_180x.jpg?v=1589213471",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NMBCo---Tom-Joy-_-NMB_6614_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/heathen"
   }, {
     "brewery" : "Northern Monk",
@@ -2114,7 +2114,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NorthernMonk_WebStore_KeepTheFaith_NHS_3000x1770px_4_180x.jpg?v=1593165906",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NorthernMonk_WebStore_KeepTheFaith_NHS_3000x1770px_4_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/keep-the-faith-12-pack"
   }, {
     "brewery" : "Northern Monk",
@@ -2130,7 +2130,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NW_4_PACK_180x.jpg?v=1571064363",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NW_4_PACK_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/new-world-ipa-india-pale-ale-4-pack"
   }, {
     "brewery" : "Northern Monk",
@@ -2146,7 +2146,7 @@
     "available" : true,
     "categories" : [ ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NorthernMonk_WebStore_NorthernHeroes_3000x1770px_4_180x.jpg?v=1592220409",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NorthernMonk_WebStore_NorthernHeroes_3000x1770px_4_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/northern-heros-12-pack"
   }, {
     "brewery" : "Northern Monk",
@@ -2162,7 +2162,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NMBC_OFS005-1_180x.jpg?v=1594124416",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NMBC_OFS005-1_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/ofs-005-incognito-ipa"
   }, {
     "brewery" : "Northern Monk",
@@ -2178,7 +2178,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/ORIGIN4PK_180x.jpg?v=1571299569",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/ORIGIN4PK_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/origin-gluten-free-ipa-4-pack"
   }, {
     "brewery" : "Northern Monk",
@@ -2194,7 +2194,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/RETRO_FAITH_440_180x.jpg?v=1592465054",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/RETRO_FAITH_440_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/retro-faith-modern-pale-ale"
   }, {
     "brewery" : "Northern Monk",
@@ -2210,7 +2210,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NMBCo_-_Tom_Joy_IMG_5556_180x.jpg?v=1589213741",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NMBCo_-_Tom_Joy_IMG_5556_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/striding-edge-light-ipa"
   }, {
     "brewery" : "Padstow",
@@ -2898,7 +2898,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_8398_large.jpg?v=1576076300",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_8398_large.jpg",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/behind-door-number-3"
   }, {
     "brewery" : "Pressure Drop",
@@ -2914,7 +2914,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_0021_large.jpg?v=1593692581",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_0021_large.jpg",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/circuits-citra-ekuanot-neipa"
   }, {
     "brewery" : "Pressure Drop",
@@ -2930,7 +2930,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/Screenshot_2019-07-24_at_14.55.16_large.png?v=1565337259",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/Screenshot_2019-07-24_at_14.55.16_large.png",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/dreamlife-ddh-new-england-pale-ale"
   }, {
     "brewery" : "Pressure Drop",
@@ -2946,7 +2946,7 @@
     "available" : true,
     "categories" : [ "Sours / Gose" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9565_large.jpg?v=1589446938",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9565_large.jpg",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/future-sunshine-peach-pineapple-passionfruit-sour"
   }, {
     "brewery" : "Pressure Drop",
@@ -2962,7 +2962,7 @@
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_8451_large.jpg?v=1578645917",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_8451_large.jpg",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/great-heights-unfiltered-pilsner"
   }, {
     "brewery" : "Pressure Drop",
@@ -2978,7 +2978,7 @@
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9954_large.jpg?v=1592930412",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9954_large.jpg",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/it-is-wednesday-my-dudes-special-lager"
   }, {
     "brewery" : "Pressure Drop",
@@ -2994,7 +2994,7 @@
     "available" : true,
     "categories" : [ "Pale", "Bitter" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_7845_large.jpg?v=1588861254",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_7845_large.jpg",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/pale-fire"
   }, {
     "brewery" : "Pressure Drop",
@@ -3010,7 +3010,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/Screenshot_2019-06-25_at_15.05.51_large.png?v=1561471658",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/Screenshot_2019-06-25_at_15.05.51_large.png",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/the-rendezvous-ddh-neipa-collab-with-gamma"
   }, {
     "brewery" : "Pressure Drop",
@@ -3026,7 +3026,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_8968_large.jpg?v=1593158286",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_8968_large.jpg",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/tomorrows-world-new-england-pale-ale"
   }, {
     "brewery" : "Redchurch",
@@ -3906,7 +3906,7 @@
     "available" : true,
     "categories" : [ ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/CarryUsall_colouredbackground_300x300.jpg?v=1588755573",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/CarryUsall_colouredbackground_300x300.jpg",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/carry-us-all-2-5-table-beer"
   }, {
     "brewery" : "Thornbridge",
@@ -3922,7 +3922,7 @@
     "available" : true,
     "categories" : [ "Dark", "Pale" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Cocoa_Wonderland_bottle_mockup_for_website_300x300.jpg?v=1568809399",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Cocoa_Wonderland_bottle_mockup_for_website_300x300.jpg",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/cocoa-wonderland"
   }, {
     "brewery" : "Thornbridge",
@@ -3938,7 +3938,7 @@
     "available" : true,
     "categories" : [ "Weisse", "Sours / Gose" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Florida_Weisse_can_mockup_coloured_background_300x300.jpg?v=1583153430",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Florida_Weisse_can_mockup_coloured_background_300x300.jpg",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/florida-weisse"
   }, {
     "brewery" : "Thornbridge",
@@ -3954,7 +3954,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_can_mockup_coloured_background_300x300.jpg?v=1583154011",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_can_mockup_coloured_background_300x300.jpg",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/jaipur-can"
   }, {
     "brewery" : "Thornbridge",
@@ -3970,7 +3970,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jamestowncan_colouredbakground_1_300x300.jpg?v=1584374239",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jamestowncan_colouredbakground_1_300x300.jpg",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/jamestowncan"
   }, {
     "brewery" : "Thornbridge",
@@ -3986,7 +3986,7 @@
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Little_by_Little_for_website_300x300.jpg?v=1577799301",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Little_by_Little_for_website_300x300.jpg",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/little-by-little"
   }, {
     "brewery" : "Thornbridge",
@@ -4002,7 +4002,7 @@
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Lukas_can_mockup_coloured_background_300x300.jpg?v=1583156441",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Lukas_can_mockup_coloured_background_300x300.jpg",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/lukas-can"
   }, {
     "brewery" : "Thornbridge",
@@ -4018,7 +4018,7 @@
     "available" : true,
     "categories" : [ "Dark", "Pale" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Market_Porter_bottle_mockup_for_website_3_300x300.png?v=1571406327",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Market_Porter_bottle_mockup_for_website_3_300x300.png",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/market-porter"
   }, {
     "brewery" : "Thornbridge",
@@ -4034,7 +4034,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Ponderamockup_colouredbackground_300x300.jpg?v=1584958778",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Ponderamockup_colouredbackground_300x300.jpg",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/pondera"
   }, {
     "brewery" : "Thornbridge",
@@ -4050,7 +4050,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Shelby_bottle_for_website_300x300.jpg?v=1592160756",
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Shelby_bottle_for_website_300x300.jpg",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/shelby-official"
   }, {
     "brewery" : "Unity",

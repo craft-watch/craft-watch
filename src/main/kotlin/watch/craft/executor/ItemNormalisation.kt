@@ -4,6 +4,7 @@ import watch.craft.InvalidItemException
 import watch.craft.Item
 import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.utils.divideAsPrice
+import watch.craft.utils.toUri
 
 fun Result.normalise() = Item(
   brewery = breweryName
@@ -31,7 +32,10 @@ fun Result.normalise() = Item(
     },
   available = item.available,
   thumbnailUrl = item.thumbnailUrl
-    .validate("absolute thumbnail URL") { it.isAbsolute },
+    .validate("absolute thumbnail URL") { it.isAbsolute }
+    .toString()
+    .replace("\\?v=.*".toRegex(), "")
+    .toUri(),
   url = url
     .validate("absolute URL") { it.isAbsolute }
 )
