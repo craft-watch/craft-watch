@@ -3,7 +3,7 @@ import _ from "underscore";
 import Page from "../components/Page";
 import App from "../components/App";
 import { Item } from "../utils/model";
-import { items as inventoryItems, capturedAt, categories } from "../utils/inventory";
+import { items as inventoryItems, capturedAt, categories, breweries } from "../utils/inventory";
 
 const TASTER_MENU_SIZE = 20;
 
@@ -40,6 +40,7 @@ const ThisPage = (): JSX.Element => {
         }
         capturedAt={capturedAt}
         items={items}
+        allBreweries={breweries}
         categories={categories}
       />
     </Page>

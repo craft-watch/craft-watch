@@ -1,17 +1,18 @@
 import React from "react";
 import _ from "underscore";
-import { Item } from "../utils/model";
+import { Moment } from "moment";
+import { Item, Brewery } from "../utils/model";
 import Menu, { Selections, Section as MenuSection } from "./Menu";
 import InventoryTable from "./InventoryTable";
+import Sidebar from "./Sidebar";
 import { MIXED_CASE, MINIKEG, REGULAR, OUT_OF_STOCK } from "../utils/strings";
-import { Moment } from "moment";
-import Link from "next/link";
 
 interface Props {
   title: string;
   desc?: JSX.Element | string;
   capturedAt: Moment;
   items: Array<Item>;
+  allBreweries: Array<Brewery>;
   categories: Array<string>;
 }
 
@@ -43,30 +44,11 @@ class App extends React.Component<Props, State> {
   render(): JSX.Element {
     return (
       <div>
-        <div className="sidebar">
-          <nav>
-            <h2 className="hide-medium">Explore ...</h2>
-            <ul>
-              <li><Link href="/"><a>New beers</a></Link></li>
-              <li><Link href="/taster"><a>Taster menu</a></Link></li>
-              <li><Link href="/full"><a>Full menu</a></Link></li>
-            </ul>
-
-            <h2 className="hide-medium">Just added ...</h2>
-            <ul>
-              <li><Link href="/cloudwater"><a>Cloudwater</a></Link></li>
-              <li><Link href="/solvay-society"><a>Solvay Society</a></Link></li>
-              <li><Link href="/wylam"><a>Wylam</a></Link></li>
-            </ul>
-          </nav>
-
-          <div className="info hide-medium">
-            <h1>{this.props.title}</h1>
-            <div className="desc">
-              {this.props.desc}
-            </div>
-          </div>
-        </div>
+        <Sidebar
+          title={this.props.title}
+          desc={this.props.desc}
+          allBreweries={this.props.allBreweries}
+        />
 
         <div className="how-to-use">
           Click on an image to go to the brewery shop!

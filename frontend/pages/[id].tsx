@@ -4,7 +4,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import Page from "../components/Page";
 import App from "../components/App";
 import { Brewery, Item } from "../utils/model";
-import { items, capturedAt, categories } from "../utils/inventory";
+import { items, capturedAt, categories, breweries } from "../utils/inventory";
 import { toSafePathPart } from "../utils/stuff";
 
 interface Props {
@@ -37,6 +37,7 @@ const ThisPage = ({ brewery, items }: Props): JSX.Element => {
         }
         capturedAt={capturedAt}
         items={items}
+        allBreweries={breweries}
         categories={categories}
       />
     </Page>
