@@ -16,6 +16,8 @@ class CachingRetriever(
 
   override suspend fun retrieve(url: URI) = read(url) ?: delegate.retrieve(url).also { write(url, it) }
 
+  override fun close() = delegate.close()
+
   private suspend fun write(url: URI, content: ByteArray) {
     val key = key(url)
     try {
