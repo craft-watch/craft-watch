@@ -28,7 +28,7 @@ class UnityScraperTest {
         sizeMl = 440,
         price = 3.80,
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0340/2829/0107/products/CONFLUX_can_345x345.jpg")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0340/2829/0107/products/CONFLUX_can_345x345.jpg?v=1584098753")
       ),
       ITEMS.byName("Conflux Pale Ale").noDesc()
     )
