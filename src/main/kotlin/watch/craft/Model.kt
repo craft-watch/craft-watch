@@ -18,7 +18,8 @@ data class Brewery(
   val shortName: String,
   val name: String,
   val location: String,
-  val websiteUrl: URI
+  val websiteUrl: URI,
+  val new: Boolean = false
 )
 
 data class Item(

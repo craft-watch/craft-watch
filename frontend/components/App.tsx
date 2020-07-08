@@ -51,6 +51,13 @@ class App extends React.Component<Props, State> {
               <li><Link href="/taster"><a>Taster menu</a></Link></li>
               <li><Link href="/full"><a>Full menu</a></Link></li>
             </ul>
+
+            <h2 className="hide-medium">Just added ...</h2>
+            <ul>
+              <li><Link href="/cloudwater"><a>Cloudwater</a></Link></li>
+              <li><Link href="/solvay-society"><a>Solvay Society</a></Link></li>
+              <li><Link href="/wylam"><a>Wylam</a></Link></li>
+            </ul>
           </nav>
 
           <div className="info hide-medium">
