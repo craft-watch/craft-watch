@@ -77,10 +77,10 @@ const renderName: Renderer<Item> = item => (
       {item.summary}
     </p>
     <p className="summary">
-      {item.newFromBrewer && <span className="pill magenta">NEW !!!</span>}
-      {item.newToUs && !item.newFromBrewer && <span className="pill magenta">Just added</span>}
-      {item.keg && <span className="pill green">{MINIKEG}</span>}
-      {item.mixed && <span className="pill violet">{MIXED_CASE}</span>}
+      {item.newFromBrewer && <span className="pill new">NEW !!!</span>}
+      {item.newToUs && !item.newFromBrewer && <span className="pill just-added">Just added</span>}
+      {item.keg && <span className="pill keg">{MINIKEG}</span>}
+      {item.mixed && <span className="pill mixed">{MIXED_CASE}</span>}
     </p>
     {(item.desc !== null) && renderTooltipText(item)}
   </div>
