@@ -14,7 +14,8 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
 import watch.craft.FatalScraperException
-import watch.craft.network.NetworkRetriever.Response.*
+import watch.craft.network.NetworkRetriever.Response.Failure
+import watch.craft.network.NetworkRetriever.Response.Success
 import java.net.URI
 
 class NetworkRetriever(private val name: String) : Retriever {
@@ -32,6 +33,8 @@ class NetworkRetriever(private val name: String) : Retriever {
 
   private val channel = Channel<Request>()
 
+  // I don't trust Ktor's "concurrency" configuration, so manually limit concurrency by having a single
+  // coroutine handling requests over a channel.
   init {
     GlobalScope.launch {
       logger.info("[${name}] Opening client")
@@ -42,7 +45,7 @@ class NetworkRetriever(private val name: String) : Retriever {
             Success(client.get(Url(msg.url.toString())))
           } catch (e: CancellationException) {
             throw e   // Must not swallow
-          } catch (e: Exception) {
+          } catch (e: Exception) {  // No idea what exceptions Ktor throws, so have to do catch-all
             Failure(e)
           }
           msg.response.complete(response)
