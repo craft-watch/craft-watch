@@ -21,14 +21,14 @@ import kotlin.text.RegexOption.IGNORE_CASE
 
 fun forRootUrls(vararg urls: URI, work: (Document) -> List<Job>) = urls.map { More(it, work) }
 
-inline fun <reified T : Any> Element.jsonFrom(cssQuery: String = ":root") = selectFrom(cssQuery).data().run {
-  try {
-    jacksonObjectMapper()
-      .disable(FAIL_ON_UNKNOWN_PROPERTIES)
-      .readValue<T>(this)
-  } catch (e: Exception) {
-    throw MalformedInputException("Couldn't read JSON data", e)
-  }
+inline fun <reified T : Any> Element.jsonFrom(cssQuery: String = ":root") = selectFrom(cssQuery).data().parseJson<T>()
+
+inline fun <reified T : Any> String.parseJson() = try {
+  jacksonObjectMapper()
+    .disable(FAIL_ON_UNKNOWN_PROPERTIES)
+    .readValue<T>(this)
+} catch (e: Exception) {
+  throw MalformedInputException("Couldn't read JSON data", e)
 }
 
 fun Element.formattedTextFrom(cssQuery: String = ":root") = with(MyVisitor()) {
