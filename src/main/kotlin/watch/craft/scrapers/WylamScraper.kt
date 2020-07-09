@@ -27,7 +27,7 @@ class WylamScraper : Scraper {
           val data = doc.jsonFrom<Data>("script[type=application/ld+json]:not(.yoast-schema-graph)")
 
           val abv = rawName.maybe { abvFrom() }
-          val numItems = rawName.maybe { extract("$INT_REGEX\\s*x") }?.get(1)?.toInt()
+          val numItems = rawName.maybe { extract("$INT_REGEX\\s*x").intFrom(1) }
 
           if (abv == null || numItems == null) {
             throw SkipItemException("Couldn't extract all parts, so assume it's not a beer")

@@ -88,7 +88,7 @@ fun <T, R> T.maybe(block: T.() -> R) = try {
   null
 }
 
-fun Element.priceFrom(cssQuery: String = ":root") = extractFrom(cssQuery, "\\d+(\\.\\d+)?")[0].toDouble()
+fun Element.priceFrom(cssQuery: String = ":root") = extractFrom(cssQuery, "\\d+(\\.\\d+)?").doubleFrom(0)
 
 fun Element.abvFrom(
   cssQuery: String = ":root",
@@ -99,13 +99,16 @@ fun Element.abvFrom(
 fun String.abvFrom(
   prefix: String = "",
   noPercent: Boolean = false
-) = extract(prefix + DOUBLE_REGEX + (if (noPercent) "" else "\\s*%"))[1].toDouble()
+) = extract(prefix + DOUBLE_REGEX + (if (noPercent) "" else "\\s*%")).doubleFrom(1)
 
 fun Element.sizeMlFrom(cssQuery: String = ":root") = textFrom(cssQuery).sizeMlFrom()
-fun String.sizeMlFrom() = maybe { extract("$INT_REGEX\\s*ml(?:\\W|$)") }?.let { it[1].toInt() }
-  ?: maybe { extract("$INT_REGEX(?:\\s*|-)litre(?:s?)(?:\\W|$)") }?.let { it[1].toInt() * 1000 }
-  ?: maybe { extract("$INT_REGEX\\s*l(?:\\W|$)") }?.let { it[1].toInt() * 1000 }
+fun String.sizeMlFrom() = maybe { extract("$INT_REGEX\\s*ml(?:\\W|$)").intFrom(1) }
+  ?: maybe { extract("$INT_REGEX(?:\\s*|-)litre(?:s?)(?:\\W|$)").intFrom(1) * 1000 }
+  ?: maybe { extract("$INT_REGEX\\s*l(?:\\W|$)").intFrom(1) * 1000 }
   ?: throw MalformedInputException("Can't extract size")
+
+fun List<String>.intFrom(idx: Int) = get(idx).toInt()
+fun List<String>.doubleFrom(idx: Int) = get(idx).toDouble()
 
 operator fun Element.contains(cssQuery: String) = selectFirst(cssQuery) != null
 

@@ -40,18 +40,21 @@ class NetworkRetriever(private val name: String) : Retriever {
       logger.info("[${name}] Opening client")
       createClient().use { client ->
         for (msg in channel) {
-          logger.info("${msg.url}: executing network request")
-          val response = try {
-            Success(client.get(Url(msg.url.toString())))
-          } catch (e: CancellationException) {
-            throw e   // Must not swallow
-          } catch (e: Exception) {  // No idea what exceptions Ktor throws, so have to do catch-all
-            Failure(e)
-          }
-          msg.response.complete(response)
+          msg.response.complete(client.process(msg))
         }
       }
       logger.info("[${name}] Client closed")
+    }
+  }
+
+  private suspend fun HttpClient.process(msg: Request): Response {
+    logger.info("${msg.url}: processing network request")
+    return try {
+      Success(get(Url(msg.url.toString())))
+    } catch (e: CancellationException) {
+      throw e   // Must not swallow
+    } catch (e: Exception) {  // No idea what exceptions Ktor throws, so have to do catch-all
+      Failure(e)
     }
   }
 

@@ -30,14 +30,13 @@ class WanderScraper : Scraper {
 
           ScrapedItem(
             name = name,
-            summary = desc.maybe { extractFrom("p", ".+[ \u00A0]-[ \u00A0](.+)") }
-              ?.get(1),  // Grotesque heterogeneous space characters
+            summary = desc.maybe { extractFrom("p", ".+[ \u00A0]-[ \u00A0](.+)")[1] },  // Grotesque heterogeneous space characters
             desc = desc.formattedTextFrom(),
             mixed = mixed,
             sizeMl = descText.sizeMlFrom(),
             abv = descText.abvFrom(),
             available = true,
-            numItems = descText.maybe { extract("(\\d+)x") }?.get(1)?.toIntOrNull() ?: 1,
+            numItems = descText.maybe { extract("(\\d+)x").intFrom(1) } ?: 1,
             price = doc.priceFrom("product-price-wrapper".hook()),
             thumbnailUrl = URI(
               el.attrFrom("product-item-images".hook(), "style")

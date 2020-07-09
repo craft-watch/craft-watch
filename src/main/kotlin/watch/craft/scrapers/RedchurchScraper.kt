@@ -63,7 +63,7 @@ class RedchurchScraper : Scraper {
       .maxBy { it.price }!!   // Assume highest price gives us the best deal
 
     return ItemPrice(
-      numItems = winner.title.maybe { extract("^(\\d+)") }?.get(1)?.toInt()
+      numItems = winner.title.maybe { extract("^(\\d+)").intFrom(1) }
         ?: throw SkipItemException("Don't know how to identify number of items"),
       price = winner.price
     )

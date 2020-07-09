@@ -28,7 +28,7 @@ class CloudwaterScraper : Scraper {
           val descLines = desc.split("\n")
 
           val allNumItems = descLines
-            .mapNotNull { it.maybe { extract("(\\d+)\\s*x") }?.get(1)?.toInt() }
+            .mapNotNull { it.maybe { extract("(\\d+)\\s*x").intFrom(1) } }
           val mixed = allNumItems.size > 1
 
           ScrapedItem(
