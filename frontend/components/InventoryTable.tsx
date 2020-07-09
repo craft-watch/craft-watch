@@ -1,7 +1,7 @@
 import _ from "underscore";
 import React from "react";
 import Link from "next/link";
-import { Item } from "../utils/model";
+import { Item, Offer } from "../utils/model";
 import SortableTable, { Column, Renderer, Section } from "./SortableTable";
 import { toSafePathPart } from "../utils/stuff";
 import { OUT_OF_STOCK, MINIKEG, MIXED_CASE } from "../utils/strings";
@@ -44,7 +44,10 @@ const InventoryTable: React.FC<Props> = (props) => (
     <Column
       name="Price"
       render={renderPrice}
-      selector={(item) => item.perItemPrice}
+      selector={(item) => {
+        const offer = extractOffer(item);
+        return offer ? perItemPrice(offer) : undefined;
+      }}
     />
   </SortableTable>
 );
@@ -101,17 +104,28 @@ const renderSize: Renderer<Item> = item =>
   (item.sizeMl < 1000) ? `${item.sizeMl} ml` :
   `${item.sizeMl / 1000} litres`;
 
-const renderPrice: Renderer<Item> = item => (
-  <div>
-    £{item.perItemPrice.toFixed(2)}
-    {
-      (item.numItems > 1) && (
-        <p className="summary">
-          &times; {item.numItems} items
-        </p>
-      )
-    }
-  </div>
-);
+const renderPrice: Renderer<Item> = item => {
+  const offer = extractOffer(item);
+
+  return (!offer)
+    ? "?"
+    : (
+      <div>
+        £{perItemPrice(offer).toFixed(2)}
+        {
+          (offer.quantity > 1) && (
+            <p className="summary">
+              &times; {offer.quantity} items
+            </p>
+          )
+        }
+      </div>
+    );
+};
+
+
+const extractOffer = (item: Item): Offer | undefined => _.first(item.offers);
+
+const perItemPrice = (offer: Offer): number => offer.totalPrice / offer.quantity;
 
 export default InventoryTable;

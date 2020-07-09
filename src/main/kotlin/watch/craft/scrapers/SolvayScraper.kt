@@ -35,8 +35,8 @@ class SolvayScraper : Scraper {
             abv = if (mixed) null else rawName.abvFrom(),
             sizeMl = if (mixed) null else desc.sizeMlFrom(),
             available = true,
-            numItems = rawName.maybe { extract("(\\d+) pack").intFrom(1) } ?: 1,
-            price = el.priceFrom(".product-price"),
+            quantity = rawName.maybe { extract("(\\d+) pack").intFrom(1) } ?: 1,
+            totalPrice = el.priceFrom(".product-price"),
             thumbnailUrl = el.dataSrcFrom("img.grid-image-cover")
           )
         }

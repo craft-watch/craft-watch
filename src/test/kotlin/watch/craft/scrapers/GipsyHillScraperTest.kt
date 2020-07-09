@@ -24,7 +24,7 @@ class GipsyHillScraperTest {
       ScrapedItem(
         name = "Carver",
         summary = "Micro IPA",
-        price = 2.20,
+        totalPrice = 2.20,
         abv = 2.8,
         sizeMl = 330,
         available = true,

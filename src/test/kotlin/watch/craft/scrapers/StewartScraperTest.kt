@@ -26,7 +26,7 @@ class StewartScraperTest {
         summary = "India Pale Ale",
         sizeMl = 330,
         abv = 5.4,
-        price = 2.00,
+        totalPrice = 2.00,
         available = true,
         thumbnailUrl = URI("https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-cascadian-east-1589535328cas-front-330.png")
       ),

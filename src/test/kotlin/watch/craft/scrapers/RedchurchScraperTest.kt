@@ -24,9 +24,9 @@ class RedchurchScraperTest {
       ScrapedItem(
         name = "Shoreditch Blonde",
         sizeMl = 330,
-        numItems = 24,
+        quantity = 24,
         abv = 4.5,
-        price = 35.00,
+        totalPrice = 35.00,
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0034/8694/1229/products/SBwwwimage_200x200.png")
       ),

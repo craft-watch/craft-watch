@@ -45,8 +45,8 @@ class RedWillowScraper : Scraper {
             sizeMl = allText.maybe { sizeMlFrom() },
             abv = rawName.maybe { abvFrom() },
             available = true,
-            numItems = bestDeal.numItems,
-            price = bestDeal.price,
+            quantity = bestDeal.numItems,
+            totalPrice = bestDeal.price,
             thumbnailUrl = doc.extractSmallThumbnail()
           )
         }

@@ -25,8 +25,8 @@ class HowlingHopsScraperTest {
       ScrapedItem(
         name = "Push Push",
         summary = "DDH Pale Ale",
-        numItems = 4,
-        price = 16.00,
+        quantity = 4,
+        totalPrice = 16.00,
         abv = 5.8,
         sizeMl = 440,
         available = true,

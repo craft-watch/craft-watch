@@ -39,7 +39,7 @@ class PressureDropScraper : Scraper {
             abv = itemText.maybe { abvFrom() },
             sizeMl = itemText.maybe { sizeMlFrom() },
             available = true,
-            price = doc.priceFrom(".ProductPrice")
+            totalPrice = doc.priceFrom(".ProductPrice")
           )
         }
       }

@@ -32,7 +32,7 @@ class BoxcarScraper : Scraper {
               ?.replace("^DESCRIPTION".toRegex(IGNORE_CASE), ""),
             sizeMl = details.title.sizeMlFrom(),
             available = details.available,
-            price = details.price
+            totalPrice = details.price
           )
         }
       }

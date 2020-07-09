@@ -31,8 +31,8 @@ class UnityScraper : Scraper {
             sizeMl = desc.sizeMlFrom(),
             abv = desc.abvFrom(),
             available = details.available,
-            numItems = 1,
-            price = details.price,
+            quantity = 1,
+            totalPrice = details.price,
             thumbnailUrl = details.thumbnailUrl
           )
         }

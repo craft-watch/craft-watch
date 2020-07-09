@@ -30,8 +30,8 @@ class VillagesScraper : Scraper {
             sizeMl = doc.maybe { sizeMlFrom() },
             abv = parts.abv,
             available = details.available,
-            numItems = parts.numCans,
-            price = details.price,
+            quantity = parts.numCans,
+            totalPrice = details.price,
             thumbnailUrl = details.thumbnailUrl
           )
         }

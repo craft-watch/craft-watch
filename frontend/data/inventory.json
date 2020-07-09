@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-09T14:23:18.636731Z"
+    "capturedAt" : "2020-07-09T14:54:53.782983Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -163,8 +163,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 3.5,
-    "numItems" : 1,
-    "perItemPrice" : 3.99,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.99
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -179,8 +181,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.0,
-    "numItems" : 6,
-    "perItemPrice" : 4.8,
+    "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 28.8
+    } ],
     "available" : false,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -195,8 +199,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.0,
-    "numItems" : 1,
-    "perItemPrice" : 4.75,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.75
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -211,8 +217,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.6,
-    "numItems" : 1,
-    "perItemPrice" : 3.85,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.85
+    } ],
     "available" : false,
     "categories" : [ "Bitter" ],
     "new" : false,
@@ -227,8 +235,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 3.6,
-    "numItems" : 1,
-    "perItemPrice" : 3.75,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.75
+    } ],
     "available" : false,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -243,8 +253,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.5,
-    "numItems" : 1,
-    "perItemPrice" : 4.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.95
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -259,8 +271,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.6,
-    "numItems" : 1,
-    "perItemPrice" : 4.15,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.15
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
@@ -275,8 +289,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.2,
-    "numItems" : 1,
-    "perItemPrice" : 3.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.95
+    } ],
     "available" : true,
     "categories" : [ "Bitter", "Pale" ],
     "new" : false,
@@ -291,8 +307,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.6,
-    "numItems" : 1,
-    "perItemPrice" : 4.25,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.25
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -307,8 +325,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.5,
-    "numItems" : 1,
-    "perItemPrice" : 4.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.95
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -323,8 +343,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 3.6,
-    "numItems" : 1,
-    "perItemPrice" : 4.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.0
+    } ],
     "available" : false,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -339,8 +361,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.5,
-    "numItems" : 1,
-    "perItemPrice" : 5.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.5
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -355,8 +379,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.5,
-    "numItems" : 1,
-    "perItemPrice" : 5.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.5
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -371,8 +397,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.6,
-    "numItems" : 1,
-    "perItemPrice" : 2.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.5
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -387,8 +415,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.5,
-    "numItems" : 1,
-    "perItemPrice" : 2.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.5
+    } ],
     "available" : false,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -403,8 +433,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 3.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.5
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -419,8 +451,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 3.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.5
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -435,8 +469,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.8,
-    "numItems" : 1,
-    "perItemPrice" : 2.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.5
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -451,8 +487,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.2,
-    "numItems" : 1,
-    "perItemPrice" : 2.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.5
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -467,8 +505,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 9.0,
-    "numItems" : 1,
-    "perItemPrice" : 7.25,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 7.25
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : true,
@@ -483,8 +523,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.0,
-    "numItems" : 1,
-    "perItemPrice" : 5.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.0
+    } ],
     "available" : true,
     "categories" : [ "Dark", "IPA" ],
     "new" : true,
@@ -499,8 +541,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.0,
-    "numItems" : 1,
-    "perItemPrice" : 5.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
@@ -515,8 +559,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.0,
-    "numItems" : 1,
-    "perItemPrice" : 5.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.0
+    } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : true,
@@ -531,8 +577,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 4.75,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.75
+    } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : true,
@@ -547,8 +595,10 @@
     "mixed" : true,
     "sizeMl" : null,
     "abv" : null,
-    "numItems" : 4,
-    "perItemPrice" : 4.75,
+    "offers" : [ {
+      "quantity" : 4,
+      "totalPrice" : 19.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale", "IPA" ],
     "new" : true,
@@ -563,8 +613,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 8.0,
-    "numItems" : 1,
-    "perItemPrice" : 6.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 6.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
@@ -579,8 +631,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.0,
-    "numItems" : 1,
-    "perItemPrice" : 5.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
@@ -595,8 +649,10 @@
     "mixed" : false,
     "sizeMl" : 750,
     "abv" : 5.4,
-    "numItems" : 1,
-    "perItemPrice" : 13.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 13.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
@@ -611,8 +667,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.0,
-    "numItems" : 1,
-    "perItemPrice" : 6.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 6.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
@@ -627,8 +685,10 @@
     "mixed" : false,
     "sizeMl" : 750,
     "abv" : 5.6,
-    "numItems" : 1,
-    "perItemPrice" : 17.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 17.0
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : true,
@@ -643,8 +703,10 @@
     "mixed" : false,
     "sizeMl" : 750,
     "abv" : 5.9,
-    "numItems" : 1,
-    "perItemPrice" : 14.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 14.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
@@ -659,8 +721,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 3.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.5
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : true,
@@ -675,8 +739,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.0,
-    "numItems" : 1,
-    "perItemPrice" : 5.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.0
+    } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : true,
@@ -691,8 +757,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.0,
-    "numItems" : 1,
-    "perItemPrice" : 5.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
@@ -707,8 +775,10 @@
     "mixed" : true,
     "sizeMl" : null,
     "abv" : null,
-    "numItems" : 8,
-    "perItemPrice" : 4.88,
+    "offers" : [ {
+      "quantity" : 8,
+      "totalPrice" : 39.0
+    } ],
     "available" : true,
     "categories" : [ "Dark", "IPA" ],
     "new" : true,
@@ -723,8 +793,10 @@
     "mixed" : false,
     "sizeMl" : 375,
     "abv" : 10.0,
-    "numItems" : 1,
-    "perItemPrice" : 10.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 10.0
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : true,
@@ -739,8 +811,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.0,
-    "numItems" : 1,
-    "perItemPrice" : 6.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 6.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
@@ -755,8 +829,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 8.0,
-    "numItems" : 1,
-    "perItemPrice" : 6.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 6.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
@@ -771,8 +847,10 @@
     "mixed" : false,
     "sizeMl" : 660,
     "abv" : 12.0,
-    "numItems" : 1,
-    "perItemPrice" : 12.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 12.0
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -787,8 +865,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 4.1,
-    "numItems" : 1,
-    "perItemPrice" : 25.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 25.0
+    } ],
     "available" : true,
     "categories" : [ "Bitter" ],
     "new" : false,
@@ -803,8 +883,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.5,
-    "numItems" : 12,
-    "perItemPrice" : 1.96,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 23.5
+    } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : false,
@@ -819,8 +901,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 2.8,
-    "numItems" : 12,
-    "perItemPrice" : 1.67,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 20.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -835,8 +919,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 4.4,
-    "numItems" : 1,
-    "perItemPrice" : 25.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 25.0
+    } ],
     "available" : false,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -851,8 +937,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.4,
-    "numItems" : 12,
-    "perItemPrice" : 1.8,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 21.6
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -867,8 +955,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.8,
-    "numItems" : 12,
-    "perItemPrice" : 1.8,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 21.6
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -883,8 +973,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.0,
-    "numItems" : 12,
-    "perItemPrice" : 1.8,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 21.6
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -899,8 +991,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 25.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 25.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -915,8 +1009,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.8,
-    "numItems" : 12,
-    "perItemPrice" : 1.8,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 21.6
+    } ],
     "available" : false,
     "categories" : [ "Dark", "Bitter" ],
     "new" : false,
@@ -931,8 +1027,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.7,
-    "numItems" : 1,
-    "perItemPrice" : 2.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.0
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -947,8 +1045,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.5,
-    "numItems" : 1,
-    "perItemPrice" : 4.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.0
+    } ],
     "available" : true,
     "categories" : [ "Sours / Gose" ],
     "new" : false,
@@ -963,8 +1063,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 8.0,
-    "numItems" : 1,
-    "perItemPrice" : 5.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.5
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -979,8 +1081,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.4,
-    "numItems" : 1,
-    "perItemPrice" : 4.3,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.3
+    } ],
     "available" : true,
     "categories" : [ "Sours / Gose" ],
     "new" : false,
@@ -995,8 +1099,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 8.3,
-    "numItems" : 1,
-    "perItemPrice" : 4.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1011,8 +1117,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 2.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.0
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -1027,8 +1135,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.2,
-    "numItems" : 1,
-    "perItemPrice" : 2.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.0
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -1043,8 +1153,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 7.4,
-    "numItems" : 1,
-    "perItemPrice" : 4.8,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.8
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -1059,8 +1171,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.9,
-    "numItems" : 1,
-    "perItemPrice" : 2.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.5
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -1075,8 +1189,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 5.9,
-    "numItems" : 1,
-    "perItemPrice" : 35.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 35.0
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -1091,8 +1207,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 3.7,
-    "numItems" : 1,
-    "perItemPrice" : 3.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.5
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1107,8 +1225,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.1,
-    "numItems" : 1,
-    "perItemPrice" : 2.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.0
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -1123,8 +1243,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.5,
-    "numItems" : 1,
-    "perItemPrice" : 4.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.5
+    } ],
     "available" : true,
     "categories" : [ "Sours / Gose" ],
     "new" : false,
@@ -1139,8 +1261,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 4.7,
-    "numItems" : 1,
-    "perItemPrice" : 28.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 28.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -1155,8 +1279,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.9,
-    "numItems" : 1,
-    "perItemPrice" : 2.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.5
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1171,8 +1297,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.4,
-    "numItems" : 1,
-    "perItemPrice" : 2.7,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.7
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1187,8 +1315,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 3.8,
-    "numItems" : 1,
-    "perItemPrice" : 2.2,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.2
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -1203,8 +1333,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.8,
-    "numItems" : 1,
-    "perItemPrice" : 4.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -1219,8 +1351,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 7.2,
-    "numItems" : 1,
-    "perItemPrice" : 4.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.0
+    } ],
     "available" : true,
     "categories" : [ "Bitter", "IPA" ],
     "new" : false,
@@ -1235,8 +1369,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : null,
-    "numItems" : 1,
-    "perItemPrice" : 5.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.0
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -1251,8 +1387,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 2.8,
-    "numItems" : 1,
-    "perItemPrice" : 2.2,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.2
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1267,8 +1405,10 @@
     "mixed" : true,
     "sizeMl" : 330,
     "abv" : null,
-    "numItems" : 24,
-    "perItemPrice" : 2.33,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 56.0
+    } ],
     "available" : true,
     "categories" : [ "Pale", "Pils / Lager", "IPA" ],
     "new" : false,
@@ -1283,8 +1423,10 @@
     "mixed" : true,
     "sizeMl" : 330,
     "abv" : null,
-    "numItems" : 13,
-    "perItemPrice" : 3.17,
+    "offers" : [ {
+      "quantity" : 13,
+      "totalPrice" : 41.19
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -1299,8 +1441,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.6,
-    "numItems" : 1,
-    "perItemPrice" : 2.4,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.4
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1315,8 +1459,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.6,
-    "numItems" : 24,
-    "perItemPrice" : 2.4,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 57.6
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1331,8 +1477,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.5,
-    "numItems" : 1,
-    "perItemPrice" : 4.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -1347,8 +1495,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.8,
-    "numItems" : 1,
-    "perItemPrice" : 2.3,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.3
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -1363,8 +1513,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 8.0,
-    "numItems" : 1,
-    "perItemPrice" : 5.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1379,8 +1531,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.5,
-    "numItems" : 1,
-    "perItemPrice" : 5.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1395,8 +1549,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.8,
-    "numItems" : 1,
-    "perItemPrice" : 5.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.0
+    } ],
     "available" : true,
     "categories" : [ "Sours / Gose" ],
     "new" : false,
@@ -1411,8 +1567,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.2,
-    "numItems" : 1,
-    "perItemPrice" : 2.2,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.2
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -1427,8 +1585,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.4,
-    "numItems" : 4,
-    "perItemPrice" : 3.5,
+    "offers" : [ {
+      "quantity" : 4,
+      "totalPrice" : 14.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -1443,8 +1603,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.5,
-    "numItems" : 4,
-    "perItemPrice" : 3.75,
+    "offers" : [ {
+      "quantity" : 4,
+      "totalPrice" : 15.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -1459,8 +1621,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.0,
-    "numItems" : 4,
-    "perItemPrice" : 4.0,
+    "offers" : [ {
+      "quantity" : 4,
+      "totalPrice" : 16.0
+    } ],
     "available" : false,
     "categories" : [ "Pale", "IPA" ],
     "new" : true,
@@ -1475,8 +1639,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.0,
-    "numItems" : 4,
-    "perItemPrice" : 4.0,
+    "offers" : [ {
+      "quantity" : 4,
+      "totalPrice" : 16.0
+    } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : false,
@@ -1491,8 +1657,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.7,
-    "numItems" : 4,
-    "perItemPrice" : 4.5,
+    "offers" : [ {
+      "quantity" : 4,
+      "totalPrice" : 18.0
+    } ],
     "available" : false,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1507,8 +1675,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.2,
-    "numItems" : 4,
-    "perItemPrice" : 4.25,
+    "offers" : [ {
+      "quantity" : 4,
+      "totalPrice" : 17.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1523,8 +1693,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 7.3,
-    "numItems" : 4,
-    "perItemPrice" : 4.5,
+    "offers" : [ {
+      "quantity" : 4,
+      "totalPrice" : 18.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1539,8 +1711,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.4,
-    "numItems" : 4,
-    "perItemPrice" : 3.5,
+    "offers" : [ {
+      "quantity" : 4,
+      "totalPrice" : 14.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -1555,8 +1729,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.9,
-    "numItems" : 4,
-    "perItemPrice" : 4.5,
+    "offers" : [ {
+      "quantity" : 4,
+      "totalPrice" : 18.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1571,8 +1747,10 @@
     "mixed" : true,
     "sizeMl" : 440,
     "abv" : null,
-    "numItems" : 24,
-    "perItemPrice" : 2.9,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 69.5
+    } ],
     "available" : true,
     "categories" : [ "IPA", "Pils / Lager", "Sours / Gose" ],
     "new" : false,
@@ -1587,8 +1765,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.2,
-    "numItems" : 4,
-    "perItemPrice" : 3.5,
+    "offers" : [ {
+      "quantity" : 4,
+      "totalPrice" : 14.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -1603,8 +1783,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.5,
-    "numItems" : 24,
-    "perItemPrice" : 2.75,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 66.0
+    } ],
     "available" : true,
     "categories" : [ "Sours / Gose" ],
     "new" : false,
@@ -1619,8 +1801,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 2.7,
-    "numItems" : 4,
-    "perItemPrice" : 3.5,
+    "offers" : [ {
+      "quantity" : 4,
+      "totalPrice" : 14.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1635,8 +1819,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.8,
-    "numItems" : 4,
-    "perItemPrice" : 4.0,
+    "offers" : [ {
+      "quantity" : 4,
+      "totalPrice" : 16.0
+    } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : false,
@@ -1651,8 +1837,10 @@
     "mixed" : false,
     "sizeMl" : 500,
     "abv" : 5.4,
-    "numItems" : 1,
-    "perItemPrice" : 3.7,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.7
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1667,8 +1855,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 5.4,
-    "numItems" : 1,
-    "perItemPrice" : 25.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 25.5
+    } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : false,
@@ -1683,8 +1873,10 @@
     "mixed" : false,
     "sizeMl" : 500,
     "abv" : 4.2,
-    "numItems" : 24,
-    "perItemPrice" : 2.71,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 65.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -1699,8 +1891,10 @@
     "mixed" : false,
     "sizeMl" : 660,
     "abv" : 12.4,
-    "numItems" : 1,
-    "perItemPrice" : 14.1,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 14.1
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -1715,8 +1909,10 @@
     "mixed" : false,
     "sizeMl" : 500,
     "abv" : 4.5,
-    "numItems" : 1,
-    "perItemPrice" : 3.35,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.35
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -1731,8 +1927,10 @@
     "mixed" : false,
     "sizeMl" : 660,
     "abv" : 7.0,
-    "numItems" : 1,
-    "perItemPrice" : 9.9,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 9.9
+    } ],
     "available" : true,
     "categories" : [ "Dark", "Sours / Gose" ],
     "new" : false,
@@ -1747,8 +1945,10 @@
     "mixed" : false,
     "sizeMl" : 500,
     "abv" : 3.7,
-    "numItems" : 1,
-    "perItemPrice" : 2.6,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.6
+    } ],
     "available" : true,
     "categories" : [ "Bitter" ],
     "new" : false,
@@ -1763,8 +1963,10 @@
     "mixed" : false,
     "sizeMl" : 660,
     "abv" : 12.5,
-    "numItems" : 1,
-    "perItemPrice" : 14.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 14.5
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -1779,8 +1981,10 @@
     "mixed" : true,
     "sizeMl" : 500,
     "abv" : null,
-    "numItems" : 24,
-    "perItemPrice" : 2.71,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 65.0
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -1795,8 +1999,10 @@
     "mixed" : false,
     "sizeMl" : 500,
     "abv" : 5.2,
-    "numItems" : 1,
-    "perItemPrice" : 3.7,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.7
+    } ],
     "available" : false,
     "categories" : [ "Pale", "Bitter" ],
     "new" : false,
@@ -1811,8 +2017,10 @@
     "mixed" : false,
     "sizeMl" : 500,
     "abv" : 7.2,
-    "numItems" : 1,
-    "perItemPrice" : 4.2,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.2
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1827,8 +2035,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.3,
-    "numItems" : 1,
-    "perItemPrice" : 2.25,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.25
+    } ],
     "available" : true,
     "categories" : [ "Sours / Gose" ],
     "new" : false,
@@ -1843,8 +2053,10 @@
     "mixed" : false,
     "sizeMl" : 500,
     "abv" : 6.8,
-    "numItems" : 1,
-    "perItemPrice" : 4.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1859,8 +2071,10 @@
     "mixed" : false,
     "sizeMl" : 500,
     "abv" : 5.0,
-    "numItems" : 24,
-    "perItemPrice" : 3.12,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 75.0
+    } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : false,
@@ -1875,8 +2089,10 @@
     "mixed" : false,
     "sizeMl" : 500,
     "abv" : 4.2,
-    "numItems" : 24,
-    "perItemPrice" : 2.35,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 56.5
+    } ],
     "available" : true,
     "categories" : [ "Bitter" ],
     "new" : false,
@@ -1891,8 +2107,10 @@
     "mixed" : false,
     "sizeMl" : 500,
     "abv" : 5.7,
-    "numItems" : 1,
-    "perItemPrice" : 2.7,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.7
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -1907,8 +2125,10 @@
     "mixed" : false,
     "sizeMl" : 500,
     "abv" : 3.9,
-    "numItems" : 24,
-    "perItemPrice" : 2.5,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 60.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -1923,8 +2143,10 @@
     "mixed" : false,
     "sizeMl" : 500,
     "abv" : 4.2,
-    "numItems" : 1,
-    "perItemPrice" : 3.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.5
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -1939,8 +2161,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 3.9,
-    "numItems" : 1,
-    "perItemPrice" : 19.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 19.5
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -1955,8 +2179,10 @@
     "mixed" : false,
     "sizeMl" : 660,
     "abv" : 5.7,
-    "numItems" : 1,
-    "perItemPrice" : 9.9,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 9.9
+    } ],
     "available" : true,
     "categories" : [ "Pale", "Sours / Gose" ],
     "new" : false,
@@ -1971,8 +2197,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.7,
-    "numItems" : 1,
-    "perItemPrice" : 5.2,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.2
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
@@ -1987,8 +2215,10 @@
     "mixed" : true,
     "sizeMl" : null,
     "abv" : null,
-    "numItems" : 12,
-    "perItemPrice" : 2.67,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 32.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
@@ -2003,8 +2233,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.1,
-    "numItems" : 4,
-    "perItemPrice" : 1.9,
+    "offers" : [ {
+      "quantity" : 4,
+      "totalPrice" : 7.6
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
@@ -2019,8 +2251,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.3,
-    "numItems" : 6,
-    "perItemPrice" : 2.67,
+    "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 16.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : true,
@@ -2035,8 +2269,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 7.2,
-    "numItems" : 1,
-    "perItemPrice" : 3.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.95
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
@@ -2051,8 +2287,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.4,
-    "numItems" : 12,
-    "perItemPrice" : 2.21,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 26.5
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
@@ -2067,8 +2305,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 6.2,
-    "numItems" : 4,
-    "perItemPrice" : 2.31,
+    "offers" : [ {
+      "quantity" : 4,
+      "totalPrice" : 9.25
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
@@ -2083,8 +2323,10 @@
     "mixed" : true,
     "sizeMl" : 330,
     "abv" : null,
-    "numItems" : 12,
-    "perItemPrice" : 2.12,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 25.5
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : true,
@@ -2099,8 +2341,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 7.0,
-    "numItems" : 1,
-    "perItemPrice" : 6.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 6.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
@@ -2115,8 +2359,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.7,
-    "numItems" : 4,
-    "perItemPrice" : 2.31,
+    "offers" : [ {
+      "quantity" : 4,
+      "totalPrice" : 9.25
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
@@ -2131,8 +2377,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.4,
-    "numItems" : 1,
-    "perItemPrice" : 3.1,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.1
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
@@ -2147,8 +2395,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 2.8,
-    "numItems" : 1,
-    "perItemPrice" : 2.25,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.25
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
@@ -2163,8 +2413,10 @@
     "mixed" : true,
     "sizeMl" : null,
     "abv" : null,
-    "numItems" : 11,
-    "perItemPrice" : 4.09,
+    "offers" : [ {
+      "quantity" : 11,
+      "totalPrice" : 45.0
+    } ],
     "available" : true,
     "categories" : [ "Cider" ],
     "new" : false,
@@ -2179,8 +2431,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.0,
-    "numItems" : 1,
-    "perItemPrice" : 4.99,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.99
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -2195,8 +2449,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 6.5,
-    "numItems" : 1,
-    "perItemPrice" : 32.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 32.5
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -2211,8 +2467,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 11.0,
-    "numItems" : 1,
-    "perItemPrice" : 7.99,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 7.99
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -2227,8 +2485,10 @@
     "mixed" : false,
     "sizeMl" : 500,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 3.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.95
+    } ],
     "available" : true,
     "categories" : [ "Cider" ],
     "new" : false,
@@ -2243,8 +2503,10 @@
     "mixed" : true,
     "sizeMl" : null,
     "abv" : null,
-    "numItems" : 6,
-    "perItemPrice" : 3.75,
+    "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 22.5
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -2259,8 +2521,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.5,
-    "numItems" : 1,
-    "perItemPrice" : 4.99,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.99
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -2275,8 +2539,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 6.5,
-    "numItems" : 1,
-    "perItemPrice" : 32.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 32.5
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -2291,8 +2557,10 @@
     "mixed" : false,
     "sizeMl" : 568,
     "abv" : 4.8,
-    "numItems" : 1,
-    "perItemPrice" : 3.75,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.75
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -2307,8 +2575,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 4.8,
-    "numItems" : 1,
-    "perItemPrice" : 23.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 23.95
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -2323,8 +2593,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 23.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 23.5
+    } ],
     "available" : true,
     "categories" : [ "Bitter" ],
     "new" : false,
@@ -2339,8 +2611,10 @@
     "mixed" : false,
     "sizeMl" : 568,
     "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 3.75,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.75
+    } ],
     "available" : true,
     "categories" : [ "Bitter", "Pale" ],
     "new" : false,
@@ -2355,8 +2629,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 26.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 26.5
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -2371,8 +2647,10 @@
     "mixed" : false,
     "sizeMl" : 568,
     "abv" : 3.6,
-    "numItems" : 1,
-    "perItemPrice" : 3.75,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.75
+    } ],
     "available" : true,
     "categories" : [ "Bitter", "Pale" ],
     "new" : false,
@@ -2387,8 +2665,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 3.6,
-    "numItems" : 1,
-    "perItemPrice" : 23.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 23.95
+    } ],
     "available" : true,
     "categories" : [ "Bitter", "Pale" ],
     "new" : false,
@@ -2403,8 +2683,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 23.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 23.95
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -2419,8 +2701,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.4,
-    "numItems" : 1,
-    "perItemPrice" : 3.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.5
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -2435,8 +2719,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 4.4,
-    "numItems" : 1,
-    "perItemPrice" : 29.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 29.5
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale" ],
     "new" : false,
@@ -2451,8 +2737,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 4.5,
-    "numItems" : 1,
-    "perItemPrice" : 23.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 23.95
+    } ],
     "available" : true,
     "categories" : [ "Bitter" ],
     "new" : false,
@@ -2467,8 +2755,10 @@
     "mixed" : false,
     "sizeMl" : 568,
     "abv" : 7.0,
-    "numItems" : 1,
-    "perItemPrice" : 4.1,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.1
+    } ],
     "available" : true,
     "categories" : [ "Cider" ],
     "new" : false,
@@ -2483,8 +2773,10 @@
     "mixed" : false,
     "sizeMl" : 568,
     "abv" : 4.5,
-    "numItems" : 1,
-    "perItemPrice" : 3.75,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.75
+    } ],
     "available" : true,
     "categories" : [ "Bitter" ],
     "new" : false,
@@ -2499,8 +2791,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 4.5,
-    "numItems" : 1,
-    "perItemPrice" : 23.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 23.95
+    } ],
     "available" : true,
     "categories" : [ "Bitter" ],
     "new" : false,
@@ -2515,8 +2809,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 3.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.95
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -2531,8 +2827,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 29.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 29.5
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -2547,8 +2845,10 @@
     "mixed" : false,
     "sizeMl" : 500,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 3.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.95
+    } ],
     "available" : true,
     "categories" : [ "Cider", "Dark" ],
     "new" : false,
@@ -2563,8 +2863,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 2.8,
-    "numItems" : 1,
-    "perItemPrice" : 3.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.95
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -2579,8 +2881,10 @@
     "mixed" : false,
     "sizeMl" : 568,
     "abv" : 8.0,
-    "numItems" : 1,
-    "perItemPrice" : 10.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 10.0
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -2595,8 +2899,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.8,
-    "numItems" : 1,
-    "perItemPrice" : 4.99,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.99
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -2611,8 +2917,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 29.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 29.5
+    } ],
     "available" : true,
     "categories" : [ "Cider" ],
     "new" : false,
@@ -2627,8 +2935,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 3.9,
-    "numItems" : 1,
-    "perItemPrice" : 3.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.5
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale" ],
     "new" : false,
@@ -2643,8 +2953,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 3.9,
-    "numItems" : 1,
-    "perItemPrice" : 29.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 29.5
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale" ],
     "new" : false,
@@ -2659,8 +2971,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.5,
-    "numItems" : 1,
-    "perItemPrice" : 3.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.95
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -2675,8 +2989,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : 8.0,
-    "numItems" : 1,
-    "perItemPrice" : 6.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 6.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -2691,8 +3007,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : 4.5,
-    "numItems" : 24,
-    "perItemPrice" : 1.88,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 45.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -2707,8 +3025,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 30.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 30.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -2723,8 +3043,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 32.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 32.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -2739,8 +3061,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : 4.8,
-    "numItems" : 24,
-    "perItemPrice" : 1.88,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 45.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -2755,8 +3079,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : 4.5,
-    "numItems" : 24,
-    "perItemPrice" : 1.88,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 45.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -2771,8 +3097,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 8.5,
-    "numItems" : 1,
-    "perItemPrice" : 5.35,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.35
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -2787,8 +3115,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 7.2,
-    "numItems" : 1,
-    "perItemPrice" : 4.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.95
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -2803,8 +3133,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : 4.6,
-    "numItems" : 1,
-    "perItemPrice" : 4.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
@@ -2819,8 +3151,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.5,
-    "numItems" : 1,
-    "perItemPrice" : 4.25,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.25
+    } ],
     "available" : true,
     "categories" : [ "Sours / Gose" ],
     "new" : false,
@@ -2835,8 +3169,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : 4.8,
-    "numItems" : 1,
-    "perItemPrice" : 3.8,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.8
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -2851,8 +3187,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : 5.2,
-    "numItems" : 1,
-    "perItemPrice" : 3.8,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.8
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -2867,8 +3205,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.8,
-    "numItems" : 1,
-    "perItemPrice" : 3.7,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.7
+    } ],
     "available" : true,
     "categories" : [ "Pale", "Bitter" ],
     "new" : false,
@@ -2883,8 +3223,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.8,
-    "numItems" : 1,
-    "perItemPrice" : 4.8,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.8
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -2899,8 +3241,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.5,
-    "numItems" : 1,
-    "perItemPrice" : 4.2,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.2
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -2915,8 +3259,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.6,
-    "numItems" : 12,
-    "perItemPrice" : 3.03,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 36.4
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : true,
@@ -2931,8 +3277,10 @@
     "mixed" : true,
     "sizeMl" : 440,
     "abv" : null,
-    "numItems" : 12,
-    "perItemPrice" : 3.0,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 36.0
+    } ],
     "available" : true,
     "categories" : [ "Dark", "IPA" ],
     "new" : true,
@@ -2947,8 +3295,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : null,
-    "numItems" : 12,
-    "perItemPrice" : 2.67,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 32.0
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : true,
@@ -2963,8 +3313,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : 5.2,
-    "numItems" : 6,
-    "perItemPrice" : 3.33,
+    "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 20.0
+    } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : true,
@@ -2979,8 +3331,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : 4.0,
-    "numItems" : 12,
-    "perItemPrice" : 2.8,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 33.6
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
@@ -2995,8 +3349,10 @@
     "mixed" : true,
     "sizeMl" : 440,
     "abv" : null,
-    "numItems" : 12,
-    "perItemPrice" : 2.8,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 33.6
+    } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : true,
@@ -3011,8 +3367,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : 6.6,
-    "numItems" : 6,
-    "perItemPrice" : 3.83,
+    "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 23.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
@@ -3027,8 +3385,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.6,
-    "numItems" : 12,
-    "perItemPrice" : 2.42,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 29.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager", "Bitter" ],
     "new" : true,
@@ -3043,8 +3403,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : 4.9,
-    "numItems" : 12,
-    "perItemPrice" : 2.58,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 31.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale" ],
     "new" : true,
@@ -3059,8 +3421,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : 5.2,
-    "numItems" : 6,
-    "perItemPrice" : 3.33,
+    "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 20.0
+    } ],
     "available" : true,
     "categories" : [ "Pale", "Cider" ],
     "new" : true,
@@ -3075,8 +3439,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : 4.2,
-    "numItems" : 12,
-    "perItemPrice" : 2.8,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 33.6
+    } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : true,
@@ -3091,8 +3457,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : 4.2,
-    "numItems" : 6,
-    "perItemPrice" : 2.67,
+    "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 16.0
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : true,
@@ -3107,8 +3475,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : 4.8,
-    "numItems" : 12,
-    "perItemPrice" : 2.8,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 33.6
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
@@ -3123,8 +3493,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.5,
-    "numItems" : 24,
-    "perItemPrice" : 1.46,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 35.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -3139,8 +3511,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.5,
-    "numItems" : 24,
-    "perItemPrice" : 1.25,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 30.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -3155,8 +3529,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 7.4,
-    "numItems" : 24,
-    "perItemPrice" : 1.5,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 36.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -3171,8 +3547,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.0,
-    "numItems" : 24,
-    "perItemPrice" : 1.46,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 35.0
+    } ],
     "available" : false,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -3187,8 +3565,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.0,
-    "numItems" : 24,
-    "perItemPrice" : 1.42,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 34.0
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -3203,8 +3583,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 7.4,
-    "numItems" : 24,
-    "perItemPrice" : 1.5,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 36.0
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -3219,8 +3601,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 3.7,
-    "numItems" : 24,
-    "perItemPrice" : 1.42,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 34.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -3235,8 +3619,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.7,
-    "numItems" : 24,
-    "perItemPrice" : 1.04,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 25.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -3251,8 +3637,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.5,
-    "numItems" : 24,
-    "perItemPrice" : 1.46,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 35.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -3267,8 +3655,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.5,
-    "numItems" : 24,
-    "perItemPrice" : 1.21,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 29.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -3283,8 +3673,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.0,
-    "numItems" : 24,
-    "perItemPrice" : 1.04,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 25.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -3299,8 +3691,10 @@
     "mixed" : true,
     "sizeMl" : 330,
     "abv" : null,
-    "numItems" : 24,
-    "perItemPrice" : 1.5,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 36.0
+    } ],
     "available" : true,
     "categories" : [ "Pale", "Pils / Lager", "IPA" ],
     "new" : false,
@@ -3315,8 +3709,10 @@
     "mixed" : true,
     "sizeMl" : 330,
     "abv" : null,
-    "numItems" : 24,
-    "perItemPrice" : 1.5,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 36.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -3331,8 +3727,10 @@
     "mixed" : true,
     "sizeMl" : 330,
     "abv" : null,
-    "numItems" : 24,
-    "perItemPrice" : 1.5,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 36.0
+    } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : false,
@@ -3347,8 +3745,10 @@
     "mixed" : true,
     "sizeMl" : 330,
     "abv" : null,
-    "numItems" : 24,
-    "perItemPrice" : 1.5,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 36.0
+    } ],
     "available" : true,
     "categories" : [ "Pale", "Dark" ],
     "new" : false,
@@ -3363,8 +3763,10 @@
     "mixed" : true,
     "sizeMl" : null,
     "abv" : null,
-    "numItems" : 24,
-    "perItemPrice" : 1.5,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 36.0
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -3379,8 +3781,10 @@
     "mixed" : false,
     "sizeMl" : 750,
     "abv" : 5.0,
-    "numItems" : 6,
-    "perItemPrice" : 6.67,
+    "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 40.0
+    } ],
     "available" : true,
     "categories" : [ "Sours / Gose" ],
     "new" : false,
@@ -3395,8 +3799,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 6.5,
-    "numItems" : 1,
-    "perItemPrice" : 2.16,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.16
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -3411,8 +3817,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 1.9,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 1.9
+    } ],
     "available" : true,
     "categories" : [ "Sours / Gose" ],
     "new" : false,
@@ -3427,8 +3835,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 25.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 25.0
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -3443,8 +3853,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.8,
-    "numItems" : 1,
-    "perItemPrice" : 4.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.0
+    } ],
     "available" : false,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -3459,8 +3871,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.8,
-    "numItems" : 1,
-    "perItemPrice" : 3.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.95
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -3475,8 +3889,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 4.8,
-    "numItems" : 1,
-    "perItemPrice" : 25.2,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 25.2
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -3491,8 +3907,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 4.1,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.1
+    } ],
     "available" : true,
     "categories" : [ "Sours / Gose" ],
     "new" : false,
@@ -3507,8 +3925,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.5,
-    "numItems" : 1,
-    "perItemPrice" : 3.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -3523,8 +3943,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.1,
-    "numItems" : 1,
-    "perItemPrice" : 4.2,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.2
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -3539,8 +3961,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.2,
-    "numItems" : 1,
-    "perItemPrice" : 2.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -3555,8 +3979,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.5,
-    "numItems" : 1,
-    "perItemPrice" : 3.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.95
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -3571,8 +3997,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.0,
-    "numItems" : 1,
-    "perItemPrice" : 4.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -3587,8 +4015,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 22.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 22.0
+    } ],
     "available" : false,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -3603,8 +4033,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 2.1,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.1
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -3619,8 +4051,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.6,
-    "numItems" : 1,
-    "perItemPrice" : 2.07,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.07
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : true,
@@ -3635,8 +4069,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.6,
-    "numItems" : 1,
-    "perItemPrice" : 2.1,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.1
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -3651,8 +4087,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 3.8,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.8
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -3667,8 +4105,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 23.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 23.0
+    } ],
     "available" : true,
     "categories" : [ "Bitter" ],
     "new" : false,
@@ -3683,8 +4123,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.5,
-    "numItems" : 1,
-    "perItemPrice" : 1.89,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 1.89
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
@@ -3699,8 +4141,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 3.6,
-    "numItems" : 1,
-    "perItemPrice" : 1.8,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 1.8
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -3715,8 +4159,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 3.6,
-    "numItems" : 1,
-    "perItemPrice" : 22.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 22.0
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -3731,8 +4177,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.5,
-    "numItems" : 6,
-    "perItemPrice" : 5.0,
+    "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 30.0
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : true,
@@ -3747,8 +4195,10 @@
     "mixed" : false,
     "sizeMl" : 750,
     "abv" : 6.3,
-    "numItems" : 1,
-    "perItemPrice" : 12.8,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 12.8
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
@@ -3763,8 +4213,10 @@
     "mixed" : false,
     "sizeMl" : 5000,
     "abv" : 2.8,
-    "numItems" : 1,
-    "perItemPrice" : 21.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 21.5
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
@@ -3779,8 +4231,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 3.2,
-    "numItems" : 6,
-    "perItemPrice" : 3.05,
+    "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 18.3
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
@@ -3795,8 +4249,10 @@
     "mixed" : true,
     "sizeMl" : null,
     "abv" : null,
-    "numItems" : 6,
-    "perItemPrice" : 3.12,
+    "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 18.75
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : true,
@@ -3811,8 +4267,10 @@
     "mixed" : false,
     "sizeMl" : 750,
     "abv" : 6.4,
-    "numItems" : 1,
-    "perItemPrice" : 12.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 12.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
@@ -3827,8 +4285,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 7.5,
-    "numItems" : 6,
-    "perItemPrice" : 4.4,
+    "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 26.4
+    } ],
     "available" : true,
     "categories" : [ "Bitter", "Pils / Lager" ],
     "new" : true,
@@ -3843,8 +4303,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.4,
-    "numItems" : 1,
-    "perItemPrice" : 2.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -3859,8 +4321,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 6.2,
-    "numItems" : 1,
-    "perItemPrice" : 2.1,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.1
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -3875,8 +4339,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.8,
-    "numItems" : 1,
-    "perItemPrice" : 1.8,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 1.8
+    } ],
     "available" : true,
     "categories" : [ "Bitter" ],
     "new" : false,
@@ -3891,8 +4357,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 2.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -3907,8 +4375,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.7,
-    "numItems" : 1,
-    "perItemPrice" : 3.6,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.6
+    } ],
     "available" : true,
     "categories" : [ "Sours / Gose" ],
     "new" : false,
@@ -3923,8 +4393,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 1.8,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 1.8
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -3939,8 +4411,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.5,
-    "numItems" : 1,
-    "perItemPrice" : 4.3,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.3
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -3955,8 +4429,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.2,
-    "numItems" : 1,
-    "perItemPrice" : 2.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -3971,8 +4447,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 3.7,
-    "numItems" : 1,
-    "perItemPrice" : 1.8,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 1.8
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -3987,8 +4465,10 @@
     "mixed" : false,
     "sizeMl" : 500,
     "abv" : 4.4,
-    "numItems" : 1,
-    "perItemPrice" : 2.45,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.45
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -4003,8 +4483,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 1.8,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 1.8
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -4019,8 +4501,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 2.5,
-    "numItems" : 1,
-    "perItemPrice" : 1.7,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 1.7
+    } ],
     "available" : true,
     "categories" : [ ],
     "new" : false,
@@ -4035,8 +4519,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 6.8,
-    "numItems" : 1,
-    "perItemPrice" : 2.6,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.6
+    } ],
     "available" : true,
     "categories" : [ "Dark", "Pale" ],
     "new" : false,
@@ -4051,8 +4537,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.9,
-    "numItems" : 1,
-    "perItemPrice" : 2.1,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.1
+    } ],
     "available" : true,
     "categories" : [ "Pale", "Dark", "IPA" ],
     "new" : false,
@@ -4067,8 +4555,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.5,
-    "numItems" : 1,
-    "perItemPrice" : 2.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.0
+    } ],
     "available" : true,
     "categories" : [ "Weisse", "Sours / Gose" ],
     "new" : false,
@@ -4083,8 +4573,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.9,
-    "numItems" : 1,
-    "perItemPrice" : 2.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -4099,8 +4591,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.9,
-    "numItems" : 1,
-    "perItemPrice" : 2.2,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.2
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -4115,8 +4609,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : 4.7,
-    "numItems" : 1,
-    "perItemPrice" : 2.1,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.1
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
@@ -4131,8 +4627,10 @@
     "mixed" : false,
     "sizeMl" : null,
     "abv" : 0.5,
-    "numItems" : 1,
-    "perItemPrice" : 1.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 1.5
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -4147,8 +4645,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.2,
-    "numItems" : 1,
-    "perItemPrice" : 1.9,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 1.9
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale" ],
     "new" : false,
@@ -4163,8 +4663,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.5,
-    "numItems" : 1,
-    "perItemPrice" : 1.9,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 1.9
+    } ],
     "available" : true,
     "categories" : [ "Dark", "Pale" ],
     "new" : false,
@@ -4179,8 +4681,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.7,
-    "numItems" : 1,
-    "perItemPrice" : 4.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -4195,8 +4699,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 2.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -4211,8 +4717,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.8,
-    "numItems" : 1,
-    "perItemPrice" : 3.8,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.8
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -4227,8 +4735,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 3.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.5
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : true,
@@ -4243,8 +4753,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 3.4,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.4
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : true,
@@ -4259,8 +4771,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.8,
-    "numItems" : 1,
-    "perItemPrice" : 3.9,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.9
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -4275,8 +4789,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.7,
-    "numItems" : 1,
-    "perItemPrice" : 4.4,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.4
+    } ],
     "available" : true,
     "categories" : [ "Bitter", "IPA" ],
     "new" : false,
@@ -4291,8 +4807,10 @@
     "mixed" : true,
     "sizeMl" : 330,
     "abv" : null,
-    "numItems" : 24,
-    "perItemPrice" : 2.23,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 53.6
+    } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : false,
@@ -4307,8 +4825,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.3,
-    "numItems" : 12,
-    "perItemPrice" : 2.13,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 25.6
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -4323,8 +4843,10 @@
     "mixed" : true,
     "sizeMl" : 330,
     "abv" : null,
-    "numItems" : 24,
-    "perItemPrice" : 2.05,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 49.2
+    } ],
     "available" : true,
     "categories" : [ "Pale", "Pils / Lager", "IPA" ],
     "new" : false,
@@ -4339,8 +4861,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.6,
-    "numItems" : 12,
-    "perItemPrice" : 2.13,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 25.6
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -4355,8 +4879,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.3,
-    "numItems" : 12,
-    "perItemPrice" : 2.68,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 32.2
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -4371,8 +4897,10 @@
     "mixed" : true,
     "sizeMl" : 330,
     "abv" : null,
-    "numItems" : 24,
-    "perItemPrice" : 2.19,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 52.5
+    } ],
     "available" : true,
     "categories" : [ "Pale", "Pils / Lager", "IPA" ],
     "new" : false,
@@ -4387,8 +4915,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 4.4,
-    "numItems" : 12,
-    "perItemPrice" : 2.13,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 25.6
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
@@ -4403,8 +4933,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 10.0,
-    "numItems" : 1,
-    "perItemPrice" : 6.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 6.5
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -4419,8 +4951,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 7.0,
-    "numItems" : 1,
-    "perItemPrice" : 5.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -4435,8 +4969,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 3.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.5
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -4451,8 +4987,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 10.0,
-    "numItems" : 1,
-    "perItemPrice" : 6.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 6.5
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -4467,8 +5005,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 3.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -4483,8 +5023,10 @@
     "mixed" : true,
     "sizeMl" : 440,
     "abv" : 10.0,
-    "numItems" : 12,
-    "perItemPrice" : 4.7,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 56.45
+    } ],
     "available" : true,
     "categories" : [ "Bitter", "Dark", "IPA" ],
     "new" : false,
@@ -4499,8 +5041,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 9.0,
-    "numItems" : 1,
-    "perItemPrice" : 6.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 6.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -4515,8 +5059,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 11.0,
-    "numItems" : 1,
-    "perItemPrice" : 6.75,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 6.75
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : true,
@@ -4531,8 +5077,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 3.8,
-    "numItems" : 1,
-    "perItemPrice" : 3.1,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.1
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -4547,8 +5095,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 10.0,
-    "numItems" : 1,
-    "perItemPrice" : 6.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 6.5
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -4563,8 +5113,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.2,
-    "numItems" : 1,
-    "perItemPrice" : 3.2,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.2
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -4579,8 +5131,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 10.0,
-    "numItems" : 1,
-    "perItemPrice" : 6.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 6.5
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -4595,8 +5149,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 7.0,
-    "numItems" : 1,
-    "perItemPrice" : 3.95,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.95
+    } ],
     "available" : true,
     "categories" : [ "Bitter", "IPA" ],
     "new" : false,
@@ -4611,8 +5167,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 10.0,
-    "numItems" : 1,
-    "perItemPrice" : 6.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 6.0
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -4627,8 +5185,10 @@
     "mixed" : true,
     "sizeMl" : 440,
     "abv" : 3.8,
-    "numItems" : 12,
-    "perItemPrice" : 4.7,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 56.45
+    } ],
     "available" : true,
     "categories" : [ "Pale", "Dark", "Bitter", "IPA" ],
     "new" : false,
@@ -4643,8 +5203,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.2,
-    "numItems" : 12,
-    "perItemPrice" : 3.0,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 36.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -4659,8 +5221,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.6,
-    "numItems" : 12,
-    "perItemPrice" : 2.83,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 34.0
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -4675,8 +5239,10 @@
     "mixed" : true,
     "sizeMl" : null,
     "abv" : null,
-    "numItems" : 12,
-    "perItemPrice" : 3.25,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 39.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -4691,8 +5257,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 2.7,
-    "numItems" : 12,
-    "perItemPrice" : 2.6,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 31.2
+    } ],
     "available" : false,
     "categories" : [ "Pale", "Bitter" ],
     "new" : false,
@@ -4707,8 +5275,10 @@
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 5.6,
-    "numItems" : 12,
-    "perItemPrice" : 2.83,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 34.0
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -4723,8 +5293,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.5,
-    "numItems" : 1,
-    "perItemPrice" : 6.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 6.5
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -4739,8 +5311,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 7.5,
-    "numItems" : 1,
-    "perItemPrice" : 6.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 6.5
+    } ],
     "available" : true,
     "categories" : [ "IPA", "Bitter" ],
     "new" : false,
@@ -4755,8 +5329,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.5,
-    "numItems" : 1,
-    "perItemPrice" : 5.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.0
+    } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : true,
@@ -4771,8 +5347,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 7.5,
-    "numItems" : 1,
-    "perItemPrice" : 6.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 6.0
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -4787,8 +5365,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.5,
-    "numItems" : 1,
-    "perItemPrice" : 4.25,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.25
+    } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : true,
@@ -4803,8 +5383,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.2,
-    "numItems" : 1,
-    "perItemPrice" : 4.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
@@ -4819,8 +5401,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 6.3,
-    "numItems" : 1,
-    "perItemPrice" : 4.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.5
+    } ],
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
@@ -4835,8 +5419,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 5.7,
-    "numItems" : 1,
-    "perItemPrice" : 5.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.0
+    } ],
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : true,
@@ -4851,8 +5437,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.9,
-    "numItems" : 1,
-    "perItemPrice" : 5.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.0
+    } ],
     "available" : true,
     "categories" : [ "Pale", "Cider" ],
     "new" : false,
@@ -4867,8 +5455,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 13.5,
-    "numItems" : 1,
-    "perItemPrice" : 8.75,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 8.75
+    } ],
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
@@ -4883,8 +5473,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.6,
-    "numItems" : 1,
-    "perItemPrice" : 4.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.0
+    } ],
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale" ],
     "new" : false,
@@ -4899,8 +5491,10 @@
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 3.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.5
+    } ],
     "available" : true,
     "categories" : [ "Bitter", "Pale" ],
     "new" : false,

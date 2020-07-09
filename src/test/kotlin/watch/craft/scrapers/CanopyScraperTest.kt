@@ -24,7 +24,7 @@ class CanopyScraperTest {
     assertEquals(
       ScrapedItem(
         name = "Brockwell IPA",   // ABV removed from name
-        price = 2.50,
+        totalPrice = 2.50,
         abv = 5.6,
         sizeMl = 330,
         available = true,

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import watch.craft.Brewery
 import watch.craft.Item
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.Leaf
@@ -46,7 +47,7 @@ class ExecutorTest {
             mixed = mixed,
             sizeMl = sizeMl,
             abv = abv,
-            perItemPrice = price,
+            offers = setOf(Offer(totalPrice = totalPrice)),
             available = available,
             new = true,
             thumbnailUrl = thumbnailUrl,
@@ -63,7 +64,7 @@ class ExecutorTest {
             mixed = mixed,
             sizeMl = sizeMl,
             abv = abv,
-            perItemPrice = price,
+            offers = setOf(Offer(totalPrice = totalPrice)),
             available = available,
             new = true,
             thumbnailUrl = thumbnailUrl,
@@ -79,14 +80,14 @@ class ExecutorTest {
   fun `de-duplicates by picking best price`() {
     val scraper = MyScraper(listOf(
       Leaf(name = "A", url = productUrl("a")) { product("Foo") },
-      Leaf(name = "B", url = productUrl("b")) { product("Foo").copy(price = DECENT_PRICE / 2) },
-      Leaf(name = "C", url = productUrl("c")) { product("Foo").copy(price = DECENT_PRICE * 2) }
+      Leaf(name = "B", url = productUrl("b")) { product("Foo").copy(totalPrice = DECENT_PRICE / 2) },
+      Leaf(name = "C", url = productUrl("c")) { product("Foo").copy(totalPrice = DECENT_PRICE * 2) }
     ))
 
     // Only one item returned, with best price
     assertEquals(
       listOf(DECENT_PRICE / 2),
-      executor.scrape(listOf(scraper)).items.map { it.perItemPrice }
+      executor.scrape(listOf(scraper)).items.map { it.offers.single().totalPrice }
     )
   }
 
@@ -116,7 +117,7 @@ class ExecutorTest {
     private fun product(name: String) = ScrapedItem(
       name = name,
       summary = "${name} is great",
-      price = DECENT_PRICE,
+      totalPrice = DECENT_PRICE,
       sizeMl = 440,
       abv = 6.9,
       available = true,

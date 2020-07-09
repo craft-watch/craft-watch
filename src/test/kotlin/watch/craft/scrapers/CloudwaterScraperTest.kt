@@ -26,7 +26,7 @@ class CloudwaterScraperTest {
         summary = "DDH Pale",
         abv = 5.0,
         sizeMl = 440,
-        price = 4.75,
+        totalPrice = 4.75,
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.873_1_800x.jpg?v=1591967414")
       ),
@@ -44,7 +44,7 @@ class CloudwaterScraperTest {
     val items = ITEMS.filter { it.mixed }
 
     assertFalse(items.isEmpty())
-    assertFalse(items.any { it.numItems == 1 })
+    assertFalse(items.any { it.quantity == 1 })
     assertFalse(items.any { it.sizeMl != null })
     assertFalse(items.any { it.abv != null })
   }

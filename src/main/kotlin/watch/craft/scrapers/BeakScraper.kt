@@ -33,8 +33,8 @@ class BeakScraper : Scraper {
             sizeMl = allTheText.sizeMlFrom(),
             abv = allTheText.abvFrom(),
             available = !a.text().contains("Sold Out", ignoreCase = true),
-            numItems = allTheText.maybe { extract(NUM_ITEMS_REGEX).intFrom(1) } ?: 1,
-            price = a.priceFrom(".price"),
+            quantity = allTheText.maybe { extract(NUM_ITEMS_REGEX).intFrom(1) } ?: 1,
+            totalPrice = a.priceFrom(".price"),
             thumbnailUrl = a.srcFrom("img")
           )
         }

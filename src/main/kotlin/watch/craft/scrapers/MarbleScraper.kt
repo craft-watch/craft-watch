@@ -44,8 +44,8 @@ class MarbleScraper : Scraper {
             sizeMl = volumeDetails.sizeMl,
             abv = attributes.grab("ABV").maybe { abvFrom(noPercent = true) },
             available = ".out-of-stock" !in doc,
-            numItems = volumeDetails.numItems,
-            price = doc.priceFrom(".price")
+            quantity = volumeDetails.numItems,
+            totalPrice = doc.priceFrom(".price")
           )
         }
       }

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import watch.craft.InvalidItemException
+import watch.craft.Offer
 import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
@@ -42,6 +43,14 @@ class ItemNormalisationTest {
   }
 
   @Test
+  fun `creates offer`() {
+    assertEquals(
+      setOf(Offer(quantity = 2, totalPrice = 3.72)),
+      normalise(prototype).offers
+    )
+  }
+
+  @Test
   fun `rejects if name is blank`() {
     assertNoValidationFailure(prototype.copy(name = "Yeah"))
     assertValidationFailure(prototype.copy(name = " "))
@@ -69,8 +78,8 @@ class ItemNormalisationTest {
 
   @Test
   fun `rejects if too bougie`() {
-    assertNoValidationFailure(prototype.copy(price = 14.0))
-    assertValidationFailure(prototype.copy(price = 20.0))
+    assertNoValidationFailure(prototype.copy(totalPrice = 14.0))
+    assertValidationFailure(prototype.copy(totalPrice = 20.0))
   }
 
   private fun assertNoValidationFailure(item: ScrapedItem) {
@@ -99,8 +108,8 @@ class ItemNormalisationTest {
   private val prototype = ScrapedItem(
     name = "Ted Shandy",
     summary = "Awful",
-    numItems = 2,
-    price = 3.72,
+    quantity = 2,
+    totalPrice = 3.72,
     sizeMl = 330,
     abv = 1.2,
     available = true,

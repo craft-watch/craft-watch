@@ -45,8 +45,8 @@ class SirenScraper : Scraper {
             sizeMl = if (keg) 5000 else details[4].toInt(),
             abv = details[2].toDouble(),
             available = ".unavailableItemWrap" !in doc,
-            numItems = 1,
-            price = el.priceFrom(".itemPriceWrap"),
+            quantity = 1,
+            totalPrice = el.priceFrom(".itemPriceWrap"),
             thumbnailUrl = el.srcFrom(".imageInnerWrap img")
           )
         }

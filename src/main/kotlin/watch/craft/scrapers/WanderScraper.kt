@@ -36,8 +36,8 @@ class WanderScraper : Scraper {
             sizeMl = descText.sizeMlFrom(),
             abv = descText.abvFrom(),
             available = true,
-            numItems = descText.maybe { extract("(\\d+)x").intFrom(1) } ?: 1,
-            price = doc.priceFrom("product-price-wrapper".hook()),
+            quantity = descText.maybe { extract("(\\d+)x").intFrom(1) } ?: 1,
+            totalPrice = doc.priceFrom("product-price-wrapper".hook()),
             thumbnailUrl = URI(
               el.attrFrom("product-item-images".hook(), "style")
                 .extract("background-image:url\\((.*?)\\)")[1]

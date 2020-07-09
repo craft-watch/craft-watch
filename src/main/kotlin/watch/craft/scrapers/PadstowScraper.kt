@@ -49,8 +49,8 @@ class PadstowScraper : Scraper {
             abv = if (mixed) null else doc.extractFrom(".abv .stat", "\\d+(\\.\\d+)?").doubleFrom(0),
             sizeMl = if (mixed) null else rawSize.sizeMlFrom(),
             available = true,
-            numItems = rawSize.maybe { extract("(\\d+) x").intFrom(1) } ?: 1,
-            price = el.priceFrom(".woocommerce-Price-amount")
+            quantity = rawSize.maybe { extract("(\\d+) x").intFrom(1) } ?: 1,
+            totalPrice = el.priceFrom(".woocommerce-Price-amount")
           )
         }
       }

@@ -34,7 +34,7 @@ class FourpureScraperTest {
     assertEquals(
       ScrapedItem(
         name = "Basecamp",
-        price = 2.00,
+        totalPrice = 2.00,
         abv = 4.7,
         sizeMl = 330,
         available = true,
@@ -50,7 +50,7 @@ class FourpureScraperTest {
       ScrapedItem(
         name = "Juicebox",
         keg = true,
-        price = 35.00,
+        totalPrice = 35.00,
         abv = 5.9,
         sizeMl = 5000,
         available = true,

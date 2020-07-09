@@ -27,8 +27,8 @@ class VillagesScraperTest {
         summary = "Pale Ale",
         abv = 4.6,
         sizeMl = 330,
-        numItems = 12,
-        price = 25.60,
+        quantity = 12,
+        totalPrice = 25.60,
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345.jpg?v=1587570539")
       ),
@@ -44,8 +44,8 @@ class VillagesScraperTest {
         mixed = true,
         abv = null,   // Can't find this!
         sizeMl = 330,
-        numItems = 24,
-        price = 52.50,
+        quantity = 24,
+        totalPrice = 52.50,
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg?v=1593725278")
       ),

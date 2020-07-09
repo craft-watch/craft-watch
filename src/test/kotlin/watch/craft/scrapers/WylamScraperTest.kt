@@ -26,7 +26,7 @@ class WylamScraperTest {
         summary = "English Golden Ale",
         abv = 4.0,
         sizeMl = 440,
-        price = 3.50,
+        totalPrice = 3.50,
         available = true,
         thumbnailUrl = URI("https://dpbfm6h358sh7.cloudfront.net/images/26164003/1393806261.jpg")
       ),

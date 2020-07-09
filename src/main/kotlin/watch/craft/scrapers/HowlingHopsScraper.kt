@@ -36,8 +36,8 @@ class HowlingHopsScraper : Scraper {
             available = doc.textFrom(".stock") == "In stock",
             sizeMl = desc.sizeMlFrom(),
             abv = parts.abv,
-            numItems = parts.numCans,
-            price = el.selectMultipleFrom(".woocommerce-Price-amount")
+            quantity = parts.numCans,
+            totalPrice = el.selectMultipleFrom(".woocommerce-Price-amount")
               .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
               .first()
               .ownText()
