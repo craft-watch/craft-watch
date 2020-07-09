@@ -41,7 +41,7 @@ class CanopyScraper : Scraper {
             available = !(el.text().contains("Sold out", ignoreCase = true)),
             sizeMl = doc.sizeMlFrom(),
             abv = if (parts[2].isBlank()) null else parts[2].toDouble(),
-            price = el.extractFrom(regex = "£(\\d+\\.\\d+)")[1].toDouble()
+            totalPrice = el.extractFrom(regex = "£(\\d+\\.\\d+)")[1].toDouble()
           )
         }
       }

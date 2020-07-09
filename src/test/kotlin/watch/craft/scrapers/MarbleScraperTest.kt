@@ -26,7 +26,7 @@ class MarbleScraperTest {
         summary = "IPA",
         sizeMl = 500,
         abv = 6.8,
-        price = 4.00,
+        totalPrice = 4.00,
         available = true,
         thumbnailUrl = URI("https://marblebeers.com/wp-content/uploads/2017/11/Earl-Grey-500ml-Can-234x300.png")
       ),

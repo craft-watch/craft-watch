@@ -26,7 +26,7 @@ class SirenScraperTest {
         summary = "Modern Lager",
         abv = 4.5,
         sizeMl = 440,
-        price = 3.00,
+        totalPrice = 3.00,
         available = true,
         thumbnailUrl = URI("https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-heart-of-ice-1593593312siren-craft-brew-heart-of-ice-440.png")
       ),

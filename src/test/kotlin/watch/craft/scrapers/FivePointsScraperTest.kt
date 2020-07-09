@@ -25,8 +25,8 @@ class FivePointsScraperTest {
       ScrapedItem(
         name = "Five Points Pils",   // No size in title
         summary = "Pilsner",
-        numItems = 12,
-        price = 21.60,
+        quantity = 12,
+        totalPrice = 21.60,
         abv = 4.8,
         sizeMl = 330,
         available = true,

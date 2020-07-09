@@ -74,7 +74,7 @@ class Executor(
       { it.available },
       { it.sizeMl },
       { it.keg },
-      { it.numItems }
+      { it.offers.single().quantity }
     )
   ))
 
@@ -83,7 +83,7 @@ class Executor(
       if (group.size > 1) {
         logger.info("[${key.brewery}] Eliminating ${group.size - 1} more expensive item(s) for [${key.name}]")
       }
-      group.minBy { it.perItemPrice }!!
+      group.minBy { it.offers.single().run { totalPrice / quantity } }!!
     }
   )
 

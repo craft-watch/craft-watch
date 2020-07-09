@@ -26,11 +26,11 @@ class NorthernMonkScraperTest {
         name = "Great Northern Lager",
         abv = 4.3,
         sizeMl = 440,
-        price = 3.00,
+        totalPrice = 3.00,
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/2213/3151/products/2020-NMBC_Great-Northern-Lager-29_180x.jpg?v=1589212703")
       ),
-      ITEMS.first { it.name == "Great Northern Lager" && it.numItems == 1 }.noDesc()
+      ITEMS.first { it.name == "Great Northern Lager" && it.quantity == 1 }.noDesc()
     )
   }
 
@@ -47,7 +47,7 @@ class NorthernMonkScraperTest {
 
   @Test
   fun `identifies multi-packs`() {
-    assertEquals(12, ITEMS.byName("Keep The Faith").numItems)
+    assertEquals(12, ITEMS.byName("Keep The Faith").quantity)
   }
 
   @Test

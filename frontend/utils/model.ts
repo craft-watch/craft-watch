@@ -25,13 +25,17 @@ export interface BaseItem {
   mixed: boolean;
   sizeMl: number | null;
   abv: number | null;
-  numItems: number;
-  perItemPrice: number;
+  offers: Array<Offer>;
   available: boolean;
   categories: Array<string>;
   new: boolean;
   thumbnailUrl: string;
   url: string;
+}
+
+export interface Offer {
+  quantity: number;
+  totalPrice: number;
 }
 
 export type RawItem = BaseItem & { brewery: string; }

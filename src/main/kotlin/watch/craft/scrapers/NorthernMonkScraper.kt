@@ -67,8 +67,8 @@ class NorthernMonkScraper : Scraper {
             sizeMl = desc.maybe { sizeMlFrom() },
             abv = abv,
             available = true,
-            numItems = rawName.maybe { extract(PACK_REGEX).intFrom(1) } ?: 1,
-            price = el.priceFrom(".card__price"),
+            quantity = rawName.maybe { extract(PACK_REGEX).intFrom(1) } ?: 1,
+            totalPrice = el.priceFrom(".card__price"),
             thumbnailUrl = URI(
               // The URLs are dynamically created
               doc.attrFrom(".product__image.lazyload", "abs:data-src")

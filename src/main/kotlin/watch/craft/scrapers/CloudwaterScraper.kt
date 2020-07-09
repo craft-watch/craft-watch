@@ -40,8 +40,8 @@ class CloudwaterScraper : Scraper {
             abv = if (mixed) null else descLines.mapNotNull { it.maybe { abvFrom() } }
               .min(), // Workaround for prose saying "100%"
             available = true,
-            numItems = max(1, allNumItems.sum()),
-            price = el.priceFrom(".price-regular"),
+            quantity = max(1, allNumItems.sum()),
+            totalPrice = el.priceFrom(".price-regular"),
             thumbnailUrl = el.dataSrcFrom(".product-grid-image img")
           )
         }

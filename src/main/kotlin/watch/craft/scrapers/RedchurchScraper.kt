@@ -47,8 +47,8 @@ class RedchurchScraper : Scraper {
             sizeMl = sizeMl,
             abv = abv,
             available = ".sold-out-text" !in el,
-            numItems = bestDeal.numItems,
-            price = bestDeal.price
+            quantity = bestDeal.numItems,
+            totalPrice = bestDeal.price
           )
         }
       }

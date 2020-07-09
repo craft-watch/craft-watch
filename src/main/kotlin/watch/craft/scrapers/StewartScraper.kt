@@ -30,7 +30,7 @@ class StewartScraper : Scraper {
             abv = doc.orSkip("Couldn't find ABV") { abvFrom(".alco") },
             sizeMl = doc.orSkip("Couldn't find size") { sizeMlFrom(".volume") },
             available = true,
-            price = doc.priceFrom(".priceNow")
+            totalPrice = doc.priceFrom(".priceNow")
           )
         }
       }

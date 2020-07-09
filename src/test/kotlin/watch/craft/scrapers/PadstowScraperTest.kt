@@ -26,7 +26,7 @@ class PadstowScraperTest {
         summary = "Extra hoppy Cornish Pale Ale",
         sizeMl = 440,
         abv = 4.0,
-        price = 3.95,
+        totalPrice = 3.95,
         available = true,
         thumbnailUrl = URI("https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Pocket-Rocket-Can-1.jpg")
       ),

@@ -27,7 +27,7 @@ class PressureDropScraperTest {
         summary = "New England Pale",
         sizeMl = 440,
         abv = 5.2,
-        price = 4.05,
+        totalPrice = 4.05,
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9751_large.jpg?v=1592315629")
       ),

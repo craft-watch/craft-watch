@@ -31,13 +31,17 @@ data class Item(
   val mixed: Boolean = false,
   val sizeMl: Int? = null,
   val abv: Double? = null,
-  val numItems: Int = 1,
-  val perItemPrice: Double,
+  val offers: Set<Offer> = emptySet(),
   val available: Boolean,
   val categories: Set<String> = emptySet(),
   val new: Boolean = false,
   val thumbnailUrl: URI,
   val url: URI
+)
+
+data class Offer(
+  val quantity: Int = 1,
+  val totalPrice: Double
 )
 
 data class MinimalInventory(

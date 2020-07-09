@@ -26,7 +26,7 @@ class PollysScraperTest {
         summary = "IPA",
         abv = 6.3,
         sizeMl = 440,
-        price = 4.50,
+        totalPrice = 4.50,
         available = true,
         thumbnailUrl = URI("https://craftpeak-commerce-images.imgix.net/2020/07/MYL-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail")
       ),

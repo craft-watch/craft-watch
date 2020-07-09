@@ -27,7 +27,7 @@ class BoxcarScraperTest {
         summary = "IPA",
         sizeMl = 440,
         abv = 6.5,
-        price = 4.95,
+        totalPrice = 4.95,
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/IMG-20200604-WA0003_345x345.jpg?v=1591345860")
       ),
@@ -42,7 +42,7 @@ class BoxcarScraperTest {
         name = "Dark Mild",
         sizeMl = 440,
         abv = 3.6,
-        price = 3.75,
+        totalPrice = 3.75,
         available = false,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/20200429_183043_345x345.jpg?v=1588181467")
       ),
