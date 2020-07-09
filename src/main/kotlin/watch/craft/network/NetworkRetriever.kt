@@ -27,7 +27,7 @@ class NetworkRetriever(private val name: String) : Retriever {
   )
 
   private sealed class Response {
-    class Success(val content: ByteArray): Response()
+    class Success(val content: ByteArray) : Response()
     data class Failure(val cause: Exception) : Response()
   }
 

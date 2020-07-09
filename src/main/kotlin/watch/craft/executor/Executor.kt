@@ -78,14 +78,15 @@ class Executor(
     )
   ))
 
-  private fun Inventory.bestPricedItems() = copy(items = items.groupBy { ItemGroupFields(it.brewery, it.name, it.onlyOffer().keg) }
-    .map { (key, group) ->
-      if (group.size > 1) {
-        logger.info("[${key.brewery}] Eliminating ${group.size - 1} more expensive item(s) for [${key.name}]")
+  private fun Inventory.bestPricedItems() =
+    copy(items = items.groupBy { ItemGroupFields(it.brewery, it.name, it.onlyOffer().keg) }
+      .map { (key, group) ->
+        if (group.size > 1) {
+          logger.info("[${key.brewery}] Eliminating ${group.size - 1} more expensive item(s) for [${key.name}]")
+        }
+        group.minBy { it.onlyOffer().run { totalPrice / quantity } }!!
       }
-      group.minBy { it.onlyOffer().run { totalPrice / quantity } }!!
-    }
-  )
+    )
 
   private fun Inventory.logStats() {
     items.groupBy { it.brewery }
