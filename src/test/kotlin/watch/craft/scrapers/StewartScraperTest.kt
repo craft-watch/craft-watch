@@ -3,6 +3,7 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
+import watch.craft.Offer
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
@@ -26,7 +27,7 @@ class StewartScraperTest {
         summary = "India Pale Ale",
         sizeMl = 330,
         abv = 5.4,
-        totalPrice = 2.00,
+        offers = setOf(Offer(totalPrice = 2.00)),
         available = true,
         thumbnailUrl = URI("https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-cascadian-east-1589535328cas-front-330.png")
       ),

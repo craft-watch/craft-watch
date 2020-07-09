@@ -2,6 +2,7 @@ package watch.craft.scrapers
 
 import org.jsoup.nodes.Document
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.Leaf
@@ -67,8 +68,12 @@ class NorthernMonkScraper : Scraper {
             sizeMl = desc.maybe { sizeMlFrom() },
             abv = abv,
             available = true,
-            quantity = rawName.maybe { extract(PACK_REGEX).intFrom(1) } ?: 1,
-            totalPrice = el.priceFrom(".card__price"),
+            offers = setOf(
+              Offer(
+                quantity = rawName.maybe { extract(PACK_REGEX).intFrom(1) } ?: 1,
+                totalPrice = el.priceFrom(".card__price")
+              )
+            ),
             thumbnailUrl = URI(
               // The URLs are dynamically created
               doc.attrFrom(".product__image.lazyload", "abs:data-src")

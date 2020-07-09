@@ -2,6 +2,7 @@ package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import watch.craft.Offer
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
@@ -34,7 +35,7 @@ class FourpureScraperTest {
     assertEquals(
       ScrapedItem(
         name = "Basecamp",
-        totalPrice = 2.00,
+        offers = setOf(Offer(totalPrice = 2.00)),
         abv = 4.7,
         sizeMl = 330,
         available = true,
@@ -50,7 +51,7 @@ class FourpureScraperTest {
       ScrapedItem(
         name = "Juicebox",
         keg = true,
-        totalPrice = 35.00,
+        offers = setOf(Offer(totalPrice = 35.00)),
         abv = 5.9,
         sizeMl = 5000,
         available = true,

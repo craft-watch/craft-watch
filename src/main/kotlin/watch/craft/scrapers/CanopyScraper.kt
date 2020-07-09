@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -41,7 +42,9 @@ class CanopyScraper : Scraper {
             available = !(el.text().contains("Sold out", ignoreCase = true)),
             sizeMl = doc.sizeMlFrom(),
             abv = if (parts[2].isBlank()) null else parts[2].toDouble(),
-            totalPrice = el.extractFrom(regex = "£(\\d+\\.\\d+)")[1].toDouble()
+            offers = setOf(
+              Offer(totalPrice = el.extractFrom(regex = "£(\\d+\\.\\d+)")[1].toDouble())
+            )
           )
         }
       }

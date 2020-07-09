@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -35,8 +36,12 @@ class SolvayScraper : Scraper {
             abv = if (mixed) null else rawName.abvFrom(),
             sizeMl = if (mixed) null else desc.sizeMlFrom(),
             available = true,
-            quantity = rawName.maybe { extract("(\\d+) pack").intFrom(1) } ?: 1,
-            totalPrice = el.priceFrom(".product-price"),
+            offers = setOf(
+              Offer(
+                quantity = rawName.maybe { extract("(\\d+) pack").intFrom(1) } ?: 1,
+                totalPrice = el.priceFrom(".product-price")
+              )
+            ),
             thumbnailUrl = el.dataSrcFrom("img.grid-image-cover")
           )
         }

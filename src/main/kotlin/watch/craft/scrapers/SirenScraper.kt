@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -45,8 +46,9 @@ class SirenScraper : Scraper {
             sizeMl = if (keg) 5000 else details[4].toInt(),
             abv = details[2].toDouble(),
             available = ".unavailableItemWrap" !in doc,
-            quantity = 1,
-            totalPrice = el.priceFrom(".itemPriceWrap"),
+            offers = setOf(
+              Offer(totalPrice = el.priceFrom(".itemPriceWrap"))
+            ),
             thumbnailUrl = el.srcFrom(".imageInnerWrap img")
           )
         }

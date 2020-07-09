@@ -3,6 +3,7 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
+import watch.craft.Offer
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
@@ -27,7 +28,7 @@ class PressureDropScraperTest {
         summary = "New England Pale",
         sizeMl = 440,
         abv = 5.2,
-        totalPrice = 4.05,
+        offers = setOf(Offer(totalPrice = 4.05)),
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9751_large.jpg?v=1592315629")
       ),

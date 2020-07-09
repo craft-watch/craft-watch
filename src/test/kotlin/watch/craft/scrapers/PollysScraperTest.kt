@@ -2,6 +2,7 @@ package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import watch.craft.Offer
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
@@ -26,7 +27,7 @@ class PollysScraperTest {
         summary = "IPA",
         abv = 6.3,
         sizeMl = 440,
-        totalPrice = 4.50,
+        offers = setOf(Offer(totalPrice = 4.50)),
         available = true,
         thumbnailUrl = URI("https://craftpeak-commerce-images.imgix.net/2020/07/MYL-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail")
       ),

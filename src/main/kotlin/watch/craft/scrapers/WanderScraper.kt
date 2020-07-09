@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -30,14 +31,23 @@ class WanderScraper : Scraper {
 
           ScrapedItem(
             name = name,
-            summary = desc.maybe { extractFrom("p", ".+[ \u00A0]-[ \u00A0](.+)")[1] },  // Grotesque heterogeneous space characters
+            summary = desc.maybe {
+              extractFrom(
+                "p",
+                ".+[ \u00A0]-[ \u00A0](.+)"
+              )[1]
+            },  // Grotesque heterogeneous space characters
             desc = desc.formattedTextFrom(),
             mixed = mixed,
             sizeMl = descText.sizeMlFrom(),
             abv = descText.abvFrom(),
             available = true,
-            quantity = descText.maybe { extract("(\\d+)x").intFrom(1) } ?: 1,
-            totalPrice = doc.priceFrom("product-price-wrapper".hook()),
+            offers = setOf(
+              Offer(
+                quantity = descText.maybe { extract("(\\d+)x").intFrom(1) } ?: 1,
+                totalPrice = doc.priceFrom("product-price-wrapper".hook())
+              )
+            ),
             thumbnailUrl = URI(
               el.attrFrom("product-item-images".hook(), "style")
                 .extract("background-image:url\\((.*?)\\)")[1]

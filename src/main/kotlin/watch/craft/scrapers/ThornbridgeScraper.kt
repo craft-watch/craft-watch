@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -39,10 +40,14 @@ class ThornbridgeScraper : Scraper {
             sizeMl = desc.maybe { sizeMlFrom() },
             abv = abv,
             available = "sold-out" !in el.classNames(),
-            quantity = desc.maybe { extractFrom(regex = "(\\d+)\\s*x").intFrom(1) }
-              ?: rawName.maybe { extract(regex = "(\\d+)\\s*x").intFrom(1) }
-              ?: 1,
-            totalPrice = el.priceFrom(".product-item--price")
+            offers = setOf(
+              Offer(
+                quantity = desc.maybe { extractFrom(regex = "(\\d+)\\s*x").intFrom(1) }
+                  ?: rawName.maybe { extract(regex = "(\\d+)\\s*x").intFrom(1) }
+                  ?: 1,
+                totalPrice = el.priceFrom(".product-item--price")
+              )
+            )
           )
         }
       }

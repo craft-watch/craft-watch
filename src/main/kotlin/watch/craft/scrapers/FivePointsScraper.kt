@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -30,7 +31,6 @@ class FivePointsScraper : Scraper {
 
           val sizeMl = title.sizeMlFrom()
           ScrapedItem(
-            thumbnailUrl = el.srcFrom(".imageInnerWrap img"),
             name = a.extractFrom(regex = "([^(]+)")[1].trim().toTitleCase(),
             summary = parts[1],
             desc = doc.formattedTextFrom(".about"),
@@ -38,8 +38,13 @@ class FivePointsScraper : Scraper {
             abv = parts[2].toDouble(),
             sizeMl = sizeMl,
             available = ".unavailableItemWrap" !in doc,
-            quantity = parts[5].ifBlank { "1" }.toInt(),
-            totalPrice = el.extractFrom(".priceStandard", "£(\\d+\\.\\d+)")[1].toDouble()
+            offers = setOf(
+              Offer(
+                quantity = parts[5].ifBlank { "1" }.toInt(),
+                totalPrice = el.extractFrom(".priceStandard", "£(\\d+\\.\\d+)").doubleFrom(1)
+              )
+            ),
+            thumbnailUrl = el.srcFrom(".imageInnerWrap img")
           )
         }
       }

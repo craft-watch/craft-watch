@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -36,12 +37,17 @@ class HowlingHopsScraper : Scraper {
             available = doc.textFrom(".stock") == "In stock",
             sizeMl = desc.sizeMlFrom(),
             abv = parts.abv,
-            quantity = parts.numCans,
-            totalPrice = el.selectMultipleFrom(".woocommerce-Price-amount")
-              .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
-              .first()
-              .ownText()
-              .toDouble()
+            offers = setOf(
+              Offer(
+                quantity = parts.numCans,
+                totalPrice = el.selectMultipleFrom(".woocommerce-Price-amount")
+                  .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
+                  .first()
+                  .ownText()
+                  .toDouble()
+              )
+            )
+
           )
         }
       }

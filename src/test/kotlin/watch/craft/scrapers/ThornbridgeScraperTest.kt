@@ -2,6 +2,7 @@ package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import watch.craft.Offer
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
@@ -26,7 +27,7 @@ class ThornbridgeScraperTest {
         summary = "IPA",
         sizeMl = 330,
         abv = 5.9,
-        totalPrice = 2.00,
+        offers = setOf(Offer(totalPrice = 2.00)),
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_can_mockup_coloured_background_300x300.jpg?v=1583154011")
       ),

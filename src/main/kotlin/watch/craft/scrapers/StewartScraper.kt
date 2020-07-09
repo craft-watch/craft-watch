@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -30,7 +31,9 @@ class StewartScraper : Scraper {
             abv = doc.orSkip("Couldn't find ABV") { abvFrom(".alco") },
             sizeMl = doc.orSkip("Couldn't find size") { sizeMlFrom(".volume") },
             available = true,
-            totalPrice = doc.priceFrom(".priceNow")
+            offers = setOf(
+              Offer(totalPrice = doc.priceFrom(".priceNow"))
+            )
           )
         }
       }

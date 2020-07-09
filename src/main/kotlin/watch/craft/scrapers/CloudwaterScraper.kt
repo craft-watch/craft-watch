@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -40,8 +41,12 @@ class CloudwaterScraper : Scraper {
             abv = if (mixed) null else descLines.mapNotNull { it.maybe { abvFrom() } }
               .min(), // Workaround for prose saying "100%"
             available = true,
-            quantity = max(1, allNumItems.sum()),
-            totalPrice = el.priceFrom(".price-regular"),
+            offers = setOf(
+              Offer(
+                quantity = max(1, allNumItems.sum()),
+                totalPrice = el.priceFrom(".price-regular")
+              )
+            ),
             thumbnailUrl = el.dataSrcFrom(".product-grid-image img")
           )
         }

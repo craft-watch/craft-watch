@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -30,8 +31,12 @@ class VillagesScraper : Scraper {
             sizeMl = doc.maybe { sizeMlFrom() },
             abv = parts.abv,
             available = details.available,
-            quantity = parts.numCans,
-            totalPrice = details.price,
+            offers = setOf(
+              Offer(
+                quantity = parts.numCans,
+                totalPrice = details.price
+              )
+            ),
             thumbnailUrl = details.thumbnailUrl
           )
         }

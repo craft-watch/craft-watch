@@ -2,6 +2,7 @@ package watch.craft.scrapers
 
 import org.jsoup.nodes.Document
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -47,8 +48,12 @@ class RedchurchScraper : Scraper {
             sizeMl = sizeMl,
             abv = abv,
             available = ".sold-out-text" !in el,
-            quantity = bestDeal.numItems,
-            totalPrice = bestDeal.price
+            offers = setOf(
+              Offer(
+                quantity = bestDeal.numItems,
+                totalPrice = bestDeal.price
+              )
+            )
           )
         }
       }

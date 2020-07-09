@@ -47,7 +47,7 @@ class ExecutorTest {
             mixed = mixed,
             sizeMl = sizeMl,
             abv = abv,
-            offers = setOf(Offer(totalPrice = totalPrice)),
+            offers = offers,
             available = available,
             new = true,
             thumbnailUrl = thumbnailUrl,
@@ -64,7 +64,7 @@ class ExecutorTest {
             mixed = mixed,
             sizeMl = sizeMl,
             abv = abv,
-            offers = setOf(Offer(totalPrice = totalPrice)),
+            offers = offers,
             available = available,
             new = true,
             thumbnailUrl = thumbnailUrl,
@@ -80,8 +80,16 @@ class ExecutorTest {
   fun `de-duplicates by picking best price`() {
     val scraper = MyScraper(listOf(
       Leaf(name = "A", url = productUrl("a")) { product("Foo") },
-      Leaf(name = "B", url = productUrl("b")) { product("Foo").copy(totalPrice = DECENT_PRICE / 2) },
-      Leaf(name = "C", url = productUrl("c")) { product("Foo").copy(totalPrice = DECENT_PRICE * 2) }
+      Leaf(name = "B", url = productUrl("b")) {
+        product("Foo").copy(
+          offers = setOf(Offer(totalPrice = DECENT_PRICE / 2))
+        )
+      },
+      Leaf(name = "C", url = productUrl("c")) {
+        product("Foo").copy(
+          offers = setOf(Offer(totalPrice = DECENT_PRICE * 2))
+        )
+      }
     ))
 
     // Only one item returned, with best price
@@ -117,7 +125,7 @@ class ExecutorTest {
     private fun product(name: String) = ScrapedItem(
       name = name,
       summary = "${name} is great",
-      totalPrice = DECENT_PRICE,
+      offers = setOf(Offer(totalPrice = DECENT_PRICE)),
       sizeMl = 440,
       abv = 6.9,
       available = true,

@@ -2,6 +2,7 @@ package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import watch.craft.Offer
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
@@ -26,7 +27,7 @@ class MarbleScraperTest {
         summary = "IPA",
         sizeMl = 500,
         abv = 6.8,
-        totalPrice = 4.00,
+        offers = setOf(Offer(totalPrice = 4.00)),
         available = true,
         thumbnailUrl = URI("https://marblebeers.com/wp-content/uploads/2017/11/Earl-Grey-500ml-Can-234x300.png")
       ),

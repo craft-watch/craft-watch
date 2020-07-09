@@ -3,6 +3,7 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
+import watch.craft.Offer
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
@@ -25,8 +26,9 @@ class FivePointsScraperTest {
       ScrapedItem(
         name = "Five Points Pils",   // No size in title
         summary = "Pilsner",
-        quantity = 12,
-        totalPrice = 21.60,
+        offers = setOf(
+          Offer(quantity = 12, totalPrice = 21.60)
+        ),
         abv = 4.8,
         sizeMl = 330,
         available = true,

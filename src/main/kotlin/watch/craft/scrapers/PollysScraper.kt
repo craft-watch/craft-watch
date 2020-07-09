@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -38,8 +39,9 @@ class PollysScraper : Scraper {
             sizeMl = POLLYS_CAN_SIZE_ML,
             abv = parts[3].toDouble(),
             available = ".out-of-stock" !in doc,
-            quantity = 1,
-            totalPrice = doc.priceFrom("#main .woocommerce-Price-amount"),
+            offers = setOf(
+              Offer(totalPrice = doc.priceFrom("#main .woocommerce-Price-amount"))
+            ),
             thumbnailUrl = a.srcFrom("img")
           )
         }

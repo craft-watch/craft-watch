@@ -2,6 +2,7 @@ package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import watch.craft.Offer
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
@@ -24,9 +25,8 @@ class RedchurchScraperTest {
       ScrapedItem(
         name = "Shoreditch Blonde",
         sizeMl = 330,
-        quantity = 24,
         abv = 4.5,
-        totalPrice = 35.00,
+        offers = setOf(Offer(quantity = 24, totalPrice = 35.00)),
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0034/8694/1229/products/SBwwwimage_200x200.png")
       ),

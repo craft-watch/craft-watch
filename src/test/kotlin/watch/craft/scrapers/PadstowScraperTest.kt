@@ -2,6 +2,7 @@ package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import watch.craft.Offer
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
@@ -26,7 +27,7 @@ class PadstowScraperTest {
         summary = "Extra hoppy Cornish Pale Ale",
         sizeMl = 440,
         abv = 4.0,
-        totalPrice = 3.95,
+        offers = setOf(Offer(totalPrice = 3.95)),
         available = true,
         thumbnailUrl = URI("https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Pocket-Rocket-Can-1.jpg")
       ),
