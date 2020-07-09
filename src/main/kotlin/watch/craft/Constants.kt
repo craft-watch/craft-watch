@@ -3,7 +3,7 @@ package watch.craft
 import java.io.File
 
 const val GCS_BUCKET = "backend.craft.watch"
-val CACHE_DIR = File("cache")
+val LOCAL_STORAGE_DIR = File("storage")
 const val INVENTORY_FILENAME = "inventory.json"
 val CANONICAL_INVENTORY_PATH = File("frontend/data/${INVENTORY_FILENAME}")
 

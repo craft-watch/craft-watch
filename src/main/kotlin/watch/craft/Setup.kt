@@ -23,7 +23,7 @@ class Setup(
   }
 
   private val store = WriteThroughObjectStore(
-    firstLevel = LocalObjectStore(CACHE_DIR),
+    firstLevel = LocalObjectStore(LOCAL_STORAGE_DIR),
     secondLevel = GcsObjectStore(GCS_BUCKET)
   )
 
