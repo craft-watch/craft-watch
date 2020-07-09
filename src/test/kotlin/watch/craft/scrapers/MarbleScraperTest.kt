@@ -2,10 +2,8 @@ package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import watch.craft.*
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.byName
-import watch.craft.executeScraper
-import watch.craft.noDesc
 import java.net.URI
 
 class MarbleScraperTest {
@@ -24,9 +22,10 @@ class MarbleScraperTest {
       ScrapedItem(
         name = "Earl Grey IPA",
         summary = "IPA",
-        sizeMl = 500,
         abv = 6.8,
-        totalPrice = 4.00,
+        offers = setOf(
+          Offer(totalPrice = 4.00, sizeMl = 500)
+        ),
         available = true,
         thumbnailUrl = URI("https://marblebeers.com/wp-content/uploads/2017/11/Earl-Grey-500ml-Can-234x300.png")
       ),
@@ -44,7 +43,7 @@ class MarbleScraperTest {
 
   @Test
   fun `identifies kegs`() {
-    val kegs = ITEMS.filter { it.keg }
+    val kegs = ITEMS.filter { it.onlyOffer().keg }
 
     assertFalse(kegs.isEmpty())
     assertFalse(kegs.any { it.name.contains("mini", ignoreCase = true) })

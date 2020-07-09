@@ -3,6 +3,7 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -32,14 +33,18 @@ class FourpureScraper : Scraper {
 
           val parts = extractVariableParts(doc)
           ScrapedItem(
-            thumbnailUrl = a.srcFrom("img"),
             name = parts.name,
             desc = doc.maybe { formattedTextFrom(".productDetailsWrap .innerContent") },
-            abv = doc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+(\\.\\d+)?)")[1].toDouble(),
-            keg = parts.keg,
-            sizeMl = parts.sizeMl,
+            abv = doc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+(\\.\\d+)?)").doubleFrom(1),
             available = true,
-            totalPrice = el.selectFrom(".priceNow, .priceStandard").priceFrom(".GBP")
+            offers = setOf(
+              Offer(
+                totalPrice = el.selectFrom(".priceNow, .priceStandard").priceFrom(".GBP"),
+                keg = parts.keg,
+                sizeMl = parts.sizeMl
+              )
+            ),
+            thumbnailUrl = a.srcFrom("img")
           )
         }
       }

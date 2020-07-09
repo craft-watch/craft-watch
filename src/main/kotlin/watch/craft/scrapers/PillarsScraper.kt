@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -30,12 +31,16 @@ class PillarsScraper : Scraper {
             name = titleParts.name,
             summary = descParts[1].toTitleCase(),
             desc = doc.maybe { formattedTextFrom(".product-single__description") },
-            keg = titleParts.keg,
-            sizeMl = titleParts.sizeMl,
             abv = descParts[2].toDouble(),
             available = details.available,
-            quantity = titleParts.numItems,
-            totalPrice = details.price
+            offers = setOf(
+              Offer(
+                quantity = titleParts.numItems,
+                totalPrice = details.price,
+                keg = titleParts.keg,
+                sizeMl = titleParts.sizeMl
+              )
+            )
           )
         }
       }

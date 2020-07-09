@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -33,16 +34,21 @@ class GipsyHillScraper : Scraper {
           val name = rawName.replace(" \\(.*\\)$".toRegex(), "")
 
           ScrapedItem(
-            thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
+
             name = name,
             summary = if (mixed) null else style,
             desc = doc.maybe { formattedTextFrom(".description") },
             mixed = mixed,
             available = true, // TODO
             abv = if (mixed) null else rawSummary.maybe { abvFrom(prefix = "ABV: ", noPercent = true) },
-            sizeMl = rawSummary.maybe { sizeMlFrom() },
-            quantity = numCans,
-            totalPrice = el.priceFrom(".woocommerce-Price-amount")
+            offers = setOf(
+              Offer(
+                quantity = numCans,
+                totalPrice = el.priceFrom(".woocommerce-Price-amount"),
+                sizeMl = rawSummary.maybe { sizeMlFrom() }
+              )
+            ),
+            thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail")
           )
         }
       }

@@ -2,6 +2,7 @@ package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import watch.craft.Offer
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
@@ -24,9 +25,10 @@ class GipsyHillScraperTest {
       ScrapedItem(
         name = "Carver",
         summary = "Micro IPA",
-        totalPrice = 2.20,
+        offers = setOf(
+          Offer(totalPrice = 2.20, sizeMl = 330)
+        ),
         abv = 2.8,
-        sizeMl = 330,
         available = true,
         thumbnailUrl = URI("https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/CARVER.png?resize=300%2C300&ssl=1")
       ),

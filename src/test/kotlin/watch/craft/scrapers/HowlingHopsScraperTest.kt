@@ -3,6 +3,7 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
+import watch.craft.Offer
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
@@ -25,10 +26,10 @@ class HowlingHopsScraperTest {
       ScrapedItem(
         name = "Push Push",
         summary = "DDH Pale Ale",
-        quantity = 4,
-        totalPrice = 16.00,
+        offers = setOf(
+          Offer(quantity = 4, totalPrice = 16.00, sizeMl = 440)
+        ),
         abv = 5.8,
-        sizeMl = 440,
         available = true,
         thumbnailUrl = URI("https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png")
       ),

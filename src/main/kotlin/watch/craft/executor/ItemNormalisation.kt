@@ -2,7 +2,6 @@ package watch.craft.executor
 
 import watch.craft.InvalidItemException
 import watch.craft.Item
-import watch.craft.Offer
 import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.utils.toUri
 
@@ -19,18 +18,16 @@ fun Result.normalise() = Item(
   desc = item.desc
     ?.trim()
     ?.validate("non-blank description") { it.isNotBlank() },
-  keg = item.keg,
   mixed = item.mixed,
-  // TODO - validate sane size
-  sizeMl = item.sizeMl,
   abv = item.abv
     ?.validate("sane ABV") { it < MAX_ABV },
-  offers = setOf(
-    Offer(quantity = item.quantity, totalPrice = item.totalPrice)
-      .validate("sane price per ml") {
-        (item.totalPrice / item.quantity / (item.sizeMl ?: 330)) < MAX_PRICE_PER_ML
+  // TODO - validate sane size
+  offers = item.offers
+    .validate("sane price per ml") {
+      it.all { offer ->
+        (offer.totalPrice / offer.quantity / (offer.sizeMl ?: 330)) < MAX_PRICE_PER_ML
       }
-  ),
+    },
   available = item.available,
   thumbnailUrl = item.thumbnailUrl
     .validate("absolute thumbnail URL") { it.isAbsolute }

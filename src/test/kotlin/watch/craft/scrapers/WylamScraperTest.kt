@@ -2,6 +2,7 @@ package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import watch.craft.Offer
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
@@ -25,8 +26,9 @@ class WylamScraperTest {
         name = "Wylam Gold",
         summary = "English Golden Ale",
         abv = 4.0,
-        sizeMl = 440,
-        totalPrice = 3.50,
+        offers = setOf(
+          Offer(totalPrice = 3.50, sizeMl = 440)
+        ),
         available = true,
         thumbnailUrl = URI("https://dpbfm6h358sh7.cloudfront.net/images/26164003/1393806261.jpg")
       ),

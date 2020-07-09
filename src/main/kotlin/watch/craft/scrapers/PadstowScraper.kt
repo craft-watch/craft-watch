@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -45,12 +46,16 @@ class PadstowScraper : Scraper {
             summary = doc.maybe { textFrom(".tag_line") }?.replace(" \\d+(\\.\\d+)?%$".toRegex(), ""),
             desc = doc.textFrom(".post_content"),
             mixed = mixed,
-            keg = rawName.contains("mini( ?)keg".toRegex(IGNORE_CASE)),
             abv = if (mixed) null else doc.extractFrom(".abv .stat", "\\d+(\\.\\d+)?").doubleFrom(0),
-            sizeMl = if (mixed) null else rawSize.sizeMlFrom(),
             available = true,
-            quantity = rawSize.maybe { extract("(\\d+) x").intFrom(1) } ?: 1,
-            totalPrice = el.priceFrom(".woocommerce-Price-amount")
+            offers = setOf(
+              Offer(
+                quantity = rawSize.maybe { extract("(\\d+) x").intFrom(1) } ?: 1,
+                totalPrice = el.priceFrom(".woocommerce-Price-amount"),
+                keg = rawName.contains("mini( ?)keg".toRegex(IGNORE_CASE)),
+                sizeMl = if (mixed) null else rawSize.sizeMlFrom()
+              )
+            )
           )
         }
       }

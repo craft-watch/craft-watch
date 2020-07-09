@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -37,9 +38,13 @@ class PressureDropScraper : Scraper {
             summary = parts[3].ifBlank { null },
             desc = doc.maybe { formattedTextFrom(".product-description") },
             abv = itemText.maybe { abvFrom() },
-            sizeMl = itemText.maybe { sizeMlFrom() },
             available = true,
-            totalPrice = doc.priceFrom(".ProductPrice")
+            offers = setOf(
+              Offer(
+                totalPrice = doc.priceFrom(".ProductPrice"),
+                sizeMl = itemText.maybe { sizeMlFrom() }
+              )
+            )
           )
         }
       }

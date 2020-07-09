@@ -2,10 +2,8 @@ package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import watch.craft.*
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.byName
-import watch.craft.executeScraper
-import watch.craft.noDesc
 import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
@@ -34,9 +32,10 @@ class FourpureScraperTest {
     assertEquals(
       ScrapedItem(
         name = "Basecamp",
-        totalPrice = 2.00,
+        offers = setOf(
+          Offer(totalPrice = 2.00, sizeMl = 330)
+        ),
         abv = 4.7,
-        sizeMl = 330,
         available = true,
         thumbnailUrl = URI("https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_pilslager_1566986321BASECAMPNB.png")
       ),
@@ -49,14 +48,15 @@ class FourpureScraperTest {
     assertEquals(
       ScrapedItem(
         name = "Juicebox",
-        keg = true,
-        totalPrice = 35.00,
+        offers = setOf(
+          Offer(totalPrice = 35.00, keg = true, sizeMl = 5000)
+        ),
         abv = 5.9,
-        sizeMl = 5000,
+
         available = true,
         thumbnailUrl = URI("https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_juicebox5lminikeg_1588779669WhatsAppImage20200506at14.07.452.jpeg")
       ),
-      ITEMS.first { it.name == "Juicebox" && it.keg }.noDesc()
+      ITEMS.first { it.name == "Juicebox" && it.onlyOffer().keg }.noDesc()
     )
   }
 

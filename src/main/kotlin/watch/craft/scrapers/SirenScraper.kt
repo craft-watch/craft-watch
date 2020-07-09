@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -40,13 +41,16 @@ class SirenScraper : Scraper {
             name = rawName.replace("(\\d+)L Mini Keg - ".toRegex(), ""),
             summary = if (keg) null else details[1],
             desc = doc.formattedTextFrom(".about"),
-            keg = keg,
             mixed = false,
-            sizeMl = if (keg) 5000 else details[4].toInt(),
             abv = details[2].toDouble(),
             available = ".unavailableItemWrap" !in doc,
-            quantity = 1,
-            totalPrice = el.priceFrom(".itemPriceWrap"),
+            offers = setOf(
+              Offer(
+                totalPrice = el.priceFrom(".itemPriceWrap"),
+                keg = keg,
+                sizeMl = if (keg) 5000 else details[4].toInt()
+              )
+            ),
             thumbnailUrl = el.srcFrom(".imageInnerWrap img")
           )
         }

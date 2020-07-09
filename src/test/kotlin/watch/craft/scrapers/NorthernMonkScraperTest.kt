@@ -2,10 +2,8 @@ package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import watch.craft.*
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.byName
-import watch.craft.executeScraper
-import watch.craft.noDesc
 import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
@@ -25,12 +23,13 @@ class NorthernMonkScraperTest {
       ScrapedItem(
         name = "Great Northern Lager",
         abv = 4.3,
-        sizeMl = 440,
-        totalPrice = 3.00,
+        offers = setOf(
+          Offer(totalPrice = 3.00, sizeMl = 440)
+        ),
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/2213/3151/products/2020-NMBC_Great-Northern-Lager-29_180x.jpg?v=1589212703")
       ),
-      ITEMS.first { it.name == "Great Northern Lager" && it.quantity == 1 }.noDesc()
+      ITEMS.first { it.name == "Great Northern Lager" && it.onlyOffer().quantity == 1 }.noDesc()
     )
   }
 
@@ -47,7 +46,7 @@ class NorthernMonkScraperTest {
 
   @Test
   fun `identifies multi-packs`() {
-    assertEquals(12, ITEMS.byName("Keep The Faith").quantity)
+    assertEquals(12, ITEMS.byName("Keep The Faith").onlyOffer().quantity)
   }
 
   @Test

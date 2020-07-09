@@ -28,8 +28,9 @@ class NetworkRetrieverTest {
 
   @Test
   fun `retrieves a response from over the network`() {
-    server.stubFor(get(urlEqualTo("/"))
-      .willReturn(aResponse().withBody(NICE_DATA))
+    server.stubFor(
+      get(urlEqualTo("/"))
+        .willReturn(aResponse().withBody(NICE_DATA))
     )
 
     val data = NetworkRetriever("Yeah").use { retriever ->
@@ -43,8 +44,9 @@ class NetworkRetrieverTest {
 
   @Test
   fun `throws on network error`() {
-    server.stubFor(get(urlEqualTo("/"))
-      .willReturn(aResponse().withStatus(429))
+    server.stubFor(
+      get(urlEqualTo("/"))
+        .willReturn(aResponse().withStatus(429))
     )
 
     assertThrows<FatalScraperException> {

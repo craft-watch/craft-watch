@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAlias
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.jsoup.nodes.Document
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -42,11 +43,15 @@ class RedWillowScraper : Scraper {
             summary = rawName.maybe { extract("%\\s+([^\\d]+)$")[1] },  // In some cases, beer type is after the ABV
             desc = desc.ifBlank { null },
             mixed = rawName.contains("mixed", ignoreCase = true),
-            sizeMl = allText.maybe { sizeMlFrom() },
             abv = rawName.maybe { abvFrom() },
             available = true,
-            quantity = bestDeal.numItems,
-            totalPrice = bestDeal.price,
+            offers = setOf(
+              Offer(
+                quantity = bestDeal.numItems,
+                totalPrice = bestDeal.price,
+                sizeMl = allText.maybe { sizeMlFrom() }
+              )
+            ),
             thumbnailUrl = doc.extractSmallThumbnail()
           )
         }

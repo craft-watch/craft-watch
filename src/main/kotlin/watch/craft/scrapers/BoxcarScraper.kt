@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -30,9 +31,13 @@ class BoxcarScraper : Scraper {
             summary = parts[3].ifBlank { null },
             desc = doc.maybe { formattedTextFrom(".product-single__description") }
               ?.replace("^DESCRIPTION".toRegex(IGNORE_CASE), ""),
-            sizeMl = details.title.sizeMlFrom(),
             available = details.available,
-            totalPrice = details.price
+            offers = setOf(
+              Offer(
+                totalPrice = details.price,
+                sizeMl = details.title.sizeMlFrom()
+              )
+            )
           )
         }
       }

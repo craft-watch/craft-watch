@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -28,11 +29,14 @@ class UnityScraper : Scraper {
             summary = null,
             desc = desc,
             mixed = false,
-            sizeMl = desc.sizeMlFrom(),
             abv = desc.abvFrom(),
             available = details.available,
-            quantity = 1,
-            totalPrice = details.price,
+            offers = setOf(
+              Offer(
+                totalPrice = details.price,
+                sizeMl = desc.sizeMlFrom()
+              )
+            ),
             thumbnailUrl = details.thumbnailUrl
           )
         }

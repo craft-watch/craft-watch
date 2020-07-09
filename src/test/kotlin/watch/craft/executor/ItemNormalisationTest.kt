@@ -43,14 +43,6 @@ class ItemNormalisationTest {
   }
 
   @Test
-  fun `creates offer`() {
-    assertEquals(
-      setOf(Offer(quantity = 2, totalPrice = 3.72)),
-      normalise(prototype).offers
-    )
-  }
-
-  @Test
   fun `rejects if name is blank`() {
     assertNoValidationFailure(prototype.copy(name = "Yeah"))
     assertValidationFailure(prototype.copy(name = " "))
@@ -78,8 +70,17 @@ class ItemNormalisationTest {
 
   @Test
   fun `rejects if too bougie`() {
-    assertNoValidationFailure(prototype.copy(totalPrice = 14.0))
-    assertValidationFailure(prototype.copy(totalPrice = 20.0))
+    assertNoValidationFailure(
+      prototype.copy(
+        offers = setOf(
+          Offer(
+            quantity = 2,
+            totalPrice = 14.0
+          )
+        )
+      )
+    ) // Apparently this is a reasonable price
+    assertValidationFailure(prototype.copy(offers = setOf(Offer(quantity = 2, totalPrice = 20.0)))) // But this is mad
   }
 
   private fun assertNoValidationFailure(item: ScrapedItem) {
@@ -108,9 +109,7 @@ class ItemNormalisationTest {
   private val prototype = ScrapedItem(
     name = "Ted Shandy",
     summary = "Awful",
-    quantity = 2,
-    totalPrice = 3.72,
-    sizeMl = 330,
+    offers = setOf(Offer(quantity = 2, totalPrice = 3.72, sizeMl = 330)),
     abv = 1.2,
     available = true,
     thumbnailUrl = URI("https://example.invalid/assets/ted-shandy.jpg")

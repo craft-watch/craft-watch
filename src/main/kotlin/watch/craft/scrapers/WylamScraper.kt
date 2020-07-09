@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -39,11 +40,15 @@ class WylamScraper : Scraper {
             name = nameParts[1].trim(),
             summary = nameParts[2].trim().ifBlank { null },
             desc = doc.formattedTextFrom(".product-details__product-description"),
-            sizeMl = rawName.sizeMlFrom(),
             abv = abv,
             available = data.offers.availability == "http://schema.org/InStock",
-            quantity = numItems,
-            totalPrice = data.offers.price,
+            offers = setOf(
+              Offer(
+                quantity = numItems,
+                totalPrice = data.offers.price,
+                sizeMl = rawName.sizeMlFrom()
+              )
+            ),
             thumbnailUrl = el.srcFrom("img.grid-product__picture")
           )
         }

@@ -4,6 +4,7 @@ import Page from "../components/Page";
 import App from "../components/App";
 import { Item } from "../utils/model";
 import { items as inventoryItems, capturedAt, categories, breweries } from "../utils/inventory";
+import { extractOffer } from "../utils/stuff";
 
 const TASTER_MENU_SIZE = 20;
 
@@ -50,7 +51,7 @@ const ThisPage = (): JSX.Element => {
 // Avoid over-representing breweries that have a ton of beers.
 const generateFairTasterMenu = (items: Array<Item>): Array<Item> => {
   // Remove inappropriate items for a taster menu
-  const relevant = _.filter(items, item => !item.keg && !item.mixed && item.available);
+  const relevant = _.filter(items, item => !extractOffer(item).keg && !item.mixed && item.available);
 
   const byBrewery = _.groupBy(relevant, item => item.brewery.shortName);
 

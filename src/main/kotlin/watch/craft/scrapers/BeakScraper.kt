@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -30,11 +31,15 @@ class BeakScraper : Scraper {
             name = rawName.split(" ")[0].toTitleCase(),
             summary = null,
             desc = desc.formattedTextFrom(),
-            sizeMl = allTheText.sizeMlFrom(),
             abv = allTheText.abvFrom(),
             available = !a.text().contains("Sold Out", ignoreCase = true),
-            quantity = allTheText.maybe { extract(NUM_ITEMS_REGEX).intFrom(1) } ?: 1,
-            totalPrice = a.priceFrom(".price"),
+            offers = setOf(
+              Offer(
+                quantity = allTheText.maybe { extract(NUM_ITEMS_REGEX).intFrom(1) } ?: 1,
+                totalPrice = a.priceFrom(".price"),
+                sizeMl = allTheText.sizeMlFrom()
+              )
+            ),
             thumbnailUrl = a.srcFrom("img")
           )
         }

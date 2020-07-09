@@ -3,6 +3,7 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
+import watch.craft.Offer
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
 import watch.craft.executeScraper
@@ -25,9 +26,10 @@ class BoxcarScraperTest {
       ScrapedItem(
         name = "Dreamful",
         summary = "IPA",
-        sizeMl = 440,
         abv = 6.5,
-        totalPrice = 4.95,
+        offers = setOf(
+          Offer(totalPrice = 4.95, sizeMl = 440)
+        ),
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/IMG-20200604-WA0003_345x345.jpg?v=1591345860")
       ),
@@ -40,9 +42,10 @@ class BoxcarScraperTest {
     assertEquals(
       ScrapedItem(
         name = "Dark Mild",
-        sizeMl = 440,
         abv = 3.6,
-        totalPrice = 3.75,
+        offers = setOf(
+          Offer(totalPrice = 3.75, sizeMl = 440)
+        ),
         available = false,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/20200429_183043_345x345.jpg?v=1588181467")
       ),

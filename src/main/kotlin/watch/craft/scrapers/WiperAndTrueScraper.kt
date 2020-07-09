@@ -2,6 +2,7 @@ package watch.craft.scrapers
 
 import org.jsoup.nodes.Element
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -33,11 +34,15 @@ class WiperAndTrueScraper : Scraper {
             summary = parts.summary,
             desc = desc.formattedTextFrom(),
             mixed = parts.mixed,
-            sizeMl = parts.sizeMl,
             abv = parts.abv,
             available = ".sold-out" !in el,
-            quantity = parts.numItems,
-            totalPrice = el.priceFrom(".product-price"),
+            offers = setOf(
+              Offer(
+                quantity = parts.numItems,
+                totalPrice = el.priceFrom(".product-price"),
+                sizeMl = parts.sizeMl
+              )
+            ),
             thumbnailUrl = el.dataSrcFrom(".product-image img")
           )
         }

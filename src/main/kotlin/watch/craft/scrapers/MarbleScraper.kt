@@ -2,6 +2,7 @@ package watch.craft.scrapers
 
 import org.jsoup.nodes.Document
 import watch.craft.Brewery
+import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -40,12 +41,16 @@ class MarbleScraper : Scraper {
             summary = if (mixed) null else style,
             desc = doc.maybe { formattedTextFrom(".woocommerce-product-details__short-description") }?.ifBlank { null },
             mixed = mixed,
-            keg = attributes.maybe { grab("Packaging") }?.contains("keg", ignoreCase = true) ?: false,
-            sizeMl = volumeDetails.sizeMl,
             abv = attributes.grab("ABV").maybe { abvFrom(noPercent = true) },
             available = ".out-of-stock" !in doc,
-            quantity = volumeDetails.numItems,
-            totalPrice = doc.priceFrom(".price")
+            offers = setOf(
+              Offer(
+                quantity = volumeDetails.numItems,
+                totalPrice = doc.priceFrom(".price"),
+                keg = attributes.maybe { grab("Packaging") }?.contains("keg", ignoreCase = true) ?: false,
+                sizeMl = volumeDetails.sizeMl
+              )
+            )
           )
         }
       }
