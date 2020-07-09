@@ -1,5 +1,6 @@
 package watch.craft.scrapers
 
+import com.fasterxml.jackson.annotation.JsonAlias
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.jsoup.nodes.Document
 import watch.craft.Brewery
@@ -19,7 +20,6 @@ class RedWillowScraper : Scraper {
   )
 
   // TODO - extract summary
-  // TODO - mixed
 
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
@@ -39,8 +39,8 @@ class RedWillowScraper : Scraper {
 
           ScrapedItem(
             name = rawName.extract("^[A-Za-z-'\\s]+")[0].trim().toTitleCase(),
-            summary = null,
-            desc = desc,
+            summary = rawName.maybe { extract("%\\s+([^\\d]+)$")[1] },  // In some cases, beer type is after the ABV
+            desc = desc.ifBlank { null },
             mixed = rawName.contains("mixed", ignoreCase = true),
             sizeMl = allText.maybe { sizeMlFrom() },
             abv = rawName.maybe { abvFrom() },
@@ -61,7 +61,7 @@ class RedWillowScraper : Scraper {
   private fun Document.extractBestDeal() = maybe { attrFrom(".product-variants", "data-variants") }
     ?.parseJson<List<Variant>>()
     ?.map { Deal(price = it.price.toDouble() / 100, numItems = it.attributes.quantity) }
-    ?.minBy { it.price / it.numItems }
+    ?.minBy { it.price / it.numItems }  // TODO - prefer minimum # items
     ?: Deal(
       price = priceFrom(".product-price"),
       numItems = extractFrom(".ProductItem-details-title", "(\\d+)\\s*x").intFrom(1)
@@ -78,6 +78,7 @@ class RedWillowScraper : Scraper {
   ) {
     data class Attributes(
       @JsonProperty("Quantity")
+      @JsonAlias("Quanity")   // Sigh
       val quantity: Int
     )
   }
