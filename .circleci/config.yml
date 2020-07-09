@@ -36,7 +36,7 @@ workflows:
 
 
 commands:
-  setup_backend:
+  before_backend_job:
     steps:
       - run:
           name: Create service key
@@ -45,12 +45,38 @@ commands:
             echo "${GCLOUD_SERVICE_KEY}" > "${KEY_FILE}"
             echo "export GOOGLE_APPLICATION_CREDENTIALS=${KEY_FILE}" >> "${BASH_ENV}"
       - restore_cache:
+          # This rarely changes, and is safe to share between branches
+          name: Restore cache (Gradle wrapper)
           key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
       - restore_cache:
+          # This changes relatively frequently, and it's safe to fall back to latest from this branch, or from master
+          name: Restore cache (Gradle cache)
           keys:
             - v4-gradle-{{ .Branch }}-{{ checksum "build.gradle.kts" }}
             - v4-gradle-{{ .Branch }}-
             - v4-gradle-
+      - restore_cache:
+          # This is basically append-only, so safe to share between branches
+          name: Restore cache (Application local storage)
+          key: v1-local-storage
+
+  after_backend_job:
+    steps:
+      - save_cache:
+          name: Save cache (Gradle wrapper)
+          paths:
+            - ~/.gradle/wrapper
+          key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+      - save_cache:
+          name: Save cache (Gradle cache)
+          paths:
+            - ~/.gradle/caches
+          key: v4-gradle-{{ .Branch }}-{{ checksum "build.gradle.kts" }}
+      - save_cache:
+          name: Save cache (Application local storage)
+          paths:
+            - storage/
+          key: v1-local-storage
 
 
 jobs:
@@ -59,18 +85,11 @@ jobs:
       - image: circleci/openjdk
     steps:
       - checkout
-      - setup_backend
+      - before_backend_job
       - run:
           name: Run tests
           command: ./gradlew check
-      - save_cache:
-          paths:
-            - ~/.gradle/wrapper
-          key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
-      - save_cache:
-          paths:
-            - ~/.gradle/caches
-          key: v4-gradle-{{ .Branch }}-{{ checksum "build.gradle.kts" }}
+      - after_backend_job
       - store_test_results:
           path: build/test-results/test
       - store_artifacts:
@@ -82,10 +101,11 @@ jobs:
       - image: circleci/openjdk
     steps:
       - checkout
-      - setup_backend
+      - before_backend_job
       - run:
           name: Run scraper application
           command: ./gradlew run
+      - after_backend_job
 
   build_frontend:
     docker:
@@ -93,6 +113,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
+          name: Restore cache (Yarn cache)
           keys:
             - v2-yarn-{{ .Branch }}-{{ checksum "frontend/yarn.lock" }}
             - v2-yarn-{{ .Branch }}-
@@ -107,10 +128,12 @@ jobs:
           name: Build
           command: cd frontend && yarn build
       - save_cache:
+          name: Save cache (Frontend build)
           paths:
             - frontend/out
           key: v1-build-{{ .Environment.CIRCLE_SHA1 }}
       - save_cache:
+          name: Save cache (Yarn cache)
           paths:
             - ~/.cache/yarn
           key: v2-yarn-{{ .Branch }}-{{ checksum "frontend/yarn.lock" }}
@@ -121,6 +144,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
+          name: Restore cache (Frontend build)
           key: v1-build-{{ .Environment.CIRCLE_SHA1 }}
       - add_ssh_keys:
           fingerprints:
