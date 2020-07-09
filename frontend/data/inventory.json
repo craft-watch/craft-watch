@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-08T15:03:56.124800Z"
+    "capturedAt" : "2020-07-09T08:40:52.998112Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -8,7 +8,7 @@
     "name" : "Beak Brewery",
     "location" : "Lewes, East Sussex",
     "websiteUrl" : "https://beakbrewery.com/",
-    "new" : true
+    "new" : false
   }, {
     "shortName" : "Boxcar",
     "name" : "Boxcar Brewery",
@@ -146,7 +146,7 @@
     "name" : "Wylam Brewery",
     "location" : "Newcastle upon Tyne",
     "websiteUrl" : "https://www.wylambrewery.co.uk/",
-    "new" : true
+    "new" : false
   } ],
   "items" : [ {
     "brewery" : "Beak",
@@ -161,7 +161,7 @@
     "perItemPrice" : 3.99,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0286/3471/0061/products/Cans_800x800_crop_center.jpg",
     "url" : "https://beakbrewery.com/products/lulla-citra-simcoe-pale-3-5"
   }, {
@@ -177,7 +177,7 @@
     "perItemPrice" : 4.8,
     "available" : false,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0286/3471/0061/products/Parade_800x800_crop_center.jpg",
     "url" : "https://beakbrewery.com/products/parade-ddh-ipa-mosaic-citra-idaho-7"
   }, {
@@ -244,6 +244,22 @@
     "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/IMG-20200604-WA0003_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/dreamful-6-5-ipa-440ml"
+  }, {
+    "brewery" : "Boxcar",
+    "name" : "Emerald Sky",
+    "summary" : "Pale Ale",
+    "desc" : "Save 10% when you buy 12 ! (Mix & Match)\nWhat a fresh feeling, seeing a glittering sky of emeralds and diamonds, so far up above the forest.\nThis beer is pale and it's most certainly an ale. Wow, what more is there to say?",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 4.6,
+    "numItems" : 1,
+    "perItemPrice" : 4.15,
+    "available" : true,
+    "categories" : [ "Pale" ],
+    "new" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/20200708_153136_345x345.jpg",
+    "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/emerald-sky-4-6-pale-ale-440ml"
   }, {
     "brewery" : "Boxcar",
     "name" : "Golden Ale",
@@ -534,22 +550,6 @@
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/crop-year-2019-15-19-4-pack"
   }, {
     "brewery" : "Cloudwater",
-    "name" : "DDH Pale",
-    "summary" : null,
-    "desc" : "Our Double Dry Hopped Pale is brewed to soup up your downtime by delivering the hop flavour intensity of our DIPAs at a moderate ABV. Doubling our standard Pale Ale's 8g/L dry-hopping rate to 16g/L delivers a bold, juicy, hazy, and intensely aromatic beer. Out of our hoppy beer range, this sets the marker for balance between drinkability and flavour impact.\n5% ABV 440ML\nAroma & Flavour: Juicy tangerine and zesty grapefruit, soft white peach and resinous hop notes\nBody: Medium-bodied and velvety with soft carbonation\nAftertaste: Lingering juicy orange and peach with a light, peppery bitterness\nALLERGENS: GLUTEN WHEAT BARLEY OATS\nWant a discounted 6 pack? Click here",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 4.5,
-    "available" : true,
-    "categories" : [ "Pale", "IPA" ],
-    "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/CLOUDWATERDDHPale_800x.jpg",
-    "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/ddh-pale-2"
-  }, {
-    "brewery" : "Cloudwater",
     "name" : "Friends In Small Spaces",
     "summary" : "DIPA",
     "desc" : "Crop Year 2019 DIPA hopped with Citra, Amarillo & Sabro.\n8.0% ABV 440ml\nAroma & Flavour: Gently swirl the glass and inhale both quickly and deeply through your nose. Take several mouthfuls, swirl in your mouth, taste and experience the smell upon exhalation\nBody: Evaluate the texture of the beer in the mouth, the thickness, carbonation, and smoothness as you swallow\nAftertaste: Note lingering flavours and sensations in the mouth after drinking\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
@@ -564,38 +564,6 @@
     "new" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.872_1_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/land-of-landings-ddh-ipa-crop-year-2019-series-17"
-  }, {
-    "brewery" : "Cloudwater",
-    "name" : "Helles",
-    "summary" : null,
-    "desc" : "One of our greatest technical brewing challenges lies in presenting Manchester's water, Germany's finest pilsner malt. Bavarian lager yeast, and classic German hops in a beer style that leaves no room for error, with no bold flavours to mask mistakes or imbalance. Malty yet crisp, delicate and refined, this Helles is a nod not just to German brewing, but to traditional beers the world over. A beer for talking over, and reflecting on its subtle nuances.\nALC 4.5% VOL 440ML\nAroma & Flavour: Subtle notes of fresh white bread, zesty lemon and light herbal accents\nBody: Medium body, with moderate carbonation and a crisp finish\nAftertaste: Soft and delicate, with lingering malt accents and low bitterness\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 4.5,
-    "numItems" : 1,
-    "perItemPrice" : 3.5,
-    "available" : true,
-    "categories" : [ "Pils / Lager" ],
-    "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/CLOUDWATERHelles_c85a1278-636c-41dd-ba86-f78d182d66ba_800x.jpg",
-    "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/helles-1"
-  }, {
-    "brewery" : "Cloudwater",
-    "name" : "Hoppy Little Lager",
-    "summary" : null,
-    "desc" : "Our most approachable and easy-drinking beer takes cues from both our Pale Ale and our Light Lager, to combine bright, zesty, fruity hop flavours with the light drinkability and refreshing qualities of low-ABV lager. A fine thirst-quencher, a delicious pause between stronger beers, or a great choice if you're watching your alcohol or calorie intake.\n3% ABV 440ml\nAroma & Flavour: Bright, fresh lemon notes leading to mild candied fruit sweetness and juicy grapefruit\nBody: Light-bodied, crisp and dry\nAftertaste: Lemon and grapefruit zest intertwined with light, resinous hop notes\nALLERGENS: GLUTEN WHEAT BARLEY OATS\nWant a discounted 6 pack? Click here",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 3.0,
-    "numItems" : 1,
-    "perItemPrice" : 3.5,
-    "available" : true,
-    "categories" : [ "Pale", "Pils / Lager" ],
-    "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/CLOUDWATER_Hoppy_Little_Lager_800x.jpg",
-    "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/hoppy-little-lager"
   }, {
     "brewery" : "Cloudwater",
     "name" : "Just The Right Shape",
@@ -646,6 +614,22 @@
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/land-of-landings-ddh-ipa-crop-year-2019-series-16"
   }, {
     "brewery" : "Cloudwater",
+    "name" : "My Poems Are Not Poems",
+    "summary" : "Blended Foudre Beer",
+    "desc" : "A blended foudre beer\nThis beer is a blend of two foudre beers, one flavoured by an extended steeping of chuckleberries, and the other by macerating freshly-harvested plums for three months. This combination adds a breadth of flavour, without adding weight.\nLight and fresh, best paired with becoming still enough that birds and flying insects are not disturbed by your presence.\nALC 5.6% VOL 750ML\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 750,
+    "abv" : 5.6,
+    "numItems" : 1,
+    "perItemPrice" : 17.0,
+    "available" : true,
+    "categories" : [ ],
+    "new" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.255c-bottle_61af271c-1946-4516-931d-25c8d34a2008_800x.jpg",
+    "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/my-poems-are-not-poems-750ml"
+  }, {
+    "brewery" : "Cloudwater",
     "name" : "Only A Dream Can Kill A Dream",
     "summary" : "Fresh, Funky Barrel-fermented Pale with Tropical Fruits",
     "desc" : "Fresh, Funky Pale Ale full of tropical fruit salad flavours.\nRacked onto the remaining lees in first-use French natural red wine barrels, this Pale first developed delicate funky notes and a refreshing, dry finish. Refermentation on passion fruit, pineapple and mango created a succulent, yet zippy, tropical punch bowl of flavours. Waking up from 400 years of slumber, we can summon the energy of a great man, that had a great dream. Best served chilled, and following a period of service to others less privileged.\nALC 5.9% VOL 750ML\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
@@ -678,22 +662,6 @@
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/our-highs-their-lows-pilsner-crop-year-2019-series-15"
   }, {
     "brewery" : "Cloudwater",
-    "name" : "Pale Ale",
-    "summary" : null,
-    "desc" : "Our Pale Ale is a beer for everyday moments, whether it's conversation with friends or quiet relaxation after work, and aims to provide balance between bold flavour and easy drinkability. It's full of rounded tropical fruit flavours with a soft, juicy finish and low bitterness.\n3.7% ABV 440ml\nAroma & Flavour: Mango, pineapple and tangerine, with a light, lasting malt character\nBody: Light to medium body with spritzy carbonation\nAftertaste: Soft and juicy orange, low bitterness\nALLERGENS: GLUTEN WHEAT BARLEY OATS\nWant a discounted 6 pack? Click here",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 3.7,
-    "numItems" : 1,
-    "perItemPrice" : 3.75,
-    "available" : true,
-    "categories" : [ "Pale" ],
-    "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/CLOUDWATERPaleAle_800x.jpg",
-    "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/pale-ale-1"
-  }, {
-    "brewery" : "Cloudwater",
     "name" : "Ponderosa Pines On Rainier",
     "summary" : "Cascade Single Hop IPA",
     "desc" : "Released in the early 70s, Cascade hops, named after the California to British Columbia mountain range, became a staple in new US beer styles, such as the American Pale Ale. Often overlooked by modern breweries, it’s a hop that once was, and still is, revered for its grapefruit and pine aromas. Take it on as you would a short history lesson, and though its modern setting in this beer is far removed from the original beers it took centre stage in, enjoy it as a looking-glass back into the pioneering trailblazers that came before us.\n6.0% ABV 440ml\nAroma & Flavour: Gently swirl the glass and inhale both quickly and deeply through your nose. Take several mouthfuls, swirl in your mouth, taste and experience the smell upon exhalation\nBody: Evaluate the texture of the beer in the mouth, the thickness, carbonation, and smoothness as you swallow\nAftertaste: Note lingering flavours and sensations in the mouth after drinking\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
@@ -708,22 +676,6 @@
     "new" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.862_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/ponderosa-pines-on-rainier-cascade-single-hop-ipa-crop-year-2019-series-11"
-  }, {
-    "brewery" : "Cloudwater",
-    "name" : "Signature Selection 8 Pack",
-    "summary" : null,
-    "desc" : "Get a proper flavour of Cloudwater with this selection pack showcasing our current Signature range.\nAll of the Signature beers are designed to provide a true representation of our house style and our wider approach to brewing. You could view them as our flag in the ground.\nThey provide a wide range of flavours and experiences, bringing together our wealth of brewing and drinking experience and a respect for classic styles with a thoroughly modern, flavour-first approach.\nThis pack includes the following eight beers:\n1 x Small Pale, 2.5% - This beer combines our love of British beer heritage and the technical challenges of brewing lower-strength beer that's big-bodied and full-flavoured. This is a great choice for times when you're taking it easy, but still want a big, hoppy hit from a dry-hopping rate most commonly seen in much stronger beers. (440ml can)\n1 x Pale Ale, 3.7% - Our Pale Ale is a beer for everyday moments, whether it's conversation with friends or quiet relaxation after work, and aims to provide balance between bold flavour and easy drinkability. It's full of rounded tropical fruit flavours with a soft, juicy finish and low bitterness. (440ml can)\n1 x DDH Pale, 5% - Our Double Dry Hopped Pale is brewed to soup up your downtime by delivering the hop flavour intensity of our DIPAs at a moderate ABV. Doubling our standard Pale Ale's 8g/L dry-hopping rate to 16g/L delivers a bold, juicy, hazy, and intensely aromatic beer. Out of our hoppy beer range, this sets the marker for balance between drinkability and flavour impact. (440ml can)\n1 x IPA, 6% - Juicy, soft, and bursting with tropical fruit flavours, this hazy IPA showcases a blend of bold hops and aromatic yeast against a big body from high protein malts, replicating the sumptuous, smooth mouthfeel of ripe mango. It finishes with a low bitterness to let the hop aromas and flavours linger on your palate. (440ml can)\n1 x West Coast IPA, 6% - The West Coast IPA is a modern classic that changed perceptions of what beer could be, and paved the way for today's craft beer scene. Our own approach is informed by experiences working with trailblazing brewers and diving deep into their celebrated beers, so this delivers the hallmark layered bitterness and a clean, dry, resinous finish alongside punchy flavours provided by a blend of modern and classic hop varietals. (440ml can)\n1 x Hoppy Little Lager, 3% - Our most approachable and easy-drinking beer takes cues from both our Pale Ale and our Light Lager, to combine bright, zesty, fruity hop flavours with the light drinkability and refreshing qualities of low-ABV lager. A fine thirst-quencher, a delicious pause between stronger beers, or a great choice if you're watching your alcohol or calorie intake.. (440ml can)\n1 x Helles, 4.5% - German-style Pale Lager. One of our greatest technical brewing challenges lies in presenting Manchester's water, Germany's finest pilsner malt. Bavarian lager yeast, and classic German hops in a beer style that leaves no room for error, with no bold flavours to mask mistakes or imbalance. Malty yet crisp, delicate and refined, this Helles is a nod not just to German brewing, but to traditional beers the world over. A beer for talking over, and reflecting on its subtle nuances. (440ml can)\n1 x Step Up, 5% - Stout. Hold on a second! It’s 2020 and we’re not here to talk diversity, we’re here to make a difference. Step Up is a delicious beer that is gonna help change who the beer industry represents, and what it needs to be. With 5% of the proceeds donated to charities and causes that help those facing society’s biggest hurdles, and the remaining proceeds split 50/50 between Rock Leopard and Cloudwater, every can and every glass helps us make a difference. (440ml can)\n**THIS PACK IS NOT ELIGIBLE FOR DISCOUNTS AS IT'S ALREADY DISCOUNTED**",
-    "keg" : false,
-    "mixed" : true,
-    "sizeMl" : null,
-    "abv" : null,
-    "numItems" : 8,
-    "perItemPrice" : 3.75,
-    "available" : true,
-    "categories" : [ "Pale", "Pils / Lager", "Dark", "IPA" ],
-    "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/2020LockdownSignature_800x.jpg",
-    "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/signature-selection-pack"
   }, {
     "brewery" : "Cloudwater",
     "name" : "Singel Hopped IPA",
@@ -772,22 +724,6 @@
     "new" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.761a_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/speyside-persistence-is-utile-speyside-ba-w-coffee-vanilla-375ml"
-  }, {
-    "brewery" : "Cloudwater",
-    "name" : "Step Up",
-    "summary" : "Stout",
-    "desc" : "Hold on a second! It’s 2020 and we’re not here to talk diversity, we’re here to make a difference. Step Up is a delicious beer that is gonna help change who the beer industry represents, and what it needs to be.\nWith 5% of the proceeds donated to charities and causes that help those facing society’s biggest hurdles, and the remaining proceeds split 50/50 between Rock Leopard and Cloudwater, every can and every glass helps us make a difference.\n5% ABV 440ml\nAroma & Flavour: Roasted malt, coffee and light smoke on the nose, with flavours of soft caramel, plum and brown toast\nBody: Medium-bodied and smooth, with a dry finish\nAftertaste: Bitter roasted notes and dark chocolate\nALLERGENS: GLUTEN WHEAT BARLEY OATS\nWant a discounted 6 pack? Click here",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 5.0,
-    "numItems" : 1,
-    "perItemPrice" : 3.75,
-    "available" : true,
-    "categories" : [ "Bitter", "Dark" ],
-    "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.824_800x.jpg",
-    "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/step-up"
   }, {
     "brewery" : "Cloudwater",
     "name" : "The Edge Of The Bread",
@@ -1574,6 +1510,22 @@
     "url" : "https://www.howlinghops.co.uk/product/flashpoint-4-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
+    "name" : "Free Fall",
+    "summary" : "NEIPA",
+    "desc" : "Free Fall / NEIPA / 4 x 440ml / 7.3% ABV\nSuitable for vegans.\nFree Fall is a brand new 7.3% NEIPA using Mosaic, Citra and Idaho 7. Expect lots of mango and tropical vibes in this soft and super-balanced IPA!\nOne 4-pack leaves 20 can slots left in your case!",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 7.3,
+    "numItems" : 4,
+    "perItemPrice" : 4.5,
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "new" : false,
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/FREE-FALL-440ml-324x324.png",
+    "url" : "https://www.howlinghops.co.uk/product/free-fall-neipa-4-x-440ml/"
+  }, {
+    "brewery" : "Howling Hops",
     "name" : "Grisette",
     "summary" : "Farmhouse Pale",
     "desc" : "Grisette / Farmhouse Pale / 4 x 440ml / 4.4% ABV\nSuitable for vegans.\nGrisette is our light, floral and citrusy Farmhouse Pale at 4.4% ABV. This is your ideal companion for working-in-the-sun (or just drinking-in-the-sun).\nOne 4-pack leaves 20 can slots left in your case!",
@@ -1622,22 +1574,6 @@
     "url" : "https://www.howlinghops.co.uk/product/new-12-beer-mixed-case-24/"
   }, {
     "brewery" : "Howling Hops",
-    "name" : "Off Ramp",
-    "summary" : "DIPA",
-    "desc" : "Off Ramp / DIPA / 4 x 440ml / 8.0% ABV\nSuitable for vegans.\nOff Ramp is a new 8% DIPA hopped with Cryo Mosaic, Citra and HBC-692 (last seen in Countrymen)! This a specdankular bit of murkology, not for the faint of heart.\nOne 4-pack leaves 20 can slots left in your case!",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 8.0,
-    "numItems" : 4,
-    "perItemPrice" : 5.0,
-    "available" : false,
-    "categories" : [ "IPA" ],
-    "new" : false,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/offramp-440ml-324x324.png",
-    "url" : "https://www.howlinghops.co.uk/product/off-ramp-dipa-4-x-440ml/"
-  }, {
-    "brewery" : "Howling Hops",
     "name" : "Packets",
     "summary" : "Keller Lager",
     "desc" : "Packets / Keller Lager / 4 x 440ml / 4.2% ABV\nSuitable for vegans.\nPackets Keller Lager is a new naturtrüb crispy boy with that Keller Instinct: soft in body; full, bready, fresh flavours; and a quenching, moreish mouthfeel. Thirsty just thinking about it.\nOne 4-pack leaves 20 can slots left in your case!",
@@ -1656,18 +1592,18 @@
     "brewery" : "Howling Hops",
     "name" : "Passionfruit Gose",
     "summary" : "Fruit Sour",
-    "desc" : "Passionfruit Gose / Fruit Sour / 4 x 440ml / 4.5% ABV\nSuitable for vegans.\nTangy, tropical, tart and tasty. A light and snappy Gose-style sour beer, infused with passionfruit.\nOne 4-pack leaves 20 can slots left in your case!",
+    "desc" : "Passionfruit Gose / Fruit Sour / 24 x 440ml / 4.5% ABV\nSuitable for vegans.\nTangy, tropical, tart and tasty. A light and snappy Gose-style sour beer, infused with passionfruit.",
     "keg" : false,
     "mixed" : false,
     "sizeMl" : 440,
     "abv" : 4.5,
-    "numItems" : 4,
-    "perItemPrice" : 3.5,
+    "numItems" : 24,
+    "perItemPrice" : 2.75,
     "available" : true,
     "categories" : [ "Sours / Gose" ],
     "new" : false,
-    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2019/01/Passionfruit-Gose-324x324.jpg",
-    "url" : "https://www.howlinghops.co.uk/product/passionfruit-gose-4-x-440ml/"
+    "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/PFG-24-324x324.png",
+    "url" : "https://www.howlinghops.co.uk/product/passionfruit-gose-24-x-440ml/"
   }, {
     "brewery" : "Howling Hops",
     "name" : "Pocket Rocket",
@@ -2821,70 +2757,6 @@
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0367/7857/3883/products/a1df4143-6f3e-444f-876f-403e4646de81_e0ca1731-5b0e-436d-9697-af4d723dcafd_250x250.png",
     "url" : "https://shop.pillarsbrewery.com/collections/pillars-beers/products/untraditional-lager-case-of-24"
   }, {
-    "brewery" : "Polly's Brew",
-    "name" : "Mylar",
-    "summary" : "IPA",
-    "desc" : "Mylar\nThe part of Wales we’re based is an incredible mish-mash of culture, and it’s reflected best in the dialect – part-Welsh, part-Liverpudlian, and by proxy, part-Irish. This dictates a lot of the day to day sayings in the brewery, and when we were sat in a meeting talking about various recipes submitted by the team, someone shouted up “That’s mine, la”. The beer itself is textbook Polly’s – high juice, low bitterness, accentuated by our generous use of Citra, Mosaic, and Sabro in the dry hop. Expect a swagbag of honeydew melon, mango, tangerine, and pina colada flavours abound from the Sabro. A beer that is an homage to the wonderfully bizarre part of the world we grew up.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 6.3,
-    "numItems" : 1,
-    "perItemPrice" : 4.5,
-    "available" : true,
-    "categories" : [ "IPA" ],
-    "new" : false,
-    "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/07/MYL-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
-    "url" : "https://shop.pollysbrew.co/product/mylar-ipa-6-3/"
-  }, {
-    "brewery" : "Polly's Brew",
-    "name" : "Naive Melody",
-    "summary" : "Double IPA",
-    "desc" : "Naive Melody\nWe just can’t help ourselves really. We’ve taken Mosaic for a spin on a single hopped Kveik DIPA, now it’s the turn of another Polly’s stalwart in Citra – say hello to Naive Melody.\nNamed in honour of the Talking Heads song of the same name, this beer shares the same delicate aura as its namesake throughout – soft on the palate, but loaded to the nines with juicy citrus, peach, and lychee notes throughout.\nA beer that is a perfect summation of every single one of the techniques and experiences we’ve learned as a brewery in our short two and a half years, growing from that ramshackle stable to the (almost) sophisticated setup we have today, this one scores a top Mark. Home is where I want to be!",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 8.2,
-    "numItems" : 1,
-    "perItemPrice" : 5.0,
-    "available" : true,
-    "categories" : [ "IPA" ],
-    "new" : false,
-    "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/07/NM-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
-    "url" : "https://shop.pollysbrew.co/product/naive-melody-double-ipa-8-2/"
-  }, {
-    "brewery" : "Polly's Brew",
-    "name" : "Slow Burn",
-    "summary" : "Berliner Weisse",
-    "desc" : "With Lally back at the wheel, and summer fully engaged, we wanted to break out of our comfort zone somewhat and set ourselves a challenge of creating a lower abv beer, perfect for sitting back and supping in the sun. After the phenomenal feedback to our dry-hopped sour, Strange Addiction, we figured “Why not brew a dry-hopped Berliner Weisse?” and immediately put it into our brew plans. The result is Slow Burn – a Polly’s twist on the classic style, dry hopped with 15kg of Comet and Ekuanot. Crisp, clean, and subtly tart, with juicy hop notes to boot; pure sunshine trapped in a can.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 4.0,
-    "numItems" : 1,
-    "perItemPrice" : 3.75,
-    "available" : true,
-    "categories" : [ "Weisse", "Sours / Gose" ],
-    "new" : false,
-    "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/06/sb-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
-    "url" : "https://shop.pollysbrew.co/product/slow-burn-berliner-weisse-4-0/"
-  }, {
-    "brewery" : "Polly's Brew",
-    "name" : "Transit Culture",
-    "summary" : "West Coast IPA",
-    "desc" : "Transit Culture\nOur head of sales will shout until the cows come home about how Sierra Nevada changed his entire perception of what beer could be. We paid homage to his favourite brewery early on in lockdown with Change, Irreversible – a riff on Sierra Nevada Pale.\nNever one to rest on his laurels, Arron decided that based on the feedback to that beer, it’s naturally time to riff on Torpedo. Transit Culture is our unashamed attempt at a West Coast IPA in the same mould – loaded with Chinook, Cascade, and Amarillo, this is everything we want from our efforts at replicating those beers that changed the landscape.\nSweet, malty biscuit notes lure you in before an all out attack of sticky, piney and resinous hops, that get a full on seal of approval from our Westie loving head of sales.",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 440,
-    "abv" : 7.2,
-    "numItems" : 1,
-    "perItemPrice" : 4.5,
-    "available" : true,
-    "categories" : [ "Pale", "IPA" ],
-    "new" : false,
-    "thumbnailUrl" : "https://craftpeak-commerce-images.imgix.net/2020/07/TC-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail",
-    "url" : "https://shop.pollysbrew.co/product/transit-culture-west-coast-ipa-7-2/"
-  }, {
     "brewery" : "Pressure Drop",
     "name" : "Behind Door Number 3",
     "summary" : "Citra & Mosaic New England DIPA",
@@ -3304,18 +3176,18 @@
     "brewery" : "Siren Craft",
     "name" : "Broken Dream",
     "summary" : "Breakfast Stout",
-    "desc" : "An indulgence of chocolate and speciality malts, Broken Dream is smooth, unctuous and moreish. It's brewed with milk sugar for balance and mouthfeel, along with carefully selected espresso from London's Climpson & Sons. Awarded CAMRA Supreme Champion Beer of Britain 2018.\nKeep Cold. Serve Cool. Drink Fresh.\nUnfiltered / Unfined\nContains Lactose",
+    "desc" : "Broken Dream is deep and complex. She lurks in your imagination. She binds smoke and coffee aromas with chocolate, milk and oats to create something thick, velvety and slick.\nA 6.5% breakfast stout with a gentle touch of smoke, coffee and chocolate.",
     "keg" : false,
     "mixed" : false,
     "sizeMl" : 330,
     "abv" : 6.5,
     "numItems" : 1,
-    "perItemPrice" : 2.2,
+    "perItemPrice" : 2.16,
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
-    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-broken-dream-1563357983siren-craft-brew-broken-dream-can.png",
-    "url" : "https://www.sirencraftbrew.com/item/217/SirenCraftBrew/Broken-Dream.html"
+    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-broken-dream-1535029452Siren-broken-dream-front.png",
+    "url" : "https://www.sirencraftbrew.com/item/12/SirenCraftBrew/Broken-Dream.html"
   }, {
     "brewery" : "Siren Craft",
     "name" : "Calypso",
@@ -3375,7 +3247,7 @@
     "abv" : 4.8,
     "numItems" : 1,
     "perItemPrice" : 3.95,
-    "available" : false,
+    "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-futurist-440-1565970386siren-craft-brew-futurist-440-can.png",
@@ -3471,7 +3343,7 @@
     "abv" : 5.5,
     "numItems" : 1,
     "perItemPrice" : 3.95,
-    "available" : false,
+    "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-much-ado-about-muffin-1584970374siren-craft-brew-much-ado-about-muffin-440-can.png",
@@ -3526,6 +3398,22 @@
     "url" : "https://www.sirencraftbrew.com/item/221/SirenCraftBrew/Santo.html"
   }, {
     "brewery" : "Siren Craft",
+    "name" : "Sound Wave",
+    "summary" : "West Coast IPA",
+    "desc" : "Sound Wave carries her drinker to the west coast, to the golden shores of California where craft ale is nectar. She is the driest of Siren’s ales – full with flavour but subtle with bitterness.\nA 5.6% west coast IPA: golden, immensely hoppy and alive with grapefruit, peach and mango flavours.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 330,
+    "abv" : 5.6,
+    "numItems" : 1,
+    "perItemPrice" : 2.07,
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "new" : true,
+    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-sound-wave-1546011712Siren-sound-wave-front.png",
+    "url" : "https://www.sirencraftbrew.com/item/9/SirenCraftBrew/Sound-Wave.html"
+  }, {
+    "brewery" : "Siren Craft",
     "name" : "Soundwave",
     "summary" : "India Pale Ale",
     "desc" : "Welcome to tropical hop heaven. Soundwave is eminently drinkable, full of flavour and subtle with bitterness. Our most famous beer pours with an inviting haze, while big-hitting American hops deliver fruit notes in abundance and a trademark resinous finish.\nKeep Cold. Serve Cool. Drink Fresh.\nUnfiltered / Unfined\nVegan Friendly",
@@ -3572,6 +3460,22 @@
     "new" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-5l-mini-keg-suspended-in-cascade-1591783634siren-mini-keg-suspended-in-cascade.png",
     "url" : "https://www.sirencraftbrew.com/item/349/SirenCraftBrew/5L-Mini-Keg-Suspended-in-Cascade.html"
+  }, {
+    "brewery" : "Siren Craft",
+    "name" : "Undercurrent",
+    "summary" : "Oatmeal Pale Ale",
+    "desc" : "Undercurrent is part pale, part oats and part caramel barley. Her swirls of bold, bready and nutty malt whirl into a concoction of spicy, citrus, floral hops. Mystery lurks in those hops.\nA 4.5% pale ale with spicy, grassy aromas and a taste of grapefruit and apricot.\n(Not Vegan on Cask)",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 330,
+    "abv" : 4.5,
+    "numItems" : 1,
+    "perItemPrice" : 1.89,
+    "available" : true,
+    "categories" : [ "Pale" ],
+    "new" : true,
+    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-undercurrent-1546011673Siren-undercurrent-front.png",
+    "url" : "https://www.sirencraftbrew.com/item/8/SirenCraftBrew/Undercurrent.html"
   }, {
     "brewery" : "Siren Craft",
     "name" : "Yu Lu",
@@ -3926,6 +3830,22 @@
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/cocoa-wonderland"
   }, {
     "brewery" : "Thornbridge",
+    "name" : "Colorado Red",
+    "summary" : "Red IPA",
+    "desc" : "This red IPA offers hints of toffee malt, complemented by flavours of dry fruit, candied peel and fragrant citrus hops.\nABV 5.9% / 330ml bottle\nHOPS Centennial / Nugget / Bullion / Admiral / Ernest / Fuggles / Citra\nMALTS Pale / Munich / Crystal / Caramalt / Dark Crystal / Wheat\nYou must be 18 or over to purchase this product.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 330,
+    "abv" : 5.9,
+    "numItems" : 1,
+    "perItemPrice" : 2.1,
+    "available" : true,
+    "categories" : [ "Pale", "Dark", "IPA" ],
+    "new" : false,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Colorado_Red_for_website_300x300.png",
+    "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/colorado-red"
+  }, {
+    "brewery" : "Thornbridge",
     "name" : "Florida Weisse",
     "summary" : "Hazy Raspberry Sour",
     "desc" : "A hazy and refreshing fruit sour that is bracingly tart. It pours with a pinkish hue and is absolutely brimming with the flavour of fresh raspberries. This product is Vegan friendly.\nABV 4.5% / 330ml can\nHOPS None\nMALTS Low Colour Maris Otter / Wheat\nSPECIALTY Raspberries\nYou must be 18 or over to buy this product.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.",
@@ -3972,6 +3892,22 @@
     "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jamestowncan_colouredbakground_1_300x300.jpg",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/jamestowncan"
+  }, {
+    "brewery" : "Thornbridge",
+    "name" : "Kasperia",
+    "summary" : "Cashmere Pale Ale",
+    "desc" : "Kasperia is single hopped with Cashmere. It pours with a light haze and radiates a joyful aroma of candied melon and peach, leading into flavours of lemon and mango on the palate.\nABV 4.7%\nHOPS Cashmere\nMALTS Maris Otter / Wheat malt / Flaked Wheat\nYou must be 18 or over to purchase this product.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : null,
+    "abv" : 4.7,
+    "numItems" : 1,
+    "perItemPrice" : 2.1,
+    "available" : true,
+    "categories" : [ "Pale" ],
+    "new" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Kasperia_colouredbackground_300x300.jpg",
+    "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/kasperia-4-7-cashmere-pale-ale-1"
   }, {
     "brewery" : "Thornbridge",
     "name" : "Little By Little",
@@ -4136,7 +4072,7 @@
     "brewery" : "Villages",
     "name" : "Ales Mixed Case",
     "summary" : null,
-    "desc" : "An ever-changing mixed case of 24 × cans of Villages ales. Currently the case includes:\n6 × RODEO Pale Ale • 4.6%\nOne of our first pals. Rodeo is a light straw colour with a gentle haze. Citrus and grapefruit aromas and flavours come from Citra and Cascade, giving a balanced floral tone. Low bitterness and a soft body. Real refreshing!\n6 × RAFIKI Session IPA • 4.3%\nOur low-strength IPA, and a family fave. Tropical notes of mango, passionfruit and guava come from Mosaic and Ekuanot. Smooth bitterness and a sweet biscuity malt flavour.\n6 × ISOLATION IPA Number 3 • 5.4%\nThis is the third Isolation IPA we've brewed, and this one's been hopped with Amarillo, Centennial and Chinook. Really nicely balanced! We're getting orange, grapefruit and a resinous pine, pleasant late bitterness too. Delish! All proceeds from the sale of Isolation IPA will be donated to the National Emergencies Trust.\n6 × TOTO American Pale • 5.3%\nToto is a 5.3% American Pale hopped with Idaho 7, Simcoe and Ekuanot and fermented with London Ale III. Real haps with this one! Full-bodied, lovely soft bitterness. Tropical, citrus and pine flaves. Limited run!\n~~~~~~~\nVegan friendly! :-D\n330ml cans\n£5.99 delivery",
+    "desc" : "An ever-changing mixed case of 24 × cans of Villages ales. Currently the case includes:\n8 × RODEO Pale Ale • 4.6%\nOne of our first pals. Rodeo is a light straw colour with a gentle haze. Citrus and grapefruit aromas and flavours come from Citra and Cascade, giving a balanced floral tone. Low bitterness and a soft body. Real refreshing!\n8 × RAFIKI Session IPA • 4.3%\nOur low-strength IPA, and a family fave. Tropical notes of mango, passionfruit and guava come from Mosaic and Ekuanot. Smooth bitterness and a sweet biscuity malt flavour.\n8 × TOTO American Pale • 5.3%\nToto is a 5.3% American Pale hopped with Idaho 7, Simcoe and Ekuanot and fermented with London Ale III. Real haps with this one! Full-bodied, lovely soft bitterness. Tropical, citrus and pine flaves. Limited run!\n~~~~~~~\nVegan friendly! :-D\n330ml cans\n£5.99 delivery",
     "keg" : false,
     "mixed" : true,
     "sizeMl" : 330,
@@ -4148,22 +4084,6 @@
     "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_ALES_MIXED_CASE_345x345.jpg",
     "url" : "https://villagesbrewery.com/collections/buy-beer/products/ales-mixed-case"
-  }, {
-    "brewery" : "Villages",
-    "name" : "Isolation",
-    "summary" : "IPA",
-    "desc" : "The National Emergencies Trust (NET), in partnership with the British Red Cross, have launched an appeal to raise funds to support communities made most vulnerable by the coronavirus outbreak. The NET works with 46 local community groups across the UK, all of which are grassroots charities best placed to help people affected.\nALL PROCEEDS FROM THE SALE OF ISOLATION IPA WILL BE DONATED TO THE NET.\nThis is the third Isolation IPA we've brewed, and this one's been hopped with Amarillo, Centennial and Chinook. Really nicely balanced! We're getting orange, grapefruit and a resinous pine, pleasant late bitterness too. Delish! For the malt bill, we used Golden Promise, Wheat, Dextrin, Golden Naked Oats and Caramalt. Cheers!\n~~~~~~~\nVegan friendly! :-D\n330ml cans\n£5.99 delivery\nLimited availability on this one\nIf you're a trade customer and are interested in stocking ISOLATION IPA in can, contact sales@villagesbrewery.com",
-    "keg" : false,
-    "mixed" : false,
-    "sizeMl" : 330,
-    "abv" : 5.4,
-    "numItems" : 12,
-    "perItemPrice" : 2.68,
-    "available" : false,
-    "categories" : [ "IPA" ],
-    "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_ISOLATION_IPA_NUMBER_3_330ML_CAN_345x345.jpg",
-    "url" : "https://villagesbrewery.com/collections/buy-beer/products/isolation-ipa"
   }, {
     "brewery" : "Villages",
     "name" : "Rafiki",
@@ -4232,7 +4152,7 @@
     "brewery" : "Villages",
     "name" : "Villages Mixed Case",
     "summary" : null,
-    "desc" : "An ever-changing mixed case of 24 × cans of the freshest Villages bevs. Currently the case includes:\n5 × RODEO Pale Ale • 4.6%\nOne of our first pals. Rodeo is a light straw colour with a gentle haze. Citrus and grapefruit aromas and flavours come from Citra and Cascade, giving a balanced floral tone. Low bitterness and a soft body. Real refreshing!\n5 × WHISTLE Pilsner • 4.4%\nA crisp, unfiltered Pilsner with lots of flavour. Saaz and Hallertau Mittelfrüh give it those traditional floral and spicy notes. The yeast gives a big ester profile and a clean finish.\n5 × RAFIKI Session IPA • 4.3%\nOur low-strength IPA, and a family fave. Tropical notes of mango, passionfruit and guava come from Mosaic and Ekuanot. Smooth bitterness and a sweet biscuity malt flavour.\n4 × ISOLATION IPA Number 3 • 5.4%\nThis is the third Isolation IPA we've brewed, and this one's been hopped with Amarillo, Centennial and Chinook. Really nicely balanced! We're getting orange, grapefruit and a resinous pine, pleasant late bitterness too. Delish! All proceeds from the sale of Isolation IPA will be donated to the National Emergencies Trust.\n5 × TOTO American Pale • 5.3%\nToto is a 5.3% American Pale hopped with Idaho 7, Simcoe and Ekuanot and fermented with London Ale III. Real haps with this one! Full-bodied, lovely soft bitterness. Tropical, citrus and pine flaves. Limited run!\n~~~~~~~\nVegan friendly! :-D\n330ml cans\n£5.99 delivery",
+    "desc" : "An ever-changing mixed case of 24 × cans of the freshest Villages bevs. Currently the case includes:\n6 × RODEO Pale Ale • 4.6%\nOne of our first pals. Rodeo is a light straw colour with a gentle haze. Citrus and grapefruit aromas and flavours come from Citra and Cascade, giving a balanced floral tone. Low bitterness and a soft body. Real refreshing!\n6 × WHISTLE Pilsner • 4.4%\nA crisp, unfiltered Pilsner with lots of flavour. Saaz and Hallertau Mittelfrüh give it those traditional floral and spicy notes. The yeast gives a big ester profile and a clean finish.\n6 × RAFIKI Session IPA • 4.3%\nOur low-strength IPA, and a family fave. Tropical notes of mango, passionfruit and guava come from Mosaic and Ekuanot. Smooth bitterness and a sweet biscuity malt flavour.\n6 × TOTO American Pale • 5.3%\nToto is a 5.3% American Pale hopped with Idaho 7, Simcoe and Ekuanot and fermented with London Ale III. Real haps with this one! Full-bodied, lovely soft bitterness. Tropical, citrus and pine flaves. Limited run!\n~~~~~~~\nVegan friendly! :-D\n330ml cans\n£5.99 delivery",
     "keg" : false,
     "mixed" : true,
     "sizeMl" : 330,
@@ -4372,6 +4292,22 @@
     "new" : false,
     "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_3a27ac94884c49389957a942ef2c86eb~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_3a27ac94884c49389957a942ef2c86eb~mv2.jpg",
     "url" : "https://www.wanderbeyondbrewing.com/product-page/octo-pie"
+  }, {
+    "brewery" : "Wander Beyond",
+    "name" : "Ozzy",
+    "summary" : "Imperial Stout with tonka, star anise, vanilla and cacao",
+    "desc" : "Ozzy - Imperial Stout with tonka, star anise, vanilla and cacao\nOzzy pours pitch black with a tan head, giving off aromas of tonka beans and star anise. Upon your first mouthful you are met with big upfront hits of liquorice and aniseed, which then fades into notes of dark chocolate and vanilla. Ozzy has a smooth and soft level of carbonation which is accompanied on the way down by a hint of heat making sure you don’t forget it’s 11.0%. As you continue to drink Ozzy it becomes more and more morish.\n11.0% ABV\n440ml\nContains: Water, Malted Barley, Oats, Hops, Yeast, Tonka Beans, Star Anise, Vanilla and Cacao Nibs\nAllergens in bold\nVegan friendly",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 11.0,
+    "numItems" : 1,
+    "perItemPrice" : 6.75,
+    "available" : true,
+    "categories" : [ "Dark" ],
+    "new" : true,
+    "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_773c9c2da1fd408bae20622501f2b7aa~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_773c9c2da1fd408bae20622501f2b7aa~mv2.jpg",
+    "url" : "https://www.wanderbeyondbrewing.com/product-page/ozzy"
   }, {
     "brewery" : "Wander Beyond",
     "name" : "Peak",
@@ -4518,6 +4454,22 @@
     "url" : "https://wiperandtrue.com/order-beer-online/milk-shake-case-12x-330ml-cans"
   }, {
     "brewery" : "Wiper and True",
+    "name" : "Mixed",
+    "summary" : null,
+    "desc" : "6 x 440ml cans of Kaleidoscope 4.2% Pale Ale, 6 x 440ml cans of 5.6% Sundance India Pale Ale.\nYou asked, we listened. We’re delighted to present our first mixed case of Wiper and True beers. Two of our most popular beers in one delectable case.\nBursting with juicy tropical fruit flavours such as mango, pineapple and papaya and layered with berry and citrus notes, Sundance combines the finest US and UK hops to create a crisp, complex and highly refreshing IPA.\nKaleidoscope combines three different hops to create a seasonally evolving flavour profile. Whilst the hops may change, our intention remains the same - to create a beer that is harmonious, bright and refreshing.\nBoth beers are suitable for vegans.\nWe’re offering a 10% discount for all NHS staff. Please check out using your NHS email address and the code ‘NHS10’.\nPlease note that we can only deliver to the UK mainland, excluding Northern and Mainland Ireland, Guernsey and Jersey.\nPlease take care to select the correct shipping option when checking out. Free Bristol delivery takes 1 - 2 working days and applies to the following postcodes: BS1, BS2, BS3, BS4, BS5, BS6, BS7, BS8, BS9, BS10, BS13, BS14, BS15, BS16, BS32, BS34, BS35, BS36 and BS37. Within BS8, free delivery includes BS8 1, BS8 2 and BS8 4. Please only select the option for free Bristol delivery to these postcodes; otherwise we will have to refund your order and you’ll need to order again using nationwide delivery, since we use a separate courier service for nationwide drop-offs.\nNationwide delivery takes 2-3 working days.",
+    "keg" : false,
+    "mixed" : true,
+    "sizeMl" : null,
+    "abv" : null,
+    "numItems" : 12,
+    "perItemPrice" : 3.25,
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "new" : false,
+    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1592555979531-N8MXQ994J42BGOTNY05D/ke17ZwdGBToddI8pDm48kFQQgP34qnCpeHaeAOzTt7pZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIedjZT6_OBzi2ofH1EqNdNeCRxNMlbxs9807lIebBlcA/collage.png",
+    "url" : "https://wiperandtrue.com/order-beer-online/mixed-case-kaleidoscope-and-sundance"
+  }, {
+    "brewery" : "Wiper and True",
     "name" : "Small Beer",
     "summary" : "Light Pale Ale",
     "desc" : "12x 440ml cans of 2.7% Light Pale Ale.\nSmall Beer is an exceptionally satisfying and full-bodied beer for its stature, with the same big hop hit you may expect from our more muscular Pale Ales. Small Beer is vibrant with citrus, tropical fruit and hedgerow berry flavours, meandering to a gentle bitter finish.\nSuitable for vegans.\nWe’re offering a 10% discount for all NHS staff. Please check out using your NHS email address and the code ‘NHS10’.\nPlease note that we can only deliver to the UK mainland, excluding Northern and Mainland Ireland, Guernsey and Jersey.\nPlease take care to select the correct shipping option when checking out. Free Bristol delivery takes 1 - 2 working days and applies to the following postcodes: BS1, BS2, BS3, BS4, BS5, BS6, BS7, BS8, BS9, BS10, BS13, BS14, BS15, BS16, BS32, BS34, BS35, BS36 and BS37. Within BS8, free delivery includes BS8 1, BS8 2 and BS8 4. Please only select the option for free Bristol delivery to these postcodes; otherwise we will have to refund your order and you’ll need to order again using nationwide delivery, since we use a separate courier service for nationwide drop-offs.\nNationwide delivery takes 2-3 working days.",
@@ -4527,7 +4479,7 @@
     "abv" : 2.7,
     "numItems" : 12,
     "perItemPrice" : 2.6,
-    "available" : true,
+    "available" : false,
     "categories" : [ "Pale", "Bitter" ],
     "new" : false,
     "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1584976610822-3ULOIXOZFG1FC4ZN1EZJ/ke17ZwdGBToddI8pDm48kIzNWfZh9v0nvEHU3WAJ1tF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0ooWhOa5cxQSJsU3rXf8luXAp4RuSF8fCIvAJcvjt_IcZoixb7Wm7IaIkEuLM8C6Ew/SmallBeer440.jpg",
@@ -4561,14 +4513,14 @@
     "perItemPrice" : 6.5,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://dpbfm6h358sh7.cloudfront.net/images/26164003/1475236259.jpg",
     "url" : "https://www.wylambrewery.co.uk/beer-store/All-Together-IPA-Other-Half-Worldwide-Collab-ABV-6-5-1-x-440ml-Can-p208274089"
   }, {
     "brewery" : "Wylam",
     "name" : "Cycles Of Amplification IPA",
     "summary" : null,
-    "desc" : "*WE SHIP ONCE A WEEK - ALL ORDERS RECEIVED BY MIDNIGHT ON A SUNDAY ARE DESPATCHED ON A MONDAY*\nA grandstand India Pale Ale of astral dimension. The silver cord is eternally severed disseminating dank riotous plumes of tropical thunder. CITRA, MOSAIC and GALAXY lupulin commingle to fabricate a plump veneer of dripping mango, smashed papaya, bitter orange and smushed pineapple crush. A stratagem IPA for the Reptoid’s and Sheeple amongst us.\nⓋ Vegan Friendly\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
+    "desc" : "*WE SHIP ONCE A WEEK - ALL ORDERS RECEIVED BY MIDNIGHT ON A SUNDAY ARE DESPATCHED ON A MONDAY*\nA grandstand India Pale Ale of astral dimension. The silver cord is eternally severed disseminating dank riotous plumes of tropical thunder.\nCITRA, MOSAIC and GALAXY lupulin commingle to fabricate a plump veneer of dripping mango, smashed papaya, bitter orange and smushed pineapple crush. A stratagem IPA for the Reptoid’s and Sheeple amongst us.\nⓋ Vegan Friendly\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
     "keg" : false,
     "mixed" : false,
     "sizeMl" : 440,
@@ -4577,12 +4529,12 @@
     "perItemPrice" : 6.5,
     "available" : true,
     "categories" : [ "IPA", "Bitter" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://dpbfm6h358sh7.cloudfront.net/images/26164003/1495081552.jpg",
     "url" : "https://www.wylambrewery.co.uk/beer-store/Cycles-Of-Amplification-IPA-ABV-7-5-1-x-440ml-Can-p212221739"
   }, {
     "brewery" : "Wylam",
-    "name" : "Drones With Megaphones",
+    "name" : "Drones With Megaphones DDH Pale",
     "summary" : null,
     "desc" : "*WE SHIP ONCE A WEEK - ALL ORDERS RECEIVED BY MIDNIGHT ON A SUNDAY ARE DESPATCHED ON A MONDAY*\nThe aeronautical faux eagle soars and warbles. It’s pestiferous humdrum whirs overhead observing your every move.\nAn intelligent, sophisticated, out of range mega pale forged from the finest 2 row low colour malted barley. A subtle yet tactical hop bill of IDAHO 7, BRU 1 and CHINOOK transport thumping melodious echos of peaches & cream, fleshy nectarine and fizzy lime with a crunchy biting crispy finish.\nⓋ Vegan Friendly\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
     "keg" : false,
@@ -4592,10 +4544,10 @@
     "numItems" : 1,
     "perItemPrice" : 5.0,
     "available" : true,
-    "categories" : [ "Pale" ],
+    "categories" : [ "Pale", "IPA" ],
     "new" : true,
     "thumbnailUrl" : "https://dpbfm6h358sh7.cloudfront.net/images/26164003/1504896578.jpg",
-    "url" : "https://www.wylambrewery.co.uk/beer-store/Drones-With-Megaphones-ABV-5-5-1-x-440ml-Can-p214085115"
+    "url" : "https://www.wylambrewery.co.uk/beer-store/Drones-With-Megaphones-DDH-Pale-ABV-5-5-1-x-440ml-Can-p214085115"
   }, {
     "brewery" : "Wylam",
     "name" : "Geordie Beer Geek",
@@ -4609,9 +4561,25 @@
     "perItemPrice" : 6.0,
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://dpbfm6h358sh7.cloudfront.net/images/26164003/1393747468.jpg",
     "url" : "https://www.wylambrewery.co.uk/beer-store/Geordie-Beer-Geek-Mikkeller-Collab-ABV-7-5-1-x-440ml-Can-p192011867"
+  }, {
+    "brewery" : "Wylam",
+    "name" : "Heedhunter DDH Pale",
+    "summary" : null,
+    "desc" : "*WE SHIP ONCE A WEEK - ALL ORDERS RECEIVED BY MIDNIGHT ON A SUNDAY ARE DESPATCHED ON A MONDAY*\nBy The River Brew Co’s trophy pale is now fresh in can for the first time ever!!!\nCushioned and lustrous on the chops with a Tzan-Tzas of hop unity to boot. CENTENNIAL, CITRA and MOSAIC spearhead the cull distributing fresh cuts of ripe Seville orange, mashed up mango and tangy pink grapefruit squeeze.\nⓋ Vegan Friendly\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 4.5,
+    "numItems" : 1,
+    "perItemPrice" : 4.25,
+    "available" : true,
+    "categories" : [ "Pale", "IPA" ],
+    "new" : true,
+    "thumbnailUrl" : "https://dpbfm6h358sh7.cloudfront.net/images/26164003/1517202877.jpg",
+    "url" : "https://www.wylambrewery.co.uk/beer-store/Heedhunter-DDH-Pale-By-The-River-Brew-Co-ABV-4-5-1-x-440ml-Can-p216226304"
   }, {
     "brewery" : "Wylam",
     "name" : "Hickey The Rake",
@@ -4625,7 +4593,7 @@
     "perItemPrice" : 4.0,
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://dpbfm6h358sh7.cloudfront.net/images/26164003/1346509170.jpg",
     "url" : "https://www.wylambrewery.co.uk/beer-store/Hickey-The-Rake-ABV-4-2-1-x-440ml-Can-p180785446"
   }, {
@@ -4641,9 +4609,25 @@
     "perItemPrice" : 4.5,
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://dpbfm6h358sh7.cloudfront.net/images/26164003/1346283378.jpg",
     "url" : "https://www.wylambrewery.co.uk/beer-store/Jakehead-IPA-ABV-6-3-1-x-440ml-Can-p180706853"
+  }, {
+    "brewery" : "Wylam",
+    "name" : "My Garden Of Forking Paths",
+    "summary" : null,
+    "desc" : "*WE SHIP ONCE A WEEK - ALL ORDERS RECEIVED BY MIDNIGHT ON A SUNDAY ARE DESPATCHED ON A MONDAY*\nA mixed culture farmhouse ale of rustic proportion. Deep flaxen and soft with oats on body. Multiple barrel cultures blended with 2 Belgian Saison strains divert your senses beyond the orchard gate where ripeness lives. Musky peach flesh, sappy pear, spicy wheat and dried orange zest intermingle in harmony as the late summer sun slowly wanes away afar and yonder...\nⓋ Vegan Friendly\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
+    "keg" : false,
+    "mixed" : false,
+    "sizeMl" : 440,
+    "abv" : 5.7,
+    "numItems" : 1,
+    "perItemPrice" : 5.0,
+    "available" : true,
+    "categories" : [ "Pale" ],
+    "new" : true,
+    "thumbnailUrl" : "https://dpbfm6h358sh7.cloudfront.net/images/26164003/1517219095.jpg",
+    "url" : "https://www.wylambrewery.co.uk/beer-store/My-Garden-Of-Forking-Paths-Six-Blend-Saison-By-The-River-Brew-Co-ABV-5-7-1-x-440ml-Can-p216243150"
   }, {
     "brewery" : "Wylam",
     "name" : "Reflections In The Present",
@@ -4657,7 +4641,7 @@
     "perItemPrice" : 5.0,
     "available" : true,
     "categories" : [ "Pale", "Cider" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://dpbfm6h358sh7.cloudfront.net/images/26164003/1484716891.jpg",
     "url" : "https://www.wylambrewery.co.uk/beer-store/Reflections-In-The-Present-Forest-&-Main-Collab-Wild-Mixed-Ferm-Saison-ABV-4-9-1-x-440ml-Can-p210522192"
   }, {
@@ -4673,7 +4657,7 @@
     "perItemPrice" : 8.75,
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://dpbfm6h358sh7.cloudfront.net/images/26164003/1443659201.jpg",
     "url" : "https://www.wylambrewery.co.uk/beer-store/Summon-Up-The-Blood-Old-Chimneys-Collab-BBA-Heaven-Hill-Edition-ABV-13-5-1-x-440ml-Can-p201762475"
   }, {
@@ -4689,7 +4673,7 @@
     "perItemPrice" : 4.0,
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://dpbfm6h358sh7.cloudfront.net/images/26164003/1346284611.jpg",
     "url" : "https://www.wylambrewery.co.uk/beer-store/The-Cold-Condition-ABV-4-6-1-x-440ml-Can-p180706871"
   }, {
@@ -4705,7 +4689,7 @@
     "perItemPrice" : 3.5,
     "available" : true,
     "categories" : [ "Bitter", "Pale" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://dpbfm6h358sh7.cloudfront.net/images/26164003/1393806261.jpg",
     "url" : "https://www.wylambrewery.co.uk/beer-store/Wylam-Gold-English-Golden-Ale-ABV-4-0-1-x-440ml-Can-p192022017"
   } ]
