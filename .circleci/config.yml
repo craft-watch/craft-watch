@@ -36,7 +36,7 @@ workflows:
 
 
 commands:
-  setup_backend:
+  before_backend_job:
     steps:
       - run:
           name: Create service key
@@ -51,18 +51,11 @@ commands:
             - v4-gradle-{{ .Branch }}-{{ checksum "build.gradle.kts" }}
             - v4-gradle-{{ .Branch }}-
             - v4-gradle-
+      - restore_cache:
+          key: v1-local-storage
 
-
-jobs:
-  test_backend:
-    docker:
-      - image: circleci/openjdk
+  after_backend_job:
     steps:
-      - checkout
-      - setup_backend
-      - run:
-          name: Run tests
-          command: ./gradlew check
       - save_cache:
           paths:
             - ~/.gradle/wrapper
@@ -71,6 +64,27 @@ jobs:
           paths:
             - ~/.gradle/caches
           key: v4-gradle-{{ .Branch }}-{{ checksum "build.gradle.kts" }}
+      - save_cache:
+          paths:
+            - storage/
+          key: v1-local-storage
+
+
+jobs:
+  test_backend:
+    docker:
+      - image: circleci/openjdk
+    steps:
+      - checkout
+      - before_backend_job
+      - run:
+          name: Run tests
+          command: ./gradlew check
+      - save_cache:
+          paths:
+            - ~/.gradle/wrapper
+          key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
+      - after_backend_job
       - store_test_results:
           path: build/test-results/test
       - store_artifacts:
@@ -82,10 +96,11 @@ jobs:
       - image: circleci/openjdk
     steps:
       - checkout
-      - setup_backend
+      - before_backend_job
       - run:
           name: Run scraper application
           command: ./gradlew run
+      - after_backend_job
 
   build_frontend:
     docker:
