@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-09T16:36:18.016589Z"
+    "capturedAt" : "2020-07-09T19:01:55.933825Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -46,6 +46,12 @@
     "websiteUrl" : "https://gipsyhillbrew.com/",
     "new" : false
   }, {
+    "shortName" : "Hackney Church",
+    "name" : "Hackney Church Brew Co",
+    "location" : "Hackney, London",
+    "websiteUrl" : "https://hackneychurchbrew.co/",
+    "new" : true
+  }, {
     "shortName" : "Howling Hops",
     "name" : "Howling Hops",
     "location" : "Hackney Wick, London",
@@ -62,7 +68,7 @@
     "name" : "Northern Monk Brew Co",
     "location" : "Holbeck, Leeds",
     "websiteUrl" : "https://northernmonk.com/",
-    "new" : true
+    "new" : false
   }, {
     "shortName" : "Padstow",
     "name" : "Padstow Brewing Co",
@@ -1537,6 +1543,102 @@
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/RANGER.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/ranger/"
   }, {
+    "brewery" : "Hackney Church",
+    "name" : "Blackberry Blanc Sour",
+    "desc" : "Clean refreshing sour for any occasion. The blackberry and cherry fruit puree enhances the tart sour flavour and complements the underlying white wine grape flavour provided by the Hallertau Blanc hops.\nThere is something to love for the new to sour beer drinker as well as the drinker with a more sophisticated palette.\n12x330ml Bottles.",
+    "mixed" : false,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 36.0,
+      "sizeMl" : 330,
+      "keg" : false
+    } ],
+    "available" : true,
+    "categories" : [ "Sours / Gose" ],
+    "new" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0267/3842/5904/products/IMG_2633copy_200x.png",
+    "url" : "https://hackneychurchbrew.co/collections/beers/products/copy-of-mare-st-mosaic-1"
+  }, {
+    "brewery" : "Hackney Church",
+    "name" : "Lazy Day Lager",
+    "desc" : "We’ve brewed our Lazy Day Lager more times than any of our beers and there’s a reason, Lazy Day sums us up to a tee: easy-going, tasty and more than a little moreish.\nLight and easy on the palate, with just enough crispness, you can enjoy Lazy Day with practically any food and is perfect for peaceful afternoons spent relaxing with good friends and great food.\n12x330ml Bottles.",
+    "mixed" : false,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 36.0,
+      "sizeMl" : 330,
+      "keg" : false
+    } ],
+    "available" : true,
+    "categories" : [ "Pils / Lager" ],
+    "new" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0267/3842/5904/products/IMG_2618copy_200x.png",
+    "url" : "https://hackneychurchbrew.co/collections/beers/products/lazy-day-lager"
+  }, {
+    "brewery" : "Hackney Church",
+    "name" : "Mare St. Mosaic",
+    "desc" : "Hackney is a mosaic of people, of culture and of life. We rejoice in this in our Mare St Mosaic, our hazy, tropical super smooth ale which is just perfect for everyday drinking.\nYou can’t make a great community without diversity, and you can’t get to Hackney Church Brew Co. without going down Mare Street.\n12x330ml Bottles.",
+    "mixed" : false,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 36.0,
+      "sizeMl" : 330,
+      "keg" : false
+    } ],
+    "available" : true,
+    "categories" : [ ],
+    "new" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0267/3842/5904/products/IMG_2606copy_200x.png",
+    "url" : "https://hackneychurchbrew.co/collections/beers/products/mare-st-mosaic"
+  }, {
+    "brewery" : "Hackney Church",
+    "name" : "Mixed Case",
+    "desc" : "Mare St. Mosaic - 3x330ml Bottles\nLazy Day Lager - 3x330ml Bottles\nBlackberry Blanc Sour - 3x330ml Bottles\nSuperfly IPA - 3x330ml Bottles",
+    "mixed" : true,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 36.0,
+      "sizeMl" : 330,
+      "keg" : false
+    } ],
+    "available" : true,
+    "categories" : [ "Pils / Lager", "Sours / Gose", "IPA" ],
+    "new" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0267/3842/5904/products/HCBC_Pump_clip_fullset_black10_200x.png",
+    "url" : "https://hackneychurchbrew.co/collections/beers/products/mixed-case"
+  }, {
+    "brewery" : "Hackney Church",
+    "name" : "Session with Ry IPA",
+    "desc" : "Double dry hopped, full-bodied, session strength IPA. Big flavour and aroma of stone fruits with the backdrop of more fruits, earthy spiciness, and clean soft citrus flavour.\n12x330ml Bottles.",
+    "mixed" : false,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 36.0,
+      "sizeMl" : 330,
+      "keg" : false
+    } ],
+    "available" : false,
+    "categories" : [ "IPA" ],
+    "new" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0267/3842/5904/products/HCBC_Pump_clip_fullset_black8_200x.png",
+    "url" : "https://hackneychurchbrew.co/collections/beers/products/copy-of-mare-st-mosaic"
+  }, {
+    "brewery" : "Hackney Church",
+    "name" : "Superfly IPA",
+    "desc" : "This IPA pays tribute to our co-founder Reggie who sadly passed away in 2018. Known as “Superfly” in his youth thanks to his boundless energy and enthusiasm, our IPA celebrates his passion by just bursting with fresh, bright aromas. Fruity, crisp, tropical, you can barely taste the 6% alcohol and is equally great on its own as it is with cheeses, bread and red meat.\n12x330ml Bottles.",
+    "mixed" : false,
+    "offers" : [ {
+      "quantity" : 12,
+      "totalPrice" : 36.0,
+      "sizeMl" : 330,
+      "keg" : false
+    } ],
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "new" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0267/3842/5904/products/IMG_26312copy_200x.png",
+    "url" : "https://hackneychurchbrew.co/collections/beers/products/superfly-ipa"
+  }, {
     "brewery" : "Howling Hops",
     "name" : "Barleypop",
     "summary" : "Lite Lager",
@@ -2155,7 +2257,7 @@
     } ],
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NMBC_1804_NorthSeaSession-SandyKerr-3_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/18-04-sandy-kerr-north-sea-sessions-burnt-mill-ddh-session-ipa"
   }, {
@@ -2170,7 +2272,7 @@
     } ],
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/thumbnail_image001_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/enter-the-haze-12-pack"
   }, {
@@ -2205,7 +2307,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NorthernMonk_WebStore_GNL_3000x1770px_1_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/great-northern-lager-6-pack"
   }, {
@@ -2240,7 +2342,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NorthernMonk_WebStore_KeepTheFaith_NHS_3000x1770px_4_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/keep-the-faith-12-pack"
   }, {
@@ -2274,7 +2376,7 @@
     } ],
     "available" : true,
     "categories" : [ ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NorthernMonk_WebStore_NorthernHeroes_3000x1770px_4_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/northern-heros-12-pack"
   }, {
@@ -2328,7 +2430,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/RETRO_FAITH_440_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/retro-faith-modern-pale-ale"
   }, {
@@ -2345,7 +2447,7 @@
     } ],
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NMBCo_-_Tom_Joy_IMG_5556_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/striding-edge-light-ipa"
   }, {
