@@ -45,15 +45,18 @@ commands:
             echo "${GCLOUD_SERVICE_KEY}" > "${KEY_FILE}"
             echo "export GOOGLE_APPLICATION_CREDENTIALS=${KEY_FILE}" >> "${BASH_ENV}"
       - restore_cache:
+          # This rarely changes, and is safe to share between branches
           name: Restore cache (Gradle wrapper)
           key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
       - restore_cache:
+          # This changes relatively frequently, and it's safe to fall back to latest from this branch, or from master
           name: Restore cache (Gradle cache)
           keys:
             - v4-gradle-{{ .Branch }}-{{ checksum "build.gradle.kts" }}
             - v4-gradle-{{ .Branch }}-
             - v4-gradle-
       - restore_cache:
+          # This is basically append-only, so safe to share between branches
           name: Restore cache (Application local storage)
           key: v1-local-storage
 
@@ -70,7 +73,7 @@ commands:
             - ~/.gradle/caches
           key: v4-gradle-{{ .Branch }}-{{ checksum "build.gradle.kts" }}
       - save_cache:
-          name: Restore cache (Application local storage)
+          name: Save cache (Application local storage)
           paths:
             - storage/
           key: v1-local-storage
