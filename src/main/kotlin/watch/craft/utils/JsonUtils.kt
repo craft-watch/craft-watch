@@ -1,5 +1,6 @@
 package watch.craft.utils
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include
 import com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT
@@ -12,3 +13,4 @@ fun mapper(): ObjectMapper = jacksonObjectMapper()
   .enable(INDENT_OUTPUT)
   .disable(WRITE_DATES_AS_TIMESTAMPS)
   .disable(FAIL_ON_UNKNOWN_PROPERTIES)
+  .setSerializationInclusion(Include.NON_NULL)  // Our TS convention is that optional values are of type "T | undefined"

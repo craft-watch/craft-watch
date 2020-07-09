@@ -19,10 +19,10 @@ export interface Brewery {
 
 export interface BaseItem {
   name: string;
-  summary: string | null;
-  desc: string | null;
+  summary?: string;
+  desc?: string;
   mixed: boolean;
-  abv: number | null;
+  abv?: number;
   offers: Array<Offer>;
   available: boolean;
   categories: Array<string>;
@@ -34,7 +34,7 @@ export interface BaseItem {
 export interface Offer {
   quantity: number;
   totalPrice: number;
-  sizeMl: number | null;
+  sizeMl?: number;
   keg: boolean;
 }
 

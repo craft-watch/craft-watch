@@ -82,24 +82,24 @@ const renderName: Renderer<Item> = item => (
       {extractOffer(item).keg && <span className="pill keg">{MINIKEG}</span>}
       {item.mixed && <span className="pill mixed">{MIXED_CASE}</span>}
     </p>
-    {(item.desc !== null) && renderTooltipText(item)}
+    {(item.desc !== undefined) && renderTooltipText(item)}
   </div>
 );
 
 // These are positioned all wrong on mobile, so disable when things get small
 const renderTooltipText = (item: Item): JSX.Element => (
   <span className="tooltip-text hide-small" style={{ display: "hidden" }}>
-    {(item.desc !== null) && splitToParagraphs(item.desc)}
+    {(item.desc !== undefined) && splitToParagraphs(item.desc)}
     <div className="disclaimer">© {item.brewery.shortName}</div>
   </span>
 );
 
-const renderAbv: Renderer<Item> = item => (item.abv !== null) ? `${item.abv.toFixed(1)}%` : "?";
+const renderAbv: Renderer<Item> = item => (item.abv !== undefined) ? `${item.abv.toFixed(1)}%` : "?";
 
 const renderSize: Renderer<Item> = item => {
   const sizeMl = extractOffer(item).sizeMl;
 
-  return (sizeMl === null) ? "?" :
+  return (sizeMl === undefined) ? "?" :
     (sizeMl < 1000) ? `${sizeMl} ml` :
     `${sizeMl / 1000} litres`;
 };

@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-09T16:25:18.672326Z"
+    "capturedAt" : "2020-07-09T16:36:18.016589Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -157,7 +157,6 @@
   "items" : [ {
     "brewery" : "Beak",
     "name" : "Lulla",
-    "summary" : null,
     "desc" : "A super sessionable 3.5% pale nomadically brewed at Burning Sky using London Fog yeast, oats, wheat and tonnes of Citra and Simcoe for flavours of yellow starburst; black pepper; dandelion; salted lime; pine sap and lemon pith.\nWe’re offering free nationwide shipping for orders over £50 and free local deliveries for orders over £30 (both for arrival next week), plus a Click + Collect service from our brewery door this Saturday (27th; midday - 6pm) - we’d love to see you.",
     "mixed" : false,
     "abv" : 3.5,
@@ -175,7 +174,6 @@
   }, {
     "brewery" : "Beak",
     "name" : "Parade",
-    "summary" : null,
     "desc" : "The latest iteration of The Beak’s mercurial house IPA was nomadically brewed with our friends at Burning Sky with London Fog yeast and three of our favourite hop varieties, Citra, Mosaic and Idaho 7, resulting in fruit bubblegum flavours of mango, orange peel, pineapple and ripe flat peaches. Take part in our pre-sale and receive these perks!\n*This is a pre-sale product and will be delivered as soon as it is packaged, which we expect to be week commencing 8 June. For full shipping details, please click here.",
     "mixed" : false,
     "abv" : 6.0,
@@ -211,7 +209,6 @@
   }, {
     "brewery" : "Boxcar",
     "name" : "Best Bitter with Mills Brewing",
-    "summary" : null,
     "desc" : "Our collaboration with Mills! Fruit flavours from the yeast, toffee and honey sweetness, balance with large amounts of Goldings hops.",
     "mixed" : false,
     "abv" : 4.6,
@@ -229,7 +226,6 @@
   }, {
     "brewery" : "Boxcar",
     "name" : "Dark Mild",
-    "summary" : null,
     "desc" : "A dark, low strength, rich and flavourful ale. Chocolate and caramel malts, with a dash of English hops giving spice and dried fruit.",
     "mixed" : false,
     "abv" : 3.6,
@@ -355,7 +351,6 @@
   }, {
     "brewery" : "Canopy",
     "name" : "A Rising Tide Nelson & Motueka IPA",
-    "summary" : null,
     "desc" : "There's something special about New Zealand hops - Nelson Sauvin in particular is famed for its distinctive sauvignon blanc wine aroma. But never mind all that - this here is a healthy 6.5% IPA that is smooth, punchy and really downright delicious.\nI know we would say that, but there you go.\nThis beer was named in an eternally optimistic moment. A hope for community, for togetherness, for a better future. A rising tide lifts all boats, so the saying goes. The tide is stretching out now, let's hope we can all bob in safely on the next tide.",
     "mixed" : false,
     "abv" : 6.5,
@@ -373,7 +368,6 @@
   }, {
     "brewery" : "Canopy",
     "name" : "All Together IPA",
-    "summary" : null,
     "desc" : "This is a West Coast style IPA, punchy and bright. It's part of a worldwide collaboration with Other Half Brewing with the aim of supporting hospitality workers who have been affected by the Covid-19 pandemic. Read more here!\nCanopy will donate £1 from each can that we sell retail, or £5 from each case sold to trade to the Licensed Trade Charity to support bar, pub and brewery workers. The Licensed Trade Charity offers practical, emotional and financial help to those working in the licensed trade, and we're pleased to be able to support the work that they are doing.\nThis beer helps us, you get a beer out of it, and it helps workers in an industry that is facing some uncertain times.\nYou're going to feel great drinking this beer.",
     "mixed" : false,
     "abv" : 6.5,
@@ -391,7 +385,6 @@
   }, {
     "brewery" : "Canopy",
     "name" : "Brockwell IPA",
-    "summary" : null,
     "desc" : "Like its namesake, the park next to our brewery, our Brockwell IPA is a beer to enjoy in the sunshine relaxing with friends. Grab a football, a frisbee, maybe even a barbecue, this is a beer for those long lazy days that you never want to end.\nIt’s juicy, tropical and completely crushable, and those citra hops hide that 5.6% abv pretty well. Go on, you earned it.\nSuitable for vegans",
     "mixed" : false,
     "abv" : 5.6,
@@ -409,7 +402,6 @@
   }, {
     "brewery" : "Canopy",
     "name" : "Champion Kölsch",
-    "summary" : null,
     "desc" : "This is our take on a Kölsch, a classic beer style from Cologne, Germany. Cold-fermented and long-matured this lager is crisp, dry and very refreshing. Best served ice cold, and best enjoyed after a match, a race, or a run ‘round the park.\nKeep a few cans in the fridge ready to celebrate your next sporting achievement, however big or small.\nSuitable for vegans.",
     "mixed" : false,
     "abv" : 4.5,
@@ -427,7 +419,6 @@
   }, {
     "brewery" : "Canopy",
     "name" : "Llopper Everyday Oyster Stout",
-    "summary" : null,
     "desc" : "Made in collaboration with The Oystermen who bring us their choice of Maldon oysters for this beer, the beer is rich and dry, with notes of minerality and saline from the oysters.\nwww.oystermen.co.uk\nContains oysters!",
     "mixed" : false,
     "abv" : 5.0,
@@ -445,7 +436,6 @@
   }, {
     "brewery" : "Canopy",
     "name" : "Paceline Lime & Salt Lager",
-    "summary" : null,
     "desc" : "Think margaritas at the poolside. Think lager and lime with a packet of peanuts in a pub garden. That's what we've brought for you here. Refreshingly down to earth.",
     "mixed" : false,
     "abv" : 4.0,
@@ -463,7 +453,6 @@
   }, {
     "brewery" : "Canopy",
     "name" : "Snapper Session IPA",
-    "summary" : null,
     "desc" : "Crack the code and crack a smile: say hello to Snapper! Snapper is the little brother to our NEIPA Snap and joins our core range in 330ml can. Spritzy, light and fruity, this hazy IPA is a happy little addition to our line up.\nSuitable for vegans.",
     "mixed" : false,
     "abv" : 4.8,
@@ -481,7 +470,6 @@
   }, {
     "brewery" : "Canopy",
     "name" : "Sunray Pale Ale",
-    "summary" : null,
     "desc" : "This is the beer to reward yourself with after a hard day grafting or crafting. A real easy-drinking pale ale dry-hopped with Chinook, at a perfectly sessionable 4.2% abv.\nA beer for all occasions, not just when the sun is shining.\nSuitable for vegans.",
     "mixed" : false,
     "abv" : 4.2,
@@ -589,14 +577,11 @@
   }, {
     "brewery" : "Cloudwater",
     "name" : "Crop Year 2019 4 Pack",
-    "summary" : null,
     "desc" : "This four-pack is a joyous celebration of some of our favourite, hand selected Crop Year 2019 hops.\nWe've poured a significant amount of our passion, expertise and time into selecting hops that will excite, delight and occasionally surprise you. It makes us proud to be able to share them with you in this way.\nThese latest releases from our Crop Year 2019 series represent a departure from their predecessors. Rather than focusing on a single hop, they showcase blends of some varietals from the most recent crop, tailored to suit a quartet of different styles.\nWe'll also be hosting a live stream to accompany this pack next Thursday (July 2nd), so you'll receive an email after purchase giving you details on how to join. Our founder Paul Jones will talk through the four beers and the hop selection process, giving you insight into the process and answering any burning questions you may have.\nThis pack includes the following four beers:\n1 x Our Highs, Their Lows 5% - Crop Year 2019 Pilsner hopped with hand-selected Centennial, Loral & Columbus (440ml can)\n1 x Land Of Landings, 6% - Crop Year 2019 Double Dry Hopped IPA, hopped with hand-selected Simcoe, Mosaic, El Dorado & Columbus (440ml can)\n1 x Friends In Small Places, 8% - Crop Year 2019 Double IPA, hopped with hand-selected Citra, Amarillo & Sabro (440ml can)\n1 x Bird Tweets Trump Trump Tweets, 5% - Crop Year 2019 Double Dry Hopped Pale, hopped with hand-selected Chinook, Idaho 7, Citra & Columbus  (440ml can)\n**THIS PACK IS NOT ELIGIBLE FOR DISCOUNTS AS IT'S ALREADY DISCOUNTED**",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 4,
       "totalPrice" : 19.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -769,14 +754,11 @@
   }, {
     "brewery" : "Cloudwater",
     "name" : "Special Release Selection 8 Pack",
-    "summary" : null,
     "desc" : "Get a proper flavour of Cloudwater with this selection pack showcasing some of our special release beers.\nAll of our special release beers are designed to provide a slightly different representation of our house style and our wider approach to brewing. We experiment with processes, some of which provide light bulb moments for us and improve future beers across the board!\nThey provide a wide range of flavours and experiences, bringing together our wealth of brewing and drinking experience and a respect for classic styles with a thoroughly modern, flavour-first approach.\nThis pack includes the following eight beers:\n1 x Are You The Brewer?, 6% - Crop Year 2019 Ekuanot single-hopped IPA (440ml can)\n1 x Ponderosa Pines On Rainier, 6% - Crop Year 2019 Cascade single-hopped IPA (440ml can)\n1 x Just The Right Shape, 6% - Crop Year 2019 Mosaic single-hopped IPA (440ml can)\n1 x Back On Boogie St, 6% - Crop Year 2019 Columbus single-hopped IPA (440ml can)\n1 x Singel Hopped IPA, 6% - Crop Year 2019 Strata single-hopped IPA (440ml can)\n1 x All Together IPA, 6% - This is own version of the worldwide collaboration hosted by Other Half, Stout Collective and Craftpeak to support the hospitality industry during the COVID-19 pandemic. It's a juicy IPA brewed with Citra, Mosaic, Simcoe and Cascade, with 100% of profits from its sale being donated to organisations supporting hospitality workers.(440ml can)\n1 x Edge Of The Bread, 6% - A double dry-hopped IPA, with Citra, Idaho 7 & Galaxy (440ml can)\n1 x A Gentle Nod To Welcome Visitors, 9% - A modern, heavily hopped Barley Wine (440ml can)\n**THIS PACK IS NOT ELIGIBLE FOR DISCOUNTS AS IT'S ALREADY DISCOUNTED**",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 8,
       "totalPrice" : 39.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -1021,7 +1003,6 @@
   }, {
     "brewery" : "Fourpure",
     "name" : "Basecamp",
-    "summary" : null,
     "desc" : "Foothills, woodland, camp or climb. Strap a pack across your back, explore new places without a map. Find new ways to leave the ground, pitch a tent as the sun goes down. Choose your adventure, drink good beer. Basecamp is crisp, dry and refreshing with a floral, spicy aroma.\nThis beer is suitable for vegetarians and vegans.",
     "mixed" : false,
     "abv" : 4.7,
@@ -1039,7 +1020,6 @@
   }, {
     "brewery" : "Fourpure",
     "name" : "Carnival Coconut & Lime Sour",
-    "summary" : null,
     "desc" : "Creamy and refreshingly tart, Carnival is a celebration of tropical flavours. Five unique malts add body, with oats providing a creamy mouthfeel. The coconut provides a slight sweetness, with 48 hours of kettle souring and 3kg of lime zest delivering a fresh, tangy finish.\nIngredients: Water, Barley, Oats, Lactose, Lime Zest, Natural Coconut Flavour, Natural Almond Flavour, Yeast",
     "mixed" : false,
     "abv" : 4.5,
@@ -1057,7 +1037,6 @@
   }, {
     "brewery" : "Fourpure",
     "name" : "Castaway Mai Tai DIPA",
-    "summary" : null,
     "desc" : "Waves of tropical fruits and citrus set the tone for a hop-forward Double IPA with an island paradise slant. Oats bring a creamy softness, which are layered with natural flavours of orange, almond and lime, and just a little brown sugar to truly reflect the tiki bar classic, the Mai Tai. Pace yourself and savour, you’re on island time now.\nIngredients: Water, Barley, Oats, Hops, Maltodextrin, Sugar, Yeast, Natural Flavourings (Almond, Orange, Lime)",
     "mixed" : false,
     "abv" : 8.0,
@@ -1075,7 +1054,6 @@
   }, {
     "brewery" : "Fourpure",
     "name" : "Cosmic Café Coffee Sour",
-    "summary" : null,
     "desc" : "Our sour take on cold press in a can. Lightly roasted malts provide a clean base upon which we’ve added fruity US hops, with some light dry hopping. The addition of Coffee in fermentation and dry hop gives Cosmic Café’ a balanced, roasted bitterness. We kettle soured the wort to add some zing and the result is a smooth, lightly tart sour with a fresh coffee backbone.\nIngredients: Water, Barley, Wheat, Coffee, Hops, Yeast",
     "mixed" : false,
     "abv" : 5.4,
@@ -1093,7 +1071,6 @@
   }, {
     "brewery" : "Fourpure",
     "name" : "Deucebox",
-    "summary" : null,
     "desc" : "The oranges for Deucebox, our 8.3% citrus double IPA, are harvested by blasting California Dreaming through very large speakers at such a high intensity, the fruit just falls from the trees and juices itself. This is then added to our lovely citrus IPA recipe with twice the hops, twice the malt and twice the juice to serve up a punchy, tropical, glass of joy, every time.\nThis beer is suitable for vegetarians and vegans.",
     "mixed" : false,
     "abv" : 8.3,
@@ -1111,7 +1088,6 @@
   }, {
     "brewery" : "Fourpure",
     "name" : "Easy Peeler",
-    "summary" : null,
     "desc" : "Beach bar, hammock, surf or bike. Roll your trousers to your knees, embrace the sun that breaks the trees. Walk in the rain in a grey raincoat, sit on the sand and watch boats float. Choose your adventure, drink good beer. Prominent tangerine and citrus flavours, low bitterness and refreshing finish.\nThis beer is suitable for vegetarians and vegans.",
     "mixed" : false,
     "abv" : 4.0,
@@ -1129,7 +1105,6 @@
   }, {
     "brewery" : "Fourpure",
     "name" : "Hemisphere",
-    "summary" : null,
     "desc" : "Forest, foothills, hike or fly. Peaceful days on sunny trails, crazy nights under city lights. Dig for treasure under the moon, search the horizon by hot air balloon. Choose your adventure, drink good beer. Vibrant tropical flavours, a gentle bitterness and clean, hoppy finish.\nThis beer is suitable for vegetarians and vegans.",
     "mixed" : false,
     "abv" : 4.2,
@@ -1147,7 +1122,6 @@
   }, {
     "brewery" : "Fourpure",
     "name" : "Jazz Age Espresso Martini Stout",
-    "summary" : null,
     "desc" : "Rich, indulgent and creamy, just like the cocktail it’s based on, Jazz Age offers a bold malt profile, full body and plenty of chocolate and coffee. The creaminess comes from six different malts, the joy comes from imagining yourself in a speakeasy in New Orleans with every sip. Settle in, sling on some tunes and enjoy immediately. Or let it warm a little from the fridge, you’ll thank us.\nIngredients: Water, Barley, Lactose, Wheat, Hops, Coffee, Yeast",
     "mixed" : false,
     "abv" : 7.4,
@@ -1165,7 +1139,6 @@
   }, {
     "brewery" : "Fourpure",
     "name" : "Juicebox",
-    "summary" : null,
     "desc" : "Mountain, waterfall, hike or climb. Meet fond friends in far-flung bars, share well-worn stories about long-healed scars. Climb over boulders, traverse round bends, stand on a peak looking at the worlds end. Choose your adventure, drink good beer. Fresh orange zest, flavours of mango and papaya, the aroma of good times.\nThis beer is suitable for vegetarians and vegans.",
     "mixed" : false,
     "abv" : 5.9,
@@ -1183,7 +1156,6 @@
   }, {
     "brewery" : "Fourpure",
     "name" : "Juicebox",
-    "summary" : null,
     "desc" : "Gets pints in your home with this metal 5L minikeg. When you can't go to the pub, make the pub come to you.\nContains Juicebox: Fresh orange zest, flavours of mango and papaya, the aroma of good times.\nComes with a free pint Glass.\nOnce open the keg will keep for 2/3 days and we put a 2 week best before from the date of filling. The keg coimes with an integral tap for pouring.",
     "mixed" : false,
     "abv" : 5.9,
@@ -1201,7 +1173,6 @@
   }, {
     "brewery" : "Fourpure",
     "name" : "Lantern Earl Grey Session IPA",
-    "summary" : null,
     "desc" : "Lantern focuses on the fusion between full, oriental Earl Grey tea with the vibrant hop profile delivered by four unique American hop varieties. The base is a super juicy, tropical session beer, we then infused the beer with fresh orange and lemon zest, finally, we added the tea for a hint of bergamot and full-bodied black tea.\nIngredients: Water, Barley, Oats, Earl Grey Tea, Hops, Yeast",
     "mixed" : false,
     "abv" : 3.7,
@@ -1219,7 +1190,6 @@
   }, {
     "brewery" : "Fourpure",
     "name" : "Last Train",
-    "summary" : null,
     "desc" : "Monuments, markets, stroll or stride. Short days and dark nights, city streets under festive lights. Narrow spaces that you can roam, Leaving London on the last train home. Choose your adventure, drink good beer. Last train offers flavours of rich dark chocolate and roasted coffee.\nThis beer is suitable for vegetarians and vegans.",
     "mixed" : false,
     "abv" : 5.1,
@@ -1237,7 +1207,6 @@
   }, {
     "brewery" : "Fourpure",
     "name" : "Midsummer Pinot Noir Gose",
-    "summary" : null,
     "desc" : "In collaboration with Noita Winery.\nWe were determined to create a beer that could bridge the decision between white, rosé or beer on those warm summer evenings. Midsummer offers a light to medium body with a soft malt base and light hop profile. The addition of Pinot Noir grapes from Noita Winery in Finland means there’s plenty of fruit, with blackcurrant and strawberry delivering a jammy sweetness to balance the refreshing salt profile.\nIngredients: Water, Barley, Grape Juice, Wheat, Hops, Yeast",
     "mixed" : false,
     "abv" : 5.5,
@@ -1255,7 +1224,6 @@
   }, {
     "brewery" : "Fourpure",
     "name" : "Monsoon",
-    "summary" : null,
     "desc" : "Gets pints in your home with this metal 5L minikeg. When you can't go to the pub, make the pub come to you.\nContains Monsoon:Fourpure Monsoon is our fresh, local, brewery-direct Pale Ale with a full flavour and a light natural haze. We use a malt and wheat blend to give the beer extra body and texture, six varieties of American hops impart intense, juicy notes of passionfruit, mango, grapefruit, peach, orange, lemon and a little pine.\nComes with a free pint Glass.\nOnce open the keg will keep for 2/3 days and we put a 2 week best before from the date of filling. The keg coimes with an integral tap for pouring.",
     "mixed" : false,
     "abv" : 4.7,
@@ -1273,7 +1241,6 @@
   }, {
     "brewery" : "Fourpure",
     "name" : "Shapeshifter IPA",
-    "summary" : null,
     "desc" : "Island, inland, canoe or swim. Busy days in city haze, crystal clear water in a tree-lined bay. Stand in the snow and watch snowflakes, row deep lakes to catch great snakes. Choose your adventure, drink good beer. Hop-forward mango and grapefruit deliver intense, tropical flavours.\nThis beer is suitable for vegetarians and vegans.",
     "mixed" : false,
     "abv" : 5.9,
@@ -1363,14 +1330,11 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Buy the NHS a pint!",
-    "summary" : null,
     "desc" : "Buy the NHS a pint!\nThe pandemic on our doorstep has forced us all into lockdown and thrust our NHS onto the front-line.\nAs small, independent brewing businesses, we don’t have an abundance of PPE or raw materials to donate, and feel we can’t do much to help except keep providing beers to all of you.\nWith that in mind though, we landed on a simple idea: With your help, we can get a drink into the hands of someone who’s really earned it – our NHS staff. If you buy the NHS a “pint” on any participating brewery’s web-shop, we’ll make sure that a drink gets into the hands of a well deserving NHS worker once we come off lockdown. They are true heroes and deserve to be rewarded once this crisis has passed. It’s a Pay it Forward scheme that will benefit small business as well as those that deserve our thanks.\nA small group of breweries have got together to try and geographically represent the country so you can give to the area you most want to support NHS staff in a post-pandemic world: Fyne Ales (Scotland), Wylam (North East), Cloudwater (North West), North Brewing Co (Yorkshire), Verdant, and Left Handed Giant (South West), Deya (West Midlands), Duration (East Anglia), Gipsy Hill (South East) and Boundary (Northern Ireland).\nEach “Buy the NHS a Pint” bought on any of our web-shops will be forwarded to our taprooms. As soon as we’re open again anyone from the NHS and by extension any volunteer signed up to help, can pop in, show their ID and redeem their drink.⁠",
     "mixed" : false,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 1,
       "totalPrice" : 5.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -1399,10 +1363,8 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "Core Range 24 Pack",
-    "summary" : null,
     "desc" : "This pack contains 24 x 330ml cans from our core range.\nEach pack includes:\n4 x Hepcat – Session IPA – 4.6%\n4 x Baller – IPA – 5.4%\n4 x Hunter – Helles Lager – 4.8%\n4 x Carver – Micro IPA – 2.8%\n4 x Ranger – Pale Ale – 4.2%\n4 x Bandit – Gluten Free Pale – 3.8%",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 24,
       "totalPrice" : 56.0,
@@ -1417,10 +1379,8 @@
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "DJ BBQ Box",
-    "summary" : null,
     "desc" : "This is a 12 pack of 330ml cans and 1 x Burger Book.\nA perfect box for an evening cooking over the grill. DJ BBQ is the king of the coals and starting parties. He’s picked two of his favourite Gipsy Hill tinnies – Hepcat and Hunter, and signed 24 copies of his incredible Burger Book.\nGo check him out on Instagram for the live cooking, lessons and sweet beats.\nCase contents listed below.",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 13,
       "totalPrice" : 41.19,
@@ -1741,10 +1701,8 @@
   }, {
     "brewery" : "Howling Hops",
     "name" : "NEW 12 Beer Mega Pack",
-    "summary" : null,
     "desc" : "NEW 12 Beer Mega Pack 24 x 440ml\nLoads of new beers straight off the canning line and some fresh, firm favourites. Each case of 24 cans will consist of 12 different beers, in quantities subject to availability. Cases cannot be customised. All the beer is superfresh! Beers included*:\nCURIOSITY VENDOR – DDH PALE ALE (CITRA CHINOOK TOPAZ) – 6.0% ABV\nGRISETTE – FARMHOUSE PALE ALE – 4.4% ABV\nBUCKLE DOWN – DDH PALE ALE (CITRA AMARILLO COLUMBUS) – 5.0% ABV\nDRAG RACE JOHNNY – NEIPA (AZACCA CITRA SIMCOE) – 6.7% ABV\nWIND AND SEA SURF CLUB – PALE ALE (AZACCA SIMCOE) – 4.5% ABV\nFLASHPOINT – NEIPA (CITRA TOPAZ ENIGMA) – 6.2% ABV\nPUSH PUSH – DDH PALE (CITRA AZACCA SABRO) – 5.8% ABV\nBLANKETS – PALE ALE (CITRA COLUMBUS CASCADE) – 4.2% ABV\nPOCKET ROCKET – TINY IPA (CITRA SIMCOE IDAHO 7) – 2.7% ABV\nHOUSE IPA – INDIA PALE ALE – 6.9% ABV\nPACKETS – KELLER LAGER – 4.2% ABV\nPASSIONFRUIT GOSE – FRUIT SOUR – 4.5% ABV\n*Subject to availability. Beers may be swapped for new releases if out of stock.",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 24,
       "totalPrice" : 69.5,
@@ -1885,7 +1843,6 @@
   }, {
     "brewery" : "Marble",
     "name" : "Barley Wine",
-    "summary" : null,
     "desc" : "Barley Wine 2019\nOne of the 5 beers produced for our first annual bottle release at the new Salford brewery.\nOur 2019 Barley Wine gives a rich, intriguing nose and sumptuous palette. Country fruits, rich sugars and nuttiness are what you should expect from the layers of evolving flavours; contributing to the overall depth and complexity.\nBest drunk slightly chilled and allowed to warm whilst consuming.\nNow in 660ml sharing bottle",
     "mixed" : false,
     "abv" : 12.4,
@@ -1921,7 +1878,6 @@
   }, {
     "brewery" : "Marble",
     "name" : "Blended Red Ale",
-    "summary" : null,
     "desc" : "This blended mixed-fermentation sour red ale was aged in bourbon, rum and red wine barrels and was brewed in collaboration with Zapato Brewery.",
     "mixed" : false,
     "abv" : 7.0,
@@ -1975,10 +1931,7 @@
   }, {
     "brewery" : "Marble",
     "name" : "Core Range Mixed",
-    "summary" : null,
-    "desc" : null,
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 24,
       "totalPrice" : 65.0,
@@ -2173,7 +2126,6 @@
   }, {
     "brewery" : "Marble",
     "name" : "Sour Blonde Ale",
-    "summary" : null,
     "desc" : "This is the first blend from our 'solera' system: a mixed-fermentation sour blonde ale fermented in oak barrels.",
     "mixed" : false,
     "abv" : 5.7,
@@ -2209,14 +2161,11 @@
   }, {
     "brewery" : "Northern Monk",
     "name" : "Enter The Haze",
-    "summary" : null,
     "desc" : "The humble IPA has been on an incredible journey. With it’s origins in England the style quickly took over the world. Initial American attempts to re-create this classic British style with big, bold US hops led the first West Coast IPA’s, over the last decade we’ve seen the style evolve again. Here we combine higher dry hopping with a water profile and yeast that gives stone and tropical fruit flavor and a hazier appearance to the beer. This is one of our favourite styles of beer and we’re proud to have championed it over the years.\nCases contain:\n4 x FAITH\n4 X STRIDING EDGE\n4 X HEATHEN\nAll for £32!",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 12,
       "totalPrice" : 32.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -2245,7 +2194,6 @@
   }, {
     "brewery" : "Northern Monk",
     "name" : "Great Northern Lager",
-    "summary" : null,
     "desc" : "ABV: 4.3% ABV // 440ML\nINGREDIENTS: Water, Malted BARLEY (GLUTEN), WHEAT (GLUTEN), Hops, Yeast",
     "mixed" : false,
     "abv" : 4.3,
@@ -2281,7 +2229,6 @@
   }, {
     "brewery" : "Northern Monk",
     "name" : "Keep The Faith",
-    "summary" : null,
     "desc" : "Every Keep The Faith 12 pack sold includes a £3 donation for our For The North Foundation grant fund. The Foundation looks to offer £5000 grants to support vital community projects and causes in the North. Every 3 months, we advocate a different social cause. Currently, we are championing awareness of the LGBTQ+ community in the North, and this grant fund will go towards supporting projects and organisations that help this community.\nABV: 5.4% ABV // 6.00 EBC // 30 IBU // 1.04 OG // 330ML\nINGREDIENTS: WATER, Malted BARLEY (GLUTEN), WHEAT (GLUTEN) OATS (GLUTEN), HOPS, YEAST\nA Hazy Pale Ale packed with soft fruit flavours. Smooth, tropical and juicy. You’ve got to have Faith.\nSUITABLE FOR VEGANS",
     "mixed" : false,
     "abv" : 5.4,
@@ -2317,10 +2264,8 @@
   }, {
     "brewery" : "Northern Monk",
     "name" : "Northern Heroes",
-    "summary" : null,
     "desc" : "These are go-to’s. If you were stranded on a desert Island and could only choose three beers. These would be ours. You open a pub and are only allowed three beers on draft. These are the ones. You’re having the ultimate barbecue, you open the lid of your cooler to find three beers amongst the ice… You get the idea.\nEach case contains:\n4 x FAITH 330ml\n4 X ETERNAL 330ml\n4 X NEW WORLD 330ml\nAll for £25.50!",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 12,
       "totalPrice" : 25.5,
@@ -2389,7 +2334,6 @@
   }, {
     "brewery" : "Northern Monk",
     "name" : "Striding Edge Hazy Light IPA",
-    "summary" : null,
     "desc" : "ABV 2.8% // 6.00 EBC // 40 IBU // 1.037 OG // 440ML\nINGREDIENTS: WATER, Malted BARLEY (GLUTEN), OATS (GLUTEN), HOPS, YEAST\nA Light IPA inspired by one of the North’s highest peaks. Piney, citrusy and fresh. For the believers.\nSUITABLE FOR VEGANS",
     "mixed" : false,
     "abv" : 2.8,
@@ -2410,11 +2354,9 @@
     "summary" : "A mystery box of beers for that special person in your life.",
     "desc" : "Our beer mixed gift box are a perfect treat for someone you love - or yourself! Exact contents may vary, but we’ll make sure you get to try a great range of our beers and a great glass to drink them with! There will be a mix of bottled ale and canned craft beer, hand picked by the brewery team. You can also decide if you would like cider included in your selection. They're shipped in our mail-order boxes with a perforated numbered cover - just a bit of fun! It's designed to be opened over 12 days - but we won't be upset if all of the numbers are opened at once! This makes a perfect gift for the beer lover in your life and for £50, the price include shipping! These beers may contain barley and wheat, which are sources of gluten.",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 11,
       "totalPrice" : 45.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -2497,14 +2439,11 @@
   }, {
     "brewery" : "Padstow",
     "name" : "Mixed Beer Case",
-    "summary" : null,
     "desc" : "Get a 6 beer mystery selection of Padstow Brewing Co. beers handpicked by the brewery. These beers are all suitable for vegetarians. Please specify if you want beers all suitable for vegans. They contain barley and wheat, which are sources of gluten. Please note: Mixed cases are sent in our usual, robust, courier safe packaging. The image is for graphic purposes only.",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 6,
       "totalPrice" : 22.5,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -2990,7 +2929,6 @@
     "offers" : [ {
       "quantity" : 1,
       "totalPrice" : 6.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -3008,7 +2946,6 @@
     "offers" : [ {
       "quantity" : 24,
       "totalPrice" : 45.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -3062,7 +2999,6 @@
     "offers" : [ {
       "quantity" : 24,
       "totalPrice" : 45.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -3080,7 +3016,6 @@
     "offers" : [ {
       "quantity" : 24,
       "totalPrice" : 45.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -3134,7 +3069,6 @@
     "offers" : [ {
       "quantity" : 1,
       "totalPrice" : 4.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -3170,7 +3104,6 @@
     "offers" : [ {
       "quantity" : 1,
       "totalPrice" : 3.8,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -3188,7 +3121,6 @@
     "offers" : [ {
       "quantity" : 1,
       "totalPrice" : 3.8,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -3253,7 +3185,6 @@
   }, {
     "brewery" : "RedWillow",
     "name" : "Breakfast Stout",
-    "summary" : null,
     "desc" : "This dangerously drinkable Vietnamese coffee stout starts with an assertive roasty bitterness from the dark malts which quickly gives way to a smooth rich dark chocolate and hazelnut finish.\nContains Gluten from Barley",
     "mixed" : false,
     "abv" : 5.6,
@@ -3271,10 +3202,8 @@
   }, {
     "brewery" : "RedWillow",
     "name" : "Brewer's Selection",
-    "summary" : null,
     "desc" : "An ever changing selection of our beers, ranging from session IPA’s to dark beers and lagers, always including the latest releases. (selection based on current stock)",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 12,
       "totalPrice" : 36.0,
@@ -3289,14 +3218,10 @@
   }, {
     "brewery" : "RedWillow",
     "name" : "Chevalier Mild",
-    "summary" : null,
-    "desc" : null,
     "mixed" : false,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 12,
       "totalPrice" : 32.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -3314,7 +3239,6 @@
     "offers" : [ {
       "quantity" : 6,
       "totalPrice" : 20.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -3332,7 +3256,6 @@
     "offers" : [ {
       "quantity" : 12,
       "totalPrice" : 33.6,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -3343,10 +3266,8 @@
   }, {
     "brewery" : "RedWillow",
     "name" : "Pale Mixed Case",
-    "summary" : null,
     "desc" : "A selection of at least 3 different pales or IPA’s (mix dependent on availability)",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 12,
       "totalPrice" : 33.6,
@@ -3368,7 +3289,6 @@
     "offers" : [ {
       "quantity" : 6,
       "totalPrice" : 23.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -3379,7 +3299,6 @@
   }, {
     "brewery" : "RedWillow",
     "name" : "Pilsner Hersbrucker",
-    "summary" : null,
     "desc" : "Inspired by the Oktoberfest event at our bar we wanted to brew an unfiltered pure flavourful craft lager. Using German Hersbrucker hops, pilsner malt and yeast. This beer has a lovely balance of bitter and sweet with long soft toasty finish.\nContains gluten from barley\nSuitable for Vegans",
     "mixed" : false,
     "abv" : 4.6,
@@ -3397,14 +3316,12 @@
   }, {
     "brewery" : "RedWillow",
     "name" : "Saison",
-    "summary" : null,
     "desc" : "An easy drinking and refreshing golden saison made with Pilsner malt, malted and un-malted wheat, lightly hopped with Saaz and fermented with a Farmhouse Saison yeast strain. The yeast gives a lovely gentle spice and pear-like fruitiness.\nSuitable for vegans",
     "mixed" : false,
     "abv" : 4.9,
     "offers" : [ {
       "quantity" : 12,
       "totalPrice" : 31.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -3415,14 +3332,12 @@
   }, {
     "brewery" : "RedWillow",
     "name" : "Saison - Cider Apple Blend",
-    "summary" : null,
     "desc" : "Two years ago we started filling wine barrels with a mixed fermentation Saison. This release is a blend of a 2 year old white Burgundy barrel, fresh Saison and cider made with apples from local orchards. Light and refreshing with a slightly tart finish and a hint of oak.\nSuitable for vegans",
     "mixed" : false,
     "abv" : 5.2,
     "offers" : [ {
       "quantity" : 6,
       "totalPrice" : 20.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -3440,7 +3355,6 @@
     "offers" : [ {
       "quantity" : 12,
       "totalPrice" : 33.6,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -3458,7 +3372,6 @@
     "offers" : [ {
       "quantity" : 6,
       "totalPrice" : 16.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -3476,7 +3389,6 @@
     "offers" : [ {
       "quantity" : 12,
       "totalPrice" : 33.6,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -3487,7 +3399,6 @@
   }, {
     "brewery" : "Redchurch",
     "name" : "Bethnal Pale Ale",
-    "summary" : null,
     "desc" : "BETHNAL PALE ALE\n5.5% ABV AMERICAN PALE ALE BOTTLE 330ML\nOur modern American pale ale. Tropical fruit aroma produced by a big blend of American hops. Citrus zing on the front of the palate followed by passion fruit notes. Medium body with a refreshing bitterness.",
     "mixed" : false,
     "abv" : 5.5,
@@ -3505,7 +3416,6 @@
   }, {
     "brewery" : "Redchurch",
     "name" : "Deck Chair Pale Ale",
-    "summary" : null,
     "desc" : "DECK CHAIR PALE ALE 4.5% ABV BOTTLE 330ML\nThis lockdown special combines the flavour and aroma of orange blossom with a punchy pale ale to give a fruity and aromatic nectar.",
     "mixed" : false,
     "abv" : 4.5,
@@ -3523,7 +3433,6 @@
   }, {
     "brewery" : "Redchurch",
     "name" : "Great Eastern IPA",
-    "summary" : null,
     "desc" : "GREAT EASTERN IPA\nBACK IN STOCK\n7.4% ABV AMERICAN IPA BOTTLE 330ML\nA true west coast IPA. American hops give a strong orange and citrus fruit flavour coupled with a balanced bitterness.\nHints of grapefruit complete the taste sensation.",
     "mixed" : false,
     "abv" : 7.4,
@@ -3541,7 +3450,6 @@
   }, {
     "brewery" : "Redchurch",
     "name" : "Hoxton Stout",
-    "summary" : null,
     "desc" : "Out of Stock - Back Late Summer\nHOXTON STOUT\n5% ABV HOPPY STOUT BOTTLE 330ML\nOur reinvention of a traditional stout. On the nose, you experience toasted bread, coffee and chocolate.\nA blend of punchy American hops gives a fresh, almost fruity flavour with a pleasant kick of bitterness to finish.",
     "mixed" : false,
     "abv" : 5.0,
@@ -3559,7 +3467,6 @@
   }, {
     "brewery" : "Redchurch",
     "name" : "März Ataks",
-    "summary" : null,
     "desc" : "Back in Stock\nMARZ ATAKS\n5.0% ABV German Märzen Bottle 330ML\nThis Marzen invades the senses with complex aromas of malt and chestnut honey.\nThe flavour is layered with sweet biscuit, toasted bread and a hint of bitterness.\nRich copper in colour and bone dry to finish, as though fresh from the surface of the red planet itself.",
     "mixed" : false,
     "abv" : 5.0,
@@ -3577,7 +3484,6 @@
   }, {
     "brewery" : "Redchurch",
     "name" : "Old Ford Export Stout",
-    "summary" : null,
     "desc" : "OLD FORD EXPORT STOUT\n7.4% ABV EXPORT STOUT BOTTLE 330ML\nA big export stout. Luxurious, complex and velvety bodied beer. Flavours ranging from dried fruit to vanilla and from chocolate to caramel. The strong presence of booze makes it ideal for gastronomic pairings with rich foods.",
     "mixed" : false,
     "abv" : 7.4,
@@ -3595,7 +3501,6 @@
   }, {
     "brewery" : "Redchurch",
     "name" : "Paradise IPA",
-    "summary" : null,
     "desc" : "PARADISE IPA\n3.7% ABV SESSION IPA BOTTLE 330ML\nA session IPA. The moderate alcohol content is supported by a strong malt base with added oats for a fuller body.\nThe bouquet is explosive with fresh lime, tropical fruits and citrus making this fresh, easy-drinking and complex in equal measure.",
     "mixed" : false,
     "abv" : 3.7,
@@ -3613,7 +3518,6 @@
   }, {
     "brewery" : "Redchurch",
     "name" : "Redchurch Lager",
-    "summary" : null,
     "desc" : "REDCHURCH LAGER\n4.7% ABV NEW WAVE LAGER BOTTLE 330ML\nTop seller - Winner World Beer Awards 2019\nOur flagship beer & all-round crowd-pleaser. Characteristic hints of British malt with a grassy aroma. German and American hops complement each other and work with the sweetness of the malt base to provide a refreshing,\nA clean and exceptionally well-balanced beer",
     "mixed" : false,
     "abv" : 4.7,
@@ -3631,7 +3535,6 @@
   }, {
     "brewery" : "Redchurch",
     "name" : "Shoreditch Blonde",
-    "summary" : null,
     "desc" : "SHOREDITCH BLONDE\n4.5% ABV CONTINENTAL STYLE BLONDE BOTTLE 330ML\nOur Belgian inspired blonde beer. Saison yeast is the star of the show and pairs with European hops to give a fruit and banana aroma.\nExtra pale malt and wheat malt give a sweetness and full body.",
     "mixed" : false,
     "abv" : 4.5,
@@ -3649,7 +3552,6 @@
   }, {
     "brewery" : "Redchurch",
     "name" : "Stort Valley Kölsch",
-    "summary" : null,
     "desc" : "Brand New Special - Release W/C 25th May\nSTORT VALLEY KOLSCH STYLE ALE\n4.5% ABV GERMAN KOLSCH STYLE 330ml BOTTLE\nCrisp and refreshing with a well-rounded bitterness and solid pilsner malt base. Subtle sweetness accompanied by aromas of apple, pear and tropical fruits from the use of traditional German hops makes this perfect for a hot summer's day.",
     "mixed" : false,
     "abv" : 4.5,
@@ -3667,7 +3569,6 @@
   }, {
     "brewery" : "Redchurch",
     "name" : "Stratford Pilsner",
-    "summary" : null,
     "desc" : "STRATFORD PILSNER\n4% ABV PILSNER BOTTLE 330ML\nThe traditional German malt base provides a sweet biscuity flavour profile accompanied by the combination of German and British hops to give this classic pilsner a modern British twist. Clean, crisp and refreshing. The traditional German malt base provides a sweet biscuity flavour profile accompanied by the combination of German and British hops to give this classic pilsner a modern British twist. Clean, crisp and refreshing.",
     "mixed" : false,
     "abv" : 4.0,
@@ -3685,10 +3586,8 @@
   }, {
     "brewery" : "Redchurch",
     "name" : "The Core One",
-    "summary" : null,
     "desc" : "Our core products all in one case\nRedchurch Lager\nBethnal Pale Ale\nParadise IPA\nGreat Eastern\nShoreditch Blonde\nStratford Pilsner\n330ml Bottles",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 24,
       "totalPrice" : 36.0,
@@ -3703,10 +3602,8 @@
   }, {
     "brewery" : "Redchurch",
     "name" : "The German One",
-    "summary" : null,
     "desc" : "Our range of classic German styles\nStratford Pilsner\nRedchurch Lager\nMarz Atak Marzden\nStort Valley Kolsch\n330ml Bottles",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 24,
       "totalPrice" : 36.0,
@@ -3721,10 +3618,8 @@
   }, {
     "brewery" : "Redchurch",
     "name" : "The Hoppy One",
-    "summary" : null,
     "desc" : "Our selection of super ales\nBethnal Pale Ale\nParadise IPA\nDeck Chair Pale Ale\nGreat Eastern IPA\n330ml Bottles",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 24,
       "totalPrice" : 36.0,
@@ -3739,10 +3634,8 @@
   }, {
     "brewery" : "Redchurch",
     "name" : "The Specials One",
-    "summary" : null,
     "desc" : "Deck Chair Pale Ale\nMarz Atak Marzen\nStort Valley Kolsch\nOld Ford Export Stout\n330ml Bottles",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 24,
       "totalPrice" : 36.0,
@@ -3757,14 +3650,11 @@
   }, {
     "brewery" : "Redchurch",
     "name" : "Ultimate Mix",
-    "summary" : null,
     "desc" : "THE REDCHURCH MIXED CASE\nThe ULTIMATE Redchurch case\nThis a total mixed selection of our core brands and seasonal specials.",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 24,
       "totalPrice" : 36.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -3775,7 +3665,6 @@
   }, {
     "brewery" : "Redchurch",
     "name" : "Urban Farmhouse Barrels 1 &2",
-    "summary" : null,
     "desc" : "BARRELS 1 & 2 SOUR - VINTAGE STOCK RELEASE\n5% ABV SOUR BOTTLE 750ML\nThe original Urban Farmhouse. One of the first batches of Tartelette, hidden away in Chardonnay barrels for 24 months.\nThe barrels have worked their magic and have imparted their magic and have imparted an unmistakeable vinous character-rich and warming but with great acidity still. A true farmhouse ale on the nose with earthy notes and aromas of sweet hay.\nThe beer has incredible depth like a good chardonnay, light carbonation and the unmistakable acidity of our house cultures.",
     "mixed" : false,
     "abv" : 5.0,
@@ -3829,7 +3718,6 @@
   }, {
     "brewery" : "Siren Craft",
     "name" : "Coldblooded",
-    "summary" : null,
     "desc" : "NOTE - Due to high demand, if collecting from the brewery, please do not come to collect until you receive an email to say it's ready.\nFresh Siren keg beer at home in awesome 5L mini kegs!\nWelcome back Coldblooded, a brown porter designed to hit the spot when the weather turns. We cold-steep grains overnight before brewday to build up a gorgeous chocolately base before we even get started! From there expect roasty notes layered amongst subtle smoke, coffee and dark chocolate. Coldblooded pours silky smooth and drinks with a satisfying richness.\nKeep Cold. Serve Cool. Drink Fresh.\nUnfiltered / Unfined\nVegan Friendly\nMini kegs are stored refrigerated on site. Once received, keeps up to a recommended maximum of 10 days, drink within 3 days once opened. Drink soon, keep cold.",
     "mixed" : false,
     "abv" : 5.0,
@@ -3883,7 +3771,6 @@
   }, {
     "brewery" : "Siren Craft",
     "name" : "Futurist",
-    "summary" : null,
     "desc" : "NOTE - Due to high demand, if collecting from the brewery, please do not come to collect until you receive an email to say it's ready.\nFresh Siren keg beer at home in awesome 5L mini kegs!\nFuturist is a gluten free beer that packs a punch! Expect aromas of grapefruit, citrus, tropical fruits and pine along with subtle orange flavours. A hint of vanilla sweetness rounds out a soft, moreish mouthfeel.\nKeep Cold. Serve Cool. Drink Fresh.\nUnfiltered / Unfined\nVegan Friendly\nMini kegs are stored refrigerated on site. Once received, keeps up to a recommended maximum of 10 days, drink within 3 days once opened. Drink soon, keep cold.",
     "mixed" : false,
     "abv" : 4.8,
@@ -4009,7 +3896,6 @@
   }, {
     "brewery" : "Siren Craft",
     "name" : "Santo",
-    "summary" : null,
     "desc" : "NOTE - Due to high demand, if collecting from the brewery, please do not come to collect until you receive an email to say it's ready.\nFresh Siren keg beer at home in awesome 5L mini kegs!\nSanto is a distinctly Siren lager. Our take on the style is full of American hops, working in harmony to offer subtle tropical fruit notes and bright citrus flavours. It pours with a delicate haze and a striking aroma. Saintly fresh, but devilishly drinkable.\nKeep Cold. Serve Cool. Drink Fresh.\nUnfiltered / Unfined\nVegan Friendly\nMini kegs are stored refrigerated on site. Once received, keeps up to a recommended maximum of 10 days, drink within 3 days once opened. Drink soon, keep cold.",
     "mixed" : false,
     "abv" : 5.0,
@@ -4099,7 +3985,6 @@
   }, {
     "brewery" : "Siren Craft",
     "name" : "Suspended in Cascade",
-    "summary" : null,
     "desc" : "NOTE - Due to high demand, if collecting from the brewery, please do not come to collect until you receive an email to say it's ready.\nFresh Siren keg beer at home in awesome 5L mini kegs!\nSuspended in Cascade celebrates an American hop famed for it’s pleasant, flowery and citrus fruit qualities. On the nose those floral expectations shine through, with orange blossom and mango flesh. To taste, expect bitter and sweet orange with some tropical and berry like notes. This a beautifully clean brew with a great mouthfeel that will leave you feeling as refreshed as if you were stood under a waterfall.\nKeep Cold. Serve Cool. Drink Fresh.\nUnfiltered / Unfined\nVegan Friendly\nMini kegs are stored refrigerated on site. Once received, keeps up to a recommended maximum of 10 days, drink within 3 days once opened. Drink soon, keep cold.",
     "mixed" : false,
     "abv" : 4.0,
@@ -4153,7 +4038,6 @@
   }, {
     "brewery" : "Siren Craft",
     "name" : "Yu Lu",
-    "summary" : null,
     "desc" : "NOTE - Due to high demand, if collecting from the brewery, please do not come to collect until you receive an email to say it's ready.\nFresh Siren keg beer at home in awesome 5L mini kegs!\nRefreshing and exciting in equal measure, Yu Lu is brewed with Earl Grey tea and lemon zest for taste that belies its strength. Distinct peach and apricot notes are complemented by zesty bergamot flavours and a delicate loose leaf tea bitterness.\nKeep Cold. Serve Cool. Drink Fresh.\nUnfiltered / Unfined\nVegan Friendly\nMini kegs are stored refrigerated on site. Once received, keeps up to a recommended maximum of 10 days, drink within 3 days once opened. Drink soon, keep cold.",
     "mixed" : false,
     "abv" : 3.6,
@@ -4243,14 +4127,11 @@
   }, {
     "brewery" : "Solvay Society",
     "name" : "Mixed",
-    "summary" : null,
     "desc" : "Is your favourite 6 pack not here? Contact us and we’ll make it happen.",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 6,
       "totalPrice" : 18.75,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -4298,7 +4179,6 @@
     "brewery" : "Stewart Brewing",
     "name" : "Cascadian East",
     "summary" : "India Pale Ale",
-    "desc" : null,
     "mixed" : false,
     "abv" : 5.4,
     "offers" : [ {
@@ -4315,8 +4195,6 @@
   }, {
     "brewery" : "Stewart Brewing",
     "name" : "Cauld Reekie",
-    "summary" : null,
-    "desc" : null,
     "mixed" : false,
     "abv" : 6.2,
     "offers" : [ {
@@ -4334,7 +4212,6 @@
     "brewery" : "Stewart Brewing",
     "name" : "Edinburgh Gold",
     "summary" : "Golden Ale",
-    "desc" : null,
     "mixed" : false,
     "abv" : 4.8,
     "offers" : [ {
@@ -4352,7 +4229,6 @@
     "brewery" : "Stewart Brewing",
     "name" : "Franz",
     "summary" : "Lager",
-    "desc" : null,
     "mixed" : false,
     "abv" : 4.0,
     "offers" : [ {
@@ -4370,7 +4246,6 @@
     "brewery" : "Stewart Brewing",
     "name" : "Gooseberry Gose",
     "summary" : "Sour",
-    "desc" : null,
     "mixed" : false,
     "abv" : 4.7,
     "offers" : [ {
@@ -4388,7 +4263,6 @@
     "brewery" : "Stewart Brewing",
     "name" : "Hollyrood",
     "summary" : "Pale Ale",
-    "desc" : null,
     "mixed" : false,
     "abv" : 5.0,
     "offers" : [ {
@@ -4406,7 +4280,6 @@
     "brewery" : "Stewart Brewing",
     "name" : "HotHead Kveik IPA",
     "summary" : "India Pale Ale",
-    "desc" : null,
     "mixed" : false,
     "abv" : 6.5,
     "offers" : [ {
@@ -4424,7 +4297,6 @@
     "brewery" : "Stewart Brewing",
     "name" : "Ka Pai",
     "summary" : "Pale Ale",
-    "desc" : null,
     "mixed" : false,
     "abv" : 5.2,
     "offers" : [ {
@@ -4442,7 +4314,6 @@
     "brewery" : "Stewart Brewing",
     "name" : "Session IPA",
     "summary" : "India Pale Ale",
-    "desc" : null,
     "mixed" : false,
     "abv" : 3.7,
     "offers" : [ {
@@ -4460,7 +4331,6 @@
     "brewery" : "Stewart Brewing",
     "name" : "Stewart's 80/-",
     "summary" : "Scotch Ale",
-    "desc" : null,
     "mixed" : false,
     "abv" : 4.4,
     "offers" : [ {
@@ -4478,7 +4348,6 @@
     "brewery" : "Stewart Brewing",
     "name" : "Stewart's Lager",
     "summary" : "Lager",
-    "desc" : null,
     "mixed" : false,
     "abv" : 4.0,
     "offers" : [ {
@@ -4610,7 +4479,6 @@
     "offers" : [ {
       "quantity" : 1,
       "totalPrice" : 2.1,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -4628,7 +4496,6 @@
     "offers" : [ {
       "quantity" : 1,
       "totalPrice" : 1.5,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -4711,7 +4578,6 @@
   }, {
     "brewery" : "Unity",
     "name" : "Conflux Pale Ale",
-    "summary" : null,
     "desc" : "Conflux is our house Pale Ale, soft and tropical featuring flaked oats and a light touch of rye malt, liberally hopped with Citra and Azacca. 440ml / 4.8% ABV ALLERGENS: Gluten (Barley, Oats, Rye) Unfiltered, unpasteurised - Vegan Friendly",
     "mixed" : false,
     "abv" : 4.8,
@@ -4729,7 +4595,6 @@
   }, {
     "brewery" : "Unity",
     "name" : "Dayspring Pilsner",
-    "summary" : null,
     "desc" : "A dry, crisp and quenching lager, brewed with fine German Pilsner malt and generously hopped with citrussy Czech Kazbek. 440ml / 5.0% ABV ALLERGENS: Gluten (Barley) Unfiltered, unpasteurised - Vegan Friendly",
     "mixed" : false,
     "abv" : 5.0,
@@ -4747,7 +4612,6 @@
   }, {
     "brewery" : "Unity",
     "name" : "Nocturne Oatmeal Porter",
-    "summary" : null,
     "desc" : "A full and silky Porter with liberal amounts of flaked oats and a complex blend of British and German roasted malts. 440ml / 5.0% ABV ALLERGENS: Gluten (Barley, Oats) Unfiltered, unpasteurised - Vegan Friendly",
     "mixed" : false,
     "abv" : 5.0,
@@ -4765,7 +4629,6 @@
   }, {
     "brewery" : "Unity",
     "name" : "This Must Be The Place Simcoe Pale Ale",
-    "summary" : null,
     "desc" : "Simcoe takes centre stage in this single hopped pale ale, balanced with a big dose of rye malt to add complimentary spicy notes to Simcoe’s big citrus and pine flavours. 440ml / 4.8% ABV Allergens: Gluten, Barley, Oats, Rye Vegan Friendly",
     "mixed" : false,
     "abv" : 4.8,
@@ -4783,7 +4646,6 @@
   }, {
     "brewery" : "Unity",
     "name" : "Wowee Zowee West Coast IPA",
-    "summary" : null,
     "desc" : "A crisp, bitter and resinous West Coast style IPA with Simcoe, Centennial and Mosaic hops, and a little homage to our favourite West Coast indie rock band. 440ml / 6.7% ABV ALLERGENS: Gluten, barley, wheat Unfiltered, unpasteurised - Vegan Friendly",
     "mixed" : false,
     "abv" : 6.7,
@@ -4801,10 +4663,8 @@
   }, {
     "brewery" : "Villages",
     "name" : "Ales Mixed Case",
-    "summary" : null,
     "desc" : "An ever-changing mixed case of 24 × cans of Villages ales. Currently the case includes:\n8 × RODEO Pale Ale • 4.6%\nOne of our first pals. Rodeo is a light straw colour with a gentle haze. Citrus and grapefruit aromas and flavours come from Citra and Cascade, giving a balanced floral tone. Low bitterness and a soft body. Real refreshing!\n8 × RAFIKI Session IPA • 4.3%\nOur low-strength IPA, and a family fave. Tropical notes of mango, passionfruit and guava come from Mosaic and Ekuanot. Smooth bitterness and a sweet biscuity malt flavour.\n8 × TOTO American Pale • 5.3%\nToto is a 5.3% American Pale hopped with Idaho 7, Simcoe and Ekuanot and fermented with London Ale III. Real haps with this one! Full-bodied, lovely soft bitterness. Tropical, citrus and pine flaves. Limited run!\n~~~~~~~\nVegan friendly! :-D\n330ml cans\n£5.99 delivery",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 24,
       "totalPrice" : 53.6,
@@ -4837,10 +4697,8 @@
   }, {
     "brewery" : "Villages",
     "name" : "Regulars Mixed Case",
-    "summary" : null,
     "desc" : "A mixed case of 24 × cans of go-to Villages bevs.\n8 × RODEO Pale Ale • 4.6%\nOne of our first pals. Rodeo is a light straw colour with a gentle haze. Citrus and grapefruit aromas and flavours come from Citra and Cascade, giving a balanced floral tone. Low bitterness and a soft body. Real refreshing!\n8 × WHISTLE Pilsner • 4.4%\nA crisp, unfiltered Pilsner with lots of flavour. Saaz and Hallertau Mittelfrüh give it those traditional floral and spicy notes. The yeast gives a big ester profile and a clean finish.\n8 × RAFIKI Session IPA • 4.3%\nOur low-strength IPA, and a family fave. Tropical notes of mango, passionfruit and guava come from Mosaic and Ekuanot. Smooth bitterness and a sweet biscuity malt flavour.\n~~~~~~~\nVegan friendly! :-D\n330ml cans\n£5.99 delivery",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 24,
       "totalPrice" : 49.2,
@@ -4891,10 +4749,8 @@
   }, {
     "brewery" : "Villages",
     "name" : "Villages Mixed Case",
-    "summary" : null,
     "desc" : "An ever-changing mixed case of 24 × cans of the freshest Villages bevs. Currently the case includes:\n6 × RODEO Pale Ale • 4.6%\nOne of our first pals. Rodeo is a light straw colour with a gentle haze. Citrus and grapefruit aromas and flavours come from Citra and Cascade, giving a balanced floral tone. Low bitterness and a soft body. Real refreshing!\n6 × WHISTLE Pilsner • 4.4%\nA crisp, unfiltered Pilsner with lots of flavour. Saaz and Hallertau Mittelfrüh give it those traditional floral and spicy notes. The yeast gives a big ester profile and a clean finish.\n6 × RAFIKI Session IPA • 4.3%\nOur low-strength IPA, and a family fave. Tropical notes of mango, passionfruit and guava come from Mosaic and Ekuanot. Smooth bitterness and a sweet biscuity malt flavour.\n6 × TOTO American Pale • 5.3%\nToto is a 5.3% American Pale hopped with Idaho 7, Simcoe and Ekuanot and fermented with London Ale III. Real haps with this one! Full-bodied, lovely soft bitterness. Tropical, citrus and pine flaves. Limited run!\n~~~~~~~\nVegan friendly! :-D\n330ml cans\n£5.99 delivery",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 24,
       "totalPrice" : 52.5,
@@ -5017,7 +4873,6 @@
   }, {
     "brewery" : "Wander Beyond",
     "name" : "Mixed 12 pack",
-    "summary" : null,
     "desc" : "Mixed 12 pack\nCase contains 12x 440ml cans:\nBlack Sands - Imperial Stout with cinnamon and coconut - x1\n10.0% ABV - 440ml - Allergens: Barley, Oats - Vegitarian friendly\nBlacks Sands is a pitch black Imperial Stout with cinnamon and coconut. It delivers initial flavours of cinnamon which then blends with the coconut, developing into a candied sweetness from the lactose and vanilla, with underlying notes of chocolate.\nMaple Dream - Gluten-free, Lactose-free Maple Imperial Stout - x1\n10.0% ABV - 440ml - Allergens: Barley, Oats. Gluten free, tested bellow 20ppm - Vegan friendly\nMaple Dream is a progression on the base ideas used in a previous gluten-free, lactose-free Imperial Sweet Stout that we brewed back in November 19, Leap. With some recipe adaptations and additions, this time we have created a Maple Imperial Stout which is still gluten-free and lactose-free, accessible to coeliacs, people with lactose and other gluten intolerance's, vegans and people who enjoy a good ol' Imperial Stout.\nRaspberry Crash - Raspberry Imperial Stout - x1\n10.0% ABV - 440ml - Allergens: Barley, Oats - Vegan friendly\nWe do enjoy brewing fruited Imperial Stouts here at Wander Beyond. Raspberry Crash is a chewy Imperial Stout we re-fermented on 200g/L of raspberries before infusing it with vanilla and cacao nibs.\nFlavours of rich chocolate and subtle roasted malt notes are combined with the ripeness from the raspberries to create this deviously delicious stout.\nMini City Of Gold - Table Beer - x1\n3.0% ABV - 440ml - Allergens: Barley, Oats, Wheat, Lactose - Vegetarian friendly\nMini City of Gold is a highly sessionable version of our 5% milkshake IPA 'City Of Gold'. A creamy 3% base beer is charged with El Dorado and Azacca hops before being infused with vanilla. A beer full of flavour and low on alcohol, perfect for the summer.\nGasp - Milkshake IPA with Peach and Apricot - x1\n7.0% ABV - 440ml - Allergens: Barley, Oats, Wheat, Lactose - Vegetarian friendly\nThe name Gasp is a nod back to a similar brew of ours that you may remember, Gulp.\nGasp is a deliciously fruited Milkshake IPA. Fermented on 200g/l of peaches and apricots. The sweetness from the fruits and lactose is balanced against a backdrop of citrus notes, provided by the Chinook dry hop. This is a refreshing yet moreish little number.\nOcto-pie - Passionfruit Imperial Milkshake IPA - x1\n9.0% ABV - 440ml - Allergens: Barley, Oats, Wheat, Lactose - Vegetarian friendly\nOcto-pie is an Imperial passion fruit Milkshake IPA. Overloaded with half a tonne of tart and tangy passion fruit and infused with vanilla and creamy lactose, this is a refreshingly sharp yet indulgent dessert-like treat.\nSleepy Hollow - IPA - x4\n7.0% ABV - 440ml - Allergens: Barley, Wheat, Oats - Vegan friendly\nFor an IPA, Sleepy Hollow has a medium to thick body, which carries forward citrus flavours of sweet orange and pink grapefruit. These are backed up with tropical notes of mango and pineapple, with a slight dankness and a moderately bitter finish.\nAs for the artwork, the can pictures the hops Citra, Mosaic and Simcoe, climbing an enchanting boulder problem in the North Yorkshire Moors called 'Sleepy Hollow'. The picturesque boulder hides in the forest with a tree emerging from within it. The iconic line traverses a sloping block with big slaps and technical footwork (for those who climb, it's pretty tough and graded 7c+ from a sit).\nPursuit - Gluten-free, Lactose-free Imperial Milkshake IPA - x2\n10.0% ABV - 440ml - Allergens: Barley, Oats, Wheat. Gluten free, tested bellow 20ppm - Vegan friendly\nPursuit is a gluten and lactose free version of one of our favourite beers to brew, Illicium. We believe we have successfully managed to create a doppelganger in Pursuit, which despite the lack of lactose still delivers on the sweet smoothness of it’s older sibling. Balanced with the punchy fruit flavours of the Citra and Mosaic hops to create a sweet dessert style Imperial Milkshake IPA, Pursuit is accessible to coeliacs, people with other gluten and lactose intolerance's and vegans.",
     "mixed" : true,
     "abv" : 10.0,
@@ -5143,7 +4998,6 @@
   }, {
     "brewery" : "Wander Beyond",
     "name" : "Sleepy Hollow",
-    "summary" : null,
     "desc" : "Multipack Discount\n1 Can £3.95\n4 Cans £15.00 ( £3.75 each! )\n24 Cans £82.80 ( £3.45 each! )\nSleepy Hollow - IPA\nFor an IPA, Sleepy Hollow has a medium to thick body, which carries forward citrus flavours of sweet orange and pink grapefruit. These are backed up with tropical notes of mango and pineapple, with a slight dankness and a moderately bitter finish.\nAs for the artwork, the can pictures the hops Citra, Mosaic and Simcoe, climbing an enchanting boulder problem in the North Yorkshire Moors called 'Sleepy Hollow'. The picturesque boulder hides in the forest with a tree emerging from within it. The iconic line traverses a sloping block with big slaps and technical footwork (for those who climb, it's pretty tough and graded 7c+ from a sit).\n7.0% ABV\n440ml\nAllergens: Barley, Wheat, Oats\nVegan friendly",
     "mixed" : false,
     "abv" : 7.0,
@@ -5179,7 +5033,6 @@
   }, {
     "brewery" : "Wander Beyond",
     "name" : "Vegan Mixed Case",
-    "summary" : null,
     "desc" : "Mixed 12 pack\nCase contains 12x 440ml cans:\nPeak - Pale Ale - x1\n3.8% ABV - 440ml - Allergens: Barley, Oats, Wheat\nThis beer normally doesn't travel much further than Manchester as it is primarily brewed for cask. However we're excited to release this can version for you to enjoy both in Manchester or further afield.\nRamble - Session Pale Ale - x1\n4.2% ABV - 440ml - Allergens: Barley, Oats, Wheat\nRamble is a light sessionable pale ale coming in at 4.2% ABV. A light malt character balanced with a subtle dry hop ensures the sessionable drinkability of this pale ale.\nLutra Lutra - Pale Ale - x1\n5.0% ABV - 440ml - Allergens: Barley, Oats, Wheat\nLutra Lutra is a straight forward easy drinking pale ale. A nice simple malt based combined with a modest level of hops to create a no fuss, quaffable, slightly hazy, pale ale.\nMaple Dream - Gluten-free, Lactose-free Maple Imperial Stout - x1\n10.0% ABV - 440ml - Allergens: Barley, Oats. Gluten free, tested bellow 20ppm - Vegan friendly\nMaple Dream is a progression on the base ideas used in a previous gluten-free, lactose-free Imperial Sweet Stout that we brewed back in November 19, Leap. With some recipe adaptations and additions, this time we have created a Maple Imperial Stout which is still gluten-free and lactose-free, accessible to coeliacs, people with lactose and other gluten intolerance's, vegans and people who enjoy a good ol' Imperial Stout.\nStorm Kats - Imperial Porter - x1\n10.0% ABV - 440ml - Allergens: Barley, Oats\nBrewed with our friends at Kees brewery in the Netherlands, Storm Kats is a straight imperial porter. Brewed with eight different malts and added honey, Storm Kats has rounded flavours of chocolate, honey, sweet toffee and light coffee notes.\nRaspberry Crash - Raspberry Imperial Stout - x1\n10.0% ABV - 440ml - Allergens: Barley, Oats\nWe do enjoy brewing fruited Imperial Stouts here at Wander Beyond. Raspberry Crash is a chewy Imperial Stout we re-fermented on 200g/L of raspberries before infusing it with vanilla and cacao nibs.\nFlavours of rich chocolate and subtle roasted malt notes are combined with the ripeness from the raspberries to create this deviously delicious stout.\nPursuit - Gluten-free, Lactose-free Imperial Milkshake IPA - x2\n10.0% ABV - 440ml - Allergens: Barley, Oats, Wheat. Gluten free, tested bellow 20ppm\nPursuit is a gluten and lactose free version of one of our favourite beers to brew, Illicium. We believe we have successfully managed to create a doppelganger in Pursuit, which despite the lack of lactose still delivers on the sweet smoothness of it’s older sibling. Balanced with the punchy fruit flavours of the Citra and Mosaic hops to create a sweet dessert style Imperial Milkshake IPA, Pursuit is accessible to coeliacs, people with other gluten and lactose intolerance's and vegans.\nSleepy Hollow - IPA - x4\n7.0% ABV - 440ml - Allergens: Barley, Wheat, Oats\nFor an IPA, Sleepy Hollow has a medium to thick body, which carries forward citrus flavours of sweet orange and pink grapefruit. These are backed up with tropical notes of mango and pineapple, with a slight dankness and a moderately bitter finish.\nAs for the artwork, the can pictures the hops Citra, Mosaic and Simcoe, climbing an enchanting boulder problem in the North Yorkshire Moors called 'Sleepy Hollow'. The picturesque boulder hides in the forest with a tree emerging from within it. The iconic line traverses a sloping block with big slaps and technical footwork (for those who climb, it's pretty tough and graded 7c+ from a sit).",
     "mixed" : true,
     "abv" : 3.8,
@@ -5233,14 +5086,11 @@
   }, {
     "brewery" : "Wiper and True",
     "name" : "Mixed",
-    "summary" : null,
     "desc" : "6 x 440ml cans of Kaleidoscope 4.2% Pale Ale, 6 x 440ml cans of 5.6% Sundance India Pale Ale.\nYou asked, we listened. We’re delighted to present our first mixed case of Wiper and True beers. Two of our most popular beers in one delectable case.\nBursting with juicy tropical fruit flavours such as mango, pineapple and papaya and layered with berry and citrus notes, Sundance combines the finest US and UK hops to create a crisp, complex and highly refreshing IPA.\nKaleidoscope combines three different hops to create a seasonally evolving flavour profile. Whilst the hops may change, our intention remains the same - to create a beer that is harmonious, bright and refreshing.\nBoth beers are suitable for vegans.\nWe’re offering a 10% discount for all NHS staff. Please check out using your NHS email address and the code ‘NHS10’.\nPlease note that we can only deliver to the UK mainland, excluding Northern and Mainland Ireland, Guernsey and Jersey.\nPlease take care to select the correct shipping option when checking out. Free Bristol delivery takes 1 - 2 working days and applies to the following postcodes: BS1, BS2, BS3, BS4, BS5, BS6, BS7, BS8, BS9, BS10, BS13, BS14, BS15, BS16, BS32, BS34, BS35, BS36 and BS37. Within BS8, free delivery includes BS8 1, BS8 2 and BS8 4. Please only select the option for free Bristol delivery to these postcodes; otherwise we will have to refund your order and you’ll need to order again using nationwide delivery, since we use a separate courier service for nationwide drop-offs.\nNationwide delivery takes 2-3 working days.",
     "mixed" : true,
-    "abv" : null,
     "offers" : [ {
       "quantity" : 12,
       "totalPrice" : 39.0,
-      "sizeMl" : null,
       "keg" : false
     } ],
     "available" : true,
@@ -5305,7 +5155,6 @@
   }, {
     "brewery" : "Wylam",
     "name" : "Cycles Of Amplification IPA",
-    "summary" : null,
     "desc" : "*WE SHIP ONCE A WEEK - ALL ORDERS RECEIVED BY MIDNIGHT ON A SUNDAY ARE DESPATCHED ON A MONDAY*\nA grandstand India Pale Ale of astral dimension. The silver cord is eternally severed disseminating dank riotous plumes of tropical thunder.\nCITRA, MOSAIC and GALAXY lupulin commingle to fabricate a plump veneer of dripping mango, smashed papaya, bitter orange and smushed pineapple crush. A stratagem IPA for the Reptoid’s and Sheeple amongst us.\nⓋ Vegan Friendly\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
     "mixed" : false,
     "abv" : 7.5,
@@ -5323,7 +5172,6 @@
   }, {
     "brewery" : "Wylam",
     "name" : "Drones With Megaphones DDH Pale",
-    "summary" : null,
     "desc" : "*WE SHIP ONCE A WEEK - ALL ORDERS RECEIVED BY MIDNIGHT ON A SUNDAY ARE DESPATCHED ON A MONDAY*\nThe aeronautical faux eagle soars and warbles. It’s pestiferous humdrum whirs overhead observing your every move.\nAn intelligent, sophisticated, out of range mega pale forged from the finest 2 row low colour malted barley. A subtle yet tactical hop bill of IDAHO 7, BRU 1 and CHINOOK transport thumping melodious echos of peaches & cream, fleshy nectarine and fizzy lime with a crunchy biting crispy finish.\nⓋ Vegan Friendly\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
     "mixed" : false,
     "abv" : 5.5,
@@ -5359,7 +5207,6 @@
   }, {
     "brewery" : "Wylam",
     "name" : "Heedhunter DDH Pale",
-    "summary" : null,
     "desc" : "*WE SHIP ONCE A WEEK - ALL ORDERS RECEIVED BY MIDNIGHT ON A SUNDAY ARE DESPATCHED ON A MONDAY*\nBy The River Brew Co’s trophy pale is now fresh in can for the first time ever!!!\nCushioned and lustrous on the chops with a Tzan-Tzas of hop unity to boot. CENTENNIAL, CITRA and MOSAIC spearhead the cull distributing fresh cuts of ripe Seville orange, mashed up mango and tangy pink grapefruit squeeze.\nⓋ Vegan Friendly\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
     "mixed" : false,
     "abv" : 4.5,
@@ -5377,7 +5224,6 @@
   }, {
     "brewery" : "Wylam",
     "name" : "Hickey The Rake",
-    "summary" : null,
     "desc" : "*WE SHIP ONCE A WEEK - ALL ORDERS RECEIVED BY MIDNIGHT ON A SUNDAY ARE DESPATCHED ON A MONDAY*\nA Limonata Pale… An Ultra Pale which emulates almost toxic levels of citrus zing. A nuclear sherbet dib-dab of lemon, lime and tropical pineapple.\nⓋ Vegan Friendly\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
     "mixed" : false,
     "abv" : 4.2,
@@ -5395,7 +5241,6 @@
   }, {
     "brewery" : "Wylam",
     "name" : "Jakehead IPA",
-    "summary" : null,
     "desc" : "*WE SHIP ONCE A WEEK - ALL ORDERS RECEIVED BY MIDNIGHT ON A SUNDAY ARE DESPATCHED ON A MONDAY*\nSupercharged India Pale Ale.... Rich/bright & amber/bronze with lots of American hop aroma. Distinctly bittersweet on the palate with a massive hop complexity fashioned deep within the IPA tradition.\nⓋ Vegan Friendly\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
     "mixed" : false,
     "abv" : 6.3,
@@ -5413,7 +5258,6 @@
   }, {
     "brewery" : "Wylam",
     "name" : "My Garden Of Forking Paths",
-    "summary" : null,
     "desc" : "*WE SHIP ONCE A WEEK - ALL ORDERS RECEIVED BY MIDNIGHT ON A SUNDAY ARE DESPATCHED ON A MONDAY*\nA mixed culture farmhouse ale of rustic proportion. Deep flaxen and soft with oats on body. Multiple barrel cultures blended with 2 Belgian Saison strains divert your senses beyond the orchard gate where ripeness lives. Musky peach flesh, sappy pear, spicy wheat and dried orange zest intermingle in harmony as the late summer sun slowly wanes away afar and yonder...\nⓋ Vegan Friendly\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
     "mixed" : false,
     "abv" : 5.7,
@@ -5467,7 +5311,6 @@
   }, {
     "brewery" : "Wylam",
     "name" : "The Cold Condition",
-    "summary" : null,
     "desc" : "*WE SHIP ONCE A WEEK - ALL ORDERS RECEIVED BY MIDNIGHT ON A SUNDAY ARE DESPATCHED ON A MONDAY*\nLAGERBIER... This lager has been cold conditioned for 12 weeks at 0°C. Using extra pale Pilsner, carapils and acidulated malt with a kettle addition of Lemon Drop and Hallatau Blanc. Light, clean and crisp with mellow notes of lemongrass, gooseberry and white grapes.\nⓋ Vegan Friendly\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
     "mixed" : false,
     "abv" : 4.6,
