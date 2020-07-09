@@ -45,6 +45,7 @@ class Cli : CliktCommand(name = "scraper") {
       FivePointsScraper(),
       FourpureScraper(),
       GipsyHillScraper(),
+      HackneyChurchScraper(),
       HowlingHopsScraper(),
       MarbleScraper(),
       NorthernMonkScraper(),
