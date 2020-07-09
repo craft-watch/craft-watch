@@ -21,7 +21,7 @@ const Sidebar = (props: Props): JSX.Element => {
           <li><Link href="/"><a>New beers</a></Link></li>
           <li><Link href="/taster"><a>Taster menu</a></Link></li>
           <li><Link href="/full"><a>Full menu</a></Link></li>
-          <li>
+          <li className="hide-medium">
             <b>Just added</b>
             <ul>
               {

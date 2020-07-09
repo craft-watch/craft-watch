@@ -54,7 +54,7 @@ table {
 
 thead th {
   background: var(--sol-base01);
-  color: var(--sol-base03);
+  color: var(--sol-base3);
   top: 0px;
   font-size: larger;
   z-index: 1;
@@ -81,7 +81,7 @@ tbody th {
 
 tbody th .table-section {
   background: var(--sol-base1);
-  color: var(--sol-base03);
+  color: var(--sol-base3);
   border-radius: var(--sexy-radius);
   padding: 5px 10px;
 }
@@ -113,7 +113,7 @@ table a:hover {
 
 th.sort-none:hover, th.sort-asc:hover, th.sort-desc:hover {
   cursor: pointer;
-  color: var(--sol-base2);
+  color: var(--sol-base03);
 }
 
 th.sort-asc::after {
