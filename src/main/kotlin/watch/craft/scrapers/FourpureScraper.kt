@@ -35,12 +35,14 @@ class FourpureScraper : Scraper {
           ScrapedItem(
             name = parts.name,
             desc = doc.maybe { formattedTextFrom(".productDetailsWrap .innerContent") },
-            abv = doc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+(\\.\\d+)?)")[1].toDouble(),
-            keg = parts.keg,
-            sizeMl = parts.sizeMl,
+            abv = doc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+(\\.\\d+)?)").doubleFrom(1),
             available = true,
             offers = setOf(
-              Offer(totalPrice = el.selectFrom(".priceNow, .priceStandard").priceFrom(".GBP"))
+              Offer(
+                totalPrice = el.selectFrom(".priceNow, .priceStandard").priceFrom(".GBP"),
+                keg = parts.keg,
+                sizeMl = parts.sizeMl
+              )
             ),
             thumbnailUrl = a.srcFrom("img")
           )

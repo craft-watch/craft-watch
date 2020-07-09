@@ -32,14 +32,14 @@ class SolvayScraper : Scraper {
             summary = if (mixed) null else nameParts[2],
             desc = desc.formattedTextFrom(),
             mixed = mixed,
-            keg = rawName.contains("keg", ignoreCase = true),
             abv = if (mixed) null else rawName.abvFrom(),
-            sizeMl = if (mixed) null else desc.sizeMlFrom(),
             available = true,
             offers = setOf(
               Offer(
                 quantity = rawName.maybe { extract("(\\d+) pack").intFrom(1) } ?: 1,
-                totalPrice = el.priceFrom(".product-price")
+                totalPrice = el.priceFrom(".product-price"),
+                keg = rawName.contains("keg", ignoreCase = true),
+                sizeMl = if (mixed) null else desc.sizeMlFrom()
               )
             ),
             thumbnailUrl = el.dataSrcFrom("img.grid-image-cover")

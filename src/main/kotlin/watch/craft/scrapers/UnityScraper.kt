@@ -29,11 +29,13 @@ class UnityScraper : Scraper {
             summary = null,
             desc = desc,
             mixed = false,
-            sizeMl = desc.sizeMlFrom(),
             abv = desc.abvFrom(),
             available = details.available,
             offers = setOf(
-              Offer(totalPrice = details.price)
+              Offer(
+                totalPrice = details.price,
+                sizeMl = desc.sizeMlFrom()
+              )
             ),
             thumbnailUrl = details.thumbnailUrl
           )

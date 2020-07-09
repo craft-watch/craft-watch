@@ -37,7 +37,6 @@ class ThornbridgeScraper : Scraper {
             summary = parts[2],
             desc = desc.formattedTextFrom(),
             mixed = false,
-            sizeMl = desc.maybe { sizeMlFrom() },
             abv = abv,
             available = "sold-out" !in el.classNames(),
             offers = setOf(
@@ -45,7 +44,8 @@ class ThornbridgeScraper : Scraper {
                 quantity = desc.maybe { extractFrom(regex = "(\\d+)\\s*x").intFrom(1) }
                   ?: rawName.maybe { extract(regex = "(\\d+)\\s*x").intFrom(1) }
                   ?: 1,
-                totalPrice = el.priceFrom(".product-item--price")
+                totalPrice = el.priceFrom(".product-item--price"),
+                sizeMl = desc.maybe { sizeMlFrom() }
               )
             )
           )

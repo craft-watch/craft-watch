@@ -28,13 +28,13 @@ class VillagesScraper : Scraper {
             summary = parts.summary,
             desc = doc.maybe { formattedTextFrom(".product-single__description") },
             mixed = parts.mixed,
-            sizeMl = doc.maybe { sizeMlFrom() },
             abv = parts.abv,
             available = details.available,
             offers = setOf(
               Offer(
                 quantity = parts.numCans,
-                totalPrice = details.price
+                totalPrice = details.price,
+                sizeMl = doc.maybe { sizeMlFrom() }
               )
             ),
             thumbnailUrl = details.thumbnailUrl

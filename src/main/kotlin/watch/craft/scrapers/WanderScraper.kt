@@ -39,13 +39,13 @@ class WanderScraper : Scraper {
             },  // Grotesque heterogeneous space characters
             desc = desc.formattedTextFrom(),
             mixed = mixed,
-            sizeMl = descText.sizeMlFrom(),
             abv = descText.abvFrom(),
             available = true,
             offers = setOf(
               Offer(
                 quantity = descText.maybe { extract("(\\d+)x").intFrom(1) } ?: 1,
-                totalPrice = doc.priceFrom("product-price-wrapper".hook())
+                totalPrice = doc.priceFrom("product-price-wrapper".hook()),
+                sizeMl = descText.sizeMlFrom()
               )
             ),
             thumbnailUrl = URI(

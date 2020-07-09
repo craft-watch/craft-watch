@@ -38,10 +38,12 @@ class PressureDropScraper : Scraper {
             summary = parts[3].ifBlank { null },
             desc = doc.maybe { formattedTextFrom(".product-description") },
             abv = itemText.maybe { abvFrom() },
-            sizeMl = itemText.maybe { sizeMlFrom() },
             available = true,
             offers = setOf(
-              Offer(totalPrice = doc.priceFrom(".ProductPrice"))
+              Offer(
+                totalPrice = doc.priceFrom(".ProductPrice"),
+                sizeMl = itemText.maybe { sizeMlFrom() }
+              )
             )
           )
         }

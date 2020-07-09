@@ -65,13 +65,13 @@ class NorthernMonkScraper : Scraper {
             },
             desc = desc.formattedTextFrom(),
             mixed = mixed,
-            sizeMl = desc.maybe { sizeMlFrom() },
             abv = abv,
             available = true,
             offers = setOf(
               Offer(
                 quantity = rawName.maybe { extract(PACK_REGEX).intFrom(1) } ?: 1,
-                totalPrice = el.priceFrom(".card__price")
+                totalPrice = el.priceFrom(".card__price"),
+                sizeMl = desc.maybe { sizeMlFrom() }
               )
             ),
             thumbnailUrl = URI(

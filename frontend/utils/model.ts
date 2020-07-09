@@ -21,9 +21,7 @@ export interface BaseItem {
   name: string;
   summary: string | null;
   desc: string | null;
-  keg: boolean;
   mixed: boolean;
-  sizeMl: number | null;
   abv: number | null;
   offers: Array<Offer>;
   available: boolean;
@@ -36,6 +34,8 @@ export interface BaseItem {
 export interface Offer {
   quantity: number;
   totalPrice: number;
+  sizeMl: number | null;
+  keg: boolean;
 }
 
 export type RawItem = BaseItem & { brewery: string; }

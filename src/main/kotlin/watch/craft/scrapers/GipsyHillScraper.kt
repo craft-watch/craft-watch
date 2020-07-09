@@ -41,11 +41,11 @@ class GipsyHillScraper : Scraper {
             mixed = mixed,
             available = true, // TODO
             abv = if (mixed) null else rawSummary.maybe { abvFrom(prefix = "ABV: ", noPercent = true) },
-            sizeMl = rawSummary.maybe { sizeMlFrom() },
             offers = setOf(
               Offer(
                 quantity = numCans,
-                totalPrice = el.priceFrom(".woocommerce-Price-amount")
+                totalPrice = el.priceFrom(".woocommerce-Price-amount"),
+                sizeMl = rawSummary.maybe { sizeMlFrom() }
               )
             ),
             thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail")

@@ -31,10 +31,12 @@ class BoxcarScraper : Scraper {
             summary = parts[3].ifBlank { null },
             desc = doc.maybe { formattedTextFrom(".product-single__description") }
               ?.replace("^DESCRIPTION".toRegex(IGNORE_CASE), ""),
-            sizeMl = details.title.sizeMlFrom(),
             available = details.available,
             offers = setOf(
-              Offer(totalPrice = details.price)
+              Offer(
+                totalPrice = details.price,
+                sizeMl = details.title.sizeMlFrom()
+              )
             )
           )
         }

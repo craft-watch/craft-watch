@@ -36,11 +36,13 @@ class PollysScraper : Scraper {
             summary = parts[2],
             desc = doc.formattedTextFrom("#tab-description"),
             mixed = false,
-            sizeMl = POLLYS_CAN_SIZE_ML,
             abv = parts[3].toDouble(),
             available = ".out-of-stock" !in doc,
             offers = setOf(
-              Offer(totalPrice = doc.priceFrom("#main .woocommerce-Price-amount"))
+              Offer(
+                totalPrice = doc.priceFrom("#main .woocommerce-Price-amount"),
+                sizeMl = POLLYS_CAN_SIZE_ML
+              )
             ),
             thumbnailUrl = a.srcFrom("img")
           )

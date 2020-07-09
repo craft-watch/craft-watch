@@ -27,12 +27,10 @@ data class Item(
   val name: String,
   val summary: String? = null,
   val desc: String? = null,
-  val keg: Boolean = false,
   val mixed: Boolean = false,
-  val sizeMl: Int? = null,
   val abv: Double? = null,
   val offers: Set<Offer> = emptySet(),
-  val available: Boolean,
+  val available: Boolean,   // TODO - should this be part of the Offer?
   val categories: Set<String> = emptySet(),
   val new: Boolean = false,
   val thumbnailUrl: URI,
@@ -41,7 +39,9 @@ data class Item(
 
 data class Offer(
   val quantity: Int = 1,
-  val totalPrice: Double
+  val totalPrice: Double,
+  val sizeMl: Int? = null,
+  val keg: Boolean = false
 )
 
 data class MinimalInventory(

@@ -34,13 +34,13 @@ class WiperAndTrueScraper : Scraper {
             summary = parts.summary,
             desc = desc.formattedTextFrom(),
             mixed = parts.mixed,
-            sizeMl = parts.sizeMl,
             abv = parts.abv,
             available = ".sold-out" !in el,
             offers = setOf(
               Offer(
                 quantity = parts.numItems,
-                totalPrice = el.priceFrom(".product-price")
+                totalPrice = el.priceFrom(".product-price"),
+                sizeMl = parts.sizeMl
               )
             ),
             thumbnailUrl = el.dataSrcFrom(".product-image img")

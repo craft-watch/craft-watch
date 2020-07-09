@@ -26,8 +26,9 @@ class PollysScraperTest {
         name = "Mylar",
         summary = "IPA",
         abv = 6.3,
-        sizeMl = 440,
-        offers = setOf(Offer(totalPrice = 4.50)),
+        offers = setOf(
+          Offer(totalPrice = 4.50, sizeMl = 440)
+        ),
         available = true,
         thumbnailUrl = URI("https://craftpeak-commerce-images.imgix.net/2020/07/MYL-01.png?auto=compress%2Cformat&fit=crop&h=324&ixlib=php-1.2.1&w=324&wpsize=woocommerce_thumbnail")
       ),

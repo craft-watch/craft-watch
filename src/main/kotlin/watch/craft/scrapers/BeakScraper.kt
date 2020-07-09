@@ -31,13 +31,13 @@ class BeakScraper : Scraper {
             name = rawName.split(" ")[0].toTitleCase(),
             summary = null,
             desc = desc.formattedTextFrom(),
-            sizeMl = allTheText.sizeMlFrom(),
             abv = allTheText.abvFrom(),
             available = !a.text().contains("Sold Out", ignoreCase = true),
             offers = setOf(
               Offer(
                 quantity = allTheText.maybe { extract(NUM_ITEMS_REGEX).intFrom(1) } ?: 1,
-                totalPrice = a.priceFrom(".price")
+                totalPrice = a.priceFrom(".price"),
+                sizeMl = allTheText.sizeMlFrom()
               )
             ),
             thumbnailUrl = a.srcFrom("img")

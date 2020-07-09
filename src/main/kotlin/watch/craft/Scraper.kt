@@ -28,10 +28,8 @@ interface Scraper {
     val name: String,
     val summary: String? = null,
     val desc: String? = null,
-    val keg: Boolean = false,
     val mixed: Boolean = false,
     val offers: Set<Offer> = emptySet(),
-    val sizeMl: Int? = null,
     val abv: Double? = null,
     val available: Boolean,
     val thumbnailUrl: URI

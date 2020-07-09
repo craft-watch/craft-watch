@@ -2,11 +2,8 @@ package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import watch.craft.Offer
+import watch.craft.*
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.byName
-import watch.craft.executeScraper
-import watch.craft.noDesc
 import java.net.URI
 
 class PillarsScraperTest {
@@ -25,7 +22,6 @@ class PillarsScraperTest {
       ScrapedItem(
         name = "Pillars Icebock",
         summary = "Eisbock",
-        sizeMl = null,
         abv = 8.0,
         offers = setOf(Offer(totalPrice = 6.00)),
         available = true,
@@ -38,8 +34,8 @@ class PillarsScraperTest {
   @Test
   fun `identifies kegs`() {
     val item = ITEMS.byName("Pillars Pilsner") // Note "keg" no longer in title
-    assertEquals(5000, item.sizeMl)
-    assertTrue(item.keg)
+    assertEquals(5000, item.onlyOffer().sizeMl)
+    assertTrue(item.onlyOffer().keg)
   }
 
   @Test

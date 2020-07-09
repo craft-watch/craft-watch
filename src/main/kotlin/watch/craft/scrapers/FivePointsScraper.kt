@@ -34,14 +34,14 @@ class FivePointsScraper : Scraper {
             name = a.extractFrom(regex = "([^(]+)")[1].trim().toTitleCase(),
             summary = parts[1],
             desc = doc.formattedTextFrom(".about"),
-            keg = (sizeMl >= 1000),
             abv = parts[2].toDouble(),
-            sizeMl = sizeMl,
             available = ".unavailableItemWrap" !in doc,
             offers = setOf(
               Offer(
                 quantity = parts[5].ifBlank { "1" }.toInt(),
-                totalPrice = el.extractFrom(".priceStandard", "£(\\d+\\.\\d+)").doubleFrom(1)
+                totalPrice = el.extractFrom(".priceStandard", "£(\\d+\\.\\d+)").doubleFrom(1),
+                sizeMl = sizeMl,
+                keg = (sizeMl >= 1000)
               )
             ),
             thumbnailUrl = el.srcFrom(".imageInnerWrap img")

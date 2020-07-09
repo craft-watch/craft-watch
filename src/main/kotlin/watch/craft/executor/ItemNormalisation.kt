@@ -18,16 +18,14 @@ fun Result.normalise() = Item(
   desc = item.desc
     ?.trim()
     ?.validate("non-blank description") { it.isNotBlank() },
-  keg = item.keg,
   mixed = item.mixed,
-  // TODO - validate sane size
-  sizeMl = item.sizeMl,
   abv = item.abv
     ?.validate("sane ABV") { it < MAX_ABV },
+  // TODO - validate sane size
   offers = item.offers
     .validate("sane price per ml") {
       it.all { offer ->
-        (offer.totalPrice / offer.quantity / (item.sizeMl ?: 330)) < MAX_PRICE_PER_ML
+        (offer.totalPrice / offer.quantity / (offer.sizeMl ?: 330)) < MAX_PRICE_PER_ML
       }
     },
   available = item.available,

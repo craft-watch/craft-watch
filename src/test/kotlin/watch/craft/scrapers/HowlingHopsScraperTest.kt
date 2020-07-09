@@ -27,10 +27,9 @@ class HowlingHopsScraperTest {
         name = "Push Push",
         summary = "DDH Pale Ale",
         offers = setOf(
-          Offer(quantity = 4, totalPrice = 16.00)
+          Offer(quantity = 4, totalPrice = 16.00, sizeMl = 440)
         ),
         abv = 5.8,
-        sizeMl = 440,
         available = true,
         thumbnailUrl = URI("https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png")
       ),

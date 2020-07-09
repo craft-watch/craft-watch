@@ -43,13 +43,13 @@ class RedWillowScraper : Scraper {
             summary = rawName.maybe { extract("%\\s+([^\\d]+)$")[1] },  // In some cases, beer type is after the ABV
             desc = desc.ifBlank { null },
             mixed = rawName.contains("mixed", ignoreCase = true),
-            sizeMl = allText.maybe { sizeMlFrom() },
             abv = rawName.maybe { abvFrom() },
             available = true,
             offers = setOf(
               Offer(
                 quantity = bestDeal.numItems,
-                totalPrice = bestDeal.price
+                totalPrice = bestDeal.price,
+                sizeMl = allText.maybe { sizeMlFrom() }
               )
             ),
             thumbnailUrl = doc.extractSmallThumbnail()

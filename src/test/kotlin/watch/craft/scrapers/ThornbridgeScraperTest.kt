@@ -25,9 +25,10 @@ class ThornbridgeScraperTest {
       ScrapedItem(
         name = "Jaipur",    // No "can" or "bottle" in title
         summary = "IPA",
-        sizeMl = 330,
         abv = 5.9,
-        offers = setOf(Offer(totalPrice = 2.00)),
+        offers = setOf(
+          Offer(totalPrice = 2.00, sizeMl = 330)
+        ),
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_can_mockup_coloured_background_300x300.jpg?v=1583154011")
       ),

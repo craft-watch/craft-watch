@@ -25,9 +25,10 @@ class StewartScraperTest {
       ScrapedItem(
         name = "Cascadian East",
         summary = "India Pale Ale",
-        sizeMl = 330,
         abv = 5.4,
-        offers = setOf(Offer(totalPrice = 2.00)),
+        offers = setOf(
+          Offer(totalPrice = 2.00, sizeMl = 330)
+        ),
         available = true,
         thumbnailUrl = URI("https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-cascadian-east-1589535328cas-front-330.png")
       ),

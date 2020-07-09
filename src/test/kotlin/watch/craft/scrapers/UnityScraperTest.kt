@@ -26,8 +26,9 @@ class UnityScraperTest {
       ScrapedItem(
         name = "Conflux Pale Ale",
         abv = 4.8,
-        sizeMl = 440,
-        offers = setOf(Offer(totalPrice = 3.80)),
+        offers = setOf(
+          Offer(totalPrice = 3.80, sizeMl = 440)
+        ),
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0340/2829/0107/products/CONFLUX_can_345x345.jpg?v=1584098753")
       ),

@@ -37,14 +37,14 @@ class CloudwaterScraper : Scraper {
             summary = if (nameLines.size > 1) nameLines[1] else null,
             desc = desc,
             mixed = mixed,
-            sizeMl = if (mixed) null else desc.sizeMlFrom(),
             abv = if (mixed) null else descLines.mapNotNull { it.maybe { abvFrom() } }
               .min(), // Workaround for prose saying "100%"
             available = true,
             offers = setOf(
               Offer(
                 quantity = max(1, allNumItems.sum()),
-                totalPrice = el.priceFrom(".price-regular")
+                totalPrice = el.priceFrom(".price-regular"),
+                sizeMl = if (mixed) null else desc.sizeMlFrom()
               )
             ),
             thumbnailUrl = el.dataSrcFrom(".product-grid-image img")

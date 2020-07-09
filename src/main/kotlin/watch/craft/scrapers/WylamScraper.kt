@@ -40,13 +40,13 @@ class WylamScraper : Scraper {
             name = nameParts[1].trim(),
             summary = nameParts[2].trim().ifBlank { null },
             desc = doc.formattedTextFrom(".product-details__product-description"),
-            sizeMl = rawName.sizeMlFrom(),
             abv = abv,
             available = data.offers.availability == "http://schema.org/InStock",
             offers = setOf(
               Offer(
                 quantity = numItems,
-                totalPrice = data.offers.price
+                totalPrice = data.offers.price,
+                sizeMl = rawName.sizeMlFrom()
               )
             ),
             thumbnailUrl = el.srcFrom("img.grid-product__picture")

@@ -43,14 +43,6 @@ class ItemNormalisationTest {
   }
 
   @Test
-  fun `creates offer`() {
-    assertEquals(
-      setOf(Offer(quantity = 2, totalPrice = 3.72)),
-      normalise(prototype).offers
-    )
-  }
-
-  @Test
   fun `rejects if name is blank`() {
     assertNoValidationFailure(prototype.copy(name = "Yeah"))
     assertValidationFailure(prototype.copy(name = " "))
@@ -117,8 +109,7 @@ class ItemNormalisationTest {
   private val prototype = ScrapedItem(
     name = "Ted Shandy",
     summary = "Awful",
-    offers = setOf(Offer(quantity = 2, totalPrice = 3.72)),
-    sizeMl = 330,
+    offers = setOf(Offer(quantity = 2, totalPrice = 3.72, sizeMl = 330)),
     abv = 1.2,
     available = true,
     thumbnailUrl = URI("https://example.invalid/assets/ted-shandy.jpg")

@@ -72,18 +72,18 @@ class Executor(
       { it.brewery },
       { it.name },
       { it.available },
-      { it.sizeMl },
-      { it.keg },
-      { it.offers.single().quantity }
+      { it.onlyOffer().sizeMl },
+      { it.onlyOffer().keg },
+      { it.onlyOffer().quantity }
     )
   ))
 
-  private fun Inventory.bestPricedItems() = copy(items = items.groupBy { ItemGroupFields(it.brewery, it.name, it.keg) }
+  private fun Inventory.bestPricedItems() = copy(items = items.groupBy { ItemGroupFields(it.brewery, it.name, it.onlyOffer().keg) }
     .map { (key, group) ->
       if (group.size > 1) {
         logger.info("[${key.brewery}] Eliminating ${group.size - 1} more expensive item(s) for [${key.name}]")
       }
-      group.minBy { it.offers.single().run { totalPrice / quantity } }!!
+      group.minBy { it.onlyOffer().run { totalPrice / quantity } }!!
     }
   )
 
@@ -92,6 +92,8 @@ class Executor(
       .forEach { (key, group) -> logger.info("Scraped (${key}): ${group.size}") }
     logger.info("Scraped (TOTAL): ${items.size}")
   }
+
+  private fun Item.onlyOffer() = offers.single()
 
   private data class ItemGroupFields(
     val brewery: String,

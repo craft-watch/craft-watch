@@ -41,13 +41,15 @@ class SirenScraper : Scraper {
             name = rawName.replace("(\\d+)L Mini Keg - ".toRegex(), ""),
             summary = if (keg) null else details[1],
             desc = doc.formattedTextFrom(".about"),
-            keg = keg,
             mixed = false,
-            sizeMl = if (keg) 5000 else details[4].toInt(),
             abv = details[2].toDouble(),
             available = ".unavailableItemWrap" !in doc,
             offers = setOf(
-              Offer(totalPrice = el.priceFrom(".itemPriceWrap"))
+              Offer(
+                totalPrice = el.priceFrom(".itemPriceWrap"),
+                keg = keg,
+                sizeMl = if (keg) 5000 else details[4].toInt()
+              )
             ),
             thumbnailUrl = el.srcFrom(".imageInnerWrap img")
           )

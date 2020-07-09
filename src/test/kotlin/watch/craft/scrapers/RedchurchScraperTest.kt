@@ -24,9 +24,10 @@ class RedchurchScraperTest {
     assertEquals(
       ScrapedItem(
         name = "Shoreditch Blonde",
-        sizeMl = 330,
         abv = 4.5,
-        offers = setOf(Offer(quantity = 24, totalPrice = 35.00)),
+        offers = setOf(
+          Offer(quantity = 24, totalPrice = 35.00, sizeMl = 330)
+        ),
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0034/8694/1229/products/SBwwwimage_200x200.png")
       ),

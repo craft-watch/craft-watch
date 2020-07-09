@@ -35,7 +35,6 @@ class HowlingHopsScraper : Scraper {
             desc = doc.maybe { formattedTextFrom(".woocommerce-product-details__short-description") },
             mixed = parts.mixed,
             available = doc.textFrom(".stock") == "In stock",
-            sizeMl = desc.sizeMlFrom(),
             abv = parts.abv,
             offers = setOf(
               Offer(
@@ -44,7 +43,8 @@ class HowlingHopsScraper : Scraper {
                   .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
                   .first()
                   .ownText()
-                  .toDouble()
+                  .toDouble(),
+                sizeMl = desc.sizeMlFrom()
               )
             )
 

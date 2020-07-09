@@ -45,13 +45,13 @@ class RedchurchScraper : Scraper {
             name = nameParts[2],
             desc = doc.maybe { formattedTextFrom(".product-single__description") },
             mixed = mixed,
-            sizeMl = sizeMl,
             abv = abv,
             available = ".sold-out-text" !in el,
             offers = setOf(
               Offer(
                 quantity = bestDeal.numItems,
-                totalPrice = bestDeal.price
+                totalPrice = bestDeal.price,
+                sizeMl = sizeMl
               )
             )
           )
