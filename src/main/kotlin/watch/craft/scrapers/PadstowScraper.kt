@@ -46,10 +46,10 @@ class PadstowScraper : Scraper {
             desc = doc.textFrom(".post_content"),
             mixed = mixed,
             keg = rawName.contains("mini( ?)keg".toRegex(IGNORE_CASE)),
-            abv = if (mixed) null else doc.extractFrom(".abv .stat", "\\d+(\\.\\d+)?")[0].toDouble(),
+            abv = if (mixed) null else doc.extractFrom(".abv .stat", "\\d+(\\.\\d+)?").doubleFrom(0),
             sizeMl = if (mixed) null else rawSize.sizeMlFrom(),
             available = true,
-            numItems = rawSize.maybe { extract("(\\d+) x") }?.get(1)?.toInt() ?: 1,
+            numItems = rawSize.maybe { extract("(\\d+) x").intFrom(1) } ?: 1,
             price = el.priceFrom(".woocommerce-Price-amount")
           )
         }

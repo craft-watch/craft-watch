@@ -27,7 +27,7 @@ class GipsyHillScraper : Scraper {
           val numCans = doc.maybe { selectMultipleFrom(".woosb-title-inner") }
             ?.map { it.extractFrom(regex = "(\\d+) ×")[1].toInt() }?.sum()
             ?: 1
-          val style = rawSummary.maybe { extract("Style: (.*) ABV") }?.get(1)
+          val style = rawSummary.maybe { extract("Style: (.*) ABV")[1] }
           val mixed = style in listOf("Various", "Mixed")
 
           val name = rawName.replace(" \\(.*\\)$".toRegex(), "")

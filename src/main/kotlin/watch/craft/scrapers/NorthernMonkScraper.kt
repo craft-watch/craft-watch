@@ -60,14 +60,14 @@ class NorthernMonkScraper : Scraper {
             summary = if (nameParts.size > 1) {
               nameParts[1]
             } else {
-              rawName.maybe { extract("[^/]+\\s+//\\s+(.*)") }?.get(1)
+              rawName.maybe { extract("[^/]+\\s+//\\s+(.*)")[1] }
             },
             desc = desc.formattedTextFrom(),
             mixed = mixed,
             sizeMl = desc.maybe { sizeMlFrom() },
             abv = abv,
             available = true,
-            numItems = rawName.maybe { extract(PACK_REGEX) }?.get(1)?.toInt() ?: 1,
+            numItems = rawName.maybe { extract(PACK_REGEX).intFrom(1) } ?: 1,
             price = el.priceFrom(".card__price"),
             thumbnailUrl = URI(
               // The URLs are dynamically created
