@@ -1,5 +1,6 @@
 package watch.craft.executor
 
+import watch.craft.DEFAULT_SIZE_ML
 import watch.craft.InvalidItemException
 import watch.craft.Item
 import watch.craft.executor.ScraperAdapter.Result
@@ -23,9 +24,10 @@ fun Result.normalise() = Item(
     ?.validate("sane ABV") { it < MAX_ABV },
   // TODO - validate sane size
   offers = item.offers
+    .toList()
     .validate("sane price per ml") {
       it.all { offer ->
-        (offer.totalPrice / offer.quantity / (offer.sizeMl ?: 330)) < MAX_PRICE_PER_ML
+        (offer.totalPrice / offer.quantity / (offer.sizeMl ?: DEFAULT_SIZE_ML)) < MAX_PRICE_PER_ML
       }
     },
   available = item.available,

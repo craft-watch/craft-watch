@@ -7,6 +7,8 @@ val LOCAL_STORAGE_DIR = File("storage")
 const val INVENTORY_FILENAME = "inventory.json"
 val CANONICAL_INVENTORY_PATH = File("frontend/data/${INVENTORY_FILENAME}")
 
+const val DEFAULT_SIZE_ML = 330
+
 // Key order here is respected in frontend
 val CATEGORY_KEYWORDS = mapOf(
   "Pale" to listOf(

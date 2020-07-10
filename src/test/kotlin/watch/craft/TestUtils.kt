@@ -25,7 +25,7 @@ fun List<ScrapedItem>.display() = forEach { println(it.noDesc()) }
 val PROTOTYPE_ITEM = Item(
   brewery = "",
   name = "",
-  offers = setOf(Offer(quantity = 1, totalPrice = 0.00)),
+  offers = listOf(Offer(quantity = 1, totalPrice = 0.00)),
   available = false,
   thumbnailUrl = URI(""),
   url = URI("")

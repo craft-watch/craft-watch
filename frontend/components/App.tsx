@@ -6,7 +6,7 @@ import Menu, { Selections, Section as MenuSection } from "./Menu";
 import InventoryTable from "./InventoryTable";
 import Sidebar from "./Sidebar";
 import { MIXED_CASE, MINIKEG, REGULAR, OUT_OF_STOCK } from "../utils/strings";
-import { extractOffer } from "../utils/stuff";
+import { headlineOffer } from "../utils/stuff";
 
 interface Props {
   title: string;
@@ -95,9 +95,9 @@ class App extends React.Component<Props, State> {
     this.state.brewerySelections[item.brewery.shortName];
 
   private formatSelected = (item: Item): boolean =>
-    (this.state.formatSelections[REGULAR] && !extractOffer(item).keg && !item.mixed) ||
+    (this.state.formatSelections[REGULAR] && !headlineOffer(item).keg && !item.mixed) ||
     (this.state.formatSelections[MIXED_CASE] && item.mixed) ||
-    (this.state.formatSelections[MINIKEG] && extractOffer(item).keg);
+    (this.state.formatSelections[MINIKEG] && headlineOffer(item).keg);
 
   private availabilitySelected = (item: Item): boolean =>
     (this.state.availabilitySelections[OUT_OF_STOCK] || item.available);
