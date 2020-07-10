@@ -38,7 +38,7 @@ class CanopyScraperTest {
 
   @Test
   fun `identifies sold out`() {
-    assertFalse(ITEMS.byName("Sunray Pale Ale").available)
+    assertFalse(ITEMS.byName("Champion Kölsch").available)
   }
 
   @Test

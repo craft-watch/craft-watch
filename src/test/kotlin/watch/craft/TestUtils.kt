@@ -5,7 +5,7 @@ import watch.craft.Scraper.ScrapedItem
 import watch.craft.executor.ScraperAdapter
 import java.net.URI
 
-private const val GOLDEN_DATE = "2020-07-03"
+private const val GOLDEN_DATE = "2020-07-10"
 
 fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE) = runBlocking {
   ScraperAdapter(

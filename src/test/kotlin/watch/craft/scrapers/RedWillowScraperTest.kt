@@ -8,12 +8,12 @@ import java.net.URI
 
 class RedWillowScraperTest {
   companion object {
-    private val ITEMS = executeScraper(RedWillowScraper(), dateString = null)
+    private val ITEMS = executeScraper(RedWillowScraper())
   }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(13, ITEMS.size)
+    assertEquals(14, ITEMS.size)
   }
 
   @Test

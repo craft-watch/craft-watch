@@ -13,7 +13,7 @@ class MarbleScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(27, ITEMS.size)
+    assertEquals(24, ITEMS.size)
   }
 
   @Test
@@ -51,7 +51,7 @@ class MarbleScraperTest {
 
   @Test
   fun `identifies sold out`() {
-    assertFalse(ITEMS.byName("Cross Collar Half").available)
+    assertFalse(ITEMS.byName("Cross Collar").available)
   }
 
   @Test

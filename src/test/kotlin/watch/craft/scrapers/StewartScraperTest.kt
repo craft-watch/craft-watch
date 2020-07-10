@@ -16,7 +16,7 @@ class StewartScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(12, ITEMS.size)
+    assertEquals(13, ITEMS.size)
   }
 
   @Test

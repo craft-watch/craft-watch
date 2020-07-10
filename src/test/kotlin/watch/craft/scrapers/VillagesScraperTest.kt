@@ -17,7 +17,7 @@ class VillagesScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(8, ITEMS.size)
+    assertEquals(7, ITEMS.size)
   }
 
   @Test
@@ -48,7 +48,7 @@ class VillagesScraperTest {
           Offer(quantity = 24, totalPrice = 52.50, sizeMl = 330)
         ),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg?v=1593725278")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg?v=1594207558")
       ),
       ITEMS.byName("Villages Mixed Case").noDesc()
     )

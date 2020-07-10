@@ -1,7 +1,6 @@
 package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import watch.craft.*
 import watch.craft.Scraper.ScrapedItem
@@ -21,16 +20,16 @@ class FivePointsScraperTest {
   fun `extracts beer details`() {
     assertEquals(
       ScrapedItem(
-        name = "Five Points Pils",   // No size in title
-        summary = "Pilsner",
+        name = "Five Points Jupa",   // No size in title
+        summary = "Juicy Pale Ale",
         offers = setOf(
-          Offer(quantity = 12, totalPrice = 21.60, sizeMl = 330)
+          Offer(quantity = 12, totalPrice = 23.50, sizeMl = 330)
         ),
-        abv = 4.8,
+        abv = 5.5,
         available = true,
-        thumbnailUrl = URI("https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-pils-1574871238PILS-Can-Mock-Up.png")
+        thumbnailUrl = URI("https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-jupa-1574871172Jupa-Can-Mock-Up.png")
       ),
-      ITEMS.byName("Five Points Pils").noDesc()
+      ITEMS.byName("Five Points Jupa").noDesc()
     )
   }
 
@@ -42,9 +41,8 @@ class FivePointsScraperTest {
   }
 
   @Test
-  @Disabled
   fun `identifies sold out`() {
-    assertFalse(ITEMS.byName("Five Points Best").available)
+    assertFalse(ITEMS.byName("Five Points Pils").available)
   }
 
   @Test

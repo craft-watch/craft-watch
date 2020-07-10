@@ -9,12 +9,12 @@ import kotlin.text.RegexOption.IGNORE_CASE
 
 class NorthernMonkScraperTest {
   companion object {
-    private val ITEMS = executeScraper(NorthernMonkScraper(), dateString = "2020-07-06")
+    private val ITEMS = executeScraper(NorthernMonkScraper())
   }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(15, ITEMS.size)
+    assertEquals(17, ITEMS.size)
   }
 
   @Test

@@ -11,12 +11,12 @@ import java.net.URI
 
 class WylamScraperTest {
   companion object {
-    private val ITEMS = executeScraper(WylamScraper(), dateString = "2020-07-05")
+    private val ITEMS = executeScraper(WylamScraper())
   }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(10, ITEMS.size)
+    assertEquals(12, ITEMS.size)
   }
 
   @Test

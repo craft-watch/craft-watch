@@ -17,7 +17,7 @@ class UnityScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(3, ITEMS.size)
+    assertEquals(5, ITEMS.size)
   }
 
   @Test
