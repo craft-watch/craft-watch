@@ -1,5 +1,6 @@
 package watch.craft
 
+import watch.craft.enrichers.Categoriser.Synonym
 import java.io.File
 
 const val GCS_BUCKET = "backend.craft.watch"
@@ -12,54 +13,56 @@ const val DEFAULT_SIZE_ML = 330
 // Key order here is respected in frontend
 val CATEGORY_KEYWORDS = mapOf(
   "Pale" to listOf(
-    "Pale",
-    "Pale Ale",
-    "Blonde",
-    "Blonde Ale",
-    "Saison",
-    "Amber Ale"
+    "Pale".anywhere(),
+    "Pale Ale".anywhere(),
+    "Blonde".anywhere(),
+    "Blonde Ale".anywhere(),
+    "Saison".anywhere(),
+    "Amber Ale".anywhere()
   ),
   "IPA" to listOf(
-    "IPA",
-    "DIPA",
-    "DDH",
-    "New England IPA",
-    "NEIPA",
-    "India Pale Ale",
-    "XPA",
-    "Extra Pale Ale"
+    "IPA".anywhere(),
+    "DIPA".anywhere(),
+    "DDH".anywhere(),
+    "New England IPA".anywhere(),
+    "NEIPA".anywhere(),
+    "India Pale Ale".anywhere(),
+    "XPA".anywhere(),
+    "Extra Pale Ale".anywhere()
   ),
   "Dark" to listOf(
-    "Porter",
-    "Stout",
-    "Red Ale",
-    "Dark"
+    "Porter".anywhere(),
+    "Stout".anywhere(),
+    "Red Ale".anywhere(),
+    "Dark".anywhere()
   ),
   "Bitter" to listOf(
-    "Bitter",
-    "Copper Ale",
-    "Golden Ale"
+    "Bitter".anywhere(),
+    "Copper Ale".anywhere(),
+    "Golden Ale".anywhere()
   ),
   "Pils / Lager" to listOf(
-    "Pils",
-    "Pilsner",
-    "Lager",
-    "India Pale Lager"
+    "Pils".anywhere(),
+    "Pilsner".anywhere(),
+    "Lager".anywhere(),
+    "India Pale Lager".anywhere()
   ),
   "Weisse" to listOf(
-    "Weiss",
-    "Weisse",
-    "Weizen",
-    "Weizenbier",
-    "Hefeweizen",
-    "Witbier",
-    "Weißbier"
+    "Weiss".anywhere(),
+    "Weisse".anywhere(),
+    "Weizen".anywhere(),
+    "Weizenbier".anywhere(),
+    "Hefeweizen".anywhere(),
+    "Witbier".anywhere(),
+    "Weißbier".anywhere()
   ),
   "Sours / Gose" to listOf(
-    "Sour",
-    "Gose"
+    "Sour".anywhere(),
+    "Gose".anywhere()
   ),
   "Cider" to listOf(
-    "Cider"
+    "Cider".anywhere()
   )
 )
+
+private fun String.anywhere() = Synonym(this)

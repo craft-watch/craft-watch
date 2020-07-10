@@ -4,9 +4,13 @@ import watch.craft.Enricher
 import watch.craft.Item
 import kotlin.text.RegexOption.IGNORE_CASE
 
-class Categoriser(categories: Map<String, List<String>>) : Enricher {
-  private val keywords = categories
-    .flatMap { (category, synonyms) -> synonyms.map { Keyword(it, it.toSweetRegex(), category) } }
+class Categoriser(categories: Map<String, List<Synonym>>) : Enricher {
+  data class Synonym(
+    val pattern: String
+  )
+
+  private val candidates = categories
+    .flatMap { (category, synonyms) -> synonyms.map { Candidate(it, it.toSweetRegex(), category) } }
 
   override fun enrich(item: Item): Item {
     val components = listOf(
@@ -16,8 +20,8 @@ class Categoriser(categories: Map<String, List<String>>) : Enricher {
     )
 
     return item.copy(
-      categories = keywords
-        .filter { keyword -> components.any { it?.contains(keyword.regex) ?: false } }
+      categories = candidates
+        .filter { candidate -> components.any { it?.contains(candidate.regex) ?: false } }
         .pickMostSpecific()
         .map { it.category }
         .distinct()
@@ -25,14 +29,14 @@ class Categoriser(categories: Map<String, List<String>>) : Enricher {
   }
 
   // Ensure we don't match against partial words
-  private fun String.toSweetRegex() = "(^|\\W)${Regex.escape(this)}($|\\W)".toRegex(IGNORE_CASE)
+  private fun Synonym.toSweetRegex() = "(^|\\W)${Regex.escape(pattern)}($|\\W)".toRegex(IGNORE_CASE)
 
-  private fun List<Keyword>.pickMostSpecific(): List<Keyword> {
-    val output = mutableListOf<Keyword>()
+  private fun List<Candidate>.pickMostSpecific(): List<Candidate> {
+    val output = mutableListOf<Candidate>()
 
-    sortedByDescending { it.raw.length }
+    sortedByDescending { it.synonym.pattern.length }
       .forEach { candidate ->
-        if (output.none { it.raw.contains(candidate.raw, ignoreCase = true) }) {
+        if (output.none { it.synonym.pattern.contains(candidate.synonym.pattern, ignoreCase = true) }) {
           output += candidate
         }
       }
@@ -40,8 +44,8 @@ class Categoriser(categories: Map<String, List<String>>) : Enricher {
     return output
   }
 
-  private data class Keyword(
-    val raw: String,
+  private data class Candidate(
+    val synonym: Synonym,
     val regex: Regex,
     val category: String
   )
