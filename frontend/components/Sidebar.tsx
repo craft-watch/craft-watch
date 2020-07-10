@@ -4,7 +4,7 @@ import { Brewery } from "../utils/model";
 import _ from "underscore";
 import { toSafePathPart } from "../utils/stuff";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitterSquare, faGithubSquare } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 
 interface Props {
@@ -63,13 +63,13 @@ const Sidebar = (props: Props): JSX.Element => {
 
 const TwitterLink = () => (
   <a href="https://twitter.com/craft_watch">
-    <FontAwesomeIcon icon={faTwitterSquare} />
+    <FontAwesomeIcon icon={faTwitter} />
   </a>
 );
 
 const GitHubLink = () => (
   <a href="https://github.com/craft-watch">
-    <FontAwesomeIcon icon={faGithubSquare} />
+    <FontAwesomeIcon icon={faGithub} />
   </a>
 );
 
