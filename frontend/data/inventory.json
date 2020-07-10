@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-10T20:59:22.870701Z"
+    "capturedAt" : "2020-07-10T21:40:13.015062Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -3402,7 +3402,7 @@
       "keg" : false
     } ],
     "available" : true,
-    "categories" : [ ],
+    "categories" : [ "Weisse" ],
     "new" : true,
     "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/57876558f5e231f300f4e5d4/1592822249451-7SC1QN1PPBZ92677246O/ke17ZwdGBToddI8pDm48kL6e7maM9d9LlbOsgJ60npx7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0prfa1Z6IeUrCPboCAmmHZn1d9sn6tt7ZK8gH_yulF9YOA3UNujEi8p2o_yOFIn2TQ/Witless.jpg?format=200w",
     "url" : "https://www.redwillowbrewery.com/shop/witless-42-440ml"
