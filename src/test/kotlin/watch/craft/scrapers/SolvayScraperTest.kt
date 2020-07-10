@@ -8,7 +8,7 @@ import java.net.URI
 
 class SolvayScraperTest {
   companion object {
-    private val ITEMS = executeScraper(SolvayScraper(), dateString = "2020-07-10")
+    private val ITEMS = executeScraper(SolvayScraper())
   }
 
   @Test

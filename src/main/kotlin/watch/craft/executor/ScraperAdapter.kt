@@ -75,7 +75,7 @@ class ScraperAdapter(
 
   private suspend fun request(url: URI) = try {
     Jsoup.parse(
-      String(retriever.retrieve(url)),
+      String(retriever.retrieve(url, ".html")),
       url.toString()
     )!!
   } catch (e: CancellationException) {

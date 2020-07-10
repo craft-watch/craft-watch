@@ -17,7 +17,7 @@ class BoxcarScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(8, ITEMS.size)
+    assertEquals(9, ITEMS.size)
   }
 
   @Test

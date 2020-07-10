@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-10T17:23:53.067673Z"
+    "capturedAt" : "2020-07-10T20:59:22.870701Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -116,7 +116,7 @@
     "name" : "Solvay Society",
     "location" : "Leytonstone, London",
     "websiteUrl" : "https://www.solvaysociety.com/",
-    "new" : true
+    "new" : false
   }, {
     "shortName" : "Stewart Brewing",
     "name" : "Stewart Brewing",
@@ -172,7 +172,7 @@
       "sizeMl" : 440,
       "keg" : false
     } ],
-    "available" : true,
+    "available" : false,
     "categories" : [ "Pale" ],
     "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0286/3471/0061/products/Cans_800x800_crop_center.jpg",
@@ -596,6 +596,21 @@
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/ddh-pale-2"
   }, {
     "brewery" : "Cloudwater",
+    "name" : "DIPA Selection 6 Pack",
+    "desc" : "Get a proper flavour of Cloudwater's higher ABV offerings with this selection pack showcasing our current Double IPA offerings.\nThis pack includes the following two beers:\n3 x The Light Grey One, 8% - Bold and flavoursome, hopped with Citra and Nelson Sauvin. (440ml cans)\n3 x Friends In Small Spaces, 8% - Big & Juicy DIPA, hopped with Crop Year 2019 Citra, Amarillo and Sabro. (440ml cans)\n**THIS PACK IS NOT ELIGIBLE FOR DISCOUNTS AS IT'S ALREADY DISCOUNTED**",
+    "mixed" : true,
+    "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 34.0,
+      "keg" : false
+    } ],
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "new" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/dipa_pack_800x.jpg",
+    "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/dipa-selection-6-pack"
+  }, {
+    "brewery" : "Cloudwater",
     "name" : "Friends In Small Spaces",
     "summary" : "DIPA",
     "desc" : "Crop Year 2019 DIPA hopped with Citra, Amarillo & Sabro.\n8.0% ABV 440ml\nAroma & Flavour: Gently swirl the glass and inhale both quickly and deeply through your nose. Take several mouthfuls, swirl in your mouth, taste and experience the smell upon exhalation\nBody: Evaluate the texture of the beer in the mouth, the thickness, carbonation, and smoothness as you swallow\nAftertaste: Note lingering flavours and sensations in the mouth after drinking\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
@@ -755,21 +770,6 @@
     "new" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.870_1_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/singel-hopped-ipa-strata-single-hop-ipa-crop-year-2019-series-14"
-  }, {
-    "brewery" : "Cloudwater",
-    "name" : "Special Release Selection 8 Pack",
-    "desc" : "Get a proper flavour of Cloudwater with this selection pack showcasing some of our special release beers.\nAll of our special release beers are designed to provide a slightly different representation of our house style and our wider approach to brewing. We experiment with processes, some of which provide light bulb moments for us and improve future beers across the board!\nThey provide a wide range of flavours and experiences, bringing together our wealth of brewing and drinking experience and a respect for classic styles with a thoroughly modern, flavour-first approach.\nThis pack includes the following eight beers:\n1 x Are You The Brewer?, 6% - Crop Year 2019 Ekuanot single-hopped IPA (440ml can)\n1 x Ponderosa Pines On Rainier, 6% - Crop Year 2019 Cascade single-hopped IPA (440ml can)\n1 x Just The Right Shape, 6% - Crop Year 2019 Mosaic single-hopped IPA (440ml can)\n1 x Back On Boogie St, 6% - Crop Year 2019 Columbus single-hopped IPA (440ml can)\n1 x Singel Hopped IPA, 6% - Crop Year 2019 Strata single-hopped IPA (440ml can)\n1 x All Together IPA, 6% - This is own version of the worldwide collaboration hosted by Other Half, Stout Collective and Craftpeak to support the hospitality industry during the COVID-19 pandemic. It's a juicy IPA brewed with Citra, Mosaic, Simcoe and Cascade, with 100% of profits from its sale being donated to organisations supporting hospitality workers.(440ml can)\n1 x Edge Of The Bread, 6% - A double dry-hopped IPA, with Citra, Idaho 7 & Galaxy (440ml can)\n1 x A Gentle Nod To Welcome Visitors, 9% - A modern, heavily hopped Barley Wine (440ml can)\n**THIS PACK IS NOT ELIGIBLE FOR DISCOUNTS AS IT'S ALREADY DISCOUNTED**",
-    "mixed" : true,
-    "offers" : [ {
-      "quantity" : 8,
-      "totalPrice" : 39.0,
-      "keg" : false
-    } ],
-    "available" : true,
-    "categories" : [ "Dark", "IPA" ],
-    "new" : true,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/special_release_pack_2020_800x.jpg",
-    "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/one-off-selection-8-pack"
   }, {
     "brewery" : "Cloudwater",
     "name" : "Speyside Persistence Is Utile",
@@ -3031,7 +3031,7 @@
     "brewery" : "Pressure Drop",
     "name" : "Dreamlife",
     "summary" : "New England Pale Ale",
-    "desc" : "New England Pale 4.6%\nLie down in the green grass, look up into the blue skies and contemplate life, dreams and everything in between. Dreamlife is a soft & hazy pale ale, made for easy drinking and easy dreaming.\nMade with hops from all corners of the globe, it’s a sessionable New England pale ale brewed with Nelson Sauvin from New Zealand, Amarillo from the U.S. and Mandarina Bavaria from Germany.\nIt has distinct citrus notes of orange and grapefruit imparted by the Amarillo and Manadarina hops, while the Huell Melon  gives the beer a green fruit & melon aroma which carries through into the palate.\nDream a little dream of Dreamlife.\nLabel artwork by Pressure Drop's own Sienna O'Rourke",
+    "desc" : "New England Pale 4.6%\nLie down in the green grass, look up into the blue skies and contemplate life, dreams and everything in between. Dreamlife is a soft & hazy pale ale, made for easy drinking and easy dreaming.\nIt has distinct citrus notes of orange and grapefruit imparted by the Amarillo and Manadarina hops, while the Huell Melon  gives the beer a green fruit & melon aroma which carries through into the palate.\nDream a little dream of Dreamlife.\nLabel artwork by Pressure Drop's own Sienna O'Rourke",
     "mixed" : false,
     "abv" : 4.6,
     "offers" : [ {
@@ -3096,7 +3096,7 @@
     "categories" : [ "Sours / Gose" ],
     "new" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_5598_large.jpg",
-    "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/ida-raspberry-basil-elderflower-sour"
+    "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/ida-raspberry-basil-sour"
   }, {
     "brewery" : "Pressure Drop",
     "name" : "It Is Wednesday My Dudes",
@@ -3168,6 +3168,23 @@
     "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_8968_large.jpg",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/tomorrows-world-new-england-pale-ale"
+  }, {
+    "brewery" : "RedWillow",
+    "name" : "Ageless",
+    "summary" : "West Coast IPA",
+    "desc" : "A blast from the past, our old school IPA takes no prisoners, hopped right through the boil and dry hopped to death. Upfront it is all tropical fruit and aroma, then it finishes with a long and assertive bitterness",
+    "mixed" : false,
+    "abv" : 7.2,
+    "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 24.0,
+      "keg" : false
+    } ],
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "new" : true,
+    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/57876558f5e231f300f4e5d4/1588599473684-VWFCXOX156MLAIRCPJQG/ke17ZwdGBToddI8pDm48kOM0wi0zWgY49OChaGdbQod7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Udq808UFTE3RUCYZpscC1JaI0xjbDb9OOCsv-L8MD1ND_7k-9-XsFQ9lvpTgv0wwCA/Red_Willow_Cans_Ageless440_low_res.jpg?format=200w",
+    "url" : "https://www.redwillowbrewery.com/shop/perceptionless-66-12-x-440ml"
   }, {
     "brewery" : "RedWillow",
     "name" : "Breakfast Stout",
@@ -3507,7 +3524,7 @@
       "sizeMl" : 330,
       "keg" : false
     } ],
-    "available" : true,
+    "available" : false,
     "categories" : [ "Dark" ],
     "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0034/8694/1229/products/OFEweb_3_copy_200x200.png",
@@ -3715,25 +3732,20 @@
     "brewery" : "Siren Craft",
     "name" : "Broken Dream",
     "summary" : "Breakfast Stout",
-    "desc" : "Broken Dream is deep and complex. She lurks in your imagination. She binds smoke and coffee aromas with chocolate, milk and oats to create something thick, velvety and slick.\nA 6.5% breakfast stout with a gentle touch of smoke, coffee and chocolate.",
+    "desc" : "An indulgence of chocolate and speciality malts, Broken Dream is smooth, unctuous and moreish. It's brewed with milk sugar for balance and mouthfeel, along with carefully selected espresso from London's Climpson & Sons. Awarded CAMRA Supreme Champion Beer of Britain 2018.\nKeep Cold. Serve Cool. Drink Fresh.\nUnfiltered / Unfined\nContains Lactose",
     "mixed" : false,
     "abv" : 6.5,
     "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 2.16,
-      "sizeMl" : 330,
-      "keg" : false
-    }, {
       "quantity" : 1,
       "totalPrice" : 2.2,
       "sizeMl" : 330,
       "keg" : false
     } ],
-    "available" : false,
+    "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
-    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-broken-dream-1535029452Siren-broken-dream-front.png",
-    "url" : "https://www.sirencraftbrew.com/item/12/SirenCraftBrew/Broken-Dream.html"
+    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-broken-dream-1563357983siren-craft-brew-broken-dream-can.png",
+    "url" : "https://www.sirencraftbrew.com/item/217/SirenCraftBrew/Broken-Dream.html"
   }, {
     "brewery" : "Siren Craft",
     "name" : "Calypso",
@@ -3769,24 +3781,6 @@
     "new" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-5l-mini-keg-coldblooded-1593095692siren-mini-keg-coldblooded.png",
     "url" : "https://www.sirencraftbrew.com/item/363/SirenCraftBrew/5L-Mini-Keg-Coldblooded.html"
-  }, {
-    "brewery" : "Siren Craft",
-    "name" : "Elusive Brewing - Overflow",
-    "summary" : "Kölsch-style Lager",
-    "desc" : "Guest beer from our neighbours at Elusive Brewing.\nA three way collaboration between Elusive, Siren and Double-Barrelled for Brewgooder, this is a take on a classic German style. All Pilsner malt with Hallertau Blanc hops and fermented with an authentic Kölsch yeast strain, this clean and crisp lager has notes of gooseberry, elderflower and apple.",
-    "mixed" : false,
-    "abv" : 4.8,
-    "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 4.0,
-      "sizeMl" : 440,
-      "keg" : false
-    } ],
-    "available" : false,
-    "categories" : [ "Pils / Lager" ],
-    "new" : false,
-    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-elusive-brewing-elusive-brewing-overflow-1591890757siren-craft-brew-elusive-overflow-440-can.png",
-    "url" : "https://www.sirencraftbrew.com/item/351/ElusiveBrewing/Elusive-Brewing-Overflow.html"
   }, {
     "brewery" : "Siren Craft",
     "name" : "Futurist",
@@ -3948,11 +3942,6 @@
       "totalPrice" : 2.1,
       "sizeMl" : 330,
       "keg" : false
-    }, {
-      "quantity" : 1,
-      "totalPrice" : 22.0,
-      "sizeMl" : 5000,
-      "keg" : true
     } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
@@ -4032,24 +4021,6 @@
     "url" : "https://www.sirencraftbrew.com/item/349/SirenCraftBrew/5L-Mini-Keg-Suspended-in-Cascade.html"
   }, {
     "brewery" : "Siren Craft",
-    "name" : "Undercurrent",
-    "summary" : "Oatmeal Pale Ale",
-    "desc" : "Undercurrent is part pale, part oats and part caramel barley. Her swirls of bold, bready and nutty malt whirl into a concoction of spicy, citrus, floral hops. Mystery lurks in those hops.\nA 4.5% pale ale with spicy, grassy aromas and a taste of grapefruit and apricot.\n(Not Vegan on Cask)",
-    "mixed" : false,
-    "abv" : 4.5,
-    "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 1.89,
-      "sizeMl" : 330,
-      "keg" : false
-    } ],
-    "available" : false,
-    "categories" : [ "Pale" ],
-    "new" : true,
-    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-undercurrent-1546011673Siren-undercurrent-front.png",
-    "url" : "https://www.sirencraftbrew.com/item/8/SirenCraftBrew/Undercurrent.html"
-  }, {
-    "brewery" : "Siren Craft",
     "name" : "Yu Lu",
     "summary" : "Loose Leaf Pale Ale",
     "desc" : "Yu Lu is an intricate beer with layers of flavour that remain distinctive, yet work in perfect harmony. Her name alludes to the mystical history of the humble tea leaf, which delivers subtle bergamot orange and lemon notes here, accentuated by the addition of lemon zest. Her delicate hop high notes will leave your taste buds sparkling. Allergens: Malted Barley, Wheat.",
@@ -4091,7 +4062,7 @@
     } ],
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://static1.squarespace.com/static/5e3fd955244c110e4deb8fff/5eec7c5c91751c60400a0ed2/5eec88a8e29d0b7fa435d1b2/1593451782941/",
     "url" : "https://www.solvaysociety.com/shop/tropical-stout"
   }, {
@@ -4109,7 +4080,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://static1.squarespace.com/static/5e3fd955244c110e4deb8fff/5eec7c5c91751c60400a0ed2/5eec941ff809127782259a36/1592567567620/",
     "url" : "https://www.solvaysociety.com/shop/charm-amber-ale"
   }, {
@@ -4127,7 +4098,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://static1.squarespace.com/static/5e3fd955244c110e4deb8fff/5eec7c5c91751c60400a0ed2/5eec8e01fe73d720da4cd6dc/1594319370562/Little+Abacus+Mini+Keg.png",
     "url" : "https://www.solvaysociety.com/shop/saison-mini-keg"
   }, {
@@ -4145,7 +4116,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5e3fd955244c110e4deb8fff/1592559179371-QSW7WL1DJI4IW9UX1RDK/ke17ZwdGBToddI8pDm48kJK4Mm1kch8SFO9ZNkN1NT97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmN9YSRtfoTLg6dUq-6F17A0FFZK5fArcnK1IqGweyunyWChwIwkIJ_P7MaZif-uMs/MINIMISE+CASE.png",
     "url" : "https://www.solvaysociety.com/shop/belgian-saison"
   }, {
@@ -4163,7 +4134,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://static1.squarespace.com/static/5e3fd955244c110e4deb8fff/5eec7c5c91751c60400a0ed2/5eec93301251976408658271/1592571431048/",
     "url" : "https://www.solvaysociety.com/shop/sharing-saison"
   }, {
@@ -4196,7 +4167,7 @@
     } ],
     "available" : true,
     "categories" : [ "Bitter", "Pils / Lager" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://static1.squarespace.com/static/5e3fd955244c110e4deb8fff/5eec7c5c91751c60400a0ed2/5eec876191751c60400aebd0/1593451811533/",
     "url" : "https://www.solvaysociety.com/shop/belgian-tripel"
   }, {
@@ -4591,6 +4562,23 @@
     "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Ponderamockup_colouredbackground_300x300.jpg",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/pondera"
+  }, {
+    "brewery" : "Thornbridge",
+    "name" : "Serpent",
+    "summary" : "Barrel Aged Belgian Inspired Ale",
+    "desc" : "Serpent is the first beer of its kind, and one of the coolest things either brewery has ever done. We went to Oliver’s Cider in Hereford seeking their lees, the natural wild yeasts that ferment their apples into great traditional ciders. We brewed a robust Belgian-inspired golden ale at Thornbridge, added the lees in barrels, aged the beer for more than a year, and bottle conditioned it. Now Serpent emerges dry, tart, firm, fine and funky, a full expression of our friendship, great British brewing, American Boldness, and Herefordshire countryside.\nThis listing is for 1xSerpent 70cl\nABV 9.5% / 70cl",
+    "mixed" : false,
+    "abv" : 9.5,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 8.0,
+      "keg" : false
+    } ],
+    "available" : false,
+    "categories" : [ "Bitter", "Cider" ],
+    "new" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/IMG_7968-2_300x300.jpg",
+    "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/serpent-9-5-barrel-aged-belgian-inspired-ale"
   }, {
     "brewery" : "Thornbridge",
     "name" : "Shelby - The Official Beer of the TV Series",
@@ -5067,9 +5055,9 @@
   }, {
     "brewery" : "Wander Beyond",
     "name" : "Vegan Mixed Case",
-    "desc" : "Mixed 12 pack\nCase contains 12x 440ml cans:\nPeak - Pale Ale - x1\n3.8% ABV - 440ml - Allergens: Barley, Oats, Wheat\nThis beer normally doesn't travel much further than Manchester as it is primarily brewed for cask. However we're excited to release this can version for you to enjoy both in Manchester or further afield.\nRamble - Session Pale Ale - x1\n4.2% ABV - 440ml - Allergens: Barley, Oats, Wheat\nRamble is a light sessionable pale ale coming in at 4.2% ABV. A light malt character balanced with a subtle dry hop ensures the sessionable drinkability of this pale ale.\nLutra Lutra - Pale Ale - x1\n5.0% ABV - 440ml - Allergens: Barley, Oats, Wheat\nLutra Lutra is a straight forward easy drinking pale ale. A nice simple malt based combined with a modest level of hops to create a no fuss, quaffable, slightly hazy, pale ale.\nMaple Dream - Gluten-free, Lactose-free Maple Imperial Stout - x1\n10.0% ABV - 440ml - Allergens: Barley, Oats. Gluten free, tested bellow 20ppm - Vegan friendly\nMaple Dream is a progression on the base ideas used in a previous gluten-free, lactose-free Imperial Sweet Stout that we brewed back in November 19, Leap. With some recipe adaptations and additions, this time we have created a Maple Imperial Stout which is still gluten-free and lactose-free, accessible to coeliacs, people with lactose and other gluten intolerance's, vegans and people who enjoy a good ol' Imperial Stout.\nStorm Kats - Imperial Porter - x1\n10.0% ABV - 440ml - Allergens: Barley, Oats\nBrewed with our friends at Kees brewery in the Netherlands, Storm Kats is a straight imperial porter. Brewed with eight different malts and added honey, Storm Kats has rounded flavours of chocolate, honey, sweet toffee and light coffee notes.\nRaspberry Crash - Raspberry Imperial Stout - x1\n10.0% ABV - 440ml - Allergens: Barley, Oats\nWe do enjoy brewing fruited Imperial Stouts here at Wander Beyond. Raspberry Crash is a chewy Imperial Stout we re-fermented on 200g/L of raspberries before infusing it with vanilla and cacao nibs.\nFlavours of rich chocolate and subtle roasted malt notes are combined with the ripeness from the raspberries to create this deviously delicious stout.\nPursuit - Gluten-free, Lactose-free Imperial Milkshake IPA - x2\n10.0% ABV - 440ml - Allergens: Barley, Oats, Wheat. Gluten free, tested bellow 20ppm\nPursuit is a gluten and lactose free version of one of our favourite beers to brew, Illicium. We believe we have successfully managed to create a doppelganger in Pursuit, which despite the lack of lactose still delivers on the sweet smoothness of it’s older sibling. Balanced with the punchy fruit flavours of the Citra and Mosaic hops to create a sweet dessert style Imperial Milkshake IPA, Pursuit is accessible to coeliacs, people with other gluten and lactose intolerance's and vegans.\nSleepy Hollow - IPA - x4\n7.0% ABV - 440ml - Allergens: Barley, Wheat, Oats\nFor an IPA, Sleepy Hollow has a medium to thick body, which carries forward citrus flavours of sweet orange and pink grapefruit. These are backed up with tropical notes of mango and pineapple, with a slight dankness and a moderately bitter finish.\nAs for the artwork, the can pictures the hops Citra, Mosaic and Simcoe, climbing an enchanting boulder problem in the North Yorkshire Moors called 'Sleepy Hollow'. The picturesque boulder hides in the forest with a tree emerging from within it. The iconic line traverses a sloping block with big slaps and technical footwork (for those who climb, it's pretty tough and graded 7c+ from a sit).",
+    "desc" : "Mixed 12 pack\nCase contains 12x 440ml cans:\nOzzy - Imperial Stout with tonka, star anise, vanilla and cacao\nOzzy pours pitch black with a tan head, giving off aromas of tonka beans and star anise. Upon your first mouthful you are met with big upfront hits of liquorice and aniseed, which then fades into notes of dark chocolate and vanilla. Ozzy has a smooth and soft level of carbonation which is accompanied on the way down by a hint of heat making sure you don’t forget it’s 11.0%. As you continue to drink Ozzy it becomes more and more morish.\n11.0% ABV - 440ml - Contains: Water, Malted Barley, Oats, Hops, Yeast, Tonka Beans, Star Anise, Vanilla and Cacao Nibs. (Allergens in bold)\nVegan friendly\nMaple Dream - Gluten-free, Lactose-free Maple Imperial Stout - x1\n10.0% ABV - 440ml - Allergens: Barley, Oats. Gluten free, tested bellow 20ppm - Vegan friendly\nMaple Dream is a progression on the base ideas used in a previous gluten-free, lactose-free Imperial Sweet Stout that we brewed back in November 19, Leap. With some recipe adaptations and additions, this time we have created a Maple Imperial Stout which is still gluten-free and lactose-free, accessible to coeliacs, people with lactose and other gluten intolerance's, vegans and people who enjoy a good ol' Imperial Stout.\nRaspberry Crash - Raspberry Imperial Stout - x1\n10.0% ABV - 440ml - Allergens: Barley, Oats\nWe do enjoy brewing fruited Imperial Stouts here at Wander Beyond. Raspberry Crash is a chewy Imperial Stout we re-fermented on 200g/L of raspberries before infusing it with vanilla and cacao nibs.\nFlavours of rich chocolate and subtle roasted malt notes are combined with the ripeness from the raspberries to create this deviously delicious stout.\nPeak - Pale Ale - x1\n3.8% ABV - 440ml - Allergens: Barley, Oats, Wheat\nThis beer normally doesn't travel much further than Manchester as it is primarily brewed for cask. However we're excited to release this can version for you to enjoy both in Manchester or further afield.\nRamble - Session Pale Ale - x1\n4.2% ABV - 440ml - Allergens: Barley, Oats, Wheat\nRamble is a light sessionable pale ale coming in at 4.2% ABV. A light malt character balanced with a subtle dry hop ensures the sessionable drinkability of this pale ale.\nLutra Lutra - Pale Ale - x1\n5.0% ABV - 440ml - Allergens: Barley, Oats, Wheat\nLutra Lutra is a straight forward easy drinking pale ale. A nice simple malt based combined with a modest level of hops to create a no fuss, quaffable, slightly hazy, pale ale.\nPursuit - Gluten-free, Lactose-free Imperial Milkshake IPA - x2\n10.0% ABV - 440ml - Allergens: Barley, Oats, Wheat. Gluten free, tested bellow 20ppm\nPursuit is a gluten and lactose free version of one of our favourite beers to brew, Illicium. We believe we have successfully managed to create a doppelganger in Pursuit, which despite the lack of lactose still delivers on the sweet smoothness of it’s older sibling. Balanced with the punchy fruit flavours of the Citra and Mosaic hops to create a sweet dessert style Imperial Milkshake IPA, Pursuit is accessible to coeliacs, people with other gluten and lactose intolerance's and vegans.\nSleepy Hollow - IPA - x4\n7.0% ABV - 440ml - Allergens: Barley, Wheat, Oats\nFor an IPA, Sleepy Hollow has a medium to thick body, which carries forward citrus flavours of sweet orange and pink grapefruit. These are backed up with tropical notes of mango and pineapple, with a slight dankness and a moderately bitter finish.\nAs for the artwork, the can pictures the hops Citra, Mosaic and Simcoe, climbing an enchanting boulder problem in the North Yorkshire Moors called 'Sleepy Hollow'. The picturesque boulder hides in the forest with a tree emerging from within it. The iconic line traverses a sloping block with big slaps and technical footwork (for those who climb, it's pretty tough and graded 7c+ from a sit).",
     "mixed" : true,
-    "abv" : 3.8,
+    "abv" : 11.0,
     "offers" : [ {
       "quantity" : 12,
       "totalPrice" : 56.45,
@@ -5077,10 +5065,10 @@
       "keg" : false
     } ],
     "available" : true,
-    "categories" : [ "Pale", "Dark", "Bitter", "IPA" ],
+    "categories" : [ "Pale", "Bitter", "Dark", "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_385c0547b04148f6a2e2ceb8edb4ddd5~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_385c0547b04148f6a2e2ceb8edb4ddd5~mv2.jpg",
-    "url" : "https://www.wanderbeyondbrewing.com/product-page/vegan-mixed-case"
+    "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_c1e5c4fbe00146ab825670d2af942319~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_c1e5c4fbe00146ab825670d2af942319~mv2.jpg",
+    "url" : "https://www.wanderbeyondbrewing.com/product-page/vegan-mixed-case-1"
   }, {
     "brewery" : "Wiper and True",
     "name" : "Kaleidoscope",
@@ -5097,7 +5085,7 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
-    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1584966464385-U7BZ745QMLX1E7PA1U5Y/ke17ZwdGBToddI8pDm48kIzNWfZh9v0nvEHU3WAJ1tF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0ooWhOa5cxQSJsU3rXf8luXAp4RuSF8fCIvAJcvjt_IcZoixb7Wm7IaIkEuLM8C6Ew/Kaleidoscope440.jpg",
+    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1594379999120-ZR1AW4TF4329CP8I4T46/ke17ZwdGBToddI8pDm48kN9tuRkJsx3DiD2Y7TzQo197gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1URRp2ueNyHGG0bEVI4oGXrtB69HHrtaJ4VMk_06NPYpvWIB-7cQgYKo_bDpR6cEVkg/Wiper+%26+True+-4.jpg",
     "url" : "https://wiperandtrue.com/order-beer-online/kaleidoscope-case-12x-440ml-cans"
   }, {
     "brewery" : "Wiper and True",
@@ -5120,7 +5108,7 @@
     "available" : false,
     "categories" : [ "Dark" ],
     "new" : false,
-    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1584969176998-C2DGC3CM85I7TT6KUL5C/ke17ZwdGBToddI8pDm48kIzNWfZh9v0nvEHU3WAJ1tF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0ooWhOa5cxQSJsU3rXf8luXAp4RuSF8fCIvAJcvjt_IcZoixb7Wm7IaIkEuLM8C6Ew/MilkShake440.jpg",
+    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1594379802536-2BXTAAGNXIYBVKR25MOO/ke17ZwdGBToddI8pDm48kB9OXYiZy9IoUlrwRAQZ3SB7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1URuLBBGjZ19hE50uyEfubUM62gH1_dkMww9zl19jxlW0_LIDCWDx8RE_7y4dVH9U2g/Wiper+%26+True+-9.jpg",
     "url" : "https://wiperandtrue.com/order-beer-online/milk-shake-case-12x-440ml-cans"
   }, {
     "brewery" : "Wiper and True",
@@ -5157,7 +5145,7 @@
     "available" : false,
     "categories" : [ "Pale", "Bitter" ],
     "new" : false,
-    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1584976610822-3ULOIXOZFG1FC4ZN1EZJ/ke17ZwdGBToddI8pDm48kIzNWfZh9v0nvEHU3WAJ1tF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0ooWhOa5cxQSJsU3rXf8luXAp4RuSF8fCIvAJcvjt_IcZoixb7Wm7IaIkEuLM8C6Ew/SmallBeer440.jpg",
+    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1594380099177-N9SE8F0H6ENFIDES9L68/ke17ZwdGBToddI8pDm48kN9tuRkJsx3DiD2Y7TzQo197gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1URRp2ueNyHGG0bEVI4oGXrtB69HHrtaJ4VMk_06NPYpvWIB-7cQgYKo_bDpR6cEVkg/Wiper+%26+True+-2.jpg",
     "url" : "https://wiperandtrue.com/order-beer-online/small-beer-case-12x-440ml-cans"
   }, {
     "brewery" : "Wiper and True",
@@ -5175,7 +5163,7 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1587118386129-855DG64RJP3KDK1HJBGX/ke17ZwdGBToddI8pDm48kH7bHF972s0BMy8FJS7_5eh7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Udkb9EYnQod1oo25oIrfEHqqJxs3PTnNIpDd2Nj8pGws6ary7BfG6-GuG8rvj_sKiw/Sundance440.jpg",
+    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1594379894576-565E2K491OHV4T2W9ZQ8/ke17ZwdGBToddI8pDm48kN9tuRkJsx3DiD2Y7TzQo197gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1URRp2ueNyHGG0bEVI4oGXrtB69HHrtaJ4VMk_06NPYpvWIB-7cQgYKo_bDpR6cEVkg/Wiper+%26+True+-6.jpg",
     "url" : "https://wiperandtrue.com/order-beer-online/sundance-case-12x-440ml-cans"
   }, {
     "brewery" : "Wiper and True",
@@ -5193,7 +5181,7 @@
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : true,
-    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1594371591478-Q09DYSKC64BJRLXYJ712/ke17ZwdGBToddI8pDm48kH7bHF972s0BMy8FJS7_5eh7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Udkb9EYnQod1oo25oIrfEHqqJxs3PTnNIpDd2Nj8pGws6ary7BfG6-GuG8rvj_sKiw/MunichLagerYorkStreetHelles_440.jpg",
+    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1594371555548-RNP8VA1RLXBO4Z8R9EY1/ke17ZwdGBToddI8pDm48kJKo3YTR7zgUvInmXMbZ6zZ7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0geeCvn1f36QDdcifB7yxGjTk-SMFplgtEhJ5kBshkhu5q5viBDDnY2i_eu2ZnquSA/1.jpg",
     "url" : "https://wiperandtrue.com/order-beer-online/york-street-helles"
   }, {
     "brewery" : "Wylam",

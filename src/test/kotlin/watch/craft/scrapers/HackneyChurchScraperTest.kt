@@ -8,12 +8,11 @@ import java.net.URI
 
 class HackneyChurchScraperTest {
   companion object {
-    private val ITEMS = executeScraper(HackneyChurchScraper(), dateString = "2020-07-09")
+    private val ITEMS = executeScraper(HackneyChurchScraper())
   }
 
   @Test
   fun `finds all the beers`() {
-//    ITEMS.display()
     assertEquals(6, ITEMS.size)
   }
 

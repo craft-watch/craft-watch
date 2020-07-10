@@ -11,6 +11,7 @@ import watch.craft.storage.SubObjectStore
 import watch.craft.utils.sha1
 import java.net.URI
 
+// TODO - test suffix
 class CachingRetrieverTest {
   private val store = mock<SubObjectStore>()
   private val delegate = mock<Retriever>()
@@ -25,7 +26,7 @@ class CachingRetrieverTest {
     val ret = runBlocking { retriever.retrieve(NICE_URL) }
 
     assertArrayEquals(NICE_DATA, ret)
-    verifyBlocking(delegate, never()) { retrieve(any()) }
+    verifyBlocking(delegate, never()) { retrieve(any(), any()) }
   }
 
   @Test

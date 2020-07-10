@@ -58,7 +58,7 @@ class NetworkRetriever(private val name: String) : Retriever {
     }
   }
 
-  override suspend fun retrieve(url: URI): ByteArray {
+  override suspend fun retrieve(url: URI, suffix: String?): ByteArray {
     logger.info("${url}: queueing network request")
 
     val msg = Request(

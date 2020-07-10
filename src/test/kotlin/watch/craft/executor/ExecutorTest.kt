@@ -22,7 +22,8 @@ class ExecutorTest {
     results = mock(),
     createRetriever = {
       object : Retriever {
-        override suspend fun retrieve(url: URI) = "<html><body><h1>Hello</h1></body></html>".toByteArray()
+        override suspend fun retrieve(url: URI, suffix: String?) =
+          "<html><body><h1>Hello</h1></body></html>".toByteArray()
       }
     },
     clock = Clock.fixed(NOW, ZoneId.systemDefault())

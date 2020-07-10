@@ -14,12 +14,14 @@ class CachingRetriever(
 ) : Retriever {
   private val logger = KotlinLogging.logger {}
 
-  override suspend fun retrieve(url: URI) = read(url) ?: delegate.retrieve(url).also { write(url, it) }
+  override suspend fun retrieve(url: URI, suffix: String?): ByteArray {
+    val key = key(url, suffix)
+    return read(url, key) ?: delegate.retrieve(url, suffix).also { write(url, key, it) }
+  }
 
   override fun close() = delegate.close()
 
-  private suspend fun write(url: URI, content: ByteArray) {
-    val key = key(url)
+  private suspend fun write(url: URI, key: String, content: ByteArray) {
     try {
       onIoThread { store.write(key, content) }
       logger.info("${url} written to cache: ${key}")
@@ -28,13 +30,12 @@ class CachingRetriever(
     }
   }
 
-  private suspend fun read(url: URI) = try {
-    val key = key(url)
+  private suspend fun read(url: URI, key: String) = try {
     onIoThread { store.read(key) }
       .also { logger.info("${url} read from cache: ${key}") }
   } catch (e: FileDoesntExistException) {
     null
   }
 
-  private fun key(url: URI) = url.toString().sha1()
+  private fun key(url: URI, suffix: String?) = url.toString().sha1() + (suffix ?: "")
 }

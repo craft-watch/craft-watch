@@ -17,23 +17,23 @@ class PressureDropScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(10, ITEMS.size)
+    assertEquals(9, ITEMS.size)
   }
 
   @Test
   fun `extracts beer details`() {
     assertEquals(
       ScrapedItem(
-        name = "Golden State",
-        summary = "New England Pale",
-        abv = 5.2,
+        name = "Pale Fire",
+        summary = "Mosaic & Amarillo Pale",
+        abv = 4.8,
         offers = setOf(
-          Offer(totalPrice = 4.05, sizeMl = 440)
+          Offer(totalPrice = 3.70, sizeMl = 440)
         ),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_9751_large.jpg?v=1592315629")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_7845_large.jpg?v=1588861254")
       ),
-      ITEMS.byName("Golden State").noDesc()
+      ITEMS.byName("Pale Fire").noDesc()
     )
   }
 
@@ -47,7 +47,7 @@ class PressureDropScraperTest {
 
   @Test
   fun `extracts description`() {
-    assertNotNull(ITEMS.byName("Golden State").desc)
+    assertNotNull(ITEMS.byName("Dreamlife").desc)
   }
 }
 

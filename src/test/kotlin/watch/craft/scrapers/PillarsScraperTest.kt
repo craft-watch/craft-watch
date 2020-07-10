@@ -13,27 +13,27 @@ class PillarsScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(8, ITEMS.size)
+    assertEquals(6, ITEMS.size)
   }
 
   @Test
   fun `extracts beer details`() {
     assertEquals(
       ScrapedItem(
-        name = "Pillars Icebock",
-        summary = "Eisbock",
-        abv = 8.0,
-        offers = setOf(Offer(totalPrice = 6.00)),
+        name = "Rebell Helles",
+        summary = "Helles Lager",
+        abv = 4.8,
+        offers = setOf(Offer(quantity = 24, totalPrice = 45.00)),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0367/7857/3883/products/Icebock_Shopify_1edf8964-413d-4ad8-9b05-9a9672a48796_250x250.png?v=1591904521")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0367/7857/3883/products/01125465-bf55-4019-9d59-52d2d00d1333_250x250.png?v=1585771178")
       ),
-      ITEMS.byName("Pillars Icebock").noDesc()
+      ITEMS.first { it.name == "Rebell Helles" && it.onlyOffer().quantity == 24 }.noDesc()
     )
   }
 
   @Test
   fun `identifies kegs`() {
-    val item = ITEMS.byName("Pillars Pilsner") // Note "keg" no longer in title
+    val item = ITEMS.byName("Pillars Tropical Pilsner") // Note "keg" no longer in title
     assertEquals(5000, item.onlyOffer().sizeMl)
     assertTrue(item.onlyOffer().keg)
   }
@@ -53,7 +53,7 @@ class PillarsScraperTest {
 
   @Test
   fun `extracts description`() {
-    assertNotNull(ITEMS.byName("Pillars Icebock").desc)
+    assertNotNull(ITEMS.byName("Rebell Helles").desc)
   }
 }
 

@@ -19,7 +19,9 @@ import java.net.URI
 
 class ScraperAdapterTest {
   private val retriever = mock<Retriever> {
-    onBlocking { retrieve(any()) } doAnswer { "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>".toByteArray() }
+    onBlocking { retrieve(any(), any()) } doAnswer {
+      "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>".toByteArray()
+    }
   }
 
   private val itemA = mock<ScrapedItem>()
@@ -55,7 +57,7 @@ class ScraperAdapterTest {
 
     retrieveResults(adapter)
 
-    verifyBlocking(retriever) { retrieve(URL_A) }
+    verifyBlocking(retriever) { retrieve(URL_A, ".html") }
     verify(work)(docWithHeaderMatching(URL_A.toString()))
   }
 
@@ -109,7 +111,7 @@ class ScraperAdapterTest {
     @Test
     fun `fatal exception during request kills everything`() {
       retriever.stub {
-        onBlocking { retriever.retrieve(any()) } doThrow FatalScraperException("Uh oh")
+        onBlocking { retriever.retrieve(any(), any()) } doThrow FatalScraperException("Uh oh")
       }
 
       val adapter = ScraperAdapter(retriever, MyScraper(listOf(
