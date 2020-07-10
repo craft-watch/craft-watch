@@ -53,9 +53,6 @@ const Sidebar = (props: Props): JSX.Element => {
           <TwitterLink />
           <GitHubLink />
         </div>
-        <div className="copyright">
-          © <a href="https://github.com/oliver-charlesworth">Oliver Charlesworth</a> 2020
-        </div>
       </address>
     </div>
   );
