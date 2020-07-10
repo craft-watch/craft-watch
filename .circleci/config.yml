@@ -26,7 +26,7 @@ workflows:
   daily_scrape:
     triggers:
       - schedule:
-          cron: "0 11 * * *"
+          cron: "45 09 * * *"
           filters:
             branches:
               only: master
