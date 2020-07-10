@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-10T13:58:22.157540Z"
+    "capturedAt" : "2020-07-10T17:23:53.067673Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -2264,7 +2264,7 @@
     "brewery" : "Northern Monk",
     "name" : "Eternal",
     "summary" : "Session IPA",
-    "desc" : "ABV: 4.1% ABV // 11.00 EBC // 45 IBU // 1.05 OG // 330ML\nINGREDIENTS: WATER, Malted BARLEY (GLUTEN), HOPS, YEAST\nA product brewed for almost 7,000 years, a quest for perfection that never ends. Citrusy, light and refreshing. To Eternity.\nSUITABLE FOR VEGANS",
+    "desc" : "ABV: 4.1% ABV // 11.00 EBC // IBU: 45 IBU // OG: 1.05 OG // 330ml\nINGREDIENTS: WATER, Malted BARLEY (GLUTEN), HOPS, YEAST\nA product brewed for almost 7,000 years, a quest for perfection that never ends. Citrusy, light and refreshing. To Eternity.\nSUITABLE FOR VEGANS",
     "mixed" : false,
     "abv" : 4.1,
     "offers" : [ {
@@ -2281,8 +2281,8 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/2020-06-01-NMBC_CoreCans-5_180x.jpg",
-    "url" : "https://northernmonkshop.com/collections/beer/products/eternal-session-ipa"
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/ETERNAL_4_PACK_180x.jpg",
+    "url" : "https://northernmonkshop.com/collections/beer/products/eternal-session-ipa-4-pack"
   }, {
     "brewery" : "Northern Monk",
     "name" : "Faith In The Summer",
@@ -2321,8 +2321,8 @@
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/2020-NMBC_Great-Northern-Lager-29_180x.jpg",
-    "url" : "https://northernmonkshop.com/collections/beer/products/great-northern-lager"
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NorthernMonk_WebStore_GNL_3000x1770px_1_180x.jpg",
+    "url" : "https://northernmonkshop.com/collections/beer/products/great-northern-lager-6-pack"
   }, {
     "brewery" : "Northern Monk",
     "name" : "Heathen",
@@ -2379,8 +2379,8 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/2020-06-01-NMBC_CoreCans-4_180x.jpg",
-    "url" : "https://northernmonkshop.com/collections/beer/products/new-world"
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NW_4_PACK_180x.jpg",
+    "url" : "https://northernmonkshop.com/collections/beer/products/new-world-ipa-india-pale-ale-4-pack"
   }, {
     "brewery" : "Northern Monk",
     "name" : "Northern Heroes",
@@ -2419,7 +2419,7 @@
     "brewery" : "Northern Monk",
     "name" : "Origin",
     "summary" : "Gluten Free IPA",
-    "desc" : "ABV: 5.7% ABV // 11.00 EBC // 45 IBU // 1.05 OG // 330ML\nINGREDIENTS: WATER, MALTED BARLEY, HOPS, YEAST\n(A GLUTED FREE PRODUCT)\nA homage to the origins of IPA and the evolution of this style. Piney, juicy and crisp, Gluten-free and Vegan. The evolution of tradition.\nSUITABLE FOR VEGANS",
+    "desc" : "ABV: 5.7% ABV // 11.00 EBC // 45 IBU // 1.05 OG // 330ML\nINGREDIENTS: WATER, Malted BARLEY (GLUTEN), HOPS, YEAST\nA homage to the origins of IPA and the evolution of this style. Piney, juicy and crisp, Gluten-free and Vegan. The evolution of tradition.\nSUITABLE FOR VEGANS",
     "mixed" : false,
     "abv" : 5.7,
     "offers" : [ {
@@ -2436,8 +2436,8 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NMBCo_-_Tom_Joy_NMB_6644_180x.jpg",
-    "url" : "https://northernmonkshop.com/collections/beer/products/origin"
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/ORIGIN4PK_180x.jpg",
+    "url" : "https://northernmonkshop.com/collections/beer/products/origin-gluten-free-ipa-4-pack"
   }, {
     "brewery" : "Northern Monk",
     "name" : "Retro Faith",
@@ -4051,8 +4051,8 @@
   }, {
     "brewery" : "Siren Craft",
     "name" : "Yu Lu",
-    "summary" : "Session Pale Ale",
-    "desc" : "Refreshing and exciting in equal measure, Yu Lu is brewed with Earl Grey tea and lemon zest for taste that belies its strength. Distinct peach and apricot notes are complemented by zesty bergamot flavours and a delicate loose leaf tea bitterness.\nKeep Cold. Serve Cool. Drink Fresh.\nUnfiltered / Unfined\nVegan Friendly (Not Vegan in Cask)",
+    "summary" : "Loose Leaf Pale Ale",
+    "desc" : "Yu Lu is an intricate beer with layers of flavour that remain distinctive, yet work in perfect harmony. Her name alludes to the mystical history of the humble tea leaf, which delivers subtle bergamot orange and lemon notes here, accentuated by the addition of lemon zest. Her delicate hop high notes will leave your taste buds sparkling. Allergens: Malted Barley, Wheat.",
     "mixed" : false,
     "abv" : 3.6,
     "offers" : [ {
@@ -4074,8 +4074,8 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
-    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-yu-lu-1563358010siren-craft-brew-yu-lu-can.png",
-    "url" : "https://www.sirencraftbrew.com/item/215/SirenCraftBrew/Yu-Lu.html"
+    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-yu-lu-1546011576Siren-yu-lu-front.png",
+    "url" : "https://www.sirencraftbrew.com/item/11/SirenCraftBrew/Yu-Lu.html"
   }, {
     "brewery" : "Solvay Society",
     "name" : "8:20",
@@ -4252,8 +4252,8 @@
     "available" : true,
     "categories" : [ "Bitter" ],
     "new" : false,
-    "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-edinburgh-gold-330ml-1592387999330ml-EdinburghGold.png",
-    "url" : "https://www.stewartbrewing.co.uk/item/262/StewartBrewing/Edinburgh-Gold-330ml.html"
+    "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-edinburgh-gold-500ml-1592389340500ml-EdinburghGold.png",
+    "url" : "https://www.stewartbrewing.co.uk/item/255/StewartBrewing/Edinburgh-Gold-500ml.html"
   }, {
     "brewery" : "Stewart Brewing",
     "name" : "Franz",
@@ -4308,8 +4308,8 @@
     "available" : true,
     "categories" : [ "Pale" ],
     "new" : false,
-    "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-hollyrood-330ml-1592394278330ml-Hollyrood.png",
-    "url" : "https://www.stewartbrewing.co.uk/item/261/StewartBrewing/Hollyrood-330ml.html"
+    "thumbnailUrl" : "https://www.stewartbrewing.co.uk/uploads/images/products/large/stewart-brewing-ltd-stewart-brewing-hollyrood-500ml-1592388230500ml-Holyrood-mockup.png",
+    "url" : "https://www.stewartbrewing.co.uk/item/260/StewartBrewing/Hollyrood-500ml.html"
   }, {
     "brewery" : "Stewart Brewing",
     "name" : "HotHead Kveik IPA",
@@ -4471,7 +4471,7 @@
     "brewery" : "Thornbridge",
     "name" : "Jaipur",
     "summary" : "IPA",
-    "desc" : "With over 100 worldwide awards, this American style IPA has a complexity of flavour created by a six-dimensional hop experience.\nABV 5.9% / 330ml can\nHOPS Chinook / Centennial / Ahtanum / Simcoe / Columbus / Cascade\nMALTS Maris Otter\nNOTABLE AWARDS\n2016 – 4 Stars. International Wine and Spirits Competition\n2016 – Bronze. International Beer Challenge\n2016 – Gold, IPA United Kingdom. World Beer Awards\n2015 – 3 Stars. Great Taste Awards\n2015 – UK Top 50 Food and Drink. Great Taste Awards\n2014 – 3 Stars. Great Taste Awards\n2013 – Europe’s Best IPA. World Beer Awards\n2013 – Gold, IPA. SIBA\n2011 – World’s Best Keg Ale. Brewing Industry Awards\nYou must be 18 or over to purchase this product.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.",
+    "desc" : "With over 100 worldwide awards, this American style IPA has a complexity of flavour created by a six-dimensional hop experience.\nABV 5.9% / 330ml bottle\nHOPS Chinook / Centennial / Ahtanum / Simcoe / Columbus / Cascade\nMALTS Low Colour Maris Otter\nNOTABLE AWARDS\n2016 – 4 Stars. International Wine and Spirits Competition\n2016 – Bronze. International Beer Challenge\n2016 – Gold, IPA United Kingdom. World Beer Awards\n2015 – 3 Stars. Great Taste Awards\n2015 – UK Top 50 Food and Drink. Great Taste Awards\n2014 – 3 Stars. Great Taste Awards\n2013 – Europe’s Best IPA. World Beer Awards\n2013 – Gold, IPA. SIBA\n2011 – World’s Best Keg Ale. Brewing Industry Awards\nYou must be 18 or over to purchase this product.\nThe minimum order quantity for Pick and Mix is 12 beers and multiples thereof, without 12 beers or a multiple thereof in your cart your order will not be shipped.",
     "mixed" : false,
     "abv" : 5.9,
     "offers" : [ {
@@ -4483,8 +4483,8 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_can_mockup_coloured_background_300x300.jpg",
-    "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/jaipur-can"
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_bottle_mockup_for_website_300x300.jpg",
+    "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/jaipur"
   }, {
     "brewery" : "Thornbridge",
     "name" : "Jamestown",
@@ -5103,7 +5103,7 @@
     "brewery" : "Wiper and True",
     "name" : "Milk Shake",
     "summary" : "Milk Stout",
-    "desc" : "12x 330ml cans of 5.6% Milk Stout.\nMilk Shake is brewed with sugar from cow’s milk to give the beer a sweet, creamy tone. The beer combines copious chocolate malts laced with vanilla and cacao to create a luxurious, milkshake-rich and satisfyingly dark beer.\nWe’re offering a 10% discount for all NHS staff. Please check out using your NHS email address and the code ‘NHS10’.\nPlease note that we can only deliver to the UK mainland, excluding Northern and Mainland Ireland, Guernsey and Jersey.\nPlease take care to select the correct shipping option when checking out. Free Bristol delivery takes 1 - 2 working days and applies to the following postcodes: BS1, BS2, BS3, BS4, BS5, BS6, BS7, BS8, BS9, BS10, BS13, BS14, BS15, BS16, BS32, BS34, BS35, BS36 and BS37. Within BS8, free delivery includes BS8 1, BS8 2 and BS8 4. Please only select the option for free Bristol delivery to these postcodes; otherwise we will have to refund your order and you’ll need to order again using nationwide delivery, since we use a separate courier service for nationwide drop-offs.\nNationwide delivery takes 2-3 working days.",
+    "desc" : "12x 440ml cans of 5.6% Milk Stout.\nMilk Shake is brewed with sugar from cow’s milk to give the beer a sweet, creamy tone. The beer combines copious chocolate malts laced with vanilla and cacao to create a luxurious, milkshake-rich and satisfyingly dark beer.\nWe’re offering a 10% discount for all NHS staff. Please check out using your NHS email address and the code ‘NHS10’.\nPlease note that we can only deliver to the UK mainland, excluding Northern and Mainland Ireland, Guernsey and Jersey.\nPlease take care to select the correct shipping option when checking out. Free Bristol delivery takes 1 - 2 working days and applies to the following postcodes: BS1, BS2, BS3, BS4, BS5, BS6, BS7, BS8, BS9, BS10, BS13, BS14, BS15, BS16, BS32, BS34, BS35, BS36 and BS37. Within BS8, free delivery includes BS8 1, BS8 2 and BS8 4. Please only select the option for free Bristol delivery to these postcodes; otherwise we will have to refund your order and you’ll need to order again using nationwide delivery, since we use a separate courier service for nationwide drop-offs.\nNationwide delivery takes 2-3 working days.",
     "mixed" : false,
     "abv" : 5.6,
     "offers" : [ {
@@ -5117,11 +5117,11 @@
       "sizeMl" : 330,
       "keg" : false
     } ],
-    "available" : true,
+    "available" : false,
     "categories" : [ "Dark" ],
     "new" : false,
-    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1593764481127-4EB6WMVDWT93QO4KIL8A/ke17ZwdGBToddI8pDm48kIzNWfZh9v0nvEHU3WAJ1tF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0ooWhOa5cxQSJsU3rXf8luXAp4RuSF8fCIvAJcvjt_IcZoixb7Wm7IaIkEuLM8C6Ew/MilkShake330.jpg",
-    "url" : "https://wiperandtrue.com/order-beer-online/milk-shake-case-12x-330ml-cans"
+    "thumbnailUrl" : "https://images.squarespace-cdn.com/content/v1/5073f3b284ae5bd7fb72db78/1584969176998-C2DGC3CM85I7TT6KUL5C/ke17ZwdGBToddI8pDm48kIzNWfZh9v0nvEHU3WAJ1tF7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0ooWhOa5cxQSJsU3rXf8luXAp4RuSF8fCIvAJcvjt_IcZoixb7Wm7IaIkEuLM8C6Ew/MilkShake440.jpg",
+    "url" : "https://wiperandtrue.com/order-beer-online/milk-shake-case-12x-440ml-cans"
   }, {
     "brewery" : "Wiper and True",
     "name" : "Mixed",
