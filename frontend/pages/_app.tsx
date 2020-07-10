@@ -1,5 +1,9 @@
 /* eslint-disable */
+import { config } from '@fortawesome/fontawesome-svg-core'
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import "../components/index.css";
+
+config.autoAddCss = false; // See https://github.com/FortAwesome/react-fontawesome#nextjs
 
 export default function MyApp(props: any) {
   const { Component, pageProps } = props;

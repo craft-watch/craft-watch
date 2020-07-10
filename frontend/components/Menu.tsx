@@ -35,9 +35,6 @@ const Menu = (props: Props): JSX.Element => {
       </div>
       <div className="info">
         Data captured: {props.capturedAt.local().format("lll")}.
-        <div className="copyright">
-          © <a href="https://github.com/oliver-charlesworth">Oliver Charlesworth</a> 2020
-        </div>
       </div>
     </div>
   );
