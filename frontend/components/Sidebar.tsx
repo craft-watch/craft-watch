@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Brewery } from "../utils/model";
 import _ from "underscore";
 import { toSafePathPart } from "../utils/stuff";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTwitterSquare, faGithubSquare } from "@fortawesome/free-brands-svg-icons";
 
 
 interface Props {
@@ -45,6 +47,20 @@ const Sidebar = (props: Props): JSX.Element => {
           {props.desc}
         </div>
       </div>
+
+      <address>
+        <div className="social">
+          <a href="https://twitter.com/craft_watch">
+            <FontAwesomeIcon icon={faTwitterSquare} />
+          </a>
+          <a href="https://github.com/craft-watch">
+            <FontAwesomeIcon icon={faGithubSquare} />
+          </a>
+        </div>
+        <div className="copyright">
+          © <a href="https://github.com/oliver-charlesworth">Oliver Charlesworth</a> 2020
+        </div>
+      </address>
     </div>
   );
 };

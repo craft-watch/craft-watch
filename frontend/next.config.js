@@ -1,4 +1,6 @@
-module.exports = {
+const withCSS = require('@zeit/next-css')
+
+module.exports = withCSS({
   reactStrictMode: true,
   poweredByHeader: false,
   exportPathMap: function(defaultPathMap) {
@@ -6,4 +8,4 @@ module.exports = {
       "/": { page: "/new" }
     });
   },
-}
+})

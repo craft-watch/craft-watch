@@ -268,7 +268,6 @@ img {
   color: var(--sol-magenta);
 }
 
-
 nav {
   margin-bottom: 40px;
 }
@@ -287,23 +286,45 @@ nav li {
   margin: 10px;
 }
 
-nav a {
+.sidebar a {
   text-decoration: none;
   color: var(--sol-base00);
 }
 
-nav a:link {
+.sidebar a:link {
   color: var(--sol-base01);
 }
 
-nav a:visited {
+.sidebar a:visited {
   color: var(--sol-base00);
 }
 
-nav a:hover {
+.sidebar a:hover {
   cursor: pointer;
   color: var(--sol-magenta);
 }
+
+.sidebar address {
+  position: absolute;
+  margin: 0;
+  bottom: 40px;
+}
+
+.sidebar .social a {
+  font-size: xx-large;
+  margin-right: 20px;
+}
+
+.sidebar .copyright {
+  margin-top: 5px;
+  font-size: small;
+  font-style: normal;
+}
+
+.sidebar .copyright a {
+  font-weight: var(--bold-weight);
+}
+
 
 
 /* ----------------------
@@ -362,7 +383,7 @@ nav a:hover {
   cursor: pointer;
 }
 
-/* Prevent clashing with e.g. copyright */
+/* Prevent clashing with info */
 .menu .content {
   overflow-y: auto;
   max-height: 75vh;
@@ -381,13 +402,9 @@ nav a:hover {
   font-size: small;
   position: absolute;
   margin: 0;
-  bottom: 60px;
+  bottom: 40px;
   right: 20px;
   text-align: right;
-}
-
-.menu .copyright {
-  margin-top: 5px;
 }
 
 .menu a {
@@ -594,20 +611,20 @@ nav a:hover {
     display: inline;
   }
 
-  nav a {
+  .sidebar a {
     color: var(--sol-base2);
     font-weight: var(--bold-weight);
   }
 
-  nav a:link {
+  .sidebar a:link {
     color: var(--sol-base2);
   }
 
-  nav a:visited {
+  .sidebar a:visited {
     color: var(--sol-base2);
   }
 
-  nav a:hover {
+  .sidebar a:hover {
     cursor: pointer;
     color: var(--sol-base1);
   }
