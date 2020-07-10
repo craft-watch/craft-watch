@@ -16,6 +16,7 @@ const InventoryTable: React.FC<Props> = (props) => (
   <SortableTable sections={partitionItems(props.items, props.categories)}>
     <Column
       name="Brewery"
+      className="brewery"
       render={renderBrewery}
       selector={(item) => item.brewery}
     />
@@ -37,6 +38,7 @@ const InventoryTable: React.FC<Props> = (props) => (
     />
     <Column
       name="Price"
+      className="price"
       render={renderPrice}
       selector={(item) => perItemPrice(extractOffer(item))}
     />
