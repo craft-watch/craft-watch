@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import watch.craft.Offer
 import watch.craft.Scraper.ScrapedItem
@@ -42,6 +43,7 @@ class HowlingHopsScraperTest {
   }
 
   @Test
+  @Disabled
   fun `identifies out-of-stock items`() {
     assertFalse(ITEMS.byName("Buckle Down").available)
   }
