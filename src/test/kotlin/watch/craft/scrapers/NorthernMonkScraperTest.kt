@@ -55,6 +55,11 @@ class NorthernMonkScraperTest {
   }
 
   @Test
+  fun `identifies sold-out`() {
+    assertFalse(ITEMS.byName("Retro Faith").available)
+  }
+
+  @Test
   fun `ignores things that aren't beers`() {
     assertFalse(ITEMS.any { it.name.contains("gift", ignoreCase = true) })
   }
