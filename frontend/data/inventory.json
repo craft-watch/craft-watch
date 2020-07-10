@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-10T09:54:49.733941Z"
+    "capturedAt" : "2020-07-10T10:52:42.807147Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -918,24 +918,6 @@
     "brewery" : "Five Points",
     "name" : "Five Points Pale",
     "summary" : "Pale Ale",
-    "desc" : "NEW! EXPERIENCE DRAUGHT PALE AT HOME!\nOur Five Points Pale is a fresh, zesty, aromatic pale ale brewed with malted barley, a little wheat, and Amarillo and Citra hops from the West Coast of the USA. It’s our flagship beer, and its citrus, resinous notes make it a perfect easy-drinking beer for any occasion.\nThe first beer we ever brewed, our Pale proudly represents both the British ale tradition and the worldwide craft beer movement, resulting in an incredibly drinkable beer with tonnes of flavour.",
-    "mixed" : false,
-    "abv" : 4.4,
-    "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 25.0,
-      "sizeMl" : 5000,
-      "keg" : true
-    } ],
-    "available" : false,
-    "categories" : [ "Pale" ],
-    "new" : false,
-    "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-pale-5l-mini-keg-1591885265Pale-Mini-Cask-Mockup-SML2.jpg",
-    "url" : "https://shop.fivepointsbrewing.co.uk/item/41/FivePointsBrewing/FIVE-POINTS-PALE-5L-MINI-KEG.html"
-  }, {
-    "brewery" : "Five Points",
-    "name" : "Five Points Pale",
-    "summary" : "Pale Ale",
     "desc" : "Our Five Points Pale is a fresh, zesty, aromatic pale ale brewed with malted barley, a little wheat, and Amarillo and Citra hops from the West Coast of the USA. It’s our flagship beer, and its citrus, resinous notes make it a perfect easy-drinking beer for any occasion.\nThe first beer we ever brewed, our Pale proudly represents both the British ale tradition and the worldwide craft beer movement, resulting in an incredibly drinkable beer with tonnes of flavour.",
     "mixed" : false,
     "abv" : 4.4,
@@ -944,6 +926,11 @@
       "totalPrice" : 21.6,
       "sizeMl" : 330,
       "keg" : false
+    }, {
+      "quantity" : 1,
+      "totalPrice" : 25.0,
+      "sizeMl" : 5000,
+      "keg" : true
     } ],
     "available" : true,
     "categories" : [ "Pale" ],
@@ -972,24 +959,6 @@
     "brewery" : "Five Points",
     "name" : "Five Points XPA",
     "summary" : "Extra Pale Ale",
-    "desc" : "NEW! EXPERIENCE DRAUGHT XPA AT HOME!\nA light and tropical extra pale ale with assertive hop bitterness and aromas of mango and passionfruit. Even paler and hoppier than our legendary Five Points Pale, and the 4% ABV makes it extra drinkable, too.\nXPA began its life as our collaboration beer for Field Day festival in 2016. Its sessionable ABV and refreshing, zingy bitterness proved a hit post-festival season, and the beer has since joined our core range in can, keg and cask.",
-    "mixed" : false,
-    "abv" : 4.0,
-    "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 25.0,
-      "sizeMl" : 5000,
-      "keg" : true
-    } ],
-    "available" : false,
-    "categories" : [ "IPA" ],
-    "new" : false,
-    "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-xpa-5l-mini-keg-1591885313XPA-Mini-Cask-Mockup-SML2.jpg",
-    "url" : "https://shop.fivepointsbrewing.co.uk/item/42/FivePointsBrewing/FIVE-POINTS-XPA-5L-MINI-KEG.html"
-  }, {
-    "brewery" : "Five Points",
-    "name" : "Five Points XPA",
-    "summary" : "Extra Pale Ale",
     "desc" : "A light and tropical extra pale ale with assertive hop bitterness and aromas of mango and passionfruit. Even paler and hoppier than our legendary Five Points Pale, and the 4% ABV makes it extra drinkable, too.\nXPA began its life as our collaboration beer for Field Day festival in 2016. Its sessionable ABV and refreshing, zingy bitterness proved a hit post-festival season, and the beer has since joined our core range in can, keg and cask.",
     "mixed" : false,
     "abv" : 4.0,
@@ -998,6 +967,11 @@
       "totalPrice" : 21.6,
       "sizeMl" : 330,
       "keg" : false
+    }, {
+      "quantity" : 1,
+      "totalPrice" : 25.0,
+      "sizeMl" : 5000,
+      "keg" : true
     } ],
     "available" : true,
     "categories" : [ "IPA" ],
@@ -1169,19 +1143,7 @@
       "totalPrice" : 2.5,
       "sizeMl" : 330,
       "keg" : false
-    } ],
-    "available" : true,
-    "categories" : [ ],
-    "new" : false,
-    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_juicebox_1585746292Juicebox3302020.png",
-    "url" : "https://www.fourpure.com/item/127/Fourpure/Juicebox.html"
-  }, {
-    "brewery" : "Fourpure",
-    "name" : "Juicebox",
-    "desc" : "Gets pints in your home with this metal 5L minikeg. When you can't go to the pub, make the pub come to you.\nContains Juicebox: Fresh orange zest, flavours of mango and papaya, the aroma of good times.\nComes with a free pint Glass.\nOnce open the keg will keep for 2/3 days and we put a 2 week best before from the date of filling. The keg coimes with an integral tap for pouring.",
-    "mixed" : false,
-    "abv" : 5.9,
-    "offers" : [ {
+    }, {
       "quantity" : 1,
       "totalPrice" : 35.0,
       "sizeMl" : 5000,
@@ -1190,8 +1152,8 @@
     "available" : true,
     "categories" : [ ],
     "new" : false,
-    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_juicebox5lminikeg_1588779669WhatsAppImage20200506at14.07.452.jpeg",
-    "url" : "https://www.fourpure.com/item/286/Fourpure/Juicebox-5L-Minikeg.html"
+    "thumbnailUrl" : "https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_juicebox_1585746292Juicebox3302020.png",
+    "url" : "https://www.fourpure.com/item/127/Fourpure/Juicebox.html"
   }, {
     "brewery" : "Fourpure",
     "name" : "Lantern Earl Grey Session IPA",
@@ -1325,6 +1287,11 @@
       "totalPrice" : 4.0,
       "sizeMl" : 440,
       "keg" : false
+    }, {
+      "quantity" : 1,
+      "totalPrice" : 4.0,
+      "sizeMl" : 440,
+      "keg" : false
     } ],
     "available" : true,
     "categories" : [ "Pale" ],
@@ -1339,6 +1306,11 @@
     "mixed" : false,
     "abv" : 7.2,
     "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 4.0,
+      "sizeMl" : 440,
+      "keg" : false
+    }, {
       "quantity" : 1,
       "totalPrice" : 4.0,
       "sizeMl" : 440,
@@ -1392,6 +1364,11 @@
       "totalPrice" : 56.0,
       "sizeMl" : 330,
       "keg" : false
+    }, {
+      "quantity" : 24,
+      "totalPrice" : 56.0,
+      "sizeMl" : 330,
+      "keg" : false
     } ],
     "available" : true,
     "categories" : [ "Pale", "Pils / Lager", "IPA" ],
@@ -1404,6 +1381,11 @@
     "desc" : "This is a 12 pack of 330ml cans and 1 x Burger Book.\nA perfect box for an evening cooking over the grill. DJ BBQ is the king of the coals and starting parties. He’s picked two of his favourite Gipsy Hill tinnies – Hepcat and Hunter, and signed 24 copies of his incredible Burger Book.\nGo check him out on Instagram for the live cooking, lessons and sweet beats.\nCase contents listed below.",
     "mixed" : true,
     "offers" : [ {
+      "quantity" : 13,
+      "totalPrice" : 41.19,
+      "sizeMl" : 330,
+      "keg" : false
+    }, {
       "quantity" : 13,
       "totalPrice" : 41.19,
       "sizeMl" : 330,
@@ -1907,24 +1889,6 @@
   }, {
     "brewery" : "Marble",
     "name" : "Alf",
-    "summary" : "IPA",
-    "desc" : "First brewed in collaboration with our friends at Amundsen Brewery, Oslo, Alf is a tongue in cheek, hazy pale ;-). Stone and tropical fruit character is brought by a heavy dry-hop of Mosaic, Enigma and Sultana, balanced on a light, drinkable body.",
-    "mixed" : false,
-    "abv" : 5.4,
-    "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 25.5,
-      "sizeMl" : 5000,
-      "keg" : true
-    } ],
-    "available" : false,
-    "categories" : [ "Pale", "IPA" ],
-    "new" : false,
-    "thumbnailUrl" : "https://marblebeers.com/wp-content/uploads/2020/07/ALF2_1652-e1594125090379-300x300.jpg",
-    "url" : "https://marblebeers.com/shop-home/alf-5l-mini-cask/"
-  }, {
-    "brewery" : "Marble",
-    "name" : "Alf",
     "summary" : "Hazy IPA ;-)",
     "desc" : "First brewed in collaboration with our friends at Amundsen Brewery, Oslo, Alf is a style hazy IPA ;). Estery Vermont yeast accentuates the stone fruit and tropical fruit character brought by a heavy dry-hop of Mosaic, Enigma and Denali , whilst a protein-heavy grist gives a full, pillowy body.",
     "mixed" : false,
@@ -1934,6 +1898,11 @@
       "totalPrice" : 3.7,
       "sizeMl" : 500,
       "keg" : false
+    }, {
+      "quantity" : 1,
+      "totalPrice" : 25.5,
+      "sizeMl" : 5000,
+      "keg" : true
     } ],
     "available" : true,
     "categories" : [ "IPA" ],
@@ -1948,6 +1917,11 @@
     "mixed" : false,
     "abv" : 4.2,
     "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.9,
+      "sizeMl" : 500,
+      "keg" : false
+    }, {
       "quantity" : 24,
       "totalPrice" : 65.0,
       "sizeMl" : 500,
@@ -2141,6 +2115,11 @@
     "mixed" : false,
     "abv" : 5.0,
     "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.3,
+      "sizeMl" : 500,
+      "keg" : false
+    }, {
       "quantity" : 24,
       "totalPrice" : 75.0,
       "sizeMl" : 500,
@@ -2159,6 +2138,11 @@
     "mixed" : false,
     "abv" : 4.2,
     "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.55,
+      "sizeMl" : 500,
+      "keg" : false
+    }, {
       "quantity" : 24,
       "totalPrice" : 56.5,
       "sizeMl" : 500,
@@ -2195,6 +2179,11 @@
     "mixed" : false,
     "abv" : 3.9,
     "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.7,
+      "sizeMl" : 500,
+      "keg" : false
+    }, {
       "quantity" : 24,
       "totalPrice" : 60.0,
       "sizeMl" : 500,
@@ -2295,10 +2284,15 @@
     "brewery" : "Northern Monk",
     "name" : "Eternal",
     "summary" : "Session IPA",
-    "desc" : "ABV: 4.1% ABV // 11.00 EBC // IBU: 45 IBU // OG: 1.05 OG // 330ml\nINGREDIENTS: WATER, Malted BARLEY (GLUTEN), HOPS, YEAST\nA product brewed for almost 7,000 years, a quest for perfection that never ends. Citrusy, light and refreshing. To Eternity.\nSUITABLE FOR VEGANS",
+    "desc" : "ABV: 4.1% ABV // 11.00 EBC // 45 IBU // 1.05 OG // 330ML\nINGREDIENTS: WATER, Malted BARLEY (GLUTEN), HOPS, YEAST\nA product brewed for almost 7,000 years, a quest for perfection that never ends. Citrusy, light and refreshing. To Eternity.\nSUITABLE FOR VEGANS",
     "mixed" : false,
     "abv" : 4.1,
     "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.1,
+      "sizeMl" : 330,
+      "keg" : false
+    }, {
       "quantity" : 4,
       "totalPrice" : 7.6,
       "sizeMl" : 330,
@@ -2307,8 +2301,8 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/ETERNAL_4_PACK_180x.jpg",
-    "url" : "https://northernmonkshop.com/collections/beer/products/eternal-session-ipa-4-pack"
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/2020-06-01-NMBC_CoreCans-5_180x.jpg",
+    "url" : "https://northernmonkshop.com/collections/beer/products/eternal-session-ipa"
   }, {
     "brewery" : "Northern Monk",
     "name" : "Faith In The Summer",
@@ -2334,6 +2328,11 @@
     "mixed" : false,
     "abv" : 4.3,
     "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 3.0,
+      "sizeMl" : 440,
+      "keg" : false
+    }, {
       "quantity" : 6,
       "totalPrice" : 16.0,
       "sizeMl" : 440,
@@ -2342,8 +2341,8 @@
     "available" : true,
     "categories" : [ "Pils / Lager" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NorthernMonk_WebStore_GNL_3000x1770px_1_180x.jpg",
-    "url" : "https://northernmonkshop.com/collections/beer/products/great-northern-lager-6-pack"
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/2020-NMBC_Great-Northern-Lager-29_180x.jpg",
+    "url" : "https://northernmonkshop.com/collections/beer/products/great-northern-lager"
   }, {
     "brewery" : "Northern Monk",
     "name" : "Heathen",
@@ -2387,6 +2386,11 @@
     "mixed" : false,
     "abv" : 6.2,
     "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.6,
+      "sizeMl" : 330,
+      "keg" : false
+    }, {
       "quantity" : 4,
       "totalPrice" : 9.25,
       "sizeMl" : 330,
@@ -2395,8 +2399,8 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NW_4_PACK_180x.jpg",
-    "url" : "https://northernmonkshop.com/collections/beer/products/new-world-ipa-india-pale-ale-4-pack"
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/2020-06-01-NMBC_CoreCans-4_180x.jpg",
+    "url" : "https://northernmonkshop.com/collections/beer/products/new-world"
   }, {
     "brewery" : "Northern Monk",
     "name" : "Northern Heroes",
@@ -2435,10 +2439,15 @@
     "brewery" : "Northern Monk",
     "name" : "Origin",
     "summary" : "Gluten Free IPA",
-    "desc" : "ABV: 5.7% ABV // 11.00 EBC // 45 IBU // 1.05 OG // 330ML\nINGREDIENTS: WATER, Malted BARLEY (GLUTEN), HOPS, YEAST\nA homage to the origins of IPA and the evolution of this style. Piney, juicy and crisp, Gluten-free and Vegan. The evolution of tradition.\nSUITABLE FOR VEGANS",
+    "desc" : "ABV: 5.7% ABV // 11.00 EBC // 45 IBU // 1.05 OG // 330ML\nINGREDIENTS: WATER, MALTED BARLEY, HOPS, YEAST\n(A GLUTED FREE PRODUCT)\nA homage to the origins of IPA and the evolution of this style. Piney, juicy and crisp, Gluten-free and Vegan. The evolution of tradition.\nSUITABLE FOR VEGANS",
     "mixed" : false,
     "abv" : 5.7,
     "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.6,
+      "sizeMl" : 330,
+      "keg" : false
+    }, {
       "quantity" : 4,
       "totalPrice" : 9.25,
       "sizeMl" : 330,
@@ -2447,8 +2456,8 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/ORIGIN4PK_180x.jpg",
-    "url" : "https://northernmonkshop.com/collections/beer/products/origin-gluten-free-ipa-4-pack"
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NMBCo_-_Tom_Joy_NMB_6644_180x.jpg",
+    "url" : "https://northernmonkshop.com/collections/beer/products/origin"
   }, {
     "brewery" : "Northern Monk",
     "name" : "Retro Faith",
@@ -2548,6 +2557,11 @@
       "totalPrice" : 7.99,
       "sizeMl" : 440,
       "keg" : false
+    }, {
+      "quantity" : 4,
+      "totalPrice" : 45.0,
+      "sizeMl" : 440,
+      "keg" : false
     } ],
     "available" : true,
     "categories" : [ "Dark" ],
@@ -2581,6 +2595,10 @@
       "quantity" : 6,
       "totalPrice" : 22.5,
       "keg" : false
+    }, {
+      "quantity" : 12,
+      "totalPrice" : 45.0,
+      "keg" : false
     } ],
     "available" : true,
     "categories" : [ ],
@@ -2599,20 +2617,7 @@
       "totalPrice" : 4.99,
       "sizeMl" : 440,
       "keg" : false
-    } ],
-    "available" : true,
-    "categories" : [ "IPA" ],
-    "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/01/440ml-can-Moselle-Skies-3-can-render-1024x724.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/moselle-skies/"
-  }, {
-    "brewery" : "Padstow",
-    "name" : "Moselle Skies",
-    "summary" : "BRUT IPA",
-    "desc" : "The latest in our range of seasonal brews, this Brut IPA is a collaboration with Brasserie Bon Poison from Metz in France., inspired by their innovative approach to beer and our previous, well received Brut IPA Cold Skies. This beer is suitable for vegans. Contains barley, and wheat.",
-    "mixed" : false,
-    "abv" : 6.5,
-    "offers" : [ {
+    }, {
       "quantity" : 1,
       "totalPrice" : 32.5,
       "sizeMl" : 5000,
@@ -2621,8 +2626,8 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/04/minikeg-front.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/minikeg-moselle-skies/"
+    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/01/440ml-can-Moselle-Skies-3-can-render-1024x724.jpg",
+    "url" : "https://www.padstowbrewing.co.uk/product/moselle-skies/"
   }, {
     "brewery" : "Padstow",
     "name" : "Padstow IPA",
@@ -2635,20 +2640,7 @@
       "totalPrice" : 3.75,
       "sizeMl" : 568,
       "keg" : false
-    } ],
-    "available" : true,
-    "categories" : [ "IPA" ],
-    "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Padstow-IPA-Bottle-1.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/padstow-ipa/"
-  }, {
-    "brewery" : "Padstow",
-    "name" : "Padstow IPA",
-    "summary" : "India Pale Ale",
-    "desc" : "Our Padstow IPA has a traditionally strong ABV. Careful hopping means it’s refreshing, satisfying and rather moreish. Goes well with: spicy food (perfect with curry), sweet desserts, or mature cheddar and mild blue cheese. This is our best selling bottled beer and has won CAMRA Gold and Taste of the West Gold. This mini keg contains 5 litres (8.8 pints). Directions for use are printed on the container. This beer is suitable for vegans. It contains barley and wheat, which are sources of gluten.",
-    "mixed" : false,
-    "abv" : 4.8,
-    "offers" : [ {
+    }, {
       "quantity" : 1,
       "totalPrice" : 23.95,
       "sizeMl" : 5000,
@@ -2657,8 +2649,8 @@
     "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/11/Padstow-IPA-Minikeg.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/mini-keg-padstow-ipa/"
+    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Padstow-IPA-Bottle-1.jpg",
+    "url" : "https://www.padstowbrewing.co.uk/product/padstow-ipa/"
   }, {
     "brewery" : "Padstow",
     "name" : "Padstow Local",
@@ -2689,30 +2681,17 @@
       "totalPrice" : 3.75,
       "sizeMl" : 568,
       "keg" : false
-    } ],
-    "available" : true,
-    "categories" : [ "Bitter", "Pale" ],
-    "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Padstow-May-Day-Bottle-1.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/padstow-may-day/"
-  }, {
-    "brewery" : "Padstow",
-    "name" : "Padstow May Day",
-    "summary" : "Extra Pale Hoppy Ale",
-    "desc" : "Brewed to celebrate May Day – the most important day of the year in Padstow, this beer has now been added to our core range due to its year-round popularity. Made with extra pale malt and 100% citra hops; it has a tropical flavour with a citrus and elderflower aroma. A crisp, smooth and refreshing pint. Goes well with: spicy Spanish and Italian meats, paella, pizza and pasta. May Day has been awarded SIBA Gold and Taste of the West Silver. This mini keg contains 5 litres (8.8 pints). Directions for use are printed on the container. This beer is suitable for vegans. It contains barley and wheat,which are sources of gluten.",
-    "mixed" : false,
-    "abv" : 5.0,
-    "offers" : [ {
+    }, {
       "quantity" : 1,
       "totalPrice" : 26.5,
       "sizeMl" : 5000,
       "keg" : true
     } ],
     "available" : true,
-    "categories" : [ "Pale" ],
+    "categories" : [ "Bitter", "Pale" ],
     "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/11/Padstow-May-Day-Minikeg.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/mini-keg-padstow-may-day/"
+    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Padstow-May-Day-Bottle-1.jpg",
+    "url" : "https://www.padstowbrewing.co.uk/product/padstow-may-day/"
   }, {
     "brewery" : "Padstow",
     "name" : "Padstow Pale Ale",
@@ -2725,20 +2704,7 @@
       "totalPrice" : 3.75,
       "sizeMl" : 568,
       "keg" : false
-    } ],
-    "available" : true,
-    "categories" : [ "Bitter", "Pale" ],
-    "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Padstow-Pale-Ale-Bottle.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/padstow-pale-ale/"
-  }, {
-    "brewery" : "Padstow",
-    "name" : "Padstow Pale Ale",
-    "summary" : "Light Golden Ale",
-    "desc" : "A beautifully light golden ale, Padstow Pale Ale is noticeably hopped with a good balanced bitterness and a refreshing aroma provided by US hops added at the steeping stage. Goes well with: meat pies and mild cheddar. Also great with a beef or chicken burger. Our Pale Ale has won Taste of the West Silver and SIBA Bronze. This mini keg contains 5 litres (8.8 pints). Directions for use are printed on the container. This beer is suitable for vegans. It contains barley and wheat,which are sources of gluten.",
-    "mixed" : false,
-    "abv" : 3.6,
-    "offers" : [ {
+    }, {
       "quantity" : 1,
       "totalPrice" : 23.95,
       "sizeMl" : 5000,
@@ -2747,8 +2713,8 @@
     "available" : true,
     "categories" : [ "Bitter", "Pale" ],
     "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/11/Padstow-Pale-Ale-Minikeg.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/mini-keg-padstow-pale-ale/"
+    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Padstow-Pale-Ale-Bottle.jpg",
+    "url" : "https://www.padstowbrewing.co.uk/product/padstow-pale-ale/"
   }, {
     "brewery" : "Padstow",
     "name" : "Padstow Pilot",
@@ -2779,30 +2745,17 @@
       "totalPrice" : 3.5,
       "sizeMl" : 440,
       "keg" : false
-    } ],
-    "available" : true,
-    "categories" : [ "Pils / Lager" ],
-    "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Padstow-Pilsner-Can.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/padstow-pilsner/"
-  }, {
-    "brewery" : "Padstow",
-    "name" : "Padstow Pilsner",
-    "summary" : "A refreshing, crisp Pilsner",
-    "desc" : "Our Pilsner is made in the traditional way using the best Extra Pale malt, Saaz hops and lager yeast. The beer is fermented at lower temperatures to preserve flavour. The result is a clean, crisp and refreshing drink. Padstow Pilsner won Best Beer at the Great British Food Awards 2018 and Taste of the West Gold. This mini keg contains 5 litres (8.8 pints). Directions for use are printed on the container. This beer is suitable for vegans. It contains barley and wheat,which are sources of gluten.",
-    "mixed" : false,
-    "abv" : 4.4,
-    "offers" : [ {
+    }, {
       "quantity" : 1,
       "totalPrice" : 29.5,
       "sizeMl" : 5000,
       "keg" : true
     } ],
     "available" : true,
-    "categories" : [ "Pils / Lager", "Pale" ],
+    "categories" : [ "Pils / Lager" ],
     "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/11/Padstow-Pilsner-Minikeg.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/mini-keg-padstow-pilsner/"
+    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Padstow-Pilsner-Can.jpg",
+    "url" : "https://www.padstowbrewing.co.uk/product/padstow-pilsner/"
   }, {
     "brewery" : "Padstow",
     "name" : "Padstow Pride",
@@ -2851,20 +2804,7 @@
       "totalPrice" : 3.75,
       "sizeMl" : 568,
       "keg" : false
-    } ],
-    "available" : true,
-    "categories" : [ "Bitter" ],
-    "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Windjammer-Bottle.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/windjammer/"
-  }, {
-    "brewery" : "Padstow",
-    "name" : "Padstow Windjammer",
-    "summary" : "Cornish copper ale",
-    "desc" : "Padstow Windjammer was originally brewed as a one off seasonal autumn brew with specialised malt to achieve its distinctive copper colour. It has since become our most popular draught ale. A malt-driven traditional English ale with a smooth nutty finish and subtle spiced fruit aroma. Goes well with: roast chicken or pork, fish & chips, mild cheeses. This mini keg holds 5 litres (8.8 pints). Directions for use are printed on the container. This beer is suitable for vegans. It contains barley and wheat, which are sources of gluten.",
-    "mixed" : false,
-    "abv" : 4.5,
-    "offers" : [ {
+    }, {
       "quantity" : 1,
       "totalPrice" : 23.95,
       "sizeMl" : 5000,
@@ -2873,8 +2813,8 @@
     "available" : true,
     "categories" : [ "Bitter" ],
     "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/11/Padstow-Windjammer-Minikeg.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/mini-keg-padstow-windjammer/"
+    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Windjammer-Bottle.jpg",
+    "url" : "https://www.padstowbrewing.co.uk/product/windjammer/"
   }, {
     "brewery" : "Padstow",
     "name" : "Pocket Rocket",
@@ -2887,30 +2827,17 @@
       "totalPrice" : 3.95,
       "sizeMl" : 440,
       "keg" : false
-    } ],
-    "available" : true,
-    "categories" : [ "Pale" ],
-    "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Pocket-Rocket-Can-1.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/pocket-rocket/"
-  }, {
-    "brewery" : "Padstow",
-    "name" : "Pocket Rocket",
-    "summary" : "Session IPA",
-    "desc" : "Now in minikeg, Pocket Rocket is the perfect hop-forward session IPA. Plenty of hoppy character, a solid malt backbone and at 4% ideal for a barbecue, afternoon in the garden or quiet evening drink.",
-    "mixed" : false,
-    "abv" : 4.0,
-    "offers" : [ {
+    }, {
       "quantity" : 1,
       "totalPrice" : 29.5,
       "sizeMl" : 5000,
       "keg" : true
     } ],
     "available" : true,
-    "categories" : [ "IPA" ],
+    "categories" : [ "Pale" ],
     "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/04/pockete-rcket-minikeg.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/minikeg-pocket-rocket/"
+    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Pocket-Rocket-Can-1.jpg",
+    "url" : "https://www.padstowbrewing.co.uk/product/pocket-rocket/"
   }, {
     "brewery" : "Padstow",
     "name" : "Red Sky",
@@ -2995,6 +2922,11 @@
       "totalPrice" : 29.5,
       "sizeMl" : 5000,
       "keg" : true
+    }, {
+      "quantity" : 1,
+      "totalPrice" : 29.5,
+      "sizeMl" : 5000,
+      "keg" : true
     } ],
     "available" : true,
     "categories" : [ "Cider" ],
@@ -3013,20 +2945,7 @@
       "totalPrice" : 3.5,
       "sizeMl" : 440,
       "keg" : false
-    } ],
-    "available" : true,
-    "categories" : [ "Pils / Lager", "Pale" ],
-    "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/07/1881-CAN-RENDER-new-1024x549.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/1881-lager-support-the-fishermens-mission/"
-  }, {
-    "brewery" : "Padstow",
-    "name" : "Support the Fishermen’s Mission",
-    "summary" : "Patiently fermented, unfiltered craft lager",
-    "desc" : "Brewed in support of the Fishermen's Mission, 1881 commemorates the year of their founding and helps to raise money towards their vital work in the present. Find out more at https://www.fishermensmission.org.uk/ A pale, refreshing, unfiltered lager, 1881 has been patiently fermented and packaged to maximise its clean flavour. This beer is suitable for vegans. It contains barley, wheat and oats. ** Also available in 440ml cans **",
-    "mixed" : false,
-    "abv" : 3.9,
-    "offers" : [ {
+    }, {
       "quantity" : 1,
       "totalPrice" : 29.5,
       "sizeMl" : 5000,
@@ -3035,8 +2954,8 @@
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale" ],
     "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/04/minikeg-front.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/1881-lager-support-the-fishermens-mission-minikeg/"
+    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/07/1881-CAN-RENDER-new-1024x549.jpg",
+    "url" : "https://www.padstowbrewing.co.uk/product/1881-lager-support-the-fishermens-mission/"
   }, {
     "brewery" : "Padstow",
     "name" : "The Smoke",
@@ -3098,6 +3017,10 @@
     "mixed" : false,
     "abv" : 4.8,
     "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.7,
+      "keg" : false
+    }, {
       "quantity" : 24,
       "totalPrice" : 45.0,
       "keg" : false
@@ -3115,6 +3038,10 @@
     "mixed" : false,
     "abv" : 4.5,
     "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.7,
+      "keg" : false
+    }, {
       "quantity" : 24,
       "totalPrice" : 45.0,
       "keg" : false
@@ -3290,6 +3217,11 @@
     "mixed" : false,
     "abv" : 5.6,
     "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 18.5,
+      "sizeMl" : 440,
+      "keg" : false
+    }, {
       "quantity" : 12,
       "totalPrice" : 36.4,
       "sizeMl" : 440,
@@ -3321,6 +3253,10 @@
     "name" : "Chevalier Mild",
     "mixed" : false,
     "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 16.5,
+      "keg" : false
+    }, {
       "quantity" : 12,
       "totalPrice" : 32.0,
       "keg" : false
@@ -3341,6 +3277,10 @@
       "quantity" : 6,
       "totalPrice" : 20.0,
       "keg" : false
+    }, {
+      "quantity" : 12,
+      "totalPrice" : 40.0,
+      "keg" : false
     } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
@@ -3357,6 +3297,10 @@
       "quantity" : 12,
       "totalPrice" : 27.5,
       "keg" : false
+    }, {
+      "quantity" : 6,
+      "totalPrice" : 50.0,
+      "keg" : false
     } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
@@ -3371,6 +3315,10 @@
     "mixed" : false,
     "abv" : 4.0,
     "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 17.0,
+      "keg" : false
+    }, {
       "quantity" : 12,
       "totalPrice" : 33.6,
       "keg" : false
@@ -3407,6 +3355,10 @@
       "quantity" : 6,
       "totalPrice" : 23.0,
       "keg" : false
+    }, {
+      "quantity" : 12,
+      "totalPrice" : 46.0,
+      "keg" : false
     } ],
     "available" : true,
     "categories" : [ "IPA" ],
@@ -3420,6 +3372,10 @@
     "mixed" : false,
     "abv" : 4.9,
     "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 16.0,
+      "keg" : false
+    }, {
       "quantity" : 12,
       "totalPrice" : 31.0,
       "keg" : false
@@ -3439,6 +3395,10 @@
       "quantity" : 6,
       "totalPrice" : 20.0,
       "keg" : false
+    }, {
+      "quantity" : 12,
+      "totalPrice" : 40.0,
+      "keg" : false
     } ],
     "available" : true,
     "categories" : [ "Pale", "Cider" ],
@@ -3453,6 +3413,10 @@
     "mixed" : false,
     "abv" : 4.2,
     "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 17.0,
+      "keg" : false
+    }, {
       "quantity" : 12,
       "totalPrice" : 33.6,
       "keg" : false
@@ -3473,6 +3437,10 @@
       "quantity" : 6,
       "totalPrice" : 16.0,
       "keg" : false
+    }, {
+      "quantity" : 12,
+      "totalPrice" : 32.0,
+      "keg" : false
     } ],
     "available" : true,
     "categories" : [ ],
@@ -3487,6 +3455,10 @@
     "mixed" : false,
     "abv" : 4.8,
     "offers" : [ {
+      "quantity" : 6,
+      "totalPrice" : 17.0,
+      "keg" : false
+    }, {
       "quantity" : 12,
       "totalPrice" : 33.6,
       "keg" : false
@@ -3809,6 +3781,11 @@
       "totalPrice" : 2.16,
       "sizeMl" : 330,
       "keg" : false
+    }, {
+      "quantity" : 1,
+      "totalPrice" : 2.2,
+      "sizeMl" : 330,
+      "keg" : false
     } ],
     "available" : false,
     "categories" : [ "Dark" ],
@@ -3880,29 +3857,17 @@
       "totalPrice" : 3.95,
       "sizeMl" : 440,
       "keg" : false
-    } ],
-    "available" : true,
-    "categories" : [ "IPA" ],
-    "new" : false,
-    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-futurist-440-1565970386siren-craft-brew-futurist-440-can.png",
-    "url" : "https://www.sirencraftbrew.com/item/231/SirenCraftBrew/Futurist.html"
-  }, {
-    "brewery" : "Siren Craft",
-    "name" : "Futurist",
-    "desc" : "NOTE - Due to high demand, if collecting from the brewery, please do not come to collect until you receive an email to say it's ready.\nFresh Siren keg beer at home in awesome 5L mini kegs!\nFuturist is a gluten free beer that packs a punch! Expect aromas of grapefruit, citrus, tropical fruits and pine along with subtle orange flavours. A hint of vanilla sweetness rounds out a soft, moreish mouthfeel.\nKeep Cold. Serve Cool. Drink Fresh.\nUnfiltered / Unfined\nVegan Friendly\nMini kegs are stored refrigerated on site. Once received, keeps up to a recommended maximum of 10 days, drink within 3 days once opened. Drink soon, keep cold.",
-    "mixed" : false,
-    "abv" : 4.8,
-    "offers" : [ {
+    }, {
       "quantity" : 1,
       "totalPrice" : 25.2,
       "sizeMl" : 5000,
       "keg" : true
     } ],
     "available" : true,
-    "categories" : [ ],
+    "categories" : [ "IPA" ],
     "new" : false,
-    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-5l-mini-keg-futurist-1590575108siren-mini-keg-futurist.png",
-    "url" : "https://www.sirencraftbrew.com/item/331/SirenCraftBrew/5L-Mini-Keg-Futurist.html"
+    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-futurist-440-1565970386siren-craft-brew-futurist-440-can.png",
+    "url" : "https://www.sirencraftbrew.com/item/231/SirenCraftBrew/Futurist.html"
   }, {
     "brewery" : "Siren Craft",
     "name" : "Guava Script",
@@ -4032,23 +3997,6 @@
   }, {
     "brewery" : "Siren Craft",
     "name" : "Santo",
-    "desc" : "NOTE - Due to high demand, if collecting from the brewery, please do not come to collect until you receive an email to say it's ready.\nFresh Siren keg beer at home in awesome 5L mini kegs!\nSanto is a distinctly Siren lager. Our take on the style is full of American hops, working in harmony to offer subtle tropical fruit notes and bright citrus flavours. It pours with a delicate haze and a striking aroma. Saintly fresh, but devilishly drinkable.\nKeep Cold. Serve Cool. Drink Fresh.\nUnfiltered / Unfined\nVegan Friendly\nMini kegs are stored refrigerated on site. Once received, keeps up to a recommended maximum of 10 days, drink within 3 days once opened. Drink soon, keep cold.",
-    "mixed" : false,
-    "abv" : 5.0,
-    "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 22.0,
-      "sizeMl" : 5000,
-      "keg" : true
-    } ],
-    "available" : false,
-    "categories" : [ "Pils / Lager" ],
-    "new" : false,
-    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-5l-mini-keg-santo-1591025215siren-mini-keg-santo.png",
-    "url" : "https://www.sirencraftbrew.com/item/336/SirenCraftBrew/5L-Mini-Keg-Santo.html"
-  }, {
-    "brewery" : "Siren Craft",
-    "name" : "Santo",
     "summary" : "Dry-Hopped Lager",
     "desc" : "Santo is a distinctly Siren lager. Our take on the style is full of American hops, working in harmony to offer subtle tropical fruit notes and bright citrus flavours. It pours with a delicate haze and a striking aroma. Saintly fresh, but devilishly drinkable.",
     "mixed" : false,
@@ -4058,6 +4006,11 @@
       "totalPrice" : 2.1,
       "sizeMl" : 330,
       "keg" : false
+    }, {
+      "quantity" : 1,
+      "totalPrice" : 22.0,
+      "sizeMl" : 5000,
+      "keg" : true
     } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
@@ -4156,8 +4109,8 @@
   }, {
     "brewery" : "Siren Craft",
     "name" : "Yu Lu",
-    "summary" : "Loose Leaf Pale Ale",
-    "desc" : "Yu Lu is an intricate beer with layers of flavour that remain distinctive, yet work in perfect harmony. Her name alludes to the mystical history of the humble tea leaf, which delivers subtle bergamot orange and lemon notes here, accentuated by the addition of lemon zest. Her delicate hop high notes will leave your taste buds sparkling. Allergens: Malted Barley, Wheat.",
+    "summary" : "Session Pale Ale",
+    "desc" : "Refreshing and exciting in equal measure, Yu Lu is brewed with Earl Grey tea and lemon zest for taste that belies its strength. Distinct peach and apricot notes are complemented by zesty bergamot flavours and a delicate loose leaf tea bitterness.\nKeep Cold. Serve Cool. Drink Fresh.\nUnfiltered / Unfined\nVegan Friendly (Not Vegan in Cask)",
     "mixed" : false,
     "abv" : 3.6,
     "offers" : [ {
@@ -4165,29 +4118,22 @@
       "totalPrice" : 1.8,
       "sizeMl" : 330,
       "keg" : false
-    } ],
-    "available" : true,
-    "categories" : [ "Pale" ],
-    "new" : false,
-    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-yu-lu-1546011576Siren-yu-lu-front.png",
-    "url" : "https://www.sirencraftbrew.com/item/11/SirenCraftBrew/Yu-Lu.html"
-  }, {
-    "brewery" : "Siren Craft",
-    "name" : "Yu Lu",
-    "desc" : "NOTE - Due to high demand, if collecting from the brewery, please do not come to collect until you receive an email to say it's ready.\nFresh Siren keg beer at home in awesome 5L mini kegs!\nRefreshing and exciting in equal measure, Yu Lu is brewed with Earl Grey tea and lemon zest for taste that belies its strength. Distinct peach and apricot notes are complemented by zesty bergamot flavours and a delicate loose leaf tea bitterness.\nKeep Cold. Serve Cool. Drink Fresh.\nUnfiltered / Unfined\nVegan Friendly\nMini kegs are stored refrigerated on site. Once received, keeps up to a recommended maximum of 10 days, drink within 3 days once opened. Drink soon, keep cold.",
-    "mixed" : false,
-    "abv" : 3.6,
-    "offers" : [ {
+    }, {
+      "quantity" : 1,
+      "totalPrice" : 1.9,
+      "sizeMl" : 330,
+      "keg" : false
+    }, {
       "quantity" : 1,
       "totalPrice" : 22.0,
       "sizeMl" : 5000,
       "keg" : true
     } ],
     "available" : true,
-    "categories" : [ ],
+    "categories" : [ "Pale" ],
     "new" : false,
-    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-5l-mini-keg-yu-lu-1591025048siren-mini-keg-yu-lu.png",
-    "url" : "https://www.sirencraftbrew.com/item/335/SirenCraftBrew/5L-Mini-Keg-Yu-Lu.html"
+    "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-yu-lu-1563358010siren-craft-brew-yu-lu-can.png",
+    "url" : "https://www.sirencraftbrew.com/item/215/SirenCraftBrew/Yu-Lu.html"
   }, {
     "brewery" : "Solvay Society",
     "name" : "8:20",
@@ -4287,6 +4233,10 @@
       "quantity" : 6,
       "totalPrice" : 18.75,
       "keg" : false
+    }, {
+      "quantity" : 6,
+      "totalPrice" : 18.75,
+      "keg" : false
     } ],
     "available" : true,
     "categories" : [ ],
@@ -4355,6 +4305,11 @@
       "totalPrice" : 1.8,
       "sizeMl" : 330,
       "keg" : false
+    }, {
+      "quantity" : 1,
+      "totalPrice" : 2.45,
+      "sizeMl" : 500,
+      "keg" : false
     } ],
     "available" : true,
     "categories" : [ "Bitter" ],
@@ -4405,6 +4360,11 @@
       "quantity" : 1,
       "totalPrice" : 1.8,
       "sizeMl" : 330,
+      "keg" : false
+    }, {
+      "quantity" : 1,
+      "totalPrice" : 2.45,
+      "sizeMl" : 500,
       "keg" : false
     } ],
     "available" : true,
@@ -4577,6 +4537,11 @@
     "mixed" : false,
     "abv" : 5.9,
     "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 2.0,
+      "sizeMl" : 330,
+      "keg" : false
+    }, {
       "quantity" : 1,
       "totalPrice" : 2.0,
       "sizeMl" : 330,
@@ -5213,6 +5178,11 @@
       "totalPrice" : 34.0,
       "sizeMl" : 330,
       "keg" : false
+    }, {
+      "quantity" : 12,
+      "totalPrice" : 40.8,
+      "sizeMl" : 440,
+      "keg" : false
     } ],
     "available" : true,
     "categories" : [ "Dark" ],
@@ -5227,6 +5197,10 @@
     "offers" : [ {
       "quantity" : 12,
       "totalPrice" : 35.0,
+      "keg" : false
+    }, {
+      "quantity" : 12,
+      "totalPrice" : 39.0,
       "keg" : false
     } ],
     "available" : true,
