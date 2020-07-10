@@ -24,7 +24,7 @@ const ThisPage = (): JSX.Element => (
         )
       }
       capturedAt={capturedAt}
-      items={_.filter(items, item => item.new || item.brewery.new)}
+      items={_.filter(items, item => item.new && !item.brewery.new)}
       allBreweries={breweries}
       categories={categories}
     />
