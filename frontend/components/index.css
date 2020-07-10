@@ -143,6 +143,10 @@ td.thumbnail {
   margin-bottom: 5px;
 }
 
+.price .summary {
+  white-space: nowrap;
+}
+
 .pill {
   color: var(--sol-base3);
   font-size: smaller;
@@ -511,7 +515,21 @@ nav a:hover {
   }
 
   thead th {
+    font-size: smaller;
     border-radius: inherit !important;
+  }
+
+  img {
+    max-width: 75px;
+    max-height: 75px;
+  }
+
+  .sold-out {
+    font-size: x-small;
+  }
+
+  .brewery {
+    font-size: smaller;
   }
 
   /* Bottom-right to avoid blocking table header */
