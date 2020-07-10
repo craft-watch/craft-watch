@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-10T22:33:22.004134Z"
+    "capturedAt" : "2020-07-10T23:27:45.590650Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -1671,7 +1671,7 @@
       "sizeMl" : 440,
       "keg" : false
     } ],
-    "available" : false,
+    "available" : true,
     "categories" : [ "Pale", "IPA" ],
     "new" : true,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/BUCKLE-DOWN-440ml-1-324x324.png",
@@ -1707,7 +1707,7 @@
       "sizeMl" : 440,
       "keg" : false
     } ],
-    "available" : false,
+    "available" : true,
     "categories" : [ "IPA" ],
     "new" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/drag-race-johnny-440ml-324x324.png",
