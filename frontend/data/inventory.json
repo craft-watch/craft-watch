@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-10T21:40:13.015062Z"
+    "capturedAt" : "2020-07-10T22:33:22.004134Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -45,6 +45,12 @@
     "location" : "Gispy Hill, London",
     "websiteUrl" : "https://gipsyhillbrew.com/",
     "new" : false
+  }, {
+    "shortName" : "Jeffersons",
+    "name" : "Jeffersons Brewery",
+    "location" : "Barnes, London",
+    "websiteUrl" : "https://jeffersonsbrewery.co.uk/",
+    "new" : true
   }, {
     "shortName" : "Hackney Church",
     "name" : "Hackney Church Brew Co",
@@ -1867,6 +1873,52 @@
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/06/push-push-440ml-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/push-push-4-x-440ml/"
   }, {
+    "brewery" : "Jeffersons",
+    "name" : "Birthday No.3",
+    "summary" : "New England Pale",
+    "desc" : "24 X 440ML CANS\nSTYLE: PALE\nABV: 5.4%\nHOPS: CITRA AND MOSAIC\nMALT: MARIS OTTER PALE, WHEAT, OATS\nYEAST: LALLEMAND WINDSOR\nPROFILE: CITRUS, MANGO, MEDIUM BODIED, HAZY\nALLERGENS: MALTED BARLEY (GLUTEN), WHEAT, OATS",
+    "mixed" : false,
+    "abv" : 5.4,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 83.0,
+      "sizeMl" : 440,
+      "keg" : false
+    }, {
+      "quantity" : 6,
+      "totalPrice" : 22.5,
+      "sizeMl" : 440,
+      "keg" : false
+    } ],
+    "available" : true,
+    "categories" : [ "Pale" ],
+    "new" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2172/2447/products/BirthdayNo.3_df1b37a1-b22d-405e-9cb9-c6939dd47c62_300x300.jpg",
+    "url" : "https://jeffersonsbrewery.co.uk/collections/jeffersons-range/products/birthday-no-3-new-england-pale-24-x-440ml-cans"
+  }, {
+    "brewery" : "Jeffersons",
+    "name" : "Reload",
+    "summary" : "Helles lager",
+    "desc" : "24 X 330ML CANS\nSTYLE: HELLES LAGER\nABV: 4.6%\nHOPS: MAGNUM\nMALT: LAGER, WHEAT, VIENNA\nYEAST: W34/70\nPROFILE: CLEAN, CRISP, REFRESHING, LIGHT MALT\nALLERGENS: MALTED BARLEY (GLUTEN), WHEAT",
+    "mixed" : false,
+    "abv" : 4.6,
+    "offers" : [ {
+      "quantity" : 24,
+      "totalPrice" : 60.0,
+      "sizeMl" : 330,
+      "keg" : false
+    }, {
+      "quantity" : 6,
+      "totalPrice" : 16.8,
+      "sizeMl" : 330,
+      "keg" : false
+    } ],
+    "available" : true,
+    "categories" : [ "Pils / Lager" ],
+    "new" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2172/2447/products/Reload_300x300.jpg",
+    "url" : "https://jeffersonsbrewery.co.uk/collections/jeffersons-range/products/reload-helles-lager-4-6-24-x-330ml-cans"
+  }, {
     "brewery" : "Marble",
     "name" : "Alf",
     "summary" : "Hazy IPA ;-)",
@@ -2451,7 +2503,7 @@
       "sizeMl" : 440,
       "keg" : false
     } ],
-    "available" : true,
+    "available" : false,
     "categories" : [ "Pale" ],
     "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/RETRO_FAITH_440_180x.jpg",

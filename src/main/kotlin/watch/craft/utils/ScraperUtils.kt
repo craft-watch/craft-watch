@@ -109,6 +109,7 @@ fun String.sizeMlFrom() = maybe { extract("$INT_REGEX\\s*ml(?:\\W|$)").intFrom(1
 
 fun List<String>.intFrom(idx: Int) = get(idx).toInt()
 fun List<String>.doubleFrom(idx: Int) = get(idx).toDouble()
+fun List<String>.stringFrom(idx: Int) = get(idx).trim()
 
 operator fun Element.contains(cssQuery: String) = selectFirst(cssQuery) != null
 
