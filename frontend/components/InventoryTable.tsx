@@ -36,12 +36,6 @@ const InventoryTable: React.FC<Props> = (props) => (
       selector={(item) => item.abv}
     />
     <Column
-      name="Size"
-      className="size hide-small"
-      render={renderSize}
-      selector={(item) => extractOffer(item).sizeMl}
-    />
-    <Column
       name="Price"
       render={renderPrice}
       selector={(item) => perItemPrice(extractOffer(item))}
@@ -96,30 +90,26 @@ const renderTooltipText = (item: Item): JSX.Element => (
 
 const renderAbv: Renderer<Item> = item => (item.abv !== undefined) ? `${item.abv.toFixed(1)}%` : "?";
 
-const renderSize: Renderer<Item> = item => {
-  const sizeMl = extractOffer(item).sizeMl;
-
-  return (sizeMl === undefined) ? "?" :
-    (sizeMl < 1000) ? `${sizeMl} ml` :
-    `${sizeMl / 1000} litres`;
-};
-
 const renderPrice: Renderer<Item> = item => {
   const offer = extractOffer(item);
+  const sizeString = sizeForDisplay(offer);
 
   return (
     <div>
-      £{perItemPrice(offer).toFixed(2)}
-      {
-        (offer.quantity > 1) && (
-          <p className="summary">
-            &times; {offer.quantity} items
-          </p>
-        )
-      }
+      £{perItemPrice(offer).toFixed(2)} <span className="summary hide-small">/ item</span>
+      <p className="summary">
+        {
+          (offer.quantity > 1) ? `${offer.quantity} × ${sizeString ?? "items"}` : sizeString
+        }
+      </p>
     </div>
   );
 };
+
+const sizeForDisplay = (offer: Offer): string | undefined =>
+  (offer.sizeMl === undefined) ? undefined :
+  (offer.sizeMl < 1000) ? `${offer.sizeMl} ml` :
+  `${offer.sizeMl / 1000} litres`;
 
 const perItemPrice = (offer: Offer): number => offer.totalPrice / offer.quantity;
 
