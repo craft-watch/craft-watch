@@ -155,8 +155,10 @@ td.thumbnail {
 .price details > summary {
   padding-top: 5px;
   padding-bottom: 10px;
+  outline: none;    /* Remove irritating border when we have focus */
+  user-select: none;
+  cursor: pointer;
 }
-
 
 .pill {
   color: var(--sol-base3);

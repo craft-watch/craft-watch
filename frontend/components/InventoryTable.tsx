@@ -2,7 +2,7 @@ import _ from "underscore";
 import React from "react";
 import Link from "next/link";
 import { Item, Offer } from "../utils/model";
-import SortableTable, { Column, Renderer, Section } from "./SortableTable";
+import SortableTable, { Column, Section } from "./SortableTable";
 import { toSafePathPart, extractOffer } from "../utils/stuff";
 import { OUT_OF_STOCK, MINIKEG, MIXED_CASE } from "../utils/strings";
 import { splitToParagraphs } from "../utils/reactUtils";
@@ -12,61 +12,57 @@ interface Props {
   categories: Array<string>;
 }
 
+interface CellProps {
+  item: Item;
+}
+
 const InventoryTable: React.FC<Props> = (props) => (
   <SortableTable sections={partitionItems(props.items, props.categories)}>
     <Column
       name="Brewery"
       className="brewery"
-      render={renderBrewery}
-      selector={(item) => item.brewery}
+      render={(item: Item) => <BreweryInfo item={item} />}
+      selector={item => item.brewery}
     />
     <Column
       className="thumbnail"
-      render={renderThumbnail}
+      render={(item: Item) => <Thumbnail item={item} />}
     />
     <Column
       name="Name"
       className="name"
-      render={renderName}
-      selector={(item) => item.name}
+      render={(item: Item) => <NameInfo item={item} />}
+      selector={item => item.name}
     />
     <Column
       name="ABV"
       className="hide-tiny"
-      render={renderAbv}
-      selector={(item) => item.abv}
+      render={(item: Item) => <AbvInfo item={item} />}
+      selector={item => item.abv}
     />
     <Column
       name="Price"
       className="price"
-      render={renderPrice}
-      selector={(item) => perItemPrice(extractOffer(item))}
+      render={(item: Item) => <PriceInfo item={item} />}
+      selector={item => perItemPrice(extractOffer(item))}
     />
   </SortableTable>
 );
 
-// TODO - may want to randomise selection for items with more than one category
-const partitionItems = (items: Array<Item>, categories: Array<string>): Array<Section<Item>> => {
-  const other = "Other";
-  const partitioned = _.groupBy(items, item => item.categories[0] || other);
-  // Ensure we uphold preferred display order
-  return _.map(categories.concat(other), c => ({ name: c, data: partitioned[c] }));
-};
-
-const renderBrewery: Renderer<Item> = item => (
+const BreweryInfo = ({ item }: CellProps) => (
   <Link href={`/${toSafePathPart(item.brewery.shortName)}`}>
     <a>{item.brewery.shortName}</a>
   </Link>
 );
 
-const renderThumbnail: Renderer<Item> = item => (
+const Thumbnail = ({ item }: CellProps) => (
   <a href={item.url}>
     <img alt="" src={item.thumbnailUrl} width="100px" height="100px" />
     {item.available || <div className="sold-out">{OUT_OF_STOCK}</div>}
   </a>
 );
 
-const renderName: Renderer<Item> = item => (
+const NameInfo = ({ item }: CellProps) => (
   <div className="tooltip">
     <a className="item-link" href={item.url}>{item.name}</a>
     <p className="summary">
@@ -78,45 +74,36 @@ const renderName: Renderer<Item> = item => (
       {extractOffer(item).keg && <span className="pill keg">{MINIKEG}</span>}
       {item.mixed && <span className="pill mixed">{MIXED_CASE}</span>}
     </p>
-    {(item.desc !== undefined) && renderTooltipText(item)}
+    {(item.desc !== undefined) && <TooltipBody item={item} />}
   </div>
 );
 
-// These are positioned all wrong on mobile, so disable when things get small
-const renderTooltipText = (item: Item): JSX.Element => (
-  <span className="tooltip-text hide-small" style={{ display: "hidden" }}>
-    {(item.desc !== undefined) && splitToParagraphs(item.desc)}
-    <div className="disclaimer">© {item.brewery.shortName}</div>
-  </span>
+const AbvInfo = ({ item }: CellProps) => (
+  <>
+    {(item.abv !== undefined) ? `${item.abv.toFixed(1)}%` : "?"}
+  </>
 );
 
-const renderAbv: Renderer<Item> = item => (item.abv !== undefined) ? `${item.abv.toFixed(1)}%` : "?";
+const PriceInfo = ({ item }: CellProps) => (
+  <>
+    <OfferInfo offer={extractOffer(item)} />
+    {
+      (_.size(item.offers) > 1) && (
+        <details>
+          <summary>More</summary>
+          {
+            _.map(_.rest(item.offers), (offer, idx) => <OfferInfo key={idx} offer={offer} />)
+          }
+        </details>
+      )
+    }
+  </>
+);
 
-const renderPrice: Renderer<Item> = item => {
-  return (
-    <>
-      {
-        renderOffer(extractOffer(item), 0)
-      }
-      {
-        (_.size(item.offers) > 1) && (
-          <details>
-            <summary>More offers</summary>
-            {
-              _.map(_.rest(item.offers), (offer, idx) => renderOffer(offer, idx))
-            }
-          </details>
-        )
-      }
-    </>
-  );
-};
-
-const renderOffer = (offer: Offer, key: any) => {
+const OfferInfo = ({ offer }: { offer: Offer }) => {
   const sizeString = sizeForDisplay(offer);
-
   return (
-    <div key={key} className="offer">
+    <div className="offer">
       £{perItemPrice(offer).toFixed(2)} <span className="summary hide-small">/ item</span>
       <p className="summary">
         {
@@ -125,6 +112,22 @@ const renderOffer = (offer: Offer, key: any) => {
       </p>
     </div>
   );
+};
+
+// These are positioned all wrong on mobile, so disable when things get small
+const TooltipBody = ({ item }: CellProps) => (
+  <span className="tooltip-text hide-small" style={{ display: "hidden" }}>
+    {(item.desc !== undefined) && splitToParagraphs(item.desc)}
+    <div className="disclaimer">© {item.brewery.shortName}</div>
+  </span>
+);
+
+// TODO - may want to randomise selection for items with more than one category
+const partitionItems = (items: Array<Item>, categories: Array<string>): Array<Section<Item>> => {
+  const other = "Other";
+  const partitioned = _.groupBy(items, item => item.categories[0] || other);
+  // Ensure we uphold preferred display order
+  return _.map(categories.concat(other), c => ({ name: c, data: partitioned[c] }));
 };
 
 const sizeForDisplay = (offer: Offer): string | undefined =>
