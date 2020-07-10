@@ -45,7 +45,7 @@ class ExecutorTest {
             desc = desc,
             mixed = mixed,
             abv = abv,
-            offers = offers,
+            offers = offers.toList(),
             available = available,
             new = true,
             thumbnailUrl = thumbnailUrl,
@@ -60,7 +60,7 @@ class ExecutorTest {
             desc = desc,
             mixed = mixed,
             abv = abv,
-            offers = offers,
+            offers = offers.toList(),
             available = available,
             new = true,
             thumbnailUrl = thumbnailUrl,
@@ -72,25 +72,32 @@ class ExecutorTest {
     )
   }
 
+  // TODO - test that we favour lowest quantity for a given ratio
+  // TODO - test how we merge features from different items
   @Test
   fun `de-duplicates by picking best price`() {
     val scraper = MyScraper(listOf(
       Leaf(name = "A", url = productUrl("a")) { product("Foo") },
       Leaf(name = "B", url = productUrl("b")) {
         product("Foo").copy(
-          offers = setOf(Offer(totalPrice = DECENT_PRICE / 2))
+          offers = setOf(
+            Offer(totalPrice = DECENT_PRICE / 2),
+            Offer(totalPrice = DECENT_PRICE / 3)
+          )
         )
       },
       Leaf(name = "C", url = productUrl("c")) {
         product("Foo").copy(
-          offers = setOf(Offer(totalPrice = DECENT_PRICE * 2))
+          offers = setOf(
+            Offer(totalPrice = DECENT_PRICE * 2)
+          )
         )
       }
     ))
 
     // Only one item returned, with best price
     assertEquals(
-      listOf(DECENT_PRICE / 2),
+      listOf(DECENT_PRICE / 3),
       executor.scrape(listOf(scraper)).items.map { it.offers.single().totalPrice }
     )
   }

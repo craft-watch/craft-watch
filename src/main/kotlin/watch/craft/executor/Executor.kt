@@ -25,10 +25,10 @@ class Executor(
       .execute()
       .normalise()
       .toInventory(scrapers, now)
+      .mergeItems()
+      .sortItems()
       .enrichWith(Categoriser(CATEGORY_KEYWORDS))
       .enrichWith(Newalyser(results, now))
-      .sort()
-      .bestPricedItems()
       .also { it.logStats() }
   }
 
@@ -36,7 +36,6 @@ class Executor(
     this@execute
       .map { async { it.execute() } }
       .flatMap { it.await() }
-      .toSet()  // To make clear that order is not important
   }
 
   private suspend fun Scraper.execute() = createRetriever(brewery.shortName).use {
@@ -67,26 +66,40 @@ class Executor(
     breweries = breweries.map(enricher::enrich)
   )
 
-  private fun Inventory.sort() = copy(items = items.sortedWith(
-    compareBy(
-      { it.brewery },
-      { it.name },
-      { it.available },
-      { it.onlyOffer().sizeMl },
-      { it.onlyOffer().keg },
-      { it.onlyOffer().quantity }
-    )
-  ))
-
-  private fun Inventory.bestPricedItems() =
-    copy(items = items.groupBy { ItemGroupFields(it.brewery, it.name, it.onlyOffer().keg) }
+  private fun Inventory.mergeItems() =
+    copy(items = items.groupBy { ItemGroupFields(it.brewery, it.name) }
       .map { (key, group) ->
         if (group.size > 1) {
-          logger.info("[${key.brewery}] Eliminating ${group.size - 1} more expensive item(s) for [${key.name}]")
+          logger.info("[${key.brewery}] Merging ${group.size} item(s) for [${key.name}]")
         }
-        group.minBy { it.onlyOffer().run { totalPrice / quantity } }!!
+
+        // Prefer to use a non-keg for description / thumbnail, etc.
+        val archetype = group.firstOrNull { item -> item.offers.none { it.keg } }
+          ?: group.first()
+
+        // TODO - need a stable notion of "first" - will need to sort upstream
+        // TODO - fill in missing fields from non-archetypes
+        // TODO - do we want a URL per offer?  Keg vs. can vs. item may be different pages
+        archetype.copy(
+          offers = group.flatMap { it.offers }
+        )
       }
     )
+
+  private fun Inventory.sortItems() = copy(items = items
+    .sortedWith(compareBy(
+      { it.brewery },
+      { it.name }
+    ))
+    .map { it.sortOffers() }
+  )
+
+  private fun Item.sortOffers() = copy(offers = offers
+    .sortedWith(compareBy(
+      { it.sizeMl },
+      { it.totalPrice }
+    ))
+  )
 
   private fun Inventory.logStats() {
     items.groupBy { it.brewery }
@@ -94,11 +107,8 @@ class Executor(
     logger.info("Scraped (TOTAL): ${items.size}")
   }
 
-  private fun Item.onlyOffer() = offers.single()
-
   private data class ItemGroupFields(
     val brewery: String,
-    val name: String,
-    val keg: Boolean
+    val name: String
   )
 }

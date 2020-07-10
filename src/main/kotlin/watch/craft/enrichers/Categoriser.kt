@@ -20,7 +20,7 @@ class Categoriser(categories: Map<String, List<String>>) : Enricher {
         .filter { keyword -> components.any { it?.contains(keyword.regex) ?: false } }
         .pickMostSpecific()
         .map { it.category }
-        .toSet()
+        .distinct()
     )
   }
 

@@ -20,8 +20,6 @@ class RedWillowScraper : Scraper {
     websiteUrl = URI("https://www.redwillowbrewery.com/")
   )
 
-  // TODO - extract summary
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectMultipleFrom(".ProductList-grid .ProductList-item")
@@ -29,14 +27,12 @@ class RedWillowScraper : Scraper {
         val rawName = el.textFrom(".ProductList-title")
 
         Leaf(rawName, el.hrefFrom("a.ProductList-item-link")) { doc ->
-          val bestDeal = doc.extractBestDeal()
-
-          val desc = doc.formattedTextFrom(".ProductItem-details-excerpt")
-          val allText = rawName + "\n" + desc
-
           if (BLACKLIST.any { rawName.contains(it, ignoreCase = true) }) {
             throw SkipItemException("Identified as non-beer")
           }
+
+          val desc = doc.formattedTextFrom(".ProductItem-details-excerpt")
+          val sizeMl = (rawName + "\n" + desc).maybe { sizeMlFrom() }
 
           ScrapedItem(
             name = rawName.extract("^[A-Za-z-'\\s]+")[0].trim().toTitleCase(),
@@ -45,13 +41,7 @@ class RedWillowScraper : Scraper {
             mixed = rawName.contains("mixed", ignoreCase = true),
             abv = rawName.maybe { abvFrom() },
             available = true,
-            offers = setOf(
-              Offer(
-                quantity = bestDeal.numItems,
-                totalPrice = bestDeal.price,
-                sizeMl = allText.maybe { sizeMlFrom() }
-              )
-            ),
+            offers = doc.extractOffers().map { it.copy(sizeMl = sizeMl) }.toSet(),
             thumbnailUrl = doc.extractSmallThumbnail()
           )
         }
@@ -63,19 +53,16 @@ class RedWillowScraper : Scraper {
     dataSrcFrom("img.ProductItem-gallery-slides-item-image").toString() + "?format=200w"
     ).toUri()
 
-  private fun Document.extractBestDeal() = maybe { attrFrom(".product-variants", "data-variants") }
-    ?.parseJson<List<Variant>>()
-    ?.map { Deal(price = it.price.toDouble() / 100, numItems = it.attributes.quantity) }
-    ?.minBy { it.price / it.numItems }  // TODO - prefer minimum # items
-    ?: Deal(
-      price = priceFrom(".product-price"),
-      numItems = extractFrom(".ProductItem-details-title", "(\\d+)\\s*x").intFrom(1)
-    ) // Fallback to assuming a single price
-
-  private data class Deal(
-    val price: Double,
-    val numItems: Int
-  )
+  private fun Document.extractOffers() =
+    maybe { attrFrom(".product-variants", "data-variants") }
+      ?.parseJson<List<Variant>>()
+      ?.map { Offer(totalPrice = it.price.toDouble() / 100, quantity = it.attributes.quantity) }
+      ?: listOf(
+        Offer(
+          totalPrice = priceFrom(".product-price"),
+          quantity = extractFrom(".ProductItem-details-title", "(\\d+)\\s*x").intFrom(1)
+        ) // Fallback to assuming a single price
+      )
 
   private data class Variant(
     val attributes: Attributes,

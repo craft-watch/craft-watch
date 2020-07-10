@@ -3,6 +3,9 @@ package watch.craft
 import java.net.URI
 import java.time.Instant
 
+// Denotes a field that has Set semantics, but we're using a List to enforce deterministic serialisation ordering
+annotation class SemanticallyASet
+
 data class Inventory(
   val metadata: Metadata,
   val categories: List<String>,
@@ -29,9 +32,11 @@ data class Item(
   val desc: String? = null,
   val mixed: Boolean = false,
   val abv: Double? = null,
-  val offers: Set<Offer> = emptySet(),
+  @SemanticallyASet
+  val offers: List<Offer> = emptyList(),
   val available: Boolean,   // TODO - should this be part of the Offer?
-  val categories: Set<String> = emptySet(),
+  @SemanticallyASet
+  val categories: List<String> = emptyList(),
   val new: Boolean = false,
   val thumbnailUrl: URI,
   val url: URI

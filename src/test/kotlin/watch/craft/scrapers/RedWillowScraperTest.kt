@@ -24,7 +24,8 @@ class RedWillowScraperTest {
         summary = "Hazy IPA",
         abv = 5.2,
         offers = setOf(
-          Offer(totalPrice = 20.00, quantity = 6)
+          Offer(totalPrice = 20.00, quantity = 6),
+          Offer(totalPrice = 40.00, quantity = 12)
         ),
         available = true,
         thumbnailUrl = URI("https://images.squarespace-cdn.com/content/v1/57876558f5e231f300f4e5d4/1592322271269-NZD777HQ0EWLCDZYVYER/ke17ZwdGBToddI8pDm48kIu1QHqWqYcqSXGQukjVMYR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0k5fwC0WRNFJBIXiBeNI5fIG4lvOJgCZoc7R0Cd0Owykpqjz4OyDzVxk_JLua2qGvQ/Contactless+.jpg?format=200w")
