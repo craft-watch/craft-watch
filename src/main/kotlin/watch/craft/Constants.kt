@@ -1,5 +1,8 @@
 package watch.craft
 
+import watch.craft.enrichers.Categoriser.Component
+import watch.craft.enrichers.Categoriser.Component.NAME
+import watch.craft.enrichers.Categoriser.Component.SUMMARY
 import watch.craft.enrichers.Categoriser.Synonym
 import java.io.File
 
@@ -48,6 +51,7 @@ val CATEGORY_KEYWORDS = mapOf(
     "India Pale Lager".anywhere()
   ),
   "Weisse" to listOf(
+    "Wheat".only(NAME, SUMMARY),  // This is too general a term to match against the description
     "Weiss".anywhere(),
     "Weisse".anywhere(),
     "Weizen".anywhere(),
@@ -66,3 +70,4 @@ val CATEGORY_KEYWORDS = mapOf(
 )
 
 private fun String.anywhere() = Synonym(this)
+private fun String.only(vararg components: Component) = Synonym(this, components.toSet())

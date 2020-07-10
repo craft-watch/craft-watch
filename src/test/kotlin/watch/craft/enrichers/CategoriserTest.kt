@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import watch.craft.Item
 import watch.craft.PROTOTYPE_ITEM
+import watch.craft.enrichers.Categoriser.Component.DESC
+import watch.craft.enrichers.Categoriser.Component.NAME
 import watch.craft.enrichers.Categoriser.Synonym
 
 class CategoriserTest {
@@ -25,6 +27,17 @@ class CategoriserTest {
 
     assertEquals(listOf("foo"), categoriser.categorise(item(name = "foo")))
     assertEquals(listOf("foo"), categoriser.categorise(item(name = "abc", summary = "foo")))
+    assertEquals(listOf("foo"), categoriser.categorise(item(name = "abc", desc = "foo")))
+  }
+
+  @Test
+  fun `matches in specified components`() {
+    val categoriser = Categoriser(mapOf(
+      "foo" to listOf(Synonym("foo", setOf(NAME, DESC)))
+    ))
+
+    assertEquals(listOf("foo"), categoriser.categorise(item(name = "foo")))
+    assertEquals(emptyList<String>(), categoriser.categorise(item(name = "abc", summary = "foo")))
     assertEquals(listOf("foo"), categoriser.categorise(item(name = "abc", desc = "foo")))
   }
 
