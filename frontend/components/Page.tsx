@@ -26,17 +26,13 @@ const Page: React.FC<Props> = (props) => (
       <meta name="msapplication-config" content="/browserconfig.xml" />
       <meta name="theme-color" content="#ffffff" />
 
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:site" content="@craft_watch" />
       <meta property="og:url" content="https://craft.watch/" />
       <meta property="og:title" content={props.title} />
       <meta property="og:description" content={props.description} />
       <meta property="og:image" content="https://craft.watch/craft-watch.jpg" />
       <meta property="og:type" content="website" />
-
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:site" content="@craft_watch" />
-      <meta name="twitter:title" content={props.title} />
-      <meta name="twitter:description" content={props.description} />
-      <meta name="twitter:image" content="https://craft.watch/craft-watch.jpg" />
     </Head>
 
     {props.children}
