@@ -137,6 +137,7 @@ td.thumbnail {
   max-width: 300px;
 }
 
+/* TODO - rename to avoid clash with summary tag */
 .summary {
   font-size: smaller;
   margin-top: 5px;
@@ -146,6 +147,16 @@ td.thumbnail {
 .price .summary {
   white-space: nowrap;
 }
+
+.price details {
+  font-size: smaller;
+}
+
+.price details > summary {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
 
 .pill {
   color: var(--sol-base3);

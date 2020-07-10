@@ -93,11 +93,30 @@ const renderTooltipText = (item: Item): JSX.Element => (
 const renderAbv: Renderer<Item> = item => (item.abv !== undefined) ? `${item.abv.toFixed(1)}%` : "?";
 
 const renderPrice: Renderer<Item> = item => {
-  const offer = extractOffer(item);
+  return (
+    <>
+      {
+        renderOffer(extractOffer(item), 0)
+      }
+      {
+        (_.size(item.offers) > 1) && (
+          <details>
+            <summary>More offers</summary>
+            {
+              _.map(_.rest(item.offers), (offer, idx) => renderOffer(offer, idx))
+            }
+          </details>
+        )
+      }
+    </>
+  );
+};
+
+const renderOffer = (offer: Offer, key: any) => {
   const sizeString = sizeForDisplay(offer);
 
   return (
-    <div>
+    <div key={key} className="offer">
       £{perItemPrice(offer).toFixed(2)} <span className="summary hide-small">/ item</span>
       <p className="summary">
         {
