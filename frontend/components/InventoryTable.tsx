@@ -99,7 +99,7 @@ const PriceInfo = ({ item }: CellProps) => (
     {
       (_.size(item.offers) > 1) && (
         <details>
-          <summary>More</summary>
+          <summary>{_.size(item.offers) - 1} more</summary>
           {
             _.map(_.rest(item.offers), (offer, idx) => <OfferInfo key={idx} offer={offer} />)
           }
