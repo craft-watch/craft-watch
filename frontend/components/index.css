@@ -537,6 +537,12 @@ nav li {
   }
 }
 
+@media not screen and (max-width: 1024px) {
+  .show-medium {
+    display: none;
+  }
+}
+
 @media (max-width: 1024px) {
   .hide-medium {
     display: none;

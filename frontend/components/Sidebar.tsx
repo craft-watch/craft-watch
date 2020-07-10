@@ -14,15 +14,16 @@ interface Props {
 }
 
 const Sidebar = (props: Props): JSX.Element => {
-
   return (
     <div className="sidebar">
       <nav>
         <h2 className="hide-medium">Explore ...</h2>
         <ul>
-          <li><Link href="/"><a>New beers</a></Link></li>
-          <li><Link href="/taster"><a>Taster menu</a></Link></li>
-          <li><Link href="/full"><a>Full menu</a></Link></li>
+          <li><Link href="/"><a>New <span className="hide-tiny">beers</span></a></Link></li>
+          <li><Link href="/taster"><a>Taster <span className="hide-tiny">menu</span></a></Link></li>
+          <li><Link href="/full"><a>Full <span className="hide-tiny">menu</span></a></Link></li>
+          <li className="show-medium"><TwitterLink /></li>
+          <li className="show-medium"><GitHubLink /></li>
           <li className="hide-medium">
             <b>Just added ...</b>
             <ul>
@@ -37,7 +38,6 @@ const Sidebar = (props: Props): JSX.Element => {
               }
             </ul>
           </li>
-
         </ul>
       </nav>
 
@@ -48,14 +48,10 @@ const Sidebar = (props: Props): JSX.Element => {
         </div>
       </div>
 
-      <address>
+      <address className="hide-medium">
         <div className="social">
-          <a href="https://twitter.com/craft_watch">
-            <FontAwesomeIcon icon={faTwitterSquare} />
-          </a>
-          <a href="https://github.com/craft-watch">
-            <FontAwesomeIcon icon={faGithubSquare} />
-          </a>
+          <TwitterLink />
+          <GitHubLink />
         </div>
         <div className="copyright">
           © <a href="https://github.com/oliver-charlesworth">Oliver Charlesworth</a> 2020
@@ -64,5 +60,17 @@ const Sidebar = (props: Props): JSX.Element => {
     </div>
   );
 };
+
+const TwitterLink = () => (
+  <a href="https://twitter.com/craft_watch">
+    <FontAwesomeIcon icon={faTwitterSquare} />
+  </a>
+);
+
+const GitHubLink = () => (
+  <a href="https://github.com/craft-watch">
+    <FontAwesomeIcon icon={faGithubSquare} />
+  </a>
+);
 
 export default Sidebar;
