@@ -9,7 +9,7 @@ import java.net.URI
 
 class JeffersonsScraperTest {
   companion object {
-    private val ITEMS = executeScraper(JeffersonsScraper(), dateString = null)
+    private val ITEMS = executeScraper(JeffersonsScraper())
   }
 
   @Test
