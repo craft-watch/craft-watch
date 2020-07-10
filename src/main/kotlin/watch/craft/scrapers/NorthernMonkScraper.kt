@@ -56,6 +56,8 @@ class NorthernMonkScraper : Scraper {
             .split("™")
             .map { it.trim() }
 
+          val data = doc.jsonFrom<Data>("script[type=application/json][data-product-json]")
+
           ScrapedItem(
             name = nameParts[0],
             summary = if (nameParts.size > 1) {
@@ -66,7 +68,7 @@ class NorthernMonkScraper : Scraper {
             desc = desc.formattedTextFrom(),
             mixed = mixed,
             abv = abv,
-            available = true,
+            available = data.available,
             offers = setOf(
               Offer(
                 quantity = rawName.maybe { extract(PACK_REGEX).intFrom(1) } ?: 1,
@@ -83,6 +85,10 @@ class NorthernMonkScraper : Scraper {
         }
       }
   }
+
+  private data class Data(
+    val available: Boolean
+  )
 
   companion object {
     private val ROOT_URL = URI("https://northernmonkshop.com/collections/beer")
