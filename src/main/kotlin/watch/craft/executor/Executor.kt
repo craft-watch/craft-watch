@@ -10,6 +10,7 @@ import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.network.Retriever
 import java.time.Clock
 import java.time.Instant
+import kotlin.math.round
 
 class Executor(
   private val results: ResultsManager,
@@ -67,7 +68,7 @@ class Executor(
   )
 
   private fun Inventory.mergeItems() =
-    copy(items = items.groupBy { ItemGroupFields(it.brewery, it.name) }
+    copy(items = items.groupBy { ItemGroupFields(it.brewery, it.name.toLowerCase()) }
       .map { (key, group) ->
         if (group.size > 1) {
           logger.info("[${key.brewery}] Merging ${group.size} item(s) for [${key.name}]")
@@ -80,9 +81,17 @@ class Executor(
         // TODO - need a stable notion of "first" - will need to sort upstream
         // TODO - fill in missing fields from non-archetypes
         // TODO - do we want a URL per offer?  Keg vs. can vs. item may be different pages
-        archetype.copy(
-          offers = group.flatMap { it.offers }
-        )
+
+        val allOffers = group
+          .flatMap { it.offers }
+          .distinctBy { round(it.pricePerMl() * 100) } // Work in pence to avoid FP precision issues
+          .sortedWith(compareBy(
+            { it.keg },   // Kegs should be lowest priority
+            { it.pricePerMl() },
+            { it.quantity } // All being equal, we prefer to buy fewer cans
+          ))
+
+        archetype.copy(offers = allOffers)
       }
     )
 
@@ -91,14 +100,6 @@ class Executor(
       { it.brewery },
       { it.name }
     ))
-    .map { it.sortOffers() }
-  )
-
-  private fun Item.sortOffers() = copy(offers = offers
-    .sortedWith(compareBy(
-      { it.sizeMl },
-      { it.totalPrice }
-    ))
   )
 
   private fun Inventory.logStats() {
@@ -106,6 +107,8 @@ class Executor(
       .forEach { (key, group) -> logger.info("Scraped (${key}): ${group.size}") }
     logger.info("Scraped (TOTAL): ${items.size}")
   }
+
+  private fun Offer.pricePerMl() = totalPrice / (quantity * (sizeMl ?: DEFAULT_SIZE_ML))
 
   private data class ItemGroupFields(
     val brewery: String,

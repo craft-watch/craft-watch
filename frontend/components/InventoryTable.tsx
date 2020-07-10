@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { Item, Offer } from "../utils/model";
 import SortableTable, { Column, Section } from "./SortableTable";
-import { toSafePathPart, extractOffer } from "../utils/stuff";
+import { toSafePathPart, headlineOffer } from "../utils/stuff";
 import { OUT_OF_STOCK, MINIKEG, MIXED_CASE } from "../utils/strings";
 import { splitToParagraphs } from "../utils/reactUtils";
 
@@ -44,7 +44,7 @@ const InventoryTable: React.FC<Props> = (props) => (
       name="Price"
       className="price"
       render={(item: Item) => <PriceInfo item={item} />}
-      selector={item => perItemPrice(extractOffer(item))}
+      selector={item => perItemPrice(headlineOffer(item))}
     />
   </SortableTable>
 );
@@ -62,21 +62,30 @@ const Thumbnail = ({ item }: CellProps) => (
   </a>
 );
 
-const NameInfo = ({ item }: CellProps) => (
-  <div className="tooltip">
-    <a className="item-link" href={item.url}>{item.name}</a>
-    <p className="summary">
-      {item.summary}
-    </p>
-    <p className="summary">
-      {item.new && !item.brewery.new && <span className="pill new">NEW !!!</span>}
-      {item.new && item.brewery.new && <span className="pill just-added">Just added</span>}
-      {extractOffer(item).keg && <span className="pill keg">{MINIKEG}</span>}
-      {item.mixed && <span className="pill mixed">{MIXED_CASE}</span>}
-    </p>
-    {(item.desc !== undefined) && <TooltipBody item={item} />}
-  </div>
-);
+const NameInfo = ({ item }: CellProps) => {
+  const newItem = item.new && !item.brewery.new;
+  const justAdded = item.new && item.brewery.new;
+  const keg = headlineOffer(item).keg;
+  const kegAvailable = !keg && _.any(_.rest(item.offers), offer => offer.keg);
+  const mixed = item.mixed;
+
+  return (
+    <div className="tooltip">
+      <a className="item-link" href={item.url}>{item.name}</a>
+      <p className="summary">
+        {item.summary}
+      </p>
+      <p className="summary">
+        {newItem && <span className="pill new">NEW !!!</span>}
+        {justAdded && <span className="pill just-added">Just added</span>}
+        {keg && <span className="pill keg">{MINIKEG}</span>}
+        {kegAvailable && <span className="pill keg">Minikeg available</span>}
+        {mixed && <span className="pill mixed">{MIXED_CASE}</span>}
+      </p>
+      {(item.desc !== undefined) && <TooltipBody item={item} />}
+    </div>
+  );
+};
 
 const AbvInfo = ({ item }: CellProps) => (
   <>
@@ -86,7 +95,7 @@ const AbvInfo = ({ item }: CellProps) => (
 
 const PriceInfo = ({ item }: CellProps) => (
   <>
-    <OfferInfo offer={extractOffer(item)} />
+    <OfferInfo offer={headlineOffer(item)} />
     {
       (_.size(item.offers) > 1) && (
         <details>
@@ -108,6 +117,9 @@ const OfferInfo = ({ offer }: { offer: Offer }) => {
       <p className="summary">
         {
           (offer.quantity > 1) ? `${offer.quantity} × ${sizeString ?? "items"}` : sizeString
+        }
+        {
+          offer.keg && " (keg)"
         }
       </p>
     </div>

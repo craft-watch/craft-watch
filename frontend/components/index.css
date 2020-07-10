@@ -149,15 +149,22 @@ td.thumbnail {
 }
 
 .price details {
+  background-color: var(--sol-base2);
+  border-radius: var(--sexy-radius);
   font-size: smaller;
 }
 
 .price details > summary {
-  padding-top: 5px;
-  padding-bottom: 10px;
+  /* text-align: left; */
+  font-weight: var(--bold-weight);
+  padding: 5px 20px;
   outline: none;    /* Remove irritating border when we have focus */
   user-select: none;
   cursor: pointer;
+}
+
+.price details > .offer {
+  padding-bottom: 5px;
 }
 
 .pill {

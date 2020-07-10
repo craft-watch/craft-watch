@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-10T10:52:42.807147Z"
+    "capturedAt" : "2020-07-10T13:58:22.157540Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -1287,11 +1287,6 @@
       "totalPrice" : 4.0,
       "sizeMl" : 440,
       "keg" : false
-    }, {
-      "quantity" : 1,
-      "totalPrice" : 4.0,
-      "sizeMl" : 440,
-      "keg" : false
     } ],
     "available" : true,
     "categories" : [ "Pale" ],
@@ -1306,11 +1301,6 @@
     "mixed" : false,
     "abv" : 7.2,
     "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 4.0,
-      "sizeMl" : 440,
-      "keg" : false
-    }, {
       "quantity" : 1,
       "totalPrice" : 4.0,
       "sizeMl" : 440,
@@ -1364,11 +1354,6 @@
       "totalPrice" : 56.0,
       "sizeMl" : 330,
       "keg" : false
-    }, {
-      "quantity" : 24,
-      "totalPrice" : 56.0,
-      "sizeMl" : 330,
-      "keg" : false
     } ],
     "available" : true,
     "categories" : [ "Pale", "Pils / Lager", "IPA" ],
@@ -1381,11 +1366,6 @@
     "desc" : "This is a 12 pack of 330ml cans and 1 x Burger Book.\nA perfect box for an evening cooking over the grill. DJ BBQ is the king of the coals and starting parties. He’s picked two of his favourite Gipsy Hill tinnies – Hepcat and Hunter, and signed 24 copies of his incredible Burger Book.\nGo check him out on Instagram for the live cooking, lessons and sweet beats.\nCase contents listed below.",
     "mixed" : true,
     "offers" : [ {
-      "quantity" : 13,
-      "totalPrice" : 41.19,
-      "sizeMl" : 330,
-      "keg" : false
-    }, {
       "quantity" : 13,
       "totalPrice" : 41.19,
       "sizeMl" : 330,
@@ -1917,13 +1897,13 @@
     "mixed" : false,
     "abv" : 4.2,
     "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 2.9,
+      "quantity" : 24,
+      "totalPrice" : 65.0,
       "sizeMl" : 500,
       "keg" : false
     }, {
-      "quantity" : 24,
-      "totalPrice" : 65.0,
+      "quantity" : 1,
+      "totalPrice" : 2.9,
       "sizeMl" : 500,
       "keg" : false
     } ],
@@ -2115,13 +2095,13 @@
     "mixed" : false,
     "abv" : 5.0,
     "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 3.3,
+      "quantity" : 24,
+      "totalPrice" : 75.0,
       "sizeMl" : 500,
       "keg" : false
     }, {
-      "quantity" : 24,
-      "totalPrice" : 75.0,
+      "quantity" : 1,
+      "totalPrice" : 3.3,
       "sizeMl" : 500,
       "keg" : false
     } ],
@@ -2138,13 +2118,13 @@
     "mixed" : false,
     "abv" : 4.2,
     "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 2.55,
+      "quantity" : 24,
+      "totalPrice" : 56.5,
       "sizeMl" : 500,
       "keg" : false
     }, {
-      "quantity" : 24,
-      "totalPrice" : 56.5,
+      "quantity" : 1,
+      "totalPrice" : 2.55,
       "sizeMl" : 500,
       "keg" : false
     } ],
@@ -2179,13 +2159,13 @@
     "mixed" : false,
     "abv" : 3.9,
     "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 2.7,
+      "quantity" : 24,
+      "totalPrice" : 60.0,
       "sizeMl" : 500,
       "keg" : false
     }, {
-      "quantity" : 24,
-      "totalPrice" : 60.0,
+      "quantity" : 1,
+      "totalPrice" : 2.7,
       "sizeMl" : 500,
       "keg" : false
     } ],
@@ -2288,13 +2268,13 @@
     "mixed" : false,
     "abv" : 4.1,
     "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 2.1,
+      "quantity" : 4,
+      "totalPrice" : 7.6,
       "sizeMl" : 330,
       "keg" : false
     }, {
-      "quantity" : 4,
-      "totalPrice" : 7.6,
+      "quantity" : 1,
+      "totalPrice" : 2.1,
       "sizeMl" : 330,
       "keg" : false
     } ],
@@ -2328,13 +2308,13 @@
     "mixed" : false,
     "abv" : 4.3,
     "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 3.0,
+      "quantity" : 6,
+      "totalPrice" : 16.0,
       "sizeMl" : 440,
       "keg" : false
     }, {
-      "quantity" : 6,
-      "totalPrice" : 16.0,
+      "quantity" : 1,
+      "totalPrice" : 3.0,
       "sizeMl" : 440,
       "keg" : false
     } ],
@@ -2386,13 +2366,13 @@
     "mixed" : false,
     "abv" : 6.2,
     "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 2.6,
+      "quantity" : 4,
+      "totalPrice" : 9.25,
       "sizeMl" : 330,
       "keg" : false
     }, {
-      "quantity" : 4,
-      "totalPrice" : 9.25,
+      "quantity" : 1,
+      "totalPrice" : 2.6,
       "sizeMl" : 330,
       "keg" : false
     } ],
@@ -2443,13 +2423,13 @@
     "mixed" : false,
     "abv" : 5.7,
     "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 2.6,
+      "quantity" : 4,
+      "totalPrice" : 9.25,
       "sizeMl" : 330,
       "keg" : false
     }, {
-      "quantity" : 4,
-      "totalPrice" : 9.25,
+      "quantity" : 1,
+      "totalPrice" : 2.6,
       "sizeMl" : 330,
       "keg" : false
     } ],
@@ -2521,20 +2501,7 @@
       "totalPrice" : 4.99,
       "sizeMl" : 440,
       "keg" : false
-    } ],
-    "available" : true,
-    "categories" : [ "Dark" ],
-    "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/01/440ml-can-Breakfast-In-Luxembourg-3-can-render-1024x724.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/breakfast-in-luxembourg/"
-  }, {
-    "brewery" : "Padstow",
-    "name" : "Breakfast in Luxembourg",
-    "summary" : "Espresso Stout",
-    "desc" : "The latest in our range of seasonal brews, this Espresso Stout is a collaboration with Bare Brewing from Luxembourg, inspired by their own fantastic Espresso Stout we drank whilst at the Metz Beer Fest in October 2019. Coffee obtained locally from Rising Ground in Wadebridge. This beer is suitable for vegans. Contains barley, wheat and caffeine.",
-    "mixed" : false,
-    "abv" : 6.5,
-    "offers" : [ {
+    }, {
       "quantity" : 1,
       "totalPrice" : 32.5,
       "sizeMl" : 5000,
@@ -2543,8 +2510,8 @@
     "available" : true,
     "categories" : [ "Dark" ],
     "new" : false,
-    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/04/minikeg-front.jpg",
-    "url" : "https://www.padstowbrewing.co.uk/product/minikeg-breakfast-in-luxembourg/"
+    "thumbnailUrl" : "https://www.padstowbrewing.co.uk/wp-content/uploads/2020/01/440ml-can-Breakfast-In-Luxembourg-3-can-render-1024x724.jpg",
+    "url" : "https://www.padstowbrewing.co.uk/product/breakfast-in-luxembourg/"
   }, {
     "brewery" : "Padstow",
     "name" : "Connor’s Stout",
@@ -2594,10 +2561,6 @@
     "offers" : [ {
       "quantity" : 6,
       "totalPrice" : 22.5,
-      "keg" : false
-    }, {
-      "quantity" : 12,
-      "totalPrice" : 45.0,
       "keg" : false
     } ],
     "available" : true,
@@ -2922,11 +2885,6 @@
       "totalPrice" : 29.5,
       "sizeMl" : 5000,
       "keg" : true
-    }, {
-      "quantity" : 1,
-      "totalPrice" : 29.5,
-      "sizeMl" : 5000,
-      "keg" : true
     } ],
     "available" : true,
     "categories" : [ "Cider" ],
@@ -3017,12 +2975,12 @@
     "mixed" : false,
     "abv" : 4.8,
     "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 2.7,
-      "keg" : false
-    }, {
       "quantity" : 24,
       "totalPrice" : 45.0,
+      "keg" : false
+    }, {
+      "quantity" : 1,
+      "totalPrice" : 2.7,
       "keg" : false
     } ],
     "available" : true,
@@ -3038,12 +2996,12 @@
     "mixed" : false,
     "abv" : 4.5,
     "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 2.7,
-      "keg" : false
-    }, {
       "quantity" : 24,
       "totalPrice" : 45.0,
+      "keg" : false
+    }, {
+      "quantity" : 1,
+      "totalPrice" : 2.7,
       "keg" : false
     } ],
     "available" : true,
@@ -3217,13 +3175,13 @@
     "mixed" : false,
     "abv" : 5.6,
     "offers" : [ {
-      "quantity" : 6,
-      "totalPrice" : 18.5,
+      "quantity" : 12,
+      "totalPrice" : 36.4,
       "sizeMl" : 440,
       "keg" : false
     }, {
-      "quantity" : 12,
-      "totalPrice" : 36.4,
+      "quantity" : 6,
+      "totalPrice" : 18.5,
       "sizeMl" : 440,
       "keg" : false
     } ],
@@ -3253,12 +3211,12 @@
     "name" : "Chevalier Mild",
     "mixed" : false,
     "offers" : [ {
-      "quantity" : 6,
-      "totalPrice" : 16.5,
-      "keg" : false
-    }, {
       "quantity" : 12,
       "totalPrice" : 32.0,
+      "keg" : false
+    }, {
+      "quantity" : 6,
+      "totalPrice" : 16.5,
       "keg" : false
     } ],
     "available" : true,
@@ -3276,10 +3234,6 @@
     "offers" : [ {
       "quantity" : 6,
       "totalPrice" : 20.0,
-      "keg" : false
-    }, {
-      "quantity" : 12,
-      "totalPrice" : 40.0,
       "keg" : false
     } ],
     "available" : true,
@@ -3315,12 +3269,12 @@
     "mixed" : false,
     "abv" : 4.0,
     "offers" : [ {
-      "quantity" : 6,
-      "totalPrice" : 17.0,
-      "keg" : false
-    }, {
       "quantity" : 12,
       "totalPrice" : 33.6,
+      "keg" : false
+    }, {
+      "quantity" : 6,
+      "totalPrice" : 17.0,
       "keg" : false
     } ],
     "available" : true,
@@ -3355,10 +3309,6 @@
       "quantity" : 6,
       "totalPrice" : 23.0,
       "keg" : false
-    }, {
-      "quantity" : 12,
-      "totalPrice" : 46.0,
-      "keg" : false
     } ],
     "available" : true,
     "categories" : [ "IPA" ],
@@ -3372,12 +3322,12 @@
     "mixed" : false,
     "abv" : 4.9,
     "offers" : [ {
-      "quantity" : 6,
-      "totalPrice" : 16.0,
-      "keg" : false
-    }, {
       "quantity" : 12,
       "totalPrice" : 31.0,
+      "keg" : false
+    }, {
+      "quantity" : 6,
+      "totalPrice" : 16.0,
       "keg" : false
     } ],
     "available" : true,
@@ -3395,10 +3345,6 @@
       "quantity" : 6,
       "totalPrice" : 20.0,
       "keg" : false
-    }, {
-      "quantity" : 12,
-      "totalPrice" : 40.0,
-      "keg" : false
     } ],
     "available" : true,
     "categories" : [ "Pale", "Cider" ],
@@ -3413,12 +3359,12 @@
     "mixed" : false,
     "abv" : 4.2,
     "offers" : [ {
-      "quantity" : 6,
-      "totalPrice" : 17.0,
-      "keg" : false
-    }, {
       "quantity" : 12,
       "totalPrice" : 33.6,
+      "keg" : false
+    }, {
+      "quantity" : 6,
+      "totalPrice" : 17.0,
       "keg" : false
     } ],
     "available" : true,
@@ -3437,10 +3383,6 @@
       "quantity" : 6,
       "totalPrice" : 16.0,
       "keg" : false
-    }, {
-      "quantity" : 12,
-      "totalPrice" : 32.0,
-      "keg" : false
     } ],
     "available" : true,
     "categories" : [ ],
@@ -3455,12 +3397,12 @@
     "mixed" : false,
     "abv" : 4.8,
     "offers" : [ {
-      "quantity" : 6,
-      "totalPrice" : 17.0,
-      "keg" : false
-    }, {
       "quantity" : 12,
       "totalPrice" : 33.6,
+      "keg" : false
+    }, {
+      "quantity" : 6,
+      "totalPrice" : 17.0,
       "keg" : false
     } ],
     "available" : true,
@@ -4233,10 +4175,6 @@
       "quantity" : 6,
       "totalPrice" : 18.75,
       "keg" : false
-    }, {
-      "quantity" : 6,
-      "totalPrice" : 18.75,
-      "keg" : false
     } ],
     "available" : true,
     "categories" : [ ],
@@ -4302,13 +4240,13 @@
     "abv" : 4.8,
     "offers" : [ {
       "quantity" : 1,
-      "totalPrice" : 1.8,
-      "sizeMl" : 330,
+      "totalPrice" : 2.45,
+      "sizeMl" : 500,
       "keg" : false
     }, {
       "quantity" : 1,
-      "totalPrice" : 2.45,
-      "sizeMl" : 500,
+      "totalPrice" : 1.8,
+      "sizeMl" : 330,
       "keg" : false
     } ],
     "available" : true,
@@ -4358,13 +4296,13 @@
     "abv" : 5.0,
     "offers" : [ {
       "quantity" : 1,
-      "totalPrice" : 1.8,
-      "sizeMl" : 330,
+      "totalPrice" : 2.45,
+      "sizeMl" : 500,
       "keg" : false
     }, {
       "quantity" : 1,
-      "totalPrice" : 2.45,
-      "sizeMl" : 500,
+      "totalPrice" : 1.8,
+      "sizeMl" : 330,
       "keg" : false
     } ],
     "available" : true,
@@ -4537,11 +4475,6 @@
     "mixed" : false,
     "abv" : 5.9,
     "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 2.0,
-      "sizeMl" : 330,
-      "keg" : false
-    }, {
       "quantity" : 1,
       "totalPrice" : 2.0,
       "sizeMl" : 330,
@@ -5175,13 +5108,13 @@
     "abv" : 5.6,
     "offers" : [ {
       "quantity" : 12,
-      "totalPrice" : 34.0,
-      "sizeMl" : 330,
+      "totalPrice" : 40.8,
+      "sizeMl" : 440,
       "keg" : false
     }, {
       "quantity" : 12,
-      "totalPrice" : 40.8,
-      "sizeMl" : 440,
+      "totalPrice" : 34.0,
+      "sizeMl" : 330,
       "keg" : false
     } ],
     "available" : true,
