@@ -155,12 +155,12 @@ td.thumbnail {
 }
 
 .price details > summary {
-  /* text-align: left; */
   font-weight: var(--bold-weight);
   padding: 5px 20px;
   outline: none;    /* Remove irritating border when we have focus */
   user-select: none;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .price details > .offer {
