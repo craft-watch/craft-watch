@@ -22,7 +22,7 @@ const Sidebar = (props: Props): JSX.Element => {
           <li><Link href="/taster"><a>Taster menu</a></Link></li>
           <li><Link href="/full"><a>Full menu</a></Link></li>
           <li className="hide-medium">
-            <b>Just added</b>
+            <b>Just added ...</b>
             <ul>
               {
                 _.map(_.filter(props.allBreweries, b => b.new), b => (
