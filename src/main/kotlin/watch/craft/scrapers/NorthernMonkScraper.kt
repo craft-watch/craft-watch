@@ -72,7 +72,7 @@ class NorthernMonkScraper : Scraper {
             offers = setOf(
               Offer(
                 quantity = rawName.maybe { extract(PACK_REGEX).intFrom(1) } ?: 1,
-                totalPrice = el.priceFrom(".card__price"),
+                totalPrice = data.price / 100.0,
                 sizeMl = desc.maybe { sizeMlFrom() }
               )
             ),
@@ -87,7 +87,8 @@ class NorthernMonkScraper : Scraper {
   }
 
   private data class Data(
-    val available: Boolean
+    val available: Boolean,
+    val price: Int
   )
 
   companion object {
