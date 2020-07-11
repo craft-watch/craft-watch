@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import watch.craft.jsonld.Thing.Offer
 import watch.craft.jsonld.Thing.Product
+import java.net.URI
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type", defaultImpl = Void::class)
 @JsonSubTypes(
@@ -12,10 +13,13 @@ import watch.craft.jsonld.Thing.Product
 )
 sealed class Thing {
   data class Product(
+    val description: String,
+    val image: List<URI>,
     val offers: List<Offer>
   ) : Thing()
 
   data class Offer(
+    val price: Double,
     val availability: String
   ) : Thing()
 }
