@@ -58,7 +58,7 @@ class GcsObjectStore(
   // Retry settings for GCS client do not seem to cause it to retry on timeout, so handle this manually.
   private fun <R> withTimeoutRetries(block: () -> R): R {
     var exception: StorageException? = null
-    repeat(MAX_RETRIES) { i ->
+    repeat(MAX_RETRIES) {
       try {
         return block()
       } catch (e: StorageException) {

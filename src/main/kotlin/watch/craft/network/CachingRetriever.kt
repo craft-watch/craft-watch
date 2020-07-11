@@ -29,7 +29,6 @@ class CachingRetriever(
         store.write(key, content)
         logger.info("${url} written to cache: ${key}")
       }
-      logger.info("${url} written to cache: ${key}")
     } catch (e: FileExistsException) {
       // Another writer raced us to write to this location in the cache
     }
