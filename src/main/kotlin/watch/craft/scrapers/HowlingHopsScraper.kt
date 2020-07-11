@@ -6,8 +6,8 @@ import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.schemas.Thing
-import watch.craft.schemas.Thing.Product
+import watch.craft.jsonld.Thing
+import watch.craft.jsonld.Thing.Product
 import watch.craft.utils.*
 import java.net.URI
 
@@ -31,7 +31,7 @@ class HowlingHopsScraper : Scraper {
           val desc = doc.textFrom(".woocommerce-product-details__short-description")
           val parts = extractVariableParts(desc)
 
-          val data = doc.jsonFrom<Data>("script[type=application/ld+json]")
+          val data = doc.jsonLdFrom<Data>("script[type=application/ld+json]")
           val product = data.graph.filterIsInstance<Product>().single()
           val available = product.offers.any { it.availability == "http://schema.org/InStock" }
 

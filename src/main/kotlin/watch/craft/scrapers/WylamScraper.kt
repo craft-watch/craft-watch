@@ -6,6 +6,7 @@ import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
+import watch.craft.jsonld.Thing.Product
 import watch.craft.utils.*
 import java.net.URI
 
@@ -25,7 +26,7 @@ class WylamScraper : Scraper {
         val rawName = a.text()
 
         Leaf(rawName, a.hrefFrom()) { doc ->
-          val data = doc.jsonFrom<Data>("script[type=application/ld+json]:not(.yoast-schema-graph)")
+          val data = doc.jsonLdFrom<Product>("script[type=application/ld+json]:not(.yoast-schema-graph)")
 
           val abv = rawName.maybe { abvFrom() }
           val numItems = rawName.maybe { extract("$INT_REGEX\\s*x").intFrom(1) }
@@ -41,11 +42,11 @@ class WylamScraper : Scraper {
             summary = nameParts[2].trim().ifBlank { null },
             desc = doc.formattedTextFrom(".product-details__product-description"),
             abv = abv,
-            available = data.offers.availability == "http://schema.org/InStock",
+            available = data.offers.single().availability == "http://schema.org/InStock",
             offers = setOf(
               Offer(
                 quantity = numItems,
-                totalPrice = data.offers.price,
+                totalPrice = data.offers.single().price,
                 sizeMl = rawName.sizeMlFrom()
               )
             ),
@@ -53,17 +54,6 @@ class WylamScraper : Scraper {
           )
         }
       }
-  }
-
-  private data class Data(
-    val description: String,
-    val image: List<URI>,
-    val offers: Offer
-  ) {
-    data class Offer(
-      val price: Double,
-      val availability: String
-    )
   }
 
   companion object {

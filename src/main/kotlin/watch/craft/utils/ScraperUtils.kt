@@ -13,6 +13,7 @@ import watch.craft.MalformedInputException
 import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.More
 import watch.craft.SkipItemException
+import watch.craft.jsonld.jsonLdMapper
 import java.net.URI
 import java.net.URISyntaxException
 import kotlin.math.round
@@ -20,6 +21,14 @@ import kotlin.text.RegexOption.DOT_MATCHES_ALL
 import kotlin.text.RegexOption.IGNORE_CASE
 
 fun forRootUrls(vararg urls: URI, work: (Document) -> List<Job>) = urls.map { More(it, work) }
+
+inline fun <reified T : Any> Element.jsonLdFrom(cssQuery: String = ":root") = selectFrom(cssQuery).data().parseJsonLd<T>()
+
+inline fun <reified T : Any> String.parseJsonLd() = try {
+  jsonLdMapper().readValue<T>(this)
+} catch (e: Exception) {
+  throw MalformedInputException("Couldn't read JSON-LD data", e)
+}
 
 inline fun <reified T : Any> Element.jsonFrom(cssQuery: String = ":root") = selectFrom(cssQuery).data().parseJson<T>()
 
