@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.mockito.Mockito.RETURNS_DEEP_STUBS
 import watch.craft.FatalScraperException
+import java.net.SocketTimeoutException
 
 class GcsObjectStoreTest {
   private val bucket = mock<Bucket>(defaultAnswer = RETURNS_DEEP_STUBS)
@@ -34,7 +35,7 @@ class GcsObjectStoreTest {
 
     @Test
     fun `throws if file already present`() {
-      whenever(bucket.create(any(), any(), any<BlobTargetOption>())) doThrow StorageException(412, "Uh oh")
+      whenever(bucket.create(any(), any(), any<BlobTargetOption>())) doThrow ALREADY_EXISTS_EXCEPTION
 
       assertThrows<FileExistsException> {
         store.write(NICE_KEY, NICE_DATA)
@@ -42,12 +43,23 @@ class GcsObjectStoreTest {
     }
 
     @Test
-    fun `throws if unexpected error`() {
-      whenever(bucket.create(any(), any(), any<BlobTargetOption>())) doThrow StorageException(401, "Double uh oh")
+    fun `throws without retries if unexpected error`() {
+      whenever(bucket.create(any(), any(), any<BlobTargetOption>())) doThrow AUTH_EXCEPTION
 
       assertThrows<FatalScraperException> {
         store.write(NICE_KEY, NICE_DATA)
       }
+      verify(bucket, times(1)).create(any(), any(), any<BlobTargetOption>())
+    }
+
+    @Test
+    fun `retries if error cause is a timeout`() {
+      whenever(bucket.create(any(), any(), any<BlobTargetOption>())) doThrow TIMEOUT_EXCEPTION
+
+      assertThrows<FatalScraperException> {
+        store.write(NICE_KEY, NICE_DATA)
+      }
+      verify(bucket, times(5)).create(any(), any(), any<BlobTargetOption>())
     }
   }
 
@@ -73,12 +85,23 @@ class GcsObjectStoreTest {
     }
 
     @Test
-    fun `throws if unexpected error`() {
-      whenever(bucket.get(NICE_KEY)) doThrow StorageException(401, "Double uh oh")
+    fun `throws without retries if unexpected error`() {
+      whenever(bucket.get(NICE_KEY)) doThrow AUTH_EXCEPTION
 
       assertThrows<FatalScraperException> {
         store.read(NICE_KEY)
       }
+      verify(bucket, times(1)).get(NICE_KEY)
+    }
+
+    @Test
+    fun `retries if error cause is a timeout`() {
+      whenever(bucket.get(NICE_KEY)) doThrow TIMEOUT_EXCEPTION
+
+      assertThrows<FatalScraperException> {
+        store.read(NICE_KEY)
+      }
+      verify(bucket, times(5)).get(NICE_KEY)
     }
   }
 
@@ -95,7 +118,7 @@ class GcsObjectStoreTest {
 
     @Test
     fun `throws if file not present`() {
-      whenever(bucket.list(anyVararg())) doThrow StorageException(404, "Uh oh")
+      whenever(bucket.list(anyVararg())) doThrow NOT_FOUND_EXCEPTION
 
       assertThrows<FileDoesntExistException> {
         store.list(NICE_KEY)
@@ -103,12 +126,23 @@ class GcsObjectStoreTest {
     }
 
     @Test
-    fun `throws if unexpected error`() {
-      whenever(bucket.list(anyVararg())) doThrow StorageException(401, "Double uh oh")
+    fun `throws without retries if unexpected error`() {
+      whenever(bucket.list(anyVararg())) doThrow AUTH_EXCEPTION
 
       assertThrows<FatalScraperException> {
         store.list(NICE_KEY)
       }
+      verify(bucket, times(1)).list(anyVararg())
+    }
+
+    @Test
+    fun `retries if error cause is a timeout`() {
+      whenever(bucket.list(anyVararg())) doThrow TIMEOUT_EXCEPTION
+
+      assertThrows<FatalScraperException> {
+        store.list(NICE_KEY)
+      }
+      verify(bucket, times(5)).list(anyVararg())
     }
   }
 
@@ -116,5 +150,10 @@ class GcsObjectStoreTest {
     private const val NICE_BUCKET = "bucket"
     private const val NICE_KEY = "foo"
     private val NICE_DATA = byteArrayOf(1, 2, 3, 4)
+
+    private val AUTH_EXCEPTION = StorageException(401, "Get out")
+    private val NOT_FOUND_EXCEPTION = StorageException(404, "Uh oh")
+    private val ALREADY_EXISTS_EXCEPTION = StorageException(412, "Uh oh")
+    private val TIMEOUT_EXCEPTION = StorageException(SocketTimeoutException("No"))
   }
 }
