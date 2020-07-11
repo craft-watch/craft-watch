@@ -1,9 +1,9 @@
-package watch.craft.schemas
+package watch.craft.jsonld
 
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
-import watch.craft.schemas.Thing.Offer
-import watch.craft.schemas.Thing.Product
+import watch.craft.jsonld.Thing.Offer
+import watch.craft.jsonld.Thing.Product
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type", defaultImpl = Void::class)
 @JsonSubTypes(
