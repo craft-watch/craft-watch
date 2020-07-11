@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-10T23:27:45.590650Z"
+    "capturedAt" : "2020-07-11T08:50:23.421706Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -814,6 +814,42 @@
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/step-up"
   }, {
     "brewery" : "Cloudwater",
+    "name" : "That Which You Earn For",
+    "summary" : "Single Hopped Mosaic IPA",
+    "desc" : "The green, open spaces we see in marketing campaigns obscure human effects on agricultural lands and microbial, plant, insect and animal life. Though the results of conventional hop farming are delicious, we must ask ourselves why organics are premium, and why conventional, sprayed hops are the norm.\nThe system is broken...\nSingle Hopped Mosaic IPA.\n6% ABV 440ML\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
+    "mixed" : false,
+    "abv" : 6.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.0,
+      "sizeMl" : 440,
+      "keg" : false
+    } ],
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "new" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.878_1_800x.jpg",
+    "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/the-which-you-earn-for-single-hopped-mosaic-ipa"
+  }, {
+    "brewery" : "Cloudwater",
+    "name" : "That Which You Yearn For",
+    "summary" : "Organic Mosaic IPA",
+    "desc" : "The green, open spaces we yearn for, where nature takes its course, and human intervention is low and humble, have been reduced by agribusiness to premium offerings. The organic Mosaic hops in this IPA are handled as we imagine all hops are handled, treated as we imagine all hops are treated.\nSingle Hopped Organic Mosaic IPA.\n6% ABV 440ML\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
+    "mixed" : false,
+    "abv" : 6.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 5.0,
+      "sizeMl" : 440,
+      "keg" : false
+    } ],
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "new" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.877_1_800x.jpg",
+    "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/the-which-you-yearn-for-organic-mosaic-ipa"
+  }, {
+    "brewery" : "Cloudwater",
     "name" : "The Edge Of The Bread",
     "summary" : "DDH IPA",
     "desc" : "DDH IPA w/ Citra, Idaho 7 and Galaxy\n6.0% ABV 440ml\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
@@ -849,6 +885,24 @@
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.849_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/the-light-grey-one-dipa"
   }, {
+    "brewery" : "Cloudwater",
+    "name" : "The Seed Which Cannot Be Sown",
+    "summary" : "TIPA",
+    "desc" : "Single hopped Triple IPA with 30 g/l of Simcoe.\n11% ABV 440ML\nALLERGENS: GLUTEN WHEAT BARLEY OATS",
+    "mixed" : false,
+    "abv" : 11.0,
+    "offers" : [ {
+      "quantity" : 1,
+      "totalPrice" : 7.75,
+      "sizeMl" : 440,
+      "keg" : false
+    } ],
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "new" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.876_1_800x.jpg",
+    "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/the-seed-which-cannot-be-sown-tipa"
+  }, {
     "brewery" : "Five Points",
     "name" : "Barrel Aged Grand Stout",
     "summary" : "Barrel Aged Stout",
@@ -879,7 +933,7 @@
       "sizeMl" : 5000,
       "keg" : true
     } ],
-    "available" : true,
+    "available" : false,
     "categories" : [ "Bitter" ],
     "new" : false,
     "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-best-5l-mini-cask-1588589149Mini-Keg-Best-Mockup-SML.jpg",
@@ -4538,7 +4592,7 @@
       "totalPrice" : 2.1,
       "keg" : false
     } ],
-    "available" : true,
+    "available" : false,
     "categories" : [ "Pale" ],
     "new" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Kasperia_colouredbackground_300x300.jpg",
