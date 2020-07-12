@@ -1,5 +1,8 @@
 package watch.craft.enrichers
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
 import watch.craft.*
 import java.time.Instant
@@ -14,10 +17,7 @@ class Newalyser(
 
   private val oldItems = results.listHistoricalResults()
     .filter { DAYS.between(it, now).toInt() in MIN_DAYS_AGO..MAX_DAYS_AGO }
-    .flatMap {
-      logger.info("Collating old inventory from: ${it}")
-      results.readMinimalHistoricalResult(it).items
-    }
+    .collateInventory()
     .map { it.copy(name = it.name.toLowerCase()) }
     .distinct()
     .toSet()
@@ -35,6 +35,17 @@ class Newalyser(
   override fun enrich(brewery: Brewery) = brewery.copy(
     new = brewery.shortName !in oldBreweries
   )
+
+  private fun List<Instant>.collateInventory() = runBlocking {
+    this@collateInventory
+      .map {
+        async(Dispatchers.IO) {
+          logger.info("Collating old inventory from: ${it}")
+          results.readMinimalHistoricalResult(it).items
+        }
+      }
+      .flatMap { it.await() }
+  }
 
   companion object {
     // TODO - modify range once we have more data
