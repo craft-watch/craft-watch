@@ -122,7 +122,7 @@ jobs:
             - v2-yarn-{{ .Branch }}-
             - v2-yarn-
       - attach_workspace:
-          root: frontend/
+          at: frontend/
       - run:
           name: Install dependencies
           command: cd frontend && yarn install
