@@ -26,7 +26,9 @@ class RedchurchScraperTest {
         name = "Shoreditch Blonde",
         abv = 4.5,
         offers = setOf(
-          Offer(quantity = 24, totalPrice = 35.00, sizeMl = 330)
+          Offer(quantity = 24, totalPrice = 35.00, sizeMl = 330),
+          Offer(quantity = 12, totalPrice = 19.00, sizeMl = 330),
+          Offer(quantity = 6, totalPrice = 11.00, sizeMl = 330)
         ),
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0034/8694/1229/products/SBwwwimage_200x200.png")

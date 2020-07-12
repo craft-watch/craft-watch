@@ -1,10 +1,10 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
-import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
+import watch.craft.shopify.extractShopifyOffers
 import watch.craft.utils.*
 import java.net.URI
 
@@ -16,29 +16,33 @@ class OrbitScraper : Scraper {
     websiteUrl = URI("https://www.orbitbeers.com/")
   )
 
-  // TODO - pagination
-
-  override val jobs = forRootUrls(ROOT_URL) { root ->
+  override val jobs = forPaginatedRootUrl(ROOT_URL) { root ->
     root
       .selectMultipleFrom("#Collection .grid__item")
       .map { el ->
         val title = el.textFrom(".product-card__title")
 
         Leaf(title, el.hrefFrom("a.grid-view-item__link")) { doc ->
+          val desc = doc.formattedTextFrom(".product-single__description")
+
+          // Remove all the dross
+          val name = title
+            .replace("NEW: ", "")
+            .replace("\\S+%".toRegex(), "")   // ABV
+            .replace("WLS\\d+".toRegex(), "") // Some weird code
+            .split("-")[0]
+            .trim()
+
           ScrapedItem(
-            name = title,
+            name = name,
             summary = null,
-            desc = doc.formattedTextFrom(".product-single__description"),
-            mixed = false,    // TODO
+            desc = desc,
+            mixed = title.contains("mixed", ignoreCase = true),
             abv = title.maybe { abvFrom() },
             available = ".price--sold-out" !in el,
-            offers = setOf(
-              Offer(
-                quantity = 1,
-                totalPrice = el.priceFrom(".price"),    // TODO - probably needs to be smarter
-                sizeMl = null
-              )
-            ),
+            offers = doc.orSkip("Can't extract offers, so assume not a beer") {
+              extractShopifyOffers(desc.maybe { sizeMlFrom() })
+            },
             thumbnailUrl = el.srcFrom("noscript img.grid-view-item__image")
           )
         }
