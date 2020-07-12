@@ -1,8 +1,7 @@
 package watch.craft.network
 
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.cio.CIO
-import io.ktor.client.engine.cio.endpoint
+import io.ktor.client.engine.apache.Apache
 import io.ktor.client.features.UserAgent
 import io.ktor.client.request.get
 import io.ktor.http.Url
@@ -79,18 +78,9 @@ class NetworkRetriever(private val name: String) : Retriever {
   }
 
   @OptIn(KtorExperimentalAPI::class)
-  private fun createClient() = HttpClient(CIO) {
+  private fun createClient() = HttpClient(Apache) {
     install(UserAgent) {
       agent = "CraftWatch Bot (https://craft.watch)"
-    }
-
-    engine {
-      requestTimeout = 30_000
-
-      endpoint {
-        connectTimeout = 15_000
-        connectRetryAttempts = 10
-      }
     }
   }
 }
