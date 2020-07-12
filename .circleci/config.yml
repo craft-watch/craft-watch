@@ -87,7 +87,7 @@ jobs:
       - before_backend_job
       - run:
           name: Run tests
-          command: ./gradlew check -i
+          command: ./gradlew check -i --no-daemon
       - after_backend_job
       - store_test_results:
           path: build/test-results/test
