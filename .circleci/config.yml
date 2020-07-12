@@ -9,12 +9,11 @@ workflows:
             branches:
               ignore: master
 
-      - run_backend:
-          filters:
-            branches:
-              ignore: master
+      - run_backend
 
-      - build_frontend
+      - build_frontend:
+          requires:
+            - run_backend
 
       - deploy:
           requires:
@@ -88,7 +87,7 @@ jobs:
       - before_backend_job
       - run:
           name: Run tests
-          command: ./gradlew check
+          command: ./gradlew check -i
       - after_backend_job
       - store_test_results:
           path: build/test-results/test
@@ -104,7 +103,12 @@ jobs:
       - before_backend_job
       - run:
           name: Run scraper application
-          command: ./gradlew run
+          command: ./gradlew run -i
+      - persist_to_workspace:
+          name: Persist (Inventory)
+          root: frontend/
+          paths:
+            - data/
       - after_backend_job
 
   build_frontend:
@@ -113,11 +117,14 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          name: Restore cache (Yarn cache)
+          name: Restore cache (Yarn cache, NextJS cache)
           keys:
-            - v2-yarn-{{ .Branch }}-{{ checksum "frontend/yarn.lock" }}
-            - v2-yarn-{{ .Branch }}-
-            - v2-yarn-
+            - v2-frontend-{{ .Branch }}-{{ checksum "frontend/yarn.lock" }}
+            - v2-frontend-{{ .Branch }}-
+            - v2-frontend-
+      - attach_workspace:
+          name: Attach (Inventory)
+          at: frontend/
       - run:
           name: Install dependencies
           command: cd frontend && yarn install
@@ -127,25 +134,26 @@ jobs:
       - run:
           name: Build
           command: cd frontend && yarn build
-      - save_cache:
-          name: Save cache (Frontend build)
+      - persist_to_workspace:
+          name: Persist (Frontend build)
+          root: frontend/
           paths:
-            - frontend/out
-          key: v1-build-{{ .Environment.CIRCLE_SHA1 }}
+            - out/
       - save_cache:
-          name: Save cache (Yarn cache)
+          name: Save cache (Yarn cache, NextJS cache)
           paths:
             - ~/.cache/yarn
-          key: v2-yarn-{{ .Branch }}-{{ checksum "frontend/yarn.lock" }}
+            - frontend/.next/cache
+          key: v2-frontend-{{ .Branch }}-{{ checksum "frontend/yarn.lock" }}
 
   deploy:
     docker:
       - image: circleci/node
     steps:
       - checkout
-      - restore_cache:
-          name: Restore cache (Frontend build)
-          key: v1-build-{{ .Environment.CIRCLE_SHA1 }}
+      - attach_workspace:
+            name: Attach (Frontend build)
+            at: frontend/
       - add_ssh_keys:
           fingerprints:
             - b2:01:83:8d:4e:e6:72:11:5f:57:70:11:ec:57:29:42
