@@ -119,9 +119,9 @@ jobs:
       - restore_cache:
           name: Restore cache (Yarn cache, NextJS cache, Node modules)
           keys:
-            - v2-yarn-{{ .Branch }}-{{ checksum "frontend/yarn.lock" }}
-            - v2-yarn-{{ .Branch }}-
-            - v2-yarn-
+            - v1-frontend-{{ .Branch }}-{{ checksum "frontend/yarn.lock" }}
+            - v1-frontend-{{ .Branch }}-
+            - v1-frontend-
       - attach_workspace:
           name: Attach (Inventory)
           at: frontend/
@@ -145,7 +145,7 @@ jobs:
             - ~/.cache/yarn
             - frontend/.next/cache
             - frontend/node_modules
-          key: v2-yarn-{{ .Branch }}-{{ checksum "frontend/yarn.lock" }}
+          key: v1-frontend-{{ .Branch }}-{{ checksum "frontend/yarn.lock" }}
 
   deploy:
     docker:
