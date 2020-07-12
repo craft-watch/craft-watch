@@ -12,6 +12,7 @@ class ResultsManager(private val setup: Setup) {
 
   fun write(inventory: Inventory) {
     dir(inventory.metadata.capturedAt).write(INVENTORY_FILENAME, mapper.writeValueAsBytes(inventory))
+    CANONICAL_INVENTORY_PATH.parentFile.mkdirs()
     CANONICAL_INVENTORY_PATH.outputStream().use { mapper.writeValue(it, inventory) }
     // TODO - log
   }
