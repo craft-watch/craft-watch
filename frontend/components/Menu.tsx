@@ -2,7 +2,11 @@ import React, { ReactElement, useState } from "react";
 import _ from "underscore";
 import { Moment } from "moment";
 
-export type Selections = { [key: string]: boolean };
+export interface Selections {
+  selections: { [key: string]: boolean };
+  toggle: (key: string) => void;
+  setGlobal: (selected: boolean) => void;
+}
 
 interface Props {
   children: ReactElement<SectionProps> | Array<ReactElement<SectionProps> | boolean>;
@@ -12,8 +16,6 @@ interface Props {
 interface SectionProps {
   title: string;
   selections: Selections;
-  onToggleSelection: (key: string) => void;
-  onGlobalSelection: (selection: boolean) => void;
 }
 
 const Menu = (props: Props): JSX.Element => {
@@ -46,23 +48,23 @@ export const Section: React.FC<SectionProps> = (props) => (
   <div className="section">
     <h4>{props.title}</h4>
     {
-      _.map(props.selections, (selected, key) => (
+      _.map(props.selections.selections, (selected, key) => (
         <label key={key} className="selectable">
           {key}
           <input
             type="checkbox"
             checked={selected}
-            onChange={() => props.onToggleSelection(key)}
+            onChange={() => props.selections.toggle(key)}
           />
           <span className="checkmark">{selected ? "✓" : ""}</span>
         </label>
       ))
     }
     {
-      (_.size(props.selections) > 1) && (
+      (_.size(props.selections.selections) > 1) && (
         <div>
-          <span className="all-or-none" onClick={() => props.onGlobalSelection(true)}>All</span>
-          <span className="all-or-none" onClick={() => props.onGlobalSelection(false)}>None</span>
+          <span className="all-or-none" onClick={() => props.selections.setGlobal(true)}>All</span>
+          <span className="all-or-none" onClick={() => props.selections.setGlobal(false)}>None</span>
         </div>
       )
     }
