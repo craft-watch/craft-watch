@@ -44,18 +44,12 @@ commands:
             echo "${GCLOUD_SERVICE_KEY}" > "${KEY_FILE}"
             echo "export GOOGLE_APPLICATION_CREDENTIALS=${KEY_FILE}" >> "${BASH_ENV}"
       - restore_cache:
-          # This rarely changes, and is safe to share between branches
           name: Restore cache (Gradle wrapper)
           key: v1-gradle-wrapper-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
       - restore_cache:
-          # This changes relatively frequently, and it's safe to fall back to latest from this branch, or from master
           name: Restore cache (Gradle cache)
-          keys:
-            - v4-gradle-{{ .Branch }}-{{ checksum "build.gradle.kts" }}
-            - v4-gradle-{{ .Branch }}-
-            - v4-gradle-
+          key: v1-gradle-cache-{{ checksum "build.gradle.kts" }}
       - restore_cache:
-          # This is basically append-only, so safe to share between branches
           name: Restore cache (Application local storage)
           key: v1-local-storage
 
@@ -70,7 +64,7 @@ commands:
           name: Save cache (Gradle cache)
           paths:
             - ~/.gradle/caches
-          key: v4-gradle-{{ .Branch }}-{{ checksum "build.gradle.kts" }}
+          key: v1-gradle-cache-{{ checksum "build.gradle.kts" }}
       - save_cache:
           name: Save cache (Application local storage)
           paths:
@@ -119,9 +113,7 @@ jobs:
       - restore_cache:
           name: Restore cache (Yarn cache, NextJS cache)
           keys:
-            - v2-frontend-{{ .Branch }}-{{ checksum "frontend/yarn.lock" }}
-            - v2-frontend-{{ .Branch }}-
-            - v2-frontend-
+            - v1-frontend-cache-{{ checksum "frontend/yarn.lock" }}
       - attach_workspace:
           name: Attach (Inventory)
           at: frontend/
@@ -144,7 +136,7 @@ jobs:
           paths:
             - ~/.cache/yarn
             - frontend/.next/cache
-          key: v2-frontend-{{ .Branch }}-{{ checksum "frontend/yarn.lock" }}
+          key: v1-frontend-cache-{{ checksum "frontend/yarn.lock" }}
 
   deploy:
     docker:
