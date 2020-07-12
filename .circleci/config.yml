@@ -11,7 +11,7 @@ workflows:
 
       - run_backend
 
-      - build_frontend
+      - build_frontend:
           requires:
             - run_backend
 
