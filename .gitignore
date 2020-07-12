@@ -9,5 +9,6 @@ out/
 .gradle/
 build/
 
-# Local scraper cache
+# App-specific
 /storage/
+/frontend/data/

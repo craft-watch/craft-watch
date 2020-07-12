@@ -9,12 +9,11 @@ workflows:
             branches:
               ignore: master
 
-      - run_backend:
-          filters:
-            branches:
-              ignore: master
+      - run_backend
 
       - build_frontend
+          requires:
+            - run_backend
 
       - deploy:
           requires:
@@ -106,6 +105,10 @@ jobs:
           name: Run scraper application
           command: ./gradlew run
       - after_backend_job
+      - persist_to_workspace:
+          root: frontend/
+          paths:
+            - data
 
   build_frontend:
     docker:
@@ -118,6 +121,8 @@ jobs:
             - v2-yarn-{{ .Branch }}-{{ checksum "frontend/yarn.lock" }}
             - v2-yarn-{{ .Branch }}-
             - v2-yarn-
+      - attach_workspace:
+          root: frontend/
       - run:
           name: Install dependencies
           command: cd frontend && yarn install
