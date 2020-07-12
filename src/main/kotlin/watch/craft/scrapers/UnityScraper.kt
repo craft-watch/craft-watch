@@ -5,7 +5,11 @@ import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.utils.*
+import watch.craft.shopify.shopifyItems
+import watch.craft.utils.abvFrom
+import watch.craft.utils.forRootUrls
+import watch.craft.utils.sizeMlFrom
+import watch.craft.utils.textFrom
 import java.net.URI
 
 class UnityScraper : Scraper {

@@ -22,6 +22,17 @@ import kotlin.text.RegexOption.IGNORE_CASE
 
 fun forRootUrls(vararg urls: URI, work: (Document) -> List<Job>) = urls.map { More(it, work) }
 
+fun forPaginatedRootUrl(url: URI, work: (Document) -> List<Job>) = listOf(followPagination(url, work))
+
+private fun followPagination(url: URI, work: (Document) -> List<Job>): More = More(url) { root ->
+  val next = root.maybe { hrefFrom("link[rel=next]") }
+  (if (next != null) {
+    listOf(followPagination(next, work))
+  } else {
+    emptyList()
+  }) + work(root)
+}
+
 inline fun <reified T : Any> Element.jsonLdFrom(cssQuery: String = ":root") = selectFrom(cssQuery).data().parseJsonLd<T>()
 
 inline fun <reified T : Any> String.parseJsonLd() = try {

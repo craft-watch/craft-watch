@@ -51,6 +51,7 @@ class Cli : CliktCommand(name = "scraper") {
       HowlingHopsScraper(),
       MarbleScraper(),
       NorthernMonkScraper(),
+      OrbitScraper(),
       PadstowScraper(),
       PillarsScraper(),
       PollysScraper(),

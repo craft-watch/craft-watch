@@ -1,10 +1,8 @@
 package watch.craft.scrapers
 
-import org.jsoup.nodes.Document
 import watch.craft.Brewery
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
@@ -20,22 +18,8 @@ class NorthernMonkScraper : Scraper {
     websiteUrl = URI("https://northernmonk.com/")
   )
 
-  override val jobs = forRootUrls(ROOT_URL, work = ::scrapeRoot)
-
-  // TODO - absorb this pattern into forRootUrls
-  private fun scrapeRoot(root: Document) = maybeGetNextPageJob(root) + getItemJobs(root)
-
-  private fun maybeGetNextPageJob(root: Document): List<Job> {
-    val next = root.maybe { hrefFrom("link[rel=next]") }
-    return if (next != null) {
-      forRootUrls(next, work = ::scrapeRoot)
-    } else {
-      emptyList()
-    }
-  }
-
-  private fun getItemJobs(root: Document): List<Leaf> {
-    return root
+  override val jobs = forPaginatedRootUrl(ROOT_URL) { root ->
+    root
       .selectMultipleFrom(".card")
       .map { el ->
         val rawName = el.textFrom(".card__name").toTitleCase()

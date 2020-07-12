@@ -1,12 +1,11 @@
 package watch.craft.scrapers
 
-import org.jsoup.nodes.Document
 import watch.craft.Brewery
-import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
+import watch.craft.shopify.extractShopifyOffers
 import watch.craft.utils.*
 import java.net.URI
 
@@ -35,8 +34,6 @@ class RedchurchScraper : Scraper {
             throw SkipItemException("Can't identify ABV or size for non-mixed case, so assume it's not a beer")
           }
 
-          val bestDeal = doc.extractBestDeal()
-
           ScrapedItem(
             thumbnailUrl = doc.srcFrom(".product-single__photo")
               .toString()
@@ -47,50 +44,12 @@ class RedchurchScraper : Scraper {
             mixed = mixed,
             abv = abv,
             available = ".sold-out-text" !in el,
-            offers = setOf(
-              Offer(
-                quantity = bestDeal.numItems,
-                totalPrice = bestDeal.price,
-                sizeMl = sizeMl
-              )
-            )
+            offers = doc.orSkip("Don't know how to identify number of items") {
+              extractShopifyOffers(sizeMl)
+            }
           )
         }
       }
-  }
-
-  private fun Document.extractBestDeal(): ItemPrice {
-    @Suppress("UNCHECKED_CAST")
-    val winner = (jsonFrom<Data>("#ProductJson-product-template").variants)
-      .map {
-        Variant(title = it.title, price = it.price / 100.0)
-      }
-      .maxBy { it.price }!!   // Assume highest price gives us the best deal
-
-    return ItemPrice(
-      numItems = winner.title.maybe { extract("^(\\d+)").intFrom(1) }
-        ?: throw SkipItemException("Don't know how to identify number of items"),
-      price = winner.price
-    )
-  }
-
-  private data class Variant(
-    val title: String,
-    val price: Double
-  )
-
-  private data class ItemPrice(
-    val numItems: Int,
-    val price: Double
-  )
-
-  private data class Data(
-    val variants: List<Variant>
-  ) {
-    data class Variant(
-      val title: String,
-      val price: Int
-    )
   }
 
   companion object {

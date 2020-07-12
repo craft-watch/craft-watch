@@ -5,6 +5,7 @@ import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
+import watch.craft.shopify.shopifyItems
 import watch.craft.utils.*
 import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
