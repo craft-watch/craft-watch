@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import _ from "underscore";
 import { Moment } from "moment";
 import { Item, Brewery } from "../utils/model";
@@ -21,6 +21,8 @@ const App = (props: Props): JSX.Element => {
   const availability = useSelections([OUT_OF_STOCK]);
   const brewery = useSelections(uniqueBreweries(props.items));
   const format = useSelections([REGULAR, MIXED_CASE, MINIKEG]);
+
+  useEffect(() => brewery.setKeys(uniqueBreweries(props.items)), [props.items]);
 
   const filterItems = (): Array<Item> => props.items.filter(item =>
     brewerySelected(item) && formatSelected(item) && availabilitySelected(item)
@@ -67,9 +69,9 @@ const App = (props: Props): JSX.Element => {
 const uniqueBreweries = (items: Array<Item>): Array<string> => _.uniq(_.map(items, item => item.brewery.shortName));
 
 const useSelections = (keys: Array<string>): Selections => {
-  const initial = _.object(_.map(keys, b => [b, true]));
+  const toMap = (keys: Array<string>, selected: boolean) => _.object(_.map(keys, b => [b, selected]));
 
-  const [selections, setSelections] = useState<{ [key: string]: boolean }>(initial);
+  const [selections, setSelections] = useState<{ [key: string]: boolean }>(toMap(keys, true));
 
   const toggle = (key: string): void => {
     const copy = { ...selections };
@@ -78,12 +80,14 @@ const useSelections = (keys: Array<string>): Selections => {
   };
 
   const setGlobal = (selected: boolean): void => {
-    const copy = { ...selections };
-    _.each(copy, (_, x) => copy[x] = selected);
-    setSelections(copy);
+    setSelections(toMap(_.keys(selections), selected));
   };
 
-  return { selections, toggle, setGlobal };
+  const setKeys = (keys: Array<string>): void => {
+    setSelections(toMap(keys, true));
+  };
+
+  return { selections, toggle, setGlobal, setKeys };
 };
 
 export default App;

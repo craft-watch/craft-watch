@@ -6,6 +6,7 @@ export interface Selections {
   selections: { [key: string]: boolean };
   toggle: (key: string) => void;
   setGlobal: (selected: boolean) => void;
+  setKeys: (keys: Array<string>) => void;
 }
 
 interface Props {
