@@ -1,6 +1,6 @@
 {
   "metadata" : {
-    "capturedAt" : "2020-07-11T08:50:23.421706Z"
+    "capturedAt" : "2020-07-12T11:11:00.049922Z"
   },
   "categories" : [ "Pale", "IPA", "Dark", "Bitter", "Pils / Lager", "Weisse", "Sours / Gose", "Cider" ],
   "breweries" : [ {
@@ -26,7 +26,7 @@
     "name" : "Cloudwater Brew Co",
     "location" : "Manchester",
     "websiteUrl" : "https://cloudwaterbrew.co/",
-    "new" : true
+    "new" : false
   }, {
     "shortName" : "Five Points",
     "name" : "The Five Points Brewing Co",
@@ -285,7 +285,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0358/6742/6953/products/20200708_153136_345x345.jpg",
     "url" : "https://shop.boxcarbrewery.co.uk/collections/beer/products/emerald-sky-4-6-pale-ale-440ml"
   }, {
@@ -511,7 +511,7 @@
     } ],
     "available" : true,
     "categories" : [ ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.813_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/a-gentle-nod-to-welcome-visitors-modern-barley-wine"
   }, {
@@ -529,7 +529,7 @@
     } ],
     "available" : true,
     "categories" : [ "Dark", "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.868_1_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/all-together-ipa-worldwide-collaboration"
   }, {
@@ -547,7 +547,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.867_1_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/back-on-boogie-st-columbus-single-hop-ipa-crop-year-2019-series-13"
   }, {
@@ -565,7 +565,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.873_1_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/bird-tweets-trump-trump-tweets-ddh-pale-crop-year-2019-series-18"
   }, {
@@ -580,7 +580,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pils / Lager", "Pale", "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/cy19_pack_03_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/crop-year-2019-15-19-4-pack"
   }, {
@@ -597,7 +597,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/CLOUDWATERDDHPale_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/ddh-pale-2"
   }, {
@@ -630,7 +630,7 @@
     } ],
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.872_1_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/land-of-landings-ddh-ipa-crop-year-2019-series-17"
   }, {
@@ -648,7 +648,7 @@
     } ],
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.864_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/just-the-right-shape-mosaic-single-hop-ipa-crop-year-2019-series-12"
   }, {
@@ -666,7 +666,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.545-bottle_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/la-deuxieme-saison-des-poires-750ml"
   }, {
@@ -684,7 +684,7 @@
     } ],
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.871_1_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/land-of-landings-ddh-ipa-crop-year-2019-series-16"
   }, {
@@ -702,7 +702,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.491b_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/only-a-dream-can-kill-a-dream-fresh-funky-pale-ale-full-of-tropical-fruit-salad-flavours-750ml"
   }, {
@@ -720,7 +720,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.869_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/our-highs-their-lows-pilsner-crop-year-2019-series-15"
   }, {
@@ -737,7 +737,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/CLOUDWATERPaleAle_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/pale-ale-1"
   }, {
@@ -755,7 +755,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.862_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/ponderosa-pines-on-rainier-cascade-single-hop-ipa-crop-year-2019-series-11"
   }, {
@@ -773,7 +773,7 @@
     } ],
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.870_1_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/singel-hopped-ipa-strata-single-hop-ipa-crop-year-2019-series-14"
   }, {
@@ -791,7 +791,7 @@
     } ],
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.761a_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/speyside-persistence-is-utile-speyside-ba-w-coffee-vanilla-375ml"
   }, {
@@ -809,7 +809,7 @@
     } ],
     "available" : true,
     "categories" : [ "Bitter", "Dark" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.824_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/step-up"
   }, {
@@ -830,6 +830,21 @@
     "new" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.878_1_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/the-which-you-earn-for-single-hopped-mosaic-ipa"
+  }, {
+    "brewery" : "Cloudwater",
+    "name" : "That Which You Earn/Yearn For 4 Pack",
+    "desc" : "Join us in a side-by-side experiment focused on our delicious hops.\nThese two beers are almost identical but have one subtle difference. One is hopped with standard Mosaic, and one with an organic variant of the hop.\nThis pack includes the following four beers:\n2 x That Which You Yearn For, 6% - Organic Mosaic single-hopped IPA (440ml can)\n2 x That Which You Earn For, 6% - Mosaic single-hopped IPA (440ml can)\n6% ABV 440ML x 4\nALLERGENS: GLUTEN WHEAT BARLEY OATS\n**THIS PACK IS NOT ELIGIBLE FOR DISCOUNTS AS IT'S ALREADY DISCOUNTED**",
+    "mixed" : true,
+    "offers" : [ {
+      "quantity" : 4,
+      "totalPrice" : 19.0,
+      "keg" : false
+    } ],
+    "available" : true,
+    "categories" : [ "IPA" ],
+    "new" : true,
+    "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/2020MosaicPack_800x.jpg",
+    "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/that-which-you-earn-yearn-for-4-pack"
   }, {
     "brewery" : "Cloudwater",
     "name" : "That Which You Yearn For",
@@ -863,7 +878,7 @@
     } ],
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/gyle_no._860b_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/the-edge-of-the-bread-ddh-ipa"
   }, {
@@ -881,7 +896,7 @@
     } ],
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.849_800x.jpg",
     "url" : "https://shop.cloudwaterbrew.co/collections/cloudwater-beer/products/the-light-grey-one-dipa"
   }, {
@@ -969,7 +984,7 @@
       "sizeMl" : 330,
       "keg" : false
     } ],
-    "available" : true,
+    "available" : false,
     "categories" : [ "Pale" ],
     "new" : false,
     "thumbnailUrl" : "https://shop.fivepointsbrewing.co.uk/uploads/images/products/large/five-points-brewing-five-points-brewing-five-points-micro-pale-12-pack-1590489952Micro-Pale-bottle-Mock-Up-2-.png",
@@ -1319,24 +1334,6 @@
     "url" : "https://gipsyhillbrew.com/product/baller/"
   }, {
     "brewery" : "Gipsy Hill",
-    "name" : "Bandit",
-    "summary" : "Gluten Free Pale Ale",
-    "desc" : "This is a single 330ml can of Bandit.\nA Gluten Free Pale Ale. We took our beloved Beatnik and stole the gluten out. It’s a light, refreshing pale. Still fruity, still floral. Loads of flavour, just gluten free.\nGoes well with high revs and breeze in your hair.\nThis is Sam. He’s a Gipsy Hill co-founder. He likes long and windy roads.",
-    "mixed" : false,
-    "abv" : 3.8,
-    "offers" : [ {
-      "quantity" : 1,
-      "totalPrice" : 2.2,
-      "sizeMl" : 330,
-      "keg" : false
-    } ],
-    "available" : true,
-    "categories" : [ "Pale" ],
-    "new" : false,
-    "thumbnailUrl" : "https://i0.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/BANDIT.png?resize=300%2C300&ssl=1",
-    "url" : "https://gipsyhillbrew.com/product/bandit/"
-  }, {
-    "brewery" : "Gipsy Hill",
     "name" : "Blisco Dash",
     "summary" : "Kveik Pale Ale",
     "desc" : "This is a single 440ml can of Blisco Dash – A Kveik Pale Ale.\nOur favourite Voss yeast strain has been cranking esters through ramped fermentation and cast out temps.\nOn top of that it’s been loaded with classic Cascade and Hallertau Blanc & Melon hotside for full on pine, floral and sweet-fruit top notes, before being blasted with Idaho 7 in the dry-hop for that tropical kick.\nGoes well with getting lost and sweet fresh air.\nFeaturing Sarah, Gipsy Hill’s finance guru and speed demon.",
@@ -1404,22 +1401,6 @@
     "new" : false,
     "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2018/11/CARVER.png?resize=300%2C300&ssl=1",
     "url" : "https://gipsyhillbrew.com/product/carver/"
-  }, {
-    "brewery" : "Gipsy Hill",
-    "name" : "Core Range 24 Pack",
-    "desc" : "This pack contains 24 x 330ml cans from our core range.\nEach pack includes:\n4 x Hepcat – Session IPA – 4.6%\n4 x Baller – IPA – 5.4%\n4 x Hunter – Helles Lager – 4.8%\n4 x Carver – Micro IPA – 2.8%\n4 x Ranger – Pale Ale – 4.2%\n4 x Bandit – Gluten Free Pale – 3.8%",
-    "mixed" : true,
-    "offers" : [ {
-      "quantity" : 24,
-      "totalPrice" : 56.0,
-      "sizeMl" : 330,
-      "keg" : false
-    } ],
-    "available" : true,
-    "categories" : [ "Pale", "Pils / Lager", "IPA" ],
-    "new" : false,
-    "thumbnailUrl" : "https://i1.wp.com/gipsyhillbrew.com/wp-content/uploads/2020/03/Copy-of-Core-range-6-pack-31.png?resize=300%2C300&ssl=1",
-    "url" : "https://gipsyhillbrew.com/product/core-range-24-pack/"
   }, {
     "brewery" : "Gipsy Hill",
     "name" : "DJ BBQ Box",
@@ -1623,7 +1604,7 @@
       "sizeMl" : 330,
       "keg" : false
     } ],
-    "available" : true,
+    "available" : false,
     "categories" : [ ],
     "new" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0267/3842/5904/products/IMG_2606copy_200x.png",
@@ -1639,7 +1620,7 @@
       "sizeMl" : 330,
       "keg" : false
     } ],
-    "available" : true,
+    "available" : false,
     "categories" : [ "Pils / Lager", "Sours / Gose", "IPA" ],
     "new" : true,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0267/3842/5904/products/HCBC_Pump_clip_fullset_black10_200x.png",
@@ -1727,7 +1708,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://www.howlinghops.co.uk/wp-content/uploads/2020/07/BUCKLE-DOWN-440ml-1-324x324.png",
     "url" : "https://www.howlinghops.co.uk/product/buckle-down-ddh-pale-4-x-440ml/"
   }, {
@@ -2518,7 +2499,7 @@
     } ],
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/2213/3151/products/NMBC_OFS005-1_180x.jpg",
     "url" : "https://northernmonkshop.com/collections/beer/products/ofs-005-incognito-ipa"
   }, {
@@ -3147,7 +3128,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0173/0153/6832/products/Screenshot_2019-07-24_at_14.55.16_large.png",
     "url" : "https://pressuredropbrewing.co.uk/collections/beers/products/dreamlife-ddh-new-england-pale-ale"
   }, {
@@ -4069,7 +4050,7 @@
     } ],
     "available" : true,
     "categories" : [ "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://www.sirencraftbrew.com/uploads/images/products/large/siren-craft-brew-siren-craft-brew-sound-wave-1546011712Siren-sound-wave-front.png",
     "url" : "https://www.sirencraftbrew.com/item/9/SirenCraftBrew/Sound-Wave.html"
   }, {
@@ -4594,7 +4575,7 @@
     } ],
     "available" : false,
     "categories" : [ "Pale" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Kasperia_colouredbackground_300x300.jpg",
     "url" : "https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers/products/kasperia-4-7-cashmere-pale-ale-1"
   }, {
@@ -4734,7 +4715,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pils / Lager" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0340/2829/0107/products/image_23579aac-172f-4210-b087-a1e910fa95d2_345x345.jpg",
     "url" : "https://unitybrewingco.com/collections/unity-beer/products/dayspring-pilsner"
   }, {
@@ -4751,7 +4732,7 @@
     } ],
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://cdn.shopify.com/s/files/1/0340/2829/0107/products/image_fe8979ed-7482-4c34-a49f-f33ab5ff724e_345x345.jpg",
     "url" : "https://unitybrewingco.com/collections/unity-beer/products/nocturne-oatmeal-porter"
   }, {
@@ -5048,7 +5029,7 @@
     } ],
     "available" : true,
     "categories" : [ "Dark" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://static.wixstatic.com/media/f0be53_773c9c2da1fd408bae20622501f2b7aa~mv2.jpg/v1/fill/w_100,h_100,al_c,q_80,usm_0.66_1.00_0.01/f0be53_773c9c2da1fd408bae20622501f2b7aa~mv2.jpg",
     "url" : "https://www.wanderbeyondbrewing.com/product-page/ozzy"
   }, {
@@ -5338,7 +5319,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://dpbfm6h358sh7.cloudfront.net/images/26164003/1504896578.jpg",
     "url" : "https://www.wylambrewery.co.uk/beer-store/Drones-With-Megaphones-DDH-Pale-ABV-5-5-1-x-440ml-Can-p214085115"
   }, {
@@ -5373,7 +5354,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale", "IPA" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://dpbfm6h358sh7.cloudfront.net/images/26164003/1517202877.jpg",
     "url" : "https://www.wylambrewery.co.uk/beer-store/Heedhunter-DDH-Pale-By-The-River-Brew-Co-ABV-4-5-1-x-440ml-Can-p216226304"
   }, {
@@ -5424,7 +5405,7 @@
     } ],
     "available" : true,
     "categories" : [ "Pale" ],
-    "new" : true,
+    "new" : false,
     "thumbnailUrl" : "https://dpbfm6h358sh7.cloudfront.net/images/26164003/1517219095.jpg",
     "url" : "https://www.wylambrewery.co.uk/beer-store/My-Garden-Of-Forking-Paths-Six-Blend-Saison-By-The-River-Brew-Co-ABV-5-7-1-x-440ml-Can-p216243150"
   }, {
