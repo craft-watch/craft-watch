@@ -10,7 +10,7 @@ interface Props {
   inventory: Inventory;
 }
 
-const InventoryTableAndMenu = ({ inventory }: Props): JSX.Element => {
+const InventoryApp = ({ inventory }: Props): JSX.Element => {
   const availability = useSelections([OUT_OF_STOCK]);
   const brewery = useSelections(uniqueBreweries(inventory.items));
   const format = useSelections([REGULAR, MIXED_CASE, MINIKEG]);
@@ -79,4 +79,4 @@ const useSelections = (keys: Array<string>): Selections => {
   return { selections, toggle, setGlobal, setKeys };
 };
 
-export default InventoryTableAndMenu;
+export default InventoryApp;

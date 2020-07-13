@@ -2,7 +2,7 @@ import React from "react";
 import Page from "../components/Page";
 import { inventory } from "../utils/inventory";
 import Sidebar from "../components/Sidebar";
-import InventoryTableAndMenu from "../components/InventoryTableAndMenu";
+import InventoryApp from "../components/InventoryApp";
 
 const ThisPage = (): JSX.Element => (
   <Page
@@ -26,7 +26,7 @@ const ThisPage = (): JSX.Element => (
       allBreweries={inventory.breweries}
     />
 
-    <InventoryTableAndMenu inventory={inventory} />
+    <InventoryApp inventory={inventory} />
   </Page>
 );
 

@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobeEurope } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import Sidebar from "../components/Sidebar";
-import InventoryTableAndMenu from "../components/InventoryTableAndMenu";
+import InventoryApp from "../components/InventoryApp";
 
 
 interface Props {
@@ -52,7 +52,7 @@ const ThisPage = ({ brewery, items }: Props): JSX.Element => {
         allBreweries={inventory.breweries}
       />
 
-      <InventoryTableAndMenu inventory={{ ...inventory, items }} />
+      <InventoryApp inventory={{ ...inventory, items }} />
     </Page>
   );
 };

@@ -3,7 +3,7 @@ import _ from "underscore";
 import Page from "../components/Page";
 import { inventory } from "../utils/inventory";
 import Sidebar from "../components/Sidebar";
-import InventoryTableAndMenu from "../components/InventoryTableAndMenu";
+import InventoryApp from "../components/InventoryApp";
 
 const ThisPage = (): JSX.Element => (
   <Page
@@ -27,7 +27,7 @@ const ThisPage = (): JSX.Element => (
       allBreweries={inventory.breweries}
     />
 
-    <InventoryTableAndMenu
+    <InventoryApp
       inventory={{
         ...inventory,
         items: _.filter(inventory.items, item => item.new && !item.brewery.new),

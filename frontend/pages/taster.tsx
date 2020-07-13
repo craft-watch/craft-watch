@@ -5,7 +5,7 @@ import { Item, Format } from "../utils/model";
 import { inventory } from "../utils/inventory";
 import { headlineOffer } from "../utils/stuff";
 import Sidebar from "../components/Sidebar";
-import InventoryTableAndMenu from "../components/InventoryTableAndMenu";
+import InventoryApp from "../components/InventoryApp";
 
 const TASTER_MENU_SIZE = 20;
 
@@ -43,7 +43,7 @@ const ThisPage = (): JSX.Element => {
         allBreweries={inventory.breweries}
       />
 
-      <InventoryTableAndMenu inventory={{ ...inventory, items }} />
+      <InventoryApp inventory={{ ...inventory, items }} />
     </Page>
   );
 };
