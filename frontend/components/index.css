@@ -25,7 +25,7 @@
 }
 
 html, body {
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Work Sans', sans-serif !important;
   color: var(--sol-base01);
   background: var(--sol-base3);
   margin: 0;
@@ -323,6 +323,14 @@ nav li {
 
 .sidebar .copyright a {
   font-weight: var(--bold-weight);
+}
+
+.sidebar input {
+  border-radius: var(--sexy-radius);
+  font-size: smaller;
+  padding: 0 5px;
+  width: 100%;
+  outline: none;    /* Remove irritating border when we have focus */
 }
 
 

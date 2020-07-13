@@ -1,29 +1,28 @@
 import React from "react";
-import App from "../components/App";
+import _ from "underscore";
 import Page from "../components/Page";
+import App from "../components/App";
 import { items, capturedAt, categories, breweries } from "../utils/inventory";
 
+// TODO - update title and description
 const ThisPage = (): JSX.Element => (
   <Page
-    title = "Craft Watch - Full list of beer prices from UK breweries"
-    description = "Daily updates of beer prices from across UK brewery online shops"
+    title = "Craft Watch - Breweries A-Z"
+    description = "Daily updates and prices of new beers from across UK brewery online shops"
   >
     <App
-      title="Full menu"
+      title="Breweries A-Z"
       desc={
         (
           <>
             <p>
-              This is the full selection of beer prices from across UK breweries that sell direct to your doorstep.
-            </p>
-            <p>
-              Updated daily!
+              Blah blah blah.
             </p>
           </>
         )
       }
       capturedAt={capturedAt}
-      items={items}
+      items={_.filter(items, item => item.new && !item.brewery.new)}
       allBreweries={breweries}
       categories={categories}
     />
