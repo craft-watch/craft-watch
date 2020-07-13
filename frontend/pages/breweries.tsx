@@ -3,7 +3,7 @@ import _ from "underscore";
 import Page from "../components/Page";
 import { inventory } from "../utils/inventory";
 import Sidebar from "../components/Sidebar";
-import InventoryApp from "../components/InventoryApp";
+import BreweriesApp from "../components/BreweriesApp";
 
 // TODO - update title and description
 const ThisPage = (): JSX.Element => (
@@ -25,7 +25,7 @@ const ThisPage = (): JSX.Element => (
       allBreweries={inventory.breweries}
     />
 
-    <InventoryApp inventory={inventory} />
+    <BreweriesApp inventory={inventory} />
   </Page>
 );
 
