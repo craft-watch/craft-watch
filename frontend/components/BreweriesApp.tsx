@@ -1,6 +1,6 @@
 import React, {  } from "react";
 import _ from "underscore";
-import { Inventory, Item, Brewery } from "../utils/model";
+import { Inventory, Brewery } from "../utils/model";
 import SortableTable, { Column, Section } from "./SortableTable";
 import { toSafePathPart } from "../utils/stuff";
 import Link from "next/link";
@@ -14,6 +14,8 @@ interface CellProps {
 }
 
 const BreweriesApp = ({ inventory }: Props): JSX.Element => {
+  const counts = _.countBy(inventory.items, item => item.brewery.shortName);
+
   return (
     <>
       <div className="how-to-use">
@@ -21,17 +23,21 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
       </div>
 
       <main>
-      <SortableTable sections={partition(inventory.breweries)}>
-        <Column
-          name="Brewery"
-          className="brewery"
-          render={(brewery: Brewery) => <BreweryInfo brewery={brewery} />}
-        />
-        <Column
-          name="Location"
-          render={(brewery: Brewery) => <LocationInfo brewery={brewery} />}
-        />
-      </SortableTable>
+        <SortableTable sections={partition(inventory.breweries)}>
+          <Column
+            name="Brewery"
+            className="brewery"
+            render={(brewery: Brewery) => <BreweryInfo brewery={brewery} />}
+          />
+          <Column
+            name="Location"
+            render={(brewery: Brewery) => <LocationInfo brewery={brewery} />}
+          />
+          <Column
+            name="# items"
+            render={(brewery: Brewery) => <ItemsInfo count={counts[brewery.shortName]} />}
+          />
+        </SortableTable>
       </main>
     </>
   );
@@ -46,6 +52,12 @@ const BreweryInfo = ({ brewery }: CellProps) => (
 const LocationInfo = ({ brewery }: CellProps) => (
   <>
     {brewery.location}
+  </>
+);
+
+const ItemsInfo = ({ count }: { count: number }) => (
+  <>
+    {count}
   </>
 );
 

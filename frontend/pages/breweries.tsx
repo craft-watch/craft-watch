@@ -1,5 +1,4 @@
 import React from "react";
-import _ from "underscore";
 import Page from "../components/Page";
 import { inventory } from "../utils/inventory";
 import Sidebar from "../components/Sidebar";
