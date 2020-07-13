@@ -17,7 +17,8 @@ class ForestRoadScraper : Scraper {
     shortName = "Forest Road",
     name = "Forest Road Brewing Co",
     location = "Hackney, London",
-    websiteUrl = URI("https://www.forestroad.co.uk/")
+    websiteUrl = URI("https://www.forestroad.co.uk/"),
+    twitterHandle = "ForestRoadBrew"
   )
 
   override val jobs = forRootUrls(*ROOT_URLS) { root ->

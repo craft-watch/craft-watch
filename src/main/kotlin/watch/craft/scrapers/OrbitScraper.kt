@@ -13,7 +13,8 @@ class OrbitScraper : Scraper {
     shortName = "Orbit",
     name = "Orbit Beers",
     location = "Walworth, London",
-    websiteUrl = URI("https://www.orbitbeers.com/")
+    websiteUrl = URI("https://www.orbitbeers.com/"),
+    twitterHandle = "OrbitBeers"
   )
 
   override val jobs = forPaginatedRootUrl(ROOT_URL) { root ->

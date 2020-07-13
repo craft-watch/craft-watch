@@ -15,7 +15,8 @@ class HowlingHopsScraper : Scraper {
     shortName = "Howling Hops",
     name = "Howling Hops",
     location = "Hackney Wick, London",
-    websiteUrl = URI("https://www.howlinghops.co.uk/")
+    websiteUrl = URI("https://www.howlinghops.co.uk/"),
+    twitterHandle = "HowlingHops"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

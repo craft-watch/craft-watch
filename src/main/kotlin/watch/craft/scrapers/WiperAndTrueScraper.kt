@@ -14,7 +14,8 @@ class WiperAndTrueScraper : Scraper {
     shortName = "Wiper and True",
     name = "Wiper and True",
     location = "Bristol",
-    websiteUrl = URI("https://wiperandtrue.com/")
+    websiteUrl = URI("https://wiperandtrue.com/"),
+    twitterHandle = "WiperAndTrue"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

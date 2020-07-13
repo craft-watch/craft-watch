@@ -14,7 +14,8 @@ class ThornbridgeScraper : Scraper {
     shortName = "Thornbridge",
     name = "Thornbridge Brewery",
     location = "Bakewell, Derbyshire",
-    websiteUrl = URI("https://thornbridgebrewery.co.uk/")
+    websiteUrl = URI("https://thornbridgebrewery.co.uk/"),
+    twitterHandle = "thornbridge"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

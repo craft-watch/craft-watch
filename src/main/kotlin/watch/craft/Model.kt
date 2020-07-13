@@ -22,6 +22,7 @@ data class Brewery(
   val name: String,
   val location: String,
   val websiteUrl: URI,
+  val twitterHandle: String? = null,
   val new: Boolean = false
 )
 

@@ -14,7 +14,8 @@ class PressureDropScraper : Scraper {
     shortName = "Pressure Drop",
     name = "Pressure Drop Brewing",
     location = "Tottenham, London",
-    websiteUrl = URI("https://pressuredropbrewing.co.uk/")
+    websiteUrl = URI("https://pressuredropbrewing.co.uk/"),
+    twitterHandle = "PressureDropBrw"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

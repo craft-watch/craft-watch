@@ -17,7 +17,8 @@ class MarbleScraper : Scraper {
     shortName = "Marble",
     name = "Marble Beers",
     location = "Salford, Greater Manchester",
-    websiteUrl = URI("https://marblebeers.com/")
+    websiteUrl = URI("https://marblebeers.com/"),
+    twitterHandle = "marblebrewers"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

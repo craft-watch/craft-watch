@@ -15,7 +15,8 @@ class CanopyScraper : Scraper {
     shortName = "Canopy",
     name = "Canopy Beer Co",
     location = "Brockwell, London",
-    websiteUrl = URI("https://www.canopybeer.com/")
+    websiteUrl = URI("https://www.canopybeer.com/"),
+    twitterHandle = "CanopyBeerCo"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

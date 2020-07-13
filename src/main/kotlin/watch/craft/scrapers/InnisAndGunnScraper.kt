@@ -13,7 +13,8 @@ class InnisAndGunnScraper : Scraper {
     shortName = "Innis & Gunn",
     name = "Innis & Gunn Brewing Co",
     location = "Edinburgh",
-    websiteUrl = URI("https://www.innisandgunn.com/")
+    websiteUrl = URI("https://www.innisandgunn.com/"),
+    twitterHandle = "innisandgunn"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

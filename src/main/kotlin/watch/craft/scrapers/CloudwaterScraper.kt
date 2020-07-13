@@ -14,7 +14,8 @@ class CloudwaterScraper : Scraper {
     shortName = "Cloudwater",
     name = "Cloudwater Brew Co",
     location = "Manchester",
-    websiteUrl = URI("https://cloudwaterbrew.co/")
+    websiteUrl = URI("https://cloudwaterbrew.co/"),
+    twitterHandle = "cloudwaterbrew"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

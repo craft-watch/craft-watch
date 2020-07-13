@@ -12,7 +12,8 @@ class SirenScraper : Scraper {
     shortName = "Siren Craft",
     name = "Siren Craft Brew",
     location = "Finchampstead, Berkshire",
-    websiteUrl = URI("https://www.sirencraftbrew.com/")
+    websiteUrl = URI("https://www.sirencraftbrew.com/"),
+    twitterHandle = "SirenCraftBrew"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

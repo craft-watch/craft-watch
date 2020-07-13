@@ -16,7 +16,8 @@ class PillarsScraper : Scraper {
     shortName = "Pillars",
     name = "Pillars Brewery",
     location = "Walthamstow, London",
-    websiteUrl = URI("https://www.pillarsbrewery.com/")
+    websiteUrl = URI("https://www.pillarsbrewery.com/"),
+    twitterHandle = "PillarsBrewery"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

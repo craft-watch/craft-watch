@@ -14,7 +14,8 @@ class RedchurchScraper : Scraper {
     shortName = "Redchurch",
     name = "Redchurch Brewery",
     location = "Harlow, Essex",
-    websiteUrl = URI("https://redchurch.beer/")
+    websiteUrl = URI("https://redchurch.beer/"),
+    twitterHandle = "Redchurchbrewer"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

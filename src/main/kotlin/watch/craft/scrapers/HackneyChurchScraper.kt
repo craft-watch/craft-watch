@@ -13,7 +13,8 @@ class HackneyChurchScraper : Scraper {
     shortName = "Hackney Church",
     name = "Hackney Church Brew Co",
     location = "Hackney, London",
-    websiteUrl = URI("https://hackneychurchbrew.co/")
+    websiteUrl = URI("https://hackneychurchbrew.co/"),
+    twitterHandle = "hackneychurchbc"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

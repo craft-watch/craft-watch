@@ -11,7 +11,8 @@ class FivePointsScraper : Scraper {
     shortName = "Five Points",
     name = "The Five Points Brewing Co",
     location = "Hackney, London",
-    websiteUrl = URI("https://fivepointsbrewing.co.uk/")
+    websiteUrl = URI("https://fivepointsbrewing.co.uk/"),
+    twitterHandle = "FivePointsBrew"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->
