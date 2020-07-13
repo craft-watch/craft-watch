@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
 import { Brewery } from "../utils/model";
-import Sidebar from "./Sidebar";
+import Sidebars from "./Sidebars";
 
 interface Props {
   title: string;
@@ -39,7 +39,7 @@ const Page: React.FC<Props> = (props) => (
       <meta property="og:type" content="website" />
     </Head>
 
-    <Sidebar
+    <Sidebars
       title={props.title}
       desc={props.longDesc}
       breweries={props.breweries}

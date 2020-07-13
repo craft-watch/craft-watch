@@ -235,7 +235,6 @@ img {
   padding-left: 30px;
 
   position: fixed;
-  right: left;
   top: 0;
   width: 15vw;
   height: 100vh;
@@ -243,6 +242,14 @@ img {
   /* No scroll */
   overflow-x: hidden;
   overflow-y: hidden;
+}
+
+.sidebar.left {
+  left: 0;
+}
+
+.sidebar.right {
+  right: 0;
 }
 
 .info .desc {
