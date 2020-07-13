@@ -111,15 +111,13 @@ const PriceInfo = ({ item }: CellProps) => (
 
 const OfferInfo = ({ offer }: { offer: Offer }) => {
   const sizeString = sizeForDisplay(offer);
+  const formatString = formatForDisplay(offer);
   return (
     <div className="offer">
-      £{perItemPrice(offer).toFixed(2)} <span className="summary hide-small">/ item</span>
+      £{perItemPrice(offer).toFixed(2)} <span className="summary hide-small">/ {formatString}</span>
       <p className="summary">
         {
-          (offer.quantity > 1) ? `${offer.quantity} × ${sizeString ?? "items"}` : sizeString
-        }
-        {
-          (offer.format === Format.Keg) && " (keg)"
+          (offer.quantity > 1) ? `${offer.quantity} × ${sizeString ?? `${formatString}s`}` : sizeString
         }
       </p>
     </div>
@@ -146,6 +144,19 @@ const sizeForDisplay = (offer: Offer): string | undefined =>
   (offer.sizeMl === undefined) ? undefined :
   (offer.sizeMl < 1000) ? `${offer.sizeMl} ml` :
   `${offer.sizeMl / 1000} litres`;
+
+const formatForDisplay = (offer: Offer): string => {
+  switch (offer.format) {
+  case Format.Bottle:
+    return "bottle";
+  case Format.Can:
+    return "can";
+  case Format.Keg:
+    return "keg";
+  default:
+    return "item";
+  }
+};
 
 const perItemPrice = (offer: Offer): number => offer.totalPrice / offer.quantity;
 
