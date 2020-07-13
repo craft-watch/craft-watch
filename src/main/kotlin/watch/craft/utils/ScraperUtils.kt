@@ -33,17 +33,15 @@ private fun followPagination(url: URI, work: (Document) -> List<Job>): More = Mo
   }) + work(root)
 }
 
-inline fun <reified T : Any> Element.jsonLdFrom(cssQuery: String = ":root") = selectFrom(cssQuery).data().parseJsonLd<T>()
-
-inline fun <reified T : Any> String.parseJsonLd() = try {
+inline fun <reified T : Any> Element.jsonLdFrom(cssQuery: String = ":root") = selectFrom(cssQuery).data().jsonLdFrom<T>()
+inline fun <reified T : Any> String.jsonLdFrom() = try {
   jsonLdMapper().readValue<T>(this)
 } catch (e: Exception) {
   throw MalformedInputException("Couldn't read JSON-LD data", e)
 }
 
-inline fun <reified T : Any> Element.jsonFrom(cssQuery: String = ":root") = selectFrom(cssQuery).data().parseJson<T>()
-
-inline fun <reified T : Any> String.parseJson() = try {
+inline fun <reified T : Any> Element.jsonFrom(cssQuery: String = ":root") = selectFrom(cssQuery).data().jsonFrom<T>()
+inline fun <reified T : Any> String.jsonFrom() = try {
   jacksonObjectMapper()
     .disable(FAIL_ON_UNKNOWN_PROPERTIES)
     .readValue<T>(this)

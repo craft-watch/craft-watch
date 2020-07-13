@@ -55,7 +55,7 @@ class RedWillowScraper : Scraper {
 
   private fun Document.extractOffers() =
     maybe { attrFrom(".product-variants", "data-variants") }
-      ?.parseJson<List<Variant>>()
+      ?.jsonFrom<List<Variant>>()
       ?.map { Offer(totalPrice = it.price.toDouble() / 100, quantity = it.attributes.quantity) }
       ?: listOf(
         Offer(
