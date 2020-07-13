@@ -2,31 +2,26 @@ import React from "react";
 import _ from "underscore";
 import Page from "../components/Page";
 import { inventory } from "../utils/inventory";
-import Sidebar from "../components/Sidebar";
 import InventoryApp from "../components/InventoryApp";
 
 const ThisPage = (): JSX.Element => (
   <Page
-    title = "Craft Watch - New beers from UK breweries"
-    description = "Daily updates and prices of new beers from across UK brewery online shops"
+    title = "New beers"
+    desc = "Daily updates and prices of new beers from across UK brewery online shops"
+    longDesc={
+      (
+        <>
+          <p>
+            These are the latest beer and cider releases from breweries, updated daily!
+          </p>
+          <p>
+            Every item here can be delivered directly to your doorstep from the brewery&apos;s online shop.
+          </p>
+        </>
+      )
+    }
+    breweries = {inventory.breweries}
   >
-    <Sidebar
-      title="New beers"
-      desc={
-        (
-          <>
-            <p>
-              These are the latest beer and cider releases from breweries, updated daily!
-            </p>
-            <p>
-              Every item here can be delivered directly to your doorstep from the brewery&apos;s online shop.
-            </p>
-          </>
-        )
-      }
-      allBreweries={inventory.breweries}
-    />
-
     <InventoryApp
       inventory={{
         ...inventory,

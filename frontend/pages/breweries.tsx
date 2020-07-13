@@ -1,29 +1,26 @@
 import React from "react";
 import Page from "../components/Page";
 import { inventory } from "../utils/inventory";
-import Sidebar from "../components/Sidebar";
 import BreweriesApp from "../components/BreweriesApp";
 
-// TODO - update title and description
 const ThisPage = (): JSX.Element => (
   <Page
-    title = "Craft Watch - Breweries A-Z"
-    description = "Daily updates and prices of new beers from across UK brewery online shops"
+    title = "Breweries A-Z"
+    desc = "All the UK breweries covered by Craft Watch"
+    longDesc={
+      (
+        <>
+          <p>
+            These are all the UK breweries that we monitor for daily price and product updates.
+          </p>
+          <p>
+            Every brewery here has an online shop, and delivers directly to your doorstep.
+          </p>
+        </>
+      )
+    }
+    breweries={inventory.breweries}
   >
-    <Sidebar
-      title="Breweries A-Z"
-      desc={
-        (
-          <>
-            <p>
-              Blah blah blah.
-            </p>
-          </>
-        )
-      }
-      allBreweries={inventory.breweries}
-    />
-
     <BreweriesApp inventory={inventory} />
   </Page>
 );

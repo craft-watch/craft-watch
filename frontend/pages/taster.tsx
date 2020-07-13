@@ -4,7 +4,6 @@ import Page from "../components/Page";
 import { Item, Format } from "../utils/model";
 import { inventory } from "../utils/inventory";
 import { headlineOffer } from "../utils/stuff";
-import Sidebar from "../components/Sidebar";
 import InventoryApp from "../components/InventoryApp";
 
 const TASTER_MENU_SIZE = 20;
@@ -20,29 +19,25 @@ const ThisPage = (): JSX.Element => {
 
   return (
     <Page
-      title = "Craft Watch - Taster menu"
-      description = "Taster menu of beer prices from across the UK"
+      title="Taster menu"
+      desc="Taster menu of beer prices from across the UK"
+      longDesc={
+        (
+          <>
+            <p>
+              We&apos;ve put together a randomly curated selection of {TASTER_MENU_SIZE} beers to inspire you.
+            </p>
+            <p>
+              Refresh the page to get another selection!
+            </p>
+            <p>
+              Every item here can be delivered directly to your doorstep from the brewery&apos;s online shop.
+            </p>
+          </>
+        )
+      }
+      breweries={inventory.breweries}
     >
-      <Sidebar
-        title="Taster menu"
-        desc={
-          (
-            <>
-              <p>
-                We&apos;ve put together a randomly curated selection of {TASTER_MENU_SIZE} beers to inspire you.
-              </p>
-              <p>
-                Refresh the page to get another selection!
-              </p>
-              <p>
-                Every item here can be delivered directly to your doorstep from the brewery&apos;s online shop.
-              </p>
-            </>
-          )
-        }
-        allBreweries={inventory.breweries}
-      />
-
       <InventoryApp inventory={{ ...inventory, items }} />
     </Page>
   );
