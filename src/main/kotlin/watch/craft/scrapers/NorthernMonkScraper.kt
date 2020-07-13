@@ -15,7 +15,8 @@ class NorthernMonkScraper : Scraper {
     shortName = "Northern Monk",
     name = "Northern Monk Brew Co",
     location = "Holbeck, Leeds",
-    websiteUrl = URI("https://northernmonk.com/")
+    websiteUrl = URI("https://northernmonk.com/"),
+    twitterHandle = "NMBCo"
   )
 
   override val jobs = forPaginatedRootUrl(ROOT_URL) { root ->

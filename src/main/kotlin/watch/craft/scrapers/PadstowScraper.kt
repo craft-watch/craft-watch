@@ -13,7 +13,8 @@ class PadstowScraper : Scraper {
     shortName = "Padstow",
     name = "Padstow Brewing Co",
     location = "Padstow, Cornwall",
-    websiteUrl = URI("https://www.padstowbrewing.co.uk/")
+    websiteUrl = URI("https://www.padstowbrewing.co.uk/"),
+    twitterHandle = "PadstowBrewing"
   )
 
   override val jobs = forRootUrls(*ROOT_URLS) { root ->

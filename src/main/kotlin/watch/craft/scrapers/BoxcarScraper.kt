@@ -15,7 +15,8 @@ class BoxcarScraper : Scraper {
     shortName = "Boxcar",
     name = "Boxcar Brewery",
     location = "Bethnal Green, London",
-    websiteUrl = URI("https://boxcarbrewery.co.uk/")
+    websiteUrl = URI("https://boxcarbrewery.co.uk/"),
+    twitterHandle = "BoxcarBrwCo"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

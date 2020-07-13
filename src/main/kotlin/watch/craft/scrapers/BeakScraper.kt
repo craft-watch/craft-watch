@@ -13,7 +13,8 @@ class BeakScraper : Scraper {
     shortName = "Beak",
     name = "Beak Brewery",
     location = "Lewes, East Sussex",
-    websiteUrl = URI("https://beakbrewery.com/")
+    websiteUrl = URI("https://beakbrewery.com/"),
+    twitterHandle = "TheBeakBrewery"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

@@ -14,6 +14,7 @@ export interface Brewery {
   name: string;
   location: string;
   websiteUrl: string;
+  twitterHandle?: string;
   new: boolean;
 }
 

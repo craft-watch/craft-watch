@@ -13,7 +13,8 @@ class GipsyHillScraper : Scraper {
     shortName = "Gipsy Hill",
     name = "Gipsy Hill Brewing",
     location = "Gispy Hill, London",
-    websiteUrl = URI("https://gipsyhillbrew.com/")
+    websiteUrl = URI("https://gipsyhillbrew.com/"),
+    twitterHandle = "GipsyHillBrew"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

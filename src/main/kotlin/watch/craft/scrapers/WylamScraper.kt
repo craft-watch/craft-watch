@@ -16,7 +16,8 @@ class WylamScraper : Scraper {
     shortName = "Wylam",
     name = "Wylam Brewery",
     location = "Newcastle upon Tyne",
-    websiteUrl = URI("https://www.wylambrewery.co.uk/")
+    websiteUrl = URI("https://www.wylambrewery.co.uk/"),
+    twitterHandle = "wylambrewery"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

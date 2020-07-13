@@ -17,7 +17,8 @@ class UnityScraper : Scraper {
     shortName = "Unity",
     name = "Unity Brewing Co",
     location = "Southampton",
-    websiteUrl = URI("https://unitybrewingco.com/")
+    websiteUrl = URI("https://unitybrewingco.com/"),
+    twitterHandle = "unitybrewingco"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

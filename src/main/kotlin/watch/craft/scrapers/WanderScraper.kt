@@ -13,7 +13,8 @@ class WanderScraper : Scraper {
     shortName = "Wander Beyond",
     name = "Wander Beyond Brewing",
     location = "Manchester",
-    websiteUrl = URI("https://www.wanderbeyondbrewing.com/")
+    websiteUrl = URI("https://www.wanderbeyondbrewing.com/"),
+    twitterHandle = "wanderbeyond_"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

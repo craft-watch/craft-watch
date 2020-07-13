@@ -15,7 +15,8 @@ class SolvayScraper : Scraper {
     shortName = "Solvay Society",
     name = "Solvay Society",
     location = "Leytonstone, London",
-    websiteUrl = URI("https://www.solvaysociety.com/")
+    websiteUrl = URI("https://www.solvaysociety.com/"),
+    twitterHandle = "SolvaySociety"
   )
 
   override val jobs = forRootUrls(*ROOT_URLS) { root ->

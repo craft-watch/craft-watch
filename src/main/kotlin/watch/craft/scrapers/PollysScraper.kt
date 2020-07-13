@@ -14,7 +14,8 @@ class PollysScraper : Scraper {
     shortName = "Polly's Brew",
     name = "Polly's Brew Co",
     location = "Mold, Flintshire",
-    websiteUrl = URI("https://pollysbrew.co/")
+    websiteUrl = URI("https://pollysbrew.co/"),
+    twitterHandle = "pollysbrewco"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

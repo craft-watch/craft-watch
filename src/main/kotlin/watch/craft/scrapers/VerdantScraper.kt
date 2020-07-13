@@ -13,7 +13,8 @@ class VerdantScraper : Scraper {
     shortName = "Verdant",
     name = "Verdant Brewing Co",
     location = "Penryn, Cornwall",
-    websiteUrl = URI("https://verdantbrewing.co/")
+    websiteUrl = URI("https://verdantbrewing.co/"),
+    twitterHandle = "VerdantBrew"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

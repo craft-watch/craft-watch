@@ -6,6 +6,10 @@ import App from "../components/App";
 import { Brewery, Item } from "../utils/model";
 import { items, capturedAt, categories, breweries } from "../utils/inventory";
 import { toSafePathPart } from "../utils/stuff";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGlobeEurope } from "@fortawesome/free-solid-svg-icons";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+
 
 interface Props {
   brewery: Brewery;
@@ -30,8 +34,18 @@ const ThisPage = ({ brewery, items }: Props): JSX.Element => {
                 Every item here can be delivered directly to your doorstep from their online shop.
               </p>
               <p>
-                <a href={brewery.websiteUrl}>{brewery.websiteUrl}</a>
+                <a href={brewery.websiteUrl}><FontAwesomeIcon icon={faGlobeEurope} /> {brewery.websiteUrl}</a>
               </p>
+              {
+                (brewery.twitterHandle !== undefined) && (
+                  <p>
+                    <a href={`https://twitter.com/${brewery.twitterHandle}`}>
+                      <FontAwesomeIcon icon={faTwitter} /> @{brewery.twitterHandle}
+                    </a>
+                  </p>
+                )
+              }
+
             </>
           )
         }

@@ -17,7 +17,8 @@ class RedWillowScraper : Scraper {
     shortName = "RedWillow",
     name = "RedWillow Brewery",
     location = "Macclesfield, Cheshire",
-    websiteUrl = URI("https://www.redwillowbrewery.com/")
+    websiteUrl = URI("https://www.redwillowbrewery.com/"),
+    twitterHandle = "redwillowbrew"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->

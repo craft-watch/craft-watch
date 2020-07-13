@@ -13,7 +13,8 @@ class StewartScraper : Scraper {
     shortName = "Stewart Brewing",
     name = "Stewart Brewing",
     location = "Loanhead, Midlothian",
-    websiteUrl = URI("https://www.stewartbrewing.co.uk/")
+    websiteUrl = URI("https://www.stewartbrewing.co.uk/"),
+    twitterHandle = "StewartBrewing"
   )
 
   override val jobs = forRootUrls(ROOT_URL) { root ->
