@@ -114,7 +114,7 @@ const OfferInfo = ({ offer }: { offer: Offer }) => {
   const formatString = formatForDisplay(offer);
   return (
     <div className="offer">
-      £{perItemPrice(offer).toFixed(2)} <span className="summary hide-small">/ {formatString}</span>
+      £{priceForDisplay(offer)} <span className="summary hide-small">/ {formatString}</span>
       <p className="summary">
         {
           (offer.quantity > 1) ? `${offer.quantity} × ${sizeString ?? `${formatString}s`}` : sizeString
@@ -157,6 +157,8 @@ const formatForDisplay = (offer: Offer): string => {
     return "item";
   }
 };
+
+const priceForDisplay = (offer: Offer): string => perItemPrice(offer).toFixed(2).replace(/\.00/, "");
 
 const perItemPrice = (offer: Offer): number => offer.totalPrice / offer.quantity;
 
