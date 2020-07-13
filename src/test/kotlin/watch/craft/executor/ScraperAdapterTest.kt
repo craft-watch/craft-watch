@@ -171,8 +171,8 @@ class ScraperAdapterTest {
     }
   }
 
-  private fun retrieveResults(adapter: ScraperAdapter) = runBlocking { adapter.execute() }.toSet()
-  private fun retrieveItems(adapter: ScraperAdapter) = runBlocking { adapter.execute() }.map { it.item }.toSet()
+  private fun retrieveItems(adapter: ScraperAdapter) = retrieveResults(adapter).map { it.item }.toSet()
+  private fun retrieveResults(adapter: ScraperAdapter) = runBlocking { adapter.execute() }.results.toSet()
 
   private fun docWithHeaderMatching(header: String): Document = argForWhich { textFrom("h1") == header }
 

@@ -7,6 +7,7 @@ import watch.craft.*
 import watch.craft.enrichers.Categoriser
 import watch.craft.enrichers.Newalyser
 import watch.craft.executor.ScraperAdapter.Result
+import watch.craft.executor.ScraperAdapter.StatsWith
 import watch.craft.network.Retriever
 import java.time.Clock
 import java.time.Instant
@@ -29,37 +30,45 @@ class Executor(
       .sortItems()
       .enrichWith(Categoriser(CATEGORY_KEYWORDS))
       .enrichWith(Newalyser(results, now))
-      .addStats()
       .also { it.logStats() }
   }
 
   private fun Collection<Scraper>.execute() = runBlocking {
     this@execute
       .map { async { it.execute() } }
-      .flatMap { it.await() }
+      .map { it.await() }
   }
 
   private suspend fun Scraper.execute() = createRetriever(brewery.shortName).use {
     ScraperAdapter(it, this).execute()
   }
 
-  private fun Collection<Result>.normalise() = mapNotNull {
-    try {
-      it.normalise()
-    } catch (e: InvalidItemException) {
-      logger.warn("[${it.breweryName}] Invalid item [${it.rawName}]", e)
-      null
-    } catch (e: Exception) {
-      logger.warn("[${it.breweryName}] Unexpected error while validating [${it.rawName}]", e)
-      null
+  private fun Collection<StatsWith<Result>>.normalise() = map {
+    var stats = it.stats
+    val entries = it.entries.mapNotNull { result ->
+      try {
+        result.normalise()
+      } catch (e: InvalidItemException) {
+        logger.warn("[${result.breweryName}] Invalid item [${result.rawName}]", e)
+        stats = stats.copy(numInvalid = stats.numInvalid + 1)
+        null
+      } catch (e: Exception) {
+        logger.warn("[${result.breweryName}] Unexpected error while validating [${result.rawName}]", e)
+        stats = stats.copy(numErrors = stats.numErrors + 1)
+        null
+      }
     }
+    StatsWith(entries, stats)
   }
 
-  private fun Collection<Item>.toInventory(scrapers: Collection<Scraper>, now: Instant) = Inventory(
+  private fun Collection<StatsWith<Item>>.toInventory(scrapers: Collection<Scraper>, now: Instant) = Inventory(
     metadata = Metadata(capturedAt = now),
+    stats = Stats(
+      breweries = map { it.stats }
+    ),
     categories = CATEGORY_KEYWORDS.keys.toList(),
     breweries = scrapers.map { it.brewery },
-    items = toList()
+    items = flatMap { it.entries }
   )
 
   private fun Inventory.enrichWith(enricher: Enricher) = copy(
@@ -72,19 +81,6 @@ class Executor(
       { it.brewery },
       { it.name }
     ))
-  )
-
-  private fun Inventory.addStats() = copy(
-    stats = Stats(
-      breweries = items
-        .groupBy { it.brewery }
-        .map { (name, items) ->
-          BreweryStats(
-            name = name,
-            numItems = items.size
-          )
-        }
-    )
   )
 
   private fun Inventory.logStats() {
