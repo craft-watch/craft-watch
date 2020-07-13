@@ -40,7 +40,7 @@ class HackneyChurchScraper : Scraper {
             desc = desc,
             mixed = allQuantities.size > 1,
             abv = null,
-            available = !price.text().contains("sold out", ignoreCase=true),
+            available = !price.text().contains("sold out", ignoreCase = true),
             offers = setOf(
               Offer(
                 quantity = allQuantities.sum(),

@@ -82,6 +82,7 @@ class CategoriserTest {
     val categoriser = Categoriser(mapOf(
       "foo" to listOf(Synonym("foo bar"))
     ))
+
     fun assertMatch(text: String) = assertEquals(listOf("foo"), categoriser.categorise(item(text)))
     fun assertNoMatch(text: String) = assertEquals(emptyList<String>(), categoriser.categorise(item(text)))
 
