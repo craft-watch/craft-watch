@@ -1,15 +1,16 @@
 import React from "react";
 import _ from "underscore";
 import Page from "../components/Page";
-import App from "../components/App";
 import { inventory } from "../utils/inventory";
+import Sidebar from "../components/Sidebar";
+import InventoryTableAndMenu from "../components/InventoryTableAndMenu";
 
 const ThisPage = (): JSX.Element => (
   <Page
     title = "Craft Watch - New beers from UK breweries"
     description = "Daily updates and prices of new beers from across UK brewery online shops"
   >
-    <App
+    <Sidebar
       title="New beers"
       desc={
         (
@@ -23,6 +24,10 @@ const ThisPage = (): JSX.Element => (
           </>
         )
       }
+      allBreweries={inventory.breweries}
+    />
+
+    <InventoryTableAndMenu
       inventory={{
         ...inventory,
         items: _.filter(inventory.items, item => item.new && !item.brewery.new),

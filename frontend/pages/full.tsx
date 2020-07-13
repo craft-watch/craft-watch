@@ -1,14 +1,15 @@
 import React from "react";
-import App from "../components/App";
 import Page from "../components/Page";
 import { inventory } from "../utils/inventory";
+import Sidebar from "../components/Sidebar";
+import InventoryTableAndMenu from "../components/InventoryTableAndMenu";
 
 const ThisPage = (): JSX.Element => (
   <Page
     title = "Craft Watch - Full list of beer prices from UK breweries"
     description = "Daily updates of beer prices from across UK brewery online shops"
   >
-    <App
+    <Sidebar
       title="Full menu"
       desc={
         (
@@ -22,8 +23,10 @@ const ThisPage = (): JSX.Element => (
           </>
         )
       }
-      inventory={inventory}
+      allBreweries={inventory.breweries}
     />
+
+    <InventoryTableAndMenu inventory={inventory} />
   </Page>
 );
 

@@ -1,8 +1,9 @@
 import React from "react";
 import _ from "underscore";
 import Page from "../components/Page";
-import App from "../components/App";
 import { inventory } from "../utils/inventory";
+import Sidebar from "../components/Sidebar";
+import InventoryTableAndMenu from "../components/InventoryTableAndMenu";
 
 // TODO - update title and description
 const ThisPage = (): JSX.Element => (
@@ -10,7 +11,7 @@ const ThisPage = (): JSX.Element => (
     title = "Craft Watch - Breweries A-Z"
     description = "Daily updates and prices of new beers from across UK brewery online shops"
   >
-    <App
+    <Sidebar
       title="Breweries A-Z"
       desc={
         (
@@ -21,8 +22,10 @@ const ThisPage = (): JSX.Element => (
           </>
         )
       }
-      inventory={inventory}
+      allBreweries={inventory.breweries}
     />
+
+    <InventoryTableAndMenu inventory={inventory} />
   </Page>
 );
 

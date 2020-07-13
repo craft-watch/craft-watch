@@ -69,7 +69,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const items = safeNamesToItems[brewery];
   return {
     props: {
-      brewery: inventory.items[0].brewery,
+      brewery: items[0].brewery,
       items
     }
   };

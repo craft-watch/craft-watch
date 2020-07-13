@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import _ from "underscore";
 import Page from "../components/Page";
-import App from "../components/App";
 import { Item, Format } from "../utils/model";
 import { inventory } from "../utils/inventory";
 import { headlineOffer } from "../utils/stuff";
+import Sidebar from "../components/Sidebar";
+import InventoryTableAndMenu from "../components/InventoryTableAndMenu";
 
 const TASTER_MENU_SIZE = 20;
 
@@ -22,7 +23,7 @@ const ThisPage = (): JSX.Element => {
       title = "Craft Watch - Taster menu"
       description = "Taster menu of beer prices from across the UK"
     >
-      <App
+      <Sidebar
         title="Taster menu"
         desc={
           (
@@ -39,8 +40,10 @@ const ThisPage = (): JSX.Element => {
             </>
           )
         }
-        inventory={{ ...inventory, items }}
+        allBreweries={inventory.breweries}
       />
+
+      <InventoryTableAndMenu inventory={{ ...inventory, items }} />
     </Page>
   );
 };
