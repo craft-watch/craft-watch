@@ -46,6 +46,7 @@ sealed class Thing {
   ) : Thing()
 
   data class Offer(
+    val sku: String? = null,
     val price: Double,
     val availability: String
   ) : Thing()
