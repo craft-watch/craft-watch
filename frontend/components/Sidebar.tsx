@@ -10,7 +10,7 @@ import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 interface Props {
   title: string;
   desc?: JSX.Element | string;
-  allBreweries: Array<Brewery>;
+  breweries: Array<Brewery>;
 }
 
 const Sidebar = (props: Props): JSX.Element => {
@@ -22,13 +22,14 @@ const Sidebar = (props: Props): JSX.Element => {
           <li><Link href="/"><a>New <span className="hide-tiny">beers</span></a></Link></li>
           <li><Link href="/taster"><a>Taster <span className="hide-tiny">menu</span></a></Link></li>
           <li><Link href="/full"><a>Full <span className="hide-tiny">menu</span></a></Link></li>
+          <li><Link href="/breweries"><a>Breweries <span className="hide-tiny">A-Z</span></a></Link></li>
           <li className="show-medium"><TwitterLink /></li>
           <li className="show-medium"><GitHubLink /></li>
           <li className="hide-medium">
             <b>Just added ...</b>
             <ul>
               {
-                _.map(_.filter(props.allBreweries, b => b.new), b => (
+                _.map(_.filter(props.breweries, b => b.new), b => (
                   <li key={b.shortName}>
                     <Link href={`/${toSafePathPart(b.shortName)}`}>
                       <a>{b.shortName}</a>

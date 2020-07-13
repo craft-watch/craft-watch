@@ -1,30 +1,23 @@
 import React, { useState, useEffect } from "react";
 import _ from "underscore";
-import { Moment } from "moment";
-import { Item, Brewery, Format } from "../utils/model";
+import { Item, Format, Inventory } from "../utils/model";
 import Menu, { Selections, Section as MenuSection } from "./Menu";
 import InventoryTable from "./InventoryTable";
-import Sidebar from "./Sidebar";
 import { MIXED_CASE, MINIKEG, REGULAR, OUT_OF_STOCK } from "../utils/strings";
 import { headlineOffer } from "../utils/stuff";
 
 interface Props {
-  title: string;
-  desc?: JSX.Element | string;
-  capturedAt: Moment;
-  items: Array<Item>;
-  allBreweries: Array<Brewery>;
-  categories: Array<string>;
+  inventory: Inventory;
 }
 
-const App = (props: Props): JSX.Element => {
+const InventoryApp = ({ inventory }: Props): JSX.Element => {
   const availability = useSelections([OUT_OF_STOCK]);
-  const brewery = useSelections(uniqueBreweries(props.items));
+  const brewery = useSelections(uniqueBreweries(inventory.items));
   const format = useSelections([REGULAR, MIXED_CASE, MINIKEG]);
 
-  useEffect(() => brewery.setKeys(uniqueBreweries(props.items)), [props.items]);
+  useEffect(() => brewery.setKeys(uniqueBreweries(inventory.items)), [inventory.items]);
 
-  const filterItems = (): Array<Item> => props.items.filter(item =>
+  const filterItems = (): Array<Item> => inventory.items.filter(item =>
     brewerySelected(item) && formatSelected(item) && availabilitySelected(item)
   );
 
@@ -40,18 +33,12 @@ const App = (props: Props): JSX.Element => {
   const availabilitySelected = (item: Item): boolean => (availability.selections[OUT_OF_STOCK] || item.available);
 
   return (
-    <div>
-      <Sidebar
-        title={props.title}
-        desc={props.desc}
-        allBreweries={props.allBreweries}
-      />
-
+    <>
       <div className="how-to-use">
         Click on an image to go to the brewery shop!
       </div>
 
-      <Menu capturedAt={props.capturedAt}>
+      <Menu capturedAt={inventory.capturedAt}>
         <MenuSection title="Formats" selections={format} />
         <MenuSection title="Availability" selections={availability} />
         {
@@ -62,9 +49,9 @@ const App = (props: Props): JSX.Element => {
       </Menu>
 
       <main>
-        <InventoryTable items={filterItems()} categories={props.categories} />
+        <InventoryTable items={filterItems()} categories={inventory.categories} />
       </main>
-    </div>
+    </>
   );
 };
 
@@ -92,4 +79,4 @@ const useSelections = (keys: Array<string>): Selections => {
   return { selections, toggle, setGlobal, setKeys };
 };
 
-export default App;
+export default InventoryApp;

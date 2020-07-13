@@ -1,32 +1,27 @@
 import React from "react";
-import App from "../components/App";
 import Page from "../components/Page";
-import { items, capturedAt, categories, breweries } from "../utils/inventory";
+import { inventory } from "../utils/inventory";
+import InventoryApp from "../components/InventoryApp";
 
 const ThisPage = (): JSX.Element => (
   <Page
-    title = "Craft Watch - Beer prices from UK breweries"
-    description = "Daily updates of beer prices from across UK brewery online shops"
+    title="Full menu"
+    desc="Daily updates of beer prices from across UK brewery online shops"
+    longDesc={
+      (
+        <>
+          <p>
+            This is the full selection of beer prices from across UK breweries that sell direct to your doorstep.
+          </p>
+          <p>
+            Updated daily!
+          </p>
+        </>
+      )
+    }
+    breweries={inventory.breweries}
   >
-    <App
-      title="Full menu"
-      desc={
-        (
-          <>
-            <p>
-              This is the full selection of beer prices from across UK breweries that sell direct to your doorstep.
-            </p>
-            <p>
-              Updated daily!
-            </p>
-          </>
-        )
-      }
-      capturedAt={capturedAt}
-      items={items}
-      allBreweries={breweries}
-      categories={categories}
-    />
+    <InventoryApp inventory={inventory} />
   </Page>
 );
 

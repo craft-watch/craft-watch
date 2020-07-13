@@ -1,4 +1,15 @@
+import { Moment } from "moment"
+
+// This is our preprocessed format
 export interface Inventory {
+  capturedAt: Moment;
+  categories: Array<string>;
+  breweries: Array<Brewery>;
+  items: Array<Item>;
+}
+
+// This is the wire model
+export interface RawInventory {
   metadata: Metadata;
   categories: Array<string>;
   breweries: Array<Brewery>;

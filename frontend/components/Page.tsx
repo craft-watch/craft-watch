@@ -1,9 +1,13 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
+import { Brewery } from "../utils/model";
+import Sidebar from "./Sidebar";
 
 interface Props {
   title: string;
-  description: string;
+  desc: string;
+  longDesc: JSX.Element | string;
+  breweries: Array<Brewery>;
   children?: ReactNode;
 }
 
@@ -12,9 +16,9 @@ const Page: React.FC<Props> = (props) => (
     <Head>
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="description" content={props.description} />
+      <meta name="description" content={props.desc} />
 
-      <title>{props.title}</title>
+      <title>Craft Watch - {props.title}</title>
 
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -30,10 +34,16 @@ const Page: React.FC<Props> = (props) => (
       <meta name="twitter:site" content="@craft_watch" />
       <meta property="og:url" content="https://craft.watch/" />
       <meta property="og:title" content={props.title} />
-      <meta property="og:description" content={props.description} />
+      <meta property="og:description" content={props.desc} />
       <meta property="og:image" content="https://craft.watch/craft-watch.jpg" />
       <meta property="og:type" content="website" />
     </Head>
+
+    <Sidebar
+      title={props.title}
+      desc={props.longDesc}
+      breweries={props.breweries}
+    />
 
     {props.children}
   </>
