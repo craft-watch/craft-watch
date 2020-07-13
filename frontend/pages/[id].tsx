@@ -2,13 +2,14 @@ import React from "react";
 import _ from "underscore";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Page from "../components/Page";
-import App from "../components/App";
 import { Brewery, Item } from "../utils/model";
 import { inventory } from "../utils/inventory";
 import { toSafePathPart } from "../utils/stuff";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobeEurope } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import Sidebar from "../components/Sidebar";
+import InventoryTableAndMenu from "../components/InventoryTableAndMenu";
 
 
 interface Props {
@@ -22,7 +23,7 @@ const ThisPage = ({ brewery, items }: Props): JSX.Element => {
       title = {`Craft Watch - ${brewery.name}`}
       description = {`Daily updates of beer prices from ${brewery.name}`}
     >
-      <App
+      <Sidebar
         title={brewery.name}
         desc={
           (
@@ -45,12 +46,13 @@ const ThisPage = ({ brewery, items }: Props): JSX.Element => {
                   </p>
                 )
               }
-
             </>
           )
         }
-        inventory={{ ...inventory, items }}
+        allBreweries={inventory.breweries}
       />
+
+      <InventoryTableAndMenu inventory={{ ...inventory, items }} />
     </Page>
   );
 };
