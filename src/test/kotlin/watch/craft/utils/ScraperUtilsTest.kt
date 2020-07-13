@@ -23,6 +23,8 @@ class ScraperUtilsTest {
     fun litres() {
       assertEquals(3000, "3 litre".sizeMlFrom())
       assertEquals(3000, "3 litres".sizeMlFrom())
+      assertEquals(3000, "3 liter".sizeMlFrom())
+      assertEquals(3000, "3 liters".sizeMlFrom())
       assertEquals(3000, "3L".sizeMlFrom())
       assertEquals(3000, "3l".sizeMlFrom())
       assertEquals(3000, "3-litre".sizeMlFrom())
