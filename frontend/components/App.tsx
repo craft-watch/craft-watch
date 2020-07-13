@@ -1,17 +1,13 @@
 import React, {  } from "react";
 import _ from "underscore";
-import { Moment } from "moment";
-import { Item, Brewery } from "../utils/model";
+import { Inventory } from "../utils/model";
 import InventoryTableAndMenu from "./InventoryTableAndMenu";
 import Sidebar from "./Sidebar";
 
 interface Props {
   title: string;
   desc?: JSX.Element | string;
-  capturedAt: Moment;
-  items: Array<Item>;
-  allBreweries: Array<Brewery>;
-  categories: Array<string>;
+  inventory: Inventory;
 }
 
 const App = (props: Props): JSX.Element => {
@@ -20,14 +16,10 @@ const App = (props: Props): JSX.Element => {
       <Sidebar
         title={props.title}
         desc={props.desc}
-        allBreweries={props.allBreweries}
+        allBreweries={props.inventory.breweries}
       />
 
-      <InventoryTableAndMenu
-        capturedAt={props.capturedAt}
-        items={props.items}
-        categories={props.categories}
-      />
+      <InventoryTableAndMenu inventory={props.inventory} />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import _ from "underscore";
 import Page from "../components/Page";
 import App from "../components/App";
 import { Item, Format } from "../utils/model";
-import { items as inventoryItems, capturedAt, categories, breweries } from "../utils/inventory";
+import { inventory } from "../utils/inventory";
 import { headlineOffer } from "../utils/stuff";
 
 const TASTER_MENU_SIZE = 20;
@@ -13,7 +13,7 @@ const ThisPage = (): JSX.Element => {
 
   // TODO - is there a better way to avoid this being captured by SSG?
   useEffect(() => {
-    const sample = generateFairTasterMenu(inventoryItems);
+    const sample = generateFairTasterMenu(inventory.items);
     setItems(_.sortBy(_.sortBy(sample, item => item.name), item => item.brewery.shortName));
   }, []);
 
@@ -39,10 +39,7 @@ const ThisPage = (): JSX.Element => {
             </>
           )
         }
-        capturedAt={capturedAt}
-        items={items}
-        allBreweries={breweries}
-        categories={categories}
+        inventory={{ ...inventory, items }}
       />
     </Page>
   );

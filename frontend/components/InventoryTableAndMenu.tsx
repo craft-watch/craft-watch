@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from "react";
 import _ from "underscore";
-import { Moment } from "moment";
-import { Item, Format } from "../utils/model";
+import { Item, Format, Inventory } from "../utils/model";
 import Menu, { Selections, Section as MenuSection } from "./Menu";
 import InventoryTable from "./InventoryTable";
 import { MIXED_CASE, MINIKEG, REGULAR, OUT_OF_STOCK } from "../utils/strings";
 import { headlineOffer } from "../utils/stuff";
 
 interface Props {
-  capturedAt: Moment;
-  items: Array<Item>;
-  categories: Array<string>;
+  inventory: Inventory;
 }
 
-const InventoryTableAndMenu = (props: Props): JSX.Element => {
+const InventoryTableAndMenu = ({ inventory }: Props): JSX.Element => {
   const availability = useSelections([OUT_OF_STOCK]);
-  const brewery = useSelections(uniqueBreweries(props.items));
+  const brewery = useSelections(uniqueBreweries(inventory.items));
   const format = useSelections([REGULAR, MIXED_CASE, MINIKEG]);
 
-  useEffect(() => brewery.setKeys(uniqueBreweries(props.items)), [props.items]);
+  useEffect(() => brewery.setKeys(uniqueBreweries(inventory.items)), [inventory.items]);
 
-  const filterItems = (): Array<Item> => props.items.filter(item =>
+  const filterItems = (): Array<Item> => inventory.items.filter(item =>
     brewerySelected(item) && formatSelected(item) && availabilitySelected(item)
   );
 
@@ -41,7 +38,7 @@ const InventoryTableAndMenu = (props: Props): JSX.Element => {
         Click on an image to go to the brewery shop!
       </div>
 
-      <Menu capturedAt={props.capturedAt}>
+      <Menu capturedAt={inventory.capturedAt}>
         <MenuSection title="Formats" selections={format} />
         <MenuSection title="Availability" selections={availability} />
         {
@@ -52,7 +49,7 @@ const InventoryTableAndMenu = (props: Props): JSX.Element => {
       </Menu>
 
       <main>
-        <InventoryTable items={filterItems()} categories={props.categories} />
+        <InventoryTable items={filterItems()} categories={inventory.categories} />
       </main>
     </>
   );
