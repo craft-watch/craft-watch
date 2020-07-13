@@ -16,7 +16,6 @@ import watch.craft.SkipItemException
 import watch.craft.jsonld.jsonLdMapper
 import java.net.URI
 import java.net.URISyntaxException
-import kotlin.math.round
 import kotlin.text.RegexOption.DOT_MATCHES_ALL
 import kotlin.text.RegexOption.IGNORE_CASE
 
@@ -121,7 +120,7 @@ fun String.abvFrom(
 
 fun Element.sizeMlFrom(cssQuery: String = ":root") = textFrom(cssQuery).sizeMlFrom()
 fun String.sizeMlFrom() = maybe { extract("$INT_REGEX\\s*ml(?:\\W|$)").intFrom(1) }
-  ?: maybe { extract("$INT_REGEX(?:\\s*|-)litre(?:s?)(?:\\W|$)").intFrom(1) * 1000 }
+  ?: maybe { extract("$INT_REGEX(?:\\s*|-)(?:litre|liter)(?:s?)(?:\\W|$)").intFrom(1) * 1000 }
   ?: maybe { extract("$INT_REGEX\\s*l(?:\\W|$)").intFrom(1) * 1000 }
   ?: throw MalformedInputException("Can't extract size")
 
@@ -192,10 +191,6 @@ private data class Token(
   val text: String,
   val wordy: Boolean
 )
-
-
-// I *know* this doesn't really work for floating-point.  But it's good enough for our purposes.
-fun Double.divideAsPrice(denominator: Int) = round(100 * this / denominator) / 100
 
 fun String.toUri() = try {
   URI(this)
