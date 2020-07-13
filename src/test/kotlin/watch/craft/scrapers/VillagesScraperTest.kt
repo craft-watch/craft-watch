@@ -3,6 +3,7 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
+import watch.craft.Format.CAN
 import watch.craft.Offer
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.byName
@@ -28,7 +29,8 @@ class VillagesScraperTest {
         summary = "Pale Ale",
         abv = 4.6,
         offers = setOf(
-          Offer(quantity = 12, totalPrice = 25.60, sizeMl = 330)
+          Offer(quantity = 12, totalPrice = 25.60, sizeMl = 330, format = CAN),
+          Offer(quantity = 24, totalPrice = 49.20, sizeMl = 330, format = CAN)
         ),
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_RODEO_PALE_ALE_330ML_CAN_345x345.jpg?v=1587570539")
@@ -45,7 +47,7 @@ class VillagesScraperTest {
         mixed = true,
         abv = null,   // Can't find this!
         offers = setOf(
-          Offer(quantity = 24, totalPrice = 52.50, sizeMl = 330)
+          Offer(quantity = 24, totalPrice = 52.50, sizeMl = 330, format = CAN)
         ),
         available = true,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/4735/5948/products/VILLAGES_MIXED_CASE_345x345.jpg?v=1594207558")
