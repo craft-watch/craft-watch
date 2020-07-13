@@ -13,7 +13,6 @@ import watch.craft.MalformedInputException
 import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.More
 import watch.craft.SkipItemException
-import watch.craft.jsonld.jsonLdMapper
 import java.net.URI
 import java.net.URISyntaxException
 import kotlin.text.RegexOption.DOT_MATCHES_ALL
@@ -30,13 +29,6 @@ private fun followPagination(url: URI, work: (Document) -> List<Job>): More = Mo
   } else {
     emptyList()
   }) + work(root)
-}
-
-inline fun <reified T : Any> Element.jsonLdFrom(cssQuery: String = ":root") = selectFrom(cssQuery).data().jsonLdFrom<T>()
-inline fun <reified T : Any> String.jsonLdFrom() = try {
-  jsonLdMapper().readValue<T>(this)
-} catch (e: Exception) {
-  throw MalformedInputException("Couldn't read JSON-LD data", e)
 }
 
 inline fun <reified T : Any> Element.jsonFrom(cssQuery: String = ":root") = selectFrom(cssQuery).data().jsonFrom<T>()

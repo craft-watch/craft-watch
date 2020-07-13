@@ -1,13 +1,12 @@
 package watch.craft.scrapers
 
-import com.fasterxml.jackson.annotation.JsonProperty
 import watch.craft.Brewery
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.jsonld.Thing
 import watch.craft.jsonld.Thing.Product
+import watch.craft.jsonld.jsonLdFrom
 import watch.craft.utils.*
 import java.net.URI
 
@@ -30,9 +29,7 @@ class HowlingHopsScraper : Scraper {
         Leaf(rawName, a.hrefFrom()) { doc ->
           val desc = doc.textFrom(".woocommerce-product-details__short-description")
           val parts = extractVariableParts(desc)
-
-          val data = doc.jsonLdFrom<Data>("script[type=application/ld+json]")
-          val product = data.graph.filterIsInstance<Product>().single()
+          val product = doc.jsonLdFrom<Product>()
           val available = product.offers.any { it.availability == "http://schema.org/InStock" }
 
           ScrapedItem(
@@ -59,11 +56,6 @@ class HowlingHopsScraper : Scraper {
         }
       }
   }
-
-  private data class Data(
-    @JsonProperty("@graph")
-    val graph: List<Thing>
-  )
 
   private data class VariableParts(
     val name: String,

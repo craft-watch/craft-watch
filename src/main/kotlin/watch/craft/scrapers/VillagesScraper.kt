@@ -7,8 +7,8 @@ import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.jsonld.Thing
 import watch.craft.jsonld.Thing.Product
+import watch.craft.jsonld.jsonLdFrom
 import watch.craft.shopify.shopifyItems
 import watch.craft.utils.*
 import java.net.URI
@@ -52,10 +52,7 @@ class VillagesScraper : Scraper {
 
   private fun Document.extractVariableParts(title: String): VariableParts {
     val sizeMl = maybe { sizeMlFrom() }
-    val product = selectMultipleFrom("script[type=application/ld+json]")
-      .map { it.jsonLdFrom<Thing>() }
-      .filterIsInstance<Product>()
-      .single()
+    val product = jsonLdFrom<Product>()
 
     return if (title.contains("mixed case", ignoreCase = true)) {
       val parts = title.extract("^(.*?) \\((.*)\\)$")

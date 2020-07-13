@@ -1,17 +1,45 @@
 package watch.craft.jsonld
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import com.fasterxml.jackson.core.JsonParser
+import com.fasterxml.jackson.core.JsonProcessingException
 import com.fasterxml.jackson.databind.*
 import com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES
 import com.fasterxml.jackson.databind.deser.ContextualDeserializer
 import com.fasterxml.jackson.databind.module.SimpleModule
 import com.fasterxml.jackson.databind.node.ArrayNode
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.kotlin.readValue
+import org.jsoup.nodes.Document
+import watch.craft.MalformedInputException
 import watch.craft.jsonld.Thing.Offer
 import watch.craft.jsonld.Thing.Product
+import watch.craft.utils.selectMultipleFrom
 import java.net.URI
+
+inline fun <reified T : Any> Document.jsonLdFrom(): T {
+  val mapper = jsonLdMapper()
+  try {
+    val things = selectMultipleFrom("script[type=application/ld+json]")
+      .flatMap {
+        val thing = mapper.readValue<Thing?>(it.data())
+        if (thing == null) {
+          try {
+            mapper.readValue<watch.craft.jsonld.Document>(it.data()).graph
+          } catch (e: JsonProcessingException) {
+            emptyList<Thing>()
+          }
+        } else {
+          listOf(thing)
+        }
+      }
+    return things.filterIsInstance<T>().single()
+  } catch (e: NoSuchElementException) {
+    throw MalformedInputException("Couldn't find JSON-LD data for that type", e)
+  }
+}
 
 fun jsonLdMapper() = jacksonObjectMapper()
   .disable(FAIL_ON_UNKNOWN_PROPERTIES)
@@ -51,3 +79,9 @@ sealed class Thing {
     val availability: String
   ) : Thing()
 }
+
+data class Document(
+  @JsonProperty("@graph")
+  val graph: List<Thing>
+)
+
