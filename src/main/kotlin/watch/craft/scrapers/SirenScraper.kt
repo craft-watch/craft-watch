@@ -1,11 +1,9 @@
 package watch.craft.scrapers
 
-import watch.craft.Brewery
-import watch.craft.Offer
-import watch.craft.Scraper
+import watch.craft.*
+import watch.craft.Format.KEG
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.SkipItemException
 import watch.craft.utils.*
 import java.net.URI
 
@@ -47,7 +45,7 @@ class SirenScraper : Scraper {
             offers = setOf(
               Offer(
                 totalPrice = el.priceFrom(".itemPriceWrap"),
-                keg = keg,
+                format = if (keg) KEG else null,
                 sizeMl = if (keg) 5000 else details[4].toInt()
               )
             ),

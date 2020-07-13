@@ -1,11 +1,8 @@
 package watch.craft.scrapers
 
-import watch.craft.Brewery
-import watch.craft.Offer
-import watch.craft.Scraper
+import watch.craft.*
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.SkipItemException
 import watch.craft.utils.*
 import java.net.URI
 
@@ -41,7 +38,7 @@ class FivePointsScraper : Scraper {
                 quantity = parts[5].ifBlank { "1" }.toInt(),
                 totalPrice = el.extractFrom(".priceStandard", "£(\\d+\\.\\d+)").doubleFrom(1),
                 sizeMl = sizeMl,
-                keg = (sizeMl >= 1000)
+                format = if (sizeMl >= 1000) Format.KEG else null
               )
             ),
             thumbnailUrl = el.srcFrom(".imageInnerWrap img")

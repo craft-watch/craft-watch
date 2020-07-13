@@ -1,6 +1,8 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Format
+import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -38,7 +40,7 @@ class SolvayScraper : Scraper {
               Offer(
                 quantity = rawName.maybe { extract("(\\d+) pack").intFrom(1) } ?: 1,
                 totalPrice = el.priceFrom(".product-price"),
-                keg = rawName.contains("keg", ignoreCase = true),
+                format = if (rawName.contains("keg", ignoreCase = true)) KEG else null,
                 sizeMl = if (mixed) null else desc.sizeMlFrom()
               )
             ),

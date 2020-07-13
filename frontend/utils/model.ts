@@ -35,7 +35,13 @@ export interface Offer {
   quantity: number;
   totalPrice: number;
   sizeMl?: number;
-  keg: boolean;
+  format?: Format;
+}
+
+export enum Format {
+  Bottle = "BOTTLE",
+  Can = "CAN",
+  Keg = "KEG",
 }
 
 export type RawItem = BaseItem & { brewery: string; }

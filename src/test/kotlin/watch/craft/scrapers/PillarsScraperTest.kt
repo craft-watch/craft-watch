@@ -3,6 +3,7 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import watch.craft.*
+import watch.craft.Format.KEG
 import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
@@ -35,7 +36,7 @@ class PillarsScraperTest {
   fun `identifies kegs`() {
     val item = ITEMS.byName("Pillars Tropical Pilsner") // Note "keg" no longer in title
     assertEquals(5000, item.onlyOffer().sizeMl)
-    assertTrue(item.onlyOffer().keg)
+    assertEquals(KEG, item.onlyOffer().format)
   }
 
   @Test

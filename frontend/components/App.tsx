@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import _ from "underscore";
 import { Moment } from "moment";
-import { Item, Brewery } from "../utils/model";
+import { Item, Brewery, Format } from "../utils/model";
 import Menu, { Selections, Section as MenuSection } from "./Menu";
 import InventoryTable from "./InventoryTable";
 import Sidebar from "./Sidebar";
@@ -30,10 +30,12 @@ const App = (props: Props): JSX.Element => {
 
   const brewerySelected = (item: Item): boolean => brewery.selections[item.brewery.shortName];
 
-  const formatSelected = (item: Item): boolean =>
-    (format.selections[REGULAR] && !headlineOffer(item).keg && !item.mixed) ||
-    (format.selections[MIXED_CASE] && item.mixed) ||
-    (format.selections[MINIKEG] && headlineOffer(item).keg);
+  const formatSelected = (item: Item): boolean => {
+    const keg = (headlineOffer(item).format === Format.Keg);
+    return (format.selections[REGULAR] && !keg && !item.mixed) ||
+      (format.selections[MIXED_CASE] && item.mixed) ||
+      (format.selections[MINIKEG] && keg);
+  };
 
   const availabilitySelected = (item: Item): boolean => (availability.selections[OUT_OF_STOCK] || item.available);
 

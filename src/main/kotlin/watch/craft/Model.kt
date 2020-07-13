@@ -46,8 +46,14 @@ data class Offer(
   val quantity: Int = 1,
   val totalPrice: Double,
   val sizeMl: Int? = null,
-  val keg: Boolean = false
+  val format: Format? = null
 )
+
+enum class Format {
+  BOTTLE,
+  CAN,
+  KEG
+}
 
 data class MinimalInventory(
   val items: List<MinimalItem>

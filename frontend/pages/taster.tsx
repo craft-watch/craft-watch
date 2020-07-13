@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import _ from "underscore";
 import Page from "../components/Page";
 import App from "../components/App";
-import { Item } from "../utils/model";
+import { Item, Format } from "../utils/model";
 import { items as inventoryItems, capturedAt, categories, breweries } from "../utils/inventory";
 import { headlineOffer } from "../utils/stuff";
 
@@ -51,7 +51,7 @@ const ThisPage = (): JSX.Element => {
 // Avoid over-representing breweries that have a ton of beers.
 const generateFairTasterMenu = (items: Array<Item>): Array<Item> => {
   // Remove inappropriate items for a taster menu
-  const relevant = _.filter(items, item => !headlineOffer(item).keg && !item.mixed && item.available);
+  const relevant = _.filter(items, item => headlineOffer(item).format !== Format.Keg && !item.mixed && item.available);
 
   const byBrewery = _.groupBy(relevant, item => item.brewery.shortName);
 

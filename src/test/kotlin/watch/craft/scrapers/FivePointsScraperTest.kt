@@ -3,6 +3,7 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import watch.craft.*
+import watch.craft.Format.KEG
 import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
@@ -36,7 +37,7 @@ class FivePointsScraperTest {
   @Test
   fun `identifies minikeg`() {
     val item = ITEMS.byName("Five Points Best")
-    assertTrue(item.onlyOffer().keg)
+    assertEquals(KEG, item.onlyOffer().format)
     assertEquals(5000, item.onlyOffer().sizeMl)
   }
 

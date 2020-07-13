@@ -2,6 +2,8 @@ package watch.craft.scrapers
 
 import org.jsoup.nodes.Document
 import watch.craft.Brewery
+import watch.craft.Format
+import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -30,6 +32,7 @@ class MarbleScraper : Scraper {
 
           val style = attributes.maybe { grab("Style") }
           val mixed = style?.contains("mixed", ignoreCase = true) ?: false
+          val keg = attributes.maybe { grab("Packaging") }?.contains("keg", ignoreCase = true) ?: false
 
           ScrapedItem(
             thumbnailUrl = el.srcFrom(".wp-post-image"),
@@ -47,7 +50,7 @@ class MarbleScraper : Scraper {
               Offer(
                 quantity = volumeDetails.numItems,
                 totalPrice = doc.priceFrom(".price"),
-                keg = attributes.maybe { grab("Packaging") }?.contains("keg", ignoreCase = true) ?: false,
+                format = if (keg) KEG else null,
                 sizeMl = volumeDetails.sizeMl
               )
             )
@@ -70,6 +73,7 @@ class MarbleScraper : Scraper {
         ?: 1
     )
   }
+
 
   private fun Document.extractAttributes() = orSkip("No attributes, so can't process") {
     selectMultipleFrom(".shop_attributes tr")
