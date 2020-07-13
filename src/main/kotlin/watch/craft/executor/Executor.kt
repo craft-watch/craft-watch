@@ -21,20 +21,26 @@ class Executor(
 
   fun scrape(scrapers: Collection<Scraper>): Inventory {
     val now = clock.instant()
+    val categoriser = Categoriser(CATEGORY_KEYWORDS)
+    val newalyser = Newalyser(results, now)
+
 
     return scrapers
-      .execute()
-      .normalise()
+      .executeAll()
+      .map {
+        it
+          .normalise()
+          .consolidateOffers()
+          .sort()
+          .enrichWith(categoriser)
+      }
       .toInventory(scrapers, now)
-      .consolidateOffers()
-      .sortItems()
-      .enrichWith(Categoriser(CATEGORY_KEYWORDS))
-      .enrichWith(Newalyser(results, now))
+      .enrichWith(newalyser)
       .also { it.logStats() }
   }
 
-  private fun Collection<Scraper>.execute() = runBlocking {
-    this@execute
+  private fun Collection<Scraper>.executeAll() = runBlocking {
+    this@executeAll
       .map { async { it.execute() } }
       .map { it.await() }
   }
@@ -43,9 +49,9 @@ class Executor(
     ScraperAdapter(it, this).execute()
   }
 
-  private fun Collection<StatsWith<Result>>.normalise() = map {
-    var stats = it.stats
-    val entries = it.entries.mapNotNull { result ->
+  private fun StatsWith<Result>.normalise(): StatsWith<Item> {
+    var stats = stats
+    val entries = entries.mapNotNull { result ->
       try {
         result.normalise()
       } catch (e: InvalidItemException) {
@@ -58,8 +64,14 @@ class Executor(
         null
       }
     }
-    StatsWith(entries, stats)
+    return StatsWith(entries, stats)
   }
+
+  private fun StatsWith<Item>.consolidateOffers() = copy(entries = entries.consolidateOffers())
+
+  private fun StatsWith<Item>.sort() = copy(entries = entries.sortedBy { it.name })
+
+  private fun StatsWith<Item>.enrichWith(enricher: Enricher) = copy(entries = entries.map(enricher::enrich))
 
   private fun Collection<StatsWith<Item>>.toInventory(scrapers: Collection<Scraper>, now: Instant) = Inventory(
     metadata = Metadata(capturedAt = now),
@@ -76,12 +88,6 @@ class Executor(
     breweries = breweries.map(enricher::enrich)
   )
 
-  private fun Inventory.sortItems() = copy(items = items
-    .sortedWith(compareBy(
-      { it.brewery },
-      { it.name }
-    ))
-  )
 
   private fun Inventory.logStats() {
     stats.breweries

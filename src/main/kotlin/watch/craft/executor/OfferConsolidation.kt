@@ -1,26 +1,27 @@
 package watch.craft.executor
 
 import mu.KotlinLogging
-import watch.craft.*
+import watch.craft.DEFAULT_SIZE_ML
 import watch.craft.Format.KEG
+import watch.craft.Item
+import watch.craft.Offer
 import kotlin.math.round
 
 private val logger = KotlinLogging.logger {}
 
-fun Inventory.consolidateOffers() =
-  copy(items = items.groupBy { ItemGroupFields(it.brewery, it.name.toLowerCase()) }
-    .mapNotNull { (key, group) ->
-      if (group.size > 1) {
-        logger.info("[${key.brewery}] Merging ${group.size} item(s) for [${key.name}]")
-      }
-
-      val offers = group.mergeAndPrioritiseOffers()
-
-      val headlineItem = offers.firstOrNull()?.item
-
-      headlineItem?.copy(offers = offers.map { it.offer })
+fun List<Item>.consolidateOffers() = this
+  .groupBy { ItemGroupFields(it.brewery, it.name.toLowerCase()) }
+  .mapNotNull { (key, group) ->
+    if (group.size > 1) {
+      logger.info("[${key.brewery}] Merging ${group.size} item(s) for [${key.name}]")
     }
-  )
+
+    val offers = group.mergeAndPrioritiseOffers()
+
+    val headlineItem = offers.firstOrNull()?.item
+
+    headlineItem?.copy(offers = offers.map { it.offer })
+  }
 
 // TODO - fill in missing fields from non-archetypes
 // TODO - do we want a URL per offer?  Keg vs. can vs. item may be different pages
