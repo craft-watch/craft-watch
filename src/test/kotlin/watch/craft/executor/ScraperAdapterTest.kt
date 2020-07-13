@@ -49,10 +49,10 @@ class ScraperAdapterTest {
 
     val adapter = ScraperAdapter(
       retriever, MyScraper(
-        listOf(
-          Leaf(name = "A", url = URL_A, work = work)
-        )
+      listOf(
+        Leaf(name = "A", url = URL_A, work = work)
       )
+    )
     )
 
     retrieveResults(adapter)
