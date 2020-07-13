@@ -33,7 +33,7 @@ class NetworkRetrieverTest {
         .willReturn(aResponse().withBody(NICE_DATA))
     )
 
-    val data = NetworkRetriever("Yeah").use { retriever ->
+    val data = createRetriever().use { retriever ->
       runBlocking {
         retriever.retrieve(URI("http://localhost:${server.port()}"))
       }
@@ -41,6 +41,8 @@ class NetworkRetrieverTest {
 
     assertArrayEquals(NICE_DATA, data)
   }
+
+  // TODO - add coverage for timeouts, etc.
 
   @Test
   fun `throws on network error`() {
@@ -50,13 +52,15 @@ class NetworkRetrieverTest {
     )
 
     assertThrows<FatalScraperException> {
-      NetworkRetriever("Yeah").use { retriever ->
+      createRetriever().use { retriever ->
         runBlocking {
           retriever.retrieve(URI("http://localhost:${server.port()}"))
         }
       }
     }
   }
+
+  private fun createRetriever() = NetworkRetriever("Yeah", rateLimitPeriodMillis = 50)
 
   companion object {
     private val NICE_DATA = byteArrayOf(1, 2, 3, 4, 5, 6, 7, 8)

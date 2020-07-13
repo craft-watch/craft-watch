@@ -6,18 +6,19 @@ import io.ktor.client.features.UserAgent
 import io.ktor.client.request.get
 import io.ktor.http.Url
 import io.ktor.util.KtorExperimentalAPI
-import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.launch
 import mu.KotlinLogging
 import watch.craft.FatalScraperException
 import watch.craft.network.NetworkRetriever.Response.Failure
 import watch.craft.network.NetworkRetriever.Response.Success
+import java.io.IOException
 import java.net.URI
 
-class NetworkRetriever(private val name: String) : Retriever {
+class NetworkRetriever(
+  private val name: String,
+  private val rateLimitPeriodMillis: Int = RATE_LIMIT_PERIOD_MILLIS
+) : Retriever {
   private val logger = KotlinLogging.logger {}
 
   private data class Request(
@@ -48,13 +49,25 @@ class NetworkRetriever(private val name: String) : Retriever {
 
   private suspend fun HttpClient.process(msg: Request): Response {
     logger.info("${msg.url}: processing network request")
-    return try {
-      Success(get(Url(msg.url.toString())))
-    } catch (e: CancellationException) {
-      throw e   // Must not swallow
-    } catch (e: Exception) {  // No idea what exceptions Ktor throws, so have to do catch-all
-      Failure(e)
+    var exception: IOException? = null
+    repeat(MAX_RETRIES) {
+      val response = try {
+        Success(get(Url(msg.url.toString())))
+      } catch (e: IOException) {
+        exception = e
+        null
+      } catch (e: CancellationException) {
+        throw e   // Must not swallow
+      } catch (e: Exception) {
+        Failure(e)  // No idea what other exceptions Ktor throws, so surface as an immediate failure
+      }
+
+      delay(rateLimitPeriodMillis.toLong())
+      if (response != null) {
+        return response
+      }
     }
+    return Failure(exception!!)
   }
 
   override suspend fun retrieve(url: URI, suffix: String?): ByteArray {
@@ -82,5 +95,10 @@ class NetworkRetriever(private val name: String) : Retriever {
     install(UserAgent) {
       agent = "CraftWatch Bot (https://craft.watch)"
     }
+  }
+
+  companion object {
+    private const val RATE_LIMIT_PERIOD_MILLIS = 4000
+    private const val MAX_RETRIES = 5
   }
 }

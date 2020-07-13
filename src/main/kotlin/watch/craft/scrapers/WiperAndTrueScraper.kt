@@ -17,8 +17,6 @@ class WiperAndTrueScraper : Scraper {
     websiteUrl = URI("https://wiperandtrue.com/")
   )
 
-  override val rateLimitPeriodMillis = 2000
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectMultipleFrom("#productList a.product")
