@@ -98,7 +98,7 @@ class NetworkRetriever(
   }
 
   companion object {
-    private const val RATE_LIMIT_PERIOD_MILLIS = 4000
+    private const val RATE_LIMIT_PERIOD_MILLIS = 3000
     private const val MAX_RETRIES = 5
   }
 }
