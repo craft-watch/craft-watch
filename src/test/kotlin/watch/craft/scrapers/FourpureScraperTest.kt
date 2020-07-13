@@ -3,6 +3,7 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import watch.craft.*
+import watch.craft.Format.KEG
 import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
@@ -49,14 +50,13 @@ class FourpureScraperTest {
       ScrapedItem(
         name = "Juicebox",
         offers = setOf(
-          Offer(totalPrice = 35.00, keg = true, sizeMl = 5000)
+          Offer(totalPrice = 35.00, format = KEG, sizeMl = 5000)
         ),
         abv = 5.9,
-
         available = true,
         thumbnailUrl = URI("https://www.fourpure.com/uploads/images/products/thumbs/fourpurebrewingco._fourpure_juicebox5lminikeg_1588779669WhatsAppImage20200506at14.07.452.jpeg")
       ),
-      ITEMS.first { it.name == "Juicebox" && it.onlyOffer().keg }.noDesc()
+      ITEMS.first { it.name == "Juicebox" && it.onlyOffer().format == KEG }.noDesc()
     )
   }
 

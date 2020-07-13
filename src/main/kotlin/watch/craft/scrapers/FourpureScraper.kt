@@ -2,12 +2,10 @@ package watch.craft.scrapers
 
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
-import watch.craft.Brewery
-import watch.craft.Offer
-import watch.craft.Scraper
+import watch.craft.*
+import watch.craft.Format.KEG
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.SkipItemException
 import watch.craft.utils.*
 import java.net.URI
 
@@ -40,7 +38,7 @@ class FourpureScraper : Scraper {
             offers = setOf(
               Offer(
                 totalPrice = el.selectFrom(".priceNow, .priceStandard").priceFrom(".GBP"),
-                keg = parts.keg,
+                format = parts.format,
                 sizeMl = parts.sizeMl
               )
             ),
@@ -53,7 +51,7 @@ class FourpureScraper : Scraper {
   private data class VariableParts(
     val name: String,
     val sizeMl: Int,
-    val keg: Boolean = false
+    val format: Format? = null
   )
 
   private fun extractVariableParts(itemDoc: Document): VariableParts {
@@ -62,7 +60,7 @@ class FourpureScraper : Scraper {
       VariableParts(
         name = title.extract("([^\\d]+) ")[1],
         sizeMl = title.sizeMlFrom(),
-        keg = true
+        format = KEG
       )
     } else {
       VariableParts(

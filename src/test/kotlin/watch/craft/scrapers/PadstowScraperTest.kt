@@ -3,6 +3,7 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import watch.craft.*
+import watch.craft.Format.KEG
 import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
@@ -29,7 +30,7 @@ class PadstowScraperTest {
         available = true,
         thumbnailUrl = URI("https://www.padstowbrewing.co.uk/wp-content/uploads/2019/10/Pocket-Rocket-Can-1.jpg")
       ),
-      ITEMS.first { it.name == "Pocket Rocket" && !it.onlyOffer().keg }.noDesc()
+      ITEMS.first { it.name == "Pocket Rocket" && it.onlyOffer().format != KEG }.noDesc()
     )
   }
 
@@ -47,7 +48,7 @@ class PadstowScraperTest {
 
   @Test
   fun `identifies kegs`() {
-    val kegs = ITEMS.filter { it.onlyOffer().keg }
+    val kegs = ITEMS.filter { it.onlyOffer().format == KEG }
 
     assertFalse(kegs.isEmpty())
     assertTrue(kegs.all { it.onlyOffer().sizeMl!! >= 1000 })

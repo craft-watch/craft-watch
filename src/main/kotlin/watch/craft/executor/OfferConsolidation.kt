@@ -1,10 +1,8 @@
 package watch.craft.executor
 
 import mu.KotlinLogging
-import watch.craft.DEFAULT_SIZE_ML
-import watch.craft.Inventory
-import watch.craft.Item
-import watch.craft.Offer
+import watch.craft.*
+import watch.craft.Format.KEG
 import kotlin.math.round
 
 private val logger = KotlinLogging.logger {}
@@ -29,14 +27,14 @@ fun Inventory.consolidateOffers() =
 private fun List<Item>.mergeAndPrioritiseOffers() =
   flatMap { item -> item.offers.map { ItemAndOffer(item, it) } }
     .sortedWith(compareBy(
-      { it.offer.keg },   // Kegs should be lowest priority, as most users likely care most about cans/bottles
+      { it.offer.format == KEG },   // Kegs should be lowest priority, as most users likely care most about cans/bottles
       { it.offer.pricePerMl() },
       { it.offer.quantity }, // All being equal, we prefer to buy fewer cans
       { it.item.url } // We need a fallback to ensure deterministic behaviour
     ))
     .distinctBy {
       Pair(
-        it.offer.keg,                                   // Don't merge kegs and non-kegs, as users may want to make this choice
+        it.offer.format == KEG,                         // Don't merge kegs and non-kegs, as users may want to make this choice
         round(it.offer.pricePerDefaultItem() * 100)  // Work in pence to avoid FP precision issues
       )
     }

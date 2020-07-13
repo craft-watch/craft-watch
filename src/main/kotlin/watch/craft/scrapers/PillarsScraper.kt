@@ -1,6 +1,8 @@
 package watch.craft.scrapers
 
 import watch.craft.Brewery
+import watch.craft.Format
+import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -38,7 +40,7 @@ class PillarsScraper : Scraper {
               Offer(
                 quantity = titleParts.numItems,
                 totalPrice = details.price,
-                keg = titleParts.keg,
+                format = titleParts.format,
                 sizeMl = titleParts.sizeMl
               )
             )
@@ -51,7 +53,7 @@ class PillarsScraper : Scraper {
     val name: String,
     val sizeMl: Int? = null,
     val numItems: Int = 1,
-    val keg: Boolean = false
+    val format: Format? = null
   )
 
   private fun extractTitleParts(title: String) = when {
@@ -63,7 +65,7 @@ class PillarsScraper : Scraper {
       TitleParts(
         name = title.extract("(.*?) \\d+")[1],
         sizeMl = title.sizeMlFrom(),
-        keg = true
+        format = KEG
       )
     }
     else -> TitleParts(name = title)

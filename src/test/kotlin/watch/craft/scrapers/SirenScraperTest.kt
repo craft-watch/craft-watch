@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import watch.craft.*
+import watch.craft.Format.KEG
 import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
@@ -41,7 +42,7 @@ class SirenScraperTest {
 
   @Test
   fun `identifies kegs`() {
-    val kegs = ITEMS.filter { it.onlyOffer().keg }
+    val kegs = ITEMS.filter { it.onlyOffer().format == KEG }
 
     assertFalse(kegs.isEmpty())
     assertTrue(kegs.all { it.onlyOffer().sizeMl!! >= 1000 })

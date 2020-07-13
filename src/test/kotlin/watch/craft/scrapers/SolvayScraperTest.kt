@@ -3,6 +3,7 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import watch.craft.*
+import watch.craft.Format.KEG
 import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
@@ -50,7 +51,7 @@ class SolvayScraperTest {
 
   @Test
   fun `identifies kegs`() {
-    val items = ITEMS.filter { it.onlyOffer().keg }
+    val items = ITEMS.filter { it.onlyOffer().format == KEG }
 
     assertFalse(items.isEmpty())
     assertTrue(items.all { it.onlyOffer().sizeMl!! >= 1000 })

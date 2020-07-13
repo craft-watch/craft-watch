@@ -1,7 +1,7 @@
 import _ from "underscore";
 import React from "react";
 import Link from "next/link";
-import { Item, Offer } from "../utils/model";
+import { Item, Offer, Format } from "../utils/model";
 import SortableTable, { Column, Section } from "./SortableTable";
 import { toSafePathPart, headlineOffer } from "../utils/stuff";
 import { OUT_OF_STOCK, MINIKEG, MIXED_CASE } from "../utils/strings";
@@ -65,8 +65,8 @@ const Thumbnail = ({ item }: CellProps) => (
 const NameInfo = ({ item }: CellProps) => {
   const newItem = item.new && !item.brewery.new;
   const justAdded = item.new && item.brewery.new;
-  const keg = headlineOffer(item).keg;
-  const kegAvailable = !keg && _.any(_.rest(item.offers), offer => offer.keg);
+  const keg = headlineOffer(item).format === Format.Keg;
+  const kegAvailable = !keg && _.any(_.rest(item.offers), offer => offer.format === Format.Keg);
   const mixed = item.mixed;
 
   return (
@@ -119,7 +119,7 @@ const OfferInfo = ({ offer }: { offer: Offer }) => {
           (offer.quantity > 1) ? `${offer.quantity} × ${sizeString ?? "items"}` : sizeString
         }
         {
-          offer.keg && " (keg)"
+          (offer.format === Format.Keg) && " (keg)"
         }
       </p>
     </div>

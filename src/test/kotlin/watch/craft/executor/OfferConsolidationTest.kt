@@ -3,10 +3,8 @@ package watch.craft.executor
 import com.nhaarman.mockitokotlin2.mock
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import watch.craft.Inventory
-import watch.craft.Item
-import watch.craft.Offer
-import watch.craft.PROTOTYPE_ITEM
+import watch.craft.*
+import watch.craft.Format.KEG
 import java.net.URI
 
 class OfferConsolidationTest {
@@ -70,7 +68,7 @@ class OfferConsolidationTest {
   @Test
   fun `kegs sort to bottom, even if price per ml is better than non-keg`() {
     val nonKeg = Offer(quantity = 1, totalPrice = 1.00, sizeMl = 500)
-    val keg = Offer(quantity = 1, totalPrice = 1.00, sizeMl = 1000, keg = true) // Slightly unrealistic...
+    val keg = Offer(quantity = 1, totalPrice = 1.00, sizeMl = 1000, format = KEG) // Slightly unrealistic...
 
 
     val items = listOf(
@@ -138,7 +136,7 @@ class OfferConsolidationTest {
   @Test
   fun `doesn't merge keg and non-keg offers with same price per ml`() {
     val nonKeg = Offer(quantity = 1, totalPrice = 1.00)
-    val keg = Offer(quantity = 2, totalPrice = 2.00, keg = true)  // Slightly unrealistic...
+    val keg = Offer(quantity = 2, totalPrice = 2.00, format = KEG)  // Slightly unrealistic...
 
     val items = listOf(
       item(offers = listOf(
