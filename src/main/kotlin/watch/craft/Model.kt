@@ -8,6 +8,7 @@ annotation class SemanticallyASet
 
 data class Inventory(
   val metadata: Metadata,
+  val stats: Stats = Stats(),
   val categories: List<String>,
   val breweries: List<Brewery>,
   val items: List<Item>
@@ -15,6 +16,16 @@ data class Inventory(
 
 data class Metadata(
   val capturedAt: Instant
+)
+
+data class Stats(
+  @SemanticallyASet
+  val breweries: List<BreweryStats> = emptyList()
+)
+
+data class BreweryStats(
+  val name: String,
+  val numItems: Int
 )
 
 data class Brewery(

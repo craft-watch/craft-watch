@@ -29,6 +29,7 @@ class Executor(
       .sortItems()
       .enrichWith(Categoriser(CATEGORY_KEYWORDS))
       .enrichWith(Newalyser(results, now))
+      .addStats()
       .also { it.logStats() }
   }
 
@@ -73,9 +74,22 @@ class Executor(
     ))
   )
 
+  private fun Inventory.addStats() = copy(
+    stats = Stats(
+      breweries = items
+        .groupBy { it.brewery }
+        .map { (name, items) ->
+          BreweryStats(
+            name = name,
+            numItems = items.size
+          )
+        }
+    )
+  )
+
   private fun Inventory.logStats() {
-    items.groupBy { it.brewery }
-      .forEach { (key, group) -> logger.info("Scraped (${key}): ${group.size}") }
-    logger.info("Scraped (TOTAL): ${items.size}")
+    stats.breweries
+      .forEach { breweryStats -> logger.info("Scraped (${breweryStats.name}): ${breweryStats.numItems}") }
+    logger.info("Scraped (TOTAL): ${stats.breweries.sumBy { it.numItems }}")
   }
 }
