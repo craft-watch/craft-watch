@@ -5,8 +5,9 @@ import Sidebars from "./Sidebars";
 
 interface Props {
   title: string;
+  titleSuffix?: JSX.Element;
   desc: string;
-  longDesc: JSX.Element | string;
+  longDesc: JSX.Element;
   breweries: Array<Brewery>;
   children?: ReactNode;
 }
@@ -41,6 +42,7 @@ const Page: React.FC<Props> = (props) => (
 
     <Sidebars
       title={props.title}
+      titleSuffix={props.titleSuffix}
       desc={props.longDesc}
       breweries={props.breweries}
     />

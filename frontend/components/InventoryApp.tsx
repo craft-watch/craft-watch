@@ -65,11 +65,15 @@ const useSelections = (keys: Array<string>): Selections => {
   const toggle = (key: string): void => {
     const copy = { ...selections };
     copy[key] = !copy[key];
-    setSelections(copy);
+    setSelections(s => {
+      const copy = { ...s };
+      copy[key] = !copy[key];
+      return copy;
+    });
   };
 
   const setGlobal = (selected: boolean): void => {
-    setSelections(toMap(_.keys(selections), selected));
+    setSelections(s => toMap(_.keys(s), selected));
   };
 
   const setKeys = (keys: Array<string>): void => {

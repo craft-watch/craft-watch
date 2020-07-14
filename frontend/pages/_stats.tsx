@@ -7,7 +7,7 @@ const ThisPage = (): JSX.Element => (
   <Page
     title = "Pipeline stats"
     desc = "Pipeline stats"
-    longDesc = ""
+    longDesc = {<></>}
     breweries = {inventory.breweries}
   >
     <StatsApp inventory={inventory} />

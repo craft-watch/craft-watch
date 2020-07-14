@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobeEurope } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import InventoryApp from "../components/InventoryApp";
-
+import FavouriteIcon from "../components/FavouriteIcon";
 
 interface Props {
   brewery: Brewery;
@@ -20,6 +20,7 @@ const ThisPage = ({ brewery, items }: Props): JSX.Element => {
   return (
     <Page
       title={brewery.name}
+      titleSuffix={<FavouriteIcon breweryShortName={brewery.shortName} />}
       desc={`Daily updates of beer prices from ${brewery.name}`}
       longDesc={
         (
@@ -30,12 +31,12 @@ const ThisPage = ({ brewery, items }: Props): JSX.Element => {
             <p>
               Every item here can be delivered directly to your doorstep from their online shop.
             </p>
-            <p>
+            <p className="contact">
               <a href={brewery.websiteUrl}><FontAwesomeIcon icon={faGlobeEurope} /> {brewery.websiteUrl}</a>
             </p>
             {
               (brewery.twitterHandle !== undefined) && (
-                <p>
+                <p className="contact">
                   <a href={`https://twitter.com/${brewery.twitterHandle}`}>
                     <FontAwesomeIcon icon={faTwitter} /> @{brewery.twitterHandle}
                   </a>

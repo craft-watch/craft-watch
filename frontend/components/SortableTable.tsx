@@ -30,7 +30,7 @@ const SortableTable = <T extends unknown>(props: Props<T>): JSX.Element => {
   // TODO - useCallback?
   const handleHeaderClick = (idx: number) => {
     setSortColIdx(idx);
-    setSortDescending((sortColIdx === idx) ? !sortDescending : false);
+    setSortDescending(b => (sortColIdx === idx) ? !b : false);
   };
 
   const columns = React.Children.toArray(props.children) as Array<ReactElement<ColumnProps<T>>>;

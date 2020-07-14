@@ -272,6 +272,10 @@ img {
   color: var(--sol-base00);
 }
 
+.desc a.emphasise {
+  font-weight: var(--bold-weight);
+}
+
 .desc a:link {
   color: var(--sol-base01);
 }
@@ -342,6 +346,10 @@ nav li {
   font-weight: var(--bold-weight);
 }
 
+.sidebar .contact {
+  font-size: small;
+  margin: 3px 0;
+}
 
 /* ----------------------
     Menu
@@ -530,6 +538,16 @@ nav li {
   font-size: small;
   font-weight: var(--bold-weight);
   text-align: right;
+}
+
+
+/* ----------------------
+    Favourite icon
+   ---------------------- */
+
+.favourite-icon {
+  cursor: pointer;
+  color: var(--sol-magenta);
 }
 
 

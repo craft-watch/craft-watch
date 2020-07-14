@@ -1,9 +1,10 @@
-import React, {  } from "react";
+import React from "react";
 import _ from "underscore";
 import { Inventory, Brewery } from "../utils/model";
 import SortableTable, { Column, Section } from "./SortableTable";
 import { toSafePathPart } from "../utils/stuff";
 import Link from "next/link";
+import FavouriteIcon from "./FavouriteIcon";
 
 interface Props {
   inventory: Inventory;
@@ -25,6 +26,9 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
       <main>
         <SortableTable sections={partition(inventory.breweries)}>
           <Column
+            render={(brewery: Brewery) => <FavouriteIcon breweryShortName={brewery.shortName} />}
+          />
+          <Column
             name="Brewery"
             render={(brewery: Brewery) => <BreweryInfo brewery={brewery} />}
           />
@@ -43,9 +47,11 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
 };
 
 const BreweryInfo = ({ brewery }: CellProps) => (
-  <Link href={`/${toSafePathPart(brewery.shortName)}`}>
-    <a>{brewery.shortName}</a>
-  </Link>
+  <>
+    <Link href={`/${toSafePathPart(brewery.shortName)}`}>
+      <a>{brewery.shortName}</a>
+    </Link>
+  </>
 );
 
 const LocationInfo = ({ brewery }: CellProps) => (
