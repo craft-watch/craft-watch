@@ -3,6 +3,7 @@ import { Moment } from "moment"
 // This is our preprocessed format
 export interface Inventory {
   capturedAt: Moment;
+  stats: Stats;
   categories: Array<string>;
   breweries: Array<Brewery>;
   items: Array<Item>;
@@ -11,6 +12,7 @@ export interface Inventory {
 // This is the wire model
 export interface RawInventory {
   metadata: Metadata;
+  stats: Stats;
   categories: Array<string>;
   breweries: Array<Brewery>;
   items: Array<RawItem>;
@@ -18,6 +20,20 @@ export interface RawInventory {
 
 export interface Metadata {
   capturedAt: string;   // TODO - can we specify this as Date directly?
+}
+
+export interface Stats {
+  breweries: Array<BreweryStats>;
+}
+
+export interface BreweryStats {
+  name: string;
+  numRawItems: number;
+  numSkipped: number;
+  numMalformed: number;
+  numInvalid: number;
+  numErrors: number;
+  numMerged: number;
 }
 
 export interface Brewery {
