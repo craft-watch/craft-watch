@@ -2,6 +2,7 @@ import React from "react";
 import Page from "../components/Page";
 import { inventory } from "../utils/inventory";
 import BreweriesApp from "../components/BreweriesApp";
+import Link from "next/link";
 
 const ThisPage = (): JSX.Element => (
   <Page
@@ -12,9 +13,11 @@ const ThisPage = (): JSX.Element => (
         <>
           <p>
             These are all the UK breweries that we monitor for daily price and product updates.
+            Every brewery here has an online shop, and delivers directly to your doorstep.
           </p>
           <p>
-            Every brewery here has an online shop, and delivers directly to your doorstep.
+            Click the hearts to add breweries to your
+            personalised <Link href="/favourites"><a>favourites page</a></Link>!
           </p>
         </>
       )

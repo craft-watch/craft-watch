@@ -9,13 +9,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobeEurope } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import InventoryApp from "../components/InventoryApp";
-import FavouriteStar from "../components/FavouriteStar";
 
 interface Props {
   brewery: Brewery;
   items: Array<Item>;
 }
 
+// TODO - add FavouriteIcon to title
 const ThisPage = ({ brewery, items }: Props): JSX.Element => {
   return (
     <Page
@@ -24,10 +24,6 @@ const ThisPage = ({ brewery, items }: Props): JSX.Element => {
       longDesc={
         (
           <>
-            <p>
-              <FavouriteStar breweryShortName={brewery.shortName} />
-              Add to favourites.
-            </p>
             <p>
               Daily updates of beer prices from {brewery.name}, a brewery based in {brewery.location}.
             </p>

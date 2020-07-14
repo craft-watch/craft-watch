@@ -9,7 +9,7 @@ config.autoAddCss = false; // See https://github.com/FortAwesome/react-fontaweso
 export default function MyApp(props: any) {
   const { Component, pageProps } = props;
 
-  return  (
+  return (
     <FavouritesProvider>
       <Component {...pageProps} />
     </FavouritesProvider>

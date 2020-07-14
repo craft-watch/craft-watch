@@ -538,12 +538,12 @@ nav li {
 
 
 /* ----------------------
-    Favourite star
+    Favourite icon
    ---------------------- */
 
-.favourite-star {
+.favourite-icon {
   cursor: pointer;
-  color: var(--sol-yellow);
+  color: var(--sol-magenta);
 }
 
 
