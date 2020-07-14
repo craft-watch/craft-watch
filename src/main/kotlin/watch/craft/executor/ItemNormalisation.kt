@@ -1,12 +1,32 @@
 package watch.craft.executor
 
+import mu.KotlinLogging
 import watch.craft.DEFAULT_SIZE_ML
 import watch.craft.InvalidItemException
 import watch.craft.Item
 import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.utils.toUri
 
-fun Result.normalise() = Item(
+private val logger = KotlinLogging.logger {}
+
+fun StatsWith<Result>.normaliseToItems(): StatsWith<Item> {
+  var numInvalid = stats.numInvalid
+  val entries = entries.mapNotNull { result ->
+    try {
+      result.normaliseToItem()
+    } catch (e: InvalidItemException) {
+      logger.warn("[${result.breweryName}] Invalid item [${result.rawName}]", e)
+      numInvalid++
+      null
+    }
+  }
+  return StatsWith(
+    entries,
+    stats.copy(numInvalid = numInvalid)
+  )
+}
+
+private fun Result.normaliseToItem() = Item(
   brewery = breweryName
     .trim()
     .validate("non-blank brewery name") { it.isNotBlank() },

@@ -1,12 +1,12 @@
 package watch.craft.executor
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertDoesNotThrow
-import org.junit.jupiter.api.assertThrows
-import watch.craft.InvalidItemException
+import watch.craft.BreweryStats
 import watch.craft.Offer
 import watch.craft.Scraper.ScrapedItem
+import watch.craft.executor.ScraperAdapter.Result
 import java.net.URI
 
 class ItemNormalisationTest {
@@ -14,7 +14,7 @@ class ItemNormalisationTest {
   fun `trims name`() {
     assertEquals(
       "Padded Lager",
-      normalise(prototype.copy(name = "  Padded Lager  ")).name
+      normalise(prototype.copy(name = "  Padded Lager  ")).entries.single().name
     )
   }
 
@@ -22,7 +22,7 @@ class ItemNormalisationTest {
   fun `trims summary`() {
     assertEquals(
       "Absolute nonsense",
-      normalise(prototype.copy(summary = "  Absolute nonsense  ")).summary
+      normalise(prototype.copy(summary = "  Absolute nonsense  ")).entries.single().summary
     )
   }
 
@@ -30,7 +30,7 @@ class ItemNormalisationTest {
   fun `trims desc`() {
     assertEquals(
       "Lorem ipsum",
-      normalise(prototype.copy(desc = "  Lorem ipsum  ")).desc
+      normalise(prototype.copy(desc = "  Lorem ipsum  ")).entries.single().desc
     )
   }
 
@@ -38,7 +38,9 @@ class ItemNormalisationTest {
   fun `removes noise from thumbnail URLs`() {
     assertEquals(
       URI("https://example.invalid/s/files/1/2/3/4/my_img.jpg"),
-      normalise(prototype.copy(thumbnailUrl = URI("https://example.invalid/s/files/1/2/3/4/my_img.jpg?v=1593009635"))).thumbnailUrl
+      normalise(
+        prototype.copy(thumbnailUrl = URI("https://example.invalid/s/files/1/2/3/4/my_img.jpg?v=1593009635"))
+      ).entries.single().thumbnailUrl
     )
   }
 
@@ -84,27 +86,32 @@ class ItemNormalisationTest {
   }
 
   private fun assertNoValidationFailure(item: ScrapedItem) {
-    assertDoesNotThrow {
-      normalise(item)
-    }
+    val ret = normalise(item)
+    assertTrue(ret.entries.isNotEmpty())
+    assertEquals(0, ret.stats.numInvalid)
   }
 
   private fun assertValidationFailure(item: ScrapedItem) {
-    assertThrows<InvalidItemException> {
-      normalise(item)
-    }
+    val ret = normalise(item)
+    assertTrue(ret.entries.isEmpty())
+    assertEquals(1, ret.stats.numInvalid)
   }
 
   private fun normalise(
     item: ScrapedItem = prototype,
     brewery: String = "Foo Bar",
     url: URI = URI("https://example.invalid/shop")
-  ) = ScraperAdapter.Result(
-    breweryName = brewery,
-    rawName = "",
-    url = url,
-    item = item
-  ).normalise()
+  ) = StatsWith(
+    entries = listOf(
+      Result(
+        breweryName = brewery,
+        rawName = "",
+        url = url,
+        item = item
+      )
+    ),
+    stats = BreweryStats(brewery)
+  ).normaliseToItems()
 
   private val prototype = ScrapedItem(
     name = "Ted Shandy",

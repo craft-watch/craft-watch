@@ -31,6 +31,7 @@ data class BreweryStats(
   val numMalformed: Int = 0,
   val numInvalid: Int = 0,
   val numErrors: Int = 0
+  // TODO - numNew
 )
 
 data class Brewery(

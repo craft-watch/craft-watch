@@ -84,6 +84,8 @@ class ExecutorTest {
     )
   }
 
+  // TODO - other stats
+
   @Test
   fun `calculates statistics`() {
     val scrapers = listOf(
@@ -99,8 +101,8 @@ class ExecutorTest {
     assertEquals(
       Stats(
         listOf(
-          BreweryStats(THIS_BREWERY, 2),
-          BreweryStats(THAT_BREWERY, 1)
+          BreweryStats(THIS_BREWERY, numRawItems = 2),
+          BreweryStats(THAT_BREWERY, numRawItems = 1)
         )
       ),
       executor.scrape(scrapers).stats

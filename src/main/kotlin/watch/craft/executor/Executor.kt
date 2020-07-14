@@ -13,8 +13,6 @@ class Executor(
   private val createRetriever: (name: String) -> Retriever,
   private val clock: Clock = Clock.systemUTC()
 ) {
-  private val logger = KotlinLogging.logger {}
-
   fun scrape(scrapers: Collection<Scraper>) = Context(scrapers).scrape()
 
   private inner class Context(private val scrapers: Collection<Scraper>) {
@@ -52,28 +50,13 @@ class Executor(
     }
 
     private fun StatsWith<Result>.postProcessItems(): StatsWith<Item> {
-      val items = normalise()
-
-      return items.copy(entries = items.entries
+      val normalised = normaliseToItems()
+      return normalised.copy(entries = normalised.entries
         .consolidateOffers()
         .sortedBy { it.name }
         .map(categoriser::enrich)
         .map(newalyser::enrich)
       )
-    }
-
-    private fun StatsWith<Result>.normalise(): StatsWith<Item> {
-      var stats = stats
-      val entries = entries.mapNotNull { result ->
-        try {
-          result.normalise()
-        } catch (e: InvalidItemException) {
-          logger.warn("[${result.breweryName}] Invalid item [${result.rawName}]", e)
-          stats = stats.copy(numInvalid = stats.numInvalid + 1)
-          null
-        }
-      }
-      return StatsWith(entries, stats)
     }
   }
 }
