@@ -11,7 +11,7 @@ fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE) = runBlo
   ScraperAdapter(
     Setup(dateString).createRetriever(scraper.brewery.shortName),
     scraper
-  ).execute().map { it.item }
+  ).execute().entries.map { it.item }
 }
 
 fun List<ScrapedItem>.byName(name: String) = first { it.name == name }

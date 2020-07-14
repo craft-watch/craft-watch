@@ -1,10 +1,12 @@
 package watch.craft.executor
 
-import com.nhaarman.mockitokotlin2.mock
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import watch.craft.*
+import watch.craft.BreweryStats
 import watch.craft.Format.KEG
+import watch.craft.Item
+import watch.craft.Offer
+import watch.craft.PROTOTYPE_ITEM
 import java.net.URI
 
 class OfferConsolidationTest {
@@ -12,10 +14,14 @@ class OfferConsolidationTest {
   fun `merges items with same name from same brewery`() {
     val items = listOf(
       item(offers = listOf(Offer(totalPrice = 1.00))),
-      item(offers = listOf(Offer(totalPrice = 2.00)))
+      item(offers = listOf(Offer(totalPrice = 2.00))),
+      item(offers = listOf(Offer(totalPrice = 3.00)))
     )
 
-    assertEquals(1, items.consolidate().size)
+    val ret = items.consolidate()
+
+    assertEquals(1, ret.entries.size)
+    assertEquals(2, ret.stats.numMerged)
   }
 
   @Test
@@ -25,7 +31,10 @@ class OfferConsolidationTest {
       item(brewery = THAT_BREWERY, offers = listOf(Offer(totalPrice = 2.00)))
     )
 
-    assertEquals(2, items.consolidate().size)
+    val ret = items.consolidate()
+
+    assertEquals(2, ret.entries.size)
+    assertEquals(0, ret.stats.numMerged)
   }
 
   @Test
@@ -35,7 +44,7 @@ class OfferConsolidationTest {
       item(name = THIS_BEER.toUpperCase(), offers = listOf(Offer(totalPrice = 2.00)))
     )
 
-    assertEquals(1, items.consolidate().size)
+    assertEquals(1, items.consolidate().entries.size)
   }
 
   @Test
@@ -61,7 +70,7 @@ class OfferConsolidationTest {
         lowerPrice,
         baseline
       ),
-      items.consolidate().single().offers
+      items.consolidate().entries.single().offers
     )
   }
 
@@ -83,7 +92,7 @@ class OfferConsolidationTest {
         nonKeg,
         keg
       ),
-      items.consolidate().single().offers
+      items.consolidate().entries.single().offers
     )
   }
 
@@ -107,7 +116,7 @@ class OfferConsolidationTest {
         unknownSize,
         tiny
       ),
-      items.consolidate().single().offers
+      items.consolidate().entries.single().offers
     )
   }
 
@@ -129,7 +138,7 @@ class OfferConsolidationTest {
       listOf(
         a
       ),
-      items.consolidate().single().offers
+      items.consolidate().entries.single().offers
     )
   }
 
@@ -145,7 +154,7 @@ class OfferConsolidationTest {
       ))
     )
 
-    assertEquals(2, items.consolidate().single().offers.size)
+    assertEquals(2, items.consolidate().entries.single().offers.size)
   }
 
   @Test
@@ -157,7 +166,7 @@ class OfferConsolidationTest {
 
     assertEquals(
       URI("https://example.invalid/a"),
-      items.consolidate().single().url
+      items.consolidate().entries.single().url
     )
   }
 
@@ -168,21 +177,19 @@ class OfferConsolidationTest {
       item(offers = listOf(Offer(totalPrice = 2.00))).copy(desc = "Goodbye")
     )
 
-    assertEquals("Hello", items.consolidate().first().desc)
+    assertEquals("Hello", items.consolidate().entries.first().desc)
   }
 
   @Test
   fun `handles no items`() {
-    assertEquals(0, emptyList<Item>().consolidate().size)
+    assertEquals(0, emptyList<Item>().consolidate().entries.size)
   }
 
   // This should never happen, but let's handle it gracefully anyway
   @Test
   fun `handles item with no offers`() {
-    assertEquals(0, listOf(item(offers = emptyList())).consolidate().size)
+    assertEquals(0, listOf(item(offers = emptyList())).consolidate().entries.size)
   }
-
-  private fun List<Item>.consolidate() = toInventory().consolidateOffers().items
 
   private fun item(
     brewery: String = THIS_BREWERY,
@@ -194,12 +201,8 @@ class OfferConsolidationTest {
     offers = offers
   )
 
-  private fun List<Item>.toInventory() = Inventory(
-    metadata = mock(),
-    categories = emptyList(),
-    breweries = emptyList(),
-    items = this
-  )
+  private fun List<Item>.consolidate() =
+    StatsWith(this, BreweryStats("whatever")).consolidateOffers()
 
   companion object {
     private const val THIS_BREWERY = "ABC Brew"

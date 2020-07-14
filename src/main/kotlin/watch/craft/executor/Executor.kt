@@ -2,80 +2,62 @@ package watch.craft.executor
 
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
-import mu.KotlinLogging
 import watch.craft.*
-import watch.craft.enrichers.Categoriser
-import watch.craft.enrichers.Newalyser
 import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.network.Retriever
 import java.time.Clock
-import java.time.Instant
 
 class Executor(
   private val results: ResultsManager,
   private val createRetriever: (name: String) -> Retriever,
   private val clock: Clock = Clock.systemUTC()
 ) {
-  private val logger = KotlinLogging.logger {}
+  fun scrape(scrapers: Collection<Scraper>) = Context(scrapers).scrape()
 
-  fun scrape(scrapers: Collection<Scraper>): Inventory {
-    val now = clock.instant()
+  private inner class Context(private val scrapers: Collection<Scraper>) {
+    private val now = clock.instant()
+    private val categoriser = Categoriser(CATEGORY_KEYWORDS)
+    private val newalyser = Newalyser(results, now)
 
-    return scrapers
-      .execute()
-      .normalise()
-      .toInventory(scrapers, now)
-      .consolidateOffers()
-      .sortItems()
-      .enrichWith(Categoriser(CATEGORY_KEYWORDS))
-      .enrichWith(Newalyser(results, now))
-      .also { it.logStats() }
-  }
+    fun scrape(): Inventory {
+      val breweryItems = executeAllInParallel()
+        .map { it.postProcessItems() }
 
-  private fun Collection<Scraper>.execute() = runBlocking {
-    this@execute
-      .map { async { it.execute() } }
-      .flatMap { it.await() }
-  }
+      val breweries = scrapers
+        .map { it.brewery }
+        .map { newalyser.enrich(it) }
 
-  private suspend fun Scraper.execute() = createRetriever(brewery.shortName).use {
-    ScraperAdapter(it, this).execute()
-  }
-
-  private fun Collection<Result>.normalise() = mapNotNull {
-    try {
-      it.normalise()
-    } catch (e: InvalidItemException) {
-      logger.warn("[${it.breweryName}] Invalid item [${it.rawName}]", e)
-      null
-    } catch (e: Exception) {
-      logger.warn("[${it.breweryName}] Unexpected error while validating [${it.rawName}]", e)
-      null
+      return Inventory(
+        metadata = Metadata(capturedAt = now),
+        stats = Stats(
+          breweries = breweryItems.map { it.stats }
+        ),
+        categories = CATEGORY_KEYWORDS.keys.toList(),
+        breweries = breweries,
+        items = breweryItems.flatMap { it.entries }
+      )
     }
-  }
 
-  private fun Collection<Item>.toInventory(scrapers: Collection<Scraper>, now: Instant) = Inventory(
-    metadata = Metadata(capturedAt = now),
-    categories = CATEGORY_KEYWORDS.keys.toList(),
-    breweries = scrapers.map { it.brewery },
-    items = toList()
-  )
+    private fun executeAllInParallel() = runBlocking {
+      scrapers
+        .map { async { it.execute() } }
+        .map { it.await() }
+    }
 
-  private fun Inventory.enrichWith(enricher: Enricher) = copy(
-    items = items.map(enricher::enrich),
-    breweries = breweries.map(enricher::enrich)
-  )
+    private suspend fun Scraper.execute() = createRetriever(brewery.shortName).use {
+      ScraperAdapter(it, this).execute()
+    }
 
-  private fun Inventory.sortItems() = copy(items = items
-    .sortedWith(compareBy(
-      { it.brewery },
-      { it.name }
-    ))
-  )
-
-  private fun Inventory.logStats() {
-    items.groupBy { it.brewery }
-      .forEach { (key, group) -> logger.info("Scraped (${key}): ${group.size}") }
-    logger.info("Scraped (TOTAL): ${items.size}")
+    private fun StatsWith<Result>.postProcessItems(): StatsWith<Item> {
+      val consolidated = this
+        .normaliseToItems()
+        .consolidateOffers()
+      return consolidated
+        .copy(entries = consolidated.entries
+          .sortedBy { it.name }
+          .map(categoriser::enrich)
+          .map(newalyser::enrich)
+        )
+    }
   }
 }

@@ -1,4 +1,4 @@
-package watch.craft.enrichers
+package watch.craft.executor
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -11,28 +11,31 @@ import java.time.temporal.ChronoUnit.DAYS
 class Newalyser(
   private val results: ResultsManager,
   private val now: Instant
-) : Enricher {
+) {
   private val logger = KotlinLogging.logger {}
 
+  private val oldItems by lazy {
+    results.listHistoricalResults()
+      .filter { DAYS.between(it, now).toInt() in MIN_DAYS_AGO..MAX_DAYS_AGO }
+      .collateInventory()
+      .map { it.copy(name = it.name.toLowerCase()) }
+      .distinct()
+      .toSet()
+      .onEach { logger.info("Historical item: ${it}") }
+  }
 
-  private val oldItems = results.listHistoricalResults()
-    .filter { DAYS.between(it, now).toInt() in MIN_DAYS_AGO..MAX_DAYS_AGO }
-    .collateInventory()
-    .map { it.copy(name = it.name.toLowerCase()) }
-    .distinct()
-    .toSet()
-    .onEach { logger.info("Historical item: ${it}") }
+  private val oldBreweries by lazy {
+    oldItems
+      .map { it.brewery }
+      .distinct()
+      .toSet()
+  }
 
-  private val oldBreweries = oldItems
-    .map { it.brewery }
-    .distinct()
-    .toSet()
-
-  override fun enrich(item: Item) = item.copy(
+  fun enrich(item: Item) = item.copy(
     new = MinimalItem(brewery = item.brewery, name = item.name.toLowerCase()) !in oldItems
   )
 
-  override fun enrich(brewery: Brewery) = brewery.copy(
+  fun enrich(brewery: Brewery) = brewery.copy(
     new = brewery.shortName !in oldBreweries
   )
 

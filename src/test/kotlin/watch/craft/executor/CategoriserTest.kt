@@ -1,12 +1,12 @@
-package watch.craft.enrichers
+package watch.craft.executor
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import watch.craft.Item
 import watch.craft.PROTOTYPE_ITEM
-import watch.craft.enrichers.Categoriser.Component.DESC
-import watch.craft.enrichers.Categoriser.Component.NAME
-import watch.craft.enrichers.Categoriser.Synonym
+import watch.craft.executor.Categoriser.Component.DESC
+import watch.craft.executor.Categoriser.Component.NAME
+import watch.craft.executor.Categoriser.Synonym
 
 class CategoriserTest {
   @Test

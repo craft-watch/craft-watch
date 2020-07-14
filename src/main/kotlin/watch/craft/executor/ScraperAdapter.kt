@@ -6,16 +6,14 @@ import kotlinx.coroutines.coroutineScope
 import mu.KotlinLogging
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import watch.craft.FatalScraperException
-import watch.craft.NonFatalScraperException
-import watch.craft.Scraper
+import watch.craft.*
 import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.Job.More
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.SkipItemException
 import watch.craft.network.Retriever
 import java.net.URI
+import java.util.concurrent.atomic.AtomicInteger
 
 class ScraperAdapter(
   private val retriever: Retriever,
@@ -31,46 +29,70 @@ class ScraperAdapter(
   private val logger = KotlinLogging.logger {}
   private val breweryName = scraper.brewery.shortName
 
-  suspend fun execute() = scraper.jobs.executeAll()
-
-  private suspend fun List<Job>.executeAll() = coroutineScope {
-    this@executeAll
-      .map { async { it.execute() } }
-      .flatMap { it.await() }
+  suspend fun execute() = with(Context()) {
+    val results = scraper.jobs.executeAll()
+    StatsWith(
+      results,
+      BreweryStats(
+        name = scraper.brewery.shortName,
+        numRawItems = numRawItems.toInt(),
+        numSkipped = numSkipped.toInt(),
+        numMalformed = numMalformed.toInt(),
+        numErrors = numErrors.toInt()
+      )
+    )
   }
 
-  private suspend fun Job.execute(): List<Result> {
-    logger.info("Scraping${suffix()}: $url".prefixed())
-    val doc = request(url)
+  private inner class Context {
+    // TODO - may be safer to return and reduce immutable instances of BreweryStats
+    val numRawItems = AtomicInteger()
+    val numSkipped = AtomicInteger()
+    val numMalformed = AtomicInteger()
+    val numErrors = AtomicInteger()
 
-    return when (this@execute) {
-      is More -> processGracefully(doc, emptyList()) { work(doc) }.executeAll()
-      is Leaf -> processGracefully(doc, emptyList()) {
-        listOf(
-          Result(
-            breweryName = breweryName,
-            rawName = name,
-            url = url,
-            item = work(doc)
+    suspend fun List<Job>.executeAll() = coroutineScope {
+      this@executeAll
+        .map { async { it.execute() } }
+        .flatMap { it.await() }
+    }
+
+    private suspend fun Job.execute(): List<Result> {
+      logger.info("Scraping${suffix()}: $url".prefixed())
+      val doc = request(url)
+
+      return when (this@execute) {
+        is More -> processGracefully(doc, emptyList()) { work(doc) }.executeAll()
+        is Leaf -> processGracefully(doc, emptyList()) {
+          numRawItems.incrementAndGet()
+          listOf(
+            Result(
+              breweryName = breweryName,
+              rawName = name,
+              url = url,
+              item = work(doc)
+            )
           )
-        )
+        }
       }
     }
-  }
 
-  private fun <R> Job.processGracefully(doc: Document, default: R, block: (Document) -> R) = try {
-    block(doc)
-  } catch (e: FatalScraperException) {
-    throw e
-  } catch (e: SkipItemException) {
-    logger.info("Skipping${suffix()} because: ${e.message}".prefixed())
-    default
-  } catch (e: NonFatalScraperException) {
-    logger.warn("${errorClause}${suffix()}".prefixed(), e)
-    default
-  } catch (e: Exception) {
-    logger.warn("${unexpectedErrorClause}${suffix()}".prefixed(), e)
-    default
+    private fun <R> Job.processGracefully(doc: Document, default: R, block: (Document) -> R) = try {
+      block(doc)
+    } catch (e: FatalScraperException) {
+      throw e
+    } catch (e: SkipItemException) {
+      logger.info("Skipping${suffix()} because: ${e.message}".prefixed())
+      numSkipped.incrementAndGet()
+      default
+    } catch (e: NonFatalScraperException) {
+      logger.warn("${errorClause}${suffix()}".prefixed(), e)
+      numMalformed.incrementAndGet()
+      default
+    } catch (e: Exception) {
+      logger.warn("${unexpectedErrorClause}${suffix()}".prefixed(), e)
+      numErrors.incrementAndGet()
+      default
+    }
   }
 
   private suspend fun request(url: URI) = try {
