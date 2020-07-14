@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import _ from "underscore";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Page from "../components/Page";
-import { Brewery, Item } from "../utils/model";
+import { Brewery, Item, Favourites } from "../utils/model";
 import { inventory } from "../utils/inventory";
 import { toSafePathPart } from "../utils/stuff";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,6 +17,8 @@ interface Props {
 }
 
 const ThisPage = ({ brewery, items }: Props): JSX.Element => {
+  const [favourites, toggleFavourite] = useFavourites();
+
   return (
     <Page
       title={brewery.name}
@@ -25,7 +27,11 @@ const ThisPage = ({ brewery, items }: Props): JSX.Element => {
         (
           <>
             <p>
-              <FavouriteStar breweryShortName={brewery.shortName} />
+              <FavouriteStar
+                breweryShortName={brewery.shortName}
+                favourites={favourites}
+                onToggle={toggleFavourite}
+              />
               Add to favourites.
             </p>
             <p>
@@ -57,6 +63,40 @@ const ThisPage = ({ brewery, items }: Props): JSX.Element => {
 };
 
 export default ThisPage;
+
+const useFavourites = (): [Favourites, (shortName: string) => void] => {
+  const key = "favourites";
+  const [favourites, setFavourites] = useState<Favourites>({ breweries: [] });
+
+  const readFromLocalStorage = () => {
+    // TODO - error-handling
+    const raw = window.localStorage.getItem(key);
+    if (raw !== null) {
+      setFavourites(JSON.parse(raw));
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("storage", readFromLocalStorage);
+    readFromLocalStorage();  // Acquire initial state
+  }, []);
+
+  const toggle = (shortName: string) => {
+    const breweries = new Set<string>(favourites.breweries);
+    if (breweries.has(shortName)) {
+      breweries.delete(shortName);
+    } else {
+      breweries.add(shortName);
+    }
+    const next = { breweries: _.sortBy(Array.from(breweries), s => s) } as Favourites;
+
+    window.localStorage.setItem(key, JSON.stringify(next));
+    readFromLocalStorage();   // Don't set state directly, to avoid race with external modification to local storage
+  };
+
+  return [favourites, toggle];
+}
+
 
 export const getStaticPaths: GetStaticPaths = async () => ({
   paths: _.map(_.keys(safeNamesToItems), name => ({ params: { id: name } })),

@@ -1,4 +1,4 @@
-import React, {  } from "react";
+import React from "react";
 import _ from "underscore";
 import { Inventory, BreweryStats } from "../utils/model";
 import SortableTable, { Column, Section } from "./SortableTable";
