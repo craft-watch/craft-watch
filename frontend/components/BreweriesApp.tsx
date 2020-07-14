@@ -26,7 +26,6 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
         <SortableTable sections={partition(inventory.breweries)}>
           <Column
             name="Brewery"
-            className="brewery"
             render={(brewery: Brewery) => <BreweryInfo brewery={brewery} />}
           />
           <Column
@@ -34,7 +33,7 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
             render={(brewery: Brewery) => <LocationInfo brewery={brewery} />}
           />
           <Column
-            name="# items"
+            name="Items"
             render={(brewery: Brewery) => <ItemsInfo count={counts[brewery.shortName]} />}
           />
         </SortableTable>
