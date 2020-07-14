@@ -1,4 +1,4 @@
-package watch.craft.enrichers
+package watch.craft.executor
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async

@@ -1,9 +1,9 @@
 package watch.craft
 
-import watch.craft.enrichers.Categoriser.Component
-import watch.craft.enrichers.Categoriser.Component.NAME
-import watch.craft.enrichers.Categoriser.Component.SUMMARY
-import watch.craft.enrichers.Categoriser.Synonym
+import watch.craft.executor.Categoriser.Component
+import watch.craft.executor.Categoriser.Component.NAME
+import watch.craft.executor.Categoriser.Component.SUMMARY
+import watch.craft.executor.Categoriser.Synonym
 import java.io.File
 
 const val GCS_BUCKET = "backend.craft.watch"

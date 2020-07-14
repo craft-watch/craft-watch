@@ -4,8 +4,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
 import watch.craft.*
-import watch.craft.enrichers.Categoriser
-import watch.craft.enrichers.Newalyser
 import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.network.Retriever
 import java.time.Clock

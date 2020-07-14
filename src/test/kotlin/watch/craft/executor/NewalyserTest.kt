@@ -1,4 +1,4 @@
-package watch.craft.enrichers
+package watch.craft.executor
 
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock

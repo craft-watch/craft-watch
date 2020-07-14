@@ -1,7 +1,7 @@
-package watch.craft.enrichers
+package watch.craft.executor
 
 import watch.craft.Item
-import watch.craft.enrichers.Categoriser.Component.*
+import watch.craft.executor.Categoriser.Component.*
 import kotlin.text.RegexOption.IGNORE_CASE
 
 class Categoriser(categories: Map<String, List<Synonym>>) {
