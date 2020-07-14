@@ -5,6 +5,7 @@ import _ from "underscore";
 import { toSafePathPart } from "../utils/stuff";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faHeart, faQuestion, faSun, faListAlt } from "@fortawesome/free-solid-svg-icons";
 
 
 interface Props {
@@ -20,10 +21,34 @@ const Sidebars = (props: Props): JSX.Element => {
         <nav>
           <h2 className="hide-medium">Explore ...</h2>
           <ul>
-            <li><Link href="/"><a>New <span className="hide-tiny">beers</span></a></Link></li>
-            <li><Link href="/taster"><a>Taster <span className="hide-tiny">menu</span></a></Link></li>
-            <li><Link href="/favourites"><a>My favourites</a></Link></li>
-            <li><Link href="/breweries"><a>Breweries <span className="hide-tiny">A-Z</span></a></Link></li>
+            <li>
+              <Link href="/">
+                <a>
+                  <FontAwesomeIcon icon={faSun} /> New <span className="hide-tiny">beers</span>
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/taster">
+                <a>
+                  <FontAwesomeIcon icon={faQuestion} /> Taster <span className="hide-tiny">menu</span>
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/favourites">
+                <a>
+                  <FontAwesomeIcon icon={faHeart} /> Favourites
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/breweries">
+                <a>
+                  <FontAwesomeIcon icon={faListAlt} /> Breweries <span className="hide-tiny">A-Z</span>
+                </a>
+              </Link>
+            </li>
             <li className="show-medium"><TwitterLink /></li>
             <li className="show-medium"><GitHubLink /></li>
             <li className="hide-medium">
