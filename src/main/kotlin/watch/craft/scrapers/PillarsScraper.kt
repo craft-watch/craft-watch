@@ -30,12 +30,15 @@ class PillarsScraper : Scraper {
             extractFrom(".product-single__description", "STYLE:\\s+(.+?)\\s+ABV:\\s+(\\d\\.\\d+)%")
           }  // If we don't see these fields, assume we're not looking at a beer product
 
+          val mixed = details.title.contains("mixed", ignoreCase = true)
+
           ScrapedItem(
             thumbnailUrl = details.thumbnailUrl,
             name = titleParts.name,
             summary = descParts[1].toTitleCase(),
             desc = doc.maybe { formattedTextFrom(".product-single__description") },
-            abv = descParts[2].toDouble(),
+            mixed = mixed,
+            abv = if (mixed) null else descParts[2].toDouble(),
             available = details.available,
             offers = setOf(
               Offer(

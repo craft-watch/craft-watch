@@ -9,12 +9,12 @@ import java.net.URI
 
 class PillarsScraperTest {
   companion object {
-    private val ITEMS = executeScraper(PillarsScraper())
+    private val ITEMS = executeScraper(PillarsScraper(), dateString = "2020-07-14")
   }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(6, ITEMS.size)
+    assertEquals(7, ITEMS.size)
   }
 
   @Test
@@ -42,6 +42,13 @@ class PillarsScraperTest {
   @Test
   fun `identifies cases`() {
     ITEMS.byName("Untraditional Lager") // Note "case" no longer in title
+  }
+
+  @Test
+  fun `identifies mixed`() {
+    val item = ITEMS.byName("Pillars Lager Mixed")
+    assertTrue(item.mixed)
+    assertTrue(item.onlyOffer().quantity > 1)
   }
 
   @Test
