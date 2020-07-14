@@ -14,17 +14,17 @@ const ThisPage = (props: FavouritesProps): JSX.Element => {
       longDesc={
         (
           _.isEmpty(props.favourites.breweries)
-          ? (
-            <p>
-              It looks like you haven't set any favourite breweries yet.  Visit
-              the <Link href="/breweries"><a className="emphasise">A-Z page</a></Link> to add some.
-            </p>
-          ) : (
-            <p>
-              This is a personalised view of your favourite breweries.  Add or remove breweries from
-              the <Link href="/breweries"><a className="emphasise">A-Z page</a></Link>.
-            </p>
-          )
+            ? (
+              <p>
+                It looks like you haven&apos;t set any favourite breweries yet.  Visit
+                the <Link href="/breweries"><a className="emphasise">A-Z page</a></Link> to add some.
+              </p>
+            ) : (
+              <p>
+                This is a personalised view of your favourite breweries.  Add or remove breweries from
+                the <Link href="/breweries"><a className="emphasise">A-Z page</a></Link>.
+              </p>
+            )
         )
       }
       breweries={inventory.breweries}
