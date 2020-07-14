@@ -36,6 +36,8 @@ const SortableTable = <T extends unknown>(props: Props<T>): JSX.Element => {
   const columns = React.Children.toArray(props.children) as Array<ReactElement<ColumnProps<T>>>;
   const selector = (sortColIdx === null) ? null : columns[sortColIdx].props.selector;
 
+  const showHeader = _.size(props.sections) > 1;
+
   return (
     <table>
       <thead>
@@ -60,18 +62,21 @@ const SortableTable = <T extends unknown>(props: Props<T>): JSX.Element => {
         </tr>
       </thead>
       {
-        // TODO - no header if only one section
         _.map(props.sections, section => {
           const sorted = selector ? _.sortBy(section.data, selector) : section.data;
           const maybeReversed = sortDescending ? sorted.reverse() : sorted;
 
           return _.isEmpty(section.data) || (
             <tbody key={section.name}>
-              <tr>
-                <th colSpan={_.size(columns)}>
-                  <div className="table-section">{section.name}</div>
-                </th>
-              </tr>
+              {
+                showHeader && (
+                  <tr>
+                    <th colSpan={_.size(columns)}>
+                      <div className="table-section">{section.name}</div>
+                    </th>
+                  </tr>
+                )
+              }
               {
                 maybeReversed.map((datum, idx) => (
                   <tr key={idx}>
