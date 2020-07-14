@@ -10,7 +10,7 @@ export interface Favourites {
   breweries: Array<string>;
 }
 
-export const FavouritesContext = React.createContext<FavouritesProps>({
+const FavouritesContext = React.createContext<FavouritesProps>({
   favourites: { breweries: [] },
   onToggle: () => {},
 });
