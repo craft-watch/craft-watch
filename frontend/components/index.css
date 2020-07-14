@@ -342,6 +342,10 @@ nav li {
   font-weight: var(--bold-weight);
 }
 
+.sidebar .contact {
+  font-size: small;
+  margin: 3px 0;
+}
 
 /* ----------------------
     Menu
@@ -530,6 +534,16 @@ nav li {
   font-size: small;
   font-weight: var(--bold-weight);
   text-align: right;
+}
+
+
+/* ----------------------
+    Clicky star
+   ---------------------- */
+
+.clicky-star {
+  cursor: pointer;
+  color: var(--sol-yellow);
 }
 
 
