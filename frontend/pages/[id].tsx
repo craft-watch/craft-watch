@@ -10,7 +10,6 @@ import { faGlobeEurope } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import InventoryApp from "../components/InventoryApp";
 import FavouriteStar from "../components/FavouriteStar";
-import { FavouritesProvider } from "../utils/favourites";
 
 interface Props {
   brewery: Brewery;
@@ -19,43 +18,41 @@ interface Props {
 
 const ThisPage = ({ brewery, items }: Props): JSX.Element => {
   return (
-    <FavouritesProvider>
-      <Page
-        title={brewery.name}
-        desc={`Daily updates of beer prices from ${brewery.name}`}
-        longDesc={
-          (
-            <>
-              <p>
-                <FavouriteStar breweryShortName={brewery.shortName} />
-                Add to favourites.
-              </p>
-              <p>
-                Daily updates of beer prices from {brewery.name}, a brewery based in {brewery.location}.
-              </p>
-              <p>
-                Every item here can be delivered directly to your doorstep from their online shop.
-              </p>
-              <p className="contact">
-                <a href={brewery.websiteUrl}><FontAwesomeIcon icon={faGlobeEurope} /> {brewery.websiteUrl}</a>
-              </p>
-              {
-                (brewery.twitterHandle !== undefined) && (
-                  <p className="contact">
-                    <a href={`https://twitter.com/${brewery.twitterHandle}`}>
-                      <FontAwesomeIcon icon={faTwitter} /> @{brewery.twitterHandle}
-                    </a>
-                  </p>
-                )
-              }
-            </>
-          )
-        }
-        breweries={inventory.breweries}
-      >
-        <InventoryApp inventory={{ ...inventory, items }} />
-      </Page>
-    </FavouritesProvider>
+    <Page
+      title={brewery.name}
+      desc={`Daily updates of beer prices from ${brewery.name}`}
+      longDesc={
+        (
+          <>
+            <p>
+              <FavouriteStar breweryShortName={brewery.shortName} />
+              Add to favourites.
+            </p>
+            <p>
+              Daily updates of beer prices from {brewery.name}, a brewery based in {brewery.location}.
+            </p>
+            <p>
+              Every item here can be delivered directly to your doorstep from their online shop.
+            </p>
+            <p className="contact">
+              <a href={brewery.websiteUrl}><FontAwesomeIcon icon={faGlobeEurope} /> {brewery.websiteUrl}</a>
+            </p>
+            {
+              (brewery.twitterHandle !== undefined) && (
+                <p className="contact">
+                  <a href={`https://twitter.com/${brewery.twitterHandle}`}>
+                    <FontAwesomeIcon icon={faTwitter} /> @{brewery.twitterHandle}
+                  </a>
+                </p>
+              )
+            }
+          </>
+        )
+      }
+      breweries={inventory.breweries}
+    >
+      <InventoryApp inventory={{ ...inventory, items }} />
+    </Page>
   );
 };
 
