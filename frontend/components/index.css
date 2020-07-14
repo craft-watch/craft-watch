@@ -538,10 +538,10 @@ nav li {
 
 
 /* ----------------------
-    Clicky star
+    Favourite star
    ---------------------- */
 
-.clicky-star {
+.favourite-star {
   cursor: pointer;
   color: var(--sol-yellow);
 }

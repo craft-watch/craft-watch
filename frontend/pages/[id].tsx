@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import _ from "underscore";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Page from "../components/Page";
@@ -6,25 +6,17 @@ import { Brewery, Item } from "../utils/model";
 import { inventory } from "../utils/inventory";
 import { toSafePathPart } from "../utils/stuff";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGlobeEurope, faStar as enabledStar } from "@fortawesome/free-solid-svg-icons";
-import { faStar as disabledStar } from "@fortawesome/free-regular-svg-icons";
+import { faGlobeEurope } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import InventoryApp from "../components/InventoryApp";
+import FavouriteStar from "../components/FavouriteStar";
 
 interface Props {
   brewery: Brewery;
   items: Array<Item>;
 }
 
-interface ClickyStarProps {
-  enabled: boolean;
-  onClick: () => void;
-}
-
-
 const ThisPage = ({ brewery, items }: Props): JSX.Element => {
-  const [enabled, setEnabled] = useState<boolean>(false);
-
   return (
     <Page
       title={brewery.name}
@@ -33,10 +25,7 @@ const ThisPage = ({ brewery, items }: Props): JSX.Element => {
         (
           <>
             <p>
-              <ClickyStar
-                enabled={enabled}
-                onClick={() => setEnabled(!enabled)}
-              />
+              <FavouriteStar breweryShortName={brewery.shortName} />
               Add to favourites.
             </p>
             <p>
@@ -66,16 +55,6 @@ const ThisPage = ({ brewery, items }: Props): JSX.Element => {
     </Page>
   );
 };
-
-const ClickyStar = (props: ClickyStarProps) => (
-  <span
-    className="clicky-star"
-    onClick={props.onClick}
-    title={props.enabled ? "Click to remove from favourites" : "Click to add to favourites"}>
-    <FontAwesomeIcon icon={props.enabled ? enabledStar : disabledStar} />
-  </span>
-);
-
 
 export default ThisPage;
 

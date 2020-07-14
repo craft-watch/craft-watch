@@ -75,3 +75,7 @@ export enum Format {
 export type RawItem = BaseItem & { brewery: string; }
 export type Item = BaseItem & { brewery: Brewery }
 
+export interface Favourites {
+  breweries: Array<string>;
+}
+
