@@ -4,7 +4,6 @@ import { inventory } from "../utils/inventory";
 import BreweriesApp from "../components/BreweriesApp";
 import Link from "next/link";
 
-// TODO - make links bold here
 const ThisPage = (): JSX.Element => (
   <Page
     title = "Breweries A-Z"
@@ -18,7 +17,7 @@ const ThisPage = (): JSX.Element => (
           </p>
           <p>
             Click the hearts to add breweries to your
-            personalised <Link href="/favourites"><a>favourites page</a></Link>!
+            personalised <Link href="/favourites"><a className="emphasise">favourites page</a></Link>!
           </p>
         </>
       )

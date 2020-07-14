@@ -272,6 +272,10 @@ img {
   color: var(--sol-base00);
 }
 
+.desc a.emphasise {
+  font-weight: var(--bold-weight);
+}
+
 .desc a:link {
   color: var(--sol-base01);
 }
