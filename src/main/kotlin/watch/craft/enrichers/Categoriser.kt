@@ -1,11 +1,10 @@
 package watch.craft.enrichers
 
-import watch.craft.Enricher
 import watch.craft.Item
 import watch.craft.enrichers.Categoriser.Component.*
 import kotlin.text.RegexOption.IGNORE_CASE
 
-class Categoriser(categories: Map<String, List<Synonym>>) : Enricher {
+class Categoriser(categories: Map<String, List<Synonym>>) {
   data class Synonym(
     val pattern: String,
     val components: Set<Component> = values().toSet()
@@ -20,7 +19,7 @@ class Categoriser(categories: Map<String, List<Synonym>>) : Enricher {
   private val candidates = categories
     .flatMap { (category, synonyms) -> synonyms.map { Candidate(it, it.toSweetRegex(), category) } }
 
-  override fun enrich(item: Item): Item {
+  fun enrich(item: Item): Item {
     return item.copy(
       categories = candidates
         .filter { candidate ->

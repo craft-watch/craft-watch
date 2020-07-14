@@ -19,11 +19,6 @@ class ScraperAdapter(
   private val retriever: Retriever,
   private val scraper: Scraper
 ) {
-  data class StatsWith<T>(
-    val entries: List<T>,
-    val stats: BreweryStats
-  )
-
   data class Result(
     val breweryName: String,
     val rawName: String,
