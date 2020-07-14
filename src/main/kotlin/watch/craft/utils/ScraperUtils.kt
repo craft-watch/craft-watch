@@ -137,6 +137,8 @@ fun Element.selectFrom(cssQuery: String) = selectFirst(cssQuery)
 fun Element.selectMultipleFrom(cssQuery: String) = select(cssQuery)!!
   .ifEmpty { throw MalformedInputException("Element(s) not present: ${cssQuery}") }
 
+fun String.containsWord(vararg words: String) = tokenize().filter { it.wordy }.toSet().any { it.text in words }
+
 fun String.extract(regex: String, ignoreCase: Boolean = true) = regex.toRegex(regexOptions(ignoreCase))
   .find(this)?.groupValues
   ?: throw MalformedInputException("Can't extract regex: ${regex}")
