@@ -10,7 +10,8 @@ import { faHeart, faQuestion, faSun, faListAlt } from "@fortawesome/free-solid-s
 
 interface Props {
   title: string;
-  desc?: JSX.Element | string;
+  titleSuffix?: JSX.Element;
+  desc?: JSX.Element;
   breweries: Array<Brewery>;
 }
 
@@ -71,7 +72,7 @@ const Sidebars = (props: Props): JSX.Element => {
 
       <div className="sidebar left">
         <div className="info hide-medium">
-          <h1>{props.title}</h1>
+          <h1>{props.title} {props.titleSuffix}</h1>
           <div className="desc">
             {props.desc}
           </div>

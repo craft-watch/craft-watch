@@ -9,17 +9,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobeEurope } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import InventoryApp from "../components/InventoryApp";
+import FavouriteIcon from "../components/FavouriteIcon";
 
 interface Props {
   brewery: Brewery;
   items: Array<Item>;
 }
 
-// TODO - add FavouriteIcon to title
 const ThisPage = ({ brewery, items }: Props): JSX.Element => {
   return (
     <Page
       title={brewery.name}
+      titleSuffix={<FavouriteIcon breweryShortName={brewery.shortName} />}
       desc={`Daily updates of beer prices from ${brewery.name}`}
       longDesc={
         (
