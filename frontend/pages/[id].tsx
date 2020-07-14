@@ -7,6 +7,7 @@ import { inventory } from "../utils/inventory";
 import { toSafePathPart } from "../utils/stuff";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobeEurope } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import InventoryApp from "../components/InventoryApp";
 
@@ -24,6 +25,9 @@ const ThisPage = ({ brewery, items }: Props): JSX.Element => {
       longDesc={
         (
           <>
+            <p>
+              <FontAwesomeIcon icon={faStar} /> Add to favourites.
+            </p>
             <p>
               Daily updates of beer prices from {brewery.name}, a brewery based in {brewery.location}.
             </p>
