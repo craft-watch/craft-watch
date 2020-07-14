@@ -60,6 +60,7 @@ class Cli : CliktCommand(name = "scraper") {
       PressureDropScraper(),
       RedchurchScraper(),
       RedWillowScraper(),
+      RoostersScraper(),
       SirenScraper(),
       SolvayScraper(),
       StewartScraper(),
