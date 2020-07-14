@@ -4,7 +4,10 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import watch.craft.*
+import watch.craft.Brewery
+import watch.craft.Item
+import watch.craft.Offer
+import watch.craft.Scraper
 import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -81,31 +84,6 @@ class ExecutorTest {
     assertEquals(
       listOf("Bar", "Foo"),
       executor.scrape(listOf(scraper)).items.map { it.name }
-    )
-  }
-
-  // TODO - other stats
-
-  @Test
-  fun `calculates statistics`() {
-    val scrapers = listOf(
-      MyScraper(THIS_BREWERY, listOf(
-        Leaf(name = "A", url = productUrl("a")) { product("Foo") },
-        Leaf(name = "B", url = productUrl("b")) { product("Bar") }
-      )),
-      MyScraper(THAT_BREWERY, listOf(
-        Leaf(name = "A", url = productUrl("a")) { product("Foo") }
-      ))
-    )
-
-    assertEquals(
-      Stats(
-        listOf(
-          BreweryStats(THIS_BREWERY, numRawItems = 2),
-          BreweryStats(THAT_BREWERY, numRawItems = 1)
-        )
-      ),
-      executor.scrape(scrapers).stats
     )
   }
 

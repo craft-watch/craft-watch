@@ -9,19 +9,27 @@ import kotlin.math.round
 
 private val logger = KotlinLogging.logger {}
 
-fun List<Item>.consolidateOffers() = this
-  .groupBy { ItemGroupFields(it.brewery, it.name.toLowerCase()) }
-  .mapNotNull { (key, group) ->
-    if (group.size > 1) {
-      logger.info("[${key.brewery}] Merging ${group.size} item(s) for [${key.name}]")
+fun StatsWith<Item>.consolidateOffers(): StatsWith<Item> {
+  var numMerged = stats.numMerged
+  val entries = entries
+    .groupBy { ItemGroupFields(it.brewery, it.name.toLowerCase()) }
+    .mapNotNull { (key, group) ->
+      if (group.size > 1) {
+        logger.info("[${key.brewery}] Merging ${group.size} item(s) for [${key.name}]")
+        numMerged += group.size - 1
+      }
+
+      val offers = group.mergeAndPrioritiseOffers()
+
+      val headlineItem = offers.firstOrNull()?.item
+
+      headlineItem?.copy(offers = offers.map { it.offer })
     }
-
-    val offers = group.mergeAndPrioritiseOffers()
-
-    val headlineItem = offers.firstOrNull()?.item
-
-    headlineItem?.copy(offers = offers.map { it.offer })
-  }
+  return StatsWith(
+    entries = entries,
+    stats = stats.copy(numMerged = numMerged)
+  )
+}
 
 // TODO - fill in missing fields from non-archetypes
 // TODO - do we want a URL per offer?  Keg vs. can vs. item may be different pages

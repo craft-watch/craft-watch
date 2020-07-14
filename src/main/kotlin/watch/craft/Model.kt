@@ -25,12 +25,12 @@ data class Stats(
 
 data class BreweryStats(
   val name: String,
-  val numItems: Int = 0,
   val numRawItems: Int = 0,
   val numSkipped: Int = 0,
   val numMalformed: Int = 0,
   val numInvalid: Int = 0,
-  val numErrors: Int = 0
+  val numErrors: Int = 0,
+  val numMerged: Int = 0
   // TODO - numNew
 )
 

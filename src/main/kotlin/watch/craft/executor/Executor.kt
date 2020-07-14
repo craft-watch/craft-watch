@@ -2,7 +2,6 @@ package watch.craft.executor
 
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
-import mu.KotlinLogging
 import watch.craft.*
 import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.network.Retriever
@@ -50,13 +49,15 @@ class Executor(
     }
 
     private fun StatsWith<Result>.postProcessItems(): StatsWith<Item> {
-      val normalised = normaliseToItems()
-      return normalised.copy(entries = normalised.entries
+      val consolidated = this
+        .normaliseToItems()
         .consolidateOffers()
-        .sortedBy { it.name }
-        .map(categoriser::enrich)
-        .map(newalyser::enrich)
-      )
+      return consolidated
+        .copy(entries = consolidated.entries
+          .sortedBy { it.name }
+          .map(categoriser::enrich)
+          .map(newalyser::enrich)
+        )
     }
   }
 }

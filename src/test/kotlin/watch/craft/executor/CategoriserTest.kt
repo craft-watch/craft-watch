@@ -12,7 +12,7 @@ class CategoriserTest {
   @Test
   fun `case insensitive`() {
     val categoriser = Categoriser(mapOf(
-            "foo" to listOf(Synonym("foo"))
+      "foo" to listOf(Synonym("foo"))
     ))
 
     assertEquals(listOf("foo"), categoriser.categorise(item("foo")))
@@ -22,7 +22,7 @@ class CategoriserTest {
   @Test
   fun `matches in all components`() {
     val categoriser = Categoriser(mapOf(
-            "foo" to listOf(Synonym("foo"))
+      "foo" to listOf(Synonym("foo"))
     ))
 
     assertEquals(listOf("foo"), categoriser.categorise(item(name = "foo")))
@@ -33,7 +33,7 @@ class CategoriserTest {
   @Test
   fun `matches in specified components`() {
     val categoriser = Categoriser(mapOf(
-            "foo" to listOf(Synonym("foo", setOf(NAME, DESC)))
+      "foo" to listOf(Synonym("foo", setOf(NAME, DESC)))
     ))
 
     assertEquals(listOf("foo"), categoriser.categorise(item(name = "foo")))
@@ -44,10 +44,10 @@ class CategoriserTest {
   @Test
   fun `matches any synonym back to category`() {
     val categoriser = Categoriser(mapOf(
-            "foo" to listOf(
-                    Synonym("foo"),
-                    Synonym("bar")
-            )
+      "foo" to listOf(
+        Synonym("foo"),
+        Synonym("bar")
+      )
     ))
 
     assertEquals(listOf("foo"), categoriser.categorise(item(name = "foo")))
@@ -57,8 +57,8 @@ class CategoriserTest {
   @Test
   fun `matches multiple categories`() {
     val categoriser = Categoriser(mapOf(
-            "foo" to listOf(Synonym("foo")),
-            "bar" to listOf(Synonym("bar"))
+      "foo" to listOf(Synonym("foo")),
+      "bar" to listOf(Synonym("bar"))
     ))
 
     assertEquals(listOf("foo"), categoriser.categorise(item(name = "foo")))
@@ -69,8 +69,8 @@ class CategoriserTest {
   @Test
   fun `longest match wins`() {
     val categoriser = Categoriser(mapOf(
-            "foo" to listOf(Synonym("foo")),
-            "bar" to listOf(Synonym("foo bar"))
+      "foo" to listOf(Synonym("foo")),
+      "bar" to listOf(Synonym("foo bar"))
     ))
 
     assertEquals(listOf("foo"), categoriser.categorise(item(name = "foo")))
@@ -80,7 +80,7 @@ class CategoriserTest {
   @Test
   fun `only matches against complete words`() {
     val categoriser = Categoriser(mapOf(
-            "foo" to listOf(Synonym("foo bar"))
+      "foo" to listOf(Synonym("foo bar"))
     ))
 
     fun assertMatch(text: String) = assertEquals(listOf("foo"), categoriser.categorise(item(text)))

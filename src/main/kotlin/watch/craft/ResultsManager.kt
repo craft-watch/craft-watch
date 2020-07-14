@@ -6,8 +6,7 @@ import watch.craft.storage.SubObjectStore
 import watch.craft.utils.mapper
 import java.time.Instant
 import java.time.ZoneOffset
-import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeFormatter.*
+import java.time.format.DateTimeFormatter.ISO_DATE_TIME
 
 class ResultsManager(private val setup: Setup) {
   private val logger = KotlinLogging.logger {}
@@ -28,10 +27,11 @@ class ResultsManager(private val setup: Setup) {
 
   private fun dir(timestamp: Instant) = SubObjectStore(setup.results, formatter.format(timestamp))
 
+  // TODO - log actual stats once we trust them
   private fun Inventory.logStats() {
-    stats.breweries
-      .forEach { breweryStats -> logger.info("Scraped (${breweryStats.name}): ${breweryStats.numItems}") }
-    logger.info("Scraped (TOTAL): ${stats.breweries.sumBy { it.numItems }}")
+    items.groupBy { it.brewery }
+      .forEach { (key, group) -> logger.info("Scraped (${key}): ${group.size}") }
+    logger.info("Scraped (TOTAL): ${items.size}")
   }
 
   private val formatter = ISO_DATE_TIME.withZone(ZoneOffset.UTC)
