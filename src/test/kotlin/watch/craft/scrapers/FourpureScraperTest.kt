@@ -10,7 +10,7 @@ import kotlin.text.RegexOption.IGNORE_CASE
 
 class FourpureScraperTest {
   companion object {
-    private val ITEMS = executeScraper(FourpureScraper(), dateString = null)
+    private val ITEMS = executeScraper(FourpureScraper())
   }
 
   @Test
