@@ -1,6 +1,7 @@
 package watch.craft.executor
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import watch.craft.BreweryStats
 import watch.craft.Format.KEG
@@ -170,25 +171,70 @@ class OfferConsolidationTest {
     )
   }
 
-  @Test
-  fun `headline offer is consistent with selected item`() {
-    val items = listOf(
-      item(offers = listOf(Offer(totalPrice = 1.00))).copy(desc = "Hello"),
-      item(offers = listOf(Offer(totalPrice = 2.00))).copy(desc = "Goodbye")
-    )
+  @Nested
+  inner class InfoSelection {
+    @Test
+    fun `if headline offer is single-item, then headline selected`() {
+      val items = listOf(
+        item(offers = listOf(Offer(totalPrice = 1.00))).copy(desc = "Hello"),
+        item(offers = listOf(Offer(totalPrice = 2.00))).copy(desc = "Goodbye")
+      )
 
-    assertEquals("Hello", items.consolidate().entries.first().desc)
+      assertEquals("Hello", items.consolidate().entries.first().desc)
+    }
+
+    @Test
+    fun `if headline is multi-pack then selects single-item info if available`() {
+      val items = listOf(
+        item(offers = listOf(Offer(totalPrice = 1.00, quantity = 4))).copy(desc = "Multi-pack"),
+        item(offers = listOf(Offer(totalPrice = 2.00, quantity = 1))).copy(desc = "Single item")
+      )
+
+      val item = items.consolidate().entries.single()
+
+      assertEquals(4, item.offers.first().quantity)
+      assertEquals("Single item", item.desc)
+    }
+
+    @Test
+    fun `if headline is multi-pack and no single-items available, then headline selected`() {
+      val items = listOf(
+        item(offers = listOf(Offer(totalPrice = 1.00, quantity = 4))).copy(desc = "Multi-pack"),
+        item(offers = listOf(Offer(totalPrice = 2.00, quantity = 2))).copy(desc = "Not a single item")
+      )
+
+      val item = items.consolidate().entries.single()
+
+      assertEquals(4, item.offers.first().quantity)
+      assertEquals("Multi-pack", item.desc)
+    }
+
+    @Test
+    fun `if headline is multi-pack and only keg single-items available, then headline selected`() {
+      val items = listOf(
+        item(offers = listOf(Offer(totalPrice = 1.00, quantity = 4))).copy(desc = "Multi-pack"),
+        item(offers = listOf(Offer(totalPrice = 2.00, format = KEG))).copy(desc = "Gross keg")
+      )
+
+      val item = items.consolidate().entries.single()
+
+      assertEquals(4, item.offers.first().quantity)
+      assertEquals("Multi-pack", item.desc)
+    }
   }
 
-  @Test
-  fun `handles no items`() {
-    assertEquals(0, emptyList<Item>().consolidate().entries.size)
-  }
+  @Nested
+  inner class EdgeCases {
+    @Test
+    fun `handles no items`() {
+      assertEquals(0, emptyList<Item>().consolidate().entries.size)
+    }
 
-  // This should never happen, but let's handle it gracefully anyway
-  @Test
-  fun `handles item with no offers`() {
-    assertEquals(0, listOf(item(offers = emptyList())).consolidate().entries.size)
+    // This should never happen, but let's handle it gracefully anyway
+    @Test
+    fun `handles item with no offers`() {
+      assertEquals(0, listOf(item(offers = emptyList())).consolidate().entries.size)
+    }
   }
 
   private fun item(
