@@ -60,7 +60,7 @@ class ForestRoadScraper : Scraper {
   private fun String.extractQuantity() = extract("(\\d+)\\s*x").intFrom(1)
 
   companion object {
-    val ROOT_URLS = arrayOf(
+    private val ROOT_URLS = arrayOf(
       URI("https://www.forestroad.co.uk/shop?category=BEER"),
       URI("https://www.forestroad.co.uk/shop?category=SPECIAL")
     )

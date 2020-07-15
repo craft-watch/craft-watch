@@ -42,6 +42,6 @@ class OrbitScraper : Scraper {
   }
 
   companion object {
-    val ROOT_URL = URI("https://orbit-beers.myshopify.com/collections/all")
+    private val ROOT_URL = URI("https://orbit-beers.myshopify.com/collections/all")
   }
 }

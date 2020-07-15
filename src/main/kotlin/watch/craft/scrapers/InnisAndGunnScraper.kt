@@ -38,6 +38,6 @@ class InnisAndGunnScraper : Scraper {
   }
 
   companion object {
-    val ROOT_URL = URI("https://www.innisandgunn.com/browse/c-All-Beers-14")
+    private val ROOT_URL = URI("https://www.innisandgunn.com/browse/c-All-Beers-14")
   }
 }

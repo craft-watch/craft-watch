@@ -77,6 +77,6 @@ class RoostersScraper : Scraper {
 
 
   companion object {
-    val ROOT_URL = URI("https://www.roosters.co.uk/shop/beer")
+    private val ROOT_URL = URI("https://www.roosters.co.uk/shop/beer")
   }
 }

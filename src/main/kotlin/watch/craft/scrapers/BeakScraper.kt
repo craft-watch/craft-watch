@@ -39,8 +39,8 @@ class BeakScraper : Scraper {
   }
 
   companion object {
-    const val NUM_ITEMS_REGEX = "(\\d+)\\s*x"
+    private const val NUM_ITEMS_REGEX = "(\\d+)\\s*x"
 
-    val ROOT_URL = URI("https://beakbrewery.com/collections/beer")
+    private val ROOT_URL = URI("https://beakbrewery.com/collections/beer")
   }
 }

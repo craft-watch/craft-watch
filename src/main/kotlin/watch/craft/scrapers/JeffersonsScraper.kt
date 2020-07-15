@@ -39,6 +39,6 @@ class JeffersonsScraper : Scraper {
   }
 
   companion object {
-    val ROOT_URL = URI("https://jeffersonsbrewery.co.uk/")
+    private val ROOT_URL = URI("https://jeffersonsbrewery.co.uk/")
   }
 }

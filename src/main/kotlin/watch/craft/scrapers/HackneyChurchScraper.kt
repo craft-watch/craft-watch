@@ -51,6 +51,6 @@ class HackneyChurchScraper : Scraper {
   }
 
   companion object {
-    val ROOT_URL = URI("https://hackneychurchbrew.co/collections/beers")
+    private val ROOT_URL = URI("https://hackneychurchbrew.co/collections/beers")
   }
 }
