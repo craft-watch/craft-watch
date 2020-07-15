@@ -45,7 +45,9 @@ class SolvayScraper : Scraper {
                 sizeMl = if (mixed) null else desc.sizeMlFrom()
               )
             ),
-            thumbnailUrl = el.dataSrcFrom("img.grid-image-cover")
+            // Request a smaller image
+            thumbnailUrl = (doc.dataSrcFrom("img.ProductItem-gallery-slides-item-image")
+              .toString() + "?format=200w").toUri()
           )
         }
       }

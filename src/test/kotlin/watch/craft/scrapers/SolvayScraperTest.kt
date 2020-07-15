@@ -28,7 +28,7 @@ class SolvayScraperTest {
           Offer(totalPrice = 12.80, sizeMl = 750)
         ),
         available = true,
-        thumbnailUrl = URI("https://static1.squarespace.com/static/5e3fd955244c110e4deb8fff/5eec7c5c91751c60400a0ed2/5eec941ff809127782259a36/1592567567620/")
+        thumbnailUrl = URI("https://images.squarespace-cdn.com/content/v1/5e3fd955244c110e4deb8fff/1592567554650-Q1SD6HPJAHHLJCBYNHOB/ke17ZwdGBToddI8pDm48kLXCf88_9uNTKXkq27cF4sB7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmwbA6upbL5Bu97tJociXJklKprRMdH2Tl4F1PjaoPT3YUs5wkl5ojCV1O900UJ7ME/charm.png?format=200w")
       ),
       ITEMS.byName("Charm").noDesc()
     )
