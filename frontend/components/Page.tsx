@@ -39,7 +39,13 @@ const Page: React.FC<Props> = (props) => (
       <meta property="og:image" content="https://craft.watch/craft-watch.jpg" />
       <meta property="og:type" content="website" />
 
-      <script async defer data-domain="craft.watch" src="https://plausible.io/js/plausible.js" />
+
+      {
+        // See https://github.com/vercel/next.js/issues/9070#issuecomment-552981178
+        // (and https://docs.plausible.io/spa-support).
+        // Unclear why this hack works, but it does.
+        process.browser && <script async defer data-domain="craft.watch" src="https://plausible.io/js/plausible.js" />
+      }
     </Head>
 
     <Sidebars
