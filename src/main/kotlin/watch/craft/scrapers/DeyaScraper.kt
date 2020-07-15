@@ -41,6 +41,6 @@ class DeyaScraper : Scraper {
   }
 
   companion object {
-    val ROOT_URL = URI("https://shop.deyabrewing.com/product-category/beer/")
+    private val ROOT_URL = URI("https://shop.deyabrewing.com/product-category/beer/")
   }
 }

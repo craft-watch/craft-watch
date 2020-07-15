@@ -43,6 +43,6 @@ class VerdantScraper : Scraper {
   }
 
   companion object {
-    val ROOT_URL = URI("https://verdantbrewing.co/collections/beer-merchandise")
+    private val ROOT_URL = URI("https://verdantbrewing.co/collections/beer-merchandise")
   }
 }

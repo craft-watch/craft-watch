@@ -46,6 +46,6 @@ class CloudwaterScraper : Scraper {
   }
 
   companion object {
-    val ROOT_URL = URI("https://shop.cloudwaterbrew.co/collections/cloudwater-beer")
+    private val ROOT_URL = URI("https://shop.cloudwaterbrew.co/collections/cloudwater-beer")
   }
 }

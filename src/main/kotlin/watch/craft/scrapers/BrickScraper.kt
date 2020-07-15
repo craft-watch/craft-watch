@@ -55,6 +55,6 @@ class BrickScraper : Scraper {
     .associate { it.textFrom("td:first-child").toLowerCase() to it.textFrom("td:last-child") }
 
   companion object {
-    val ROOT_URL = URI("https://shop.brickbrewery.co.uk/collections/frontpage")
+    private val ROOT_URL = URI("https://shop.brickbrewery.co.uk/collections/frontpage")
   }
 }

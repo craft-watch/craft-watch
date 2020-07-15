@@ -45,6 +45,6 @@ class PollysScraper : Scraper {
   companion object {
     private val ROOT_URL = URI("https://shop.pollysbrew.co/")
 
-    const val POLLYS_CAN_SIZE_ML = 440
+    private const val POLLYS_CAN_SIZE_ML = 440
   }
 }
