@@ -1,7 +1,5 @@
 package watch.craft.scrapers
 
-import watch.craft.Format.BOTTLE
-import watch.craft.Format.CAN
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -33,11 +31,7 @@ class DeyaScraper : Scraper {
                 quantity = title.extract("(\\d+) pack").intFrom(1),
                 totalPrice = el.priceFrom(".price"),
                 sizeMl = desc.sizeMlFrom(),
-                format = when {
-                  desc.containsWord("cans") -> CAN
-                  desc.containsWord("bottles") -> BOTTLE
-                  else -> null
-                }
+                format = desc.formatFrom()
               )
             ),
             thumbnailUrl = el.srcFrom(".attachment-woocommerce_thumbnail")
