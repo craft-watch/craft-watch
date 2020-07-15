@@ -1,11 +1,11 @@
 import _ from "underscore";
 import React from "react";
-import Link from "next/link";
 import { Item, Offer, Format } from "../utils/model";
 import SortableTable, { Column, Section, CellProps } from "./SortableTable";
-import { toSafePathPart, headlineOffer } from "../utils/stuff";
+import { headlineOffer } from "../utils/stuff";
 import { OUT_OF_STOCK, MINIKEG, MIXED_CASE } from "../utils/strings";
 import { splitToParagraphs } from "../utils/reactUtils";
+import { BreweryLink } from "./BreweryLink";
 
 interface Props {
   items: Array<Item>;
@@ -23,9 +23,9 @@ const InventoryTable: React.FC<Props> = (props) => (
 );
 
 const BreweryInfo = ({ datum }: CellProps<Item>) => (
-  <Link href={`/${toSafePathPart(datum.brewery.shortName)}`}>
-    <a>{datum.brewery.shortName}</a>
-  </Link>
+  <BreweryLink shortName={datum.brewery.shortName}>
+    {datum.brewery.shortName}
+  </BreweryLink>
 );
 
 const Thumbnail = ({ datum }: CellProps<Item>) => (

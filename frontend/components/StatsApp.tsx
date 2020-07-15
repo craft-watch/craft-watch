@@ -2,8 +2,7 @@ import React from "react";
 import _ from "underscore";
 import { Inventory, BreweryStats } from "../utils/model";
 import SortableTable, { Column, Section, CellProps } from "./SortableTable";
-import Link from "next/link";
-import { toSafePathPart } from "../utils/stuff";
+import { BreweryLink } from "./BreweryLink";
 
 interface Props {
   inventory: Inventory;
@@ -22,9 +21,9 @@ const StatsApp = ({ inventory }: Props): JSX.Element => {
             name="Brewery"
             className="brewery"
             render={({ datum }: CellProps<BreweryStats>) => (
-              <Link href={`/${toSafePathPart(datum.name)}`}>
-                <a>{datum.name}</a>
-              </Link>
+              <BreweryLink shortName={datum.name}>
+                {datum.name}
+              </BreweryLink>
             )}
           />
           <Column name="Raw" render={render(stats => stats.numRawItems)} />

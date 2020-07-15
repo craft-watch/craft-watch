@@ -2,12 +2,11 @@ import React from "react";
 import _ from "underscore";
 import { Inventory, Brewery } from "../utils/model";
 import SortableTable, { Column, Section, CellProps } from "./SortableTable";
-import { toSafePathPart } from "../utils/stuff";
-import Link from "next/link";
 import FavouriteIcon from "./FavouriteIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { BreweryLink } from "./BreweryLink";
 
 interface Props {
   inventory: Inventory;
@@ -18,9 +17,9 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
 
   const BreweryInfo = ({ datum }: CellProps<Brewery>) => (
     <>
-      <Link href={`/${toSafePathPart(datum.shortName)}`}>
-        <a>{datum.shortName}</a>
-      </Link>
+      <BreweryLink shortName={datum.shortName}>
+        {datum.shortName}
+      </BreweryLink>
     </>
   );
 
