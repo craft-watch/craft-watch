@@ -38,6 +38,8 @@ const Page: React.FC<Props> = (props) => (
       <meta property="og:description" content={props.desc} />
       <meta property="og:image" content="https://craft.watch/craft-watch.jpg" />
       <meta property="og:type" content="website" />
+
+      <script async defer data-domain="craft.watch" src="https://plausible.io/js/plausible.js" />
     </Head>
 
     <Sidebars
