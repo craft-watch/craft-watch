@@ -20,10 +20,12 @@ fun StatsWith<Item>.consolidateOffers(): StatsWith<Item> {
       }
 
       val offers = group.mergeAndPrioritiseOffers()
-
-      val headlineItem = offers.firstOrNull()?.item
-
-      headlineItem?.copy(offers = offers.map { it.offer })
+      if (offers.isNotEmpty()) {
+        val headlineItem = offers.selectHeadlineItem()
+        headlineItem.copy(offers = offers.map { it.offer })
+      } else {
+        null
+      }
     }
   return StatsWith(
     entries = entries,
@@ -47,6 +49,10 @@ private fun List<Item>.mergeAndPrioritiseOffers() =
         round(it.offer.pricePerDefaultItem() * 100)  // Work in pence to avoid FP precision issues
       )
     }
+
+// Individual items typically have better descriptions + thumbnail
+private fun List<ItemAndOffer>.selectHeadlineItem() =
+  (firstOrNull { it.offer.quantity == 1 && it.offer.format != KEG } ?: first()).item
 
 private fun Offer.pricePerDefaultItem() = pricePerMl() * DEFAULT_SIZE_ML
 private fun Offer.pricePerMl() = totalPrice / (quantity * (sizeMl ?: DEFAULT_SIZE_ML))
