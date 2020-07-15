@@ -37,6 +37,16 @@ val SCRAPERS = listOf(
     )
   ),
   entry(
+    BurningSkyScraper(),
+    Brewery(
+      shortName = "Burning Sky",
+      name = "Burning Sky",
+      location = "Firle, East Sussex",
+      websiteUrl = URI("https://www.burningskybeer.com"),
+      twitterHandle = "burningskybeer"
+    )
+  ),
+  entry(
     CanopyScraper(),
     Brewery(
       shortName = "Canopy",
