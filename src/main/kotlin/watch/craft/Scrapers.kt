@@ -27,6 +27,16 @@ val SCRAPERS = listOf(
     )
   ),
   entry(
+    BrickScraper(),
+    Brewery(
+      shortName = "Brick",
+      name = "Brick Brewery",
+      location = "Peckham, London",
+      websiteUrl = URI("https://www.brickbrewery.co.uk/"),
+      twitterHandle = "brick_brewery"
+    )
+  ),
+  entry(
     CanopyScraper(),
     Brewery(
       shortName = "Canopy",

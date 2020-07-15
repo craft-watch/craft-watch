@@ -65,7 +65,6 @@ class MarbleScraper : Scraper {
     )
   }
 
-
   private fun Document.extractAttributes() = orSkip("No attributes, so can't process") {
     selectMultipleFrom(".shop_attributes tr")
   }.associate { it.textFrom("th") to it.textFrom("td") }

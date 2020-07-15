@@ -9,6 +9,8 @@ import org.jsoup.nodes.Node
 import org.jsoup.nodes.TextNode
 import org.jsoup.select.NodeTraversor
 import org.jsoup.select.NodeVisitor
+import watch.craft.Format.BOTTLE
+import watch.craft.Format.CAN
 import watch.craft.MalformedInputException
 import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.More
@@ -153,6 +155,14 @@ private fun regexOptions(ignoreCase: Boolean) = if (ignoreCase) {
   setOf(DOT_MATCHES_ALL)
 }
 
+fun Element.formatFrom(cssQuery: String = ":root") = textFrom(cssQuery).formatFrom()
+fun String.formatFrom() = when {
+  contains("\\d+\\s*ml\\s*can".toRegex(IGNORE_CASE)) -> CAN   // Can't match directly on "can" because it's a regular English word
+  containsWord("cans") -> CAN
+  containsWord("bottles") -> BOTTLE
+  else -> null
+}
+
 fun String.toTitleCase() = tokenize()
   .joinToString("") { token ->
     if (token.wordy && token.text !in BEER_ACRONYMS) {
@@ -207,5 +217,6 @@ private val BEER_ACRONYMS = listOf(
   "DDH",
   "NEIPA",
   "DIPA",
+  "NEDIPA",
   "XPA"
 )
