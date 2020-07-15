@@ -3,7 +3,6 @@ package watch.craft.scrapers
 import com.fasterxml.jackson.annotation.JsonAlias
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.jsoup.nodes.Document
-import watch.craft.Brewery
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -13,14 +12,6 @@ import watch.craft.utils.*
 import java.net.URI
 
 class RedWillowScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "RedWillow",
-    name = "RedWillow Brewery",
-    location = "Macclesfield, Cheshire",
-    websiteUrl = URI("https://www.redwillowbrewery.com/"),
-    twitterHandle = "redwillowbrew"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectMultipleFrom(".ProductList-grid .ProductList-item")

@@ -1,6 +1,5 @@
 package watch.craft.scrapers
 
-import watch.craft.Brewery
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -9,14 +8,6 @@ import watch.craft.utils.*
 import java.net.URI
 
 class WanderScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Wander Beyond",
-    name = "Wander Beyond Brewing",
-    location = "Manchester",
-    websiteUrl = URI("https://www.wanderbeyondbrewing.com/"),
-    twitterHandle = "wanderbeyond_"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectFrom("product-list-wrapper".hook())  // Only first one, to avoid merch, etc.

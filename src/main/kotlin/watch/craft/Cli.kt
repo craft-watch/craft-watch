@@ -10,9 +10,11 @@ import watch.craft.executor.Executor
 import watch.craft.scrapers.*
 
 class Cli : CliktCommand(name = "scraper") {
+  private val scraperDetails = SCRAPERS.associateBy { it.brewery.shortName.toSafeName() }
+
   private val listScrapers by option("--list-scrapers", "-l").flag()
   private val dateString by option("--date", "-d")
-  private val scrapers by argument().choice(SCRAPERS).multiple()
+  private val scrapers by argument().choice(scraperDetails).multiple()
 
   override fun run() {
     when {
@@ -22,59 +24,18 @@ class Cli : CliktCommand(name = "scraper") {
   }
 
   private fun executeListScrapers() {
-    SCRAPERS.keys.sorted().forEach(::println)
+    scraperDetails.keys.sorted().forEach(::println)
   }
 
   private fun executeScrape() {
     val setup = Setup(dateString)
     val results = ResultsManager(setup)
-    val executor = Executor(
-      results = results,
-      createRetriever = setup.createRetriever
-    )
-    val inventory = executor.scrape(scrapers.ifEmpty { SCRAPERS.values.toList() })
+    val executor = Executor(results = results, createRetriever = setup.createRetriever)
+    val inventory = executor.scrape(scrapers.ifEmpty { SCRAPERS })
     results.write(inventory)
   }
 
-  companion object {
-    private val SCRAPERS = listOf(
-      BeakScraper(),
-      BoxcarScraper(),
-      CanopyScraper(),
-      CloudwaterScraper(),
-      DeyaScraper(),
-      FivePointsScraper(),
-      ForestRoadScraper(),
-      FourpureScraper(),
-      GipsyHillScraper(),
-      InnisAndGunnScraper(),
-      JeffersonsScraper(),
-      HackneyChurchScraper(),
-      HowlingHopsScraper(),
-      MarbleScraper(),
-      NorthernMonkScraper(),
-      OrbitScraper(),
-      PadstowScraper(),
-      PillarsScraper(),
-      PollysScraper(),
-      PressureDropScraper(),
-      RedchurchScraper(),
-      RedWillowScraper(),
-      RoostersScraper(),
-      SirenScraper(),
-      SolvayScraper(),
-      StewartScraper(),
-      ThornbridgeScraper(),
-      UnityScraper(),
-      VerdantScraper(),
-      VillagesScraper(),
-      WanderScraper(),
-      WiperAndTrueScraper(),
-      WylamScraper()
-    ).associateBy { it.brewery.shortName.toSafeName() }
-
-    private fun String.toSafeName() = toLowerCase().replace("[^0-9a-z]".toRegex(), "-")
-  }
+  private fun String.toSafeName() = toLowerCase().replace("[^0-9a-z]".toRegex(), "-")
 }
 
 fun main(args: Array<String>) = Cli().main(args)

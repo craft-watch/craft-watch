@@ -2,7 +2,6 @@ package watch.craft.scrapers
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.jsoup.nodes.Document
-import watch.craft.Brewery
 import watch.craft.Format.CAN
 import watch.craft.Offer
 import watch.craft.Scraper
@@ -13,14 +12,6 @@ import watch.craft.utils.*
 import java.net.URI
 
 class RoostersScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Rooster's",
-    name = "Rooster's Brewing Co",
-    location = "Harrogate, North Yorkshire",
-    websiteUrl = URI("https://www.roosters.co.uk/"),
-    twitterHandle = "RoostersBrewCo"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectMultipleFrom(".Main--products-list .ProductList-item")

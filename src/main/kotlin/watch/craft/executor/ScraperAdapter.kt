@@ -17,7 +17,8 @@ import java.util.concurrent.atomic.AtomicInteger
 
 class ScraperAdapter(
   private val retriever: Retriever,
-  private val scraper: Scraper
+  private val scraper: Scraper,
+  private val shortName: String
 ) {
   data class Result(
     val breweryName: String,
@@ -27,14 +28,13 @@ class ScraperAdapter(
   )
 
   private val logger = KotlinLogging.logger {}
-  private val breweryName = scraper.brewery.shortName
 
   suspend fun execute() = with(Context()) {
     val results = scraper.jobs.executeAll()
     StatsWith(
       results,
       BreweryStats(
-        name = scraper.brewery.shortName,
+        name = shortName,
         numRawItems = numRawItems.toInt(),
         numSkipped = numSkipped.toInt(),
         numMalformed = numMalformed.toInt(),
@@ -66,7 +66,7 @@ class ScraperAdapter(
           numRawItems.incrementAndGet()
           listOf(
             Result(
-              breweryName = breweryName,
+              breweryName = shortName,
               rawName = name,
               url = url,
               item = work(doc)
@@ -108,7 +108,7 @@ class ScraperAdapter(
 
   private fun Job.suffix() = if (name != null) " [${name}]" else ""
 
-  private fun String.prefixed() = "[$breweryName] ${this}"
+  private fun String.prefixed() = "[$shortName] ${this}"
 
   companion object {
     private const val errorClause = "Error while scraping"

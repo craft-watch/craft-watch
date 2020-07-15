@@ -1,6 +1,5 @@
 package watch.craft.scrapers
 
-import watch.craft.Brewery
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -10,14 +9,6 @@ import watch.craft.utils.*
 import java.net.URI
 
 class PressureDropScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Pressure Drop",
-    name = "Pressure Drop Brewing",
-    location = "Tottenham, London",
-    websiteUrl = URI("https://pressuredropbrewing.co.uk/"),
-    twitterHandle = "PressureDropBrw"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectMultipleFrom(".product-grid-item")

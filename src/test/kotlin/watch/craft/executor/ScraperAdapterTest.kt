@@ -214,8 +214,8 @@ class ScraperAdapterTest {
     retriever,
     object : Scraper {
       override val jobs = jobs
-      override val brewery = mock<Brewery> { on { shortName } doReturn BREWERY_NAME }
-    }
+    },
+    BREWERY_NAME
   )
 
   companion object {

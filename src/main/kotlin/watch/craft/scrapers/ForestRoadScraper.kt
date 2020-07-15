@@ -1,6 +1,5 @@
 package watch.craft.scrapers
 
-import watch.craft.Brewery
 import watch.craft.Format.*
 import watch.craft.Offer
 import watch.craft.Scraper
@@ -13,14 +12,6 @@ import kotlin.math.max
 import kotlin.text.RegexOption.IGNORE_CASE
 
 class ForestRoadScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Forest Road",
-    name = "Forest Road Brewing Co",
-    location = "Hackney, London",
-    websiteUrl = URI("https://www.forestroad.co.uk/"),
-    twitterHandle = "ForestRoadBrew"
-  )
-
   override val jobs = forRootUrls(*ROOT_URLS) { root ->
     root
       .selectMultipleFrom(".Main--products-list .ProductList-item")

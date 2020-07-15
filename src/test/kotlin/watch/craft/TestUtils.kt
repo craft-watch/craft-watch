@@ -10,8 +10,9 @@ private const val GOLDEN_DATE = "2020-07-10"
 
 fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE) = runBlocking {
   ScraperAdapter(
-    Setup(dateString).createRetriever(scraper.brewery.shortName),
-    scraper
+    Setup(dateString).createRetriever("TEST"),
+    scraper,
+    "TEST"
   ).execute().entries.map { it.item }
 }
 

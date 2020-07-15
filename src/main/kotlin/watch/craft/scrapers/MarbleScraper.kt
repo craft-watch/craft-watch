@@ -1,8 +1,6 @@
 package watch.craft.scrapers
 
 import org.jsoup.nodes.Document
-import watch.craft.Brewery
-import watch.craft.Format
 import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
@@ -13,14 +11,6 @@ import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
 class MarbleScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Marble",
-    name = "Marble Beers",
-    location = "Salford, Greater Manchester",
-    websiteUrl = URI("https://marblebeers.com/"),
-    twitterHandle = "marblebrewers"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectMultipleFrom(".product")

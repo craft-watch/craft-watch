@@ -1,6 +1,5 @@
 package watch.craft.scrapers
 
-import watch.craft.Brewery
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -9,14 +8,6 @@ import watch.craft.utils.*
 import java.net.URI
 
 class OrbitScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Orbit",
-    name = "Orbit Beers",
-    location = "Walworth, London",
-    websiteUrl = URI("https://www.orbitbeers.com/"),
-    twitterHandle = "OrbitBeers"
-  )
-
   override val jobs = forPaginatedRootUrl(ROOT_URL) { root ->
     root
       .selectMultipleFrom("#Collection .grid__item")

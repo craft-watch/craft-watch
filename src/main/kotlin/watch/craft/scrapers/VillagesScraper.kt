@@ -1,7 +1,6 @@
 package watch.craft.scrapers
 
 import org.jsoup.nodes.Document
-import watch.craft.Brewery
 import watch.craft.Format.CAN
 import watch.craft.Offer
 import watch.craft.Scraper
@@ -14,14 +13,6 @@ import watch.craft.utils.*
 import java.net.URI
 
 class VillagesScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Villages",
-    name = "Villages Brewery",
-    location = "Deptford, London",
-    websiteUrl = URI("https://villagesbrewery.com/"),
-    twitterHandle = "VillagesBrewery"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .shopifyItems()

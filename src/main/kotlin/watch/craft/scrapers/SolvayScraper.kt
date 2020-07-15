@@ -1,7 +1,5 @@
 package watch.craft.scrapers
 
-import watch.craft.Brewery
-import watch.craft.Format
 import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
@@ -11,14 +9,6 @@ import watch.craft.utils.*
 import java.net.URI
 
 class SolvayScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Solvay Society",
-    name = "Solvay Society",
-    location = "Leytonstone, London",
-    websiteUrl = URI("https://www.solvaysociety.com/"),
-    twitterHandle = "SolvaySociety"
-  )
-
   override val jobs = forRootUrls(*ROOT_URLS) { root ->
     root
       .selectMultipleFrom(".content .grid-item")

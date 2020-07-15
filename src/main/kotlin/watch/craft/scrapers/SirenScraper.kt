@@ -1,21 +1,15 @@
 package watch.craft.scrapers
 
-import watch.craft.*
 import watch.craft.Format.KEG
+import watch.craft.Offer
+import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
+import watch.craft.SkipItemException
 import watch.craft.utils.*
 import java.net.URI
 
 class SirenScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Siren Craft",
-    name = "Siren Craft Brew",
-    location = "Finchampstead, Berkshire",
-    websiteUrl = URI("https://www.sirencraftbrew.com/"),
-    twitterHandle = "SirenCraftBrew"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectMultipleFrom(".itemsBrowse .itemWrap")
