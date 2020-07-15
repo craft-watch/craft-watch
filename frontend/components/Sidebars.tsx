@@ -20,7 +20,7 @@ const Sidebars = (props: Props): JSX.Element => {
     <>
       <div className="sidebar right">
         <nav>
-          <h2 className="hide-medium">Explore ...</h2>
+          <h2 className="hide-medium">Explore</h2>
           <ul>
             <li>
               <Link href="/">
@@ -53,7 +53,7 @@ const Sidebars = (props: Props): JSX.Element => {
             <li className="show-medium"><TwitterLink /></li>
             <li className="show-medium"><GitHubLink /></li>
             <li className="hide-medium">
-              <b>Just added ...</b>
+              <b>Just added</b>
               <ul>
                 {
                   _.map(_.filter(props.breweries, b => b.new), b => (

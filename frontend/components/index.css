@@ -349,6 +349,11 @@ nav li {
 .sidebar .contact {
   font-size: small;
   margin: 3px 0;
+
+  /* Make it overflow with ellipsis */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 /* ----------------------
