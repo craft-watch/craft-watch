@@ -57,6 +57,16 @@ val SCRAPERS = listOf(
     )
   ),
   entry(
+    CraftyScraper(),
+    Brewery(
+      shortName = "Crafty Brewing",
+      name = "Crafty Brewing Co",
+      location = "Godalming, Surrey",
+      websiteUrl = URI("https://www.craftybrewing.co.uk/"),
+      twitterHandle = "craftybrewing"
+    )
+  ),
+  entry(
     DeyaScraper(),
     Brewery(
       shortName = "DEYA",
