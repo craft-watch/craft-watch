@@ -605,7 +605,7 @@ nav li {
     font-size: x-small;
   }
 
-  .brewery {
+  .brewery, .brewery-info {
     font-size: smaller;
   }
 

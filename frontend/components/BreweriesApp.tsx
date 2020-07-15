@@ -5,6 +5,9 @@ import SortableTable, { Column, Section } from "./SortableTable";
 import { toSafePathPart } from "../utils/stuff";
 import Link from "next/link";
 import FavouriteIcon from "./FavouriteIcon";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 interface Props {
   inventory: Inventory;
@@ -34,10 +37,20 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
           />
           <Column
             name="Location"
+            className="brewery-info"
             render={(brewery: Brewery) => <LocationInfo brewery={brewery} />}
           />
           <Column
+            className="brewery-info"
+            render={(brewery: Brewery) => <WebsiteInfo brewery={brewery} />}
+          />
+          <Column
+            className="brewery-info"
+            render={(brewery: Brewery) => <TwitterInfo brewery={brewery} />}
+          />
+          <Column
             name="Items"
+            className="brewery-info"
             render={(brewery: Brewery) => <ItemsInfo count={counts[brewery.shortName]} />}
           />
         </SortableTable>
@@ -45,6 +58,22 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
     </>
   );
 };
+
+const WebsiteInfo = ({ brewery }: CellProps) => (
+  <>
+    <a href={brewery.websiteUrl}><FontAwesomeIcon icon={faLink} /></a>
+  </>
+);
+
+const TwitterInfo = ({ brewery }: CellProps) => (
+  <>
+    {
+      (brewery.twitterHandle !== undefined) && (
+        <a href={`https://twitter.com/${brewery.twitterHandle}`}><FontAwesomeIcon icon={faTwitter} /></a>
+      )
+    }
+  </>
+);
 
 const BreweryInfo = ({ brewery }: CellProps) => (
   <>
