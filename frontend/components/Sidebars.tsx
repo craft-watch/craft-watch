@@ -83,6 +83,9 @@ const Sidebars = (props: Props): JSX.Element => {
             <TwitterLink />
             <GitHubLink />
           </div>
+          <div className="copyright">
+            Craft Watch is brewed in Crofton Park.
+          </div>
         </address>
       </div>
     </>
