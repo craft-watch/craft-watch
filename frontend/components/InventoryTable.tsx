@@ -2,7 +2,7 @@ import _ from "underscore";
 import React from "react";
 import Link from "next/link";
 import { Item, Offer, Format } from "../utils/model";
-import SortableTable, { Column, Section } from "./SortableTable";
+import SortableTable, { Column, Section, CellProps } from "./SortableTable";
 import { toSafePathPart, headlineOffer } from "../utils/stuff";
 import { OUT_OF_STOCK, MINIKEG, MIXED_CASE } from "../utils/strings";
 import { splitToParagraphs } from "../utils/reactUtils";
@@ -12,68 +12,41 @@ interface Props {
   categories: Array<string>;
 }
 
-interface CellProps {
-  item: Item;
-}
-
 const InventoryTable: React.FC<Props> = (props) => (
   <SortableTable sections={partitionItems(props.items, props.categories)}>
-    <Column
-      name="Brewery"
-      className="brewery"
-      render={(item: Item) => <BreweryInfo item={item} />}
-      selector={item => item.brewery}
-    />
-    <Column
-      className="thumbnail"
-      render={(item: Item) => <Thumbnail item={item} />}
-    />
-    <Column
-      name="Name"
-      className="name"
-      render={(item: Item) => <NameInfo item={item} />}
-      selector={item => item.name}
-    />
-    <Column
-      name="ABV"
-      className="hide-tiny"
-      render={(item: Item) => <AbvInfo item={item} />}
-      selector={item => item.abv}
-    />
-    <Column
-      name="Price"
-      className="price"
-      render={(item: Item) => <PriceInfo item={item} />}
-      selector={item => perItemPrice(headlineOffer(item))}
-    />
+    <Column render={BreweryInfo} name="Brewery" className="brewery" selector={item => item.brewery} />
+    <Column render={Thumbnail} className="thumbnail" />
+    <Column render={NameInfo} name="Name" className="name" selector={item => item.name} />
+    <Column render={AbvInfo} name="ABV" className="hide-tiny" selector={item => item.abv} />
+    <Column render={PriceInfo} name="Price" className="price" selector={item => perItemPrice(headlineOffer(item))} />
   </SortableTable>
 );
 
-const BreweryInfo = ({ item }: CellProps) => (
-  <Link href={`/${toSafePathPart(item.brewery.shortName)}`}>
-    <a>{item.brewery.shortName}</a>
+const BreweryInfo = ({ datum }: CellProps<Item>) => (
+  <Link href={`/${toSafePathPart(datum.brewery.shortName)}`}>
+    <a>{datum.brewery.shortName}</a>
   </Link>
 );
 
-const Thumbnail = ({ item }: CellProps) => (
-  <a href={item.url}>
-    <img alt="" src={item.thumbnailUrl} width="100px" height="100px" />
-    {item.available || <div className="sold-out">{OUT_OF_STOCK}</div>}
+const Thumbnail = ({ datum }: CellProps<Item>) => (
+  <a href={datum.url}>
+    <img alt="" src={datum.thumbnailUrl} width="100px" height="100px" />
+    {datum.available || <div className="sold-out">{OUT_OF_STOCK}</div>}
   </a>
 );
 
-const NameInfo = ({ item }: CellProps) => {
-  const newItem = item.new && !item.brewery.new;
-  const justAdded = item.new && item.brewery.new;
-  const keg = headlineOffer(item).format === Format.Keg;
-  const kegAvailable = !keg && _.any(_.rest(item.offers), offer => offer.format === Format.Keg);
-  const mixed = item.mixed;
+const NameInfo = ({ datum }: CellProps<Item>) => {
+  const newItem = datum.new && !datum.brewery.new;
+  const justAdded = datum.new && datum.brewery.new;
+  const keg = headlineOffer(datum).format === Format.Keg;
+  const kegAvailable = !keg && _.any(_.rest(datum.offers), offer => offer.format === Format.Keg);
+  const mixed = datum.mixed;
 
   return (
     <div className="tooltip">
-      <a className="item-link" href={item.url}>{item.name}</a>
+      <a className="item-link" href={datum.url}>{datum.name}</a>
       <p className="summary">
-        {item.summary}
+        {datum.summary}
       </p>
       <p className="summary">
         {newItem && <span className="pill new">NEW !!!</span>}
@@ -82,26 +55,26 @@ const NameInfo = ({ item }: CellProps) => {
         {kegAvailable && <span className="pill keg">Minikeg available</span>}
         {mixed && <span className="pill mixed">{MIXED_CASE}</span>}
       </p>
-      {(item.desc !== undefined) && <TooltipBody item={item} />}
+      {(datum.desc !== undefined) && <TooltipBody datum={datum} />}
     </div>
   );
 };
 
-const AbvInfo = ({ item }: CellProps) => (
+const AbvInfo = ({ datum }: CellProps<Item>) => (
   <>
-    {(item.abv !== undefined) ? `${item.abv.toFixed(1)}%` : "?"}
+    {(datum.abv !== undefined) ? `${datum.abv.toFixed(1)}%` : "?"}
   </>
 );
 
-const PriceInfo = ({ item }: CellProps) => (
+const PriceInfo = ({ datum }: CellProps<Item>) => (
   <>
-    <OfferInfo offer={headlineOffer(item)} />
+    <OfferInfo offer={headlineOffer(datum)} />
     {
-      (_.size(item.offers) > 1) && (
+      (_.size(datum.offers) > 1) && (
         <details>
-          <summary>{_.size(item.offers) - 1} more</summary>
+          <summary>{_.size(datum.offers) - 1} more</summary>
           {
-            _.map(_.rest(item.offers), (offer, idx) => <OfferInfo key={idx} offer={offer} />)
+            _.map(_.rest(datum.offers), (offer, idx) => <OfferInfo key={idx} offer={offer} />)
           }
         </details>
       )
@@ -125,10 +98,10 @@ const OfferInfo = ({ offer }: { offer: Offer }) => {
 };
 
 // These are positioned all wrong on mobile, so disable when things get small
-const TooltipBody = ({ item }: CellProps) => (
+const TooltipBody = ({ datum }: CellProps<Item>) => (
   <span className="tooltip-text hide-small" style={{ display: "hidden" }}>
-    {(item.desc !== undefined) && splitToParagraphs(item.desc)}
-    <div className="disclaimer">© {item.brewery.shortName}</div>
+    {(datum.desc !== undefined) && splitToParagraphs(datum.desc)}
+    <div className="disclaimer">© {datum.brewery.shortName}</div>
   </span>
 );
 

@@ -1,13 +1,15 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useState, ComponentType } from "react";
 import _ from "underscore";
-
-export type Renderer<T> = (datum: T) => JSX.Element | string | null;
 
 interface ColumnProps<T> {
   name?: JSX.Element | string;
   className?: string;
-  render: Renderer<T>;
+  render: ComponentType<CellProps<T>>;
   selector?: (datum: T) => any; // eslint-disable-line @typescript-eslint/no-explicit-any
+}
+
+export interface CellProps<T> {
+  datum: T;
 }
 
 export interface Section<T> {
@@ -82,7 +84,9 @@ const SortableTable = <T extends unknown>(props: Props<T>): JSX.Element => {
                   <tr key={idx}>
                     {
                       columns.map((col, idx) => (
-                        <td key={idx} className={col.props.className}>{col.props.render(datum)}</td>
+                        <td key={idx} className={col.props.className}>
+                          <col.props.render datum={datum} />
+                        </td>
                       ))
                     }
                   </tr>

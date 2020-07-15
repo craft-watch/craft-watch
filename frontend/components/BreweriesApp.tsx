@@ -1,7 +1,7 @@
 import React from "react";
 import _ from "underscore";
 import { Inventory, Brewery } from "../utils/model";
-import SortableTable, { Column, Section } from "./SortableTable";
+import SortableTable, { Column, Section, CellProps } from "./SortableTable";
 import { toSafePathPart } from "../utils/stuff";
 import Link from "next/link";
 import FavouriteIcon from "./FavouriteIcon";
@@ -13,12 +13,50 @@ interface Props {
   inventory: Inventory;
 }
 
-interface CellProps {
-  brewery: Brewery;
-}
-
 const BreweriesApp = ({ inventory }: Props): JSX.Element => {
   const counts = _.countBy(inventory.items, item => item.brewery.shortName);
+
+  const BreweryInfo = ({ datum }: CellProps<Brewery>) => (
+    <>
+      <Link href={`/${toSafePathPart(datum.shortName)}`}>
+        <a>{datum.shortName}</a>
+      </Link>
+    </>
+  );
+
+  const LocationInfo = ({ datum }: CellProps<Brewery>) => (
+    <>
+      {datum.location}
+    </>
+  );
+
+  const ItemsInfo = ({ datum }: CellProps<Brewery>) => (
+    <>
+      {counts[datum.shortName]}
+    </>
+  );
+
+  const WebLink = ({ datum }: CellProps<Brewery>) => (
+    <>
+      <a href={datum.websiteUrl}><FontAwesomeIcon icon={faLink} /></a>
+    </>
+  );
+
+  const TwitterLink = ({ datum }: CellProps<Brewery>) => (
+    <>
+      {
+        (datum.twitterHandle !== undefined) && (
+          <a href={`https://twitter.com/${datum.twitterHandle}`}><FontAwesomeIcon icon={faTwitter} /></a>
+        )
+      }
+    </>
+  );
+
+  const FvouriteInfo = ({ datum }: CellProps<Brewery>) => (
+    <>
+      <FavouriteIcon breweryShortName={datum.shortName} />
+    </>
+  );
 
   return (
     <>
@@ -28,72 +66,17 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
 
       <main>
         <SortableTable sections={partition(inventory.breweries)}>
-          <Column
-            render={(brewery: Brewery) => <FavouriteIcon breweryShortName={brewery.shortName} />}
-          />
-          <Column
-            name="Brewery"
-            render={(brewery: Brewery) => <BreweryInfo brewery={brewery} />}
-          />
-          <Column
-            name="Location"
-            className="brewery-info"
-            render={(brewery: Brewery) => <LocationInfo brewery={brewery} />}
-          />
-          <Column
-            className="brewery-info"
-            render={(brewery: Brewery) => <WebsiteInfo brewery={brewery} />}
-          />
-          <Column
-            className="brewery-info"
-            render={(brewery: Brewery) => <TwitterInfo brewery={brewery} />}
-          />
-          <Column
-            name="Items"
-            className="brewery-info"
-            render={(brewery: Brewery) => <ItemsInfo count={counts[brewery.shortName]} />}
-          />
+          <Column render={FvouriteInfo} />
+          <Column render={BreweryInfo} name="Brewery" />
+          <Column render={LocationInfo} name="Location" className="brewery-info" />
+          <Column render={WebLink} className="brewery-info" />
+          <Column render={TwitterLink} className="brewery-info" />
+          <Column render={ItemsInfo} name="Items" className="brewery-info" />
         </SortableTable>
       </main>
     </>
   );
 };
-
-const WebsiteInfo = ({ brewery }: CellProps) => (
-  <>
-    <a href={brewery.websiteUrl}><FontAwesomeIcon icon={faLink} /></a>
-  </>
-);
-
-const TwitterInfo = ({ brewery }: CellProps) => (
-  <>
-    {
-      (brewery.twitterHandle !== undefined) && (
-        <a href={`https://twitter.com/${brewery.twitterHandle}`}><FontAwesomeIcon icon={faTwitter} /></a>
-      )
-    }
-  </>
-);
-
-const BreweryInfo = ({ brewery }: CellProps) => (
-  <>
-    <Link href={`/${toSafePathPart(brewery.shortName)}`}>
-      <a>{brewery.shortName}</a>
-    </Link>
-  </>
-);
-
-const LocationInfo = ({ brewery }: CellProps) => (
-  <>
-    {brewery.location}
-  </>
-);
-
-const ItemsInfo = ({ count }: { count: number }) => (
-  <>
-    {count}
-  </>
-);
 
 const partition = (breweries: Array<Brewery>): Array<Section<Brewery>> => {
   const partitioned = _.groupBy(breweries, b => b.name[0]);
