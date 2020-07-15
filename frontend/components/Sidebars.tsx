@@ -2,10 +2,10 @@ import React from "react";
 import Link from "next/link";
 import { Brewery } from "../utils/model";
 import _ from "underscore";
-import { toSafePathPart } from "../utils/stuff";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faHeart, faQuestion, faSun, faListAlt } from "@fortawesome/free-solid-svg-icons";
+import { BreweryLink } from "./BreweryLink";
 
 
 interface Props {
@@ -58,9 +58,9 @@ const Sidebars = (props: Props): JSX.Element => {
                 {
                   _.map(_.filter(props.breweries, b => b.new), b => (
                     <li key={b.shortName}>
-                      <Link href={`/${toSafePathPart(b.shortName)}`}>
-                        <a>{b.shortName}</a>
-                      </Link>
+                      <BreweryLink shortName={b.shortName}>
+                        {b.shortName}
+                      </BreweryLink>
                     </li>
                   ))
                 }
