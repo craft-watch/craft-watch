@@ -1,6 +1,5 @@
 package watch.craft.scrapers
 
-import watch.craft.Brewery
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -9,14 +8,6 @@ import watch.craft.utils.*
 import java.net.URI
 
 class InnisAndGunnScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Innis & Gunn",
-    name = "Innis & Gunn Brewing Co",
-    location = "Edinburgh",
-    websiteUrl = URI("https://www.innisandgunn.com/"),
-    twitterHandle = "innisandgunn"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectMultipleFrom(".itemsBrowse .itemWrap")

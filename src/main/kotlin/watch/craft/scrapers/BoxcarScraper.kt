@@ -1,6 +1,5 @@
 package watch.craft.scrapers
 
-import watch.craft.Brewery
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -11,14 +10,6 @@ import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
 class BoxcarScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Boxcar",
-    name = "Boxcar Brewery",
-    location = "Bethnal Green, London",
-    websiteUrl = URI("https://boxcarbrewery.co.uk/"),
-    twitterHandle = "BoxcarBrwCo"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .shopifyItems()

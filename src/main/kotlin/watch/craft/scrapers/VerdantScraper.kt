@@ -1,6 +1,5 @@
 package watch.craft.scrapers
 
-import watch.craft.Brewery
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -9,14 +8,6 @@ import watch.craft.utils.*
 import java.net.URI
 
 class VerdantScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Verdant",
-    name = "Verdant Brewing Co",
-    location = "Penryn, Cornwall",
-    websiteUrl = URI("https://verdantbrewing.co/"),
-    twitterHandle = "VerdantBrew"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectMultipleFrom(".collection-products .product")

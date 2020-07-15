@@ -1,6 +1,5 @@
 package watch.craft.scrapers
 
-import watch.craft.Brewery
 import watch.craft.Format.BOTTLE
 import watch.craft.Format.CAN
 import watch.craft.Offer
@@ -12,14 +11,6 @@ import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
 class DeyaScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "DEYA",
-    name = "DEYA Brewing Co",
-    location = "Cheltenham, Gloucestershire",
-    websiteUrl = URI("https://deyabrewing.com/"),
-    twitterHandle = "deyabrewery"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectMultipleFrom(".products .product")

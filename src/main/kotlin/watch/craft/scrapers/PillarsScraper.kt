@@ -1,6 +1,5 @@
 package watch.craft.scrapers
 
-import watch.craft.Brewery
 import watch.craft.Format
 import watch.craft.Format.KEG
 import watch.craft.Offer
@@ -12,14 +11,6 @@ import watch.craft.utils.*
 import java.net.URI
 
 class PillarsScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Pillars",
-    name = "Pillars Brewery",
-    location = "Walthamstow, London",
-    websiteUrl = URI("https://www.pillarsbrewery.com/"),
-    twitterHandle = "PillarsBrewery"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .shopifyItems()

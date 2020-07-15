@@ -1,20 +1,15 @@
 package watch.craft.scrapers
 
-import watch.craft.*
+import watch.craft.Format
+import watch.craft.Offer
+import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
+import watch.craft.SkipItemException
 import watch.craft.utils.*
 import java.net.URI
 
 class FivePointsScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Five Points",
-    name = "The Five Points Brewing Co",
-    location = "Hackney, London",
-    websiteUrl = URI("https://fivepointsbrewing.co.uk/"),
-    twitterHandle = "FivePointsBrew"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectMultipleFrom("#browse li .itemWrap")

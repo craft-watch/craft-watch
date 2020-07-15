@@ -1,6 +1,5 @@
 package watch.craft.scrapers
 
-import watch.craft.Brewery
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -11,14 +10,6 @@ import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
 class NorthernMonkScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Northern Monk",
-    name = "Northern Monk Brew Co",
-    location = "Holbeck, Leeds",
-    websiteUrl = URI("https://northernmonk.com/"),
-    twitterHandle = "NMBCo"
-  )
-
   override val jobs = forPaginatedRootUrl(ROOT_URL) { root ->
     root
       .selectMultipleFrom(".card")

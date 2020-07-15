@@ -1,22 +1,16 @@
 package watch.craft.scrapers
 
-import watch.craft.*
 import watch.craft.Format.KEG
+import watch.craft.Offer
+import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
+import watch.craft.SkipItemException
 import watch.craft.utils.*
 import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
 class PadstowScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Padstow",
-    name = "Padstow Brewing Co",
-    location = "Padstow, Cornwall",
-    websiteUrl = URI("https://www.padstowbrewing.co.uk/"),
-    twitterHandle = "PadstowBrewing"
-  )
-
   override val jobs = forRootUrls(*ROOT_URLS) { root ->
     root
       .selectMultipleFrom(".beer-container")

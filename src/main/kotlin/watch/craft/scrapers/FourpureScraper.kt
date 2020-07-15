@@ -2,22 +2,17 @@ package watch.craft.scrapers
 
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
-import watch.craft.*
+import watch.craft.Format
 import watch.craft.Format.KEG
+import watch.craft.Offer
+import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
+import watch.craft.SkipItemException
 import watch.craft.utils.*
 import java.net.URI
 
 class FourpureScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Fourpure",
-    name = "Fourpure Brewing Co",
-    location = "Bermondesy, London",
-    websiteUrl = URI("https://www.fourpure.com/"),
-    twitterHandle = "fourpurebrewing"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectMultipleFrom(".itemsBrowse li")

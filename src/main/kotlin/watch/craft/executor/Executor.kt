@@ -40,12 +40,12 @@ class Executor(
 
     private fun executeAllInParallel() = runBlocking {
       scrapers
-        .map { async { it.scraper.execute() } }
+        .map { async { it.execute() } }
         .map { it.await() }
     }
 
-    private suspend fun Scraper.execute() = createRetriever(brewery.shortName).use {
-      ScraperAdapter(it, this).execute()
+    private suspend fun ScraperEntry.execute() = createRetriever(brewery.shortName).use {
+      ScraperAdapter(it, scraper, brewery.shortName).execute()
     }
 
     private fun StatsWith<Result>.postProcessItems(): StatsWith<Item> {

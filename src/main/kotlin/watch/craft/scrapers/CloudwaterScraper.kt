@@ -1,6 +1,5 @@
 package watch.craft.scrapers
 
-import watch.craft.Brewery
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -10,14 +9,6 @@ import java.net.URI
 import kotlin.math.max
 
 class CloudwaterScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Cloudwater",
-    name = "Cloudwater Brew Co",
-    location = "Manchester",
-    websiteUrl = URI("https://cloudwaterbrew.co/"),
-    twitterHandle = "cloudwaterbrew"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectMultipleFrom(".product-collection .grid-item")

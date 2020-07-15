@@ -87,7 +87,6 @@ class ExecutorTest {
   private fun scraper(jobs: List<Job>) = listOf(
     ScraperEntry(
       scraper = object : Scraper {
-        override val brewery = mock<Brewery> { on { shortName } doReturn THIS_BREWERY }
         override val jobs = jobs
       },
       brewery = mock { on { shortName } doReturn THIS_BREWERY }

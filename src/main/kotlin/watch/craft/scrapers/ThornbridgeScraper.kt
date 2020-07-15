@@ -1,6 +1,5 @@
 package watch.craft.scrapers
 
-import watch.craft.Brewery
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -10,14 +9,6 @@ import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
 class ThornbridgeScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Thornbridge",
-    name = "Thornbridge Brewery",
-    location = "Bakewell, Derbyshire",
-    websiteUrl = URI("https://thornbridgebrewery.co.uk/"),
-    twitterHandle = "thornbridge"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectMultipleFrom(".grid-uniform > .grid-item")

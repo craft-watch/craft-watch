@@ -1,7 +1,6 @@
 package watch.craft.scrapers
 
 import org.jsoup.nodes.Element
-import watch.craft.Brewery
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -10,14 +9,6 @@ import watch.craft.utils.*
 import java.net.URI
 
 class WiperAndTrueScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Wiper and True",
-    name = "Wiper and True",
-    location = "Bristol",
-    websiteUrl = URI("https://wiperandtrue.com/"),
-    twitterHandle = "WiperAndTrue"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectMultipleFrom("#productList a.product")

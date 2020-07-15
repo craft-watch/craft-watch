@@ -9,7 +9,6 @@ data class ScraperEntry(
 )
 
 interface Scraper {
-  val brewery: Brewery
   val jobs: List<Job>
 
   sealed class Job {

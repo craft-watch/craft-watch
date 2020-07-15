@@ -1,6 +1,5 @@
 package watch.craft.scrapers
 
-import watch.craft.Brewery
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -13,14 +12,6 @@ import watch.craft.utils.textFrom
 import java.net.URI
 
 class UnityScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Unity",
-    name = "Unity Brewing Co",
-    location = "Southampton",
-    websiteUrl = URI("https://unitybrewingco.com/"),
-    twitterHandle = "unitybrewingco"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .shopifyItems()

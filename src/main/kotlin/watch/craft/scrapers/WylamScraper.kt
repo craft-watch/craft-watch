@@ -1,6 +1,5 @@
 package watch.craft.scrapers
 
-import watch.craft.Brewery
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -12,14 +11,6 @@ import watch.craft.utils.*
 import java.net.URI
 
 class WylamScraper : Scraper {
-  override val brewery = Brewery(
-    shortName = "Wylam",
-    name = "Wylam Brewery",
-    location = "Newcastle upon Tyne",
-    websiteUrl = URI("https://www.wylambrewery.co.uk/"),
-    twitterHandle = "wylambrewery"
-  )
-
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
       .selectMultipleFrom(".ec-grid .grid-product")
