@@ -3,6 +3,11 @@ package watch.craft
 import org.jsoup.nodes.Document
 import java.net.URI
 
+data class ScraperEntry(
+  val scraper: Scraper,
+  val brewery: Brewery
+)
+
 interface Scraper {
   val brewery: Brewery
   val jobs: List<Job>

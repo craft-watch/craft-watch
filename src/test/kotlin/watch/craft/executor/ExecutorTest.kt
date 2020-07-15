@@ -4,10 +4,7 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import watch.craft.Brewery
-import watch.craft.Item
-import watch.craft.Offer
-import watch.craft.Scraper
+import watch.craft.*
 import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
@@ -31,7 +28,7 @@ class ExecutorTest {
 
   @Test
   fun `scrapes products`() {
-    val scraper = MyScraper(jobs = listOf(
+    val scraper = scraper(jobs = listOf(
       Leaf(name = "A", url = productUrl("a")) { product("Foo") },
       Leaf(name = "B", url = productUrl("b")) { product("Bar") }
     ))
@@ -69,13 +66,13 @@ class ExecutorTest {
           )
         }
       ),
-      executor.scrape(listOf(scraper)).items
+      executor.scrape(scraper).items
     )
   }
 
   @Test
   fun `continues after validation failure`() {
-    val scraper = MyScraper(jobs = listOf(
+    val scraper = scraper(jobs = listOf(
       Leaf(name = "A", url = productUrl("a")) { product("Foo") },
       Leaf(name = "B", url = productUrl("b")) { product("Foo").copy(name = "") },  // Invalid name
       Leaf(name = "C", url = productUrl("c")) { product("Bar") }
@@ -83,17 +80,22 @@ class ExecutorTest {
 
     assertEquals(
       listOf("Bar", "Foo"),
-      executor.scrape(listOf(scraper)).items.map { it.name }
+      executor.scrape(scraper).items.map { it.name }
     )
   }
 
-  private class MyScraper(val name: String = THIS_BREWERY, override val jobs: List<Job>) : Scraper {
-    override val brewery = mock<Brewery> { on { shortName } doReturn name }
-  }
+  private fun scraper(jobs: List<Job>) = listOf(
+    ScraperEntry(
+      scraper = object : Scraper {
+        override val brewery = mock<Brewery> { on { shortName } doReturn THIS_BREWERY }
+        override val jobs = jobs
+      },
+      brewery = mock { on { shortName } doReturn THIS_BREWERY }
+    )
+  )
 
   companion object {
     private const val THIS_BREWERY = "Foo Bar"
-    private const val THAT_BREWERY = "XYZ Brew"
     private const val DECENT_PRICE = 2.46
     private val NOW = Instant.EPOCH
 

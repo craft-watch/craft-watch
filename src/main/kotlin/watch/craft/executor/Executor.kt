@@ -12,9 +12,9 @@ class Executor(
   private val createRetriever: (name: String) -> Retriever,
   private val clock: Clock = Clock.systemUTC()
 ) {
-  fun scrape(scrapers: Collection<Scraper>) = Context(scrapers).scrape()
+  fun scrape(scrapers: Collection<ScraperEntry>) = Context(scrapers).scrape()
 
-  private inner class Context(private val scrapers: Collection<Scraper>) {
+  private inner class Context(private val scrapers: Collection<ScraperEntry>) {
     private val now = clock.instant()
     private val categoriser = Categoriser(CATEGORY_KEYWORDS)
     private val newalyser = Newalyser(results, now)
@@ -40,7 +40,7 @@ class Executor(
 
     private fun executeAllInParallel() = runBlocking {
       scrapers
-        .map { async { it.execute() } }
+        .map { async { it.scraper.execute() } }
         .map { it.await() }
     }
 

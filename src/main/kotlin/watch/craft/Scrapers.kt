@@ -36,4 +36,4 @@ val SCRAPERS = listOf(
   WanderScraper(),
   WiperAndTrueScraper(),
   WylamScraper()
-)
+).map { ScraperEntry(it, it.brewery) }    // TODO
