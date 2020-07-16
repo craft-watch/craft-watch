@@ -11,12 +11,12 @@ import java.net.URI
 
 class VerdantScraperTest {
   companion object {
-    private val ITEMS = executeScraper(VerdantScraper(), dateString = "2020-07-12")
+    private val ITEMS = executeScraper(VerdantScraper(), dateString = "2020-07-16")
   }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(4, ITEMS.size)
+    assertEquals(5, ITEMS.size)
   }
 
   @Test
@@ -29,7 +29,7 @@ class VerdantScraperTest {
         offers = setOf(
           Offer(quantity = 6, totalPrice = 21.00, sizeMl = 440)
         ),
-        available = true,
+        available = false,
         thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/1960/0337/products/Some50-Product2_100x.jpg?v=1594125772")
       ),
       ITEMS.byName("Some Fifty Pale Ale").noDesc()
@@ -44,6 +44,11 @@ class VerdantScraperTest {
   @Test
   fun `identifies mixed packs`() {
     assertFalse(ITEMS.none { it.mixed })
+  }
+
+  @Test
+  fun `ignores out-of-stock`() {
+    assertFalse(ITEMS.byName("Pilsner Mixed").available)
   }
 
   @Test
