@@ -12,12 +12,12 @@ import java.net.URI
 
 class UnityScraperTest {
   companion object {
-    private val ITEMS = executeScraper(UnityScraper())
+    private val ITEMS = executeScraper(UnityScraper(), dateString = "2020-07-17")
   }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(5, ITEMS.size)
+    assertEquals(6, ITEMS.size)
   }
 
   @Test
@@ -39,6 +39,11 @@ class UnityScraperTest {
   @Test
   fun `extracts description`() {
     assertNotNull(ITEMS.byName("Conflux Pale Ale").desc)
+  }
+
+  @Test
+  fun `doesn't select crazy ABV`() {
+    assertEquals(10.0, ITEMS.byName("Black Is Beautiful Imperial Stout").abv)   // Not "100%" which also appears in the text
   }
 }
 
