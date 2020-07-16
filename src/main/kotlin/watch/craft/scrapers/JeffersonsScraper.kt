@@ -27,7 +27,7 @@ class JeffersonsScraper : Scraper {
             available = true,
             offers = setOf(
               Offer(
-                quantity = desc.extract("(\\d+)\\s*x").intFrom(1),
+                quantity = desc.quantityFrom(),
                 totalPrice = el.priceFrom(".product-price__price"),
                 sizeMl = desc.sizeMlFrom()
               )

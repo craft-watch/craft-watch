@@ -27,7 +27,7 @@ class BeakScraper : Scraper {
             available = !a.text().containsMatch("sold out"),
             offers = setOf(
               Offer(
-                quantity = allTheText.maybe { extract(NUM_ITEMS_REGEX).intFrom(1) } ?: 1,
+                quantity = allTheText.maybe { quantityFrom() } ?: 1,
                 totalPrice = a.priceFrom(".price"),
                 sizeMl = allTheText.sizeMlFrom()
               )
@@ -39,8 +39,6 @@ class BeakScraper : Scraper {
   }
 
   companion object {
-    private const val NUM_ITEMS_REGEX = "(\\d+)\\s*x"
-
     private val ROOT_URL = URI("https://beakbrewery.com/collections/beer")
   }
 }

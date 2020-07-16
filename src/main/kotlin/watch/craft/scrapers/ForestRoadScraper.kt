@@ -35,8 +35,8 @@ class ForestRoadScraper : Scraper {
             available = true,
             offers = setOf(
               Offer(
-                quantity = title.maybe { extractQuantity() }
-                  ?: max(1, descLines.mapNotNull { it.maybe { extractQuantity() } }.sum()),
+                quantity = title.maybe { quantityFrom() }
+                  ?: max(1, descLines.mapNotNull { it.maybe { quantityFrom() } }.sum()),
                 totalPrice = el.priceFrom(".product-price"),
                 sizeMl = title.maybe { sizeMlFrom() } ?: desc.maybe { sizeMlFrom() },
                 format = title.formatFrom() ?: BOTTLE
@@ -47,8 +47,6 @@ class ForestRoadScraper : Scraper {
         }
       }
   }
-
-  private fun String.extractQuantity() = extract("(\\d+)\\s*x").intFrom(1)
 
   companion object {
     private val ROOT_URLS = arrayOf(

@@ -26,7 +26,7 @@ class InnisAndGunnScraper : Scraper {
             available = true,
             offers = setOf(
               Offer(
-                quantity = volume.maybe { extractFrom(regex = "(\\d+)\\s*x").intFrom(1) } ?: 1,
+                quantity = volume.maybe { quantityFrom() } ?: 1,
                 totalPrice = el.priceFrom(".priceStandard"),
                 sizeMl = volume.sizeMlFrom()
               )

@@ -51,7 +51,7 @@ class RedWillowScraper : Scraper {
       ?: listOf(
         Offer(
           totalPrice = priceFrom(".product-price"),
-          quantity = extractFrom(".ProductItem-details-title", "(\\d+)\\s*x").intFrom(1)
+          quantity = quantityFrom(".ProductItem-details-title")
         ) // Fallback to assuming a single price
       )
 

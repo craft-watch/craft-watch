@@ -15,7 +15,6 @@ class ForestRoadScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    ITEMS.display()
     assertEquals(10, ITEMS.size)
   }
 

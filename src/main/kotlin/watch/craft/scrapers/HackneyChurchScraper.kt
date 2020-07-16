@@ -20,10 +20,10 @@ class HackneyChurchScraper : Scraper {
           val descLines = desc.split("\n")
 
           val allQuantities = descLines
-            .mapNotNull { it.maybe { extract("(\\d+)\\s*x").intFrom(1) } }
+            .mapNotNull { it.maybe { quantityFrom() } }
 
           val distinctSizes = desc.split("\n")
-            .mapNotNull { it.maybe { desc.sizeMlFrom() } }
+            .mapNotNull { it.maybe { sizeMlFrom() } }
             .distinct()
 
           ScrapedItem(

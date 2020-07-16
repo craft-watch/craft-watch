@@ -46,7 +46,7 @@ class NorthernMonkScraper : Scraper {
             available = data.available,
             offers = setOf(
               Offer(
-                quantity = rawName.maybe { extract(PACK_REGEX).intFrom(1) } ?: 1,
+                quantity = rawName.maybe { quantityFrom() } ?: 1,
                 totalPrice = data.price / 100.0,
                 sizeMl = desc.maybe { sizeMlFrom() }
               )

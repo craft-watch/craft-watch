@@ -34,7 +34,7 @@ class BrickScraper : Scraper {
             available = details.available,
             offers = setOf(
               Offer(
-                quantity = details.title.maybe { extract("(\\d+)\\s*x").intFrom(1) } ?: 1,
+                quantity = details.title.maybe { quantityFrom() } ?: 1,
                 totalPrice = details.price,
                 sizeMl = desc.maybe { sizeMlFrom() },
                 format = desc.formatFrom()

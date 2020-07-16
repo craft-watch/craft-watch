@@ -82,7 +82,7 @@ class PurityScraper : Scraper {
 
   private fun Document.extractOfferFromDesc(title: String, desc: String) = listOf(
     Offer(
-      quantity = desc.maybe { extract("(\\d+)\\s*x").intFrom(1) } ?: 1,
+      quantity = desc.maybe { quantityFrom() } ?: 1,
       totalPrice = priceFrom(".price"),
       // Hardcoded for keggy things because the size isn't always in the desc
       sizeMl = when {

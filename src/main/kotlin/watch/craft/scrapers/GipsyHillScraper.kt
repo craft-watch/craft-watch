@@ -18,7 +18,7 @@ class GipsyHillScraper : Scraper {
         Leaf(rawName, a.urlFrom()) { doc ->
           val rawSummary = doc.textFrom(".summary")
           val numCans = doc.maybe { selectMultipleFrom(".woosb-title-inner") }
-            ?.map { it.extractFrom(regex = "(\\d+) ×")[1].toInt() }?.sum()
+            ?.map { it.quantityFrom() }?.sum()
             ?: 1
           val style = rawSummary.maybe { extract("Style: (.*) ABV")[1] }
           val mixed = style in listOf("Various", "Mixed")
