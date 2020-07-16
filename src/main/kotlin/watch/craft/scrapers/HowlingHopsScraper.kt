@@ -35,11 +35,7 @@ class HowlingHopsScraper : Scraper {
             offers = setOf(
               Offer(
                 quantity = parts.numCans,
-                totalPrice = el.selectMultipleFrom(".woocommerce-Price-amount")
-                  .filterNot { it.parent().tagName() == "del" } // Avoid non-sale price
-                  .first()
-                  .ownText()
-                  .toDouble(),
+                totalPrice = el.priceFrom(":not(del) > .woocommerce-Price-amount"),
                 sizeMl = desc.sizeMlFrom()
               )
             )

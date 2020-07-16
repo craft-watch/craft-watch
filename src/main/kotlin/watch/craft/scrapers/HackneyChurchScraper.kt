@@ -31,7 +31,7 @@ class HackneyChurchScraper : Scraper {
               Offer(
                 quantity = allQuantities.sum(),
                 totalPrice = price.priceFrom(),
-                sizeMl = if (distinctSizes.size == 1) distinctSizes.first() else null
+                sizeMl = distinctSizes.singleOrNull()
               )
             ),
             thumbnailUrl = el.urlFrom("img.grid-view-item__image")
