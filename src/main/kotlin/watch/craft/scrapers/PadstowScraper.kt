@@ -31,7 +31,7 @@ class PadstowScraper : Scraper {
             .replace("mini( ?)keg".toRegex(IGNORE_CASE), "")
             .trim()
 
-          val mixed = doc.textFrom(".style .stat").contains("mixed", ignoreCase = true)
+          val mixed = doc.containsMatchFrom(".style .stat", "mixed")
 
           ScrapedItem(
             thumbnailUrl = el.urlFrom(".attachment-woocommerce_thumbnail"),
@@ -45,7 +45,7 @@ class PadstowScraper : Scraper {
               Offer(
                 quantity = rawSize.maybe { extract("(\\d+) x").intFrom(1) } ?: 1,
                 totalPrice = el.priceFrom(".woocommerce-Price-amount"),
-                format = if (rawName.contains("mini( ?)keg".toRegex(IGNORE_CASE))) KEG else null,
+                format = if (rawName.containsMatch("mini( ?)keg")) KEG else null,
                 sizeMl = if (mixed) null else rawSize.sizeMlFrom()
               )
             )

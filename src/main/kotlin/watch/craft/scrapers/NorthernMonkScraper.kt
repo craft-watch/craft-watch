@@ -20,7 +20,7 @@ class NorthernMonkScraper : Scraper {
           val desc = doc.selectFrom(".product__description")
           val abv = desc.maybe { abvFrom() }
           val mixed = desc.children()
-            .count { it.text().contains(ITEM_MULTIPLE_REGEX.toRegex(IGNORE_CASE)) } > 1
+            .count { it.text().containsMatch("\\d+\\s+x") } > 1
 
           if (abv == null && !mixed) {
             throw SkipItemException("Assume that lack of ABV for non-mixed means not a beer product")
@@ -71,6 +71,5 @@ class NorthernMonkScraper : Scraper {
     private val ROOT_URL = URI("https://northernmonkshop.com/collections/beer")
 
     private const val PACK_REGEX = "(\\d+) pack"
-    private const val ITEM_MULTIPLE_REGEX = "\\d+\\s+x"
   }
 }

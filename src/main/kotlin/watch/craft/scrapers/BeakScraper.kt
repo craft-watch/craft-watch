@@ -24,7 +24,7 @@ class BeakScraper : Scraper {
             summary = null,
             desc = desc.formattedTextFrom(),
             abv = allTheText.abvFrom(),
-            available = !a.text().contains("Sold Out", ignoreCase = true),
+            available = !a.text().containsMatch("sold out"),
             offers = setOf(
               Offer(
                 quantity = allTheText.maybe { extract(NUM_ITEMS_REGEX).intFrom(1) } ?: 1,

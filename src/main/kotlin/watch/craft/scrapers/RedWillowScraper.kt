@@ -19,7 +19,7 @@ class RedWillowScraper : Scraper {
         val rawName = el.textFrom(".ProductList-title")
 
         Leaf(rawName, el.urlFrom("a.ProductList-item-link")) { doc ->
-          if (BLACKLIST.any { rawName.contains(it, ignoreCase = true) }) {
+          if (BLACKLIST.any { rawName.containsMatch(it) }) {
             throw SkipItemException("Identified as non-beer")
           }
 
@@ -30,7 +30,7 @@ class RedWillowScraper : Scraper {
             name = rawName.extract("^[A-Za-z-'\\s]+")[0].trim().toTitleCase(),
             summary = rawName.maybe { extract("%\\s+([^\\d]+)$")[1] },  // In some cases, beer type is after the ABV
             desc = desc.ifBlank { null },
-            mixed = rawName.contains("mixed", ignoreCase = true),
+            mixed = rawName.containsMatch("mixed"),
             abv = rawName.maybe { abvFrom() },
             available = true,
             offers = doc.extractOffers().map { it.copy(sizeMl = sizeMl) }.toSet(),

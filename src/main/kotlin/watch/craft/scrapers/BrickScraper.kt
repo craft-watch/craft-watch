@@ -18,7 +18,7 @@ class BrickScraper : Scraper {
       .map { details ->
         Leaf(details.title, details.url) { doc ->
           val desc = doc.selectFrom(".product-single__description")
-          val mixed = details.title.contains("mixed", ignoreCase = true)
+          val mixed = details.title.containsMatch("mixed")
           val abv = desc.maybe { abvFrom() }
           if (!mixed && abv == null) {
             throw SkipItemException("Can't find ABV, so assuming not a beer")

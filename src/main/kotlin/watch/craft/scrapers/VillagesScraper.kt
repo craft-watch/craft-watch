@@ -46,7 +46,7 @@ class VillagesScraper : Scraper {
     val sizeMl = maybe { sizeMlFrom() }
     val product = jsonLdFrom<Product>()
 
-    return if (title.contains("mixed case", ignoreCase = true)) {
+    return if (title.containsMatch("mixed case")) {
       val parts = title.extract("^(.*?) \\((.*)\\)$")
       VariableParts(
         name = parts[1],

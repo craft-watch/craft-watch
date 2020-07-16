@@ -21,7 +21,7 @@ class PillarsScraper : Scraper {
             extractFrom(".product-single__description", "STYLE:\\s+(.+?)\\s+ABV:\\s+(\\d\\.\\d+)%")
           }  // If we don't see these fields, assume we're not looking at a beer product
 
-          val mixed = details.title.contains("mixed", ignoreCase = true)
+          val mixed = details.title.containsMatch("mixed")
 
           ScrapedItem(
             thumbnailUrl = details.thumbnailUrl,
@@ -52,11 +52,11 @@ class PillarsScraper : Scraper {
   )
 
   private fun extractTitleParts(title: String) = when {
-    title.contains("Case") -> {
+    title.containsMatch("case") -> {
       val parts = title.extract("(.*?) Case of (\\d+)")
       TitleParts(name = parts[1], numItems = parts[2].toInt())
     }
-    title.contains("Keg") -> {
+    title.containsMatch("keg") -> {
       TitleParts(
         name = title.extract("(.*?) \\d+")[1],
         sizeMl = title.sizeMlFrom(),

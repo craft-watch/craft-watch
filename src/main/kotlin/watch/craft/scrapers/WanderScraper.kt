@@ -19,7 +19,7 @@ class WanderScraper : Scraper {
           val desc = doc.selectFrom("description".hook())
           val descText = desc.text()
 
-          val mixed = name.contains("mixed", ignoreCase = true)
+          val mixed = name.containsMatch("mixed")
 
           ScrapedItem(
             name = name,

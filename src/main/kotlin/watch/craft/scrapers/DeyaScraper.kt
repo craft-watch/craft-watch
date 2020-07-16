@@ -17,7 +17,7 @@ class DeyaScraper : Scraper {
 
         Leaf(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
           val desc = doc.formattedTextFrom(".woocommerce-product-details__short-description")
-          val mixed = title.contains("mix", ignoreCase = true)
+          val mixed = title.containsMatch("mix")
 
           ScrapedItem(
             name = title.replace(" / \\d+ pack".toRegex(IGNORE_CASE), ""),

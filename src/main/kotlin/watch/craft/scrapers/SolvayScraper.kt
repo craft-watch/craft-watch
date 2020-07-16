@@ -18,7 +18,7 @@ class SolvayScraper : Scraper {
         Leaf(rawName, el.urlFrom("a.grid-item-link")) { doc ->
           val nameParts = rawName.extract("(.*?)\\s+\\|\\s+(?:(.*?)\\s+\\d)?")
           val desc = doc.selectFrom(".ProductItem-details-excerpt")
-          val mixed = rawName.contains("mix", ignoreCase = true)
+          val mixed = rawName.containsMatch("mix")
 
           ScrapedItem(
             name = nameParts[1],
@@ -31,7 +31,7 @@ class SolvayScraper : Scraper {
               Offer(
                 quantity = rawName.maybe { extract("(\\d+) pack").intFrom(1) } ?: 1,
                 totalPrice = el.priceFrom(".product-price"),
-                format = if (rawName.contains("keg", ignoreCase = true)) KEG else null,
+                format = if (rawName.containsMatch("keg")) KEG else null,
                 sizeMl = if (mixed) null else desc.sizeMlFrom()
               )
             ),

@@ -22,8 +22,8 @@ class MarbleScraper : Scraper {
           val volumeDetails = attributes.extractVolumeDetails()
 
           val style = attributes.maybe { grab("Style") }
-          val mixed = style?.contains("mixed", ignoreCase = true) ?: false
-          val keg = attributes.maybe { grab("Packaging") }?.contains("keg", ignoreCase = true) ?: false
+          val mixed = style?.containsMatch("mixed") ?: false
+          val keg = attributes.maybe { grab("Packaging") }?.containsMatch("keg") ?: false
 
           ScrapedItem(
             thumbnailUrl = el.urlFrom(".wp-post-image"),

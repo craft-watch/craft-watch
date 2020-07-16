@@ -40,7 +40,7 @@ class WiperAndTrueScraper : Scraper {
   }
 
   private fun extractVariableParts(rawName: String, desc: Element) =
-    if (rawName.contains("mixed", ignoreCase = true)) {
+    if (rawName.containsMatch("mixed")) {
       VariableParts(
         mixed = true,
         numItems = 12    // TODO - hardcoded

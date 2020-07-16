@@ -20,7 +20,7 @@ class PressureDropScraper : Scraper {
           val itemText = doc.text()
           val parts = doc.extractFrom(".product__title", "^(.*?)\\s*(-\\s*(.*?))?$")
 
-          if (parts[1].contains("box", ignoreCase = true)) {
+          if (parts[1].containsMatch("box")) {
             throw SkipItemException("Don't know how to identify number of cans for boxes")
           }
 
