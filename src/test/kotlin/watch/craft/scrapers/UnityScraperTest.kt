@@ -12,7 +12,7 @@ import java.net.URI
 
 class UnityScraperTest {
   companion object {
-    private val ITEMS = executeScraper(UnityScraper(), dateString = "2020-07-17")
+    private val ITEMS = executeScraper(UnityScraper(), dateString = "2020-07-16")
   }
 
   @Test
