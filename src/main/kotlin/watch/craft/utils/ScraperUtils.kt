@@ -227,6 +227,8 @@ private data class Token(
   val wordy: Boolean
 )
 
+fun <R : Any> String.collectFromLines(extract: (String) -> R?) = split("\n").mapNotNull(extract)
+
 fun String.toUri() = try {
   URI(this)
 } catch (e: URISyntaxException) {
