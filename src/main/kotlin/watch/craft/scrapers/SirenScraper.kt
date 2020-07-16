@@ -17,7 +17,7 @@ class SirenScraper : Scraper {
         val itemName = el.selectFrom(".itemName")
         val rawName = itemName.text()
 
-        Leaf(rawName, itemName.hrefFrom("a")) { doc ->
+        Leaf(rawName, itemName.urlFrom("a")) { doc ->
           if (rawName.contains("Mixed", ignoreCase = true)) {
             throw SkipItemException("Can't deal with mixed cases yet")    // TODO
           }
@@ -44,7 +44,7 @@ class SirenScraper : Scraper {
                 sizeMl = if (keg) 5000 else details[4].toInt()
               )
             ),
-            thumbnailUrl = el.srcFrom(".imageInnerWrap img")
+            thumbnailUrl = el.urlFrom(".imageInnerWrap img")
           )
         }
       }

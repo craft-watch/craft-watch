@@ -16,7 +16,7 @@ class PollysScraper : Scraper {
         val rawName = el.textFrom(".woocommerce-loop-product__title")
         val a = el.selectFrom(".woocommerce-loop-product__link")
 
-        Leaf(rawName, a.hrefFrom()) { doc ->
+        Leaf(rawName, a.urlFrom()) { doc ->
           if (rawName.contains("mix", ignoreCase = true)) {
             throw SkipItemException("Don't know how to deal with mixed packs")
           }
@@ -36,7 +36,7 @@ class PollysScraper : Scraper {
                 sizeMl = POLLYS_CAN_SIZE_ML
               )
             ),
-            thumbnailUrl = a.srcFrom("img")
+            thumbnailUrl = a.urlFrom("img")
           )
         }
       }

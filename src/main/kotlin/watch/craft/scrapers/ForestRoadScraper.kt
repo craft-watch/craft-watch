@@ -18,7 +18,7 @@ class ForestRoadScraper : Scraper {
       .map { el ->
         val title = el.textFrom(".ProductList-title")
 
-        Leaf(title, el.hrefFrom("a.ProductList-item-link")) { doc ->
+        Leaf(title, el.urlFrom("a.ProductList-item-link")) { doc ->
           if (title.contains("subscription", ignoreCase = true)) {
             throw SkipItemException("Subscriptions aren't something we can model")
           }
@@ -51,7 +51,7 @@ class ForestRoadScraper : Scraper {
                 }
               )
             ),
-            thumbnailUrl = el.dataSrcFrom("img.ProductList-image")
+            thumbnailUrl = el.urlFrom("img.ProductList-image")
           )
         }
       }

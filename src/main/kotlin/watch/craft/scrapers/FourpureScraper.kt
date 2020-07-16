@@ -20,7 +20,7 @@ class FourpureScraper : Scraper {
         val a = el.selectFrom("a")
         val rawName = el.textFrom(".content h3")
 
-        Leaf(rawName, a.hrefFrom()) { doc ->
+        Leaf(rawName, a.urlFrom()) { doc ->
           if (el.title().contains("pack", ignoreCase = true)) {
             throw SkipItemException("Can't calculate price-per-can for packs")
           }
@@ -38,7 +38,7 @@ class FourpureScraper : Scraper {
                 sizeMl = parts.sizeMl
               )
             ),
-            thumbnailUrl = a.srcFrom("img")
+            thumbnailUrl = a.urlFrom("img")
           )
         }
       }

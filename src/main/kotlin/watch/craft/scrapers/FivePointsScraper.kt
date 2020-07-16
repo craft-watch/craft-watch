@@ -16,7 +16,7 @@ class FivePointsScraper : Scraper {
       .map { el ->
         val a = el.selectFrom("h2 a")
 
-        Leaf(a.text(), a.hrefFrom()) { doc ->
+        Leaf(a.text(), a.urlFrom()) { doc ->
           val title = doc.maybe { selectFrom(".itemTitle .small") }
           val parts = title?.maybe {
             extractFrom(regex = "(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+((\\d+)\\s+x\\s+)?")
@@ -37,7 +37,7 @@ class FivePointsScraper : Scraper {
                 format = if (sizeMl >= 1000) Format.KEG else null
               )
             ),
-            thumbnailUrl = el.srcFrom(".imageInnerWrap img")
+            thumbnailUrl = el.urlFrom(".imageInnerWrap img")
           )
         }
       }

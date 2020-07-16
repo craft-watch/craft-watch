@@ -25,7 +25,7 @@ fun forRootUrls(vararg urls: URI, work: (Document) -> List<Job>) = urls.map { Mo
 fun forPaginatedRootUrl(url: URI, work: (Document) -> List<Job>) = listOf(followPagination(url, work))
 
 private fun followPagination(url: URI, work: (Document) -> List<Job>): More = More(url) { root ->
-  val next = root.maybe { hrefFrom("link[rel=next]") }
+  val next = root.maybe { urlFrom("link[rel=next]") }
   (if (next != null) {
     listOf(followPagination(next, work))
   } else {
@@ -126,12 +126,12 @@ operator fun Element.contains(cssQuery: String) = selectFirst(cssQuery) != null
 
 fun Element.extractFrom(cssQuery: String = ":root", regex: String) = textFrom(cssQuery).extract(regex)
 fun Element.textFrom(cssQuery: String = ":root") = selectFrom(cssQuery).text().trim()
-fun Element.hrefFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:href").toUri()
-fun Element.srcFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:src").toUri()
-fun Element.dataSrcFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:data-src").toUri()
+fun Element.urlFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:href", "abs:src", "abs:data-src").toUri()
 
-fun Element.attrFrom(cssQuery: String = ":root", attr: String) = selectFrom(cssQuery).attr(attr)
-  .ifBlank { throw MalformedInputException("Attribute blank or not present: ${attr}") }!!
+fun Element.attrFrom(cssQuery: String = ":root", vararg attrs: String) = with(selectFrom(cssQuery)) {
+  attrs.map { attr(it) }.firstOrNull { it.isNotBlank() }
+    ?: throw MalformedInputException("Attribute(s) blank or not present: ${attrs}")
+}
 
 fun Element.selectFrom(cssQuery: String) = selectFirst(cssQuery)
   ?: throw MalformedInputException("Element not present: ${cssQuery}")

@@ -15,7 +15,7 @@ class WanderScraper : Scraper {
       .map { el ->
         val name = el.textFrom("product-item-name".hook())
 
-        Leaf(name, el.hrefFrom("a")) { doc ->
+        Leaf(name, el.urlFrom("a")) { doc ->
           val desc = doc.selectFrom("description".hook())
           val descText = desc.text()
 

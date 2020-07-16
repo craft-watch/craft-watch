@@ -18,7 +18,7 @@ class WylamScraper : Scraper {
         val a = el.selectFrom(".grid-product__title")
         val rawName = a.text()
 
-        Leaf(rawName, a.hrefFrom()) { doc ->
+        Leaf(rawName, a.urlFrom()) { doc ->
           val product = doc.jsonLdFrom<Product>()
           val abv = rawName.maybe { abvFrom() }
           val numItems = rawName.maybe { extract("$INT_REGEX\\s*x").intFrom(1) }
@@ -42,7 +42,7 @@ class WylamScraper : Scraper {
                 sizeMl = rawName.sizeMlFrom()
               )
             ),
-            thumbnailUrl = el.srcFrom("img.grid-product__picture")
+            thumbnailUrl = el.urlFrom("img.grid-product__picture")
           )
         }
       }

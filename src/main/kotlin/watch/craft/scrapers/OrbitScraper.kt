@@ -14,7 +14,7 @@ class OrbitScraper : Scraper {
       .map { el ->
         val title = el.textFrom(".product-card__title")
 
-        Leaf(title, el.hrefFrom("a.grid-view-item__link")) { doc ->
+        Leaf(title, el.urlFrom("a.grid-view-item__link")) { doc ->
           val desc = doc.formattedTextFrom(".product-single__description")
 
           // Remove all the dross
@@ -35,7 +35,7 @@ class OrbitScraper : Scraper {
             offers = doc.orSkip("Can't extract offers, so assume not a beer") {
               extractShopifyOffers(desc.maybe { sizeMlFrom() })
             },
-            thumbnailUrl = el.srcFrom("noscript img.grid-view-item__image")
+            thumbnailUrl = el.urlFrom("noscript img.grid-view-item__image")
           )
         }
       }

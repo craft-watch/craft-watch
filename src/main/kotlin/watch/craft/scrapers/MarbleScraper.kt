@@ -17,7 +17,7 @@ class MarbleScraper : Scraper {
       .map { el ->
         val name = el.textFrom(".woocommerce-loop-product__title")
 
-        Leaf(name, el.hrefFrom(".woocommerce-LoopProduct-link")) { doc ->
+        Leaf(name, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
           val attributes = doc.extractAttributes()
           val volumeDetails = attributes.extractVolumeDetails()
 
@@ -26,7 +26,7 @@ class MarbleScraper : Scraper {
           val keg = attributes.maybe { grab("Packaging") }?.contains("keg", ignoreCase = true) ?: false
 
           ScrapedItem(
-            thumbnailUrl = el.srcFrom(".wp-post-image"),
+            thumbnailUrl = el.urlFrom(".wp-post-image"),
             name = name
               .replace("\\s+\\d+l mini (keg|cask)$".toRegex(IGNORE_CASE), "")
               .replace("\\s+Case\\s+\\(\\d+ Cans\\)$".toRegex(IGNORE_CASE), "")

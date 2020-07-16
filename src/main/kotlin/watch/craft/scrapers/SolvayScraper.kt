@@ -15,7 +15,7 @@ class SolvayScraper : Scraper {
       .map { el ->
         val rawName = el.textFrom(".grid-title")
 
-        Leaf(rawName, el.hrefFrom("a.grid-item-link")) { doc ->
+        Leaf(rawName, el.urlFrom("a.grid-item-link")) { doc ->
           val nameParts = rawName.extract("(.*?)\\s+\\|\\s+(?:(.*?)\\s+\\d)?")
           val desc = doc.selectFrom(".ProductItem-details-excerpt")
           val mixed = rawName.contains("mix", ignoreCase = true)
@@ -36,7 +36,7 @@ class SolvayScraper : Scraper {
               )
             ),
             // Request a smaller image
-            thumbnailUrl = (doc.dataSrcFrom("img.ProductItem-gallery-slides-item-image")
+            thumbnailUrl = (doc.urlFrom("img.ProductItem-gallery-slides-item-image")
               .toString() + "?format=200w").toUri()
           )
         }

@@ -15,7 +15,7 @@ class VerdantScraper : Scraper {
       .map { el ->
         val title = el.textFrom(".product__title")
 
-        Leaf(title, el.hrefFrom("a.product__img-wrapper")) { doc ->
+        Leaf(title, el.urlFrom("a.product__img-wrapper")) { doc ->
           if (BLACKLIST.any { title.containsWord(it) }) {
             throw SkipItemException("Assuming not a beer")
           }
@@ -37,7 +37,7 @@ class VerdantScraper : Scraper {
                 sizeMl = doc.sizeMlFrom(".product__volume")
               )
             ),
-            thumbnailUrl = el.srcFrom("img.product__img")
+            thumbnailUrl = el.urlFrom("img.product__img")
           )
         }
       }

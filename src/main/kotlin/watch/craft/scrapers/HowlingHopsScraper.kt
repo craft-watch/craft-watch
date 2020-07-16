@@ -18,14 +18,14 @@ class HowlingHopsScraper : Scraper {
         val a = el.selectFrom(".wc-block-grid__product-link")
         val rawName = el.textFrom(".wc-block-grid__product-title")
 
-        Leaf(rawName, a.hrefFrom()) { doc ->
+        Leaf(rawName, a.urlFrom()) { doc ->
           val desc = doc.textFrom(".woocommerce-product-details__short-description")
           val parts = extractVariableParts(desc)
           val product = doc.jsonLdFrom<Product>()
           val available = product.offers.any { it.availability == "http://schema.org/InStock" }
 
           ScrapedItem(
-            thumbnailUrl = a.srcFrom(".attachment-woocommerce_thumbnail"),
+            thumbnailUrl = a.urlFrom(".attachment-woocommerce_thumbnail"),
             name = parts.name,
             summary = parts.summary,
             desc = doc.maybe { formattedTextFrom(".woocommerce-product-details__short-description") },

@@ -16,7 +16,7 @@ class NorthernMonkScraper : Scraper {
       .map { el ->
         val rawName = el.textFrom(".card__name").toTitleCase()
 
-        Leaf(rawName, el.hrefFrom(".card__wrapper")) { doc ->
+        Leaf(rawName, el.urlFrom(".card__wrapper")) { doc ->
           val desc = doc.selectFrom(".product__description")
           val abv = desc.maybe { abvFrom() }
           val mixed = desc.children()

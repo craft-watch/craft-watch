@@ -19,7 +19,7 @@ class CanopyScraper : Scraper {
         val a = el.selectFrom(".product__title a")
         val title = el.textFrom(".product__title")
 
-        Leaf(title, a.hrefFrom()) { doc ->
+        Leaf(title, a.urlFrom()) { doc ->
           val parts = a.extractFrom(regex = "([^\\d]+) (\\d+(\\.\\d+)?)?")
 
           if (title.contains("box|pack".toRegex(IGNORE_CASE))) {
@@ -27,7 +27,7 @@ class CanopyScraper : Scraper {
           }
 
           ScrapedItem(
-            thumbnailUrl = el.srcFrom(".grid__image img"),
+            thumbnailUrl = el.urlFrom(".grid__image img"),
             name = parts[1],
             summary = null,
             desc = doc.maybe { formattedTextFrom(".product-description") },

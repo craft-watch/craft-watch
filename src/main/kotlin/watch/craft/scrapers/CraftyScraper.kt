@@ -18,7 +18,7 @@ class CraftyScraper : Scraper {
       .map { el ->
         val title = el.textFrom(".woocommerce-loop-product__title")
 
-        Leaf(title, el.hrefFrom(".woocommerce-LoopProduct-link")) { doc ->
+        Leaf(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
           val mixed = doc.textFrom(".product_meta").contains("mixed", ignoreCase = true)
           val desc = doc.formattedTextFrom(".et_pb_wc_description")
 
@@ -33,7 +33,7 @@ class CraftyScraper : Scraper {
             abv = if (mixed) null else desc.abvFrom(),
             available = ".woosticker_sold" !in el,
             offers = doc.extractOffers(desc, mixed).toSet(),
-            thumbnailUrl = el.srcFrom(".attachment-woocommerce_thumbnail")
+            thumbnailUrl = el.urlFrom(".attachment-woocommerce_thumbnail")
           )
         }
       }

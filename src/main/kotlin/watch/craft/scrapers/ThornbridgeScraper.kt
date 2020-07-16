@@ -15,7 +15,7 @@ class ThornbridgeScraper : Scraper {
       .map { el ->
         val rawName = el.textFrom(".h6")
 
-        Leaf(rawName, el.hrefFrom("a")) { doc ->
+        Leaf(rawName, el.urlFrom("a")) { doc ->
           val abv = orSkip("No ABV in title, so assume it's not a beer") { rawName.abvFrom() }
 
           val parts = rawName.extract("(.*?)\\W+\\d.*%\\W+(.*)")
@@ -24,7 +24,7 @@ class ThornbridgeScraper : Scraper {
           // TODO - identify mixed packs
 
           ScrapedItem(
-            thumbnailUrl = doc.srcFrom(".product__image-wrapper img"),
+            thumbnailUrl = doc.urlFrom(".product__image-wrapper img"),
             name = parts[1].replace(" (bottle|can)$".toRegex(IGNORE_CASE), ""),
             summary = parts[2],
             desc = desc.formattedTextFrom(),
