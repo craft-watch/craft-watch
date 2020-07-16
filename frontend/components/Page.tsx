@@ -39,6 +39,7 @@ const Page: React.FC<Props> = (props) => (
       <meta property="og:image" content="https://craft.watch/craft-watch.jpg" />
       <meta property="og:type" content="website" />
 
+      <script async defer src="https://alysis.alexsparrow.dev/tracker.js" data-alysis-domain="craft.watch" />
 
       {
         // See https://github.com/vercel/next.js/issues/9070#issuecomment-552981178
