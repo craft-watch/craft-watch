@@ -237,6 +237,16 @@ val SCRAPERS = listOf(
     )
   ),
   entry(
+    PurityScraper(),
+    Brewery(
+      shortName = "Purity",
+      name = "Purity Brewing Co",
+      location = "Great Alne, Warwickshire",
+      websiteUrl = URI("https://puritybrewing.com/"),
+      twitterHandle = "Purityale"
+    )
+  ),
+  entry(
     RedchurchScraper(),
     Brewery(
       shortName = "Redchurch",

@@ -7,7 +7,6 @@ import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.types.choice
 import watch.craft.executor.Executor
-import watch.craft.scrapers.*
 
 class Cli : CliktCommand(name = "scraper") {
   private val scraperDetails = SCRAPERS.associateBy { it.brewery.shortName.toSafeName() }

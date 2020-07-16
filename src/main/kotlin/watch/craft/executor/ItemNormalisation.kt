@@ -45,6 +45,7 @@ private fun Result.normaliseToItem() = Item(
   // TODO - validate sane size
   offers = item.offers
     .toList()
+    .validate("at least one offer") { it.isNotEmpty() }
     .validate("sane price per ml") {
       it.all { offer ->
         (offer.totalPrice / offer.quantity / (offer.sizeMl ?: DEFAULT_SIZE_ML)) < MAX_PRICE_PER_ML

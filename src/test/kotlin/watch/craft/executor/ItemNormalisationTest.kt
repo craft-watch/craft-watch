@@ -85,6 +85,12 @@ class ItemNormalisationTest {
     assertValidationFailure(prototype.copy(offers = setOf(Offer(quantity = 2, totalPrice = 20.0)))) // But this is mad
   }
 
+  @Test
+  fun `rejects if no offers`() {
+    assertNoValidationFailure(prototype)
+    assertValidationFailure(prototype.copy(offers = emptySet()))
+  }
+
   private fun assertNoValidationFailure(item: ScrapedItem) {
     val ret = normalise(item)
     assertTrue(ret.entries.isNotEmpty())

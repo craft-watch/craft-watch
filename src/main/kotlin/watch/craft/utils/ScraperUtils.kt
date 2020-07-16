@@ -155,11 +155,14 @@ private fun regexOptions(ignoreCase: Boolean) = if (ignoreCase) {
   setOf(DOT_MATCHES_ALL)
 }
 
-fun Element.formatFrom(cssQuery: String = ":root") = textFrom(cssQuery).formatFrom()
-fun String.formatFrom() = when {
-  contains("\\d+\\s*ml\\s*can".toRegex(IGNORE_CASE)) -> CAN   // Can't match directly on "can" because it's a regular English word
+fun Element.formatFrom(cssQuery: String = ":root", fullProse: Boolean = true) = textFrom(cssQuery).formatFrom(fullProse)
+fun String.formatFrom(fullProse: Boolean = true) = when {
+  contains(
+    if (fullProse) "\\d+\\s*ml\\s*can".toRegex(IGNORE_CASE) else "can".toRegex(IGNORE_CASE)
+  ) -> CAN   // Can't match directly on "can" because it's a regular English word
   containsWord("cans") -> CAN
   containsWord("bottles") -> BOTTLE
+  containsWord("bottle") -> BOTTLE
   else -> null
 }
 
