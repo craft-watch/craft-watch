@@ -27,10 +27,7 @@ class RedchurchScraper : Scraper {
           }
 
           ScrapedItem(
-            thumbnailUrl = doc.urlFrom(".product-single__photo")
-              .toString()
-              .remove("\\?.*")
-              .toUri(),
+            thumbnailUrl = doc.urlFrom(".product-single__photo") { it.remove("\\?.*") },
             name = nameParts[2],
             desc = doc.maybe { formattedTextFrom(".product-single__description") },
             mixed = mixed,

@@ -41,9 +41,8 @@ class RedWillowScraper : Scraper {
   }
 
   // By default, the images are huge!
-  private fun Document.extractSmallThumbnail() = (
-    urlFrom("img.ProductItem-gallery-slides-item-image").toString() + "?format=200w"
-    ).toUri()
+  private fun Document.extractSmallThumbnail() =
+    urlFrom("img.ProductItem-gallery-slides-item-image") { "$it?format=200w" }
 
   private fun Document.extractOffers() =
     maybe { attrFrom(".product-variants", "data-variants") }

@@ -36,8 +36,7 @@ class SolvayScraper : Scraper {
               )
             ),
             // Request a smaller image
-            thumbnailUrl = (doc.urlFrom("img.ProductItem-gallery-slides-item-image")
-              .toString() + "?format=200w").toUri()
+            thumbnailUrl = doc.urlFrom("img.ProductItem-gallery-slides-item-image") { "$it?format=200w" }
           )
         }
       }

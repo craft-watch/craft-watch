@@ -126,7 +126,10 @@ operator fun Element.contains(cssQuery: String) = selectFirst(cssQuery) != null
 fun Element.containsMatchFrom(cssQuery: String = ":root", regex: String) = textFrom(cssQuery).containsMatch(regex)
 fun Element.extractFrom(cssQuery: String = ":root", regex: String) = textFrom(cssQuery).extract(regex)
 fun Element.textFrom(cssQuery: String = ":root") = selectFrom(cssQuery).text().trim()
-fun Element.urlFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:href", "abs:src", "abs:data-src").toUri()
+fun Element.urlFrom(cssQuery: String = ":root", transform: (String) -> String = { it }) =
+  attrFrom(cssQuery, "abs:href", "abs:src", "abs:data-src")
+    .run { transform(this) }
+    .toUri()
 
 fun Element.attrFrom(cssQuery: String = ":root", vararg attrs: String) = with(selectFrom(cssQuery)) {
   attrs.map { attr(it) }.firstOrNull { it.isNotBlank() }
