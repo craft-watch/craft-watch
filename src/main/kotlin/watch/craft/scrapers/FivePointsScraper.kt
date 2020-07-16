@@ -24,7 +24,7 @@ class FivePointsScraper : Scraper {
 
           val sizeMl = title.sizeMlFrom()
           ScrapedItem(
-            name = a.extractFrom(regex = "([^(]+)")[1].trim().toTitleCase(),
+            name = a.extractFrom(regex = "([^(]+)").stringFrom(1).toTitleCase(),
             summary = parts[1],
             desc = doc.formattedTextFrom(".about"),
             abv = parts[2].toDouble(),
@@ -32,7 +32,7 @@ class FivePointsScraper : Scraper {
             offers = setOf(
               Offer(
                 quantity = parts[5].ifBlank { "1" }.toInt(),
-                totalPrice = el.extractFrom(".priceStandard", "£(\\d+\\.\\d+)").doubleFrom(1),
+                totalPrice = el.priceFrom(".priceStandard"),
                 sizeMl = sizeMl,
                 format = if (sizeMl >= 1000) Format.KEG else null
               )

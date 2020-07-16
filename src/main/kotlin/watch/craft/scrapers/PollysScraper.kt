@@ -21,14 +21,14 @@ class PollysScraper : Scraper {
             throw SkipItemException("Don't know how to deal with mixed packs")
           }
 
-          val parts = rawName.extract("(.+?) – (.+?) – (\\d+(\\.\\d+)?)")
+          val parts = rawName.split(" – ")
 
           ScrapedItem(
-            name = parts[1],
-            summary = parts[2],
+            name = parts[0],
+            summary = parts[1],
             desc = doc.formattedTextFrom("#tab-description"),
             mixed = false,
-            abv = parts[3].toDouble(),
+            abv = rawName.abvFrom(),
             available = ".out-of-stock" !in doc,
             offers = setOf(
               Offer(

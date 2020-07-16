@@ -17,14 +17,8 @@ class HackneyChurchScraper : Scraper {
         Leaf(rawName, el.urlFrom("a.grid-view-item__link")) { doc ->
           val price = el.selectFrom(".price")
           val desc = doc.formattedTextFrom(".hcbc-product-description")
-          val descLines = desc.split("\n")
-
-          val allQuantities = descLines
-            .mapNotNull { it.maybe { quantityFrom() } }
-
-          val distinctSizes = desc.split("\n")
-            .mapNotNull { it.maybe { sizeMlFrom() } }
-            .distinct()
+          val allQuantities = desc.collectFromLines { quantityFrom() }
+          val distinctSizes = desc.collectFromLines { sizeMlFrom() }.distinct()
 
           ScrapedItem(
             name = rawName,
@@ -37,7 +31,7 @@ class HackneyChurchScraper : Scraper {
               Offer(
                 quantity = allQuantities.sum(),
                 totalPrice = price.priceFrom(),
-                sizeMl = if (distinctSizes.size == 1) distinctSizes.first() else null
+                sizeMl = distinctSizes.singleOrNull()
               )
             ),
             thumbnailUrl = el.urlFrom("img.grid-view-item__image")

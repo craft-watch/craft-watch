@@ -36,7 +36,7 @@ class ForestRoadScraper : Scraper {
             offers = setOf(
               Offer(
                 quantity = title.maybe { quantityFrom() }
-                  ?: max(1, descLines.mapNotNull { it.maybe { quantityFrom() } }.sum()),
+                  ?: max(1, desc.collectFromLines { quantityFrom() }.sum()),
                 totalPrice = el.priceFrom(".product-price"),
                 sizeMl = title.maybe { sizeMlFrom() } ?: desc.maybe { sizeMlFrom() },
                 format = title.formatFrom() ?: BOTTLE

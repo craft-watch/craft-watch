@@ -24,7 +24,7 @@ class PurityScraper : Scraper {
             name = title.remove("(mini cask|polypin)$", "^purity"),
             summary = null,
             desc = desc,
-            abv = desc.extractAbv(),
+            abv = desc.collectFromLines { abvFrom() }.min(),
             available = true,
             offers = doc.extractOffers(title, desc).toSet(),
             thumbnailUrl = el.attrFrom(".attachment-woocommerce_thumbnail", "data-lazy-src").toUri()
@@ -38,11 +38,6 @@ class PurityScraper : Scraper {
     .selectMultipleFrom("section")
     .filterNot { it.maybe { textFrom("h1").containsWord("experience") } ?: true }
     .flatMap { it.selectMultipleFrom(".product") }
-
-  private fun String.extractAbv() = this
-    .split("\n")
-    .mapNotNull { it.maybe { abvFrom() } }
-    .min()
 
   private fun Document.extractOffers(title: String, desc: String): List<Offer> {
     val rows = maybe { selectMultipleFrom(".woocommerce-grouped-product-list-item") }

@@ -22,7 +22,7 @@ class UnityScraper : Scraper {
             summary = null,
             desc = desc,
             mixed = false,
-            abv = desc.extractAbv(),
+            abv = desc.collectFromLines { abvFrom() }.min(),
             available = details.available,
             offers = setOf(
               Offer(
@@ -35,11 +35,6 @@ class UnityScraper : Scraper {
         }
       }
   }
-
-  private fun String.extractAbv() = this
-    .split("\n")
-    .mapNotNull { it.maybe { abvFrom() } }
-    .min()
 
   companion object {
     private val ROOT_URL = URI("https://unitybrewingco.com/collections/unity-beer")
