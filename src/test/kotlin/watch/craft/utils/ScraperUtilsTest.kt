@@ -81,6 +81,24 @@ class ScraperUtilsTest {
       )
     }
 
+    @Test
+    fun `retains text from inline elements`() {
+      val doc = docFromFragment(
+        """
+        <p>
+          Hello mummy. <a>What would you like</a> for tea?
+        </p>
+      """
+      )
+
+      assertEquals(
+        listOf(
+          "Hello mummy. What would you like for tea?"
+        ),
+        doc.formattedTextFrom(TARGET).split("\n")
+      )
+    }
+
     /** Derived from something seen for real on Northern Monk product page. */
     @Test
     fun `deals with complex mess`() {
