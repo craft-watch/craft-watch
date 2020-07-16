@@ -14,10 +14,10 @@ class StewartScraper : Scraper {
       .map { el ->
         val a = el.selectFrom("h2 a")
 
-        Leaf(a.text(), a.hrefFrom()) { doc ->
+        Leaf(a.text(), a.urlFrom()) { doc ->
 
           ScrapedItem(
-            thumbnailUrl = el.srcFrom(".imageInnerWrap img"),
+            thumbnailUrl = el.urlFrom(".imageInnerWrap img"),
             name = removeSizeSuffix(a.text()),
             summary = el.maybe { textFrom(".itemStyle") },
             abv = doc.orSkip("Couldn't find ABV") { abvFrom(".alco") },

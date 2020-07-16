@@ -18,7 +18,7 @@ class RedWillowScraper : Scraper {
       .map { el ->
         val rawName = el.textFrom(".ProductList-title")
 
-        Leaf(rawName, el.hrefFrom("a.ProductList-item-link")) { doc ->
+        Leaf(rawName, el.urlFrom("a.ProductList-item-link")) { doc ->
           if (BLACKLIST.any { rawName.contains(it, ignoreCase = true) }) {
             throw SkipItemException("Identified as non-beer")
           }
@@ -42,7 +42,7 @@ class RedWillowScraper : Scraper {
 
   // By default, the images are huge!
   private fun Document.extractSmallThumbnail() = (
-    dataSrcFrom("img.ProductItem-gallery-slides-item-image").toString() + "?format=200w"
+    urlFrom("img.ProductItem-gallery-slides-item-image").toString() + "?format=200w"
     ).toUri()
 
   private fun Document.extractOffers() =

@@ -14,7 +14,7 @@ class JeffersonsScraper : Scraper {
       .map { el ->
         val rawName = el.textFrom(".grid-view-item__title")
 
-        Leaf(rawName, el.hrefFrom(".grid-view-item__link")) { doc ->
+        Leaf(rawName, el.urlFrom(".grid-view-item__link")) { doc ->
           val desc = doc.formattedTextFrom(".product-single__description")
           val abv = desc.orSkip("No ABV found, so assume not a beer") { abvFrom() }
           val parts = rawName.extract("(.*?)\\s*-\\s*([\\w\\s]+)")
@@ -32,7 +32,7 @@ class JeffersonsScraper : Scraper {
                 sizeMl = desc.sizeMlFrom()
               )
             ),
-            thumbnailUrl = el.srcFrom(".grid-view-item__image")
+            thumbnailUrl = el.urlFrom(".grid-view-item__image")
           )
         }
       }

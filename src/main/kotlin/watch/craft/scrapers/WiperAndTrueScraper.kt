@@ -15,7 +15,7 @@ class WiperAndTrueScraper : Scraper {
       .map { el ->
         val rawName = el.textFrom(".product-title")
 
-        Leaf(rawName, el.hrefFrom()) { doc ->
+        Leaf(rawName, el.urlFrom()) { doc ->
           val desc = doc.selectFrom(".product-excerpt")
           val parts = extractVariableParts(rawName, desc)
 
@@ -33,7 +33,7 @@ class WiperAndTrueScraper : Scraper {
                 sizeMl = parts.sizeMl
               )
             ),
-            thumbnailUrl = el.dataSrcFrom(".product-image img")
+            thumbnailUrl = el.urlFrom(".product-image img")
           )
         }
       }

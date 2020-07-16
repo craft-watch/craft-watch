@@ -14,7 +14,7 @@ class HackneyChurchScraper : Scraper {
       .map { el ->
         val rawName = el.textFrom(".grid-view-item__title")
 
-        Leaf(rawName, el.hrefFrom("a.grid-view-item__link")) { doc ->
+        Leaf(rawName, el.urlFrom("a.grid-view-item__link")) { doc ->
           val price = el.selectFrom(".price")
           val desc = doc.formattedTextFrom(".hcbc-product-description")
           val descLines = desc.split("\n")

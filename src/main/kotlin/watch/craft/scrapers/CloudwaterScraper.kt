@@ -16,7 +16,7 @@ class CloudwaterScraper : Scraper {
         val a = el.selectFrom("a.product-title")
         val nameLines = a.formattedTextFrom().split("\n")
 
-        Leaf(nameLines[0], a.hrefFrom()) { doc ->
+        Leaf(nameLines[0], a.urlFrom()) { doc ->
           val desc = doc.formattedTextFrom(".short-description")
           val descLines = desc.split("\n")
 
@@ -40,7 +40,7 @@ class CloudwaterScraper : Scraper {
                 sizeMl = if (mixed) null else desc.sizeMlFrom()
               )
             ),
-            thumbnailUrl = el.dataSrcFrom(".product-grid-image img")
+            thumbnailUrl = el.urlFrom(".product-grid-image img")
           )
         }
       }

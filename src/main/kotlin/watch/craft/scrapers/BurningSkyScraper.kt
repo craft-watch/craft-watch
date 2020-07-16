@@ -14,7 +14,7 @@ class BurningSkyScraper : Scraper {
       .map { el ->
         val title = el.textFrom(".product-title")
 
-        Leaf(title, el.hrefFrom(".woocommerce-LoopProduct-link")) { doc ->
+        Leaf(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
 
           ScrapedItem(
             name = title.split(" - ")[0],
@@ -30,7 +30,7 @@ class BurningSkyScraper : Scraper {
                 format = doc.formatFrom(".product_meta")
               )
             ),
-            thumbnailUrl = doc.srcFrom(".woocommerce-product-gallery__image img")
+            thumbnailUrl = doc.urlFrom(".woocommerce-product-gallery__image img")
           )
         }
       }

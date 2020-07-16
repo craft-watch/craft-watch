@@ -18,7 +18,7 @@ class RoostersScraper : Scraper {
       .map { el ->
         val title = el.textFrom(".ProductList-title")
 
-        Leaf(title, el.hrefFrom(".ProductList-item-link")) { doc ->
+        Leaf(title, el.urlFrom(".ProductList-item-link")) { doc ->
           if (title.containsWord("bag")) {
             throw SkipItemException("Bag-in-box options are too much hassle")
           }
@@ -36,7 +36,7 @@ class RoostersScraper : Scraper {
             abv = if (mixed) null else desc.abvFrom(),
             available = true,
             offers = doc.extractOffers(desc).toSet(),
-            thumbnailUrl = el.dataSrcFrom("img.ProductList-image")
+            thumbnailUrl = el.urlFrom("img.ProductList-image")
           )
         }
       }

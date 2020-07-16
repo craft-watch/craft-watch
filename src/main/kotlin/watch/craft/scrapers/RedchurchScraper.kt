@@ -16,7 +16,7 @@ class RedchurchScraper : Scraper {
         val title = el.selectFrom(".product__title")
         val rawName = title.text()
 
-        Leaf(rawName, title.hrefFrom("a")) { doc ->
+        Leaf(rawName, title.urlFrom("a")) { doc ->
           val nameParts = rawName.extract(regex = "(Mixed Case - )?(.*)")
           val mixed = !nameParts[1].isBlank()
           val sizeMl = doc.maybe { sizeMlFrom() }
@@ -27,7 +27,7 @@ class RedchurchScraper : Scraper {
           }
 
           ScrapedItem(
-            thumbnailUrl = doc.srcFrom(".product-single__photo")
+            thumbnailUrl = doc.urlFrom(".product-single__photo")
               .toString()
               .replace("\\?.*".toRegex(), "")
               .toUri(),

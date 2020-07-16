@@ -15,7 +15,7 @@ class DeyaScraper : Scraper {
       .map { el ->
         val title = el.textFrom(".woocommerce-loop-product__title")
 
-        Leaf(title, el.hrefFrom(".woocommerce-LoopProduct-link")) { doc ->
+        Leaf(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
           val desc = doc.formattedTextFrom(".woocommerce-product-details__short-description")
           val mixed = title.contains("mix", ignoreCase = true)
 
@@ -34,7 +34,7 @@ class DeyaScraper : Scraper {
                 format = desc.formatFrom()
               )
             ),
-            thumbnailUrl = el.srcFrom(".attachment-woocommerce_thumbnail")
+            thumbnailUrl = el.urlFrom(".attachment-woocommerce_thumbnail")
           )
         }
       }

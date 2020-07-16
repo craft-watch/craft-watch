@@ -17,8 +17,8 @@ data class ShopifyItemDetails(
 fun Document.shopifyItems() = selectMultipleFrom(".product-card").map {
   ShopifyItemDetails(
     title = it.textFrom(".product-card__title"),
-    url = it.hrefFrom(".grid-view-item__link"),
-    thumbnailUrl = it.srcFrom("noscript .grid-view-item__image")
+    url = it.urlFrom(".grid-view-item__link"),
+    thumbnailUrl = it.urlFrom("noscript .grid-view-item__image")
       .toString()
       .replace("@2x", "")
       .toUri(),

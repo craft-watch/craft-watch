@@ -15,7 +15,7 @@ class BeakScraper : Scraper {
         val a = el.selectFrom("a")
         val rawName = a.textFrom("p")
 
-        Leaf(rawName, a.hrefFrom()) { doc ->
+        Leaf(rawName, a.urlFrom()) { doc ->
           val desc = doc.selectFrom(".product_description")
           val allTheText = "${rawName}\n${desc.text()}"
 
@@ -32,7 +32,7 @@ class BeakScraper : Scraper {
                 sizeMl = allTheText.sizeMlFrom()
               )
             ),
-            thumbnailUrl = a.srcFrom("img")
+            thumbnailUrl = a.urlFrom("img")
           )
         }
       }
