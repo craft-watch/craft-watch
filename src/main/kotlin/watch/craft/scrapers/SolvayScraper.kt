@@ -29,7 +29,7 @@ class SolvayScraper : Scraper {
             available = true,
             offers = setOf(
               Offer(
-                quantity = rawName.maybe { extract("(\\d+) pack").intFrom(1) } ?: 1,
+                quantity = rawName.maybe { quantityFrom() } ?: 1,
                 totalPrice = el.priceFrom(".product-price"),
                 format = if (rawName.containsMatch("keg")) KEG else null,
                 sizeMl = if (mixed) null else desc.sizeMlFrom()

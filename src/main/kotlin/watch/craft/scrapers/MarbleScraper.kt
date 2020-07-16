@@ -58,7 +58,7 @@ class MarbleScraper : Scraper {
     val rawVolume = maybe { grab("Volume") } ?: grab("Packaging")
     return VolumeDetails(
       sizeMl = rawVolume.sizeMlFrom(),
-      numItems = rawVolume.maybe { extract("(\\d+) x") }?.let { it[1].toInt() }
+      numItems = rawVolume.maybe { quantityFrom() }
         ?: maybe { grab("Unit Size") }?.toIntOrNull()
         ?: 1
     )

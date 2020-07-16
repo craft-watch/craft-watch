@@ -21,7 +21,7 @@ class WylamScraper : Scraper {
         Leaf(rawName, a.urlFrom()) { doc ->
           val product = doc.jsonLdFrom<Product>()
           val abv = rawName.maybe { abvFrom() }
-          val numItems = rawName.maybe { extract("$INT_REGEX\\s*x").intFrom(1) }
+          val numItems = rawName.maybe { quantityFrom() }
 
           if (abv == null || numItems == null) {
             throw SkipItemException("Couldn't extract all parts, so assume it's not a beer")

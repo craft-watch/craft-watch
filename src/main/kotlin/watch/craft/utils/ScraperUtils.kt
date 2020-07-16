@@ -109,7 +109,12 @@ fun Element.abvFrom(
 fun String.abvFrom(
   prefix: String = "",
   noPercent: Boolean = false
-) = extract(prefix + DOUBLE_REGEX + (if (noPercent) "" else "\\s*%")).doubleFrom(1)
+) = maybe { extract(prefix + DOUBLE_REGEX + (if (noPercent) "" else "\\s*%")).doubleFrom(1) }
+  ?: throw MalformedInputException("Can't extract ABV")
+
+fun Element.quantityFrom(cssQuery: String = ":root") = textFrom(cssQuery).quantityFrom()
+fun String.quantityFrom() = maybe { extract("(\\d+)\\s*(?:x|×|pack)").intFrom(1) }
+  ?: throw MalformedInputException("Can't extract quantity")
 
 fun Element.sizeMlFrom(cssQuery: String = ":root") = textFrom(cssQuery).sizeMlFrom()
 fun String.sizeMlFrom() = maybe { extract("$INT_REGEX\\s*ml(?:\\W|$)").intFrom(1) }

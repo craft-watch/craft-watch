@@ -27,7 +27,7 @@ class DeyaScraper : Scraper {
             available = true,
             offers = setOf(
               Offer(
-                quantity = title.extract("(\\d+) pack").intFrom(1),
+                quantity = title.quantityFrom(),
                 totalPrice = el.priceFrom(".price"),
                 sizeMl = desc.sizeMlFrom(),
                 format = desc.formatFrom()

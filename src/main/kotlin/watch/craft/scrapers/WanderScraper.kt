@@ -35,7 +35,7 @@ class WanderScraper : Scraper {
             available = true,
             offers = setOf(
               Offer(
-                quantity = descText.maybe { extract("(\\d+)x").intFrom(1) } ?: 1,
+                quantity = descText.maybe { quantityFrom() } ?: 1,
                 totalPrice = doc.priceFrom("product-price-wrapper".hook()),
                 sizeMl = descText.sizeMlFrom()
               )

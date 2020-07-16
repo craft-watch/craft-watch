@@ -37,7 +37,7 @@ class PadstowScraper : Scraper {
             available = true,
             offers = setOf(
               Offer(
-                quantity = rawSize.maybe { extract("(\\d+) x").intFrom(1) } ?: 1,
+                quantity = rawSize.maybe { quantityFrom() } ?: 1,
                 totalPrice = el.priceFrom(".woocommerce-Price-amount"),
                 format = if (rawName.containsMatch("mini( ?)keg")) KEG else null,
                 sizeMl = if (mixed) null else rawSize.sizeMlFrom()

@@ -15,7 +15,6 @@ class PurityScraperTest {
 
   @Test
   fun `finds all the beers`() {
-    ITEMS.display()
     assertEquals(23, ITEMS.size)
   }
 

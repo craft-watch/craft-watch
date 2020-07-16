@@ -21,7 +21,7 @@ class CloudwaterScraper : Scraper {
           val descLines = desc.split("\n")
 
           val allNumItems = descLines
-            .mapNotNull { it.maybe { extract("(\\d+)\\s*x").intFrom(1) } }
+            .mapNotNull { it.maybe { quantityFrom() } }
           val mixed = allNumItems.size > 1
 
           ScrapedItem(
@@ -34,8 +34,7 @@ class CloudwaterScraper : Scraper {
             available = true,
             offers = setOf(
               Offer(
-                quantity = nameLines[0].maybe { extract("(\\d+) pack").intFrom(1) }
-                  ?: max(1, allNumItems.sum()),
+                quantity = nameLines[0].maybe { quantityFrom() } ?: max(1, allNumItems.sum()),
                 totalPrice = el.priceFrom(".price-regular"),
                 sizeMl = if (mixed) null else desc.sizeMlFrom()
               )

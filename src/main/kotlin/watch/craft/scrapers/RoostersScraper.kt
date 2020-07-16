@@ -57,7 +57,7 @@ class RoostersScraper : Scraper {
       ?: listOf(
         Offer(
           totalPrice = priceFrom(".product-price"),
-          quantity = desc.extract("(\\d+)\\s*x").intFrom(1),
+          quantity = desc.quantityFrom(),
           sizeMl = sizeMl,
           format = CAN
         ) // Fallback to assuming a single price
