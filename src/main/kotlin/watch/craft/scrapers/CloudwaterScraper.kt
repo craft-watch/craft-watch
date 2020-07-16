@@ -20,8 +20,7 @@ class CloudwaterScraper : Scraper {
           val desc = doc.formattedTextFrom(".short-description")
           val descLines = desc.split("\n")
 
-          val allNumItems = descLines
-            .mapNotNull { it.maybe { quantityFrom() } }
+          val allNumItems = descLines.mapNotNull { it.maybe { quantityFrom() } }
           val mixed = allNumItems.size > 1
 
           ScrapedItem(
@@ -29,8 +28,7 @@ class CloudwaterScraper : Scraper {
             summary = if (nameLines.size > 1) nameLines[1] else null,
             desc = desc,
             mixed = mixed,
-            abv = if (mixed) null else descLines.mapNotNull { it.maybe { abvFrom() } }
-              .min(), // Workaround for prose saying "100%"
+            abv = if (mixed) null else descLines.mapNotNull { it.maybe { abvFrom() } }.min(), // Workaround for prose saying "100%"
             available = true,
             offers = setOf(
               Offer(
