@@ -24,7 +24,7 @@ class RoostersScraper : Scraper {
           }
 
           val desc = doc.formattedTextFrom(".ProductItem-details-excerpt")
-          val mixed = title.contains("mix", ignoreCase = true)
+          val mixed = title.containsMatch("mix")
 
           ScrapedItem(
             name = title,

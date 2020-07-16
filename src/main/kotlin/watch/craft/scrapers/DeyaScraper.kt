@@ -6,7 +6,6 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.utils.*
 import java.net.URI
-import kotlin.text.RegexOption.IGNORE_CASE
 
 class DeyaScraper : Scraper {
   override val jobs = forRootUrls(ROOT_URL) { root ->
@@ -17,10 +16,10 @@ class DeyaScraper : Scraper {
 
         Leaf(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
           val desc = doc.formattedTextFrom(".woocommerce-product-details__short-description")
-          val mixed = title.contains("mix", ignoreCase = true)
+          val mixed = title.containsMatch("mix")
 
           ScrapedItem(
-            name = title.replace(" / \\d+ pack".toRegex(IGNORE_CASE), ""),
+            name = title.remove(" / \\d+ pack"),
             summary = null,
             desc = desc,
             mixed = mixed,

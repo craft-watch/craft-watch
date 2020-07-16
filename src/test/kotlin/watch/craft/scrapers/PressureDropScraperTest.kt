@@ -31,7 +31,7 @@ class PressureDropScraperTest {
           Offer(totalPrice = 3.70, sizeMl = 440)
         ),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_7845_large.jpg?v=1588861254")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0173/0153/6832/products/IMG_7845_large.jpg")
       ),
       ITEMS.byName("Pale Fire").noDesc()
     )

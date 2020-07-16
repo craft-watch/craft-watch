@@ -31,7 +31,7 @@ class BoxcarScraperTest {
           Offer(totalPrice = 4.95, sizeMl = 440)
         ),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/IMG-20200604-WA0003_345x345.jpg?v=1591345860")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/IMG-20200604-WA0003_345x345.jpg")
       ),
       ITEMS.byName("Dreamful").noDesc()
     )
@@ -47,7 +47,7 @@ class BoxcarScraperTest {
           Offer(totalPrice = 3.75, sizeMl = 440)
         ),
         available = false,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/20200429_183043_345x345.jpg?v=1588181467")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0358/6742/6953/products/20200429_183043_345x345.jpg")
       ),
       ITEMS.byName("Dark Mild").noDesc()
     )

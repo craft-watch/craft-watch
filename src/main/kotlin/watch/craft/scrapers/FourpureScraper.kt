@@ -21,7 +21,7 @@ class FourpureScraper : Scraper {
         val rawName = el.textFrom(".content h3")
 
         Leaf(rawName, a.urlFrom()) { doc ->
-          if (el.title().contains("pack", ignoreCase = true)) {
+          if (el.title().containsMatch("pack")) {
             throw SkipItemException("Can't calculate price-per-can for packs")
           }
 
@@ -52,7 +52,7 @@ class FourpureScraper : Scraper {
 
   private fun extractVariableParts(itemDoc: Document): VariableParts {
     val title = itemDoc.textFrom(".itemTitle h1")
-    return if (title.contains("minikeg", ignoreCase = true)) {
+    return if (title.containsMatch("minikeg")) {
       VariableParts(
         name = title.extract("([^\\d]+) ")[1],
         sizeMl = title.sizeMlFrom(),

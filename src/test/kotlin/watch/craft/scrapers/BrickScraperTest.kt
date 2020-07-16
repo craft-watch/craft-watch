@@ -29,7 +29,7 @@ class BrickScraperTest {
           Offer(totalPrice = 5.85, quantity = 1, sizeMl = 440, format = CAN)
         ),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/1707/8412/products/BB_Tall_can_mockup_NEDIPA_right_label_v5_1_250x250.jpg?v=1591365463")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/1707/8412/products/BB_Tall_can_mockup_NEDIPA_right_label_v5_1_250x250.jpg")
       ),
       ITEMS.byName("Spring NEDIPA").noDesc()
     )

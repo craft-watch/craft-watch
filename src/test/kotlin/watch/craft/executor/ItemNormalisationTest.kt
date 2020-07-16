@@ -35,16 +35,6 @@ class ItemNormalisationTest {
   }
 
   @Test
-  fun `removes noise from thumbnail URLs`() {
-    assertEquals(
-      URI("https://example.invalid/s/files/1/2/3/4/my_img.jpg"),
-      normalise(
-        prototype.copy(thumbnailUrl = URI("https://example.invalid/s/files/1/2/3/4/my_img.jpg?v=1593009635"))
-      ).entries.single().thumbnailUrl
-    )
-  }
-
-  @Test
   fun `rejects if name is blank`() {
     assertNoValidationFailure(prototype.copy(name = "Yeah"))
     assertValidationFailure(prototype.copy(name = " "))

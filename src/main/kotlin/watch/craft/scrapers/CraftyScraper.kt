@@ -19,14 +19,11 @@ class CraftyScraper : Scraper {
         val title = el.textFrom(".woocommerce-loop-product__title")
 
         Leaf(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
-          val mixed = doc.textFrom(".product_meta").contains("mixed", ignoreCase = true)
+          val mixed = doc.containsMatchFrom(".product_meta", "mixed")
           val desc = doc.formattedTextFrom(".et_pb_wc_description")
 
           ScrapedItem(
-            name = title
-              .replace("[(].*[)]".toRegex(), "")
-              .replace("\\s–\\s.*".toRegex(), "")
-              .trim(),
+            name = title.remove("[(].*[)]", "\\s–\\s.*"),
             summary = null, // No obviously-useful info to extract
             desc = desc,
             mixed = mixed,

@@ -8,7 +8,6 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.utils.*
 import java.net.URI
-import kotlin.text.RegexOption.IGNORE_CASE
 
 class MarbleScraper : Scraper {
   override val jobs = forRootUrls(ROOT_URL) { root ->
@@ -22,16 +21,16 @@ class MarbleScraper : Scraper {
           val volumeDetails = attributes.extractVolumeDetails()
 
           val style = attributes.maybe { grab("Style") }
-          val mixed = style?.contains("mixed", ignoreCase = true) ?: false
-          val keg = attributes.maybe { grab("Packaging") }?.contains("keg", ignoreCase = true) ?: false
+          val mixed = style?.containsMatch("mixed") ?: false
+          val keg = attributes.maybe { grab("Packaging") }?.containsMatch("keg") ?: false
 
           ScrapedItem(
             thumbnailUrl = el.urlFrom(".wp-post-image"),
-            name = name
-              .replace("\\s+\\d+l mini (keg|cask)$".toRegex(IGNORE_CASE), "")
-              .replace("\\s+Case\\s+\\(\\d+ Cans\\)$".toRegex(IGNORE_CASE), "")
-              .replace("\\d+$".toRegex(), "")
-              .toTitleCase(),
+            name = name.remove(
+              "\\s+\\d+l mini (keg|cask)$",
+              "\\s+Case\\s+\\(\\d+ Cans\\)$",
+              "\\d+$"
+            ).toTitleCase(),
             summary = if (mixed) null else style,
             desc = doc.maybe { formattedTextFrom(".woocommerce-product-details__short-description") }?.ifBlank { null },
             mixed = mixed,

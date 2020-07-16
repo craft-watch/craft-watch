@@ -26,7 +26,7 @@ class HackneyChurchScraperTest {
           Offer(totalPrice = 36.00, quantity = 12, sizeMl = 330)
         ),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0267/3842/5904/products/IMG_26312copy_200x.png?v=1593030329")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0267/3842/5904/products/IMG_26312copy_200x.png")
       ),
       ITEMS.byName("Superfly IPA").noDesc()
     )

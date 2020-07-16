@@ -19,7 +19,7 @@ class VerdantScraper : Scraper {
           if (BLACKLIST.any { title.containsWord(it) }) {
             throw SkipItemException("Assuming not a beer")
           }
-          val mixed = title.contains("mixed", ignoreCase = true)
+          val mixed = title.containsMatch("mixed")
           val subtitle = doc.textFrom(".product__subtitle")
           val titleParts = title.extract("([^\\d]+)\\s+(\\d+) pack")
 
@@ -37,7 +37,7 @@ class VerdantScraper : Scraper {
                 sizeMl = doc.sizeMlFrom(".product__volume")
               )
             ),
-            thumbnailUrl = el.urlFrom("img.product__img")
+            thumbnailUrl = el.urlFrom("img.product__img", "src")
           )
         }
       }

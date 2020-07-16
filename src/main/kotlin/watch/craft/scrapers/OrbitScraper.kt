@@ -19,17 +19,17 @@ class OrbitScraper : Scraper {
 
           // Remove all the dross
           val name = title
-            .replace("NEW: ", "")
-            .replace("\\S+%".toRegex(), "")   // ABV
-            .replace("WLS\\d+".toRegex(), "") // Some weird code
-            .split("-")[0]
-            .trim()
+            .remove(
+              "NEW: ",
+              "\\S+%",   // ABV
+              "WLS\\d+"  // Some weird code
+            ).split("-")[0].trim()
 
           ScrapedItem(
             name = name,
             summary = null,
             desc = desc,
-            mixed = title.contains("mixed", ignoreCase = true),
+            mixed = title.containsMatch("mixed"),
             abv = title.maybe { abvFrom() },
             available = ".price--sold-out" !in el,
             offers = doc.orSkip("Can't extract offers, so assume not a beer") {

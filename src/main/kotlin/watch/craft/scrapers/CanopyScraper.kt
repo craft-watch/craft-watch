@@ -7,7 +7,6 @@ import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.utils.*
 import java.net.URI
-import kotlin.text.RegexOption.IGNORE_CASE
 
 class CanopyScraper : Scraper {
   override val jobs = forRootUrls(ROOT_URL) { root ->
@@ -22,7 +21,7 @@ class CanopyScraper : Scraper {
         Leaf(title, a.urlFrom()) { doc ->
           val parts = a.extractFrom(regex = "([^\\d]+) (\\d+(\\.\\d+)?)?")
 
-          if (title.contains("box|pack".toRegex(IGNORE_CASE))) {
+          if (title.containsMatch("box|pack")) {
             throw SkipItemException("Can't extract number of cans for packs")
           }
 
@@ -31,7 +30,7 @@ class CanopyScraper : Scraper {
             name = parts[1],
             summary = null,
             desc = doc.maybe { formattedTextFrom(".product-description") },
-            available = !(el.text().contains("Sold out", ignoreCase = true)),
+            available = !(el.text().containsMatch("sold out")),
             abv = if (parts[2].isBlank()) null else parts[2].toDouble(),
             offers = setOf(
               Offer(

@@ -8,7 +8,6 @@ import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.utils.*
 import java.net.URI
-import kotlin.text.RegexOption.IGNORE_CASE
 
 class PadstowScraper : Scraper {
   override val jobs = forRootUrls(*ROOT_URLS) { root ->
@@ -24,19 +23,14 @@ class PadstowScraper : Scraper {
 
           val rawSize = doc.textFrom(".size .stat")
 
-          val name = rawName
-            .replace("^.* –".toRegex(), "")
-            .replace("\\(.*\\)".toRegex(), "")
-            .replace("\\d+-pack".toRegex(IGNORE_CASE), "")
-            .replace("mini( ?)keg".toRegex(IGNORE_CASE), "")
-            .trim()
+          val name = rawName.remove("^.* –", "\\(.*\\)", "\\d+-pack", "mini( ?)keg")
 
-          val mixed = doc.textFrom(".style .stat").contains("mixed", ignoreCase = true)
+          val mixed = doc.containsMatchFrom(".style .stat", "mixed")
 
           ScrapedItem(
             thumbnailUrl = el.urlFrom(".attachment-woocommerce_thumbnail"),
             name = name,
-            summary = doc.maybe { textFrom(".tag_line") }?.replace(" \\d+(\\.\\d+)?%$".toRegex(), ""),
+            summary = doc.maybe { textFrom(".tag_line") }?.remove(" \\d+(\\.\\d+)?%$"),
             desc = doc.textFrom(".post_content"),
             mixed = mixed,
             abv = if (mixed) null else doc.extractFrom(".abv .stat", "\\d+(\\.\\d+)?").doubleFrom(0),
@@ -45,7 +39,7 @@ class PadstowScraper : Scraper {
               Offer(
                 quantity = rawSize.maybe { extract("(\\d+) x").intFrom(1) } ?: 1,
                 totalPrice = el.priceFrom(".woocommerce-Price-amount"),
-                format = if (rawName.contains("mini( ?)keg".toRegex(IGNORE_CASE))) KEG else null,
+                format = if (rawName.containsMatch("mini( ?)keg")) KEG else null,
                 sizeMl = if (mixed) null else rawSize.sizeMlFrom()
               )
             )

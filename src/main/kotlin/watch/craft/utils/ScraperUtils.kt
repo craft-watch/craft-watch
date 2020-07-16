@@ -9,8 +9,7 @@ import org.jsoup.nodes.Node
 import org.jsoup.nodes.TextNode
 import org.jsoup.select.NodeTraversor
 import org.jsoup.select.NodeVisitor
-import watch.craft.Format.BOTTLE
-import watch.craft.Format.CAN
+import watch.craft.Format.*
 import watch.craft.MalformedInputException
 import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.More
@@ -124,9 +123,21 @@ fun List<String>.stringFrom(idx: Int) = get(idx).trim()
 
 operator fun Element.contains(cssQuery: String) = selectFirst(cssQuery) != null
 
+fun Element.containsMatchFrom(cssQuery: String = ":root", regex: String) = textFrom(cssQuery).containsMatch(regex)
 fun Element.extractFrom(cssQuery: String = ":root", regex: String) = textFrom(cssQuery).extract(regex)
 fun Element.textFrom(cssQuery: String = ":root") = selectFrom(cssQuery).text().trim()
-fun Element.urlFrom(cssQuery: String = ":root") = attrFrom(cssQuery, "abs:href", "abs:src", "abs:data-src").toUri()
+fun Element.urlFrom(
+  cssQuery: String = ":root",
+  preference: String? = null,
+  transform: (String) -> String = { it }
+): URI {
+  val attrs = if (preference != null) arrayOf("abs:${preference}") else arrayOf("abs:href", "abs:data-src", "abs:src")
+  return attrFrom(cssQuery, *attrs)
+    .replace("{width}", "200")
+    .replace("\\?v=.*".toRegex(), "")
+    .run { transform(this) }
+    .toUri()
+}
 
 fun Element.attrFrom(cssQuery: String = ":root", vararg attrs: String) = with(selectFrom(cssQuery)) {
   attrs.map { attr(it) }.firstOrNull { it.isNotBlank() }
@@ -139,11 +150,18 @@ fun Element.selectFrom(cssQuery: String) = selectFirst(cssQuery)
 fun Element.selectMultipleFrom(cssQuery: String) = select(cssQuery)!!
   .ifEmpty { throw MalformedInputException("Element(s) not present: ${cssQuery}") }
 
+fun String.remove(vararg regexes: String) = regexes.fold(this) { str, regex ->
+  str.replace(regex.toRegex(regexOptions(true)), "")
+}.trim()
+
 fun String.containsWord(vararg words: String) = tokenize()
   .filter { it.wordy }
   .map { it.text.toLowerCase() }
   .toSet()
   .any { it in words }
+
+fun String.containsMatch(regex: String, ignoreCase: Boolean = true) = regex.toRegex(regexOptions(ignoreCase))
+  .containsMatchIn(this)
 
 fun String.extract(regex: String, ignoreCase: Boolean = true) = regex.toRegex(regexOptions(ignoreCase))
   .find(this)?.groupValues
@@ -157,6 +175,7 @@ private fun regexOptions(ignoreCase: Boolean) = if (ignoreCase) {
 
 fun Element.formatFrom(cssQuery: String = ":root", fullProse: Boolean = true) = textFrom(cssQuery).formatFrom(fullProse)
 fun String.formatFrom(fullProse: Boolean = true) = when {
+  containsWord("keg") -> KEG
   contains(
     if (fullProse) "\\d+\\s*ml\\s*can".toRegex(IGNORE_CASE) else "can".toRegex(IGNORE_CASE)
   ) -> CAN   // Can't match directly on "can" because it's a regular English word

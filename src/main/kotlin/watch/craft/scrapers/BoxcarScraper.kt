@@ -7,7 +7,6 @@ import watch.craft.Scraper.ScrapedItem
 import watch.craft.shopify.shopifyItems
 import watch.craft.utils.*
 import java.net.URI
-import kotlin.text.RegexOption.IGNORE_CASE
 
 class BoxcarScraper : Scraper {
   override val jobs = forRootUrls(ROOT_URL) { root ->
@@ -23,7 +22,7 @@ class BoxcarScraper : Scraper {
             abv = parts[2].toDouble(),
             summary = parts[3].ifBlank { null },
             desc = doc.maybe { formattedTextFrom(".product-single__description") }
-              ?.replace("^DESCRIPTION".toRegex(IGNORE_CASE), ""),
+              ?.remove("^DESCRIPTION"),
             available = details.available,
             offers = setOf(
               Offer(

@@ -9,7 +9,6 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.utils.*
 import java.net.URI
-import kotlin.text.RegexOption.IGNORE_CASE
 
 class PurityScraper : Scraper {
   override val jobs = forRootUrls(ROOT_URL) { root ->
@@ -22,10 +21,7 @@ class PurityScraper : Scraper {
           val desc = doc.formattedTextFrom(".elementor-widget-woocommerce-product-content")
 
           ScrapedItem(
-            name = title
-              .replace(CASK_OR_POLYPIN_REGEX, "")
-              .replace("^purity".toRegex(IGNORE_CASE), "")
-              .trim(),
+            name = title.remove("(mini cask|polypin)$", "^purity"),
             summary = null,
             desc = desc,
             abv = desc.extractAbv(),
@@ -90,12 +86,12 @@ class PurityScraper : Scraper {
       totalPrice = priceFrom(".price"),
       // Hardcoded for keggy things because the size isn't always in the desc
       sizeMl = when {
-        title.contains(CASK_REGEX) -> 5_000
-        title.contains(POLYPIN_REGEX) -> 20_000
+        title.containsMatch("mini cask") -> 5_000
+        title.containsMatch("polypin") -> 20_000
         else -> desc.maybe { sizeMlFrom() }
       },
       format = when {
-        title.contains(CASK_OR_POLYPIN_REGEX) -> KEG
+        title.containsMatch("(mini cask|polypin)$") -> KEG
         else -> desc.formatFrom()
       }
     )
@@ -103,9 +99,5 @@ class PurityScraper : Scraper {
 
   companion object {
     private val ROOT_URL = URI("https://puritybrewing.com/product-category/purity/")
-
-    private val CASK_OR_POLYPIN_REGEX = "(mini cask|polypin)$".toRegex(IGNORE_CASE)
-    private val POLYPIN_REGEX = "polypin".toRegex(IGNORE_CASE)
-    private val CASK_REGEX = "mini cask".toRegex(IGNORE_CASE)
   }
 }

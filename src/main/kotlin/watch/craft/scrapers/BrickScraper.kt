@@ -9,7 +9,6 @@ import watch.craft.SkipItemException
 import watch.craft.shopify.shopifyItems
 import watch.craft.utils.*
 import java.net.URI
-import kotlin.text.RegexOption.IGNORE_CASE
 
 class BrickScraper : Scraper {
   override val jobs = forPaginatedRootUrl(ROOT_URL) { root ->
@@ -18,7 +17,7 @@ class BrickScraper : Scraper {
       .map { details ->
         Leaf(details.title, details.url) { doc ->
           val desc = doc.selectFrom(".product-single__description")
-          val mixed = details.title.contains("mixed", ignoreCase = true)
+          val mixed = details.title.containsMatch("mixed")
           val abv = desc.maybe { abvFrom() }
           if (!mixed && abv == null) {
             throw SkipItemException("Can't find ABV, so assuming not a beer")
@@ -27,11 +26,7 @@ class BrickScraper : Scraper {
           val attributes = desc.extractAttributes()
 
           ScrapedItem(
-            name = details.title
-              .replace("^\\d+\\s*x".toRegex(IGNORE_CASE), "")
-              .replace("case", "", ignoreCase = true)
-              .replace("[(].*[)]".toRegex(), "")
-              .trim(),
+            name = details.title.remove("^\\d+\\s*x", "case", "[(].*[)]"),
             summary = attributes["beer style"],
             desc = desc.formattedTextFrom(),
             mixed = mixed,

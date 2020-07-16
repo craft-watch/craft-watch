@@ -7,7 +7,6 @@ import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.utils.*
 import java.net.URI
-import kotlin.text.RegexOption.IGNORE_CASE
 
 class NorthernMonkScraper : Scraper {
   override val jobs = forPaginatedRootUrl(ROOT_URL) { root ->
@@ -20,14 +19,14 @@ class NorthernMonkScraper : Scraper {
           val desc = doc.selectFrom(".product__description")
           val abv = desc.maybe { abvFrom() }
           val mixed = desc.children()
-            .count { it.text().contains(ITEM_MULTIPLE_REGEX.toRegex(IGNORE_CASE)) } > 1
+            .count { it.text().containsMatch("\\d+\\s+x") } > 1
 
           if (abv == null && !mixed) {
             throw SkipItemException("Assume that lack of ABV for non-mixed means not a beer product")
           }
 
           val nameParts = rawName
-            .replace(PACK_REGEX.toRegex(IGNORE_CASE), "")
+            .remove(PACK_REGEX)
             .split("//")[0]
             .split("™")
             .map { it.trim() }
@@ -52,11 +51,7 @@ class NorthernMonkScraper : Scraper {
                 sizeMl = desc.maybe { sizeMlFrom() }
               )
             ),
-            thumbnailUrl = URI(
-              // The URLs are dynamically created
-              doc.attrFrom(".product__image.lazyload", "abs:data-src")
-                .replace("{width}", "180")
-            )
+            thumbnailUrl = doc.urlFrom(".product__image.lazyload")
           )
         }
       }
@@ -71,6 +66,5 @@ class NorthernMonkScraper : Scraper {
     private val ROOT_URL = URI("https://northernmonkshop.com/collections/beer")
 
     private const val PACK_REGEX = "(\\d+) pack"
-    private const val ITEM_MULTIPLE_REGEX = "\\d+\\s+x"
   }
 }

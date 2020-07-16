@@ -28,7 +28,7 @@ class JeffersonsScraperTest {
           Offer(totalPrice = 22.50, quantity = 6, sizeMl = 440)
         ),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/2172/2447/products/BirthdayNo.3_300x300.jpg?v=1594224138")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/2172/2447/products/BirthdayNo.3_200x.jpg")
       ),
       ITEMS.first { it.name == "Birthday No.3" && it.onlyOffer().quantity == 6 }.noDesc()
     )

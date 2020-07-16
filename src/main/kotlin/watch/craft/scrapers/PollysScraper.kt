@@ -17,7 +17,7 @@ class PollysScraper : Scraper {
         val a = el.selectFrom(".woocommerce-loop-product__link")
 
         Leaf(rawName, a.urlFrom()) { doc ->
-          if (rawName.contains("mix", ignoreCase = true)) {
+          if (rawName.containsMatch("mix")) {
             throw SkipItemException("Don't know how to deal with mixed packs")
           }
 

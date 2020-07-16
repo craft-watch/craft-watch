@@ -32,7 +32,7 @@ class HackneyChurchScraper : Scraper {
             desc = desc,
             mixed = allQuantities.size > 1,
             abv = null,
-            available = !price.text().contains("sold out", ignoreCase = true),
+            available = !price.containsMatchFrom(regex = "sold out"),
             offers = setOf(
               Offer(
                 quantity = allQuantities.sum(),
@@ -40,11 +40,7 @@ class HackneyChurchScraper : Scraper {
                 sizeMl = if (distinctSizes.size == 1) distinctSizes.first() else null
               )
             ),
-            thumbnailUrl = URI(
-              // The URLs are dynamically created
-              el.attrFrom("img.grid-view-item__image", "abs:data-src")
-                .replace("{width}", "200")
-            )
+            thumbnailUrl = el.urlFrom("img.grid-view-item__image")
           )
         }
       }
