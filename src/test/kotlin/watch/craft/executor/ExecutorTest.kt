@@ -4,10 +4,13 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import watch.craft.*
+import watch.craft.Item
+import watch.craft.Offer
+import watch.craft.Scraper
 import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
+import watch.craft.ScraperEntry
 import watch.craft.network.Retriever
 import java.net.URI
 import java.time.Clock

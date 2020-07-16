@@ -3,7 +3,8 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import watch.craft.*
-import watch.craft.Format.*
+import watch.craft.Format.CAN
+import watch.craft.Format.KEG
 import watch.craft.Scraper.ScrapedItem
 import java.net.URI
 
@@ -76,5 +77,10 @@ class PurityScraperTest {
       listOf(1.95, 41.20),   // The latter is the sale price
       item.offers.map { it.totalPrice }
     )
+  }
+
+  @Test
+  fun `doesn't select crazy ABV`() {
+    assertEquals(4.6, ITEMS.byName("Pure Cider").abv)   // Not "100%" which also appears in the text
   }
 }

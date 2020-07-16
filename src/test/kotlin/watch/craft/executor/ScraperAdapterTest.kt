@@ -7,11 +7,14 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import watch.craft.*
+import watch.craft.FatalScraperException
+import watch.craft.MalformedInputException
+import watch.craft.Scraper
 import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.Job.More
 import watch.craft.Scraper.ScrapedItem
+import watch.craft.SkipItemException
 import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.network.Retriever
 import watch.craft.utils.textFrom

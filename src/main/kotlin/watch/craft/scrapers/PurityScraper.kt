@@ -2,18 +2,15 @@ package watch.craft.scrapers
 
 import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
-import watch.craft.Format
-import watch.craft.Format.*
+import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.scrapers.PurityScraper.Companion.CASK_OR_POLYPIN_REGEX
 import watch.craft.utils.*
 import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
-// TODO - cider coming out as 100%
 class PurityScraper : Scraper {
   override val jobs = forRootUrls(ROOT_URL) { root ->
     root
@@ -31,7 +28,7 @@ class PurityScraper : Scraper {
               .trim(),
             summary = null,
             desc = desc,
-            abv = desc.maybe { abvFrom() },
+            abv = desc.extractAbv(),
             available = true,
             offers = doc.extractOffers(title, desc).toSet(),
             thumbnailUrl = el.attrFrom(".attachment-woocommerce_thumbnail", "data-lazy-src").toUri()
@@ -45,6 +42,11 @@ class PurityScraper : Scraper {
     .selectMultipleFrom("section")
     .filterNot { it.maybe { textFrom("h1").containsWord("experience") } ?: true }
     .flatMap { it.selectMultipleFrom(".product") }
+
+  private fun String.extractAbv() = this
+    .split("\n")
+    .mapNotNull { it.maybe { abvFrom() } }
+    .min()
 
   private fun Document.extractOffers(title: String, desc: String): List<Offer> {
     val rows = maybe { selectMultipleFrom(".woocommerce-grouped-product-list-item") }
