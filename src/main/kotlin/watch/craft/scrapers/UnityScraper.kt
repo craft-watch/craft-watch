@@ -5,10 +5,7 @@ import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.shopify.shopifyItems
-import watch.craft.utils.abvFrom
-import watch.craft.utils.forRootUrls
-import watch.craft.utils.sizeMlFrom
-import watch.craft.utils.textFrom
+import watch.craft.utils.*
 import java.net.URI
 
 class UnityScraper : Scraper {
@@ -18,14 +15,14 @@ class UnityScraper : Scraper {
       .map { details ->
 
         Leaf(details.title, details.url) { doc ->
-          val desc = doc.textFrom(".product-single__description")
+          val desc = doc.formattedTextFrom(".product-single__description")
 
           ScrapedItem(
             name = details.title,
             summary = null,
             desc = desc,
             mixed = false,
-            abv = desc.abvFrom(),
+            abv = desc.extractAbv(),
             available = details.available,
             offers = setOf(
               Offer(
@@ -38,6 +35,11 @@ class UnityScraper : Scraper {
         }
       }
   }
+
+  private fun String.extractAbv() = this
+    .split("\n")
+    .mapNotNull { it.maybe { abvFrom() } }
+    .min()
 
   companion object {
     private val ROOT_URL = URI("https://unitybrewingco.com/collections/unity-beer")

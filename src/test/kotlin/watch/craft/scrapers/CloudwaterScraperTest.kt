@@ -8,12 +8,12 @@ import java.net.URI
 
 class CloudwaterScraperTest {
   companion object {
-    private val ITEMS = executeScraper(CloudwaterScraper())
+    private val ITEMS = executeScraper(CloudwaterScraper(), dateString = "2020-07-16")
   }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(20, ITEMS.size)
+    assertEquals(22, ITEMS.size)
   }
 
   @Test
@@ -35,7 +35,7 @@ class CloudwaterScraperTest {
 
   @Test
   fun `extracts description`() {
-    assertNotNull(ITEMS.byName("DDH Pale").desc)
+    assertNotNull(ITEMS.byName("Bird Tweets Trump Trump Tweets").desc)
   }
 
   @Test
@@ -46,6 +46,11 @@ class CloudwaterScraperTest {
     assertFalse(items.any { it.onlyOffer().quantity == 1 })
     assertFalse(items.any { it.onlyOffer().sizeMl != null })
     assertFalse(items.any { it.abv != null })
+  }
+
+  @Test
+  fun `identifies quantities`() {
+    assertEquals(6, ITEMS.byName("All Together 6 Pack").onlyOffer().quantity)
   }
 }
 

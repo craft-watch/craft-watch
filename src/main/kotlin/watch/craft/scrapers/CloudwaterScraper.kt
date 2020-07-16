@@ -34,7 +34,8 @@ class CloudwaterScraper : Scraper {
             available = true,
             offers = setOf(
               Offer(
-                quantity = max(1, allNumItems.sum()),
+                quantity = nameLines[0].maybe { extract("(\\d+) pack").intFrom(1) }
+                  ?: max(1, allNumItems.sum()),
                 totalPrice = el.priceFrom(".price-regular"),
                 sizeMl = if (mixed) null else desc.sizeMlFrom()
               )
