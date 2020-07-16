@@ -8,7 +8,6 @@ import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.utils.*
 import java.net.URI
-import kotlin.text.RegexOption.IGNORE_CASE
 
 class PadstowScraper : Scraper {
   override val jobs = forRootUrls(*ROOT_URLS) { root ->

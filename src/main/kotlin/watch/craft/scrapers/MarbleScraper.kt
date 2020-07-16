@@ -8,7 +8,6 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.utils.*
 import java.net.URI
-import kotlin.text.RegexOption.IGNORE_CASE
 
 class MarbleScraper : Scraper {
   override val jobs = forRootUrls(ROOT_URL) { root ->

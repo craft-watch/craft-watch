@@ -7,7 +7,6 @@ import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.utils.*
 import java.net.URI
-import kotlin.text.RegexOption.IGNORE_CASE
 
 class NorthernMonkScraper : Scraper {
   override val jobs = forPaginatedRootUrl(ROOT_URL) { root ->
