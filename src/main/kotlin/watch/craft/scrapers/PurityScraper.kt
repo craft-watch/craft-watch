@@ -24,7 +24,7 @@ class PurityScraper : Scraper {
             name = title.remove("(mini cask|polypin)$", "^purity"),
             summary = null,
             desc = desc,
-            abv = desc.collectFromLines { it.maybe { abvFrom() } }.min(),
+            abv = desc.collectFromLines { abvFrom() }.min(),
             available = true,
             offers = doc.extractOffers(title, desc).toSet(),
             thumbnailUrl = el.attrFrom(".attachment-woocommerce_thumbnail", "data-lazy-src").toUri()

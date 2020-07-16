@@ -17,8 +17,8 @@ class HackneyChurchScraper : Scraper {
         Leaf(rawName, el.urlFrom("a.grid-view-item__link")) { doc ->
           val price = el.selectFrom(".price")
           val desc = doc.formattedTextFrom(".hcbc-product-description")
-          val allQuantities = desc.collectFromLines { it.maybe { quantityFrom() } }
-          val distinctSizes = desc.collectFromLines { it.maybe { sizeMlFrom() } }.distinct()
+          val allQuantities = desc.collectFromLines { quantityFrom() }
+          val distinctSizes = desc.collectFromLines { sizeMlFrom() }.distinct()
 
           ScrapedItem(
             name = rawName,

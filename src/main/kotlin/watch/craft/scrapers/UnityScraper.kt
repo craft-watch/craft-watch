@@ -22,7 +22,7 @@ class UnityScraper : Scraper {
             summary = null,
             desc = desc,
             mixed = false,
-            abv = desc.collectFromLines { it.maybe { abvFrom() } }.min(),
+            abv = desc.collectFromLines { abvFrom() }.min(),
             available = details.available,
             offers = setOf(
               Offer(
