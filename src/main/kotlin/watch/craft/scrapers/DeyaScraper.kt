@@ -20,7 +20,7 @@ class DeyaScraper : Scraper {
           val mixed = title.containsMatch("mix")
 
           ScrapedItem(
-            name = title.replace(" / \\d+ pack".toRegex(IGNORE_CASE), ""),
+            name = title.remove(" / \\d+ pack"),
             summary = null,
             desc = desc,
             mixed = mixed,

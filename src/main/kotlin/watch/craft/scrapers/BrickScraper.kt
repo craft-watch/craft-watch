@@ -27,11 +27,7 @@ class BrickScraper : Scraper {
           val attributes = desc.extractAttributes()
 
           ScrapedItem(
-            name = details.title
-              .replace("^\\d+\\s*x".toRegex(IGNORE_CASE), "")
-              .replace("case", "", ignoreCase = true)
-              .replace("[(].*[)]".toRegex(), "")
-              .trim(),
+            name = details.title.remove("^\\d+\\s*x", "case", "[(].*[)]"),
             summary = attributes["beer style"],
             desc = desc.formattedTextFrom(),
             mixed = mixed,

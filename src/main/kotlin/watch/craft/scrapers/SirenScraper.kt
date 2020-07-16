@@ -31,7 +31,7 @@ class SirenScraper : Scraper {
           val keg = rawName.containsMatch("Mini Keg")
 
           ScrapedItem(
-            name = rawName.replace("(\\d+)L Mini Keg - ".toRegex(), ""),
+            name = rawName.remove("(\\d+)L Mini Keg - "),
             summary = if (keg) null else details[1],
             desc = doc.formattedTextFrom(".about"),
             mixed = false,

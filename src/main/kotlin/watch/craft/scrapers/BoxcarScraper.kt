@@ -23,7 +23,7 @@ class BoxcarScraper : Scraper {
             abv = parts[2].toDouble(),
             summary = parts[3].ifBlank { null },
             desc = doc.maybe { formattedTextFrom(".product-single__description") }
-              ?.replace("^DESCRIPTION".toRegex(IGNORE_CASE), ""),
+              ?.remove("^DESCRIPTION"),
             available = details.available,
             offers = setOf(
               Offer(

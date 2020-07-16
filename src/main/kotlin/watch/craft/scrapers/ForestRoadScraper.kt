@@ -28,11 +28,7 @@ class ForestRoadScraper : Scraper {
           val mixed = title.containsMatch("mixed")
 
           ScrapedItem(
-            name = title
-              .replace("[(].*[)]".toRegex(), "")
-              .replace("cans".toRegex(IGNORE_CASE), "")
-              .trim()
-              .toTitleCase(),
+            name = title.remove("[(].*[)]", "cans").toTitleCase(),
             summary = if (descLines[0].containsMatch("@")) null else descLines[0], // Filter out nonsense
             desc = desc,
             mixed = mixed,

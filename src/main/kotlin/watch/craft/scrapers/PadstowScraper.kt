@@ -24,19 +24,14 @@ class PadstowScraper : Scraper {
 
           val rawSize = doc.textFrom(".size .stat")
 
-          val name = rawName
-            .replace("^.* –".toRegex(), "")
-            .replace("\\(.*\\)".toRegex(), "")
-            .replace("\\d+-pack".toRegex(IGNORE_CASE), "")
-            .replace("mini( ?)keg".toRegex(IGNORE_CASE), "")
-            .trim()
+          val name = rawName.remove("^.* –", "\\(.*\\)", "\\d+-pack", "mini( ?)keg")
 
           val mixed = doc.containsMatchFrom(".style .stat", "mixed")
 
           ScrapedItem(
             thumbnailUrl = el.urlFrom(".attachment-woocommerce_thumbnail"),
             name = name,
-            summary = doc.maybe { textFrom(".tag_line") }?.replace(" \\d+(\\.\\d+)?%$".toRegex(), ""),
+            summary = doc.maybe { textFrom(".tag_line") }?.remove(" \\d+(\\.\\d+)?%$"),
             desc = doc.textFrom(".post_content"),
             mixed = mixed,
             abv = if (mixed) null else doc.extractFrom(".abv .stat", "\\d+(\\.\\d+)?").doubleFrom(0),

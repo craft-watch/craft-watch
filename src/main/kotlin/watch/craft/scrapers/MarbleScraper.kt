@@ -27,11 +27,11 @@ class MarbleScraper : Scraper {
 
           ScrapedItem(
             thumbnailUrl = el.urlFrom(".wp-post-image"),
-            name = name
-              .replace("\\s+\\d+l mini (keg|cask)$".toRegex(IGNORE_CASE), "")
-              .replace("\\s+Case\\s+\\(\\d+ Cans\\)$".toRegex(IGNORE_CASE), "")
-              .replace("\\d+$".toRegex(), "")
-              .toTitleCase(),
+            name = name.remove(
+              "\\s+\\d+l mini (keg|cask)$",
+              "\\s+Case\\s+\\(\\d+ Cans\\)$",
+              "\\d+$"
+            ).toTitleCase(),
             summary = if (mixed) null else style,
             desc = doc.maybe { formattedTextFrom(".woocommerce-product-details__short-description") }?.ifBlank { null },
             mixed = mixed,

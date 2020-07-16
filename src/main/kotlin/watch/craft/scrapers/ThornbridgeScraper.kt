@@ -25,7 +25,7 @@ class ThornbridgeScraper : Scraper {
 
           ScrapedItem(
             thumbnailUrl = doc.urlFrom(".product__image-wrapper img"),
-            name = parts[1].replace(" (bottle|can)$".toRegex(IGNORE_CASE), ""),
+            name = parts[1].remove(" (bottle|can)$"),
             summary = parts[2],
             desc = desc.formattedTextFrom(),
             mixed = false,
