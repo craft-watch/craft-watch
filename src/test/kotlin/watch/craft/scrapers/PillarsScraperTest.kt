@@ -26,7 +26,7 @@ class PillarsScraperTest {
         abv = 4.8,
         offers = setOf(Offer(quantity = 24, totalPrice = 45.00)),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0367/7857/3883/products/01125465-bf55-4019-9d59-52d2d00d1333_250x250.png?v=1585771178")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0367/7857/3883/products/01125465-bf55-4019-9d59-52d2d00d1333_250x250.png")
       ),
       ITEMS.first { it.name == "Rebell Helles" && it.onlyOffer().quantity == 24 }.noDesc()
     )

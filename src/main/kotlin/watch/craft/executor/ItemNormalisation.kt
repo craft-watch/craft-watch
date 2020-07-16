@@ -5,7 +5,6 @@ import watch.craft.DEFAULT_SIZE_ML
 import watch.craft.InvalidItemException
 import watch.craft.Item
 import watch.craft.executor.ScraperAdapter.Result
-import watch.craft.utils.toUri
 
 private val logger = KotlinLogging.logger {}
 
@@ -53,10 +52,7 @@ private fun Result.normaliseToItem() = Item(
     },
   available = item.available,
   thumbnailUrl = item.thumbnailUrl
-    .validate("absolute thumbnail URL") { it.isAbsolute }
-    .toString()
-    .replace("\\?v=.*".toRegex(), "")
-    .toUri(),
+    .validate("absolute thumbnail URL") { it.isAbsolute },
   url = url
     .validate("absolute URL") { it.isAbsolute }
 )

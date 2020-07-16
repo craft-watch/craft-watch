@@ -27,7 +27,7 @@ class CloudwaterScraperTest {
           Offer(totalPrice = 4.75, sizeMl = 440)
         ),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.873_1_800x.jpg?v=1591967414")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0088/5076/7952/products/GyleNo.873_1_800x.jpg")
       ),
       ITEMS.byName("Bird Tweets Trump Trump Tweets").noDesc()
     )

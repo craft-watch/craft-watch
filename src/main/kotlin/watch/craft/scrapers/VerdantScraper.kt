@@ -37,7 +37,7 @@ class VerdantScraper : Scraper {
                 sizeMl = doc.sizeMlFrom(".product__volume")
               )
             ),
-            thumbnailUrl = el.urlFrom("img.product__img")
+            thumbnailUrl = el.urlFrom("img.product__img", "src")
           )
         }
       }

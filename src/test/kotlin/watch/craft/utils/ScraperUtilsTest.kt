@@ -6,8 +6,24 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import watch.craft.MalformedInputException
+import java.net.URI
 
 class ScraperUtilsTest {
+  @Nested
+  inner class UrlFrom {
+    @Test
+    fun `removes noise from thumbnail URLs`() {
+      val doc = docFromFragment(
+        """<img src="https://example.invalid/s/files/1/2/3/4/my_img.jpg?v=1593009635" />"""
+      )
+
+      assertEquals(
+        URI("https://example.invalid/s/files/1/2/3/4/my_img.jpg"),
+        doc.urlFrom("img")
+      )
+    }
+  }
+
   @Nested
   inner class SizeFrom {
     @Test

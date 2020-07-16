@@ -26,7 +26,7 @@ class BeakScraperTest {
           Offer(totalPrice = 3.99, sizeMl = 440)
         ),
         available = false,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0286/3471/0061/products/Cans_800x800_crop_center.jpg?v=1593009635")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0286/3471/0061/products/Cans_800x800_crop_center.jpg")
       ),
       ITEMS.byName("Lulla").noDesc()
     )

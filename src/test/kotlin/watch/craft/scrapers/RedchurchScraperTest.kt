@@ -31,7 +31,7 @@ class RedchurchScraperTest {
           Offer(quantity = 6, totalPrice = 11.00, sizeMl = 330)
         ),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0034/8694/1229/products/SBwwwimage_200x200.png")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0034/8694/1229/products/SBwwwimage_200x.png")
       ),
       ITEMS.byName("Shoreditch Blonde").noDesc()
     )

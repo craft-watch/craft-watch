@@ -30,7 +30,7 @@ class ThornbridgeScraperTest {
           Offer(totalPrice = 2.00, sizeMl = 330)
         ),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_can_mockup_coloured_background_300x300.jpg?v=1583154011")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0075/9939/0831/products/Jaipur_can_mockup_coloured_background_200x.jpg")
       ),
       ITEMS.first { it.name == "Jaipur" && it.thumbnailUrl.toString().contains("can") }.noDesc()
     )

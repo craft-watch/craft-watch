@@ -30,7 +30,7 @@ class OrbitScraperTest {
           Offer(quantity = 24, totalPrice = 54.00, sizeMl = 330)
         ),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/1235/9817/products/IvoAmazon_250x250@2x.jpg?v=1585148411")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/1235/9817/products/IvoAmazon_250x250@2x.jpg")
       ),
       ITEMS.byName("Ivo Pale Ale").noDesc()
     )

@@ -30,7 +30,7 @@ class VerdantScraperTest {
           Offer(quantity = 6, totalPrice = 21.00, sizeMl = 440)
         ),
         available = false,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/1960/0337/products/Some50-Product2_100x.jpg?v=1594125772")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/1960/0337/products/Some50-Product2_100x.jpg")
       ),
       ITEMS.byName("Some Fifty Pale Ale").noDesc()
     )

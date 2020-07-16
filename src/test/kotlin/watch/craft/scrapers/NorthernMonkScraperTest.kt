@@ -27,7 +27,7 @@ class NorthernMonkScraperTest {
           Offer(totalPrice = 3.00, sizeMl = 440)
         ),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/2213/3151/products/2020-NMBC_Great-Northern-Lager-29_180x.jpg?v=1589212703")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/2213/3151/products/2020-NMBC_Great-Northern-Lager-29_200x.jpg")
       ),
       ITEMS.first { it.name == "Great Northern Lager" && it.onlyOffer().quantity == 1 }.noDesc()
     )

@@ -51,11 +51,7 @@ class NorthernMonkScraper : Scraper {
                 sizeMl = desc.maybe { sizeMlFrom() }
               )
             ),
-            thumbnailUrl = URI(
-              // The URLs are dynamically created
-              doc.attrFrom(".product__image.lazyload", "abs:data-src")
-                .replace("{width}", "180")
-            )
+            thumbnailUrl = doc.urlFrom(".product__image.lazyload")
           )
         }
       }

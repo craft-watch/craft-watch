@@ -126,10 +126,18 @@ operator fun Element.contains(cssQuery: String) = selectFirst(cssQuery) != null
 fun Element.containsMatchFrom(cssQuery: String = ":root", regex: String) = textFrom(cssQuery).containsMatch(regex)
 fun Element.extractFrom(cssQuery: String = ":root", regex: String) = textFrom(cssQuery).extract(regex)
 fun Element.textFrom(cssQuery: String = ":root") = selectFrom(cssQuery).text().trim()
-fun Element.urlFrom(cssQuery: String = ":root", transform: (String) -> String = { it }) =
-  attrFrom(cssQuery, "abs:href", "abs:src", "abs:data-src")
+fun Element.urlFrom(
+  cssQuery: String = ":root",
+  preference: String? = null,
+  transform: (String) -> String = { it }
+): URI {
+  val attrs = if (preference != null) arrayOf("abs:${preference}") else arrayOf("abs:href", "abs:data-src", "abs:src")
+  return attrFrom(cssQuery, *attrs)
+    .replace("{width}", "200")
+    .replace("\\?v=.*".toRegex(), "")
     .run { transform(this) }
     .toUri()
+}
 
 fun Element.attrFrom(cssQuery: String = ":root", vararg attrs: String) = with(selectFrom(cssQuery)) {
   attrs.map { attr(it) }.firstOrNull { it.isNotBlank() }

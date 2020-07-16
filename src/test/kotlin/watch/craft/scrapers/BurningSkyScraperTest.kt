@@ -30,7 +30,7 @@ class BurningSkyScraperTest {
           Offer(totalPrice = 3.10, quantity = 1, sizeMl = 440, format = CAN)
         ),
         available = true,
-        thumbnailUrl = URI("https://www.burningskybeer.com/wp-content/uploads/2019/11/arise-2019-1000x906.png")
+        thumbnailUrl = URI("https://www.burningskybeer.com/wp-content/uploads/2019/11/arise-2019.png")
       ),
       ITEMS.byName("Arise").noDesc()
     )
