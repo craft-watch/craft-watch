@@ -52,7 +52,7 @@ const NameInfo = ({ datum }: CellProps<Item>) => {
         {newItem && <span className="pill new">NEW !!!</span>}
         {justAdded && <span className="pill just-added">Just added</span>}
         {keg && <span className="pill keg">{MINIKEG}</span>}
-        {kegAvailable && <span className="pill keg">Minikeg available</span>}
+        {kegAvailable && <span className="pill keg">Keg available</span>}
         {mixed && <span className="pill mixed">{MIXED_CASE}</span>}
       </p>
       {(datum.desc !== undefined) && <TooltipBody datum={datum} />}
