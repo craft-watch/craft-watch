@@ -24,14 +24,14 @@ class Setup(
     LocalDate.parse(dateString).atStartOfDay(ZoneOffset.UTC).toInstant()
   }
 
-  private val store = WriteThroughObjectStore(
+  private val store: ObjectStore = WriteThroughObjectStore(
     firstLevel = firstLevelStore,
     secondLevel = secondLevelStore
   )
 
-  val results = SubObjectStore(store, RESULTS_DIRNAME)
+  val results: ObjectStore = SubObjectStore(store, RESULTS_DIRNAME)
 
-  val downloadsDir = SubObjectStore(store, "${DOWNLOADS_DIR}/${calculateSubdir()}")
+  val downloadsDir: ObjectStore = SubObjectStore(store, "${DOWNLOADS_DIR}/${calculateSubdir()}")
 
   val createRetriever: (String) -> Retriever = { name ->
     CachingRetriever(

@@ -21,7 +21,7 @@ class SetupTest {
 
       val setup = createSetup(false)
 
-      assertEquals("downloads/2020-01-01", setup.downloadsDir.base)
+      assertEquals("/downloads/2020-01-01", setup.downloadsDir.path)
     }
 
     @Test
@@ -30,7 +30,7 @@ class SetupTest {
 
       val setup = createSetup(false)
 
-      assertEquals("downloads/2020-01-01", setup.downloadsDir.base)
+      assertEquals("/downloads/2020-01-01", setup.downloadsDir.path)
     }
 
     @Test
@@ -39,7 +39,7 @@ class SetupTest {
 
       val setup = createSetup(false)
 
-      assertEquals("downloads/2020-01-01--001", setup.downloadsDir.base)
+      assertEquals("/downloads/2020-01-01--001", setup.downloadsDir.path)
     }
   }
 
@@ -51,7 +51,7 @@ class SetupTest {
 
       val setup = createSetup(true)
 
-      assertEquals("downloads/2020-01-01", setup.downloadsDir.base)
+      assertEquals("/downloads/2020-01-01", setup.downloadsDir.path)
     }
 
     @Test
@@ -60,7 +60,7 @@ class SetupTest {
 
       val setup = createSetup(true)
 
-      assertEquals("downloads/2020-01-01--001", setup.downloadsDir.base)
+      assertEquals("/downloads/2020-01-01--001", setup.downloadsDir.path)
     }
 
     @Test
@@ -69,7 +69,7 @@ class SetupTest {
 
       val setup = createSetup(true)
 
-      assertEquals("downloads/2020-01-01--002", setup.downloadsDir.base)
+      assertEquals("/downloads/2020-01-01--002", setup.downloadsDir.path)
     }
   }
 

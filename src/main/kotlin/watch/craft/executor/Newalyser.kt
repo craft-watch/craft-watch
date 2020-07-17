@@ -6,8 +6,8 @@ import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
 import watch.craft.Brewery
 import watch.craft.Item
-import watch.craft.MinimalItem
 import watch.craft.ResultsManager
+import watch.craft.ResultsManager.MinimalItem
 import java.time.Duration
 import java.time.Instant
 import java.time.temporal.ChronoUnit.DAYS

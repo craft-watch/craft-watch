@@ -7,6 +7,7 @@ import java.time.Instant
 annotation class SemanticallyASet
 
 data class Inventory(
+  val version: Int = 1,
   val metadata: Metadata,
   val stats: Stats = Stats(),
   val categories: List<String>,
@@ -74,12 +75,3 @@ enum class Format {
   CAN,
   KEG
 }
-
-data class MinimalInventory(
-  val items: List<MinimalItem>
-)
-
-data class MinimalItem(
-  val breweryId: String,
-  val name: String
-)

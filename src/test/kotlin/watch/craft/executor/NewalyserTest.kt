@@ -6,7 +6,12 @@ import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import watch.craft.*
+import watch.craft.Brewery
+import watch.craft.Item
+import watch.craft.PROTOTYPE_ITEM
+import watch.craft.ResultsManager
+import watch.craft.ResultsManager.MinimalInventory
+import watch.craft.ResultsManager.MinimalItem
 import java.net.URI
 import java.time.Duration
 import java.time.Instant

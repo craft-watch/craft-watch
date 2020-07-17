@@ -36,7 +36,7 @@ class ScraperAdapterTest {
 
     assertEquals(
       listOf(
-        Result(breweryId = BREWERY_NAME, rawName = "A", url = URL_A, item = itemA)
+        Result(breweryId = BREWERY_ID, rawName = "A", url = URL_A, item = itemA)
       ),
       execute(adapter).entries
     )
@@ -218,11 +218,11 @@ class ScraperAdapterTest {
     object : Scraper {
       override val jobs = jobs
     },
-    BREWERY_NAME
+    BREWERY_ID
   )
 
   companion object {
-    private const val BREWERY_NAME = "Foo"
+    private const val BREWERY_ID = "foo"
     private val ROOT_URL = URI("https://example.invalid")
     private val PAGE_2_URL = URI("https://example.invalid/2")
     private val URL_A = URI("https://example.invalid/a")

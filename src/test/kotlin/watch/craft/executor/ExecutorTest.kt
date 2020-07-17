@@ -40,7 +40,7 @@ class ExecutorTest {
       listOf(
         with(product("Bar")) {
           Item(
-            breweryId = THIS_BREWERY,
+            breweryId = THIS_BREWERY_ID,
             name = name,
             summary = summary,
             desc = desc,
@@ -55,7 +55,7 @@ class ExecutorTest {
         },
         with(product("Foo")) {
           Item(
-            breweryId = THIS_BREWERY,
+            breweryId = THIS_BREWERY_ID,
             name = name,
             summary = summary,
             desc = desc,
@@ -92,12 +92,12 @@ class ExecutorTest {
       scraper = object : Scraper {
         override val jobs = jobs
       },
-      brewery = mock { on { shortName } doReturn THIS_BREWERY }
+      brewery = mock { on { id } doReturn THIS_BREWERY_ID }
     )
   )
 
   companion object {
-    private const val THIS_BREWERY = "Foo Bar"
+    private const val THIS_BREWERY_ID = "foo"
     private const val DECENT_PRICE = 2.46
     private val NOW = Instant.EPOCH
 

@@ -25,7 +25,7 @@ class Executor(
 
       val breweries = scrapers
         .map { it.brewery }
-//        .map { newalyser.enrich(it) }
+        .map { newalyser.enrich(it) }
 
       return Inventory(
         metadata = Metadata(
@@ -59,7 +59,7 @@ class Executor(
         .copy(entries = consolidated.entries
           .sortedBy { it.name }
           .map(categoriser::enrich)
-//          .map(newalyser::enrich)
+          .map(newalyser::enrich)
         )
     }
   }
