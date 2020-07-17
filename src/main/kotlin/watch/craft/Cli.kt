@@ -12,6 +12,7 @@ class Cli : CliktCommand(name = "scraper") {
   private val scraperDetails = SCRAPERS.associateBy { it.brewery.shortName.toSafeName() }
 
   private val listScrapers by option("--list-scrapers", "-l").flag()
+  private val forceDownload by option("--force-download", "-f").flag()
   private val dateString by option("--date", "-d")
   private val scrapers by argument().choice(scraperDetails).multiple()
 
@@ -27,7 +28,7 @@ class Cli : CliktCommand(name = "scraper") {
   }
 
   private fun executeScrape() {
-    val setup = Setup(dateString)
+    val setup = Setup(dateString, forceDownload)
     val results = ResultsManager(setup)
     val executor = Executor(results = results, createRetriever = setup.createRetriever)
     val inventory = executor.scrape(scrapers.ifEmpty { SCRAPERS })

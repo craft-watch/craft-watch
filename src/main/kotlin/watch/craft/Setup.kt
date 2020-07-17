@@ -31,10 +31,8 @@ class Setup(
 
   val createRetriever: (String) -> Retriever = { name ->
     CachingRetriever(
-      if (forceDownload) {
-        NullObjectStore()
-      } else {
-        SubObjectStore(store, "${DOWNLOADS_DIR}/${DATE_FORMAT.format(instant)}")
+      SubObjectStore(store, "${DOWNLOADS_DIR}/${DATE_FORMAT.format(instant)}").run {
+        if (forceDownload) NoReadsObjectStore(this) else this
       },
       if (live) {
         NetworkRetriever(name)
