@@ -28,7 +28,10 @@ class Executor(
         .map { newalyser.enrich(it) }
 
       return Inventory(
-        metadata = Metadata(capturedAt = now),
+        metadata = Metadata(
+          capturedAt = now,
+          ciBranch = System.getenv("CIRCLE_BRANCH")
+        ),
         stats = Stats(
           breweries = breweryItems.map { it.stats }
         ),
