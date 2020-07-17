@@ -29,7 +29,7 @@ class OfferConsolidationTest {
   fun `doesn't merge items with same name from different breweries`() {
     val items = listOf(
       item(offers = listOf(Offer(totalPrice = 1.00))),
-      item(brewery = THAT_BREWERY, offers = listOf(Offer(totalPrice = 2.00)))
+      item(breweryId = THAT_BREWERY_ID, offers = listOf(Offer(totalPrice = 2.00)))
     )
 
     val ret = items.consolidate()
@@ -238,11 +238,11 @@ class OfferConsolidationTest {
   }
 
   private fun item(
-    brewery: String = THIS_BREWERY,
+    breweryId: String = THIS_BREWERY_ID,
     name: String = THIS_BEER,
     offers: List<Offer>
   ) = PROTOTYPE_ITEM.copy(
-    brewery = brewery,
+    breweryId = breweryId,
     name = name,
     offers = offers
   )
@@ -251,8 +251,8 @@ class OfferConsolidationTest {
     StatsWith(this, BreweryStats("whatever")).consolidateOffers()
 
   companion object {
-    private const val THIS_BREWERY = "ABC Brew"
-    private const val THAT_BREWERY = "DEF Brew"
+    private const val THIS_BREWERY_ID = "abc"
+    private const val THAT_BREWERY_ID = "def"
     private const val THIS_BEER = "Foo"
   }
 }

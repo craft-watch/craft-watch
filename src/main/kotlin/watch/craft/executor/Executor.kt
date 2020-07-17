@@ -47,8 +47,8 @@ class Executor(
         .map { it.await() }
     }
 
-    private suspend fun ScraperEntry.execute() = createRetriever(brewery.shortName).use {
-      ScraperAdapter(it, scraper, brewery.shortName).execute()
+    private suspend fun ScraperEntry.execute() = createRetriever(brewery.id).use {
+      ScraperAdapter(it, scraper, brewery.id).execute()
     }
 
     private fun StatsWith<Result>.postProcessItems(): StatsWith<Item> {

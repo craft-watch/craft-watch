@@ -13,7 +13,7 @@ const ThisPage = (props: FavouritesProps): JSX.Element => {
       desc="Daily updates from my favourite breweries"
       longDesc={
         (
-          _.isEmpty(props.favourites.breweries)
+          _.isEmpty(props.favourites.breweryIds)
             ? (
               <p>
                 It looks like you haven&apos;t set any favourite breweries yet.  Visit
@@ -32,7 +32,7 @@ const ThisPage = (props: FavouritesProps): JSX.Element => {
       <InventoryApp
         inventory={{
           ...inventory,
-          items: _.filter(inventory.items, item => props.favourites.breweries.includes(item.brewery.shortName)),
+          items: _.filter(inventory.items, item => props.favourites.breweryIds.includes(item.brewery.id)),
         }}
       />
     </Page>

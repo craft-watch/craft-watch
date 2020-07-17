@@ -6,8 +6,8 @@ import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
 import watch.craft.Brewery
 import watch.craft.Item
-import watch.craft.MinimalItem
 import watch.craft.ResultsManager
+import watch.craft.ResultsManager.MinimalItem
 import java.time.Duration
 import java.time.Instant
 import java.time.temporal.ChronoUnit.DAYS
@@ -43,17 +43,17 @@ class Newalyser(
 
   private val breweryLifetimes by lazy {
     itemAppearances
-      .map { (item, instant) -> item.brewery to instant }
+      .map { (item, instant) -> item.breweryId to instant }
       .extractLifetimePerKey()
   }
 
   fun enrich(item: Item): Item {
-    val minimalItem = MinimalItem(brewery = item.brewery, name = item.name.toLowerCase())
+    val minimalItem = MinimalItem(breweryId = item.breweryId, name = item.name.toLowerCase())
     return item.copy(new = minimalItem.isNew(itemLifetimes) && minimalItem.isNewerThanBrewery())
   }
 
   fun enrich(brewery: Brewery) = brewery.copy(
-    new = brewery.shortName.isNew(breweryLifetimes)
+    new = brewery.id.isNew(breweryLifetimes)
   )
 
   private fun List<Instant>.collateInventory() = runBlocking {
@@ -72,7 +72,7 @@ class Newalyser(
 
   // We allow some margin to avoid false triggers from development churn on new integrations
   private fun MinimalItem.isNewerThanBrewery() = HOURS.between(
-    breweryLifetimes[brewery]?.min ?: now,
+    breweryLifetimes[breweryId]?.min ?: now,
     itemLifetimes[this]?.min ?: now
   ) > CHURN_MARGIN_HOURS
 

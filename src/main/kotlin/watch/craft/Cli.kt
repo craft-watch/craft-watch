@@ -9,7 +9,7 @@ import com.github.ajalt.clikt.parameters.types.choice
 import watch.craft.executor.Executor
 
 class Cli : CliktCommand(name = "scraper") {
-  private val scraperDetails = SCRAPERS.associateBy { it.brewery.shortName.toSafeName() }
+  private val scraperDetails = SCRAPERS.associateBy { it.brewery.id }
 
   private val listScrapers by option("--list-scrapers", "-l").flag()
   private val forceDownload by option("--force-download", "-f").flag()
@@ -34,8 +34,6 @@ class Cli : CliktCommand(name = "scraper") {
     val inventory = executor.scrape(scrapers.ifEmpty { SCRAPERS })
     results.write(inventory)
   }
-
-  private fun String.toSafeName() = toLowerCase().replace("[^0-9a-z]".toRegex(), "-")
 }
 
 fun main(args: Array<String>) = Cli().main(args)

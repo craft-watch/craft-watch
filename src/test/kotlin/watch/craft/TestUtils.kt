@@ -25,7 +25,7 @@ fun ScrapedItem.onlyOffer() = offers.single()
 fun List<ScrapedItem>.display() = forEach { println(it.noDesc()) }
 
 val PROTOTYPE_ITEM = Item(
-  brewery = "",
+  breweryId = "",
   name = "",
   offers = listOf(Offer(quantity = 1, totalPrice = 0.00)),
   available = false,

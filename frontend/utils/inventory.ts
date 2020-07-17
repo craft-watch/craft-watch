@@ -10,6 +10,6 @@ export const inventory = {
   capturedAt: moment(raw.metadata.capturedAt),
   items: _.map(raw.items, item => ({
     ...item,
-    brewery: _.find(raw.breweries, b => b.shortName == item.brewery),
+    brewery: _.find(raw.breweries, b => b.id == item.breweryId),
   })),
 } as Inventory;

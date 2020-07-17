@@ -23,7 +23,7 @@ const InventoryTable: React.FC<Props> = (props) => (
 );
 
 const BreweryInfo = ({ datum }: CellProps<Item>) => (
-  <BreweryLink shortName={datum.brewery.shortName}>
+  <BreweryLink id={datum.brewery.id}>
     {datum.brewery.shortName}
   </BreweryLink>
 );

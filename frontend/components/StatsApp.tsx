@@ -21,8 +21,10 @@ const StatsApp = ({ inventory }: Props): JSX.Element => {
             name="Brewery"
             className="brewery"
             render={({ datum }: CellProps<BreweryStats>) => (
-              <BreweryLink shortName={datum.name}>
-                {datum.name}
+              <BreweryLink id={datum.breweryId}>
+                {
+                  _.find(inventory.breweries, b => b.id === datum.breweryId)?.shortName
+                }
               </BreweryLink>
             )}
           />
@@ -43,7 +45,7 @@ const asString = (n: number): string => (n > 0) ? n.toString() : "";
 const partition = (breweries: Array<BreweryStats>): Array<Section<BreweryStats>> => [
   {
     name: "All",
-    data: _.sortBy(breweries, b => b.name),
+    data: _.sortBy(breweries, b => b.breweryId),
   }
 ];
 

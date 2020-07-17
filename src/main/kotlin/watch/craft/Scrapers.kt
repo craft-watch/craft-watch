@@ -9,6 +9,7 @@ val SCRAPERS = listOf(
   entry(
     BeakScraper(),
     Brewery(
+      id = "beak",
       shortName = "Beak",
       name = "Beak Brewery",
       location = "Lewes, East Sussex",
@@ -19,6 +20,7 @@ val SCRAPERS = listOf(
   entry(
     BoxcarScraper(),
     Brewery(
+      id = "boxcar",
       shortName = "Boxcar",
       name = "Boxcar Brewery",
       location = "Bethnal Green, London",
@@ -29,6 +31,7 @@ val SCRAPERS = listOf(
   entry(
     BrickScraper(),
     Brewery(
+      id = "brick",
       shortName = "Brick",
       name = "Brick Brewery",
       location = "Peckham, London",
@@ -39,6 +42,7 @@ val SCRAPERS = listOf(
   entry(
     BurningSkyScraper(),
     Brewery(
+      id = "burning-sky",
       shortName = "Burning Sky",
       name = "Burning Sky",
       location = "Firle, East Sussex",
@@ -49,6 +53,7 @@ val SCRAPERS = listOf(
   entry(
     CanopyScraper(),
     Brewery(
+      id = "canopy",
       shortName = "Canopy",
       name = "Canopy Beer Co",
       location = "Brockwell, London",
@@ -59,6 +64,7 @@ val SCRAPERS = listOf(
   entry(
     CloudwaterScraper(),
     Brewery(
+      id = "cloudwater",
       shortName = "Cloudwater",
       name = "Cloudwater Brew Co",
       location = "Manchester",
@@ -69,6 +75,7 @@ val SCRAPERS = listOf(
   entry(
     CraftyScraper(),
     Brewery(
+      id = "crafty-brewing",
       shortName = "Crafty Brewing",
       name = "Crafty Brewing Co",
       location = "Godalming, Surrey",
@@ -79,6 +86,7 @@ val SCRAPERS = listOf(
   entry(
     DeyaScraper(),
     Brewery(
+      id = "deya",
       shortName = "DEYA",
       name = "DEYA Brewing Co",
       location = "Cheltenham, Gloucestershire",
@@ -89,6 +97,7 @@ val SCRAPERS = listOf(
   entry(
     FivePointsScraper(),
     Brewery(
+      id = "five-points",
       shortName = "Five Points",
       name = "The Five Points Brewing Co",
       location = "Hackney, London",
@@ -99,6 +108,7 @@ val SCRAPERS = listOf(
   entry(
     ForestRoadScraper(),
     Brewery(
+      id = "forest-road",
       shortName = "Forest Road",
       name = "Forest Road Brewing Co",
       location = "Hackney, London",
@@ -109,6 +119,7 @@ val SCRAPERS = listOf(
   entry(
     FourpureScraper(),
     Brewery(
+      id = "fourpure",
       shortName = "Fourpure",
       name = "Fourpure Brewing Co",
       location = "Bermondesy, London",
@@ -119,6 +130,7 @@ val SCRAPERS = listOf(
   entry(
     GipsyHillScraper(),
     Brewery(
+      id = "gipsy-hill",
       shortName = "Gipsy Hill",
       name = "Gipsy Hill Brewing",
       location = "Gispy Hill, London",
@@ -129,6 +141,7 @@ val SCRAPERS = listOf(
   entry(
     HackneyChurchScraper(),
     Brewery(
+      id = "hackney-church",
       shortName = "Hackney Church",
       name = "Hackney Church Brew Co",
       location = "Hackney, London",
@@ -139,6 +152,7 @@ val SCRAPERS = listOf(
   entry(
     HowlingHopsScraper(),
     Brewery(
+      id = "howling-hops",
       shortName = "Howling Hops",
       name = "Howling Hops",
       location = "Hackney Wick, London",
@@ -149,6 +163,7 @@ val SCRAPERS = listOf(
   entry(
     InnisAndGunnScraper(),
     Brewery(
+      id = "innis-and-gunn",
       shortName = "Innis & Gunn",
       name = "Innis & Gunn Brewing Co",
       location = "Edinburgh",
@@ -159,6 +174,7 @@ val SCRAPERS = listOf(
   entry(
     JeffersonsScraper(),
     Brewery(
+      id = "jeffersons",
       shortName = "Jeffersons",
       name = "Jeffersons Brewery",
       location = "Barnes, London",
@@ -169,6 +185,7 @@ val SCRAPERS = listOf(
   entry(
     MarbleScraper(),
     Brewery(
+      id = "marble",
       shortName = "Marble",
       name = "Marble Beers",
       location = "Salford, Greater Manchester",
@@ -179,6 +196,7 @@ val SCRAPERS = listOf(
   entry(
     NorthernMonkScraper(),
     Brewery(
+      id = "northern-monk",
       shortName = "Northern Monk",
       name = "Northern Monk Brew Co",
       location = "Holbeck, Leeds",
@@ -189,6 +207,7 @@ val SCRAPERS = listOf(
   entry(
     OrbitScraper(),
     Brewery(
+      id = "orbit",
       shortName = "Orbit",
       name = "Orbit Beers",
       location = "Walworth, London",
@@ -199,6 +218,7 @@ val SCRAPERS = listOf(
   entry(
     PadstowScraper(),
     Brewery(
+      id = "padstow",
       shortName = "Padstow",
       name = "Padstow Brewing Co",
       location = "Padstow, Cornwall",
@@ -209,6 +229,7 @@ val SCRAPERS = listOf(
   entry(
     PillarsScraper(),
     Brewery(
+      id = "pillars",
       shortName = "Pillars",
       name = "Pillars Brewery",
       location = "Walthamstow, London",
@@ -219,6 +240,7 @@ val SCRAPERS = listOf(
   entry(
     PollysScraper(),
     Brewery(
+      id = "pollys-brew",
       shortName = "Polly's Brew",
       name = "Polly's Brew Co",
       location = "Mold, Flintshire",
@@ -229,6 +251,7 @@ val SCRAPERS = listOf(
   entry(
     PressureDropScraper(),
     Brewery(
+      id = "pressure-drop",
       shortName = "Pressure Drop",
       name = "Pressure Drop Brewing",
       location = "Tottenham, London",
@@ -239,6 +262,7 @@ val SCRAPERS = listOf(
   entry(
     PurityScraper(),
     Brewery(
+      id = "purity",
       shortName = "Purity",
       name = "Purity Brewing Co",
       location = "Great Alne, Warwickshire",
@@ -249,6 +273,7 @@ val SCRAPERS = listOf(
   entry(
     RedchurchScraper(),
     Brewery(
+      id = "redchurch",
       shortName = "Redchurch",
       name = "Redchurch Brewery",
       location = "Harlow, Essex",
@@ -259,6 +284,7 @@ val SCRAPERS = listOf(
   entry(
     RedWillowScraper(),
     Brewery(
+      id = "redwillow",
       shortName = "RedWillow",
       name = "RedWillow Brewery",
       location = "Macclesfield, Cheshire",
@@ -269,6 +295,7 @@ val SCRAPERS = listOf(
   entry(
     RoostersScraper(),
     Brewery(
+      id = "roosters",
       shortName = "Rooster's",
       name = "Rooster's Brewing Co",
       location = "Harrogate, North Yorkshire",
@@ -279,6 +306,7 @@ val SCRAPERS = listOf(
   entry(
     SirenScraper(),
     Brewery(
+      id = "siren-craft",
       shortName = "Siren Craft",
       name = "Siren Craft Brew",
       location = "Finchampstead, Berkshire",
@@ -289,6 +317,7 @@ val SCRAPERS = listOf(
   entry(
     SolvayScraper(),
     Brewery(
+      id = "solvay-society",
       shortName = "Solvay Society",
       name = "Solvay Society",
       location = "Leytonstone, London",
@@ -299,6 +328,7 @@ val SCRAPERS = listOf(
   entry(
     StewartScraper(),
     Brewery(
+      id = "stewart-brewing",
       shortName = "Stewart Brewing",
       name = "Stewart Brewing",
       location = "Loanhead, Midlothian",
@@ -309,6 +339,7 @@ val SCRAPERS = listOf(
   entry(
     ThornbridgeScraper(),
     Brewery(
+      id = "thornbridge",
       shortName = "Thornbridge",
       name = "Thornbridge Brewery",
       location = "Bakewell, Derbyshire",
@@ -319,6 +350,7 @@ val SCRAPERS = listOf(
   entry(
     UnityScraper(),
     Brewery(
+      id = "unity",
       shortName = "Unity",
       name = "Unity Brewing Co",
       location = "Southampton",
@@ -329,6 +361,7 @@ val SCRAPERS = listOf(
   entry(
     VerdantScraper(),
     Brewery(
+      id = "verdant",
       shortName = "Verdant",
       name = "Verdant Brewing Co",
       location = "Penryn, Cornwall",
@@ -339,6 +372,7 @@ val SCRAPERS = listOf(
   entry(
     VillagesScraper(),
     Brewery(
+      id = "villages",
       shortName = "Villages",
       name = "Villages Brewery",
       location = "Deptford, London",
@@ -349,6 +383,7 @@ val SCRAPERS = listOf(
   entry(
     WanderScraper(),
     Brewery(
+      id = "wander-beyond",
       shortName = "Wander Beyond",
       name = "Wander Beyond Brewing",
       location = "Manchester",
@@ -359,6 +394,7 @@ val SCRAPERS = listOf(
   entry(
     WiperAndTrueScraper(),
     Brewery(
+      id = "wiper-and-true",
       shortName = "Wiper and True",
       name = "Wiper and True",
       location = "Bristol",
@@ -369,6 +405,7 @@ val SCRAPERS = listOf(
   entry(
     WylamScraper(),
     Brewery(
+      id = "wylam",
       shortName = "Wylam",
       name = "Wylam Brewery",
       location = "Newcastle upon Tyne",
