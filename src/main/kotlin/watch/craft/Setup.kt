@@ -12,7 +12,9 @@ import java.time.format.DateTimeFormatter
 
 class Setup(
   dateString: String? = null,
-  forceDownload: Boolean = false
+  private val forceDownload: Boolean = false,
+  firstLevelStore: ObjectStore = LocalObjectStore(LOCAL_STORAGE_DIR),
+  secondLevelStore: ObjectStore = GcsObjectStore(GCS_BUCKET)
 ) {
   private val live = dateString == null
 
@@ -23,23 +25,43 @@ class Setup(
   }
 
   private val store = WriteThroughObjectStore(
-    firstLevel = LocalObjectStore(LOCAL_STORAGE_DIR),
-    secondLevel = GcsObjectStore(GCS_BUCKET)
+    firstLevel = firstLevelStore,
+    secondLevel = secondLevelStore
   )
 
   val results = SubObjectStore(store, RESULTS_DIRNAME)
 
+  val downloadsDir = SubObjectStore(store, "${DOWNLOADS_DIR}/${calculateSubdir()}")
+
   val createRetriever: (String) -> Retriever = { name ->
     CachingRetriever(
-      SubObjectStore(store, "${DOWNLOADS_DIR}/${DATE_FORMAT.format(instant)}").run {
-        if (forceDownload) NoReadsObjectStore(this) else this
-      },
+      downloadsDir,
       if (live) {
         NetworkRetriever(name)
       } else {
         FailingRetriever()
       }
     )
+  }
+
+  private fun calculateSubdir(): String {
+    val today = DATE_FORMAT.format(instant)
+
+    val subdir = SubObjectStore(store, DOWNLOADS_DIR)
+      .list()
+      .sorted()
+      .lastOrNull { it.startsWith(today) }
+      ?: return today
+
+    val parts = subdir.split("--")
+    val idx = if (parts.size < 2) 0 else parts.last().toInt()
+    val idxAdjusted = idx + if (forceDownload) 1 else 0
+
+    return if (idxAdjusted == 0) {
+      today
+    } else {
+      "${today}--${idxAdjusted.toString().padStart(3, '0')}"
+    }
   }
 
   companion object {
