@@ -10,11 +10,11 @@ import java.net.URI
 class OrbitScraper : Scraper {
   override val jobs = forPaginatedRootUrl(ROOT_URL) { root ->
     root
-      .selectMultipleFrom("#Collection .grid__item")
+      .selectMultipleFrom(".product-card")
       .map { el ->
-        val title = el.textFrom(".product-card__title")
+        val title = el.textFrom(".product-card__name")
 
-        Leaf(title, el.urlFrom("a.grid-view-item__link")) { doc ->
+        Leaf(title, el.urlFrom()) { doc ->
           val desc = doc.formattedTextFrom(".product-single__description")
 
           // Remove all the dross
@@ -31,17 +31,17 @@ class OrbitScraper : Scraper {
             desc = desc,
             mixed = title.containsMatch("mixed"),
             abv = title.maybe { abvFrom() },
-            available = ".price--sold-out" !in el,
+            available = ".product-card__availability" !in el,
             offers = doc.orSkip("Can't extract offers, so assume not a beer") {
               extractShopifyOffers(desc.maybe { sizeMlFrom() })
             },
-            thumbnailUrl = el.urlFrom("noscript img.grid-view-item__image")
+            thumbnailUrl = el.urlFrom("noscript img.product-card__image")
           )
         }
       }
   }
 
   companion object {
-    private val ROOT_URL = URI("https://orbit-beers.myshopify.com/collections/all")
+    private val ROOT_URL = URI("https://orbitbeers.shop/collections/all")
   }
 }
