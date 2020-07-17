@@ -5,15 +5,15 @@ import { faHeart as disabledIcon } from "@fortawesome/free-regular-svg-icons";
 import { FavouritesProps, withFavourites } from "../utils/favourites";
 
 interface Props {
-  breweryShortName: string;
+  breweryId: string;
 }
 
 const FavouriteIcon = (props: Props & FavouritesProps) => {
-  const enabled = props.favourites.breweries.includes(props.breweryShortName);
+  const enabled = props.favourites.breweryIds.includes(props.breweryId);
   return (
     <span
       className="favourite-icon"
-      onClick={() => props.onToggle(props.breweryShortName)}
+      onClick={() => props.onToggle(props.breweryId)}
       title={enabled ? "Click to remove from favourites" : "Click to add to favourites"}>
       <FontAwesomeIcon icon={enabled ? enabledIcon : disabledIcon} />
     </span>

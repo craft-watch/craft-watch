@@ -53,7 +53,7 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
 
   const FvouriteInfo = ({ datum }: CellProps<Brewery>) => (
     <>
-      <FavouriteIcon breweryShortName={datum.shortName} />
+      <FavouriteIcon breweryId={datum.id} />
     </>
   );
 

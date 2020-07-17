@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import _ from "underscore";
+import { inventory } from "./inventory";
 
 export interface FavouritesProps {
   favourites: Favourites;
@@ -7,41 +8,43 @@ export interface FavouritesProps {
 }
 
 export interface Favourites {
-  breweries: Array<string>;
+  breweryIds: Array<string>;
 }
 
 const FavouritesContext = React.createContext<FavouritesProps>({
-  favourites: { breweries: [] },
+  favourites: { breweryIds: [] },
   onToggle: () => {},
 });
 
+const KEY = "favourites";
+
 export const FavouritesProvider: React.FC<unknown> = (props) => {
-  const key = "favourites";
-  const [favourites, setFavourites] = useState<Favourites>({ breweries: [] });
+  const [favourites, setFavourites] = useState<Favourites>({ breweryIds: [] });
 
   const readFromLocalStorage = () => {
     // TODO - error-handling
-    const raw = window.localStorage.getItem(key);
+    const raw = window.localStorage.getItem(KEY);
     if (raw !== null) {
       setFavourites(JSON.parse(raw));
     }
   };
 
   useEffect(() => {
-    window.addEventListener("storage", readFromLocalStorage);
+    migrateLocalStorage();
     readFromLocalStorage();  // Acquire initial state
+    window.addEventListener("storage", readFromLocalStorage);
   }, []);
 
-  const onToggle = (shortName: string) => {
-    const breweries = new Set<string>(favourites.breweries);
-    if (breweries.has(shortName)) {
-      breweries.delete(shortName);
+  const onToggle = (id: string) => {
+    const breweries = new Set<string>(favourites.breweryIds);
+    if (breweries.has(id)) {
+      breweries.delete(id);
     } else {
-      breweries.add(shortName);
+      breweries.add(id);
     }
-    const next = { breweries: _.sortBy(Array.from(breweries), s => s) } as Favourites;
+    const next = { breweryIds: _.sortBy(Array.from(breweries), s => s) } as Favourites;
 
-    window.localStorage.setItem(key, JSON.stringify(next));
+    window.localStorage.setItem(KEY, JSON.stringify(next));
     readFromLocalStorage();   // Don't set state directly, to avoid race with external modification to local storage
   };
 
@@ -50,6 +53,22 @@ export const FavouritesProvider: React.FC<unknown> = (props) => {
       {props.children}
     </FavouritesContext.Provider>
   )
+};
+
+// TODO - delete this on 2020-07-24
+const migrateLocalStorage = () => {
+  const raw = window.localStorage.getItem(KEY);
+  if (raw !== null) {
+    const favourites = JSON.parse(raw);
+    const mapped = _.map(favourites["breweries"], f => {
+      if (_.find(inventory.breweries, b => b.id === f) !== undefined) {
+        return f;
+      }
+      return _.find(inventory.breweries, b => b.shortName === f)?.id;
+    });
+    const filtered = _.filter(mapped, m => m !== undefined);
+    window.localStorage.setItem(KEY, JSON.stringify({ breweryIds: filtered } as Favourites));
+  }
 };
 
 export const withFavourites = <P extends unknown>(Component: React.ComponentType<P & FavouritesProps>) =>

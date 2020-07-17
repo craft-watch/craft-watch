@@ -19,7 +19,7 @@ const ThisPage = ({ brewery, items }: Props): JSX.Element => {
   return (
     <Page
       title={brewery.name}
-      titleSuffix={<FavouriteIcon breweryShortName={brewery.shortName} />}
+      titleSuffix={<FavouriteIcon breweryId={brewery.id} />}
       desc={`Daily updates of beer prices from ${brewery.name}`}
       longDesc={
         (
