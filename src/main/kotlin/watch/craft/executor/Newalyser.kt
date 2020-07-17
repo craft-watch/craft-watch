@@ -17,14 +17,18 @@ class Newalyser(
 ) {
   private val logger = KotlinLogging.logger {}
 
-  private val oldItems by lazy {
+  private val itemAppearances by lazy {
     results.listHistoricalResults()
-      .filter { DAYS.between(it, now).toInt() in MIN_DAYS_AGO..MAX_DAYS_AGO }
+      .filter { DAYS.between(it, now).toInt() in 0..MAX_DAYS_AGO }
       .collateInventory()
-      .map { it.copy(name = it.name.toLowerCase()) }
+      .map { (item, instant) -> item.copy(name = item.name.toLowerCase()) to instant }
+  }
+
+  private val oldItems by lazy {
+    itemAppearances
+      .filter { (_, instant) -> DAYS.between(instant, now) >= MIN_DAYS_AGO }
+      .map { (item, _) -> item }
       .distinct()
-      .toSet()
-      .onEach { logger.info("Historical item: ${it}") }
   }
 
   private val oldBreweries by lazy {
@@ -44,10 +48,10 @@ class Newalyser(
 
   private fun List<Instant>.collateInventory() = runBlocking {
     this@collateInventory
-      .map {
+      .map { instant ->
         async(Dispatchers.IO) {
-          logger.info("Collating old inventory from: ${it}")
-          results.readMinimalHistoricalResult(it).items
+          logger.info("Collating old inventory from: ${instant}")
+          results.readMinimalHistoricalResult(instant).items.map { item -> item to instant }
         }
       }
       .flatMap { it.await() }
