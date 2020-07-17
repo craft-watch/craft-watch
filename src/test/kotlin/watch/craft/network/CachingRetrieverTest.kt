@@ -20,7 +20,7 @@ class CachingRetrieverTest {
   @Test
   fun `get from store and not from network if already in store`() {
     store.stub {
-      on { read(NICE_KEY) } doReturn NICE_DATA
+      onBlocking { read(NICE_KEY) } doReturn NICE_DATA
     }
 
     val ret = runBlocking { retriever.retrieve(NICE_URL) }
@@ -32,7 +32,7 @@ class CachingRetrieverTest {
   @Test
   fun `get from network and write to store if not already in store`() {
     store.stub {
-      on { read(NICE_KEY) } doThrow FileDoesntExistException("oh")
+      onBlocking { read(NICE_KEY) } doThrow FileDoesntExistException("oh")
     }
     delegate.stub {
       onBlocking { retrieve(NICE_URL) } doReturn NICE_DATA
@@ -41,14 +41,14 @@ class CachingRetrieverTest {
     val ret = runBlocking { retriever.retrieve(NICE_URL) }
 
     assertArrayEquals(NICE_DATA, ret)
-    verify(store).write(NICE_KEY, NICE_DATA)
+    verifyBlocking(store) { write(NICE_KEY, NICE_DATA) }
   }
 
   @Test
   fun `don't throw if data unexpectedly appears in store when we try to write it`() {
     store.stub {
-      on { read(NICE_KEY) } doThrow FileDoesntExistException("oh")
-      on { store.write(any(), any()) } doThrow FileExistsException("no")
+      onBlocking { read(NICE_KEY) } doThrow FileDoesntExistException("oh")
+      onBlocking { write(any(), any()) } doThrow FileExistsException("no")
     }
     delegate.stub {
       onBlocking { retrieve(NICE_URL) } doReturn NICE_DATA

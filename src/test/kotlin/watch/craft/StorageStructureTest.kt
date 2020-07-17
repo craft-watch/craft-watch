@@ -1,9 +1,6 @@
 package watch.craft
 
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
+import com.nhaarman.mockitokotlin2.*
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Nested
@@ -18,7 +15,7 @@ class StorageStructureTest {
   inner class NoForceDownload {
     @Test
     fun `no existing entries for today`() {
-      whenever(secondLevel.list(any())) doReturn emptyList()
+      mockListing(emptyList())
 
       val structure = createStructure(false)
 
@@ -27,7 +24,7 @@ class StorageStructureTest {
 
     @Test
     fun `one existing entry for today`() {
-      whenever(secondLevel.list(any())) doReturn listOf("2020-01-01")
+      mockListing(listOf("2020-01-01"))
 
       val structure = createStructure(false)
 
@@ -36,7 +33,7 @@ class StorageStructureTest {
 
     @Test
     fun `multiple existing entries for today`() {
-      whenever(secondLevel.list(any())) doReturn listOf("2020-01-01--001", "2020-01-01")
+      mockListing(listOf("2020-01-01--001", "2020-01-01"))
 
       val structure = createStructure(false)
 
@@ -48,7 +45,7 @@ class StorageStructureTest {
   inner class ForceDownload {
     @Test
     fun `no existing entries for today`() {
-      whenever(secondLevel.list(any())) doReturn emptyList()
+      mockListing(emptyList())
 
       val structure = createStructure(true)
 
@@ -57,7 +54,7 @@ class StorageStructureTest {
 
     @Test
     fun `one existing entry for today`() {
-      whenever(secondLevel.list(any())) doReturn listOf("2020-01-01")
+      mockListing(listOf("2020-01-01"))
 
       val structure = createStructure(true)
 
@@ -66,12 +63,16 @@ class StorageStructureTest {
 
     @Test
     fun `multiple existing entries for today`() {
-      whenever(secondLevel.list(any())) doReturn listOf("2020-01-01--001", "2020-01-01")
+      mockListing(listOf("2020-01-01--001", "2020-01-01"))
 
       val structure = createStructure(true)
 
       assertEquals("/downloads/foo/2020-01-01--002", getDownloadsPath(structure))
     }
+  }
+
+  private fun mockListing(entries: List<String>) = secondLevel.stub {
+    onBlocking { list(any()) } doReturn entries
   }
 
   private fun getDownloadsPath(structure: StorageStructure) = runBlocking { structure.downloads("foo").path }

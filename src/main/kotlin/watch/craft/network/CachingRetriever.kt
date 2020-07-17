@@ -24,23 +24,19 @@ class CachingRetriever(
 
   private suspend fun write(url: URI, key: String, content: ByteArray) {
     try {
-      onIoThread {
-        logger.info("${url} writing to cache on thread: ${currentThread().name}")
-        store.write(key, content)
-        logger.info("${url} written to cache: ${key}")
-      }
+      logger.info("${url} writing to cache on thread: ${currentThread().name}")
+      store.write(key, content)
+      logger.info("${url} written to cache: ${key}")
     } catch (e: FileExistsException) {
       // Another writer raced us to write to this location in the cache
     }
   }
 
   private suspend fun read(url: URI, key: String) = try {
-    onIoThread {
-      logger.info("${url} reading from cache on thread: ${currentThread().name}")
-      val content = store.read(key)
-      logger.info("${url} read from cache: ${key}")
-      content
-    }
+    logger.info("${url} reading from cache on thread: ${currentThread().name}")
+    val content = store.read(key)
+    logger.info("${url} read from cache: ${key}")
+    content
   } catch (e: FileDoesntExistException) {
     null
   }

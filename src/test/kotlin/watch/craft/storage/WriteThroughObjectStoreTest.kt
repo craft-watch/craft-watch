@@ -1,6 +1,7 @@
 package watch.craft.storage
 
 import com.nhaarman.mockitokotlin2.*
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
@@ -13,74 +14,93 @@ class WriteThroughObjectStoreTest {
 
   @Test
   fun `writes to both stores in appropriate order`() {
-    store.write(NICE_KEY, NICE_DATA)
+    write()
 
     inOrder(first, second) {
-      verify(second).write(NICE_KEY, NICE_DATA)
-      verify(first).write(NICE_KEY, NICE_DATA)
+      verifyBlocking(second) { write(NICE_KEY, NICE_DATA) }
+      verifyBlocking(first) { write(NICE_KEY, NICE_DATA) }
     }
   }
 
   @Test
   fun `still writes to first store if already present in second`() {
-    whenever(second.write(any(), any())) doThrow FileExistsException("oh")
+    second.stub {
+      onBlocking { write(any(), any()) } doThrow FileExistsException("oh")
+    }
 
-    store.write(NICE_KEY, NICE_DATA)
+    write()
 
-    verify(first).write(NICE_KEY, NICE_DATA)
+    verifyBlocking(first) { write(NICE_KEY, NICE_DATA) }
   }
 
   @Test
   fun `throws if already present in both`() {
-    whenever(first.write(any(), any())) doThrow FileExistsException("oh")
-    whenever(second.write(any(), any())) doThrow FileExistsException("oh")
-
-    assertThrows<FileExistsException> {
-      store.write(NICE_KEY, NICE_DATA)
+    first.stub {
+      onBlocking { write(any(), any()) } doThrow FileExistsException("oh")
     }
+    second.stub {
+      onBlocking { write(any(), any()) } doThrow FileExistsException("oh")
+    }
+
+    assertThrows<FileExistsException> { write() }
   }
 
   @Test
   fun `reads from first-level store and not from second if present in first`() {
-    whenever(first.read(NICE_KEY)) doReturn NICE_DATA
+    first.stub {
+      onBlocking { read(NICE_KEY) } doReturn NICE_DATA
+    }
 
-    val ret = store.read(NICE_KEY)
+    val ret = read()
 
     assertArrayEquals(NICE_DATA, ret)
-    verify(second, never()).read(any())
+    verifyBlocking(second, never()) { read(any()) }
   }
 
   @Test
   fun `reads and copies from second-level store if not present in first`() {
-    whenever(first.read(NICE_KEY)) doThrow FileDoesntExistException("Oh")
-    whenever(second.read(NICE_KEY)) doReturn NICE_DATA
+    first.stub {
+      onBlocking { read(NICE_KEY) } doThrow FileDoesntExistException("oh")
+    }
+    second.stub {
+      onBlocking { read(NICE_KEY) } doReturn NICE_DATA
+    }
 
-    val ret = store.read(NICE_KEY)
+    val ret = read()
 
     assertArrayEquals(NICE_DATA, ret)
-    verify(first).write(NICE_KEY, NICE_DATA)
+    verifyBlocking(first) { write(NICE_KEY, NICE_DATA) }
   }
 
   @Test
   fun `propagates exception if not found in either`() {
-    whenever(first.read(NICE_KEY)) doThrow FileDoesntExistException("Oh")
-    whenever(second.read(NICE_KEY)) doThrow FileDoesntExistException("No")
-
-    assertThrows<FileDoesntExistException> {
-      store.read(NICE_KEY)
+    first.stub {
+      onBlocking { read(NICE_KEY) } doThrow FileDoesntExistException("oh")
     }
+    second.stub {
+      onBlocking { read(NICE_KEY) } doThrow FileDoesntExistException("oh")
+    }
+
+    assertThrows<FileDoesntExistException> { read() }
   }
 
   @Test
   fun `don't throw if data unexpectedly appears in first-level store when we try to copy it`() {
-    whenever(first.read(NICE_KEY)) doThrow FileDoesntExistException("Oh")
-    whenever(first.write(any(), any())) doThrow FileExistsException("No")
-    whenever(second.read(NICE_KEY)) doReturn NICE_DATA
-
-    assertDoesNotThrow {
-      store.read(NICE_KEY)
+    first.stub {
+      onBlocking { read(NICE_KEY) } doThrow FileDoesntExistException("oh")
     }
+    first.stub {
+      onBlocking { write(any(), any()) } doThrow FileExistsException("oh")
+    }
+    second.stub {
+      onBlocking { read(NICE_KEY) } doReturn NICE_DATA
+    }
+
+    assertDoesNotThrow { read() }
   }
+
+  private fun write() = runBlocking { store.write(NICE_KEY, NICE_DATA) }
+  private fun read() = runBlocking { store.read(NICE_KEY) }
 
   companion object {
     private const val NICE_KEY = "foo"

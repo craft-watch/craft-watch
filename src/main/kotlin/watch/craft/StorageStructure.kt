@@ -50,7 +50,7 @@ class StorageStructure(
   private suspend fun ObjectStore.targetDir(): ObjectStore {
     val today = DATE_FORMAT.format(instant)
 
-    val latest = onIoThread { list() }
+    val latest = list()
       .sorted()
       .lastOrNull { it.startsWith(today) }
 

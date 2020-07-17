@@ -2,6 +2,7 @@ package watch.craft
 
 import com.fasterxml.jackson.annotation.JsonAlias
 import com.fasterxml.jackson.module.kotlin.readValue
+import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
 import watch.craft.storage.SubObjectStore
 import watch.craft.utils.mapper
@@ -15,21 +16,32 @@ class ResultsManager(private val structure: StorageStructure) {
 
   fun write(inventory: Inventory) {
     inventory.logStats()
-    dir(inventory.metadata.capturedAt).write(INVENTORY_FILENAME, mapper.writeValueAsBytes(inventory))
+    runBlocking {
+      dir(inventory.metadata.capturedAt).write(INVENTORY_FILENAME, mapper.writeValueAsBytes(inventory))
+    }
     CANONICAL_INVENTORY_PATH.parentFile.mkdirs()
     CANONICAL_INVENTORY_PATH.outputStream().use { mapper.writeValue(it, inventory) }
   }
 
-  fun listHistoricalResults(): List<Instant> = structure.results.list().map { Instant.from(formatter.parse(it)) }
+  fun listHistoricalResults(): List<Instant> = runBlocking {
+    structure.results.list().map { Instant.from(formatter.parse(it)) }
+  }
 
   // TODO - simplify this on 2020-08-02
   fun readMinimalHistoricalResult(timestamp: Instant): MinimalInventory {
-    val minimal = mapper.readValue<MinimalInventory>(dir(timestamp).read(INVENTORY_FILENAME))
-    if (minimal.version == 1) {
-      return minimal
+    val minimal = runBlocking {
+      mapper.readValue<MinimalInventory>(dir(timestamp).read(INVENTORY_FILENAME))
     }
+    return if (minimal.version == 1) {
+      minimal
+    } else {
+      minimal.normaliseToV1()
+    }
+  }
+
+  private fun MinimalInventory.normaliseToV1(): MinimalInventory {
     val scrapers = SCRAPERS.associate { it.brewery.shortName to it.brewery.id }
-    return minimal.copy(items = minimal.items.mapNotNull { item ->
+    return copy(items = items.mapNotNull { item ->
       val actualId = scrapers[item.breweryId]
       if (actualId != null) {
         item.copy(breweryId = actualId)
