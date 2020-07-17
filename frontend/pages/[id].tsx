@@ -4,7 +4,6 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import Page from "../components/Page";
 import { Brewery, Item } from "../utils/model";
 import { inventory } from "../utils/inventory";
-import { toSafePathPart } from "../utils/stuff";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
@@ -56,13 +55,13 @@ const ThisPage = ({ brewery, items }: Props): JSX.Element => {
 export default ThisPage;
 
 export const getStaticPaths: GetStaticPaths = async () => ({
-  paths: _.map(_.keys(safeNamesToItems), name => ({ params: { id: name } })),
+  paths: _.map(_.keys(groupedById), id => ({ params: { id } })),
   fallback: false,
 });
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const brewery = params?.id as string;
-  const items = safeNamesToItems[brewery];
+  const id = params?.id as string;
+  const items = groupedById[id];
   return {
     props: {
       brewery: items[0].brewery,
@@ -71,4 +70,4 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   };
 };
 
-const safeNamesToItems = _.groupBy(inventory.items, item => toSafePathPart(item.brewery.shortName));
+const groupedById = _.groupBy(inventory.items, item => item.brewery.id);

@@ -48,7 +48,7 @@ const generateFairTasterMenu = (items: Array<Item>): Array<Item> => {
   // Remove inappropriate items for a taster menu
   const relevant = _.filter(items, item => headlineOffer(item).format !== Format.Keg && !item.mixed && item.available);
 
-  const byBrewery = _.groupBy(relevant, item => item.brewery.shortName);
+  const byBrewery = _.groupBy(relevant, item => item.brewery.id);
 
   // Pick breweries with *almost* uniform distribution.
   // We allow breweries with lots of beers to feature *slightly* more.

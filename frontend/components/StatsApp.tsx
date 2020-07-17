@@ -21,8 +21,10 @@ const StatsApp = ({ inventory }: Props): JSX.Element => {
             name="Brewery"
             className="brewery"
             render={({ datum }: CellProps<BreweryStats>) => (
-              <BreweryLink shortName={datum.name}>
-                {datum.name}
+              <BreweryLink id={datum.breweryId}>
+                {
+                  _.find(inventory.breweries, b => b.id === datum.breweryId)?.shortName
+                }
               </BreweryLink>
             )}
           />

@@ -57,8 +57,8 @@ const Sidebars = (props: Props): JSX.Element => {
               <ul>
                 {
                   _.map(_.filter(props.breweries, b => b.new), b => (
-                    <li key={b.shortName}>
-                      <BreweryLink shortName={b.shortName}>
+                    <li key={b.id}>
+                      <BreweryLink id={b.id}>
                         {b.shortName}
                       </BreweryLink>
                     </li>

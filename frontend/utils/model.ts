@@ -27,7 +27,7 @@ export interface Stats {
 }
 
 export interface BreweryStats {
-  name: string;
+  breweryId: string;
   numRawItems: number;
   numSkipped: number;
   numMalformed: number;
@@ -37,6 +37,7 @@ export interface BreweryStats {
 }
 
 export interface Brewery {
+  id: string;
   shortName: string;
   name: string;
   location: string;
@@ -72,6 +73,6 @@ export enum Format {
   Keg = "KEG",
 }
 
-export type RawItem = BaseItem & { brewery: string; }
+export type RawItem = BaseItem & { breweryId: string; }
 export type Item = BaseItem & { brewery: Brewery }
 

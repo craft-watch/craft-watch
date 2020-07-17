@@ -13,11 +13,11 @@ interface Props {
 }
 
 const BreweriesApp = ({ inventory }: Props): JSX.Element => {
-  const counts = _.countBy(inventory.items, item => item.brewery.shortName);
+  const counts = _.countBy(inventory.items, item => item.brewery.id);
 
   const BreweryInfo = ({ datum }: CellProps<Brewery>) => (
     <>
-      <BreweryLink shortName={datum.shortName}>
+      <BreweryLink id={datum.id}>
         {datum.shortName}
       </BreweryLink>
     </>
@@ -78,7 +78,7 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
 };
 
 const partition = (breweries: Array<Brewery>): Array<Section<Brewery>> => {
-  const partitioned = _.groupBy(breweries, b => b.shortName[0]);
+  const partitioned = _.groupBy(breweries, b => b.id[0]);
   return _.sortBy(
     _.map(partitioned, (v, k) => ({ name: k, data: v })),
     s => s.name,

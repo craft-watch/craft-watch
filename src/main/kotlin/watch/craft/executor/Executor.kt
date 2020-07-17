@@ -25,7 +25,7 @@ class Executor(
 
       val breweries = scrapers
         .map { it.brewery }
-        .map { newalyser.enrich(it) }
+//        .map { newalyser.enrich(it) }
 
       return Inventory(
         metadata = Metadata(
@@ -47,8 +47,8 @@ class Executor(
         .map { it.await() }
     }
 
-    private suspend fun ScraperEntry.execute() = createRetriever(brewery.shortName).use {
-      ScraperAdapter(it, scraper, brewery.shortName).execute()
+    private suspend fun ScraperEntry.execute() = createRetriever(brewery.id).use {
+      ScraperAdapter(it, scraper, brewery.id).execute()
     }
 
     private fun StatsWith<Result>.postProcessItems(): StatsWith<Item> {
@@ -59,7 +59,7 @@ class Executor(
         .copy(entries = consolidated.entries
           .sortedBy { it.name }
           .map(categoriser::enrich)
-          .map(newalyser::enrich)
+//          .map(newalyser::enrich)
         )
     }
   }
