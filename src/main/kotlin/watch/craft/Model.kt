@@ -15,7 +15,8 @@ data class Inventory(
 )
 
 data class Metadata(
-  val capturedAt: Instant
+  val capturedAt: Instant,
+  val ciBranch: String? = null
 )
 
 data class Stats(
