@@ -2,7 +2,7 @@ package watch.craft.storage
 
 class SubObjectStore(
   private val delegate: ObjectStore,
-  private val base: String
+  val base: String
 ) : ObjectStore {
   override fun write(key: String, content: ByteArray) = delegate.write(fqk(key), content)
   override fun read(key: String) = delegate.read(fqk(key))
