@@ -17,18 +17,16 @@ class NewalyserTest {
   @Nested
   inner class Items {
     @Test
-    fun `doesn't mark as new if match within window`() {
+    fun `doesn't mark as new if first occurrence of brewery`() {
       val newalyser = createNewalyser(
-        mapOf(
-          11 to listOf(INTERESTING_ITEM)
-        )
+        emptyMap()
       )
 
       assertFalse(newalyser.enrich(INTERESTING_ITEM).new)
     }
 
     @Test
-    fun `marks as new if no match within window`() {
+    fun `marks as new if earlier occurrence of brewery`() {
       val newalyser = createNewalyser(
         mapOf(
           11 to listOf(SAME_BREWERY_ITEM)
@@ -39,7 +37,18 @@ class NewalyserTest {
     }
 
     @Test
-    fun `marks as new if exact match before window`() {
+    fun `doesn't mark as new if earlier occurrence of item in window`() {
+      val newalyser = createNewalyser(
+        mapOf(
+          11 to listOf(INTERESTING_ITEM)
+        )
+      )
+
+      assertFalse(newalyser.enrich(INTERESTING_ITEM).new)
+    }
+
+    @Test
+    fun `marks as new if if earlier occurrence of item before window`() {
       val newalyser = createNewalyser(
         mapOf(
           11 to listOf(SAME_BREWERY_ITEM),
@@ -51,7 +60,7 @@ class NewalyserTest {
     }
 
     @Test
-    fun `marks as new if exact match after window`() {
+    fun `marks as new if if earlier occurrence of item after window`() {
       val newalyser = createNewalyser(
         mapOf(
           11 to listOf(SAME_BREWERY_ITEM),

@@ -49,17 +49,11 @@ class Newalyser(
 
   fun enrich(item: Item): Item {
     val minimalItem = MinimalItem(brewery = item.brewery, name = item.name.toLowerCase())
-    return item.copy(
-      new = isNew(minimalItem, itemLifetimes)
-        && HOURS.between(
-          breweryLifetimes[item.brewery]?.min ?: Instant.MIN,
-          itemLifetimes[minimalItem]?.min ?: Instant.MIN
-        ) > 6
-    )
+    return item.copy(new = minimalItem.isNew(itemLifetimes) && minimalItem.isNewerThanBrewery())
   }
 
   fun enrich(brewery: Brewery) = brewery.copy(
-    new = isNew(brewery.shortName, breweryLifetimes)
+    new = brewery.shortName.isNew(breweryLifetimes)
   )
 
   private fun List<Instant>.collateInventory() = runBlocking {
@@ -73,8 +67,14 @@ class Newalyser(
       .flatMap { it.await() }
   }
 
-  private fun <T> isNew(entry: T, lifetimes: Map<T, Interval>) =
-    lifetimes[entry]?.let { !(it overlaps window) } ?: true
+  private fun <T> T.isNew(lifetimes: Map<T, Interval>) =
+    !((lifetimes[this] ?: Interval(now, now)) overlaps window)
+
+  // We allow some margin to avoid false triggers from development churn on new integrations
+  private fun MinimalItem.isNewerThanBrewery() = HOURS.between(
+    breweryLifetimes[brewery]?.min ?: now,
+    itemLifetimes[this]?.min ?: now
+  ) > CHURN_MARGIN_HOURS
 
   private infix fun Interval.overlaps(rhs: Interval) = (min <= rhs.max) && (rhs.min <= max)
 
@@ -89,5 +89,7 @@ class Newalyser(
     // TODO - modify range once we have more data
     private const val MIN_DAYS_AGO = 3
     private const val MAX_DAYS_AGO = 14
+
+    private const val CHURN_MARGIN_HOURS = 6
   }
 }
