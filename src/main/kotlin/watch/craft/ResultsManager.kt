@@ -9,7 +9,7 @@ import java.time.Instant
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter.ISO_DATE_TIME
 
-class ResultsManager(private val setup: Setup) {
+class ResultsManager(private val structure: StorageStructure) {
   private val logger = KotlinLogging.logger {}
   private val mapper = mapper()
 
@@ -20,7 +20,7 @@ class ResultsManager(private val setup: Setup) {
     CANONICAL_INVENTORY_PATH.outputStream().use { mapper.writeValue(it, inventory) }
   }
 
-  fun listHistoricalResults(): List<Instant> = setup.results.list().map { Instant.from(formatter.parse(it)) }
+  fun listHistoricalResults(): List<Instant> = structure.results.list().map { Instant.from(formatter.parse(it)) }
 
   // TODO - simplify this on 2020-08-02
   fun readMinimalHistoricalResult(timestamp: Instant): MinimalInventory {
@@ -40,7 +40,7 @@ class ResultsManager(private val setup: Setup) {
     })
   }
 
-  private fun dir(timestamp: Instant) = SubObjectStore(setup.results, formatter.format(timestamp))
+  private fun dir(timestamp: Instant) = SubObjectStore(structure.results, formatter.format(timestamp))
 
   // TODO - log actual stats once we trust them
   private fun Inventory.logStats() {

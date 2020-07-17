@@ -1,5 +1,6 @@
 package watch.craft
 
+import com.google.common.annotations.VisibleForTesting
 import watch.craft.network.CachingRetriever
 import watch.craft.network.FailingRetriever
 import watch.craft.network.NetworkRetriever
@@ -10,7 +11,7 @@ import java.time.LocalDate
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 
-class Setup(
+class StorageStructure(
   dateString: String? = null,
   private val forceDownload: Boolean = false,
   firstLevelStore: ObjectStore = LocalObjectStore(LOCAL_STORAGE_DIR),
@@ -31,37 +32,43 @@ class Setup(
 
   val results: ObjectStore = SubObjectStore(store, RESULTS_DIRNAME)
 
-  val downloadsDir: ObjectStore = SubObjectStore(store, "${DOWNLOADS_DIR}/${calculateSubdir()}")
+  @VisibleForTesting
+  fun downloads(id: String) = SubObjectStore(store, "${DOWNLOADS_DIR}/${id}").targetDir()
 
-  val createRetriever: (String) -> Retriever = { name ->
+  val createRetriever: (String) -> Retriever = { id ->
     CachingRetriever(
-      downloadsDir,
+      downloads(id),
       if (live) {
-        NetworkRetriever(name)
+        NetworkRetriever(id)
       } else {
         FailingRetriever()
       }
     )
   }
 
-  private fun calculateSubdir(): String {
+  private fun ObjectStore.targetDir(): ObjectStore {
     val today = DATE_FORMAT.format(instant)
 
-    val subdir = SubObjectStore(store, DOWNLOADS_DIR)
+    val latest = this
       .list()
       .sorted()
       .lastOrNull { it.startsWith(today) }
-      ?: return today
 
-    val parts = subdir.split("--")
-    val idx = if (parts.size < 2) 0 else parts.last().toInt()
-    val idxAdjusted = idx + if (forceDownload) 1 else 0
-
-    return if (idxAdjusted == 0) {
+    val subdir = if (latest == null) {
       today
     } else {
-      "${today}--${idxAdjusted.toString().padStart(3, '0')}"
+      val parts = latest.split("--")
+      val idx = if (parts.size < 2) 0 else parts.last().toInt()
+      val idxAdjusted = idx + if (forceDownload) 1 else 0
+
+      if (idxAdjusted == 0) {
+        today
+      } else {
+        "${today}--${idxAdjusted.toString().padStart(3, '0')}"
+      }
     }
+
+    return SubObjectStore(this, subdir)
   }
 
   companion object {

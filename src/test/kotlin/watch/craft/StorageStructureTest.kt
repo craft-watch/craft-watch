@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import watch.craft.storage.ObjectStore
 
-class SetupTest {
+class StorageStructureTest {
   private val firstLevel = mock<ObjectStore>()
   private val secondLevel = mock<ObjectStore>()
 
@@ -19,27 +19,27 @@ class SetupTest {
     fun `no existing entries for today`() {
       whenever(secondLevel.list(any())) doReturn emptyList()
 
-      val setup = createSetup(false)
+      val structure = createStructure(false)
 
-      assertEquals("/downloads/2020-01-01", setup.downloadsDir.path)
+      assertEquals("/downloads/foo/2020-01-01", structure.downloads("foo").path)
     }
 
     @Test
     fun `one existing entry for today`() {
       whenever(secondLevel.list(any())) doReturn listOf("2020-01-01")
 
-      val setup = createSetup(false)
+      val structure = createStructure(false)
 
-      assertEquals("/downloads/2020-01-01", setup.downloadsDir.path)
+      assertEquals("/downloads/foo/2020-01-01", structure.downloads("foo").path)
     }
 
     @Test
     fun `multiple existing entries for today`() {
       whenever(secondLevel.list(any())) doReturn listOf("2020-01-01--001", "2020-01-01")
 
-      val setup = createSetup(false)
+      val structure = createStructure(false)
 
-      assertEquals("/downloads/2020-01-01--001", setup.downloadsDir.path)
+      assertEquals("/downloads/foo/2020-01-01--001", structure.downloads("foo").path)
     }
   }
 
@@ -49,36 +49,34 @@ class SetupTest {
     fun `no existing entries for today`() {
       whenever(secondLevel.list(any())) doReturn emptyList()
 
-      val setup = createSetup(true)
+      val structure = createStructure(true)
 
-      assertEquals("/downloads/2020-01-01", setup.downloadsDir.path)
+      assertEquals("/downloads/foo/2020-01-01", structure.downloads("foo").path)
     }
 
     @Test
     fun `one existing entry for today`() {
       whenever(secondLevel.list(any())) doReturn listOf("2020-01-01")
 
-      val setup = createSetup(true)
+      val structure = createStructure(true)
 
-      assertEquals("/downloads/2020-01-01--001", setup.downloadsDir.path)
+      assertEquals("/downloads/foo/2020-01-01--001", structure.downloads("foo").path)
     }
 
     @Test
     fun `multiple existing entries for today`() {
       whenever(secondLevel.list(any())) doReturn listOf("2020-01-01--001", "2020-01-01")
 
-      val setup = createSetup(true)
+      val structure = createStructure(true)
 
-      assertEquals("/downloads/2020-01-01--002", setup.downloadsDir.path)
+      assertEquals("/downloads/foo/2020-01-01--002", structure.downloads("foo").path)
     }
   }
 
-  private fun createSetup(forceDownload: Boolean): Setup {
-    return Setup(
-      dateString = "2020-01-01",
-      forceDownload = forceDownload,
-      firstLevelStore = firstLevel,
-      secondLevelStore = secondLevel
-    )
-  }
+  private fun createStructure(forceDownload: Boolean) = StorageStructure(
+    dateString = "2020-01-01",
+    forceDownload = forceDownload,
+    firstLevelStore = firstLevel,
+    secondLevelStore = secondLevel
+  )
 }
