@@ -8,13 +8,10 @@ workflows:
           filters:
             branches:
               ignore: master
-
       - run_backend
-
       - build_frontend:
           requires:
             - run_backend
-
       - deploy:
           requires:
             - build_frontend
@@ -32,6 +29,12 @@ workflows:
 
     jobs:
       - run_backend
+      - build_frontend:
+          requires:
+            - run_backend
+      - deploy:
+          requires:
+            - build_frontend
 
 
 commands:
