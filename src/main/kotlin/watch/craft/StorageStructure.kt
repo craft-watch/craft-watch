@@ -1,6 +1,7 @@
 package watch.craft
 
 import com.google.common.annotations.VisibleForTesting
+import watch.craft.executor.onIoThread
 import watch.craft.network.CachingRetriever
 import watch.craft.network.FailingRetriever
 import watch.craft.network.NetworkRetriever
@@ -33,9 +34,9 @@ class StorageStructure(
   val results: ObjectStore = SubObjectStore(store, RESULTS_DIRNAME)
 
   @VisibleForTesting
-  fun downloads(id: String) = SubObjectStore(store, "${DOWNLOADS_DIR}/${id}").targetDir()
+  suspend fun downloads(id: String) = SubObjectStore(store, "${DOWNLOADS_DIR}/${id}").targetDir()
 
-  val createRetriever: (String) -> Retriever = { id ->
+  val createRetriever: suspend (String) -> Retriever = { id ->
     CachingRetriever(
       downloads(id),
       if (live) {
@@ -46,11 +47,10 @@ class StorageStructure(
     )
   }
 
-  private fun ObjectStore.targetDir(): ObjectStore {
+  private suspend fun ObjectStore.targetDir(): ObjectStore {
     val today = DATE_FORMAT.format(instant)
 
-    val latest = this
-      .list()
+    val latest = onIoThread { list() }
       .sorted()
       .lastOrNull { it.startsWith(today) }
 

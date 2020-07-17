@@ -4,6 +4,7 @@ import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -21,7 +22,7 @@ class StorageStructureTest {
 
       val structure = createStructure(false)
 
-      assertEquals("/downloads/foo/2020-01-01", structure.downloads("foo").path)
+      assertEquals("/downloads/foo/2020-01-01", getDownloadsPath(structure))
     }
 
     @Test
@@ -30,7 +31,7 @@ class StorageStructureTest {
 
       val structure = createStructure(false)
 
-      assertEquals("/downloads/foo/2020-01-01", structure.downloads("foo").path)
+      assertEquals("/downloads/foo/2020-01-01", getDownloadsPath(structure))
     }
 
     @Test
@@ -39,7 +40,7 @@ class StorageStructureTest {
 
       val structure = createStructure(false)
 
-      assertEquals("/downloads/foo/2020-01-01--001", structure.downloads("foo").path)
+      assertEquals("/downloads/foo/2020-01-01--001", getDownloadsPath(structure))
     }
   }
 
@@ -51,7 +52,7 @@ class StorageStructureTest {
 
       val structure = createStructure(true)
 
-      assertEquals("/downloads/foo/2020-01-01", structure.downloads("foo").path)
+      assertEquals("/downloads/foo/2020-01-01", getDownloadsPath(structure))
     }
 
     @Test
@@ -60,7 +61,7 @@ class StorageStructureTest {
 
       val structure = createStructure(true)
 
-      assertEquals("/downloads/foo/2020-01-01--001", structure.downloads("foo").path)
+      assertEquals("/downloads/foo/2020-01-01--001", getDownloadsPath(structure))
     }
 
     @Test
@@ -69,9 +70,11 @@ class StorageStructureTest {
 
       val structure = createStructure(true)
 
-      assertEquals("/downloads/foo/2020-01-01--002", structure.downloads("foo").path)
+      assertEquals("/downloads/foo/2020-01-01--002", getDownloadsPath(structure))
     }
   }
+
+  private fun getDownloadsPath(structure: StorageStructure) = runBlocking { structure.downloads("foo").path }
 
   private fun createStructure(forceDownload: Boolean) = StorageStructure(
     dateString = "2020-01-01",
