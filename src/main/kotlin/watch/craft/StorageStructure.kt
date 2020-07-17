@@ -1,6 +1,7 @@
 package watch.craft
 
 import com.google.common.annotations.VisibleForTesting
+import mu.KotlinLogging
 import watch.craft.executor.onIoThread
 import watch.craft.network.CachingRetriever
 import watch.craft.network.FailingRetriever
@@ -18,6 +19,7 @@ class StorageStructure(
   firstLevelStore: ObjectStore = LocalObjectStore(LOCAL_STORAGE_DIR),
   secondLevelStore: ObjectStore = GcsObjectStore(GCS_BUCKET)
 ) {
+  private val logger = KotlinLogging.logger {}
   private val live = dateString == null
 
   private val instant = if (live) {
@@ -33,12 +35,34 @@ class StorageStructure(
 
   val results: ObjectStore = SubObjectStore(store, RESULTS_DIRNAME)
 
+  private inner class MigratingStore(private val delegate: ObjectStore) : ObjectStore {
+    private val legacy = SubObjectStore(store, "${DOWNLOADS_DIR}/${DATE_FORMAT.format(instant)}")
+    init {
+      logger.info("PATH: ${legacy.path}")
+    }
+
+    override suspend fun write(key: String, content: ByteArray) {
+      TODO("not implemented")
+    }
+
+    override suspend fun read(key: String): ByteArray {
+      val content = legacy.read(key)
+      delegate.write(key, content)
+      return content
+    }
+
+    override suspend fun list(key: String): List<String> {
+      TODO("not implemented")
+    }
+  }
+
+
   @VisibleForTesting
   suspend fun downloads(id: String) = SubObjectStore(store, "${DOWNLOADS_DIR}/${id}").targetDir()
 
   val createRetriever: suspend (String) -> Retriever = { id ->
     CachingRetriever(
-      downloads(id),
+      MigratingStore(downloads(id)),
       if (live) {
         NetworkRetriever(id)
       } else {
