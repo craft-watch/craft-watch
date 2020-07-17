@@ -25,7 +25,7 @@ const ThisPage = (): JSX.Element => (
     <InventoryApp
       inventory={{
         ...inventory,
-        items: _.filter(inventory.items, item => item.new && !item.brewery.new),
+        items: _.filter(inventory.items, item => item.new),
       }}
     />
   </Page>
