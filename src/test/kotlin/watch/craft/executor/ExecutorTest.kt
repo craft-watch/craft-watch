@@ -48,7 +48,7 @@ class ExecutorTest {
             abv = abv,
             offers = offers.toList(),
             available = available,
-            new = true,
+            new = false,
             thumbnailUrl = thumbnailUrl,
             url = productUrl("b")
           )
@@ -63,7 +63,7 @@ class ExecutorTest {
             abv = abv,
             offers = offers.toList(),
             available = available,
-            new = true,
+            new = false,
             thumbnailUrl = thumbnailUrl,
             url = productUrl("a")
           )
