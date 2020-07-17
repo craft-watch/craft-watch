@@ -11,6 +11,7 @@ import watch.craft.ResultsManager
 import java.time.Duration
 import java.time.Instant
 import java.time.temporal.ChronoUnit.DAYS
+import java.time.temporal.ChronoUnit.HOURS
 
 class Newalyser(
   private val results: ResultsManager,
@@ -50,7 +51,10 @@ class Newalyser(
     val minimalItem = MinimalItem(brewery = item.brewery, name = item.name.toLowerCase())
     return item.copy(
       new = isNew(minimalItem, itemLifetimes)
-//        && ((breweriesFirstSeen[item.brewery] ?: Instant.MIN) < (itemsFirstSeen[minimalItem] ?: Instant.MIN))
+        && HOURS.between(
+          breweryLifetimes[item.brewery]?.min ?: Instant.MIN,
+          itemLifetimes[minimalItem]?.min ?: Instant.MIN
+        ) > 6
     )
   }
 
