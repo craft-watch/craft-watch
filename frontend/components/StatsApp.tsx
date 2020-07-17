@@ -45,7 +45,7 @@ const asString = (n: number): string => (n > 0) ? n.toString() : "";
 const partition = (breweries: Array<BreweryStats>): Array<Section<BreweryStats>> => [
   {
     name: "All",
-    data: _.sortBy(breweries, b => b.name),
+    data: _.sortBy(breweries, b => b.breweryId),
   }
 ];
 
