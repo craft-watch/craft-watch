@@ -36,7 +36,7 @@ class ScraperAdapterTest {
 
     assertEquals(
       listOf(
-        Result(breweryName = BREWERY_NAME, rawName = "A", url = URL_A, item = itemA)
+        Result(breweryId = BREWERY_NAME, rawName = "A", url = URL_A, item = itemA)
       ),
       execute(adapter).entries
     )

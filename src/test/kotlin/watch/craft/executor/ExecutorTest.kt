@@ -40,7 +40,7 @@ class ExecutorTest {
       listOf(
         with(product("Bar")) {
           Item(
-            brewery = THIS_BREWERY,
+            breweryId = THIS_BREWERY,
             name = name,
             summary = summary,
             desc = desc,
@@ -55,7 +55,7 @@ class ExecutorTest {
         },
         with(product("Foo")) {
           Item(
-            brewery = THIS_BREWERY,
+            breweryId = THIS_BREWERY,
             name = name,
             summary = summary,
             desc = desc,

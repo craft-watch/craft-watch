@@ -14,7 +14,7 @@ fun StatsWith<Result>.normaliseToItems(): StatsWith<Item> {
     try {
       result.normaliseToItem()
     } catch (e: InvalidItemException) {
-      logger.warn("[${result.breweryName}] Invalid item [${result.rawName}]", e)
+      logger.warn("[${result.breweryId}] Invalid item [${result.rawName}]", e)
       numInvalid++
       null
     }
@@ -26,9 +26,7 @@ fun StatsWith<Result>.normaliseToItems(): StatsWith<Item> {
 }
 
 private fun Result.normaliseToItem() = Item(
-  brewery = breweryName
-    .trim()
-    .validate("non-blank brewery name") { it.isNotBlank() },
+  breweryId = breweryId,
   name = item.name
     .trim()
     .validate("non-blank item name") { it.isNotBlank() },

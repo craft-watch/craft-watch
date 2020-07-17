@@ -95,18 +95,18 @@ class ItemNormalisationTest {
 
   private fun normalise(
     item: ScrapedItem = prototype,
-    brewery: String = "Foo Bar",
+    breweryId: String = "foo",
     url: URI = URI("https://example.invalid/shop")
   ) = StatsWith(
     entries = listOf(
       Result(
-        breweryName = brewery,
+        breweryId = breweryId,
         rawName = "",
         url = url,
         item = item
       )
     ),
-    stats = BreweryStats(brewery)
+    stats = BreweryStats(breweryId)
   ).normaliseToItems()
 
   private val prototype = ScrapedItem(

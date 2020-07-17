@@ -12,7 +12,7 @@ private val logger = KotlinLogging.logger {}
 fun StatsWith<Item>.consolidateOffers(): StatsWith<Item> {
   var numMerged = stats.numMerged
   val entries = entries
-    .groupBy { ItemGroupFields(it.brewery, it.name.toLowerCase()) }
+    .groupBy { ItemGroupFields(it.breweryId, it.name.toLowerCase()) }
     .mapNotNull { (key, group) ->
       if (group.size > 1) {
         logger.info("[${key.brewery}] Merging ${group.size} item(s) for [${key.name}]")

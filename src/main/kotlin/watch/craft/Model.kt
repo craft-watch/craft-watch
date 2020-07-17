@@ -25,7 +25,7 @@ data class Stats(
 )
 
 data class BreweryStats(
-  val name: String,
+  val breweryId: String,
   val numRawItems: Int = 0,
   val numSkipped: Int = 0,
   val numMalformed: Int = 0,
@@ -36,6 +36,7 @@ data class BreweryStats(
 )
 
 data class Brewery(
+  val id: String,
   val shortName: String,
   val name: String,
   val location: String,
@@ -45,7 +46,7 @@ data class Brewery(
 )
 
 data class Item(
-  val brewery: String,
+  val breweryId: String,
   val name: String,
   val summary: String? = null,
   val desc: String? = null,
@@ -79,6 +80,6 @@ data class MinimalInventory(
 )
 
 data class MinimalItem(
-  val brewery: String,
+  val breweryId: String,
   val name: String
 )

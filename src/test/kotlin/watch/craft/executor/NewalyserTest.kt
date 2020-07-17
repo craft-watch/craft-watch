@@ -136,7 +136,7 @@ class NewalyserTest {
       results.forEach { (daysAgo, items) ->
         on {
           readMinimalHistoricalResult(now - Duration.ofDays(daysAgo.toLong()))
-        } doReturn MinimalInventory(items = items.map { MinimalItem(brewery = it.brewery, name = it.name) })
+        } doReturn MinimalInventory(items = items.map { MinimalItem(breweryId = it.breweryId, name = it.name) })
       }
     }
     return Newalyser(manager, now)
@@ -144,13 +144,14 @@ class NewalyserTest {
 
   companion object {
     private val BREWERY = Brewery(
-      shortName = "abc",
+      id = "abc",
+      shortName = "ABC",
       name = "Abc Brewing",
       location = "Space",
       websiteUrl = URI("https://example.invalid")
     )
-    private val INTERESTING_ITEM = PROTOTYPE_ITEM.copy(brewery = "abc", name = "def")
-    private val SAME_BREWERY_ITEM = PROTOTYPE_ITEM.copy(brewery = "abc", name = "ghi")
-    private val DIFFERENT_BREWERY_ITEM = PROTOTYPE_ITEM.copy(brewery = "xyz", name = "ghi")
+    private val INTERESTING_ITEM = PROTOTYPE_ITEM.copy(breweryId = "abc", name = "def")
+    private val SAME_BREWERY_ITEM = PROTOTYPE_ITEM.copy(breweryId = "abc", name = "ghi")
+    private val DIFFERENT_BREWERY_ITEM = PROTOTYPE_ITEM.copy(breweryId = "xyz", name = "ghi")
   }
 }

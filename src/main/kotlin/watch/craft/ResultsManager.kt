@@ -29,7 +29,7 @@ class ResultsManager(private val setup: Setup) {
 
   // TODO - log actual stats once we trust them
   private fun Inventory.logStats() {
-    items.groupBy { it.brewery }
+    items.groupBy { it.breweryId }
       .forEach { (key, group) -> logger.info("Scraped (${key}): ${group.size}") }
     logger.info("Scraped (TOTAL): ${items.size}")
   }

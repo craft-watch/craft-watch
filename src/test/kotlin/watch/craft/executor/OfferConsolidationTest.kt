@@ -242,7 +242,7 @@ class OfferConsolidationTest {
     name: String = THIS_BEER,
     offers: List<Offer>
   ) = PROTOTYPE_ITEM.copy(
-    brewery = brewery,
+    breweryId = brewery,
     name = name,
     offers = offers
   )

@@ -18,10 +18,10 @@ import java.util.concurrent.atomic.AtomicInteger
 class ScraperAdapter(
   private val retriever: Retriever,
   private val scraper: Scraper,
-  private val shortName: String
+  private val breweryId: String
 ) {
   data class Result(
-    val breweryName: String,
+    val breweryId: String,
     val rawName: String,
     val url: URI,
     val item: ScrapedItem
@@ -34,7 +34,7 @@ class ScraperAdapter(
     StatsWith(
       results,
       BreweryStats(
-        name = shortName,
+        breweryId = breweryId,
         numRawItems = numRawItems.toInt(),
         numSkipped = numSkipped.toInt(),
         numMalformed = numMalformed.toInt(),
@@ -66,7 +66,7 @@ class ScraperAdapter(
           numRawItems.incrementAndGet()
           listOf(
             Result(
-              breweryName = shortName,
+              breweryId = breweryId,
               rawName = name,
               url = url,
               item = work(doc)
@@ -108,7 +108,7 @@ class ScraperAdapter(
 
   private fun Job.suffix() = if (name != null) " [${name}]" else ""
 
-  private fun String.prefixed() = "[$shortName] ${this}"
+  private fun String.prefixed() = "[$breweryId] ${this}"
 
   companion object {
     private const val errorClause = "Error while scraping"
