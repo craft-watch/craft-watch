@@ -36,8 +36,8 @@ const Thumbnail = ({ datum }: CellProps<Item>) => (
 );
 
 const NameInfo = ({ datum }: CellProps<Item>) => {
-  const newItem = datum.new && !datum.brewery.new;
-  const justAdded = datum.new && datum.brewery.new;
+  const newItem = datum.new;
+  const justAdded = datum.brewery.new;
   const keg = headlineOffer(datum).format === Format.Keg;
   const kegAvailable = !keg && _.any(_.rest(datum.offers), offer => offer.format === Format.Keg);
   const mixed = datum.mixed;
