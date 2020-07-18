@@ -1,4 +1,4 @@
-package watch.craft.utils
+package watch.craft.dsl
 
 import com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper

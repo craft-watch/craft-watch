@@ -16,7 +16,7 @@ import org.jsoup.nodes.Document
 import watch.craft.MalformedInputException
 import watch.craft.jsonld.Thing.Offer
 import watch.craft.jsonld.Thing.Product
-import watch.craft.utils.selectMultipleFrom
+import watch.craft.dsl.selectMultipleFrom
 import java.net.URI
 
 inline fun <reified T : Any> Document.jsonLdFrom(): T {

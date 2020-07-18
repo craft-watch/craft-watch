@@ -3,7 +3,7 @@ package watch.craft.shopify
 import org.jsoup.nodes.Document
 import watch.craft.MalformedInputException
 import watch.craft.Offer
-import watch.craft.utils.*
+import watch.craft.dsl.*
 import java.net.URI
 
 data class ShopifyItemDetails(

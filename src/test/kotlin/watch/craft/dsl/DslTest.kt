@@ -1,4 +1,4 @@
-package watch.craft.utils
+package watch.craft.dsl
 
 import org.jsoup.Jsoup
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.assertThrows
 import watch.craft.MalformedInputException
 import java.net.URI
 
-class ScraperUtilsTest {
+class DslTest {
   @Nested
   inner class UrlFrom {
     @Test

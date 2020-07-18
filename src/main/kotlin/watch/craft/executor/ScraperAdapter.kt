@@ -12,7 +12,7 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.Job.More
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.network.Retriever
-import watch.craft.utils.selectFrom
+import watch.craft.dsl.selectFrom
 import java.net.URI
 import java.util.concurrent.atomic.AtomicInteger
 
