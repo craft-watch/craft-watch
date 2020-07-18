@@ -14,9 +14,13 @@ class CachingRetriever(
 ) : Retriever {
   private val logger = KotlinLogging.logger {}
 
-  override suspend fun retrieve(url: URI, suffix: String?): ByteArray {
+  override suspend fun retrieve(
+    url: URI,
+    suffix: String?,
+    validate: (ByteArray) -> Unit
+  ): ByteArray {
     val key = key(url, suffix)
-    return read(url, key) ?: delegate.retrieve(url, suffix).also { write(url, key, it) }
+    return read(url, key) ?: delegate.retrieve(url, suffix, validate).also { write(url, key, it) }
   }
 
   override fun close() = delegate.close()

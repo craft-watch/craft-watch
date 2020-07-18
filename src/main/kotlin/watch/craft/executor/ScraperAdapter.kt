@@ -12,6 +12,7 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.Job.More
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.network.Retriever
+import watch.craft.utils.selectFrom
 import java.net.URI
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -58,7 +59,7 @@ class ScraperAdapter(
 
     private suspend fun Job.execute(): List<Result> {
       logger.info("Scraping${suffix()}: $url".prefixed())
-      val doc = request(url, sanityCheck)
+      val doc = request(url)
 
       return when (this@execute) {
         is More -> processGracefully(doc, emptyList()) { work(doc) }.executeAll()
@@ -95,15 +96,24 @@ class ScraperAdapter(
     }
   }
 
-  private suspend fun request(url: URI, sanityCheck: (Document) -> Boolean) = try {
+  private suspend fun request(url: URI) = try {
     Jsoup.parse(
-      String(retriever.retrieve(url, ".html")),
+      String(retriever.retrieve(url, ".html", ::validate)),
       url.toString()
     )!!
   } catch (e: CancellationException) {
     throw e   // These must be propagated
   } catch (e: Exception) {
     throw FatalScraperException("Could not read page: ${url}".prefixed(), e)
+  }
+
+  // Enough to handle e.g. Wander Beyond serving up random Wix placeholder pages
+  private fun validate(content: ByteArray) {
+    try {
+      Jsoup.parse(String(content)).selectFrom("title")
+    } catch (e: Exception) {
+      throw MalformedInputException("Can't extract <title>", e)
+    }
   }
 
   private fun Job.suffix() = if (name != null) " [${name}]" else ""

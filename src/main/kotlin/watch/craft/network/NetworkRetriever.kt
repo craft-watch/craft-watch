@@ -10,6 +10,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import mu.KotlinLogging
 import watch.craft.FatalScraperException
+import watch.craft.MalformedInputException
 import watch.craft.network.NetworkRetriever.Response.Failure
 import watch.craft.network.NetworkRetriever.Response.Success
 import java.io.IOException
@@ -23,6 +24,7 @@ class NetworkRetriever(
 
   private data class Request(
     val url: URI,
+    val validate: (ByteArray) -> Unit,
     val response: CompletableDeferred<Response>
   )
 
@@ -49,11 +51,16 @@ class NetworkRetriever(
 
   private suspend fun HttpClient.process(msg: Request): Response {
     logger.info("${msg.url}: processing network request")
-    var exception: IOException? = null
+    var exception: Exception? = null
     repeat(MAX_RETRIES) {
       val response = try {
-        Success(get(Url(msg.url.toString())))
+        val raw: ByteArray = get(Url(msg.url.toString()))
+        msg.validate(raw)
+        Success(raw)
       } catch (e: IOException) {
+        exception = e
+        null
+      } catch (e: MalformedInputException) {
         exception = e
         null
       } catch (e: CancellationException) {
@@ -70,11 +77,16 @@ class NetworkRetriever(
     return Failure(exception!!)
   }
 
-  override suspend fun retrieve(url: URI, suffix: String?): ByteArray {
+  override suspend fun retrieve(
+    url: URI,
+    suffix: String?,
+    validate: (ByteArray) -> Unit
+  ): ByteArray {
     logger.info("${url}: queueing network request")
 
     val msg = Request(
       url = url,
+      validate = validate,
       response = CompletableDeferred()
     )
 
