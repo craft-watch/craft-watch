@@ -139,7 +139,7 @@ class NewalyserTest {
     val manager = mock<ResultsManager> {
       on { listHistoricalResults() } doReturn results.keys.map { daysAgo -> now - Duration.ofDays(daysAgo.toLong()) }
       results.forEach { (daysAgo, items) ->
-        on {
+        onBlocking {
           readMinimalHistoricalResult(now - Duration.ofDays(daysAgo.toLong()))
         } doReturn MinimalInventory(items = items.map { MinimalItem(breweryId = it.breweryId, name = it.name) })
       }
