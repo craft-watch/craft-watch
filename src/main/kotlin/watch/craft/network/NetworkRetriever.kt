@@ -16,7 +16,7 @@ import java.io.IOException
 import java.net.URI
 
 class NetworkRetriever(
-  private val name: String,
+  private val id: String,
   private val rateLimitPeriodMillis: Int = RATE_LIMIT_PERIOD_MILLIS
 ) : Retriever {
   private val logger = KotlinLogging.logger {}
@@ -37,13 +37,13 @@ class NetworkRetriever(
   // coroutine handling requests over a channel.
   init {
     GlobalScope.launch {
-      logger.info("[${name}] Opening client")
+      logger.info("[${id}] Opening client")
       createClient().use { client ->
         for (msg in channel) {
           msg.response.complete(client.process(msg))
         }
       }
-      logger.info("[${name}] Client closed")
+      logger.info("[${id}] Client closed")
     }
   }
 

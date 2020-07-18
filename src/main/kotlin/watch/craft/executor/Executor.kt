@@ -9,7 +9,7 @@ import java.time.Clock
 
 class Executor(
   private val results: ResultsManager,
-  private val createRetriever: (name: String) -> Retriever,
+  private val createRetriever: suspend (name: String) -> Retriever,
   private val clock: Clock = Clock.systemUTC()
 ) {
   fun scrape(scrapers: Collection<ScraperEntry>) = Context(scrapers).scrape()

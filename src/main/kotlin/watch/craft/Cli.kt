@@ -28,9 +28,9 @@ class Cli : CliktCommand(name = "scraper") {
   }
 
   private fun executeScrape() {
-    val setup = Setup(dateString, forceDownload)
-    val results = ResultsManager(setup)
-    val executor = Executor(results = results, createRetriever = setup.createRetriever)
+    val structure = StorageStructure(dateString, forceDownload)
+    val results = ResultsManager(structure)
+    val executor = Executor(results = results, createRetriever = structure.createRetriever)
     val inventory = executor.scrape(scrapers.ifEmpty { SCRAPERS })
     results.write(inventory)
   }

@@ -4,7 +4,7 @@ class WriteThroughObjectStore(
   private val firstLevel: ObjectStore,
   private val secondLevel: ObjectStore
 ) : ObjectStore {
-  override fun write(key: String, content: ByteArray) {
+  override suspend fun write(key: String, content: ByteArray) {
     secondLevel.writeGracefully(
       key,
       content
@@ -12,7 +12,7 @@ class WriteThroughObjectStore(
     firstLevel.write(key, content)  // Allow this to throw
   }
 
-  override fun read(key: String) = try {
+  override suspend fun read(key: String) = try {
     firstLevel.read(key)
   } catch (e: FileDoesntExistException) {
     val content = secondLevel.read(key)
@@ -21,9 +21,9 @@ class WriteThroughObjectStore(
   }
 
   // We go straight to second-level storage as source of truth
-  override fun list(key: String) = secondLevel.list(key)
+  override suspend fun list(key: String) = secondLevel.list(key)
 
-  private fun ObjectStore.writeGracefully(key: String, content: ByteArray) {
+  private suspend fun ObjectStore.writeGracefully(key: String, content: ByteArray) {
     try {
       write(key, content)
     } catch (e: FileExistsException) {

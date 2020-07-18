@@ -1,5 +1,6 @@
 package watch.craft.storage
 
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -11,7 +12,7 @@ class LocalObjectStoreTest {
   fun `writes data to filesystem if not already present`(@TempDir tempDir: Path) {
     val store = LocalObjectStore(tempDir.toFile())
 
-    store.write(NICE_KEY, NICE_DATA)
+    runBlocking { store.write(NICE_KEY, NICE_DATA) }
 
     assertArrayEquals(NICE_DATA, tempDir.resolve(NICE_KEY).toFile().readBytes())
   }
@@ -22,7 +23,7 @@ class LocalObjectStoreTest {
     val store = LocalObjectStore(tempDir.toFile())
 
     assertThrows<FileExistsException> {
-      store.write(NICE_KEY, OTHER_DATA)
+      runBlocking { store.write(NICE_KEY, OTHER_DATA) }
     }
     assertArrayEquals(NICE_DATA, tempDir.resolve(NICE_KEY).toFile().readBytes())
   }
@@ -32,7 +33,7 @@ class LocalObjectStoreTest {
     tempDir.resolve(NICE_KEY).toFile().writeBytes(NICE_DATA)
     val store = LocalObjectStore(tempDir.toFile())
 
-    assertArrayEquals(NICE_DATA, store.read(NICE_KEY))
+    assertArrayEquals(NICE_DATA, runBlocking { store.read(NICE_KEY) })
   }
 
   @Test
@@ -40,7 +41,7 @@ class LocalObjectStoreTest {
     val store = LocalObjectStore(tempDir.toFile())
 
     assertThrows<FileDoesntExistException> {
-      store.read(NICE_KEY)
+      runBlocking { store.read(NICE_KEY) }
     }
   }
 
