@@ -1,7 +1,6 @@
 package watch.craft.network
 
 import mu.KotlinLogging
-import watch.craft.executor.onIoThread
 import watch.craft.storage.FileDoesntExistException
 import watch.craft.storage.FileExistsException
 import watch.craft.storage.ObjectStore

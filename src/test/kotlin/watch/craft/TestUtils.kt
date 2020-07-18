@@ -9,12 +9,17 @@ import java.net.URI
 private const val GOLDEN_DATE = "2020-07-10"
 
 fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE) = runBlocking {
+  val id = findBreweryId(scraper)
   ScraperAdapter(
-    StorageStructure(dateString).createRetriever("TEST"),
+    StorageStructure(dateString).createRetriever(id),
     scraper,
-    "TEST"
+    id
   ).execute().entries.map { it.item }
 }
+
+private fun findBreweryId(scraper: Scraper) = SCRAPERS.find { it.scraper.javaClass == scraper.javaClass }
+  ?.brewery?.id
+  ?: throw RuntimeException("Can't find scraper entry")
 
 fun List<ScrapedItem>.byName(name: String) = firstOrNull { it.name == name } ?: fail("No match for '${name}'")
 

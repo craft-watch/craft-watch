@@ -11,7 +11,7 @@ import java.net.URI
 
 class OrbitScraperTest {
   companion object {
-    private val ITEMS = executeScraper(OrbitScraper(), dateString = "2020-07-17")
+    private val ITEMS = executeScraper(OrbitScraper(), dateString = "2020-07-18")
   }
 
   @Test
