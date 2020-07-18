@@ -14,15 +14,18 @@ interface Scraper {
   sealed class Job {
     open val name: String? = null
     abstract val url: URI
+    abstract val sanityCheck: (doc: Document) -> Boolean
 
     data class More(
       override val url: URI,
+      override val sanityCheck: (doc: Document) -> Boolean = { true },
       val work: (doc: Document) -> List<Job>
     ) : Job()
 
     data class Leaf(
       override val name: String,
       override val url: URI,
+      override val sanityCheck: (doc: Document) -> Boolean = { true },
       val work: (doc: Document) -> ScrapedItem
     ) : Job()
   }

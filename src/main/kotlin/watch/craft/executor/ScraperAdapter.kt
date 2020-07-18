@@ -58,7 +58,7 @@ class ScraperAdapter(
 
     private suspend fun Job.execute(): List<Result> {
       logger.info("Scraping${suffix()}: $url".prefixed())
-      val doc = request(url)
+      val doc = request(url, sanityCheck)
 
       return when (this@execute) {
         is More -> processGracefully(doc, emptyList()) { work(doc) }.executeAll()
@@ -95,7 +95,7 @@ class ScraperAdapter(
     }
   }
 
-  private suspend fun request(url: URI) = try {
+  private suspend fun request(url: URI, sanityCheck: (Document) -> Boolean) = try {
     Jsoup.parse(
       String(retriever.retrieve(url, ".html")),
       url.toString()
