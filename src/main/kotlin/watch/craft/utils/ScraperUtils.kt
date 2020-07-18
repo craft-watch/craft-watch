@@ -155,9 +155,9 @@ fun Element.selectFrom(cssQuery: String) = selectFirst(cssQuery)
 fun Element.selectMultipleFrom(cssQuery: String) = select(cssQuery)!!
   .ifEmpty { throw MalformedInputException("Element(s) not present: ${cssQuery}") }
 
-fun String.remove(vararg regexes: String) = regexes.fold(this) { str, regex ->
+fun String.cleanse(vararg regexesToRemove: String) = regexesToRemove.fold(this) { str, regex ->
   str.replace(regex.toRegex(regexOptions(true)), "")
-}.trim()
+}.replace("\\s+".toRegex(), " ").trim()
 
 fun String.containsWord(vararg words: String) = tokenize()
   .filter { it.wordy }

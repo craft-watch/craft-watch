@@ -23,7 +23,7 @@ class GipsyHillScraper : Scraper {
           val style = rawSummary.maybe { extract("Style: (.*) ABV")[1] }
           val mixed = style in listOf("Various", "Mixed")
 
-          val name = rawName.remove(" \\(.*\\)$")
+          val name = rawName.cleanse(" \\(.*\\)$")
 
           ScrapedItem(
 

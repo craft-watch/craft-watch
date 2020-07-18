@@ -26,7 +26,7 @@ class BrickScraper : Scraper {
           val attributes = desc.extractAttributes()
 
           ScrapedItem(
-            name = details.title.remove("^\\d+\\s*x", "case", "[(].*[)]"),
+            name = details.title.cleanse("^\\d+\\s*x", "case", "[(].*[)]"),
             summary = attributes["beer style"],
             desc = desc.formattedTextFrom(),
             mixed = mixed,

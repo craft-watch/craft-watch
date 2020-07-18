@@ -9,12 +9,19 @@ import java.net.URI
 private const val GOLDEN_DATE = "2020-07-10"
 
 fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE) = runBlocking {
+  validateNonLiveOnCi(dateString)
   val id = findBreweryId(scraper)
   ScraperAdapter(
     StorageStructure(dateString).createRetriever(id),
     scraper,
     id
   ).execute().entries.map { it.item }
+}
+
+private fun validateNonLiveOnCi(dateString: String?) {
+  if (dateString == null && System.getenv("CI") != null) {
+    throw RuntimeException("Shouldn't be running live tests on CI")
+  }
 }
 
 private fun findBreweryId(scraper: Scraper) = SCRAPERS.find { it.scraper.javaClass == scraper.javaClass }

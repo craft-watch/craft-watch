@@ -25,6 +25,24 @@ class ScraperUtilsTest {
   }
 
   @Nested
+  inner class Cleanse {
+    @Test
+    fun `removes matches`() {
+      assertEquals("abcdefghi", "abc123defBADghi".cleanse("\\d+", "bad"))
+    }
+
+    @Test
+    fun `removes consecutive whitespace after removing matches`() {
+      assertEquals("abc def", "abc 123 def".cleanse("\\d+"))
+    }
+
+    @Test
+    fun `trims whitespace after removing matches`() {
+      assertEquals("abc def", " abc def 123".cleanse("\\d+"))
+    }
+  }
+
+  @Nested
   inner class SizeFrom {
     @Test
     fun millilitres() {

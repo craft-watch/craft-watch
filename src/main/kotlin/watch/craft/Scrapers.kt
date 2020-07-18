@@ -40,6 +40,17 @@ val SCRAPERS = listOf(
     )
   ),
   entry(
+    BrockleyScraper(),
+    Brewery(
+      id = "brockley",
+      shortName = "Brockley",
+      name = "Brockley Brewing Co",
+      location = "Brockley, London",
+      websiteUrl = URI("https://www.brockleybrewery.co.uk/"),
+      twitterHandle = "brockleybrewery"
+    )
+  ),
+  entry(
     BurningSkyScraper(),
     Brewery(
       id = "burning-sky",
