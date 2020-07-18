@@ -14,9 +14,9 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import org.jsoup.nodes.Document
 import watch.craft.MalformedInputException
+import watch.craft.dsl.selectMultipleFrom
 import watch.craft.jsonld.Thing.Offer
 import watch.craft.jsonld.Thing.Product
-import watch.craft.dsl.selectMultipleFrom
 import java.net.URI
 
 inline fun <reified T : Any> Document.jsonLdFrom(): T {
