@@ -1,5 +1,7 @@
 package watch.craft.scrapers
 
+import org.jsoup.nodes.Document
+import watch.craft.Format
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -8,7 +10,7 @@ import watch.craft.utils.*
 import java.net.URI
 
 class BrockleyScraper : Scraper {
-  override val jobs = forRootUrls(*ROOT_URLS) { root ->
+  override val jobs = forRootUrls(*ROOT_URLS) { root, format ->
     root
       .selectMultipleFrom("product-item-root".hook())
       .map { el ->
@@ -27,10 +29,10 @@ class BrockleyScraper : Scraper {
             available = "product-item-out-of-stock".hook() !in el,
             offers = setOf(
               Offer(
-                quantity = 1,
+                quantity = title.quantityFrom(),
                 totalPrice = doc.priceFrom("formatted-primary-price".hook()),
                 sizeMl = title.maybe { sizeMlFrom() },
-                format = null   // TODO - introduce "context" for rootUrls
+                format = format
               )
             ),
             thumbnailUrl = el.attrFrom("product-item-images".hook(), "style")
@@ -45,8 +47,8 @@ class BrockleyScraper : Scraper {
 
   companion object {
     private val ROOT_URLS = arrayOf(
-      URI("https://www.brockleybrewery.co.uk/online-shop?ALL%20PRODUCTS=BOTTLES"),
-      URI("https://www.brockleybrewery.co.uk/online-shop?ALL%20PRODUCTS=CANS")
+      UrlAndContext("https://www.brockleybrewery.co.uk/online-shop?ALL%20PRODUCTS=BOTTLES", Format.BOTTLE),
+      UrlAndContext("https://www.brockleybrewery.co.uk/online-shop?ALL%20PRODUCTS=CANS", Format.CAN)
       // TODO - other pages
     )
   }

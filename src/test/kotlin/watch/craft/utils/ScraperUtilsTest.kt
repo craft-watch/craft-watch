@@ -43,6 +43,39 @@ class ScraperUtilsTest {
   }
 
   @Nested
+  inner class QuantityFrom {
+    @Test
+    fun `with prefix`() {
+      assertEquals(6, "x6".quantityFrom())
+      assertEquals(6, "x 6".quantityFrom())
+      assertEquals(66, "x  66".quantityFrom())
+      assertEquals(6, "X6".quantityFrom())
+    }
+
+    @Test
+    fun `with suffix`() {
+      assertEquals(6, "6x".quantityFrom())
+      assertEquals(6, "6 x".quantityFrom())
+      assertEquals(66, "66  x".quantityFrom())
+      assertEquals(6, "6X".quantityFrom())
+    }
+
+    @Test
+    fun `other variants`() {
+      assertEquals(6, "×6".quantityFrom())
+      assertEquals(6, "6×".quantityFrom())
+      assertEquals(6, "6 pack".quantityFrom())
+      assertEquals(6, "6-pack".quantityFrom())
+    }
+
+    @Test
+    fun `true negatives`() {
+      assertThrows<MalformedInputException> { "6".quantityFrom() }
+      assertThrows<MalformedInputException> { "blah 6 blah".quantityFrom() }
+    }
+  }
+
+  @Nested
   inner class SizeFrom {
     @Test
     fun millilitres() {
