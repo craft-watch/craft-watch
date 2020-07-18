@@ -54,7 +54,7 @@ commands:
           key: v1-gradle-cache-{{ checksum "build.gradle.kts" }}
       - restore_cache:
           name: Restore cache (Application local storage)
-          key: v1-local-storage
+          key: v1-local-storage-{{ .Environment.CIRCLE_JOB }}
 
   after_backend_job:
     steps:
@@ -72,7 +72,7 @@ commands:
           name: Save cache (Application local storage)
           paths:
             - storage/
-          key: v1-local-storage
+          key: v1-local-storage-{{ .Environment.CIRCLE_JOB }}-{{ epoch }}
 
 
 jobs:
