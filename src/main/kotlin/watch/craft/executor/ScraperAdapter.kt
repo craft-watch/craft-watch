@@ -11,8 +11,8 @@ import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.Job.More
 import watch.craft.Scraper.ScrapedItem
+import watch.craft.dsl.selectFrom
 import watch.craft.network.Retriever
-import watch.craft.utils.selectFrom
 import java.net.URI
 import java.util.concurrent.atomic.AtomicInteger
 

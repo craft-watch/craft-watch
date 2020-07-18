@@ -5,8 +5,8 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import com.google.cloud.storage.Blob
 import mu.KotlinLogging
 import watch.craft.GCS_BUCKET
+import watch.craft.dsl.extract
 import watch.craft.storage.GcsObjectStore.Companion.createGcsService
-import watch.craft.utils.extract
 import watch.craft.utils.mapper
 import java.time.Instant
 import java.time.LocalDate

@@ -8,7 +8,7 @@ import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
-import watch.craft.utils.*
+import watch.craft.dsl.*
 import java.net.URI
 
 class RedWillowScraper : Scraper {

@@ -6,8 +6,8 @@ import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
+import watch.craft.dsl.*
 import watch.craft.shopify.shopifyItems
-import watch.craft.utils.*
 import java.net.URI
 
 class BrickScraper : Scraper {

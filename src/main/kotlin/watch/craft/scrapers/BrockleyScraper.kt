@@ -6,7 +6,7 @@ import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
-import watch.craft.utils.*
+import watch.craft.dsl.*
 
 class BrockleyScraper : Scraper {
   override val jobs = forRootUrls(*ROOT_URLS) { root, format ->

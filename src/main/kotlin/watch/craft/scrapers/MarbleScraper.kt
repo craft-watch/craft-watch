@@ -6,7 +6,7 @@ import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.utils.*
+import watch.craft.dsl.*
 import java.net.URI
 
 class MarbleScraper : Scraper {
