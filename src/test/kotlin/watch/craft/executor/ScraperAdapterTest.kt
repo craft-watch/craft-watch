@@ -6,6 +6,7 @@ import org.jsoup.nodes.Document
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import watch.craft.FatalScraperException
 import watch.craft.MalformedInputException
@@ -22,7 +23,7 @@ import java.net.URI
 
 class ScraperAdapterTest {
   private val retriever = mock<Retriever> {
-    onBlocking { retrieve(any(), any()) } doAnswer {
+    onBlocking { retrieve(any(), any(), any()) } doAnswer {
       "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>".toByteArray()
     }
   }
@@ -54,7 +55,7 @@ class ScraperAdapterTest {
 
     execute(adapter)
 
-    verifyBlocking(retriever) { retrieve(URL_A, ".html") }
+    verifyBlocking(retriever) { retrieve(eq(URL_A), eq(".html"), any()) }
     verify(work)(docWithHeaderMatching(URL_A.toString()))
   }
 
@@ -108,7 +109,7 @@ class ScraperAdapterTest {
     @Test
     fun `fatal exception during request kills everything`() {
       retriever.stub {
-        onBlocking { retriever.retrieve(any(), any()) } doThrow FatalScraperException("Uh oh")
+        onBlocking { retriever.retrieve(any(), any(), any()) } doThrow FatalScraperException("Uh oh")
       }
 
       val adapter = adapter(listOf(
@@ -196,6 +197,40 @@ class ScraperAdapterTest {
       val adapter = adapterWithSingleLeaf { throw SkipItemException("Don't care") }
 
       assertEquals(1, execute(adapter).stats.numSkipped)
+    }
+  }
+
+  @Nested
+  inner class RetrieverValidation {
+    private val validate: (ByteArray) -> Unit
+
+    init {
+      // Capture the validate function
+      execute(adapterWithSingleLeaf { itemA })
+      val captor = argumentCaptor<(ByteArray) -> Unit>()
+      verifyBlocking(retriever, times(2)) { retrieve(any(), any(), captor.capture()) }
+      validate = captor.firstValue
+    }
+
+    @Test
+    fun `doesn't throw on valid HTML with title`() {
+      assertDoesNotThrow {
+        validate("<html><head><title>Hello</title></head></html>".toByteArray())
+      }
+    }
+
+    @Test
+    fun `throws on valid HTML without title`() {
+      assertThrows<MalformedInputException> {
+        validate("<html><head></head></html>".toByteArray())
+      }
+    }
+
+    @Test
+    fun `throws on invalid HTML`() {
+      assertThrows<MalformedInputException> {
+        validate("wat".toByteArray())
+      }
     }
   }
 

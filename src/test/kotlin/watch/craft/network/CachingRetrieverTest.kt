@@ -23,10 +23,10 @@ class CachingRetrieverTest {
       onBlocking { read(NICE_KEY) } doReturn NICE_DATA
     }
 
-    val ret = runBlocking { retriever.retrieve(NICE_URL) }
+    val ret = runBlocking { retriever.retrieve(NICE_URL) {} }
 
     assertArrayEquals(NICE_DATA, ret)
-    verifyBlocking(delegate, never()) { retrieve(any(), any()) }
+    verifyBlocking(delegate, never()) { retrieve(any(), any(), any()) }
   }
 
   @Test
@@ -35,10 +35,10 @@ class CachingRetrieverTest {
       onBlocking { read(NICE_KEY) } doThrow FileDoesntExistException("oh")
     }
     delegate.stub {
-      onBlocking { retrieve(NICE_URL) } doReturn NICE_DATA
+      onBlocking { retrieve(eq(NICE_URL), anyOrNull(), any()) } doReturn NICE_DATA
     }
 
-    val ret = runBlocking { retriever.retrieve(NICE_URL) }
+    val ret = runBlocking { retriever.retrieve(NICE_URL) {} }
 
     assertArrayEquals(NICE_DATA, ret)
     verifyBlocking(store) { write(NICE_KEY, NICE_DATA) }
@@ -51,11 +51,11 @@ class CachingRetrieverTest {
       onBlocking { write(any(), any()) } doThrow FileExistsException("no")
     }
     delegate.stub {
-      onBlocking { retrieve(NICE_URL) } doReturn NICE_DATA
+      onBlocking { retrieve(eq(NICE_URL), anyOrNull(), any()) } doReturn NICE_DATA
     }
 
     assertDoesNotThrow {
-      runBlocking { retriever.retrieve(NICE_URL) }
+      runBlocking { retriever.retrieve(NICE_URL) {} }
     }
   }
 

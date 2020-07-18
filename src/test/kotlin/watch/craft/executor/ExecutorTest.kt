@@ -22,7 +22,7 @@ class ExecutorTest {
     results = mock(),
     createRetriever = {
       object : Retriever {
-        override suspend fun retrieve(url: URI, suffix: String?) =
+        override suspend fun retrieve(url: URI, suffix: String?, validate: (ByteArray) -> Unit) =
           "<html><body><h1>Hello</h1></body></html>".toByteArray()
       }
     },

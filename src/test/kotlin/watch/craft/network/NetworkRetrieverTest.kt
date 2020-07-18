@@ -3,18 +3,25 @@ package watch.craft.network
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock.*
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration.options
+import com.nhaarman.mockitokotlin2.any
+import com.nhaarman.mockitokotlin2.doThrow
+import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertArrayEquals
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import watch.craft.FatalScraperException
+import watch.craft.MalformedInputException
 import java.net.URI
 
 
 class NetworkRetrieverTest {
   private val server = WireMockServer(options().dynamicPort())
+  private val validate = mock<(ByteArray) -> Unit>()
 
   @BeforeEach
   fun beforeEach() {
@@ -33,30 +40,38 @@ class NetworkRetrieverTest {
         .willReturn(aResponse().withBody(NICE_DATA))
     )
 
-    val data = createRetriever().use { retriever ->
-      runBlocking {
-        retriever.retrieve(URI("http://localhost:${server.port()}"))
-      }
-    }
-
-    assertArrayEquals(NICE_DATA, data)
+    assertArrayEquals(NICE_DATA, retrieve())
   }
 
   // TODO - add coverage for timeouts, etc.
 
   @Test
-  fun `throws on network error`() {
+  fun `fails immediately and throws on network error`() {
     server.stubFor(
       get(urlEqualTo("/"))
         .willReturn(aResponse().withStatus(429))
     )
 
-    assertThrows<FatalScraperException> {
-      createRetriever().use { retriever ->
-        runBlocking {
-          retriever.retrieve(URI("http://localhost:${server.port()}"))
-        }
-      }
+    assertThrows<FatalScraperException> { retrieve() }
+    assertEquals(1, server.allServeEvents.size)
+  }
+
+  @Test
+  fun `retries and throws on validate error`() {
+    whenever(validate(any())) doThrow MalformedInputException("Oh no")
+
+    server.stubFor(
+      get(urlEqualTo("/"))
+        .willReturn(aResponse().withBody(NICE_DATA))
+    )
+
+    assertThrows<FatalScraperException> { retrieve() }
+    assertEquals(5, server.allServeEvents.size)
+  }
+
+  private fun retrieve() = createRetriever().use { retriever ->
+    runBlocking {
+      retriever.retrieve(URI("http://localhost:${server.port()}"), validate = validate)
     }
   }
 
