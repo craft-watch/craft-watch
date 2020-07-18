@@ -68,6 +68,8 @@ commands:
           paths:
             - ~/.gradle/caches
           key: v1-gradle-cache-{{ checksum "build.gradle.kts" }}
+        # We need to invalidate the cache on every build, so use {{ epoch }}
+        # To avoid race conditions, we maintain a separate cache for each job, hence {{ .Environment.CIRCLE_JOB }}
       - save_cache:
           name: Save cache (Application local storage)
           paths:
