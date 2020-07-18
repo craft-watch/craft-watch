@@ -69,6 +69,11 @@ class ScraperUtilsTest {
     }
 
     @Test
+    fun `user-supplied regex`() {
+      assertEquals(6, "case of 6".quantityFrom("case of (\\d+)"))
+    }
+
+    @Test
     fun `true negatives`() {
       assertThrows<MalformedInputException> { "6".quantityFrom() }
       assertThrows<MalformedInputException> { "blah 6 blah".quantityFrom() }

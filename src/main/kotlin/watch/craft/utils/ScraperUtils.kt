@@ -126,9 +126,10 @@ fun String.abvFrom(
   ?: throw MalformedInputException("Can't extract ABV")
 
 fun Element.quantityFrom(cssQuery: String = ":root") = textFrom(cssQuery).quantityFrom()
-fun String.quantityFrom() = maybeAnyOf(
-  { extract("$INT_REGEX\\s*(?:x|×|-?pack)").intFrom(1) },
-  { extract("(?:x|×)\\s*$INT_REGEX").intFrom(1) }
+fun String.quantityFrom(vararg moreRegexes: String) = maybeAnyOf(
+  *(listOf("$INT_REGEX\\s*(?:x|×|-?pack)", "(?:x|×)\\s*$INT_REGEX") + moreRegexes.toList())
+    .map { regex -> { str: String -> str.extract(regex).intFrom(1) } }
+    .toTypedArray()
 ) ?: throw MalformedInputException("Can't extract quantity")
 
 fun Element.sizeMlFrom(cssQuery: String = ":root") = textFrom(cssQuery).sizeMlFrom()

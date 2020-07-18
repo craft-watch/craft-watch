@@ -1,13 +1,12 @@
 package watch.craft.scrapers
 
-import org.jsoup.nodes.Document
-import watch.craft.Format
+import watch.craft.Format.*
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
+import watch.craft.SkipItemException
 import watch.craft.utils.*
-import java.net.URI
 
 class BrockleyScraper : Scraper {
   override val jobs = forRootUrls(*ROOT_URLS) { root, format ->
@@ -17,11 +16,19 @@ class BrockleyScraper : Scraper {
         val title = el.textFrom("product-item-name".hook())
 
         Leaf(title, el.urlFrom("product-item-container".hook())) { doc ->
+          if (title.containsWord(*BLACKLIST.toTypedArray())) {
+            throw SkipItemException("Can't deal with this")
+          }
 
           val desc = doc.formattedTextFrom("description".hook())
 
           ScrapedItem(
-            name = title.cleanse("\\d+ml", "x\\s*\\d+").toTitleCase(),
+            name = title.cleanse(
+              "\\d+(ml|L)",
+              "x\\s*\\d+",
+              "mini keg",
+              "of\\s+\\d+\\s+bottles"
+            ).toTitleCase(),
             summary = el.maybe { textFrom("product-item-ribbon".hook()) },
             desc = desc,
             mixed = desc.containsWord("mix", "mixed"),
@@ -29,7 +36,7 @@ class BrockleyScraper : Scraper {
             available = "product-item-out-of-stock".hook() !in el,
             offers = setOf(
               Offer(
-                quantity = title.quantityFrom(),
+                quantity = if (format == KEG) 1 else title.quantityFrom("case of (\\d+)"),
                 totalPrice = doc.priceFrom("formatted-primary-price".hook()),
                 sizeMl = title.maybe { sizeMlFrom() },
                 format = format
@@ -47,9 +54,11 @@ class BrockleyScraper : Scraper {
 
   companion object {
     private val ROOT_URLS = arrayOf(
-      UrlAndContext("https://www.brockleybrewery.co.uk/online-shop?ALL%20PRODUCTS=BOTTLES", Format.BOTTLE),
-      UrlAndContext("https://www.brockleybrewery.co.uk/online-shop?ALL%20PRODUCTS=CANS", Format.CAN)
-      // TODO - other pages
+      UrlAndContext("https://www.brockleybrewery.co.uk/online-shop?ALL%20PRODUCTS=BOTTLES", BOTTLE),
+      UrlAndContext("https://www.brockleybrewery.co.uk/online-shop?ALL%20PRODUCTS=CANS", CAN),
+      UrlAndContext("https://www.brockleybrewery.co.uk/online-shop?ALL%20PRODUCTS=5L%20MINI%20KEG%20%26%20CASK", KEG)
     )
+
+    private val BLACKLIST = listOf("pints")
   }
 }
