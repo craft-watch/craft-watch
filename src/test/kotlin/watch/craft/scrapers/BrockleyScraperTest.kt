@@ -9,7 +9,7 @@ import java.net.URI
 
 class BrockleyScraperTest {
   companion object {
-    private val ITEMS = executeScraper(BrockleyScraper(), dateString = null)
+    private val ITEMS = executeScraper(BrockleyScraper(), dateString = "2020-07-18")
   }
 
   @Test
