@@ -26,7 +26,7 @@ class NorthernMonkScraper : Scraper {
           }
 
           val nameParts = rawName
-            .remove(PACK_REGEX)
+            .cleanse(PACK_REGEX)
             .split("//")[0]
             .split("™")
             .map { it.trim() }

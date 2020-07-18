@@ -19,7 +19,15 @@ import java.net.URISyntaxException
 import kotlin.text.RegexOption.DOT_MATCHES_ALL
 import kotlin.text.RegexOption.IGNORE_CASE
 
+data class UrlAndContext<T>(
+  val url: String,
+  val context: T
+)
+
 fun forRootUrls(vararg urls: URI, work: (Document) -> List<Job>) = urls.map { More(it, work) }
+
+fun <T> forRootUrls(vararg tuples: UrlAndContext<T>, work: (Document, T) -> List<Job>) =
+  tuples.map { More(it.url.toUri()) { doc -> work(doc, it.context) } }
 
 fun forPaginatedRootUrl(url: URI, work: (Document) -> List<Job>) = listOf(followPagination(url, work))
 
@@ -92,6 +100,11 @@ fun <T, R> T.orSkip(message: String, block: T.() -> R) = try {
   throw SkipItemException(message)
 }
 
+fun <T, R : Any> T.maybeAnyOf(vararg blocks: T.() -> R) = blocks
+  .asSequence()
+  .mapNotNull { block -> maybe { block(this) } }
+  .firstOrNull()
+
 fun <T, R> T.maybe(block: T.() -> R) = try {
   block(this)
 } catch (e: MalformedInputException) {
@@ -113,14 +126,18 @@ fun String.abvFrom(
   ?: throw MalformedInputException("Can't extract ABV")
 
 fun Element.quantityFrom(cssQuery: String = ":root") = textFrom(cssQuery).quantityFrom()
-fun String.quantityFrom() = maybe { extract("(\\d+)\\s*(?:x|×|pack)").intFrom(1) }
-  ?: throw MalformedInputException("Can't extract quantity")
+fun String.quantityFrom(vararg moreRegexes: String) = maybeAnyOf(
+  *(listOf("$INT_REGEX\\s*(?:x|×|-?pack)", "(?:x|×)\\s*$INT_REGEX") + moreRegexes.toList())
+    .map { regex -> { str: String -> str.extract(regex).intFrom(1) } }
+    .toTypedArray()
+) ?: throw MalformedInputException("Can't extract quantity")
 
 fun Element.sizeMlFrom(cssQuery: String = ":root") = textFrom(cssQuery).sizeMlFrom()
-fun String.sizeMlFrom() = maybe { extract("$INT_REGEX\\s*ml(?:\\W|$)").intFrom(1) }
-  ?: maybe { extract("$INT_REGEX(?:\\s*|-)(?:litre|liter)(?:s?)(?:\\W|$)").intFrom(1) * 1000 }
-  ?: maybe { extract("$INT_REGEX\\s*l(?:\\W|$)").intFrom(1) * 1000 }
-  ?: throw MalformedInputException("Can't extract size")
+fun String.sizeMlFrom() = maybeAnyOf(
+  { extract("$INT_REGEX\\s*ml(?:\\W|$)").intFrom(1) },
+  { extract("$INT_REGEX(?:\\s*|-)(?:litre|liter)(?:s?)(?:\\W|$)").intFrom(1) * 1000 },
+  { extract("$INT_REGEX\\s*l(?:\\W|$)").intFrom(1) * 1000 }
+) ?: throw MalformedInputException("Can't extract size")
 
 fun List<String>.intFrom(idx: Int) = get(idx).toInt()
 fun List<String>.doubleFrom(idx: Int) = get(idx).toDouble()
@@ -155,9 +172,9 @@ fun Element.selectFrom(cssQuery: String) = selectFirst(cssQuery)
 fun Element.selectMultipleFrom(cssQuery: String) = select(cssQuery)!!
   .ifEmpty { throw MalformedInputException("Element(s) not present: ${cssQuery}") }
 
-fun String.remove(vararg regexes: String) = regexes.fold(this) { str, regex ->
+fun String.cleanse(vararg regexesToRemove: String) = regexesToRemove.fold(this) { str, regex ->
   str.replace(regex.toRegex(regexOptions(true)), "")
-}.trim()
+}.replace("\\s+".toRegex(), " ").trim()
 
 fun String.containsWord(vararg words: String) = tokenize()
   .filter { it.wordy }

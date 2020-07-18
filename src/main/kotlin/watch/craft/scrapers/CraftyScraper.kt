@@ -23,7 +23,7 @@ class CraftyScraper : Scraper {
           val desc = doc.formattedTextFrom(".et_pb_wc_description")
 
           ScrapedItem(
-            name = title.remove("[(].*[)]", "\\s–\\s.*"),
+            name = title.cleanse("[(].*[)]", "\\s–\\s.*"),
             summary = null, // No obviously-useful info to extract
             desc = desc,
             mixed = mixed,

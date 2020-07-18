@@ -19,7 +19,7 @@ class OrbitScraper : Scraper {
 
           // Remove all the dross
           val name = title
-            .remove(
+            .cleanse(
               "NEW: ",
               "\\S+%",   // ABV
               "WLS\\d+"  // Some weird code

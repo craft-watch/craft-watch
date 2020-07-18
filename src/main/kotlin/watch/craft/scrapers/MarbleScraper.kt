@@ -26,7 +26,7 @@ class MarbleScraper : Scraper {
 
           ScrapedItem(
             thumbnailUrl = el.urlFrom(".wp-post-image"),
-            name = name.remove(
+            name = name.cleanse(
               "\\s+\\d+l mini (keg|cask)$",
               "\\s+Case\\s+\\(\\d+ Cans\\)$",
               "\\d+$"

@@ -21,7 +21,7 @@ class PurityScraper : Scraper {
           val desc = doc.formattedTextFrom(".elementor-widget-woocommerce-product-content")
 
           ScrapedItem(
-            name = title.remove("(mini cask|polypin)$", "^purity"),
+            name = title.cleanse("(mini cask|polypin)$", "^purity"),
             summary = null,
             desc = desc,
             abv = desc.collectFromLines { abvFrom() }.min(),
