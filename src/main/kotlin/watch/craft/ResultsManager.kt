@@ -28,10 +28,8 @@ class ResultsManager(private val structure: StorageStructure) {
   }
 
   // TODO - simplify this on 2020-08-02
-  fun readMinimalHistoricalResult(timestamp: Instant): MinimalInventory {
-    val minimal = runBlocking {
-      mapper.readValue<MinimalInventory>(dir(timestamp).read(INVENTORY_FILENAME))
-    }
+  suspend fun readMinimalHistoricalResult(timestamp: Instant): MinimalInventory {
+    val minimal = mapper.readValue<MinimalInventory>(dir(timestamp).read(INVENTORY_FILENAME))
     return if (minimal.version == 1) {
       minimal
     } else {

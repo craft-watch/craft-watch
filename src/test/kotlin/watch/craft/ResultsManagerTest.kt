@@ -4,6 +4,7 @@ import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.stub
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import watch.craft.ResultsManager.MinimalInventory
@@ -38,7 +39,7 @@ class ResultsManagerTest {
         version = 1,
         items = listOf(MinimalItem(breweryId = "pollys-brew", name = "Foo"))
       ),
-      manager.readMinimalHistoricalResult(Instant.now())
+      runBlocking { manager.readMinimalHistoricalResult(Instant.now()) }
     )
   }
 
@@ -63,7 +64,7 @@ class ResultsManagerTest {
       MinimalInventory(
         items = listOf(MinimalItem(breweryId = "pollys-brew", name = "Foo"))
       ),
-      manager.readMinimalHistoricalResult(Instant.now())
+      runBlocking { manager.readMinimalHistoricalResult(Instant.now()) }
     )
   }
 
@@ -88,7 +89,7 @@ class ResultsManagerTest {
       MinimalInventory(
         items = emptyList()
       ),
-      manager.readMinimalHistoricalResult(Instant.now())
+      runBlocking { manager.readMinimalHistoricalResult(Instant.now()) }
     )
   }
 }

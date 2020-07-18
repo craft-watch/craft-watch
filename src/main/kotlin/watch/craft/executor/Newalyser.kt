@@ -59,7 +59,7 @@ class Newalyser(
   private fun List<Instant>.collateInventory() = runBlocking {
     this@collateInventory
       .map { instant ->
-        async(Dispatchers.IO) {
+        async {
           logger.info("Collating old inventory from: ${instant}")
           results.readMinimalHistoricalResult(instant).items.map { item -> item to instant }
         }
