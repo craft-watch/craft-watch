@@ -78,17 +78,25 @@ class ScraperAdapter(
       val doc = request(url)
       block(doc)
     } catch (e: Exception) {
-      val (counter, msg) = when (e) {
+      when (e) {
         is FatalScraperException -> throw e
-        is SkipItemException -> numSkipped to "Skipping${suffix()} because: ${e.message}"
-        is MalformedInputException -> numMalformed to "Error while scraping${suffix()}"
-        is UnretrievableException -> numUnretrievable to "Couldn't retrieve page${suffix()}"
-        else -> numErrors to "Unexpected error while scraping${suffix()}"
+        is SkipItemException -> trackAsInfo(numSkipped, "Skipping${suffix()} because: ${e.message}")
+        is MalformedInputException -> trackAsWarn(numMalformed, "Error while scraping${suffix()}")
+        is UnretrievableException -> trackAsWarn(numUnretrievable, "Couldn't retrieve page${suffix()}")
+        else -> trackAsWarn(numErrors, "Unexpected error while scraping${suffix()}")
       }
-      counter.incrementAndGet()
-      logger.info(msg.prefixed())
       emptyList<R>()
     }
+  }
+
+  private fun trackAsInfo(counter: AtomicInteger, msg: String) {
+    counter.incrementAndGet()
+    logger.info(msg.prefixed())
+  }
+
+  private fun trackAsWarn(counter: AtomicInteger, msg: String) {
+    counter.incrementAndGet()
+    logger.warn(msg.prefixed())
   }
 
   private suspend fun request(url: URI) = Jsoup.parse(
