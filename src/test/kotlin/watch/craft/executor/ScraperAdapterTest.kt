@@ -104,7 +104,7 @@ class ScraperAdapterTest {
   @Nested
   inner class ErrorHandling {
     @Test
-    fun `fatal exception during request kills everything`() {
+    fun `fatal exception during retrieval kills everything`() {
       retriever.stub {
         onBlocking { retriever.retrieve(any(), any(), any()) } doThrow FatalScraperException("Uh oh")
       }
@@ -121,6 +121,24 @@ class ScraperAdapterTest {
       assertThrows<FatalScraperException> {
         execute(adapter)
       }
+    }
+
+    @Test
+    fun `non-fatal exception during retrieval kills everything`() {
+      retriever.stub {
+        onBlocking { retriever.retrieve(any(), any(), any()) } doThrow UnretrievableException("Uh oh")
+      }
+
+      val adapter = adapter(listOf(
+        More(url = ROOT_URL) {
+          listOf(
+            Leaf(name = "A", url = URL_A) { itemA },
+            Leaf(name = "A", url = URL_B) { itemB }
+          )
+        }
+      ))
+
+      assertEquals(emptyList<Item>(), execute(adapter).items())
     }
 
     @Test
