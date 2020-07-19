@@ -1,6 +1,5 @@
 package watch.craft.executor
 
-import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import mu.KotlinLogging
@@ -59,25 +58,23 @@ class ScraperAdapter(
         .flatMap { it.await() }
     }
 
-    private suspend fun Job.execute(): List<Result> {
-      logger.info("Scraping${suffix()}: $url".prefixed())
-      return when (this@execute) {
-        is More -> processGracefully(url) { work(it) }.executeAll()
-        is Leaf -> processGracefully(url) {
-          numRawItems.incrementAndGet()
-          listOf(
-            Result(
-              breweryId = breweryId,
-              rawName = name,
-              url = url,
-              item = work(it)
-            )
+    private suspend fun Job.execute(): List<Result> = when (this@execute) {
+      is More -> processGracefully(url) { work(it) }.executeAll()
+      is Leaf -> processGracefully(url) {
+        numRawItems.incrementAndGet()
+        listOf(
+          Result(
+            breweryId = breweryId,
+            rawName = name,
+            url = url,
+            item = work(it)
           )
-        }
+        )
       }
     }
 
     private suspend fun <R> Job.processGracefully(url: URI, block: (Document) -> List<R>) = try {
+      logger.info("Scraping${suffix()}: $url".prefixed())
       val doc = request(url)
       block(doc)
     } catch (e: Exception) {
@@ -94,16 +91,10 @@ class ScraperAdapter(
     }
   }
 
-  private suspend fun request(url: URI) = try {
-    Jsoup.parse(
-      String(retriever.retrieve(url, ".html", ::validate)),
-      url.toString()
-    )!!
-  } catch (e: CancellationException) {
-    throw e   // These must be propagated
-  } catch (e: Exception) {
-    throw FatalScraperException("Could not read page: ${url}".prefixed(), e)
-  }
+  private suspend fun request(url: URI) = Jsoup.parse(
+    String(retriever.retrieve(url, ".html", ::validate)),
+    url.toString()
+  )!!
 
   // Enough to handle e.g. Wander Beyond serving up random Wix placeholder pages
   private fun validate(content: ByteArray) {
