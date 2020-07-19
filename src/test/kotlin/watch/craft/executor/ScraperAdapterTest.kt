@@ -8,14 +8,11 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
-import watch.craft.FatalScraperException
-import watch.craft.MalformedInputException
-import watch.craft.Scraper
+import watch.craft.*
 import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.Job.More
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.SkipItemException
 import watch.craft.dsl.textFrom
 import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.network.Retriever
@@ -107,7 +104,7 @@ class ScraperAdapterTest {
   @Nested
   inner class ErrorHandling {
     @Test
-    fun `fatal exception during request kills everything`() {
+    fun `fatal exception during retrieval kills everything`() {
       retriever.stub {
         onBlocking { retriever.retrieve(any(), any(), any()) } doThrow FatalScraperException("Uh oh")
       }
@@ -124,6 +121,24 @@ class ScraperAdapterTest {
       assertThrows<FatalScraperException> {
         execute(adapter)
       }
+    }
+
+    @Test
+    fun `non-fatal exception during retrieval kills everything`() {
+      retriever.stub {
+        onBlocking { retriever.retrieve(any(), any(), any()) } doThrow UnretrievableException("Uh oh")
+      }
+
+      val adapter = adapter(listOf(
+        More(url = ROOT_URL) {
+          listOf(
+            Leaf(name = "A", url = URL_A) { itemA },
+            Leaf(name = "A", url = URL_B) { itemB }
+          )
+        }
+      ))
+
+      assertEquals(emptyList<Item>(), execute(adapter).items())
     }
 
     @Test
@@ -183,6 +198,13 @@ class ScraperAdapterTest {
       val adapter = adapterWithSingleLeaf { throw MalformedInputException("Don't care") }
 
       assertEquals(1, execute(adapter).stats.numMalformed)
+    }
+
+    @Test
+    fun `counts unretrievable`() {
+      val adapter = adapterWithSingleLeaf { throw UnretrievableException("Don't care") }
+
+      assertEquals(1, execute(adapter).stats.numUnretrievable)
     }
 
     @Test

@@ -32,6 +32,7 @@ export interface BreweryStats {
   numSkipped: number;
   numMalformed: number;
   numInvalid: number;
+  numUnretrievable: number;
   numErrors: number;
   numMerged: number;
 }
