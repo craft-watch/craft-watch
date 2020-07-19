@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import _ from "lodash";
-import { inventory } from "./inventory";
 
 export interface FavouritesProps {
   favourites: Favourites;
@@ -30,7 +29,6 @@ export const FavouritesProvider: React.FC<unknown> = (props) => {
   };
 
   useEffect(() => {
-    migrateLocalStorage();
     readFromLocalStorage();  // Acquire initial state
     window.addEventListener("storage", readFromLocalStorage);
   }, []);
@@ -53,22 +51,6 @@ export const FavouritesProvider: React.FC<unknown> = (props) => {
       {props.children}
     </FavouritesContext.Provider>
   )
-};
-
-// TODO - delete this on 2020-07-24
-const migrateLocalStorage = () => {
-  const raw = window.localStorage.getItem(KEY);
-  if (raw !== null) {
-    const favourites = JSON.parse(raw);
-    const mapped = _.map(favourites["breweries"], f => {
-      if (_.find(inventory.breweries, b => b.id === f) !== undefined) {
-        return f;
-      }
-      return _.find(inventory.breweries, b => b.shortName === f)?.id;
-    });
-    const filtered = _.filter(mapped, m => m !== undefined);
-    window.localStorage.setItem(KEY, JSON.stringify({ breweryIds: filtered } as Favourites));
-  }
 };
 
 export const withFavourites = <P extends unknown>(Component: React.ComponentType<P & FavouritesProps>) =>
