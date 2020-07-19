@@ -62,8 +62,8 @@ class ScraperAdapter(
     private suspend fun Job.execute(): List<Result> {
       logger.info("Scraping${suffix()}: $url".prefixed())
       return when (this@execute) {
-        is More -> processGracefully(url, emptyList()) { work(it) }.executeAll()
-        is Leaf -> processGracefully(url, emptyList()) {
+        is More -> processGracefully(url) { work(it) }.executeAll()
+        is Leaf -> processGracefully(url) {
           numRawItems.incrementAndGet()
           listOf(
             Result(
@@ -77,27 +77,20 @@ class ScraperAdapter(
       }
     }
 
-    private suspend fun <R> Job.processGracefully(url: URI, default: R, block: (Document) -> R) = try {
+    private suspend fun <R> Job.processGracefully(url: URI, block: (Document) -> List<R>) = try {
       val doc = request(url)
       block(doc)
-    } catch (e: FatalScraperException) {
-      throw e
-    } catch (e: SkipItemException) {
-      logger.info("Skipping${suffix()} because: ${e.message}".prefixed())
-      numSkipped.incrementAndGet()
-      default
-    } catch (e: MalformedInputException) {
-      logger.warn("Error while scraping${suffix()}".prefixed(), e)
-      numMalformed.incrementAndGet()
-      default
-    } catch (e: UnretrievableException) {
-      logger.warn("Couldn't retrieve page${suffix()}".prefixed(), e)
-      numUnretrievable.incrementAndGet()
-      default
-    }catch (e: Exception) {
-      logger.warn("Unexpected error while scraping${suffix()}".prefixed(), e)
-      numErrors.incrementAndGet()
-      default
+    } catch (e: Exception) {
+      val (counter, msg) = when (e) {
+        is FatalScraperException -> throw e
+        is SkipItemException -> numSkipped to "Skipping${suffix()} because: ${e.message}"
+        is MalformedInputException -> numMalformed to "Error while scraping${suffix()}"
+        is UnretrievableException -> numUnretrievable to "Couldn't retrieve page${suffix()}"
+        else -> numErrors to "Unexpected error while scraping${suffix()}"
+      }
+      counter.incrementAndGet()
+      logger.info(msg.prefixed())
+      emptyList<R>()
     }
   }
 
