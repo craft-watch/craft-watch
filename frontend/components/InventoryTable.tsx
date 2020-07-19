@@ -1,4 +1,4 @@
-import _ from "underscore";
+import _ from "lodash";
 import React from "react";
 import { Item, Offer, Format } from "../utils/model";
 import SortableTable, { Column, Section, CellProps } from "./SortableTable";
@@ -39,7 +39,7 @@ const NameInfo = ({ datum }: CellProps<Item>) => {
   const newItem = datum.new;
   const justAdded = datum.brewery.new;
   const keg = headlineOffer(datum).format === Format.Keg;
-  const kegAvailable = !keg && _.any(_.rest(datum.offers), offer => offer.format === Format.Keg);
+  const kegAvailable = !keg && _.some(_.tail(datum.offers), offer => offer.format === Format.Keg);
   const mixed = datum.mixed;
 
   return (
@@ -74,7 +74,7 @@ const PriceInfo = ({ datum }: CellProps<Item>) => (
         <details>
           <summary>{_.size(datum.offers) - 1} more</summary>
           {
-            _.map(_.rest(datum.offers), (offer, idx) => <OfferInfo key={idx} offer={offer} />)
+            _.map(_.tail(datum.offers), (offer, idx) => <OfferInfo key={idx} offer={offer} />)
           }
         </details>
       )

@@ -1,5 +1,5 @@
 import React from "react";
-import _ from "underscore";
+import _ from "lodash";
 import { Inventory, Brewery } from "../utils/model";
 import SortableTable, { Column, Section, CellProps } from "./SortableTable";
 import FavouriteIcon from "./FavouriteIcon";

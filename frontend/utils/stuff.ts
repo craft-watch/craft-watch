@@ -1,5 +1,5 @@
 import { Item, Offer } from "./model";
-import _ from "underscore";
+import _ from "lodash";
 
 export const headlineOffer = (item: Item): Offer => {
   const offer = _.first(item.offers);

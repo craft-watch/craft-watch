@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import _ from "underscore";
+import _ from "lodash";
 import { Item, Format, Inventory } from "../utils/model";
 import Menu, { Selections, Section as MenuSection } from "./Menu";
 import InventoryTable from "./InventoryTable";
@@ -58,7 +58,7 @@ const InventoryApp = ({ inventory }: Props): JSX.Element => {
 const uniqueBreweries = (items: Array<Item>): Array<string> => _.uniq(_.map(items, item => item.brewery.shortName));
 
 const useSelections = (keys: Array<string>): Selections => {
-  const toMap = (keys: Array<string>, selected: boolean) => _.object(_.map(keys, b => [b, selected]));
+  const toMap = (keys: Array<string>, selected: boolean) => _.fromPairs(_.map(keys, b => [b, selected]));
 
   const [selections, setSelections] = useState<{ [key: string]: boolean }>(toMap(keys, true));
 
