@@ -1,5 +1,5 @@
 import React from "react";
-import _ from "underscore";
+import _ from "lodash";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Page from "../components/Page";
 import { Brewery, Item } from "../utils/model";

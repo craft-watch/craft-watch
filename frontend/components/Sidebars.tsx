@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Brewery } from "../utils/model";
-import _ from "underscore";
+import _ from "lodash";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faHeart, faQuestion, faSun, faListAlt } from "@fortawesome/free-solid-svg-icons";

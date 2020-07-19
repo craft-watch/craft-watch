@@ -1,7 +1,7 @@
 import moment from "moment";
 import _inventory from "../data/inventory.json";
 import { Inventory, RawInventory } from "./model";
-import _ from "underscore";
+import _ from "lodash";
 
 const raw = (_inventory as RawInventory);
 

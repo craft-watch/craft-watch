@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import _ from "underscore";
+import _ from "lodash";
 import { inventory } from "./inventory";
 
 export interface FavouritesProps {

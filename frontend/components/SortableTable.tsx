@@ -1,5 +1,5 @@
 import React, { ReactElement, useState, ComponentType } from "react";
-import _ from "underscore";
+import _ from "lodash";
 
 interface ColumnProps<T> {
   name?: JSX.Element | string;

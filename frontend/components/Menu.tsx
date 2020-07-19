@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from "react";
-import _ from "underscore";
+import _ from "lodash";
 import { Moment } from "moment";
 
 export interface Selections {

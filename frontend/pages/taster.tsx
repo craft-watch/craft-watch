@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import _ from "underscore";
+import _ from "lodash";
 import Page from "../components/Page";
 import { Item, Format } from "../utils/model";
 import { inventory } from "../utils/inventory";
@@ -69,7 +69,10 @@ const generateFairTasterMenu = (items: Array<Item>): Array<Item> => {
   const picked = new Set<Item>();
   let idx = 0;
   while (picked.size < TASTER_MENU_SIZE) {
-    picked.add(_.sample(byBrewery[breweryPicks[idx++]]));
+    const item = _.sample(byBrewery[breweryPicks[idx++]]);
+    if (item !== undefined) {
+      picked.add(item);
+    }
   }
   return Array.from(picked);
 };
