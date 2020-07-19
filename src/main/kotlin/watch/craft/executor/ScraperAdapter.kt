@@ -81,9 +81,9 @@ class ScraperAdapter(
       when (e) {
         is FatalScraperException -> throw e
         is SkipItemException -> trackAsInfo(numSkipped, "Skipping${suffix()} because: ${e.message}")
-        is MalformedInputException -> trackAsWarn(numMalformed, "Error while scraping${suffix()}")
-        is UnretrievableException -> trackAsWarn(numUnretrievable, "Couldn't retrieve page${suffix()}")
-        else -> trackAsWarn(numErrors, "Unexpected error while scraping${suffix()}")
+        is MalformedInputException -> trackAsWarn(numMalformed, "Error while scraping${suffix()}", e)
+        is UnretrievableException -> trackAsWarn(numUnretrievable, "Couldn't retrieve page${suffix()}", e)
+        else -> trackAsWarn(numErrors, "Unexpected error while scraping${suffix()}", e)
       }
       emptyList<R>()
     }
@@ -94,9 +94,9 @@ class ScraperAdapter(
     logger.info(msg.prefixed())
   }
 
-  private fun trackAsWarn(counter: AtomicInteger, msg: String) {
+  private fun trackAsWarn(counter: AtomicInteger, msg: String, cause: Exception) {
     counter.incrementAndGet()
-    logger.warn(msg.prefixed())
+    logger.warn(msg.prefixed(), cause)
   }
 
   private suspend fun request(url: URI) = Jsoup.parse(
