@@ -8,14 +8,11 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
-import watch.craft.FatalScraperException
-import watch.craft.MalformedInputException
-import watch.craft.Scraper
+import watch.craft.*
 import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.Job.More
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.SkipItemException
 import watch.craft.dsl.textFrom
 import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.network.Retriever
@@ -183,6 +180,13 @@ class ScraperAdapterTest {
       val adapter = adapterWithSingleLeaf { throw MalformedInputException("Don't care") }
 
       assertEquals(1, execute(adapter).stats.numMalformed)
+    }
+
+    @Test
+    fun `counts unretrievable`() {
+      val adapter = adapterWithSingleLeaf { throw UnretrievableException("Don't care") }
+
+      assertEquals(1, execute(adapter).stats.numUnretrievable)
     }
 
     @Test

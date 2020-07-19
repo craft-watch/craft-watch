@@ -39,6 +39,7 @@ class ScraperAdapter(
         numRawItems = numRawItems.toInt(),
         numSkipped = numSkipped.toInt(),
         numMalformed = numMalformed.toInt(),
+        numUnretrievable = numUnretrievable.toInt(),
         numErrors = numErrors.toInt()
       )
     )
@@ -49,6 +50,7 @@ class ScraperAdapter(
     val numRawItems = AtomicInteger()
     val numSkipped = AtomicInteger()
     val numMalformed = AtomicInteger()
+    val numUnretrievable = AtomicInteger()
     val numErrors = AtomicInteger()
 
     suspend fun List<Job>.executeAll() = coroutineScope {
@@ -59,25 +61,24 @@ class ScraperAdapter(
 
     private suspend fun Job.execute(): List<Result> {
       logger.info("Scraping${suffix()}: $url".prefixed())
-      val doc = request(url)
-
       return when (this@execute) {
-        is More -> processGracefully(doc, emptyList()) { work(doc) }.executeAll()
-        is Leaf -> processGracefully(doc, emptyList()) {
+        is More -> processGracefully(url, emptyList()) { work(it) }.executeAll()
+        is Leaf -> processGracefully(url, emptyList()) {
           numRawItems.incrementAndGet()
           listOf(
             Result(
               breweryId = breweryId,
               rawName = name,
               url = url,
-              item = work(doc)
+              item = work(it)
             )
           )
         }
       }
     }
 
-    private fun <R> Job.processGracefully(doc: Document, default: R, block: (Document) -> R) = try {
+    private suspend fun <R> Job.processGracefully(url: URI, default: R, block: (Document) -> R) = try {
+      val doc = request(url)
       block(doc)
     } catch (e: FatalScraperException) {
       throw e
@@ -85,12 +86,16 @@ class ScraperAdapter(
       logger.info("Skipping${suffix()} because: ${e.message}".prefixed())
       numSkipped.incrementAndGet()
       default
-    } catch (e: NonFatalScraperException) {
-      logger.warn("${errorClause}${suffix()}".prefixed(), e)
+    } catch (e: MalformedInputException) {
+      logger.warn("Error while scraping${suffix()}".prefixed(), e)
       numMalformed.incrementAndGet()
       default
-    } catch (e: Exception) {
-      logger.warn("${unexpectedErrorClause}${suffix()}".prefixed(), e)
+    } catch (e: UnretrievableException) {
+      logger.warn("Couldn't retrieve page${suffix()}".prefixed(), e)
+      numUnretrievable.incrementAndGet()
+      default
+    }catch (e: Exception) {
+      logger.warn("Unexpected error while scraping${suffix()}".prefixed(), e)
       numErrors.incrementAndGet()
       default
     }
@@ -119,9 +124,4 @@ class ScraperAdapter(
   private fun Job.suffix() = if (name != null) " [${name}]" else ""
 
   private fun String.prefixed() = "[$breweryId] ${this}"
-
-  companion object {
-    private const val errorClause = "Error while scraping"
-    private const val unexpectedErrorClause = "Unexpected error while scraping"
-  }
 }

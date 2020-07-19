@@ -14,8 +14,8 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import watch.craft.FatalScraperException
 import watch.craft.MalformedInputException
+import watch.craft.UnretrievableException
 import java.net.URI
 
 
@@ -52,7 +52,7 @@ class NetworkRetrieverTest {
         .willReturn(aResponse().withStatus(429))
     )
 
-    assertThrows<FatalScraperException> { retrieve() }
+    assertThrows<UnretrievableException> { retrieve() }
     assertEquals(1, server.allServeEvents.size)
   }
 
@@ -65,7 +65,7 @@ class NetworkRetrieverTest {
         .willReturn(aResponse().withBody(NICE_DATA))
     )
 
-    assertThrows<FatalScraperException> { retrieve() }
+    assertThrows<UnretrievableException> { retrieve() }
     assertEquals(5, server.allServeEvents.size)
   }
 

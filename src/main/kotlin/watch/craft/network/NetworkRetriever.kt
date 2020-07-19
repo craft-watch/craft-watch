@@ -9,8 +9,8 @@ import io.ktor.util.KtorExperimentalAPI
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import mu.KotlinLogging
-import watch.craft.FatalScraperException
 import watch.craft.MalformedInputException
+import watch.craft.UnretrievableException
 import watch.craft.network.NetworkRetriever.Response.Failure
 import watch.craft.network.NetworkRetriever.Response.Success
 import java.io.IOException
@@ -94,7 +94,7 @@ class NetworkRetriever(
 
     when (val response = msg.response.await()) {
       is Success -> return response.content
-      is Failure -> throw FatalScraperException("Error requesting ${url}", response.cause)
+      is Failure -> throw UnretrievableException("Error retrieving ${url}", response.cause)
     }
   }
 

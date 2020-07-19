@@ -31,6 +31,7 @@ data class BreweryStats(
   val numSkipped: Int = 0,
   val numMalformed: Int = 0,
   val numInvalid: Int = 0,
+  val numUnretrievable: Int = 0,
   val numErrors: Int = 0,
   val numMerged: Int = 0
   // TODO - numNew
