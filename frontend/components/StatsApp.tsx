@@ -30,6 +30,7 @@ const StatsApp = ({ inventory }: Props): JSX.Element => {
           />
           <Column name="Raw" render={render(stats => stats.numRawItems)} />
           <Column name="Skipped" render={render(stats => stats.numSkipped)} />
+          <Column name="Unretrievable" render={render(stats => stats.numUnretrievable)} />
           <Column name="Malformed" render={render(stats => stats.numMalformed)} />
           <Column name="Invalid" render={render(stats => stats.numInvalid)} />
           <Column name="Errors" render={render(stats => stats.numErrors)} />
