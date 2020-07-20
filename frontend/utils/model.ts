@@ -13,6 +13,7 @@ export interface Inventory {
 // This is the wire model
 export interface RawInventory {
   metadata: Metadata;
+  incubating: Incubating;
   stats: Stats;
   categories: Array<string>;
   breweries: Array<Brewery>;
