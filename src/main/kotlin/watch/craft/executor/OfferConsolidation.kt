@@ -10,7 +10,7 @@ import kotlin.math.round
 private val logger = KotlinLogging.logger {}
 
 fun StatsWith<Item>.consolidateOffers(): StatsWith<Item> {
-  var numMerged = stats.numMerged
+  var numMerged = stats.numMerged!!
   val entries = entries
     .groupBy { ItemGroupFields(it.breweryId, it.name.toLowerCase()) }
     .mapNotNull { (key, group) ->

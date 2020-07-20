@@ -231,8 +231,26 @@ img {
     Stats
    ---------------------- */
 
+.stats {
+  white-space: nowrap;
+}
+
 .stats tr:nth-child(even) {
   background: var(--sol-base2);
+}
+
+.stats .delta {
+  font-size: small;
+  padding-left: 5px;
+  color: var(--sol-blue);
+}
+
+.delta.better {
+  color: var(--sol-green);
+}
+
+.delta.worse {
+  color: var(--sol-red);
 }
 
 

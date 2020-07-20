@@ -43,7 +43,10 @@ class UnityScraperTest {
 
   @Test
   fun `doesn't select crazy ABV`() {
-    assertEquals(10.0, ITEMS.byName("Black Is Beautiful Imperial Stout").abv)   // Not "100%" which also appears in the text
+    assertEquals(
+      10.0,
+      ITEMS.byName("Black Is Beautiful Imperial Stout").abv
+    )   // Not "100%" which also appears in the text
   }
 }
 
