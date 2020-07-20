@@ -38,7 +38,7 @@ class Executor(
         categories = CATEGORY_KEYWORDS.keys.toList(),
         breweries = breweries,
         items = breweryItems.flatMap { it.entries }
-      )
+      ).addBaselineStats(results, now)
     }
 
     private fun executeAllInParallel() = runBlocking {

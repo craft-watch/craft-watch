@@ -9,7 +9,7 @@ import watch.craft.executor.ScraperAdapter.Result
 private val logger = KotlinLogging.logger {}
 
 fun StatsWith<Result>.normaliseToItems(): StatsWith<Item> {
-  var numInvalid = stats.numInvalid
+  var numInvalid = stats.numInvalid!!
   val entries = entries.mapNotNull { result ->
     try {
       result.normaliseToItem()

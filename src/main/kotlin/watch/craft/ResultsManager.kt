@@ -24,7 +24,7 @@ class ResultsManager(private val structure: StorageStructure) {
   }
 
   fun listHistoricalResults(): List<Instant> = runBlocking {
-    structure.results.list().map { Instant.from(formatter.parse(it)) }
+    structure.results.list().map { Instant.from(formatter.parse(it)) }.sorted()
   }
 
   // TODO - simplify this on 2020-08-02
@@ -63,12 +63,22 @@ class ResultsManager(private val structure: StorageStructure) {
 
   data class MinimalInventory(
     val version: Int = 0,
+    val metadata: MinimalMetadata = MinimalMetadata(),
+    val stats: MinimalStats? = null,
     val items: List<MinimalItem>
+  )
+
+  data class MinimalMetadata(
+    val ciBranch: String? = null
   )
 
   data class MinimalItem(
     @JsonAlias("brewery")
     val breweryId: String,
     val name: String
+  )
+
+  data class MinimalStats(
+    val breweries: List<Map<String, Any>>
   )
 }

@@ -9,6 +9,7 @@ annotation class SemanticallyASet
 data class Inventory(
   val version: Int = 1,
   val metadata: Metadata,
+  val incubating: Incubating = Incubating(),
   val stats: Stats = Stats(),
   val categories: List<String>,
   val breweries: List<Brewery>,
@@ -20,6 +21,10 @@ data class Metadata(
   val ciBranch: String? = null
 )
 
+data class Incubating(
+  val baselineStats: Stats = Stats()
+)
+
 data class Stats(
   @SemanticallyASet
   val breweries: List<BreweryStats> = emptyList()
@@ -27,13 +32,13 @@ data class Stats(
 
 data class BreweryStats(
   val breweryId: String,
-  val numRawItems: Int = 0,
-  val numSkipped: Int = 0,
-  val numMalformed: Int = 0,
-  val numInvalid: Int = 0,
-  val numUnretrievable: Int = 0,
-  val numErrors: Int = 0,
-  val numMerged: Int = 0
+  val numRawItems: Int? = 0,
+  val numSkipped: Int? = 0,
+  val numMalformed: Int? = 0,
+  val numInvalid: Int? = 0,
+  val numUnretrievable: Int? = 0,
+  val numErrors: Int? = 0,
+  val numMerged: Int? = 0
   // TODO - numNew
 )
 

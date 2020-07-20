@@ -56,12 +56,14 @@ class OfferConsolidationTest {
     val biggerSize = baseline.copy(sizeMl = 750)
 
     val items = listOf(
-      item(offers = listOf(
-        baseline,
-        higherQuantity,
-        lowerPrice,
-        biggerSize
-      ))
+      item(
+        offers = listOf(
+          baseline,
+          higherQuantity,
+          lowerPrice,
+          biggerSize
+        )
+      )
     )
 
     assertEquals(
@@ -82,10 +84,12 @@ class OfferConsolidationTest {
 
 
     val items = listOf(
-      item(offers = listOf(
-        nonKeg,
-        keg
-      ))
+      item(
+        offers = listOf(
+          nonKeg,
+          keg
+        )
+      )
     )
 
     assertEquals(
@@ -104,11 +108,13 @@ class OfferConsolidationTest {
     val tiny = baseline.copy(sizeMl = 220)
 
     val items = listOf(
-      item(offers = listOf(
-        baseline,
-        tiny,
-        unknownSize
-      ))
+      item(
+        offers = listOf(
+          baseline,
+          tiny,
+          unknownSize
+        )
+      )
     )
 
     assertEquals(
@@ -128,11 +134,13 @@ class OfferConsolidationTest {
     val c = Offer(quantity = 4, totalPrice = 4.00)
 
     val items = listOf(
-      item(offers = listOf(
-        a,
-        c,
-        b
-      ))
+      item(
+        offers = listOf(
+          a,
+          c,
+          b
+        )
+      )
     )
 
     assertEquals(
@@ -149,10 +157,12 @@ class OfferConsolidationTest {
     val keg = Offer(quantity = 2, totalPrice = 2.00, format = KEG)  // Slightly unrealistic...
 
     val items = listOf(
-      item(offers = listOf(
-        nonKeg,
-        keg
-      ))
+      item(
+        offers = listOf(
+          nonKeg,
+          keg
+        )
+      )
     )
 
     assertEquals(2, items.consolidate().entries.single().offers.size)

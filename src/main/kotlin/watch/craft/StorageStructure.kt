@@ -7,9 +7,9 @@ import watch.craft.network.FailingRetriever
 import watch.craft.network.NetworkRetriever
 import watch.craft.network.Retriever
 import watch.craft.storage.*
+import watch.craft.utils.ZONE_OFFSET
 import java.time.Instant
 import java.time.LocalDate
-import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 
 class StorageStructure(
@@ -24,7 +24,7 @@ class StorageStructure(
   private val instant = if (live) {
     Instant.now()
   } else {
-    LocalDate.parse(dateString).atStartOfDay(ZoneOffset.UTC).toInstant()
+    LocalDate.parse(dateString).atStartOfDay(ZONE_OFFSET).toInstant()
   }
 
   private val store: ObjectStore = WriteThroughObjectStore(
@@ -76,6 +76,6 @@ class StorageStructure(
     const val DOWNLOADS_DIR = "downloads"
     const val RESULTS_DIRNAME = "results"
 
-    private val DATE_FORMAT = DateTimeFormatter.ofPattern("YYYY-MM-dd").withZone(ZoneOffset.UTC)
+    private val DATE_FORMAT = DateTimeFormatter.ofPattern("YYYY-MM-dd").withZone(ZONE_OFFSET)
   }
 }
