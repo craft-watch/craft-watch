@@ -22,12 +22,20 @@
   --sexy-radius: 16px;
   --sexy-shadow: drop-shadow(0 0 0.75rem var(--sol-base03));
   --bold-weight: 600;
+
+  --bg-standard: var(--sol-base3);
+  --fg-standard: var(--sol-base02);
+
+  --bg-inverse: var(--fg-standard);
+  --fg-inverse: var(--bg-standard);
+
+  --bg-emphasis: var(--sol-base2);
 }
 
 html, body {
   font-family: 'Work Sans', sans-serif;
-  color: var(--sol-base01);
-  background: var(--sol-base3);
+  color: var(--fg-standard);
+  background: var(--bg-standard);
   margin: 0;
 }
 
@@ -53,8 +61,8 @@ table {
 }
 
 thead th {
-  background: var(--sol-base01);
-  color: var(--sol-base3);
+  background: var(--bg-inverse);
+  color: var(--fg-inverse);
   top: 0px;
   font-size: larger;
   z-index: 1;
@@ -80,7 +88,7 @@ tbody th {
 }
 
 tbody th .table-section {
-  background: var(--sol-base1);
+  background: var(--sol-base00);
   color: var(--sol-base3);
   border-radius: var(--sexy-radius);
   padding: 5px 10px;
@@ -99,11 +107,11 @@ table a.item-link {
 }
 
 table a:link {
-  color: var(--sol-base01);
+  color: var(--fg-standard);
 }
 
 table a:visited {
-  color: var(--sol-base00);
+  color: var(--fg-standard);
 }
 
 table a:hover {
@@ -113,7 +121,7 @@ table a:hover {
 
 th.sort-none:hover, th.sort-asc:hover, th.sort-desc:hover {
   cursor: pointer;
-  color: var(--sol-base03);
+  color: var(--sol-magenta);
 }
 
 th.sort-asc::after {
@@ -149,7 +157,7 @@ td.thumbnail {
 }
 
 .price details {
-  background-color: var(--sol-base2);
+  background-color: var(--bg-emphasis);
   border-radius: var(--sexy-radius);
   font-size: smaller;
 }
@@ -232,7 +240,7 @@ img {
    ---------------------- */
 
 .stats tr:nth-child(even) {
-  background: var(--sol-base2);
+  background: var(--bg-emphasis);
 }
 
 
@@ -269,7 +277,7 @@ img {
 
 .desc a {
   text-decoration: none;
-  color: var(--sol-base00);
+  color: var(--fg-standard);
 }
 
 .desc a.emphasise {
@@ -277,11 +285,11 @@ img {
 }
 
 .desc a:link {
-  color: var(--sol-base01);
+  color: var(--fg-standard);
 }
 
 .desc a:visited {
-  color: var(--sol-base00);
+  color: var(--fg-standard);
 }
 
 .desc a:hover {
@@ -309,15 +317,15 @@ nav li {
 
 .sidebar a {
   text-decoration: none;
-  color: var(--sol-base00);
+  color: var(--fg-standard);
 }
 
 .sidebar a:link {
-  color: var(--sol-base01);
+  color: var(--fg-standard);
 }
 
 .sidebar a:visited {
-  color: var(--sol-base00);
+  color: var(--fg-standard);
 }
 
 .sidebar a:hover {
@@ -361,8 +369,8 @@ nav li {
    ---------------------- */
 
 .menu-hamburger {
-  background: var(--sol-base02);
-  color: var(--sol-base2);
+  background: var(--bg-inverse);
+  color: var(--fg-inverse);
   filter: var(--sexy-shadow);
   border-bottom-left-radius: var(--sexy-radius);
   right: 0;
@@ -379,8 +387,8 @@ nav li {
 }
 
 .menu {
-  background: var(--sol-base02);
-  color: var(--sol-base2);
+  background: var(--bg-inverse);
+  color: var(--fg-inverse);
   filter: var(--sexy-shadow);
 
   padding: 10px;
@@ -437,7 +445,7 @@ nav li {
 }
 
 .menu a {
-  color: var(--sol-base2);
+  color: var(--fg-inverse);
   font-weight: var(--bold-weight);
   cursor: pointer;
   text-decoration: none;
@@ -492,8 +500,8 @@ nav li {
   height: 1em;
   width: 1em;
   line-height: 1em;
-  background-color: var(--sol-base3);
-  color: var(--sol-base02);
+  background-color: var(--bg-standard);
+  color: var(--fg-standard);
   border-radius: 4px;
   text-align: center;
 }
@@ -630,8 +638,8 @@ nav li {
   /* Useful when no affordance from hover */
   .how-to-use {
     display: inherit;
-    background: var(--sol-base02);
-    color: var(--sol-base2);
+    background: var(--bg-inverse);
+    color: var(--fg-inverse);
     text-align: center;
     font-size: smaller;
     padding: 5px 0;
@@ -646,7 +654,7 @@ nav li {
   }
 
   nav {
-    background: var(--sol-base02);
+    background: var(--bg-inverse);
     text-align: center;
     padding: 5px 0;
     margin: 0;
@@ -657,20 +665,20 @@ nav li {
   }
 
   .sidebar a {
-    color: var(--sol-base2);
+    color: var(--fg-inverse);
     font-weight: var(--bold-weight);
   }
 
   .sidebar a:link {
-    color: var(--sol-base2);
+    color: var(--fg-inverse);
   }
 
   .sidebar a:visited {
-    color: var(--sol-base2);
+    color: var(--fg-inverse);
   }
 
   .sidebar a:hover {
     cursor: pointer;
-    color: var(--sol-base1);
+    color: var(--sol-magenta);
   }
 }
