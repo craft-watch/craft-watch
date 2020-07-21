@@ -57,15 +57,15 @@ const Sidebars = (props: Props): JSX.Element => {
           <div className="hide-medium">
             <h2>Just added</h2>
             <ul>
-                {
-                  _.map(_.filter(props.breweries, b => b.new), b => (
-                    <li key={b.id}>
-                      <BreweryLink id={b.id}>
-                        {b.shortName}
-                      </BreweryLink>
-                    </li>
-                  ))
-                }
+              {
+                _.map(_.filter(props.breweries, b => b.new), b => (
+                  <li key={b.id}>
+                    <BreweryLink id={b.id}>
+                      {b.shortName}
+                    </BreweryLink>
+                  </li>
+                ))
+              }
             </ul>
           </div>
         </nav>
