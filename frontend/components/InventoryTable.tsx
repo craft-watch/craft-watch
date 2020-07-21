@@ -44,7 +44,7 @@ const NameInfo = ({ datum }: CellProps<Item>) => {
 
   return (
     <div className="tooltip">
-      <a className="item-link" href={datum.url}>{datum.name}</a>
+      <a href={datum.url}>{datum.name}</a>
       <p className="summary">
         {datum.summary}
       </p>

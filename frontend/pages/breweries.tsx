@@ -17,7 +17,7 @@ const ThisPage = (): JSX.Element => (
           </p>
           <p>
             Click the hearts to add breweries to your
-            personalised <Link href="/favourites"><a className="emphasise">favourites page</a></Link>!
+            personalised <Link href="/favourites"><a>favourites page</a></Link>!
           </p>
         </>
       )
