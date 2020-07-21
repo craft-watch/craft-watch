@@ -78,6 +78,10 @@ h1, h2 {
   font-weight: var(--bold-weight);
 }
 
+h1, h2, h3, h4 {
+  font-weight: var(--bold-weight);
+}
+
 a {
   text-decoration: none;
   font-weight: var(--bold-weight);
@@ -169,6 +173,10 @@ th.sort-desc::after {
 
 td.thumbnail {
   position: relative;
+}
+
+.brewery a {
+  font-weight: normal;
 }
 
 .name {
@@ -423,11 +431,6 @@ nav li {
 .menu .content {
   overflow-y: auto;
   max-height: 75vh;
-}
-
-.menu h4 {
-  margin: 0;
-  padding: 0;
 }
 
 .menu .section {
