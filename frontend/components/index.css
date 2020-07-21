@@ -39,6 +39,18 @@ html, body {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
+a, a:link, a:visited {
+  color: var(--fg-standard);
+}
+
+a:hover {
+  color: var(--sol-magenta);
+}
+
 
 /* ----------------------
     Miscellaneous
@@ -104,19 +116,6 @@ table a {
 
 table a.item-link {
   font-weight: var(--bold-weight);
-}
-
-table a:link {
-  color: var(--fg-standard);
-}
-
-table a:visited {
-  color: var(--fg-standard);
-}
-
-table a:hover {
-  cursor: pointer;
-  color: var(--sol-magenta);
 }
 
 th.sort-none:hover, th.sort-asc:hover, th.sort-desc:hover {
@@ -293,26 +292,8 @@ img {
   font-size: medium;
 }
 
-.desc a {
-  text-decoration: none;
-  color: var(--fg-standard);
-}
-
 .desc a.emphasise {
   font-weight: var(--bold-weight);
-}
-
-.desc a:link {
-  color: var(--fg-standard);
-}
-
-.desc a:visited {
-  color: var(--fg-standard);
-}
-
-.desc a:hover {
-  cursor: pointer;
-  color: var(--sol-magenta);
 }
 
 nav {
@@ -331,24 +312,6 @@ nav ul {
 
 nav li {
   margin: 10px;
-}
-
-.sidebar a {
-  text-decoration: none;
-  color: var(--fg-standard);
-}
-
-.sidebar a:link {
-  color: var(--fg-standard);
-}
-
-.sidebar a:visited {
-  color: var(--fg-standard);
-}
-
-.sidebar a:hover {
-  cursor: pointer;
-  color: var(--sol-magenta);
 }
 
 .sidebar address {
@@ -460,21 +423,6 @@ nav li {
   bottom: 40px;
   right: 20px;
   text-align: right;
-}
-
-.menu a {
-  color: var(--fg-inverse);
-  font-weight: var(--bold-weight);
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.menu a:visited {
-  color: inherit;
-}
-
-.menu a:hover {
-  color: var(--sol-base1);
 }
 
 .all-or-none {
@@ -696,7 +644,6 @@ nav li {
   }
 
   .sidebar a:hover {
-    cursor: pointer;
     color: var(--sol-magenta);
   }
 }
