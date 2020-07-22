@@ -1,0 +1,105 @@
+.menu {
+  /* Overlay everything else */
+  z-index: 2;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.menu > * {
+  background: var(--bg-inverse);
+  color: var(--fg-inverse);
+  filter: var(--sexy-shadow);
+  padding: 10px;
+}
+
+.collapsed {
+  border-bottom-left-radius: var(--sexy-radius);
+  font-size: smaller;
+}
+
+.expanded {
+  padding-left: 30px;
+  min-width: 20vw;
+  height: 100vh;
+
+  /* No scroll */
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.button {
+  font-size: x-large;
+  font-weight: var(--bold-weight);
+  text-align: right;
+}
+
+.content {
+  overflow-y: auto;
+  max-height: 75vh;   /* Prevent clashing with info */
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.info {
+  font-size: small;
+  position: absolute;
+  margin: 0;
+  bottom: 40px;
+  right: 20px;
+  text-align: right;
+}
+
+.option {
+  font-weight: var(--bold-weight);
+  font-size: smaller;
+  padding: 10px 20px 10px 0;
+}
+
+.clickable {
+  user-select: none;
+}
+
+.clickable:hover {
+  cursor: pointer;
+  color: var(--sol-base1);
+}
+
+
+/* ----------------------
+    Selectable items
+   ---------------------- */
+
+.selectable {
+  display: block;
+  position: relative;
+  padding-left: 1.3em;
+  margin: 0.6em 0;
+}
+
+.selectable input {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1em;
+  width: 1em;
+  line-height: 1em;
+  background-color: var(--bg-standard);
+  color: var(--fg-standard);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.selectable:hover .checkmark {
+  background-color: var(--sol-base01);
+  color: var(--sol-base3);
+}
