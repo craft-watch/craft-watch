@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import styles from "./SidebarLeft.module.css";
 
 
 interface Props {
@@ -12,18 +13,16 @@ interface Props {
 const SidebarLeft = (props: Props): JSX.Element => {
   return (
     <>
-      <div className="sidebar-left">
-        <div className="hide-medium">
-          <h1>{props.title} {props.titleSuffix}</h1>
-          {props.desc}
-        </div>
+      <div className={styles.sidebar + " hide-medium"}>
+        <h1>{props.title} {props.titleSuffix}</h1>
+        {props.desc}
 
-        <address className="hide-medium">
-          <div className="social">
+        <address className={styles.address}>
+          <div className={styles.social}>
             <TwitterLink />
             <GitHubLink />
           </div>
-          <div className="lol">
+          <div className={styles.lol}>
             Craft Watch is brewed in Crofton Park.
           </div>
         </address>

@@ -1,0 +1,12 @@
+.sidebar {
+  padding: 30px;
+  padding-left: 60px;
+}
+
+.sidebar a {
+  font-weight: inherit;
+}
+
+.sidebar li {
+  margin: 20px;
+}

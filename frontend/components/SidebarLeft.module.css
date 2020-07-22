@@ -1,0 +1,23 @@
+.sidebar {
+  padding: 30px;
+  padding-right: 60px;
+  line-height: 1.5em;
+  font-size: medium;
+}
+
+.address {
+  position: fixed;
+  bottom: 0;
+  padding-bottom: 30px;
+  font-style: normal;
+  font-size: small;
+}
+
+.social a {
+  font-size: xx-large;
+  margin-right: 20px;
+}
+
+.lol {
+  margin-top: 5px;
+}

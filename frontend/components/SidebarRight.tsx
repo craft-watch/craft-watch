@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faHeart, faQuestion, faSun, faListAlt } from "@fortawesome/free-solid-svg-icons";
 import { BreweryLink } from "./BreweryLink";
+import styles from "./SidebarRight.module.css";
 
 
 interface Props {
@@ -15,7 +16,7 @@ interface Props {
 const SidebarRight = (props: Props): JSX.Element => {
   return (
     <>
-      <div className="sidebar-right">
+      <div className={styles.sidebar}>
         <nav>
           <h2 className="hide-medium">Explore</h2>
           <ul>

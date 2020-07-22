@@ -1,0 +1,13 @@
+.contact {
+  font-size: small;
+  margin: 10px 0;
+
+  /* Make it overflow with ellipsis */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.contact a {
+  font-weight: inherit;
+}

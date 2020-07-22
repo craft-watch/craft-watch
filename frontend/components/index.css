@@ -312,7 +312,6 @@ img {
 }
 
 
-
 /* ----------------------
     Stats
    ---------------------- */
@@ -337,67 +336,6 @@ img {
 
 .delta.worse {
   color: var(--sol-red);
-}
-
-
-/* ----------------------
-    Left sidebar
-   ---------------------- */
-
-.sidebar-left {
-  padding: 30px;
-  padding-right: 60px;
-  line-height: 1.5em;
-  font-size: medium;
-}
-
-address {
-  position: fixed;
-  bottom: 0;
-  padding-bottom: 30px;
-  font-style: normal;
-  font-size: small;
-}
-
-address .social a {
-  font-size: xx-large;
-  margin-right: 20px;
-}
-
-address .lol {
-  margin-top: 5px;
-}
-
-.contact {
-  font-size: small;
-  margin: 10px 0;
-
-  /* Make it overflow with ellipsis */
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-.contact a {
-  font-weight: inherit;
-}
-
-
-/* ----------------------
-    Right sidebar
-   ---------------------- */
-
-.sidebar-right {
-  padding: 30px;
-  padding-left: 60px;
-}
-
-.sidebar-right a {
-  font-weight: inherit;
-}
-
-.sidebar-right li {
-  margin: 20px;
 }
 
 
@@ -568,16 +506,6 @@ address .lol {
   font-size: small;
   font-weight: var(--bold-weight);
   text-align: right;
-}
-
-
-/* ----------------------
-    Favourite icon
-   ---------------------- */
-
-.favourite-icon {
-  cursor: pointer;
-  color: var(--sol-magenta);
 }
 
 
