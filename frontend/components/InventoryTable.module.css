@@ -1,0 +1,136 @@
+.brewery a {
+  font-weight: normal;
+}
+
+.name {
+  text-align: left;
+  max-width: 300px;
+}
+
+td.thumbnail {
+  position: relative;
+}
+
+.thumbnail img {
+  mix-blend-mode: multiply;   /* No white backgrounds, plus makes things look sultry */
+  max-width: 100px;
+  max-height: 100px;
+  width: auto;
+  height: auto;
+  vertical-align: middle;
+  border-radius: var(--sexy-radius);
+}
+
+.pill {
+  color: var(--sol-base3);
+  font-size: smaller;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  padding: 2px 10px;
+  border-radius: var(--sexy-radius);
+  white-space: nowrap;
+}
+
+.new {
+  background: var(--sol-magenta);
+}
+
+.just-added {
+  background: var(--sol-base01);
+}
+
+.keg {
+  background: var(--sol-green);
+}
+
+.mixed {
+  background: var(--sol-violet);
+}
+
+.sold-out {
+  color: var(--sol-base3);
+  background: var(--sol-red);
+  padding: 2px 10px;
+  font-size: smaller;
+  border-radius: var(--sexy-radius);
+  font-weight: var(--bold-weight);
+  filter: var(--sexy-shadow);
+
+  /* Rotate and centre above image */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  transform: translate(-50%, -50%) rotate(-20deg);
+  transform-origin: center;
+}
+
+.info {
+  font-size: smaller;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.price .info {
+  white-space: nowrap;
+}
+
+.price details {
+  background-color: var(--bg-emphasis);
+  border-radius: var(--sexy-radius);
+  font-size: smaller;
+}
+
+.price details > summary {
+  font-weight: var(--bold-weight);
+  padding: 5px 10px;
+  outline: none;    /* Remove irritating border when we have focus */
+  user-select: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.price details > .offer {
+  padding-bottom: 5px;
+}
+
+
+/* ----------------------
+    Tooltips
+   ---------------------- */
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-text {
+  background-color: var(--sol-base03);
+  color: var(--sol-base3);
+
+  visibility: hidden;
+  opacity: 0;
+
+  width: 30vw;
+  font-size: small;
+  padding: 10px;
+  border-radius: var(--sexy-radius);
+  filter: var(--sexy-shadow);
+
+  position: absolute;
+  z-index: 2;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.disclaimer {
+  font-size: small;
+  font-weight: var(--bold-weight);
+  text-align: right;
+}
+
+

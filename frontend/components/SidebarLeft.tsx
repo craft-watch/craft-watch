@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import styles from "./SidebarLeft.module.css";
+import classNames from "classnames";
 
 
 interface Props {
@@ -13,7 +14,7 @@ interface Props {
 const SidebarLeft = (props: Props): JSX.Element => {
   return (
     <>
-      <div className={styles.sidebar + " hide-medium"}>
+      <div className={classNames(styles.sidebar, "hide-medium")}>
         <h1>{props.title} {props.titleSuffix}</h1>
         {props.desc}
 
