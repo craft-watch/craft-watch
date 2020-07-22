@@ -100,19 +100,6 @@ p {
 
 
 /* ----------------------
-    Miscellaneous
-   ---------------------- */
-
-.how-to-use {
-  background: var(--bg-inverse);
-  color: var(--fg-inverse);
-  text-align: center;
-  font-size: smaller;
-  padding: 5px 0;
-}
-
-
-/* ----------------------
     Responsive adjustments
    ---------------------- */
 

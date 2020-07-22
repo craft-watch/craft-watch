@@ -8,6 +8,7 @@ import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { BreweryLink } from "./BreweryLink";
 import styles from "./BreweriesApp.module.css";
+import HowToUse from "./HowToUse";
 
 
 interface Props {
@@ -61,9 +62,7 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
 
   return (
     <>
-      <div className="how-to-use show-medium">
-        Click on an image to go to the brewery page!
-      </div>
+      <HowToUse text="Click on a name to go to the brewery page!" />
 
       <main>
         <SortableTable sections={partition(inventory.breweries)}>

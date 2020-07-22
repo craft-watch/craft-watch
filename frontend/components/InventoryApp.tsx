@@ -5,6 +5,7 @@ import Menu, { Selections, Section as MenuSection } from "./Menu";
 import InventoryTable from "./InventoryTable";
 import { MIXED_CASE, MINIKEG, REGULAR, OUT_OF_STOCK } from "../utils/strings";
 import { headlineOffer } from "../utils/stuff";
+import HowToUse from "./HowToUse";
 
 interface Props {
   inventory: Inventory;
@@ -34,9 +35,7 @@ const InventoryApp = ({ inventory }: Props): JSX.Element => {
 
   return (
     <>
-      <div className="how-to-use show-medium">
-        Click on an image to go to the brewery shop!
-      </div>
+      <HowToUse text="Click on an image to go to the brewery shop!" />
 
       <Menu capturedAt={inventory.capturedAt}>
         <MenuSection title="Formats" selections={format} />
