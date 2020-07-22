@@ -1,7 +1,8 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
 import { Brewery } from "../utils/model";
-import Sidebars from "./Sidebars";
+import SidebarLeft from "./SidebarLeft";
+import SidebarRight from "./SidebarRight";
 
 interface Props {
   title: string;
@@ -49,14 +50,25 @@ const Page: React.FC<Props> = (props) => (
       }
     </Head>
 
-    <Sidebars
-      title={props.title}
-      titleSuffix={props.titleSuffix}
-      desc={props.longDesc}
-      breweries={props.breweries}
-    />
+    <div id="main">
+      <div id="col-left">
+        <SidebarLeft
+          title={props.title}
+          titleSuffix={props.titleSuffix}
+          desc={props.longDesc}
+        />
+      </div>
 
-    {props.children}
+      <div id="col-main">
+        {props.children}
+      </div>
+
+      <div id="col-right">
+        <SidebarRight
+          breweries={props.breweries}
+        />
+      </div>
+    </div>
   </>
 );
 

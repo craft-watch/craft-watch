@@ -9,16 +9,13 @@ import { BreweryLink } from "./BreweryLink";
 
 
 interface Props {
-  title: string;
-  titleSuffix?: JSX.Element;
-  desc?: JSX.Element;
   breweries: Array<Brewery>;
 }
 
-const Sidebars = (props: Props): JSX.Element => {
+const SidebarRight = (props: Props): JSX.Element => {
   return (
     <>
-      <div className="sidebar right">
+      <div className="sidebar-right">
         <nav>
           <h2 className="hide-medium">Explore</h2>
           <ul>
@@ -70,25 +67,6 @@ const Sidebars = (props: Props): JSX.Element => {
           </div>
         </nav>
       </div>
-
-      <div className="sidebar left">
-        <div className="info hide-medium">
-          <h1>{props.title} {props.titleSuffix}</h1>
-          <div className="desc">
-            {props.desc}
-          </div>
-        </div>
-
-        <address className="hide-medium">
-          <div className="social">
-            <TwitterLink />
-            <GitHubLink />
-          </div>
-          <div className="copyright">
-            Craft Watch is brewed in Crofton Park.
-          </div>
-        </address>
-      </div>
     </>
   );
 };
@@ -105,4 +83,4 @@ const GitHubLink = () => (
   </a>
 );
 
-export default Sidebars;
+export default SidebarRight;

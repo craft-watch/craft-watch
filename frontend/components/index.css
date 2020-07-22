@@ -63,6 +63,43 @@ img {
 
 
 /* ----------------------
+    Layout
+   ---------------------- */
+
+#main {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+#col-left {
+  width: 25vw;
+}
+
+#col-main {
+  width: 50vw;
+}
+
+#col-right {
+  width: 25vw;
+}
+
+#col-left > * {
+  width: 25vw;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+
+#col-right > * {
+  width: 25vw;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+
+
+/* ----------------------
     Basics
    ---------------------- */
 
@@ -95,6 +132,10 @@ a:hover {
   color: var(--sol-magenta);
 }
 
+p {
+  margin: 1em 0;
+}
+
 
 /* ----------------------
     Miscellaneous
@@ -110,10 +151,8 @@ a:hover {
    ---------------------- */
 
 table {
-  margin-left: auto;
-  margin-right: auto;
   border-collapse: collapse;
-  width: 50vw;
+  width: 100%;
 }
 
 thead th {
@@ -302,74 +341,65 @@ img {
 
 
 /* ----------------------
-    Sidebar
+    Left sidebar
    ---------------------- */
 
-.sidebar {
-  padding: 10px;
-  padding-left: 30px;
-
-  position: fixed;
-  top: 0;
-  width: 15vw;
-  height: 100vh;
-
-  /* No scroll */
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-
-.sidebar.left {
-  left: 0;
-}
-
-.sidebar.right {
-  right: 0;
-}
-
-.info .desc {
+.sidebar-left {
+  padding: 30px;
+  padding-right: 60px;
   line-height: 1.5em;
   font-size: medium;
 }
 
-nav {
-  margin-bottom: 40px;
+address {
+  position: fixed;
+  bottom: 0;
+  padding-bottom: 30px;
+  font-style: normal;
+  font-size: small;
 }
 
-nav a {
-  font-weight: inherit;
-}
-
-nav li {
-  margin: 10px;
-}
-
-.sidebar address {
-  position: absolute;
-  margin: 0;
-  bottom: 40px;
-}
-
-.sidebar .social a {
+address .social a {
   font-size: xx-large;
   margin-right: 20px;
 }
 
-.sidebar .copyright {
+address .lol {
   margin-top: 5px;
-  font-size: small;
-  font-style: normal;
 }
 
-.sidebar .contact {
+.contact {
   font-size: small;
-  margin: 3px 0;
+  margin: 10px 0;
 
   /* Make it overflow with ellipsis */
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+.contact a {
+  font-weight: inherit;
+}
+
+
+/* ----------------------
+    Right sidebar
+   ---------------------- */
+
+.sidebar-right {
+  padding: 30px;
+  padding-left: 60px;
+}
+
+.sidebar-right a {
+  font-weight: inherit;
+}
+
+.sidebar-right li {
+  margin: 20px;
+}
+
 
 /* ----------------------
     Menu
