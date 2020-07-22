@@ -1,13 +1,13 @@
 import _ from "lodash";
 import React from "react";
 import classNames from "classnames";
-import { Item, Offer, Format } from "../utils/model";
-import SortableTable, { Column, Section, CellProps } from "./SortableTable";
-import { headlineOffer } from "../utils/stuff";
-import { OUT_OF_STOCK, MINIKEG, MIXED_CASE } from "../utils/strings";
-import { splitToParagraphs } from "../utils/reactUtils";
-import { BreweryLink } from "./BreweryLink";
-import styles from "./InventoryTable.module.css";
+import { Item, Offer, Format } from "../../utils/model";
+import SortableTable, { Column, Section, CellProps } from "../SortableTable";
+import { headlineOffer } from "../../utils/stuff";
+import { OUT_OF_STOCK, MINIKEG, MIXED_CASE } from "../../utils/strings";
+import { splitToParagraphs } from "../../utils/reactUtils";
+import { BreweryLink } from "../BreweryLink";
+import styles from "./styles.module.css";
 
 
 interface Props {

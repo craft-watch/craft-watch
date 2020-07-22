@@ -1,9 +1,9 @@
 import React from "react";
 import _ from "lodash";
-import { Inventory, BreweryStats } from "../utils/model";
-import SortableTable, { Column, CellProps, Section } from "./SortableTable";
-import { BreweryLink } from "./BreweryLink";
-import styles from "./StatsApp.module.css";
+import { Inventory, BreweryStats } from "../../utils/model";
+import SortableTable, { Column, CellProps, Section } from "../SortableTable";
+import { BreweryLink } from "../BreweryLink";
+import styles from "./styles.module.css";
 import classNames from "classnames";
 
 

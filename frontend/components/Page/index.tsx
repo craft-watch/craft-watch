@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
-import { Brewery } from "../utils/model";
-import SidebarLeft from "./SidebarLeft";
-import SidebarRight from "./SidebarRight";
-import styles from "./Page.module.css";
+import { Brewery } from "../../utils/model";
+import SidebarLeft from "../SidebarLeft";
+import SidebarRight from "../SidebarRight";
+import styles from "./styles.module.css";
 
 
 interface Props {

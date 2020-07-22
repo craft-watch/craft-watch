@@ -1,6 +1,6 @@
 import React, { ReactElement, useState, ComponentType } from "react";
 import _ from "lodash";
-import styles from "./SortableTable.module.css";
+import styles from "./styles.module.css";
 import classNames from "classnames";
 
 

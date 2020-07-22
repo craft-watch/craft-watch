@@ -1,14 +1,14 @@
 import React from "react";
 import _ from "lodash";
-import { Inventory, Brewery } from "../utils/model";
-import SortableTable, { Column, Section, CellProps } from "./SortableTable";
-import FavouriteIcon from "./FavouriteIcon";
+import { Inventory, Brewery } from "../../utils/model";
+import SortableTable, { Column, Section, CellProps } from "../SortableTable";
+import FavouriteIcon from "../FavouriteIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { BreweryLink } from "./BreweryLink";
-import styles from "./BreweriesApp.module.css";
-import HowToUse from "./HowToUse";
+import { BreweryLink } from "../BreweryLink";
+import styles from "./styles.module.css";
+import HowToUse from "../HowToUse";
 
 
 interface Props {

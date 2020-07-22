@@ -1,7 +1,7 @@
 import React, { ReactElement, useState } from "react";
 import _ from "lodash";
 import { Moment } from "moment";
-import styles from "./Menu.module.css";
+import styles from "./styles.module.css";
 import classNames from "classnames";
 
 

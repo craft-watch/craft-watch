@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import _ from "lodash";
-import { Item, Format, Inventory } from "../utils/model";
-import Menu, { Selections, Section as MenuSection } from "./Menu";
-import InventoryTable from "./InventoryTable";
-import { MIXED_CASE, MINIKEG, REGULAR, OUT_OF_STOCK } from "../utils/strings";
-import { headlineOffer } from "../utils/stuff";
-import HowToUse from "./HowToUse";
+import { Item, Format, Inventory } from "../../utils/model";
+import Menu, { Selections, Section as MenuSection } from "../Menu";
+import InventoryTable from "../InventoryTable";
+import { MIXED_CASE, MINIKEG, REGULAR, OUT_OF_STOCK } from "../../utils/strings";
+import { headlineOffer } from "../../utils/stuff";
+import HowToUse from "../HowToUse";
 
 interface Props {
   inventory: Inventory;
