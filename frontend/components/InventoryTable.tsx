@@ -1,11 +1,14 @@
 import _ from "lodash";
 import React from "react";
+import classNames from "classnames";
 import { Item, Offer, Format } from "../utils/model";
 import SortableTable, { Column, Section, CellProps } from "./SortableTable";
 import { headlineOffer } from "../utils/stuff";
 import { OUT_OF_STOCK, MINIKEG, MIXED_CASE } from "../utils/strings";
 import { splitToParagraphs } from "../utils/reactUtils";
 import { BreweryLink } from "./BreweryLink";
+import styles from "./InventoryTable.module.css";
+
 
 interface Props {
   items: Array<Item>;
@@ -14,11 +17,16 @@ interface Props {
 
 const InventoryTable: React.FC<Props> = (props) => (
   <SortableTable sections={partitionItems(props.items, props.categories)}>
-    <Column render={BreweryInfo} name="Brewery" className="brewery" selector={item => item.brewery} />
-    <Column render={Thumbnail} className="thumbnail" />
-    <Column render={NameInfo} name="Name" className="name" selector={item => item.name} />
+    <Column render={BreweryInfo} name="Brewery" className={styles.brewery} selector={item => item.brewery} />
+    <Column render={Thumbnail} className={styles.thumbnail} />
+    <Column render={NameInfo} name="Name" className={styles.name} selector={item => item.name} />
     <Column render={AbvInfo} name="ABV" className="hide-tiny" selector={item => item.abv} />
-    <Column render={PriceInfo} name="Price" className="price" selector={item => perItemPrice(headlineOffer(item))} />
+    <Column
+      render={PriceInfo}
+      name="Price"
+      className={styles.price}
+      selector={item => perItemPrice(headlineOffer(item))}
+    />
   </SortableTable>
 );
 
@@ -31,7 +39,7 @@ const BreweryInfo = ({ datum }: CellProps<Item>) => (
 const Thumbnail = ({ datum }: CellProps<Item>) => (
   <a href={datum.url}>
     <img alt="" src={datum.thumbnailUrl} width="100px" height="100px" />
-    {datum.available || <div className="sold-out">{OUT_OF_STOCK}</div>}
+    {datum.available || <div className={styles["sold-out"]}>{OUT_OF_STOCK}</div>}
   </a>
 );
 
@@ -43,17 +51,17 @@ const NameInfo = ({ datum }: CellProps<Item>) => {
   const mixed = datum.mixed;
 
   return (
-    <div className="tooltip">
+    <div className={styles.tooltip}>
       <a href={datum.url}>{datum.name}</a>
-      <p className="summary">
+      <p className={styles.info}>
         {datum.summary}
       </p>
-      <p className="summary">
-        {newItem && <span className="pill new">NEW !!!</span>}
-        {justAdded && <span className="pill just-added">Just added</span>}
-        {keg && <span className="pill keg">{MINIKEG}</span>}
-        {kegAvailable && <span className="pill keg">Keg available</span>}
-        {mixed && <span className="pill mixed">{MIXED_CASE}</span>}
+      <p className={styles.info}>
+        {newItem && <span className={classNames(styles.pill, styles.new)}>NEW !!!</span>}
+        {justAdded && <span className={classNames(styles.pill, styles["just-added"])}>Just added</span>}
+        {keg && <span className={classNames(styles.pill, styles.keg)}>{MINIKEG}</span>}
+        {kegAvailable && <span className={classNames(styles.pill, styles.keg)}>Keg available</span>}
+        {mixed && <span className={classNames(styles.pill, styles.mixed)}>{MIXED_CASE}</span>}
       </p>
       {(datum.desc !== undefined) && <TooltipBody datum={datum} />}
     </div>
@@ -86,9 +94,9 @@ const OfferInfo = ({ offer }: { offer: Offer }) => {
   const sizeString = sizeForDisplay(offer);
   const formatString = formatForDisplay(offer);
   return (
-    <div className="offer">
-      £{priceForDisplay(offer)} <span className="summary hide-small">/ {formatString}</span>
-      <p className="summary">
+    <div className={styles.offer}>
+      £{priceForDisplay(offer)} <span className={classNames(styles.info, "hide-small")}>/ {formatString}</span>
+      <p className={styles.info}>
         {
           (offer.quantity > 1) ? `${offer.quantity} × ${sizeString ?? `${formatString}s`}` : sizeString
         }
@@ -99,9 +107,9 @@ const OfferInfo = ({ offer }: { offer: Offer }) => {
 
 // These are positioned all wrong on mobile, so disable when things get small
 const TooltipBody = ({ datum }: CellProps<Item>) => (
-  <span className="tooltip-text hide-small" style={{ display: "hidden" }}>
+  <span className={classNames(styles["tooltip-text"], "hide-small")} style={{ display: "hidden" }}>
     {(datum.desc !== undefined) && splitToParagraphs(datum.desc)}
-    <div className="disclaimer">© {datum.brewery.shortName}</div>
+    <div className={styles.disclaimer}>© {datum.brewery.shortName}</div>
   </span>
 );
 

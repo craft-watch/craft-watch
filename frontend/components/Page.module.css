@@ -1,0 +1,60 @@
+.page {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.left {
+  width: 25vw;
+}
+
+.main {
+  width: 50vw;
+}
+
+.right {
+  width: 25vw;
+}
+
+.left > * {
+  width: 25vw;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+
+.right > * {
+  width: 25vw;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+
+@media (max-width: 1024px) {
+  .page {
+    flex-wrap: wrap;
+  }
+
+  .left {
+    width: 0;
+  }
+
+  .main {
+    order: 2;
+    width: 100vw;
+  }
+
+  .right {
+    order: 1;
+    width: 100vw;
+  }
+
+  .left > * {
+    width: 0;
+  }
+
+  .right > * {
+    width: 100vw;
+    position: inherit;
+  }
+}

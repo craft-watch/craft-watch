@@ -1,0 +1,36 @@
+.sidebar {
+  padding: 30px;
+  padding-left: 60px;
+}
+
+.sidebar a {
+  font-weight: inherit;
+}
+
+.sidebar li {
+  margin: 20px;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    background: var(--bg-inverse);
+    text-align: center;
+    padding: 5px 0;
+    margin: 0;
+  }
+
+  .sidebar li {
+    display: inline;
+    margin: 10px;
+  }
+
+  .sidebar a, .sidebar a:link, .sidebar a:visited {
+    color: var(--fg-inverse);
+    font-weight: var(--bold-weight);
+  }
+
+  .sidebar a:hover {
+    color: var(--sol-magenta);
+  }
+}
+

@@ -1,0 +1,25 @@
+.stats {
+  white-space: nowrap;
+}
+
+.stats tr:nth-child(even) {
+  background: var(--bg-emphasis);
+}
+
+.brewery a {
+  font-weight: normal;
+}
+
+.delta {
+  font-size: small;
+  padding-left: 5px;
+  color: var(--sol-blue);
+}
+
+.better {
+  color: var(--sol-green);
+}
+
+.worse {
+  color: var(--sol-red);
+}

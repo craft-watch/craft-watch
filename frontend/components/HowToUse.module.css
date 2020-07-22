@@ -1,0 +1,7 @@
+.htu {
+  background: var(--bg-inverse);
+  color: var(--fg-inverse);
+  text-align: center;
+  font-size: smaller;
+  padding: 5px 0;
+}

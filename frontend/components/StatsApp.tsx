@@ -3,6 +3,9 @@ import _ from "lodash";
 import { Inventory, BreweryStats } from "../utils/model";
 import SortableTable, { Column, CellProps, Section } from "./SortableTable";
 import { BreweryLink } from "./BreweryLink";
+import styles from "./StatsApp.module.css";
+import classNames from "classnames";
+
 
 interface Props {
   inventory: Inventory;
@@ -17,11 +20,11 @@ type Extract = (stats: BreweryStats) => number | undefined;
 
 const StatsApp = ({ inventory }: Props): JSX.Element => (
   <>
-    <main className="stats">
+    <main className={styles.stats}>
       <SortableTable sections={createSections(inventory)}>
         <Column
           name="Brewery"
-          className="brewery"
+          className={styles.brewery}
           render={({ datum }: CellProps<NewAndBaseline>) => (
             <BreweryLink id={datum.now.breweryId}>
               {
@@ -61,17 +64,17 @@ const field = (extract: Extract, nonplussed = false) => ({ datum }: CellProps<Ne
   const baseline = extract(datum.baseline) ?? 0;
   const delta = now - baseline;
 
-  const classNames = nonplussed ? "delta" :
-    (delta > 0) ? "delta worse" :
-    (delta < 0) ? "delta better" :
-    "delta";
+  const extraClassName = nonplussed ? undefined :
+    (delta > 0) ? styles.worse :
+    (delta < 0) ? styles.better :
+    undefined;
 
   return (
     <>
       {(now !== 0) ? now : ""}
       {
         (delta !== 0) && (
-          <span className={classNames}>
+          <span className={classNames(styles.delta, extraClassName)}>
             ({(delta < 0 ? "" : "+") + delta})
           </span>
         )

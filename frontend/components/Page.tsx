@@ -1,7 +1,10 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
 import { Brewery } from "../utils/model";
-import Sidebars from "./Sidebars";
+import SidebarLeft from "./SidebarLeft";
+import SidebarRight from "./SidebarRight";
+import styles from "./Page.module.css";
+
 
 interface Props {
   title: string;
@@ -49,14 +52,25 @@ const Page: React.FC<Props> = (props) => (
       }
     </Head>
 
-    <Sidebars
-      title={props.title}
-      titleSuffix={props.titleSuffix}
-      desc={props.longDesc}
-      breweries={props.breweries}
-    />
+    <div className={styles.page}>
+      <div className={styles.left}>
+        <SidebarLeft
+          title={props.title}
+          titleSuffix={props.titleSuffix}
+          desc={props.longDesc}
+        />
+      </div>
 
-    {props.children}
+      <div className={styles.main}>
+        {props.children}
+      </div>
+
+      <div className={styles.right}>
+        <SidebarRight
+          breweries={props.breweries}
+        />
+      </div>
+    </div>
   </>
 );
 

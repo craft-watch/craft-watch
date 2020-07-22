@@ -9,6 +9,7 @@ import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import InventoryApp from "../components/InventoryApp";
 import FavouriteIcon from "../components/FavouriteIcon";
+import styles from "./[id].module.css";
 
 interface Props {
   brewery: Brewery;
@@ -30,12 +31,12 @@ const ThisPage = ({ brewery, items }: Props): JSX.Element => {
             <p>
               Every item here can be delivered directly to your doorstep from their online shop.
             </p>
-            <p className="contact">
+            <p className={styles.contact}>
               <a href={brewery.websiteUrl}><FontAwesomeIcon icon={faLink} /> {brewery.websiteUrl}</a>
             </p>
             {
               (brewery.twitterHandle !== undefined) && (
-                <p className="contact">
+                <p className={styles.contact}>
                   <a href={`https://twitter.com/${brewery.twitterHandle}`}>
                     <FontAwesomeIcon icon={faTwitter} /> @{brewery.twitterHandle}
                   </a>

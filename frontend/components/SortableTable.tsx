@@ -1,5 +1,8 @@
 import React, { ReactElement, useState, ComponentType } from "react";
 import _ from "lodash";
+import styles from "./SortableTable.module.css";
+import classNames from "classnames";
+
 
 interface ColumnProps<T> {
   name?: JSX.Element | string;
@@ -41,18 +44,18 @@ const SortableTable = <T extends unknown>(props: Props<T>): JSX.Element => {
   const showHeader = _.size(props.sections) > 1;
 
   return (
-    <table>
+    <table className={styles.sortable}>
       <thead>
         <tr>
           {
             columns.map((col, idx) => {
-              const className = (sortColIdx !== idx) ? "sort-none" : sortDescending ? "sort-desc" : "sort-asc";
+              const className = (sortColIdx !== idx) ? undefined : sortDescending ? styles.desc : styles.asc;
 
               return (col.props.selector)
                 ? (
                   <th
                     key={idx}
-                    className={[className, col.props.className].join(" ")}
+                    className={classNames(styles.sort, className, col.props.className)}
                     onClick={() => handleHeaderClick(idx)}
                   >
                     {col.props.name}
@@ -74,7 +77,7 @@ const SortableTable = <T extends unknown>(props: Props<T>): JSX.Element => {
                 showHeader && (
                   <tr>
                     <th colSpan={_.size(columns)}>
-                      <div className="table-section">{section.name}</div>
+                      <div className={styles.section}>{section.name}</div>
                     </th>
                   </tr>
                 )
