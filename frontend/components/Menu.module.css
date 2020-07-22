@@ -28,6 +28,24 @@
   overflow-y: hidden;
 }
 
+@media (max-width: 1024px) {
+  /* Bottom-right to avoid blocking table header */
+  .menu {
+    top: inherit;
+    bottom: 0;
+  }
+
+  .collapsed {
+    border-radius: inherit;
+    border-top-left-radius: var(--sexy-radius);
+  }
+
+  /* Wider */
+  .expanded {
+    width: 50vw;
+  }
+}
+
 .button {
   font-size: x-large;
   font-weight: var(--bold-weight);

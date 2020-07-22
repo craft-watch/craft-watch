@@ -30,6 +30,17 @@ table.sortable tbody th {
   padding: 16px 0;
 }
 
+@media (max-width: 1024px) {
+  table.sortable td, table.sortable th {
+    padding: 10px 5px;
+  }
+
+  table.sortable thead th {
+    font-size: smaller;
+    border-radius: inherit !important;
+  }
+}
+
 .section {
   background: var(--sol-base00);
   color: var(--sol-base3);

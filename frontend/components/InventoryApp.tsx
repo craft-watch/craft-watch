@@ -34,7 +34,7 @@ const InventoryApp = ({ inventory }: Props): JSX.Element => {
 
   return (
     <>
-      <div className="how-to-use">
+      <div className="how-to-use show-medium">
         Click on an image to go to the brewery shop!
       </div>
 

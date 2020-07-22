@@ -134,3 +134,23 @@ td.thumbnail {
 }
 
 
+/* ----------------------
+    Responsive adjustments
+   ---------------------- */
+
+@media (max-width: 512px) {
+  .pill {
+    display: inline-block;
+  }
+}
+
+@media (max-width: 1024px) {
+  .thumbnail img {
+    max-width: 75px;
+    max-height: 75px;
+  }
+
+  .sold-out {
+    font-size: x-small;
+  }
+}

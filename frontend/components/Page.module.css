@@ -29,3 +29,13 @@
   top: 0;
   bottom: 0;
 }
+
+@media (max-width: 1024px) {
+  .left, .right, .left > *, .right > * {
+    width: 0;
+  }
+
+  .main {
+    width: 100vw;
+  }
+}

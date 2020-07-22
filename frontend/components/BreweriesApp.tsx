@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { BreweryLink } from "./BreweryLink";
+import styles from "./BreweriesApp.module.css";
+
 
 interface Props {
   inventory: Inventory;
@@ -59,7 +61,7 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
 
   return (
     <>
-      <div className="how-to-use">
+      <div className="how-to-use show-medium">
         Click on an image to go to the brewery page!
       </div>
 
@@ -67,10 +69,10 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
         <SortableTable sections={partition(inventory.breweries)}>
           <Column render={FavouriteInfo} />
           <Column render={BreweryInfo} name="Brewery" />
-          <Column render={LocationInfo} name="Location" className="brewery-info" />
-          <Column render={WebLink} className="brewery-info" />
-          <Column render={TwitterLink} className="brewery-info" />
-          <Column render={ItemsInfo} name="Items" className="brewery-info" />
+          <Column render={LocationInfo} name="Location" className={styles.info} />
+          <Column render={WebLink} className={styles.info} />
+          <Column render={TwitterLink} className={styles.info} />
+          <Column render={ItemsInfo} name="Items" className={styles.info} />
         </SortableTable>
       </main>
     </>

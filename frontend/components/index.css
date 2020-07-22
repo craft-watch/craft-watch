@@ -75,7 +75,6 @@ html, body {
 h1, h2 {
   margin: 13px 0;
   font-size: larger;
-  font-weight: var(--bold-weight);
 }
 
 h1, h2, h3, h4 {
@@ -105,7 +104,11 @@ p {
    ---------------------- */
 
 .how-to-use {
-  display: none;
+  background: var(--bg-inverse);
+  color: var(--fg-inverse);
+  text-align: center;
+  font-size: smaller;
+  padding: 5px 0;
 }
 
 
@@ -116,10 +119,6 @@ p {
 @media (max-width: 512px) {
   .hide-tiny {
     display: none;
-  }
-
-  .pill {
-    display: inline-block;
   }
 }
 
@@ -138,51 +137,6 @@ p {
 @media (max-width: 1024px) {
   .hide-medium {
     display: none;
-  }
-
-  /* Compress table layout */
-  table {
-    width: 100vw;
-  }
-
-  td, th {
-    padding: 10px 5px;
-  }
-
-  thead th {
-    font-size: smaller;
-    border-radius: inherit !important;
-  }
-
-  img {
-    max-width: 75px;
-    max-height: 75px;
-  }
-
-  .sold-out {
-    font-size: x-small;
-  }
-
-  .brewery, .brewery-info {
-    font-size: smaller;
-  }
-
-  /* Bottom-right to avoid blocking table header */
-  .menu-hamburger {
-    border-radius: inherit;
-    border-top-left-radius: var(--sexy-radius);
-    top: inherit;
-    bottom: 0;
-  }
-
-  /* Useful when no affordance from hover */
-  .how-to-use {
-    display: inherit;
-    background: var(--bg-inverse);
-    color: var(--fg-inverse);
-    text-align: center;
-    font-size: smaller;
-    padding: 5px 0;
   }
 
   .sidebar {
