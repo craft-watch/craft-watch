@@ -31,7 +31,7 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
 
   const ItemsInfo = ({ datum }: CellProps<Brewery>) => (
     <>
-      {counts[datum.shortName]}
+      {counts[datum.id]}
     </>
   );
 
