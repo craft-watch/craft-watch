@@ -11,26 +11,24 @@ interface Props {
   desc?: JSX.Element;
 }
 
-const SidebarLeft = (props: Props): JSX.Element => {
-  return (
-    <>
-      <div className={classNames(styles.sidebar, "hide-medium")}>
-        <h1>{props.title} {props.titleSuffix}</h1>
-        {props.desc}
+const SidebarLeft = (props: Props): JSX.Element => (
+  <>
+    <div className={classNames(styles.sidebar, "hide-medium")}>
+      <h1>{props.title} {props.titleSuffix}</h1>
+      {props.desc}
 
-        <address className={styles.address}>
-          <div className={styles.social}>
-            <TwitterLink />
-            <GitHubLink />
-          </div>
-          <div className={styles.lol}>
-            Craft Watch is brewed in Crofton Park.
-          </div>
-        </address>
-      </div>
-    </>
-  );
-};
+      <address className={styles.address}>
+        <div className={styles.social}>
+          <TwitterLink />
+          <GitHubLink />
+        </div>
+        <div className={styles.lol}>
+          Craft Watch is brewed in Crofton Park.
+        </div>
+      </address>
+    </div>
+  </>
+);
 
 const TwitterLink = () => (
   <a href="https://twitter.com/craft_watch">

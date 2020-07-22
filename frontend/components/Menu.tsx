@@ -71,8 +71,18 @@ export const Section: React.FC<SectionProps> = (props) => (
     {
       (_.size(props.selections.selections) > 1) && (
         <div>
-          <span className={classNames(styles.option, styles.clickable)} onClick={() => props.selections.setGlobal(true)}>All</span>
-          <span className={classNames(styles.option, styles.clickable)} onClick={() => props.selections.setGlobal(false)}>None</span>
+          <span
+            className={classNames(styles.option, styles.clickable)}
+            onClick={() => props.selections.setGlobal(true)}
+          >
+            All
+          </span>
+          <span
+            className={classNames(styles.option, styles.clickable)}
+            onClick={() => props.selections.setGlobal(false)}
+          >
+            None
+          </span>
         </div>
       )
     }

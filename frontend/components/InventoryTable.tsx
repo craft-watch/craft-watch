@@ -21,7 +21,12 @@ const InventoryTable: React.FC<Props> = (props) => (
     <Column render={Thumbnail} className={styles.thumbnail} />
     <Column render={NameInfo} name="Name" className={styles.name} selector={item => item.name} />
     <Column render={AbvInfo} name="ABV" className="hide-tiny" selector={item => item.abv} />
-    <Column render={PriceInfo} name="Price" className={styles.price} selector={item => perItemPrice(headlineOffer(item))} />
+    <Column
+      render={PriceInfo}
+      name="Price"
+      className={styles.price}
+      selector={item => perItemPrice(headlineOffer(item))}
+    />
   </SortableTable>
 );
 
