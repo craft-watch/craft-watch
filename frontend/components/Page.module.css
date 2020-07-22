@@ -31,11 +31,30 @@
 }
 
 @media (max-width: 1024px) {
-  .left, .right, .left > *, .right > * {
+  .page {
+    flex-wrap: wrap;
+  }
+
+  .left {
     width: 0;
   }
 
   .main {
+    order: 2;
     width: 100vw;
+  }
+
+  .right {
+    order: 1;
+    width: 100vw;
+  }
+
+  .left > * {
+    width: 0;
+  }
+
+  .right > * {
+    width: 100vw;
+    position: inherit;
   }
 }

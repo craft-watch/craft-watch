@@ -145,6 +145,10 @@ td.thumbnail {
 }
 
 @media (max-width: 1024px) {
+  .brewery {
+    font-size: smaller;
+  }
+
   .thumbnail img {
     max-width: 75px;
     max-height: 75px;
