@@ -3,7 +3,7 @@
 }
 
 .name {
-  text-align: left;
+  text-align: left !important;
   max-width: 300px;
 }
 
