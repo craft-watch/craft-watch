@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { config } from '@fortawesome/fontawesome-svg-core'
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import "../components/index.css";
+import "../styles.css";
 import { FavouritesProvider } from '../utils/favourites';
 
 config.autoAddCss = false; // See https://github.com/FortAwesome/react-fontawesome#nextjs

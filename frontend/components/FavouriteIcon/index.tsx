@@ -2,8 +2,8 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as enabledIcon } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as disabledIcon } from "@fortawesome/free-regular-svg-icons";
-import { FavouritesProps, withFavourites } from "../utils/favourites";
-import styles from "./FavouriteIcon.module.css";
+import { FavouritesProps, withFavourites } from "../../utils/favourites";
+import styles from "./styles.module.css";
 
 
 interface Props {

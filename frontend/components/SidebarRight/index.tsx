@@ -1,12 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import { Brewery } from "../utils/model";
+import { Brewery } from "../../utils/model";
 import _ from "lodash";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faHeart, faQuestion, faSun, faListAlt } from "@fortawesome/free-solid-svg-icons";
-import { BreweryLink } from "./BreweryLink";
-import styles from "./SidebarRight.module.css";
+import { BreweryLink } from "../BreweryLink";
+import styles from "./styles.module.css";
 
 
 interface Props {
