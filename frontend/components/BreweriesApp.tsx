@@ -51,7 +51,7 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
     </>
   );
 
-  const FvouriteInfo = ({ datum }: CellProps<Brewery>) => (
+  const FavouriteInfo = ({ datum }: CellProps<Brewery>) => (
     <>
       <FavouriteIcon breweryId={datum.id} />
     </>
@@ -65,7 +65,7 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
 
       <main>
         <SortableTable sections={partition(inventory.breweries)}>
-          <Column render={FvouriteInfo} />
+          <Column render={FavouriteInfo} />
           <Column render={BreweryInfo} name="Brewery" />
           <Column render={LocationInfo} name="Location" className="brewery-info" />
           <Column render={WebLink} className="brewery-info" />

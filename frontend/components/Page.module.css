@@ -1,0 +1,31 @@
+.page {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.left {
+  width: 25vw;
+}
+
+.main {
+  width: 50vw;
+}
+
+.right {
+  width: 25vw;
+}
+
+.left > * {
+  width: 25vw;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+
+.right > * {
+  width: 25vw;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}

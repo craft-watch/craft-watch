@@ -3,6 +3,8 @@ import Head from "next/head";
 import { Brewery } from "../utils/model";
 import SidebarLeft from "./SidebarLeft";
 import SidebarRight from "./SidebarRight";
+import styles from "./Page.module.css";
+
 
 interface Props {
   title: string;
@@ -50,8 +52,8 @@ const Page: React.FC<Props> = (props) => (
       }
     </Head>
 
-    <div id="main">
-      <div id="col-left">
+    <div className={styles.page}>
+      <div className={styles.left}>
         <SidebarLeft
           title={props.title}
           titleSuffix={props.titleSuffix}
@@ -59,11 +61,11 @@ const Page: React.FC<Props> = (props) => (
         />
       </div>
 
-      <div id="col-main">
+      <div className={styles.main}>
         {props.children}
       </div>
 
-      <div id="col-right">
+      <div className={styles.right}>
         <SidebarRight
           breweries={props.breweries}
         />
