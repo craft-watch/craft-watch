@@ -15,11 +15,10 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import org.jsoup.nodes.Document
 import watch.craft.MalformedInputException
 import watch.craft.dsl.selectMultipleFrom
-import watch.craft.jsonld.Thing.Offer
-import watch.craft.jsonld.Thing.Product
+import watch.craft.jsonld.Thing.*
 import java.net.URI
 
-inline fun <reified T : Any> Document.jsonLdFrom(): T {
+inline fun <reified T : Any> Document.jsonLdFrom(): List<T> {
   val mapper = jsonLdMapper()
   try {
     val things = selectMultipleFrom("script[type=application/ld+json]")
@@ -35,7 +34,7 @@ inline fun <reified T : Any> Document.jsonLdFrom(): T {
           listOf(thing)
         }
       }
-    return things.filterIsInstance<T>().single()
+    return things.filterIsInstance<T>()
   } catch (e: NoSuchElementException) {
     throw MalformedInputException("Couldn't find JSON-LD data for that type", e)
   }
@@ -57,19 +56,29 @@ private class JsonLdListDeserializer(
     val mapper = (p.codec as ObjectMapper)
     val root = p.codec.readTree<JsonNode>(p)
     val nodes = if (root is ArrayNode) root else listOf(root)
-    return nodes.map { mapper.convertValue<Any>(it, valueType) }
+    return nodes.mapNotNull { mapper.convertValue<Any>(it, valueType) }
   }
 }
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type", defaultImpl = Void::class)
 @JsonSubTypes(
   JsonSubTypes.Type(Product::class, name = "Product"),
-  JsonSubTypes.Type(Offer::class, name = "Offer")
+  JsonSubTypes.Type(ProductModel::class, name = "ProductModel"),
+  JsonSubTypes.Type(Offer::class, name = "Offer"),
+  JsonSubTypes.Type(PropertyValue::class, name = "PropertyValue")
 )
 sealed class Thing {
   data class Product(
+    val name: String,
     val description: String,
     val image: List<URI>,
+    val offers: List<Offer>,
+    val model: List<ProductModel> = emptyList()
+  ) : Thing()
+
+  data class ProductModel(
+    val name: String,
+    val additionalProperty: List<PropertyValue> = emptyList(),
     val offers: List<Offer>
   ) : Thing()
 
@@ -78,6 +87,11 @@ sealed class Thing {
     val price: Double,
     val availability: String
   ) : Thing()
+
+  data class PropertyValue(
+    val name: String,
+    val value: String
+  )
 }
 
 data class Document(

@@ -44,7 +44,7 @@ class VillagesScraper : Scraper {
 
   private fun Document.extractVariableParts(title: String): VariableParts {
     val sizeMl = maybe { sizeMlFrom() }
-    val product = jsonLdFrom<Product>()
+    val product = jsonLdFrom<Product>().single()
 
     return if (title.containsMatch("mixed case")) {
       val parts = title.extract("^(.*?) \\((.*)\\)$")
