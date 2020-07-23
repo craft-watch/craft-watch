@@ -70,7 +70,12 @@ const NameInfo = ({ datum }: CellProps<Item>) => {
 
 const AbvInfo = ({ datum }: CellProps<Item>) => (
   <>
-    {(datum.abv !== undefined) ? `${datum.abv.toFixed(1)}%` : "?"}
+    {
+      // For mixed cases, scalar ABV generally doesn't make sense (as opposed to being unknown)
+      (datum.mixed) ? "" :
+      (datum.abv !== undefined) ? `${datum.abv.toFixed(1)}%` :
+      "?"
+    }
   </>
 );
 
