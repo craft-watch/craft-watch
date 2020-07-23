@@ -1,6 +1,8 @@
 package watch.craft.scrapers
 
 import org.jsoup.nodes.Document
+import watch.craft.Format
+import watch.craft.Format.*
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -42,7 +44,7 @@ class WildCardScraper : Scraper {
 
   private fun Document.extractOffers(details: ShopifyItemDetails, desc: String): List<Offer> {
     val sizeMl = desc.maybe { sizeMlFrom() }
-    val format = desc.formatFrom()
+    val format = desc.formatFrom(disallowed = listOf(KEG))
     val product = jsonLdFrom<Product>().singleOrNull { it.model.isNotEmpty() }
 
     return if (product != null) {
