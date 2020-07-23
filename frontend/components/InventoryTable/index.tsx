@@ -70,7 +70,11 @@ const NameInfo = ({ datum }: CellProps<Item>) => {
 
 const AbvInfo = ({ datum }: CellProps<Item>) => (
   <>
-    {(datum.abv !== undefined) ? `${datum.abv.toFixed(1)}%` : "?"}
+    {
+      (datum.mixed) ? "" :
+      (datum.abv !== undefined) ? `${datum.abv.toFixed(1)}%` :
+      "?"
+    }
   </>
 );
 
