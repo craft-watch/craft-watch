@@ -1,6 +1,7 @@
 package watch.craft.dsl
 
 import org.jsoup.nodes.Element
+import watch.craft.Format
 import watch.craft.Format.*
 import watch.craft.MalformedInputException
 import kotlin.text.RegexOption.IGNORE_CASE
@@ -34,15 +35,31 @@ fun String.sizeMlFrom() = maybeAnyOf(
 ) ?: throw MalformedInputException("Can't extract size")
 
 fun Element.formatFrom(cssQuery: String = ":root", fullProse: Boolean = true) = textFrom(cssQuery).formatFrom(fullProse)
-fun String.formatFrom(fullProse: Boolean = true) = when {
-  containsWord("keg") -> KEG
-  contains(
-    if (fullProse) "\\d+\\s*ml\\s*can".toRegex(IGNORE_CASE) else "can".toRegex(IGNORE_CASE)
-  ) -> CAN   // Can't match directly on "can" because it's a regular English word
-  containsWord("cans") -> CAN
-  containsWord("bottles") -> BOTTLE
-  containsWord("bottle") -> BOTTLE
-  else -> null
+fun String.formatFrom(
+  fullProse: Boolean = true,
+  disallowed: List<Format> = emptyList()
+): Format? {
+  if (KEG !in disallowed) {
+    if (containsWord("keg")) {
+      return KEG
+    }
+  }
+  if (CAN !in disallowed) {
+    if (
+      containsWord("cans") ||
+      contains(
+        if (fullProse) "\\d+\\s*ml\\s*can".toRegex(IGNORE_CASE) else "can".toRegex(IGNORE_CASE)
+      )
+    ) {
+      return CAN
+    }
+  }
+  if (BOTTLE !in disallowed) {
+    if (containsWord("bottle", "bottles")) {
+      return BOTTLE
+    }
+  }
+  return null
 }
 
 fun <K, V> Map<K, V>.grab(key: K) = this[key] ?: throw MalformedInputException("Key not present: ${key}")
