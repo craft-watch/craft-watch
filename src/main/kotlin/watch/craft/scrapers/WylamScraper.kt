@@ -19,7 +19,7 @@ class WylamScraper : Scraper {
         val rawName = a.text()
 
         Leaf(rawName, a.urlFrom()) { doc ->
-          val product = doc.jsonLdFrom<Product>()
+          val product = doc.jsonLdFrom<Product>().single()
           val abv = rawName.maybe { abvFrom() }
           val numItems = rawName.maybe { quantityFrom() }
 

@@ -403,6 +403,17 @@ val SCRAPERS = listOf(
     )
   ),
   entry(
+    WildCardScraper(),
+    Brewery(
+      id = "wild-card",
+      shortName = "Wild Card",
+      name = "Wild Card Brewery",
+      location = "Walthamstow, London",
+      websiteUrl = URI("https://www.wildcardbrewery.co.uk/"),
+      twitterHandle = "WildCardBrewery"
+    )
+  ),
+  entry(
     WiperAndTrueScraper(),
     Brewery(
       id = "wiper-and-true",

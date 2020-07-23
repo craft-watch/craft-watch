@@ -21,7 +21,7 @@ class HowlingHopsScraper : Scraper {
         Leaf(rawName, a.urlFrom()) { doc ->
           val desc = doc.textFrom(".woocommerce-product-details__short-description")
           val parts = extractVariableParts(desc)
-          val product = doc.jsonLdFrom<Product>()
+          val product = doc.jsonLdFrom<Product>().single()
           val available = product.offers.any { it.availability == "http://schema.org/InStock" }
 
           ScrapedItem(

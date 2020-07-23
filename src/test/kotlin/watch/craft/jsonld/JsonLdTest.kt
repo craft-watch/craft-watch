@@ -3,30 +3,33 @@ package watch.craft.jsonld
 import com.fasterxml.jackson.module.kotlin.readValue
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import watch.craft.jsonld.Thing.Offer
+import watch.craft.jsonld.Thing.Product
 
 class JsonLdTest {
   private val mapper = jsonLdMapper()
 
-  private data class Foo(val bars: List<Bar>)
-  private data class Bar(val a: Int)
-
   @Test
-  fun `parses list field with singleton value`() {
+  fun `parses list field with non-list singleton value`() {
     val json = """
       {
-        "bars": {
-          "a": 123
+        "@type": "Product",
+        "name": "A",
+        "description": "Hello",
+        "image": "https://example.invalid",
+        "offers": {
+          "@type": "Offer",
+          "price": 4.23,
+          "availability": "InStock"
         }
       }
     """.trimIndent()
 
     assertEquals(
-      Foo(
-        bars = listOf(
-          Bar(a = 123)
-        )
+      listOf(
+        Offer(price = 4.23, availability = "InStock")
       ),
-      mapper.readValue<Foo>(json)
+      mapper.readValue<Product>(json).offers
     )
   }
 
@@ -34,21 +37,96 @@ class JsonLdTest {
   fun `parses list field with list value`() {
     val json = """
       {
-        "bars": [
-          { "a": 123 },
-          { "a": 456 }
+        "@type": "Product",
+        "name": "A",
+        "description": "Hello",
+        "image": "https://example.invalid",
+        "offers": [
+          {
+            "@type": "Offer",
+            "price": 4.23,
+            "availability": "InStock"
+          },
+          {
+            "@type": "Offer",
+            "price": 8.46,
+            "availability": "InStock"
+          }
         ]
       }
     """.trimIndent()
 
     assertEquals(
-      Foo(
-        bars = listOf(
-          Bar(a = 123),
-          Bar(a = 456)
-        )
+      listOf(
+        Offer(price = 4.23, availability = "InStock"),
+        Offer(price = 8.46, availability = "InStock")
       ),
-      mapper.readValue<Foo>(json)
+      mapper.readValue<Product>(json).offers
+    )
+  }
+
+  @Test
+  fun `skips unrecognised sub-object values`() {
+    val json = """
+      {
+        "@type": "Product",
+        "name": "A",
+        "description": "Hello",
+        "image": "https://example.invalid",
+        "offers": {
+          "@type": "AggregateOffer"
+        }
+      }
+    """.trimIndent()
+
+    assertEquals(
+      emptyList<Offer>(),
+      mapper.readValue<Product>(json).offers
+    )
+  }
+
+  @Test
+  fun `supports deep nesting`() {
+    val json = """
+      {
+        "@type": "Product",
+        "name": "A",
+        "image": "https://example.invalid",
+        "description": "Nice beer.",
+        "offers": {
+          "@type": "AggregateOffer"
+        },
+        "model": [
+          {
+            "@type": "ProductModel",
+            "name": "B",
+            "image": "https://example.invalid",
+            "offers": {
+              "@type": "Offer",
+              "price": 4.23,
+              "availability": "InStock"
+            }
+          },
+          {
+            "@type": "ProductModel",
+            "name": "C",
+            "image": "https://example.invalid",
+            "offers": {
+              "@type": "Offer",
+              "price": 8.46,
+              "availability": "InStock"
+            }
+          }
+        ]
+      }
+    """.trimIndent()
+
+    assertEquals(
+      listOf(
+        Offer(price = 4.23, availability = "InStock"),
+        Offer(price = 8.46, availability = "InStock")
+      ),
+      mapper.readValue<Product>(json).model.flatMap { it.offers }
     )
   }
 }
