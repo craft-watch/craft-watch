@@ -65,6 +65,7 @@ class SemanticsTest {
       assertEquals(3000, "3L".sizeMlFrom())
       assertEquals(3000, "3l".sizeMlFrom())
       assertEquals(3000, "3-litre".sizeMlFrom())
+      assertEquals(3500, "3.5 litre".sizeMlFrom())
     }
 
     @Test
