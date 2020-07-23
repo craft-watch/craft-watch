@@ -13,7 +13,7 @@ interface Props {
 
 interface NewAndBaseline {
   now: BreweryStats;
-  baseline: BreweryStats;
+  baseline?: BreweryStats;
 }
 
 type Extract = (stats: BreweryStats) => number | undefined;
@@ -61,7 +61,7 @@ const createSections = (inventory: Inventory): Array<Section<NewAndBaseline>> =>
 
 const field = (extract: Extract, nonplussed = false) => ({ datum }: CellProps<NewAndBaseline>) => {
   const now = extract(datum.now) ?? 0;
-  const baseline = extract(datum.baseline) ?? 0;
+  const baseline = (datum.baseline !== undefined) ? extract(datum.baseline) ?? 0 : 0;
   const delta = now - baseline;
 
   const extraClassName = nonplussed ? undefined :
