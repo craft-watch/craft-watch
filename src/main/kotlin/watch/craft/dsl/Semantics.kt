@@ -29,8 +29,8 @@ fun String.quantityFrom(vararg moreRegexes: String) = maybeAnyOf(
 fun Element.sizeMlFrom(cssQuery: String = ":root") = textFrom(cssQuery).sizeMlFrom()
 fun String.sizeMlFrom() = maybeAnyOf(
   { extract("$INT_REGEX\\s*ml(?:\\W|$)").intFrom(1) },
-  { extract("$INT_REGEX(?:\\s*|-)(?:litre|liter)(?:s?)(?:\\W|$)").intFrom(1) * 1000 },
-  { extract("$INT_REGEX\\s*l(?:\\W|$)").intFrom(1) * 1000 }
+  { (extract("$DOUBLE_REGEX(?:\\s*|-)(?:litre|liter)(?:s?)(?:\\W|$)").doubleFrom(1) * 1000).toInt() },
+  { (extract("$DOUBLE_REGEX\\s*l(?:\\W|$)").doubleFrom(1) * 1000).toInt() }
 ) ?: throw MalformedInputException("Can't extract size")
 
 fun Element.formatFrom(cssQuery: String = ":root", fullProse: Boolean = true) = textFrom(cssQuery).formatFrom(fullProse)
