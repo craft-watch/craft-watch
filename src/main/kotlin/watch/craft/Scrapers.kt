@@ -62,6 +62,17 @@ val SCRAPERS = listOf(
     )
   ),
   entry(
+    BurntMillScraper(),
+    Brewery(
+      id = "burnt-mill",
+      shortName = "Burnt Mill",
+      name = "Burnt Mill Brewery",
+      location = "Suffolk",
+      websiteUrl = URI("https://burnt-mill-brewery.myshopify.com/"),
+      twitterHandle = "BurntMillBeer"
+    )
+  ),
+  entry(
     CanopyScraper(),
     Brewery(
       id = "canopy",
