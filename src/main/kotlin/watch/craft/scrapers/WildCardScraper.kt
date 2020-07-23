@@ -1,8 +1,7 @@
 package watch.craft.scrapers
 
 import org.jsoup.nodes.Document
-import watch.craft.Format
-import watch.craft.Format.*
+import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf

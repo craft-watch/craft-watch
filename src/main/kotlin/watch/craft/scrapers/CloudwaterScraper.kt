@@ -6,7 +6,6 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.dsl.*
 import java.net.URI
-import kotlin.math.max
 
 class CloudwaterScraper : Scraper {
   override val jobs = forRootUrls(ROOT_URL) { root ->
