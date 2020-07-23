@@ -16,7 +16,6 @@ import org.jsoup.nodes.Document
 import watch.craft.MalformedInputException
 import watch.craft.dsl.selectMultipleFrom
 import watch.craft.jsonld.Thing.*
-import java.net.URI
 
 inline fun <reified T : Any> Document.jsonLdFrom(): List<T> {
   val mapper = jsonLdMapper()
@@ -43,14 +42,14 @@ inline fun <reified T : Any> Document.jsonLdFrom(): List<T> {
 fun jsonLdMapper() = jacksonObjectMapper()
   .disable(FAIL_ON_UNKNOWN_PROPERTIES)
   .registerModule(
-    SimpleModule().addDeserializer(List::class.java, JsonLdListDeserializer())
+    SimpleModule().addDeserializer(List::class.java, ListDeserializer())
   )!!
 
-private class JsonLdListDeserializer(
+private class ListDeserializer(
   private val valueType: JavaType? = null
 ) : JsonDeserializer<List<*>>(), ContextualDeserializer {
   override fun createContextual(ctxt: DeserializationContext, property: BeanProperty) =
-    JsonLdListDeserializer(property.type.containedType(0))
+    ListDeserializer(property.type.containedType(0))
 
   override fun deserialize(p: JsonParser, ctxt: DeserializationContext): List<Any> {
     val mapper = (p.codec as ObjectMapper)
@@ -60,7 +59,11 @@ private class JsonLdListDeserializer(
   }
 }
 
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "@type", defaultImpl = Void::class)
+@JsonTypeInfo(
+  use = JsonTypeInfo.Id.NAME,
+  property = "@type",
+  defaultImpl = Void::class
+)
 @JsonSubTypes(
   JsonSubTypes.Type(Product::class, name = "Product"),
   JsonSubTypes.Type(ProductModel::class, name = "ProductModel"),
@@ -71,8 +74,7 @@ sealed class Thing {
   data class Product(
     val name: String,
     val description: String,
-    val image: List<URI>,
-    val offers: List<Offer>,
+    val offers: List<Offer> = emptyList(),
     val model: List<ProductModel> = emptyList()
   ) : Thing()
 
@@ -83,6 +85,7 @@ sealed class Thing {
   ) : Thing()
 
   data class Offer(
+    val name: String? = null,
     val sku: String? = null,
     val price: Double,
     val availability: String
@@ -91,7 +94,7 @@ sealed class Thing {
   data class PropertyValue(
     val name: String,
     val value: String
-  )
+  ) : Thing()
 }
 
 data class Document(
