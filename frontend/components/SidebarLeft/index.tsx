@@ -4,7 +4,6 @@ import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import styles from "./styles.module.css";
 import classNames from "classnames";
 
-
 interface Props {
   title: string;
   titleSuffix?: JSX.Element;
@@ -23,7 +22,12 @@ const SidebarLeft = (props: Props): JSX.Element => (
           <GitHubLink />
         </div>
         <div className={styles.lol}>
-          Craft Watch is brewed in Crofton Park.
+          <p>
+            Craft Watch is brewed in Crofton Park.
+          </p>
+          <p>
+            © <a href="https://github.com/oliver-charlesworth">Oliver Charlesworth</a> 2020
+          </p>
         </div>
       </address>
     </div>

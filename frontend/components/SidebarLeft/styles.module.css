@@ -21,3 +21,7 @@
 .lol {
   margin-top: 5px;
 }
+
+.lol p {
+  margin: 0;
+}
