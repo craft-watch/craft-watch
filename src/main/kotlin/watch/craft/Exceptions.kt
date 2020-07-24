@@ -16,12 +16,6 @@ class SkipItemException : NonFatalScraperException {
   constructor(message: String, cause: Throwable) : super(message, cause)
 }
 
-/** Already visited a page. Intent is to mitigate infinite loops. */
-class AlreadyVisitedException : NonFatalScraperException {
-  constructor(message: String) : super(message)
-  constructor(message: String, cause: Throwable) : super(message, cause)
-}
-
 /** Input data is malformed in some way. */
 class MalformedInputException : NonFatalScraperException {
   constructor(message: String) : super(message)
@@ -36,6 +30,12 @@ class InvalidItemException : NonFatalScraperException {
 
 /** Error retrieving data over network. */
 class UnretrievableException : NonFatalScraperException {
+  constructor(message: String) : super(message)
+  constructor(message: String, cause: Throwable) : super(message, cause)
+}
+
+/** Max depth exceeded. Intended to mitigate infinite loops. */
+class MaxDepthExceededException : NonFatalScraperException {
   constructor(message: String) : super(message)
   constructor(message: String, cause: Throwable) : super(message, cause)
 }

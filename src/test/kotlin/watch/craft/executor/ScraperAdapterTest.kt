@@ -187,16 +187,22 @@ class ScraperAdapterTest {
 
     @Test
     fun `re-visiting a page doesn't kill everything or cause an infinite loop`() {
+      val children = mutableListOf<Job>()
+      val infiniteLoop = More(url = ROOT_URL) {
+        children
+      }
+      children += infiniteLoop
+
       val adapter = adapter(listOf(
         More(url = ROOT_URL) {
           listOf(
-            Leaf(name = "A", url = ROOT_URL) { itemA },   // Note this would cause an infinite loop
-            Leaf(name = "A", url = URL_B) { itemB }
+            Leaf(name = "A", url = URL_A) { itemA },
+            infiniteLoop
           )
         }
       ))
 
-      assertEquals(listOf(itemB), execute(adapter).items())    // Only other item is returned
+      assertEquals(listOf(itemA), execute(adapter).items())    // Item still returned
     }
   }
 
@@ -231,8 +237,8 @@ class ScraperAdapterTest {
     }
 
     @Test
-    fun `counts already visited as errors`() {
-      val adapter = adapterWithSingleLeaf { throw AlreadyVisitedException("Don't care") }
+    fun `counts max-depth-exceeded as error`() {
+      val adapter = adapterWithSingleLeaf { throw MaxDepthExceededException("Don't care") }
 
       assertEquals(1, execute(adapter).stats.numErrors)
     }
