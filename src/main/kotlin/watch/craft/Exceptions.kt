@@ -34,6 +34,12 @@ class UnretrievableException : NonFatalScraperException {
   constructor(message: String, cause: Throwable) : super(message, cause)
 }
 
+/** Max depth exceeded. Intended to mitigate infinite loops. */
+class MaxDepthExceededException : NonFatalScraperException {
+  constructor(message: String) : super(message)
+  constructor(message: String, cause: Throwable) : super(message, cause)
+}
+
 /** Hard fail. */
 class FatalScraperException : ScraperException {
   constructor(message: String) : super(message)

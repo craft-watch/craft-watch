@@ -184,6 +184,26 @@ class ScraperAdapterTest {
 
       assertEquals(listOf(itemB), execute(adapter).items())    // Other item is returned
     }
+
+    @Test
+    fun `re-visiting a page doesn't kill everything or cause an infinite loop`() {
+      val children = mutableListOf<Job>()
+      val infiniteLoop = More(url = ROOT_URL) {
+        children
+      }
+      children += infiniteLoop
+
+      val adapter = adapter(listOf(
+        More(url = ROOT_URL) {
+          listOf(
+            Leaf(name = "A", url = URL_A) { itemA },
+            infiniteLoop
+          )
+        }
+      ))
+
+      assertEquals(listOf(itemA), execute(adapter).items())    // Item still returned
+    }
   }
 
   @Nested
@@ -212,6 +232,13 @@ class ScraperAdapterTest {
     @Test
     fun `counts errors`() {
       val adapter = adapterWithSingleLeaf { throw RuntimeException("Don't care") }
+
+      assertEquals(1, execute(adapter).stats.numErrors)
+    }
+
+    @Test
+    fun `counts max-depth-exceeded as error`() {
+      val adapter = adapterWithSingleLeaf { throw MaxDepthExceededException("Don't care") }
 
       assertEquals(1, execute(adapter).stats.numErrors)
     }
@@ -285,6 +312,6 @@ class ScraperAdapterTest {
     private val ROOT_URL = URI("https://example.invalid")
     private val PAGE_2_URL = URI("https://example.invalid/2")
     private val URL_A = URI("https://example.invalid/a")
-    private val URL_B = URI("https://example.invalid/a")
+    private val URL_B = URI("https://example.invalid/b")
   }
 }

@@ -52,29 +52,32 @@ class ScraperAdapter(
     val numUnretrievable = AtomicInteger()
     val numErrors = AtomicInteger()
 
-    suspend fun List<Job>.executeAll() = coroutineScope {
+    suspend fun List<Job>.executeAll(depth: Int = 0) = coroutineScope {
       this@executeAll
-        .map { async { it.execute() } }
+        .map { async { it.execute(depth) } }
         .flatMap { it.await() }
     }
 
-    private suspend fun Job.execute(): List<Result> = when (this@execute) {
-      is More -> processGracefully(url) { work(it) }.executeAll()
-      is Leaf -> processGracefully(url) {
-        numRawItems.incrementAndGet()
-        listOf(
-          Result(
-            breweryId = breweryId,
-            rawName = name,
-            url = url,
-            item = work(it)
+    private suspend fun Job.execute(depth: Int): List<Result> {
+      return when (this@execute) {
+        is More -> processGracefully(url, depth) { work(it) }.executeAll(depth + 1)
+        is Leaf -> processGracefully(url, depth) {
+          numRawItems.incrementAndGet()
+          listOf(
+            Result(
+              breweryId = breweryId,
+              rawName = name,
+              url = url,
+              item = work(it)
+            )
           )
-        )
+        }
       }
     }
 
-    private suspend fun <R> Job.processGracefully(url: URI, block: (Document) -> List<R>) = try {
+    private suspend fun <R> Job.processGracefully(url: URI, depth: Int, block: (Document) -> List<R>) = try {
       logger.info("Scraping${suffix()}: $url".prefixed())
+      validateDepth(depth)
       val doc = request(url)
       block(doc)
     } catch (e: Exception) {
@@ -83,9 +86,17 @@ class ScraperAdapter(
         is SkipItemException -> trackAsInfo(numSkipped, "Skipping${suffix()} because: ${e.message}")
         is MalformedInputException -> trackAsWarn(numMalformed, "Error while scraping${suffix()}", e)
         is UnretrievableException -> trackAsWarn(numUnretrievable, "Couldn't retrieve page${suffix()}", e)
+        // Rare enough that no need for dedicated counter
+        is MaxDepthExceededException -> trackAsWarn(numErrors, "Max depth exceeded while scraping${suffix()}", e)
         else -> trackAsWarn(numErrors, "Unexpected error while scraping${suffix()}", e)
       }
       emptyList<R>()
+    }
+
+    private fun validateDepth(depth: Int) {
+      if (depth >= MAX_DEPTH) {
+        throw MaxDepthExceededException("Max depth exceeded")
+      }
     }
   }
 
@@ -94,7 +105,7 @@ class ScraperAdapter(
     logger.info(msg.prefixed())
   }
 
-  private fun trackAsWarn(counter: AtomicInteger, msg: String, cause: Exception) {
+  private fun trackAsWarn(counter: AtomicInteger, msg: String, cause: Exception? = null) {
     counter.incrementAndGet()
     logger.warn(msg.prefixed(), cause)
   }
@@ -116,4 +127,8 @@ class ScraperAdapter(
   private fun Job.suffix() = if (name != null) " [${name}]" else ""
 
   private fun String.prefixed() = "[$breweryId] ${this}"
+
+  companion object {
+    private const val MAX_DEPTH = 20    // Pretty arbitrary - assume no more than this # of paginated results
+  }
 }
