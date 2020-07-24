@@ -48,6 +48,10 @@ td.thumbnail {
   background: var(--sol-violet);
 }
 
+.low-abv {
+  background: var(--sol-yellow);
+}
+
 .sold-out {
   color: var(--sol-base3);
   background: var(--sol-red);

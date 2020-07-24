@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { Item, Offer, Format } from "../../utils/model";
 import SortableTable, { Column, Section, CellProps } from "../SortableTable";
 import { headlineOffer } from "../../utils/stuff";
-import { OUT_OF_STOCK, MINIKEG, MIXED_CASE } from "../../utils/strings";
+import { OUT_OF_STOCK, MINIKEG, MIXED_CASE, LOW_ABV } from "../../utils/strings";
 import { splitToParagraphs } from "../../utils/reactUtils";
 import { BreweryLink } from "../BreweryLink";
 import styles from "./styles.module.css";
@@ -49,6 +49,7 @@ const NameInfo = ({ datum }: CellProps<Item>) => {
   const keg = headlineOffer(datum).format === Format.Keg;
   const kegAvailable = !keg && _.some(_.tail(datum.offers), offer => offer.format === Format.Keg);
   const mixed = datum.mixed;
+  const lowAbv = (datum.abv !== undefined) && (datum.abv <= 0.5);
 
   return (
     <div className={styles.tooltip}>
@@ -62,6 +63,7 @@ const NameInfo = ({ datum }: CellProps<Item>) => {
         {keg && <span className={classNames(styles.pill, styles.keg)}>{MINIKEG}</span>}
         {kegAvailable && <span className={classNames(styles.pill, styles.keg)}>Keg available</span>}
         {mixed && <span className={classNames(styles.pill, styles.mixed)}>{MIXED_CASE}</span>}
+        {lowAbv && <span className={classNames(styles.pill, styles["low-abv"])}>{LOW_ABV}</span>}
       </p>
       {(datum.desc !== undefined) && <TooltipBody datum={datum} />}
     </div>
