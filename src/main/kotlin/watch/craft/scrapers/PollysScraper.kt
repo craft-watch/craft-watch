@@ -1,5 +1,6 @@
 package watch.craft.scrapers
 
+import watch.craft.Format.CAN
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
@@ -16,15 +17,15 @@ class PollysScraper : Scraper {
         val a = el.selectFrom(".woocommerce-loop-product__link")
 
         Leaf(rawName, a.urlFrom()) { doc ->
-          if (rawName.containsMatch("mix")) {
-            throw SkipItemException("Don't know how to deal with mixed packs")
+          if (rawName.containsWord(*BLACKLIST.toTypedArray())) {
+            throw SkipItemException("Not something we can deal with")
           }
 
-          val parts = rawName.split(" – ")
+          val parts = rawName.extract("(.*) – (.*) (\\S+%)")
 
           ScrapedItem(
-            name = parts[0],
-            summary = parts[1],
+            name = parts.stringFrom(1),
+            summary = parts.stringFrom(2),
             desc = doc.formattedTextFrom("#tab-description"),
             mixed = false,
             abv = rawName.abvFrom(),
@@ -32,7 +33,8 @@ class PollysScraper : Scraper {
             offers = setOf(
               Offer(
                 totalPrice = doc.priceFrom("#main .woocommerce-Price-amount"),
-                sizeMl = POLLYS_CAN_SIZE_ML
+                sizeMl = POLLYS_CAN_SIZE_ML,
+                format = CAN
               )
             ),
             thumbnailUrl = a.urlFrom("img")
@@ -45,5 +47,7 @@ class PollysScraper : Scraper {
     private val ROOT = root("https://shop.pollysbrew.co/")
 
     private const val POLLYS_CAN_SIZE_ML = 440
+
+    private val BLACKLIST = listOf("mix", "glass")
   }
 }
