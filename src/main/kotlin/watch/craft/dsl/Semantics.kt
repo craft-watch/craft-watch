@@ -6,7 +6,9 @@ import watch.craft.Format.*
 import watch.craft.MalformedInputException
 import kotlin.text.RegexOption.IGNORE_CASE
 
-fun Element.priceFrom(cssQuery: String = ":root") = extractFrom(cssQuery, "\\d+(\\.\\d+)?").doubleFrom(0)
+fun Element.priceFrom(cssQuery: String = ":root") = textFrom(cssQuery).priceFrom()
+fun String.priceFrom() = maybe { extract("\\d+(\\.\\d+)?").doubleFrom(0) }
+  ?: throw MalformedInputException("Can't extract price")
 
 fun Element.abvFrom(
   cssQuery: String = ":root",

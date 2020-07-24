@@ -81,7 +81,7 @@ const BreweriesApp = ({ inventory }: Props): JSX.Element => {
 const partition = (breweries: Array<Brewery>): Array<Section<Brewery>> => {
   const partitioned = _.groupBy(breweries, b => b.id[0]);
   return _.sortBy(
-    _.map(partitioned, (v, k) => ({ name: k, data: v })),
+    _.map(partitioned, (v, k) => ({ name: k.toUpperCase(), data: v })),
     s => s.name,
   );
 };

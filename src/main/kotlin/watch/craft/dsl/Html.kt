@@ -75,7 +75,7 @@ fun Element.urlFrom(
 
 fun Element.attrFrom(cssQuery: String = ":root", vararg attrs: String) = with(selectFrom(cssQuery)) {
   attrs.map { attr(it) }.firstOrNull { it.isNotBlank() }
-    ?: throw MalformedInputException("Attribute(s) blank or not present: ${attrs}")
+    ?: throw MalformedInputException("Attribute(s) blank or not present: ${attrs.toList()}")
 }
 
 fun Element.selectFrom(cssQuery: String) = selectFirst(cssQuery)
