@@ -16,7 +16,7 @@ class SirenScraper : Scraper {
         val itemName = el.selectFrom(".itemName")
         val rawName = itemName.text()
 
-        Leaf(rawName, itemName.urlFrom("a")) { doc ->
+        leaf(rawName, itemName.urlFrom("a")) { doc ->
           if (rawName.containsMatch("Mixed")) {
             throw SkipItemException("Can't deal with mixed cases yet")    // TODO
           }

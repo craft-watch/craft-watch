@@ -13,7 +13,7 @@ class BurningSkyScraper : Scraper {
       .map { el ->
         val title = el.textFrom(".product-title")
 
-        Leaf(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
+        leaf(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
 
           ScrapedItem(
             name = title.split(" - ")[0],

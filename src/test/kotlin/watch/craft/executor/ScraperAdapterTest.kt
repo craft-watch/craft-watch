@@ -10,9 +10,9 @@ import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import watch.craft.*
 import watch.craft.Scraper.Job
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.Job.More
 import watch.craft.Scraper.ScrapedItem
+import watch.craft.dsl.leaf
+import watch.craft.dsl.more
 import watch.craft.dsl.textFrom
 import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.network.Retriever
@@ -48,7 +48,7 @@ class ScraperAdapterTest {
 
     val adapter = adapter(
       listOf(
-        Leaf(name = "A", url = URL_A, work = work)
+        leaf(name = "A", url = URL_A, work = work)
       )
     )
 
@@ -63,8 +63,8 @@ class ScraperAdapterTest {
     @Test
     fun `multiple flat items`() {
       val adapter = adapter(listOf(
-        Leaf(name = "A", url = URL_A) { itemA },
-        Leaf(name = "A", url = URL_B) { itemB }
+        leaf(name = "A", url = URL_A) { itemA },
+        leaf(name = "A", url = URL_B) { itemB }
       ))
 
       assertEquals(listOf(itemA, itemB), execute(adapter).items())
@@ -73,10 +73,10 @@ class ScraperAdapterTest {
     @Test
     fun `non-leaf node`() {
       val adapter = adapter(listOf(
-        More(url = ROOT_URL) {
+        more(ROOT_URL) {
           listOf(
-            Leaf(name = "A", url = URL_A) { itemA },
-            Leaf(name = "A", url = URL_B) { itemB }
+            leaf(name = "A", url = URL_A) { itemA },
+            leaf(name = "A", url = URL_B) { itemB }
           )
         }
       ))
@@ -87,12 +87,12 @@ class ScraperAdapterTest {
     @Test
     fun `multiple non-leaf nodes`() {
       val adapter = adapter(listOf(
-        More(url = ROOT_URL) {
+        more(ROOT_URL) {
           listOf(
-            Leaf(name = "A", url = URL_A) { itemA },
-            More(url = PAGE_2_URL) {
+            leaf(name = "A", url = URL_A) { itemA },
+            more(PAGE_2_URL) {
               listOf(
-                Leaf(name = "A", url = URL_B) { itemB }
+                leaf(name = "A", url = URL_B) { itemB }
               )
             }
           )
@@ -112,10 +112,10 @@ class ScraperAdapterTest {
       }
 
       val adapter = adapter(listOf(
-        More(url = ROOT_URL) {
+        more(ROOT_URL) {
           listOf(
-            Leaf(name = "A", url = URL_A) { itemA },
-            Leaf(name = "A", url = URL_B) { itemB }
+            leaf(name = "A", url = URL_A) { itemA },
+            leaf(name = "A", url = URL_B) { itemB }
           )
         }
       ))
@@ -132,10 +132,10 @@ class ScraperAdapterTest {
       }
 
       val adapter = adapter(listOf(
-        More(url = ROOT_URL) {
+        more(ROOT_URL) {
           listOf(
-            Leaf(name = "A", url = URL_A) { itemA },
-            Leaf(name = "A", url = URL_B) { itemB }
+            leaf(name = "A", url = URL_A) { itemA },
+            leaf(name = "A", url = URL_B) { itemB }
           )
         }
       ))
@@ -146,10 +146,10 @@ class ScraperAdapterTest {
     @Test
     fun `non-fatal exception during non-leaf scrape doesn't kill everything`() {
       val adapter = adapter(listOf(
-        More(url = ROOT_URL) {
+        more(ROOT_URL) {
           listOf(
-            Leaf(name = "A", url = URL_A) { itemA },
-            More(url = PAGE_2_URL) { throw MalformedInputException("Uh oh") }
+            leaf(name = "A", url = URL_A) { itemA },
+            more(PAGE_2_URL) { throw MalformedInputException("Uh oh") }
           )
         }
       ))
@@ -160,10 +160,10 @@ class ScraperAdapterTest {
     @Test
     fun `non-fatal exception during leaf scrape doesn't kill everything`() {
       val adapter = adapter(listOf(
-        More(url = ROOT_URL) {
+        more(ROOT_URL) {
           listOf(
-            Leaf(name = "A", url = URL_A) { throw MalformedInputException("Uh oh") },
-            Leaf(name = "A", url = URL_B) { itemB }
+            leaf(name = "A", url = URL_A) { throw MalformedInputException("Uh oh") },
+            leaf(name = "A", url = URL_B) { itemB }
           )
         }
       ))
@@ -174,10 +174,10 @@ class ScraperAdapterTest {
     @Test
     fun `skip exception during leaf scrape doesn't kill everything`() {
       val adapter = adapter(listOf(
-        More(url = ROOT_URL) {
+        more(ROOT_URL) {
           listOf(
-            Leaf(name = "A", url = URL_A) { throw SkipItemException("Don't care") },
-            Leaf(name = "A", url = URL_B) { itemB }
+            leaf(name = "A", url = URL_A) { throw SkipItemException("Don't care") },
+            leaf(name = "A", url = URL_B) { itemB }
           )
         }
       ))
@@ -188,15 +188,13 @@ class ScraperAdapterTest {
     @Test
     fun `re-visiting a page doesn't kill everything or cause an infinite loop`() {
       val children = mutableListOf<Job>()
-      val infiniteLoop = More(url = ROOT_URL) {
-        children
-      }
+      val infiniteLoop = more(ROOT_URL) { children }
       children += infiniteLoop
 
       val adapter = adapter(listOf(
-        More(url = ROOT_URL) {
+        more(ROOT_URL) {
           listOf(
-            Leaf(name = "A", url = URL_A) { itemA },
+            leaf(name = "A", url = URL_A) { itemA },
             infiniteLoop
           )
         }
@@ -292,9 +290,9 @@ class ScraperAdapterTest {
   private fun docWithHeaderMatching(header: String): Document = argForWhich { textFrom("h1") == header }
 
   private fun adapterWithSingleLeaf(work: (Document) -> ScrapedItem) = adapter(listOf(
-    More(url = ROOT_URL) {
+    more(ROOT_URL) {
       listOf(
-        Leaf(name = "A", url = URL_A, work = work)
+        leaf(name = "A", url = URL_A, work = work)
       )
     }
   ))

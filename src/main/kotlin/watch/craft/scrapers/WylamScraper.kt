@@ -17,7 +17,7 @@ class WylamScraper : Scraper {
         val a = el.selectFrom(".grid-product__title")
         val rawName = a.text()
 
-        Leaf(rawName, a.urlFrom()) { doc ->
+        leaf(rawName, a.urlFrom()) { doc ->
           val product = doc.jsonLdFrom<Product>().single()
           val abv = rawName.maybe { abvFrom() }
           val numItems = rawName.maybe { quantityFrom() }

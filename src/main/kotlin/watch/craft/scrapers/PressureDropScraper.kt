@@ -15,7 +15,7 @@ class PressureDropScraper : Scraper {
         val a = el.selectFrom(".grid__image")
         val rawName = el.textFrom(".f--title")
 
-        Leaf(rawName, a.urlFrom()) { doc ->
+        leaf(rawName, a.urlFrom()) { doc ->
           val itemText = doc.text()
           val parts = doc.extractFrom(".product__title", "^(.*?)\\s*(-\\s*(.*?))?$")
 

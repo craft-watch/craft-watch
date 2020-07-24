@@ -15,7 +15,7 @@ class MarbleScraper : Scraper {
       .map { el ->
         val name = el.textFrom(".woocommerce-loop-product__title")
 
-        Leaf(name, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
+        leaf(name, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
           val attributes = doc.extractAttributes()
           val volumeDetails = attributes.extractVolumeDetails()
 

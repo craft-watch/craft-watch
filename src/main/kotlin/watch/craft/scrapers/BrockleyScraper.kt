@@ -15,7 +15,7 @@ class BrockleyScraper : Scraper {
       .map { el ->
         val title = el.textFrom("product-item-name".hook())
 
-        Leaf(title, el.urlFrom("product-item-container".hook())) { doc ->
+        leaf(title, el.urlFrom("product-item-container".hook())) { doc ->
           if (title.containsWord(*BLACKLIST.toTypedArray())) {
             throw SkipItemException("Can't deal with this")
           }

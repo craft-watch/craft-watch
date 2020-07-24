@@ -17,7 +17,7 @@ class CraftyScraper : Scraper {
       .map { el ->
         val title = el.textFrom(".woocommerce-loop-product__title")
 
-        Leaf(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
+        leaf(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
           val mixed = doc.containsMatchFrom(".product_meta", "mixed")
           val desc = doc.formattedTextFrom(".et_pb_wc_description")
 

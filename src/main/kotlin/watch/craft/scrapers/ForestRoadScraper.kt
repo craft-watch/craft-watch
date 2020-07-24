@@ -16,7 +16,7 @@ class ForestRoadScraper : Scraper {
       .map { el ->
         val title = el.textFrom(".ProductList-title")
 
-        Leaf(title, el.urlFrom("a.ProductList-item-link")) { doc ->
+        leaf(title, el.urlFrom("a.ProductList-item-link")) { doc ->
           if (title.containsMatch("subscription")) {
             throw SkipItemException("Subscriptions aren't something we can model")
           }

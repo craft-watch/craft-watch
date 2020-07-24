@@ -14,7 +14,7 @@ class SolvayScraper : Scraper {
       .map { el ->
         val rawName = el.textFrom(".grid-title")
 
-        Leaf(rawName, el.urlFrom("a.grid-item-link")) { doc ->
+        leaf(rawName, el.urlFrom("a.grid-item-link")) { doc ->
           val nameParts = rawName.extract("(.*?)\\s+\\|\\s+(?:(.*?)\\s+\\d)?")
           val desc = doc.selectFrom(".ProductItem-details-excerpt")
           val mixed = rawName.containsMatch("mix")

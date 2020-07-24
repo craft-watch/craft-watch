@@ -14,7 +14,7 @@ class GipsyHillScraper : Scraper {
         val a = el.selectFrom(".woocommerce-LoopProduct-link")
         val rawName = a.textFrom(".woocommerce-loop-product__title")
 
-        Leaf(rawName, a.urlFrom()) { doc ->
+        leaf(rawName, a.urlFrom()) { doc ->
           val rawSummary = doc.textFrom(".summary")
           val numCans = doc.maybe { selectMultipleFrom(".woosb-title-inner") }
             ?.map { it.quantityFrom() }?.sum()

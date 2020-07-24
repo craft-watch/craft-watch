@@ -1,17 +1,18 @@
 package watch.craft.executor
 
+import com.fasterxml.jackson.module.kotlin.readValue
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import mu.KotlinLogging
 import org.jsoup.Jsoup
-import org.jsoup.nodes.Document
 import watch.craft.*
-import watch.craft.Scraper.Job
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.Job.More
-import watch.craft.Scraper.ScrapedItem
+import watch.craft.Scraper.*
+import watch.craft.Scraper.Job.*
+import watch.craft.Scraper.Work.HtmlWork
+import watch.craft.Scraper.Work.JsonWork
 import watch.craft.dsl.selectFrom
 import watch.craft.network.Retriever
+import watch.craft.utils.mapper
 import java.net.URI
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -60,27 +61,47 @@ class ScraperAdapter(
 
     private suspend fun Job.execute(depth: Int): List<Result> {
       return when (this@execute) {
-        is More -> processGracefully(url, depth) { work(it) }.executeAll(depth + 1)
-        is Leaf -> processGracefully(url, depth) {
+        is More -> processGracefully(url, depth, work) { it }.executeAll(depth + 1)
+        is Leaf -> processGracefully(url, depth, work) {
           numRawItems.incrementAndGet()
           listOf(
             Result(
               breweryId = breweryId,
               rawName = name,
               url = url,
-              item = work(it)
+              item = it
             )
           )
         }
       }
     }
 
-    private suspend fun <R> Job.processGracefully(url: URI, depth: Int, block: (Document) -> List<R>) = try {
+    private suspend fun <T, R> Job.processGracefully(
+      url: URI,
+      depth: Int,
+      work: Work<T>,
+      block: (T) -> List<R>
+    ) = try {
       logger.info("Scraping${suffix()}: $url".prefixed())
       validateDepth(depth)
-      val doc = request(url)
-      block(doc)
+      block(
+        when (work) {
+          is JsonWork -> work.work(requestJson(url))
+          is HtmlWork -> work.work(requestHtml(url))
+        }
+      )
     } catch (e: Exception) {
+      handleException(e)
+      emptyList<R>()
+    }
+
+    private fun validateDepth(depth: Int) {
+      if (depth >= MAX_DEPTH) {
+        throw MaxDepthExceededException("Max depth exceeded")
+      }
+    }
+
+    private fun Job.handleException(e: Exception) {
       when (e) {
         is FatalScraperException -> throw e
         is SkipItemException -> trackAsInfo(numSkipped, "Skipping${suffix()} because: ${e.message}")
@@ -89,13 +110,6 @@ class ScraperAdapter(
         // Rare enough that no need for dedicated counter
         is MaxDepthExceededException -> trackAsWarn(numErrors, "Max depth exceeded while scraping${suffix()}", e)
         else -> trackAsWarn(numErrors, "Unexpected error while scraping${suffix()}", e)
-      }
-      emptyList<R>()
-    }
-
-    private fun validateDepth(depth: Int) {
-      if (depth >= MAX_DEPTH) {
-        throw MaxDepthExceededException("Max depth exceeded")
       }
     }
   }
@@ -110,13 +124,17 @@ class ScraperAdapter(
     logger.warn(msg.prefixed(), cause)
   }
 
-  private suspend fun request(url: URI) = Jsoup.parse(
-    String(retriever.retrieve(url, ".html", ::validate)),
+  private suspend fun requestJson(url: URI) = mapper().readValue<Any>(
+    String(retriever.retrieve(url, ".json") { Unit })  // TODO - validation
+  )
+
+  private suspend fun requestHtml(url: URI) = Jsoup.parse(
+    String(retriever.retrieve(url, ".html", ::validateHtml)),
     url.toString()
   )!!
 
   // Enough to handle e.g. Wander Beyond serving up random Wix placeholder pages
-  private fun validate(content: ByteArray) {
+  private fun validateHtml(content: ByteArray) {
     try {
       Jsoup.parse(String(content)).selectFrom("title")
     } catch (e: Exception) {

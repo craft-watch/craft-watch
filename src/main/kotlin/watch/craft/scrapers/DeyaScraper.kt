@@ -13,7 +13,7 @@ class DeyaScraper : Scraper {
       .map { el ->
         val title = el.textFrom(".woocommerce-loop-product__title")
 
-        Leaf(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
+        leaf(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
           val desc = doc.formattedTextFrom(".woocommerce-product-details__short-description")
           val mixed = title.containsMatch("mix")
 

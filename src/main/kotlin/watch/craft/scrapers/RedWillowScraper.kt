@@ -17,7 +17,7 @@ class RedWillowScraper : Scraper {
       .map { el ->
         val rawName = el.textFrom(".ProductList-title")
 
-        Leaf(rawName, el.urlFrom("a.ProductList-item-link")) { doc ->
+        leaf(rawName, el.urlFrom("a.ProductList-item-link")) { doc ->
           if (BLACKLIST.any { rawName.containsMatch(it) }) {
             throw SkipItemException("Identified as non-beer")
           }

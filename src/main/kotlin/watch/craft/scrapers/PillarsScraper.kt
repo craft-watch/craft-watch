@@ -14,7 +14,7 @@ class PillarsScraper : Scraper {
     root
       .shopifyItems()
       .map { details ->
-        Leaf(details.title, details.url) { doc ->
+        leaf(details.title, details.url) { doc ->
           val titleParts = extractTitleParts(details.title)
           val descParts = doc.orSkip("Couldn't find style or ABV") {
             extractFrom(".product-single__description", "STYLE:\\s+(.+?)\\s+ABV:\\s+(\\d\\.\\d+)%")

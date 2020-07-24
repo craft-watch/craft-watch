@@ -17,7 +17,7 @@ class WildCardScraper : Scraper {
     root
       .shopifyItems()
       .map { details ->
-        Leaf(details.title, details.url) { doc ->
+        leaf(details.title, details.url) { doc ->
           val desc = doc.formattedTextFrom(".product-single__description")
           val mixed = details.title.containsWord("mixed", "box")
 

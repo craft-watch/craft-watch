@@ -15,7 +15,7 @@ class FivePointsScraper : Scraper {
       .map { el ->
         val a = el.selectFrom("h2 a")
 
-        Leaf(a.text(), a.urlFrom()) { doc ->
+        leaf(a.text(), a.urlFrom()) { doc ->
           val title = doc.maybe { selectFrom(".itemTitle .small") }
           val parts = title?.maybe {
             extractFrom(regex = "(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+((\\d+)\\s+x\\s+)?")

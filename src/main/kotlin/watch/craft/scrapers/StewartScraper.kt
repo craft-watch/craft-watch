@@ -13,7 +13,7 @@ class StewartScraper : Scraper {
       .map { el ->
         val a = el.selectFrom("h2 a")
 
-        Leaf(a.text(), a.urlFrom()) { doc ->
+        leaf(a.text(), a.urlFrom()) { doc ->
 
           ScrapedItem(
             thumbnailUrl = el.urlFrom(".imageInnerWrap img"),

@@ -16,7 +16,7 @@ class PurityScraper : Scraper {
       .map { el ->
         val title = el.textFrom(".woocommerce-loop-product__title")
 
-        Leaf(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
+        leaf(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
           val desc = doc.formattedTextFrom(".elementor-widget-woocommerce-product-content")
 
           ScrapedItem(

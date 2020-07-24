@@ -17,7 +17,7 @@ class HowlingHopsScraper : Scraper {
         val a = el.selectFrom(".wc-block-grid__product-link")
         val rawName = el.textFrom(".wc-block-grid__product-title")
 
-        Leaf(rawName, a.urlFrom()) { doc ->
+        leaf(rawName, a.urlFrom()) { doc ->
           val desc = doc.textFrom(".woocommerce-product-details__short-description")
           val parts = extractVariableParts(desc)
           val product = doc.jsonLdFrom<Product>().single()

@@ -13,7 +13,7 @@ class ThornbridgeScraper : Scraper {
       .map { el ->
         val rawName = el.textFrom(".h6")
 
-        Leaf(rawName, el.urlFrom("a")) { doc ->
+        leaf(rawName, el.urlFrom("a")) { doc ->
           val abv = orSkip("No ABV in title, so assume it's not a beer") { rawName.abvFrom() }
 
           val parts = rawName.extract("(.*?)\\W+\\d.*%\\W+(.*)")

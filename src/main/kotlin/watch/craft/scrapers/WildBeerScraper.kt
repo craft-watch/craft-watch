@@ -14,7 +14,7 @@ class WildBeerScraper : Scraper {
       .selectMultipleFrom(".itemSmall")
       .map { el ->
         val title = el.textFrom(".itemSmallTitle")
-        Leaf(title, el.urlFrom(".itemImageWrap a")) { doc ->
+        leaf(title, el.urlFrom(".itemImageWrap a")) { doc ->
           val desc = doc.formattedTextFrom(".productDescription")
           val available = ".unavailableItemWrap" !in doc
           val format = if (keg) KEG else desc.formatFrom(disallowed = listOf(KEG))

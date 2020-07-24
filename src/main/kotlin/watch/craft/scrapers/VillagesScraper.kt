@@ -16,7 +16,7 @@ class VillagesScraper : Scraper {
     root
       .shopifyItems()
       .map { details ->
-        Leaf(details.title, details.url) { doc ->
+        leaf(details.title, details.url) { doc ->
           val parts = doc.extractVariableParts(details.title)
 
           ScrapedItem(

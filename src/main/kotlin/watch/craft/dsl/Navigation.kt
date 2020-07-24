@@ -2,37 +2,55 @@ package watch.craft.dsl
 
 import org.jsoup.nodes.Document
 import watch.craft.Scraper.Job
+import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.Job.More
+import watch.craft.Scraper.ScrapedItem
+import watch.craft.Scraper.Work.HtmlWork
+import watch.craft.Scraper.Work.JsonWork
 import java.net.URI
 
-data class Root<T>(
+data class Root<Context>(
   val url: URI,
-  val context: T
+  val context: Context
 )
 
 fun root(url: String) = root(url, Unit)
+
 fun forRoots(vararg roots: Root<Unit>, work: (Document) -> List<Job>) =
-  forRoots(*roots, work = work.withDummyContext())
+  forRoots(*roots, work = work.ignoreContext())
+
+fun forJsonRoots(vararg roots: Root<Unit>, work: (Any) -> List<Job>) =
+  forJsonRoots(*roots, work = work.ignoreContext())
 
 fun forPaginatedRoots(vararg roots: Root<Unit>, work: (Document) -> List<Job>) =
-  forPaginatedRoots(*roots, work = work.withDummyContext())
+  forPaginatedRoots(*roots, work = work.ignoreContext())
 
-fun <T> root(url: String, context: T) = Root(url.toUri(), context)
-fun <T> forRoots(vararg roots: Root<T>, work: (Document, T) -> List<Job>) =
-  roots.map { More(it.url) { doc -> work(doc, it.context) } }
+fun <Context> root(url: String, context: Context) = Root(url.toUri(), context)
 
-fun <T> forPaginatedRoots(vararg roots: Root<T>, work: (Document, T) -> List<Job>) =
+fun <Context> forJsonRoots(vararg roots: Root<Context>, work: (Any, Context) -> List<Job>) =
+  roots.map { More(it.url, JsonWork { doc -> work(doc, it.context) }) }
+
+fun <Context> forRoots(vararg roots: Root<Context>, work: (Document, Context) -> List<Job>) =
+  roots.map { More(it.url, HtmlWork { doc -> work(doc, it.context) }) }
+
+fun <Context> forPaginatedRoots(vararg roots: Root<Context>, work: (Document, Context) -> List<Job>) =
   roots.map { followPagination(it, work) }
 
-private fun <T> followPagination(root: Root<T>, work: (Document, T) -> List<Job>): More =
-  More(root.url) { doc ->
+private fun <Context> followPagination(root: Root<Context>, work: (Document, Context) -> List<Job>): More =
+  More(root.url, HtmlWork { doc ->
     val next = doc.maybe { urlFrom("[rel=next]") }
     (if (next != null) {
       listOf(followPagination(root.copy(url = next), work))
     } else {
       emptyList()
     }) + work(doc, root.context)
-  }
+  })
 
-private fun ((Document) -> List<Job>).withDummyContext() = { doc: Document, _: Unit -> this(doc) }
+
+fun more(url: URI, work: (data: Document) -> List<Job>) = More(url, HtmlWork(work))
+fun moreJson(url: URI, work: (data: Any) -> List<Job>) = More(url, JsonWork(work))
+fun leaf(name: String, url: URI, work: (data: Document) -> ScrapedItem) = Leaf(name, url, HtmlWork(work))
+fun leafJson(name: String, url: URI, work: (data: Any) -> ScrapedItem) = Leaf(name, url, JsonWork(work))
+
+private fun <T> ((T) -> List<Job>).ignoreContext() = { content: T, _: Unit -> this(content) }
 

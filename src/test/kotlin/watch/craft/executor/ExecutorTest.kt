@@ -11,6 +11,7 @@ import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.ScraperEntry
+import watch.craft.dsl.leaf
 import watch.craft.network.Retriever
 import java.net.URI
 import java.time.Clock
@@ -32,8 +33,8 @@ class ExecutorTest {
   @Test
   fun `scrapes products`() {
     val scraper = scraper(jobs = listOf(
-      Leaf(name = "A", url = productUrl("a")) { product("Foo") },
-      Leaf(name = "B", url = productUrl("b")) { product("Bar") }
+      leaf(name = "A", url = productUrl("a")) { product("Foo") },
+      leaf(name = "B", url = productUrl("b")) { product("Bar") }
     ))
 
     assertEquals(
@@ -76,9 +77,9 @@ class ExecutorTest {
   @Test
   fun `continues after validation failure`() {
     val scraper = scraper(jobs = listOf(
-      Leaf(name = "A", url = productUrl("a")) { product("Foo") },
-      Leaf(name = "B", url = productUrl("b")) { product("Foo").copy(name = "") },  // Invalid name
-      Leaf(name = "C", url = productUrl("c")) { product("Bar") }
+      leaf(name = "A", url = productUrl("a")) { product("Foo") },
+      leaf(name = "B", url = productUrl("b")) { product("Foo").copy(name = "") },  // Invalid name
+      leaf(name = "C", url = productUrl("c")) { product("Bar") }
     ))
 
     assertEquals(

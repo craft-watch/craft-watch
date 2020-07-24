@@ -13,7 +13,7 @@ class UnityScraper : Scraper {
       .shopifyItems()
       .map { details ->
 
-        Leaf(details.title, details.url) { doc ->
+        leaf(details.title, details.url) { doc ->
           val desc = doc.formattedTextFrom(".product-single__description")
 
           ScrapedItem(

@@ -19,7 +19,7 @@ class FourpureScraper : Scraper {
         val a = el.selectFrom("a")
         val rawName = el.textFrom(".content h3")
 
-        Leaf(rawName, a.urlFrom()) { doc ->
+        leaf(rawName, a.urlFrom()) { doc ->
           if (el.title().containsMatch("pack")) {
             throw SkipItemException("Can't calculate price-per-can for packs")
           }

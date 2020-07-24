@@ -17,7 +17,7 @@ class CanopyScraper : Scraper {
         val a = el.selectFrom(".product__title a")
         val title = el.textFrom(".product__title")
 
-        Leaf(title, a.urlFrom()) { doc ->
+        leaf(title, a.urlFrom()) { doc ->
           val parts = a.extractFrom(regex = "([^\\d]+) (\\d+(\\.\\d+)?)?")
 
           if (title.containsMatch("box|pack")) {

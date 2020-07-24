@@ -17,7 +17,7 @@ class BigDropScraper : Scraper {
       .map { el ->
         val title = el.textFrom(".title")
 
-        Leaf(title, el.urlFrom("a")) { doc ->
+        leaf(title, el.urlFrom("a")) { doc ->
           if (title.containsWord(*BLACKLIST.toTypedArray())) {
             throw SkipItemException("Not a beer")
           }

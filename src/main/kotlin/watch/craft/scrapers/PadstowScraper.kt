@@ -15,7 +15,7 @@ class PadstowScraper : Scraper {
       .map { el ->
         val rawName = el.textFrom("h3")
 
-        Leaf(rawName, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
+        leaf(rawName, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
           if (".stat" !in doc) {
             throw SkipItemException("Not an actual beer")
           }

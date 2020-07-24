@@ -17,7 +17,7 @@ class RoostersScraper : Scraper {
       .map { el ->
         val title = el.textFrom(".ProductList-title")
 
-        Leaf(title, el.urlFrom(".ProductList-item-link")) { doc ->
+        leaf(title, el.urlFrom(".ProductList-item-link")) { doc ->
           if (title.containsWord("bag")) {
             throw SkipItemException("Bag-in-box options are too much hassle")
           }

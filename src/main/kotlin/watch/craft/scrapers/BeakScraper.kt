@@ -14,7 +14,7 @@ class BeakScraper : Scraper {
         val a = el.selectFrom("a")
         val rawName = a.textFrom("p")
 
-        Leaf(rawName, a.urlFrom()) { doc ->
+        leaf(rawName, a.urlFrom()) { doc ->
           val desc = doc.selectFrom(".product_description")
           val allTheText = "${rawName}\n${desc.text()}"
 

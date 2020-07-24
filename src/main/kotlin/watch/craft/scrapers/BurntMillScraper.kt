@@ -13,7 +13,7 @@ class BurntMillScraper : Scraper {
       .selectMultipleFrom(".ProductItem")
       .map { el ->
         val title = el.textFrom(".ProductItem__Title")
-        Leaf(title, el.urlFrom(".ProductItem__ImageWrapper")) { doc ->
+        leaf(title, el.urlFrom(".ProductItem__ImageWrapper")) { doc ->
           ScrapedItem(
             name = title
               .cleanse(

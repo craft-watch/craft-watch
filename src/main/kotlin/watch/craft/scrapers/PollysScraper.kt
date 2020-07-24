@@ -16,7 +16,7 @@ class PollysScraper : Scraper {
         val rawName = el.textFrom(".woocommerce-loop-product__title")
         val a = el.selectFrom(".woocommerce-loop-product__link")
 
-        Leaf(rawName, a.urlFrom()) { doc ->
+        leaf(rawName, a.urlFrom()) { doc ->
           if (rawName.containsWord(*BLACKLIST.toTypedArray())) {
             throw SkipItemException("Not something we can deal with")
           }

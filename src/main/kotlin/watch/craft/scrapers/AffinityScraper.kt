@@ -1,42 +1,75 @@
 package watch.craft.scrapers
 
-import org.jsoup.nodes.Document
+import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.module.kotlin.convertValue
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
-import watch.craft.SkipItemException
 import watch.craft.dsl.*
+import watch.craft.utils.mapper
+import java.net.URI
 
 class AffinityScraper : Scraper {
-  override val jobs = forRoots(ROOT) { root: Document ->
-    root
-      .selectMultipleFrom(".product")
-      .map { el ->
-        val title = el.textFrom(".name")
+  private val mapper = mapper()
 
-        Leaf(title, el.urlFrom("a")) { doc ->
+  override val jobs = forJsonRoots(JSON_ROOT) { content: Any ->
+    val idx = mapper.convertValue<Index>(content)
+
+    idx.products
+      .map { p ->
+        leafJson(p.name, (JSON_ROOT.url.toString() + "/" + p.url).toUri()) { leaf ->
+          val product = mapper.convertValue<Product>(leaf)
+
           ScrapedItem(
-            name = title,
-            summary = null,
-            desc = null,
-            abv = null,
+            name = product.name,
+            desc = product.description,
+            abv = product.description.abvFrom(),
             available = true,
-            offers = setOf(
+            offers = product.variants.map { v ->
               Offer(
-                quantity = 1,
-                totalPrice = el.priceFrom(".price"),
-                sizeMl = null,
-                format = null
+                quantity = v.optionsValues.quantity?.extract("\\d+")?.intFrom(0) ?: 1,
+                totalPrice = v.price,
+                sizeMl = product.name.sizeMlFrom(),
+                format = product.name.maybe { formatFrom(fullProse = false) }
               )
-            ),
-            thumbnailUrl = el.urlFrom("img", preference = "src")
+            }.toSet(),
+            thumbnailUrl = product.images.first().url
           )
         }
       }
   }
 
+  private data class Index(
+    val products: List<Product>
+  ) {
+    data class Product(
+      val name: String,
+      val url: String
+    )
+  }
+
+  private data class Product(
+    val name: String,
+    val description: String,
+    val images: List<Image>,
+    val variants: List<Variant>
+  ) {
+    data class Image(
+      val url: URI
+    )
+
+    data class Variant(
+      val optionsValues: OptionsValues,
+      val price: Double
+    )
+
+    data class OptionsValues(
+      @JsonProperty("Quantity")
+      val quantity: String?
+    )
+  }
+
   companion object {
-    private val ROOT = root("https://www.affinitybrewco.com/shop.html")
+    private val JSON_ROOT = root("https://affinitybrewco.com/____webshop/v1/affinitybrewco.com/products")
   }
 }

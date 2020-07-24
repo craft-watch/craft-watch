@@ -14,7 +14,7 @@ class InnisAndGunnScraper : Scraper {
         val a = el.selectFrom("h2 a")
         val rawName = a.textFrom()
 
-        Leaf(rawName, a.urlFrom()) { doc ->
+        leaf(rawName, a.urlFrom()) { doc ->
           val volume = el.selectFrom(".itemVolume")
 
           ScrapedItem(

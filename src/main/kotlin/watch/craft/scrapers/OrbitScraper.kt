@@ -13,7 +13,7 @@ class OrbitScraper : Scraper {
       .map { el ->
         val title = el.textFrom(".product-card__name")
 
-        Leaf(title, el.urlFrom()) { doc ->
+        leaf(title, el.urlFrom()) { doc ->
           val desc = doc.formattedTextFrom(".product-single__description")
 
           // Remove all the dross
