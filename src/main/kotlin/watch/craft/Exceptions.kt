@@ -16,6 +16,12 @@ class SkipItemException : NonFatalScraperException {
   constructor(message: String, cause: Throwable) : super(message, cause)
 }
 
+/** Already visited a page. Intent is to mitigate infinite loops. */
+class AlreadyVisitedException : NonFatalScraperException {
+  constructor(message: String) : super(message)
+  constructor(message: String, cause: Throwable) : super(message, cause)
+}
+
 /** Input data is malformed in some way. */
 class MalformedInputException : NonFatalScraperException {
   constructor(message: String) : super(message)

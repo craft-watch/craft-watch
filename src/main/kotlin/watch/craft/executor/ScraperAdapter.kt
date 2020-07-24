@@ -13,6 +13,7 @@ import watch.craft.Scraper.ScrapedItem
 import watch.craft.dsl.selectFrom
 import watch.craft.network.Retriever
 import java.net.URI
+import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicInteger
 
 class ScraperAdapter(
@@ -45,6 +46,8 @@ class ScraperAdapter(
   }
 
   private inner class Context {
+    private val visited = ConcurrentHashMap.newKeySet<URI>()
+
     // TODO - may be safer to return and reduce immutable instances of BreweryStats
     val numRawItems = AtomicInteger()
     val numSkipped = AtomicInteger()
@@ -75,6 +78,7 @@ class ScraperAdapter(
 
     private suspend fun <R> Job.processGracefully(url: URI, block: (Document) -> List<R>) = try {
       logger.info("Scraping${suffix()}: $url".prefixed())
+      markAsVisitedOrThrow(url)
       val doc = request(url)
       block(doc)
     } catch (e: Exception) {
@@ -83,9 +87,18 @@ class ScraperAdapter(
         is SkipItemException -> trackAsInfo(numSkipped, "Skipping${suffix()} because: ${e.message}")
         is MalformedInputException -> trackAsWarn(numMalformed, "Error while scraping${suffix()}", e)
         is UnretrievableException -> trackAsWarn(numUnretrievable, "Couldn't retrieve page${suffix()}", e)
+        // Rare enough that no need for dedicated counter
+        is AlreadyVisitedException -> trackAsWarn(numErrors, "Already visited page${suffix()}", e)
         else -> trackAsWarn(numErrors, "Unexpected error while scraping${suffix()}", e)
       }
       emptyList<R>()
+    }
+
+    private fun markAsVisitedOrThrow(url: URI) {
+      if (url in visited) {
+        throw AlreadyVisitedException("Already visited: ${url}")
+      }
+      visited += url
     }
   }
 

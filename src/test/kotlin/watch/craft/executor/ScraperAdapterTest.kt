@@ -184,6 +184,20 @@ class ScraperAdapterTest {
 
       assertEquals(listOf(itemB), execute(adapter).items())    // Other item is returned
     }
+
+    @Test
+    fun `re-visiting a page doesn't kill everything or cause an infinite loop`() {
+      val adapter = adapter(listOf(
+        More(url = ROOT_URL) {
+          listOf(
+            Leaf(name = "A", url = ROOT_URL) { itemA },   // Note this would cause an infinite loop
+            Leaf(name = "A", url = URL_B) { itemB }
+          )
+        }
+      ))
+
+      assertEquals(listOf(itemB), execute(adapter).items())    // Only other item is returned
+    }
   }
 
   @Nested
@@ -212,6 +226,13 @@ class ScraperAdapterTest {
     @Test
     fun `counts errors`() {
       val adapter = adapterWithSingleLeaf { throw RuntimeException("Don't care") }
+
+      assertEquals(1, execute(adapter).stats.numErrors)
+    }
+
+    @Test
+    fun `counts already visited as errors`() {
+      val adapter = adapterWithSingleLeaf { throw AlreadyVisitedException("Don't care") }
 
       assertEquals(1, execute(adapter).stats.numErrors)
     }
