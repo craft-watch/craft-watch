@@ -10,10 +10,9 @@ import watch.craft.dsl.*
 import watch.craft.jsonld.Thing.Product
 import watch.craft.jsonld.jsonLdFrom
 import watch.craft.shopify.shopifyItems
-import java.net.URI
 
 class VillagesScraper : Scraper {
-  override val jobs = forRootUrls(ROOT_URL) { root ->
+  override val jobs = forRoots(ROOT) { root ->
     root
       .shopifyItems()
       .map { details ->
@@ -79,6 +78,6 @@ class VillagesScraper : Scraper {
   }
 
   companion object {
-    private val ROOT_URL = URI("https://villagesbrewery.com/collections/buy-beer")
+    private val ROOT = root("https://villagesbrewery.com/collections/buy-beer")
   }
 }

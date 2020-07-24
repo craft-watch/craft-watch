@@ -38,14 +38,14 @@ private fun Result.normaliseToItem() = Item(
     ?.validate("non-blank description") { it.isNotBlank() },
   mixed = item.mixed,
   abv = item.abv
-    ?.validate("sane ABV") { it < MAX_ABV },
+    ?.validate("sane ABV") { it <= MAX_ABV },
   // TODO - validate sane size
   offers = item.offers
     .toList()
     .validate("at least one offer") { it.isNotEmpty() }
     .validate("sane price per ml") {
       it.all { offer ->
-        (offer.totalPrice / offer.quantity / (offer.sizeMl ?: DEFAULT_SIZE_ML)) < MAX_PRICE_PER_ML
+        (offer.totalPrice / offer.quantity / (offer.sizeMl ?: DEFAULT_SIZE_ML)) <= MAX_PRICE_PER_ML
       }
     },
   available = item.available,
@@ -63,4 +63,4 @@ private fun <T> T.validate(name: String, predicate: (T) -> Boolean): T {
 }
 
 private const val MAX_ABV = 14.0
-private const val MAX_PRICE_PER_ML = 12.00 / 440   // A fairly bougie can
+private const val MAX_PRICE_PER_ML = 30.00 / 750   // A fairly bougie item (Wild Beer "Yadokai Unique Edition")

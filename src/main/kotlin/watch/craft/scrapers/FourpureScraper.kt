@@ -10,10 +10,9 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
-import java.net.URI
 
 class FourpureScraper : Scraper {
-  override val jobs = forRootUrls(ROOT_URL) { root ->
+  override val jobs = forRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".itemsBrowse li")
       .map { el ->
@@ -69,6 +68,6 @@ class FourpureScraper : Scraper {
   private fun Element.title() = textFrom("h3")
 
   companion object {
-    private val ROOT_URL = URI("https://www.fourpure.com/browse/c-Our-Beers-5/")
+    private val ROOT = root("https://www.fourpure.com/browse/c-Our-Beers-5/")
   }
 }

@@ -7,11 +7,10 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
-import java.net.URI
 import kotlin.math.max
 
 class ForestRoadScraper : Scraper {
-  override val jobs = forRootUrls(*ROOT_URLS) { root ->
+  override val jobs = forRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".Main--products-list .ProductList-item")
       .map { el ->
@@ -49,9 +48,9 @@ class ForestRoadScraper : Scraper {
   }
 
   companion object {
-    private val ROOT_URLS = arrayOf(
-      URI("https://www.forestroad.co.uk/shop?category=BEER"),
-      URI("https://www.forestroad.co.uk/shop?category=SPECIAL")
+    private val ROOTS = arrayOf(
+      root("https://www.forestroad.co.uk/shop?category=BEER"),
+      root("https://www.forestroad.co.uk/shop?category=SPECIAL")
     )
   }
 }

@@ -414,6 +414,17 @@ val SCRAPERS = listOf(
     )
   ),
   entry(
+    WildBeerScraper(),
+    Brewery(
+      id = "wild-beer",
+      shortName = "Wild Beer",
+      name = "Wild Beer Co",
+      location = "Westcombe, Somerset",
+      websiteUrl = URI("https://www.wildbeerco.com/"),
+      twitterHandle = "WildBeerCo"
+    )
+  ),
+  entry(
     WildCardScraper(),
     Brewery(
       id = "wild-card",

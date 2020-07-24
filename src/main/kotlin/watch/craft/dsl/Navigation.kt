@@ -5,23 +5,34 @@ import watch.craft.Scraper.Job
 import watch.craft.Scraper.Job.More
 import java.net.URI
 
-data class UrlAndContext<T>(
-  val url: String,
+data class Root<T>(
+  val url: URI,
   val context: T
 )
 
-fun forRootUrls(vararg urls: URI, work: (Document) -> List<Job>) = urls.map { More(it, work) }
+fun root(url: String) = root(url, Unit)
+fun forRoots(vararg roots: Root<Unit>, work: (Document) -> List<Job>) =
+  forRoots(*roots, work = work.withDummyContext())
 
-fun <T> forRootUrls(vararg tuples: UrlAndContext<T>, work: (Document, T) -> List<Job>) =
-  tuples.map { More(it.url.toUri()) { doc -> work(doc, it.context) } }
+fun forPaginatedRoots(vararg roots: Root<Unit>, work: (Document) -> List<Job>) =
+  forPaginatedRoots(*roots, work = work.withDummyContext())
 
-fun forPaginatedRootUrl(url: URI, work: (Document) -> List<Job>) = listOf(followPagination(url, work))
+fun <T> root(url: String, context: T) = Root(url.toUri(), context)
+fun <T> forRoots(vararg roots: Root<T>, work: (Document, T) -> List<Job>) =
+  roots.map { More(it.url) { doc -> work(doc, it.context) } }
 
-private fun followPagination(url: URI, work: (Document) -> List<Job>): More = More(url) { root ->
-  val next = root.maybe { urlFrom("link[rel=next]") }
-  (if (next != null) {
-    listOf(followPagination(next, work))
-  } else {
-    emptyList()
-  }) + work(root)
-}
+fun <T> forPaginatedRoots(vararg roots: Root<T>, work: (Document, T) -> List<Job>) =
+  roots.map { followPagination(it, work) }
+
+private fun <T> followPagination(root: Root<T>, work: (Document, T) -> List<Job>): More =
+  More(root.url) { doc ->
+    val next = doc.maybe { urlFrom("[rel=next]") }
+    (if (next != null) {
+      listOf(followPagination(root.copy(url = next), work))
+    } else {
+      emptyList()
+    }) + work(doc, root.context)
+  }
+
+private fun ((Document) -> List<Job>).withDummyContext() = { doc: Document, _: Unit -> this(doc) }
+

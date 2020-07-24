@@ -8,10 +8,9 @@ import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.dsl.*
-import java.net.URI
 
 class CraftyScraper : Scraper {
-  override val jobs = forPaginatedRootUrl(ROOT_URL) { root ->
+  override val jobs = forPaginatedRoots(ROOT) { root ->
     root
       .selectFrom("ul.products")  // Later sections are mostly overlapping
       .selectMultipleFrom(".product")
@@ -74,7 +73,7 @@ class CraftyScraper : Scraper {
   }
 
   companion object {
-    val ROOT_URL = URI("https://www.craftybrewing.co.uk/crafty-core-beers/")
+    val ROOT = root("https://www.craftybrewing.co.uk/crafty-core-beers/")
 
     private val HARDCODED_QUANTITIES = mapOf(
       "six" to 6,

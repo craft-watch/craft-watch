@@ -5,10 +5,9 @@ import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.dsl.*
-import java.net.URI
 
 class BeakScraper : Scraper {
-  override val jobs = forRootUrls(ROOT_URL) { root ->
+  override val jobs = forRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".collection .product_thumb")
       .map { el ->
@@ -39,6 +38,6 @@ class BeakScraper : Scraper {
   }
 
   companion object {
-    private val ROOT_URL = URI("https://beakbrewery.com/collections/beer")
+    private val ROOT = root("https://beakbrewery.com/collections/beer")
   }
 }

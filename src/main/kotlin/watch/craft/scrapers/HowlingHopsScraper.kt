@@ -7,10 +7,9 @@ import watch.craft.Scraper.ScrapedItem
 import watch.craft.dsl.*
 import watch.craft.jsonld.Thing.Product
 import watch.craft.jsonld.jsonLdFrom
-import java.net.URI
 
 class HowlingHopsScraper : Scraper {
-  override val jobs = forRootUrls(ROOT_URL) { root ->
+  override val jobs = forRoots(ROOT) { root ->
     root
       .selectFrom(".wc-block-handpicked-products") // Avoid apparel
       .selectMultipleFrom(".wc-block-grid__product")
@@ -74,6 +73,6 @@ class HowlingHopsScraper : Scraper {
   }
 
   companion object {
-    private val ROOT_URL = URI("https://www.howlinghops.co.uk/shop")
+    private val ROOT = root("https://www.howlinghops.co.uk/shop")
   }
 }

@@ -7,10 +7,9 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
-import java.net.URI
 
 class PadstowScraper : Scraper {
-  override val jobs = forRootUrls(*ROOT_URLS) { root ->
+  override val jobs = forRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".beer-container")
       .map { el ->
@@ -49,10 +48,10 @@ class PadstowScraper : Scraper {
   }
 
   companion object {
-    private val ROOT_URLS = arrayOf(
-      URI("https://www.padstowbrewing.co.uk/shop/beers/"),
-      URI("https://www.padstowbrewing.co.uk/shop/ciders/"),
-      URI("https://www.padstowbrewing.co.uk/shop/kegs-cases/")
+    private val ROOTS = arrayOf(
+      root("https://www.padstowbrewing.co.uk/shop/beers/"),
+      root("https://www.padstowbrewing.co.uk/shop/ciders/"),
+      root("https://www.padstowbrewing.co.uk/shop/kegs-cases/")
     )
   }
 }

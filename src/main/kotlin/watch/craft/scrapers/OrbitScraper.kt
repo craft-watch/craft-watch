@@ -5,10 +5,9 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.dsl.*
 import watch.craft.shopify.extractShopifyOffers
-import java.net.URI
 
 class OrbitScraper : Scraper {
-  override val jobs = forPaginatedRootUrl(ROOT_URL) { root ->
+  override val jobs = forPaginatedRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product-card")
       .map { el ->
@@ -42,6 +41,6 @@ class OrbitScraper : Scraper {
   }
 
   companion object {
-    private val ROOT_URL = URI("https://orbitbeers.shop/collections/all")
+    private val ROOT = root("https://orbitbeers.shop/collections/all")
   }
 }

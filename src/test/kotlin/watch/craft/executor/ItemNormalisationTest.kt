@@ -72,7 +72,7 @@ class ItemNormalisationTest {
         )
       )
     ) // Apparently this is a reasonable price
-    assertValidationFailure(prototype.copy(offers = setOf(Offer(quantity = 2, totalPrice = 20.0)))) // But this is mad
+    assertValidationFailure(prototype.copy(offers = setOf(Offer(quantity = 2, totalPrice = 40.0)))) // But this is mad
   }
 
   @Test

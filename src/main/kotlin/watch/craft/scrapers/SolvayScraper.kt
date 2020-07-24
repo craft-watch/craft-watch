@@ -6,10 +6,9 @@ import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.dsl.*
-import java.net.URI
 
 class SolvayScraper : Scraper {
-  override val jobs = forRootUrls(*ROOT_URLS) { root ->
+  override val jobs = forRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".content .grid-item")
       .map { el ->
@@ -43,9 +42,9 @@ class SolvayScraper : Scraper {
   }
 
   companion object {
-    private val ROOT_URLS = arrayOf(
-      URI("https://www.solvaysociety.com/shop?category=Core+Range"),
-      URI("https://www.solvaysociety.com/shop?category=Specials")
+    private val ROOTS = arrayOf(
+      root("https://www.solvaysociety.com/shop?category=Core+Range"),
+      root("https://www.solvaysociety.com/shop?category=Specials")
     )
   }
 }

@@ -6,10 +6,9 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
-import java.net.URI
 
 class PollysScraper : Scraper {
-  override val jobs = forRootUrls(ROOT_URL) { root ->
+  override val jobs = forRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product")
       .map { el ->
@@ -43,7 +42,7 @@ class PollysScraper : Scraper {
   }
 
   companion object {
-    private val ROOT_URL = URI("https://shop.pollysbrew.co/")
+    private val ROOT = root("https://shop.pollysbrew.co/")
 
     private const val POLLYS_CAN_SIZE_ML = 440
   }

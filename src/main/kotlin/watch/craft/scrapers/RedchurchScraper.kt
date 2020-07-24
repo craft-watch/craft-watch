@@ -6,10 +6,9 @@ import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 import watch.craft.shopify.extractShopifyOffers
-import java.net.URI
 
 class RedchurchScraper : Scraper {
-  override val jobs = forRootUrls(ROOT_URL) { root ->
+  override val jobs = forRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product")
       .map { el ->
@@ -42,6 +41,6 @@ class RedchurchScraper : Scraper {
   }
 
   companion object {
-    private val ROOT_URL = URI("https://redchurch.store/")
+    private val ROOT = root("https://redchurch.store/")
   }
 }

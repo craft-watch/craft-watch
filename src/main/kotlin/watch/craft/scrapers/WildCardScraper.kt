@@ -11,10 +11,9 @@ import watch.craft.jsonld.Thing.Product
 import watch.craft.jsonld.jsonLdFrom
 import watch.craft.shopify.ShopifyItemDetails
 import watch.craft.shopify.shopifyItems
-import java.net.URI
 
 class WildCardScraper : Scraper {
-  override val jobs = forRootUrls(ROOT_URL) { root ->
+  override val jobs = forRoots(ROOT) { root ->
     root
       .shopifyItems()
       .map { details ->
@@ -68,6 +67,6 @@ class WildCardScraper : Scraper {
   }
 
   companion object {
-    private val ROOT_URL = URI("https://shop.wildcardbrewery.co.uk/")
+    private val ROOT = root("https://shop.wildcardbrewery.co.uk/")
   }
 }
