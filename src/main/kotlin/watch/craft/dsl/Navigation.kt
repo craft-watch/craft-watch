@@ -13,12 +13,14 @@ data class Root<T>(
 fun root(url: String) = root(url, Unit)
 fun forRoots(vararg roots: Root<Unit>, work: (Document) -> List<Job>) =
   forRoots(*roots, work = work.withDummyContext())
+
 fun forPaginatedRoots(vararg roots: Root<Unit>, work: (Document) -> List<Job>) =
   forPaginatedRoots(*roots, work = work.withDummyContext())
 
 fun <T> root(url: String, context: T) = Root(url.toUri(), context)
 fun <T> forRoots(vararg roots: Root<T>, work: (Document, T) -> List<Job>) =
   roots.map { More(it.url) { doc -> work(doc, it.context) } }
+
 fun <T> forPaginatedRoots(vararg roots: Root<T>, work: (Document, T) -> List<Job>) =
   roots.map { followPagination(it, work) }
 
