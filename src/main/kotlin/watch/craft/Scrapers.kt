@@ -7,6 +7,17 @@ private val entry = ::ScraperEntry
 
 val SCRAPERS = listOf(
   entry(
+    AffinityScraper(),
+    Brewery(
+      id = "affinity",
+      shortName = "Affinity",
+      name = "Affinity Brew Co",
+      location = "Bermondsey, London",
+      websiteUrl = URI("https://affinitybrewco.com/"),
+      twitterHandle = "AffinityBrewCo"
+    )
+  ),
+  entry(
     BeakScraper(),
     Brewery(
       id = "beak",
