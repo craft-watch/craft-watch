@@ -1,6 +1,7 @@
 package watch.craft.scrapers
 
 import org.jsoup.nodes.Document
+import watch.craft.Format
 import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
@@ -10,11 +11,9 @@ import watch.craft.dsl.*
 
 // TODO - update bougieness validation
 // TODO - mixed cases
-// TODO - ensure classify as keg
-// TODO - no <h4> summary for kegs
 
 class WildBeerScraper : Scraper {
-  override val jobs = forPaginatedRoots(*ROOTS) { root ->
+  override val jobs = forPaginatedRoots(*ROOTS) { root: Document, keg ->
     root
       .selectMultipleFrom(".itemSmall")
       .map { el ->
@@ -25,13 +24,18 @@ class WildBeerScraper : Scraper {
 
           ScrapedItem(
             name = title.cleanse("\\d+L mini keg"),
-            summary = doc.textFrom("h4"),
+            summary = if (keg) {
+              desc.split("\n")[0].split("-")[0]
+            } else {
+              doc.textFrom("h4")
+            },
             desc = desc,
             abv = desc.abvFrom(),
             available = available,
             offers = doc.extractOffers(
               desc,
-              el.priceFrom(".priceStandard")
+              el.priceFrom(".priceStandard"),
+              if (keg) KEG else desc.formatFrom(disallowed = listOf(KEG))
             ).toSet(),
             thumbnailUrl = el.urlFrom(".imageInnerWrap img")
           )
@@ -39,9 +43,7 @@ class WildBeerScraper : Scraper {
       }
   }
 
-  private fun Document.extractOffers(desc: String, indexPrice: Double): List<Offer> {
-    val format = desc.formatFrom(disallowed = listOf(KEG)) // TODO - gross
-
+  private fun Document.extractOffers(desc: String, indexPrice: Double, format: Format?): List<Offer> {
     return maybe { selectMultipleFrom(".itemDescription .sizeLabel") }
       ?.map { label ->
         val sizeName = label.selectFrom(".sizeName")
@@ -65,8 +67,8 @@ class WildBeerScraper : Scraper {
 
   companion object {
     private val ROOTS = arrayOf(
-      root("https://www.wildbeerco.com/browse/c-Beers-17"),
-      root("https://www.wildbeerco.com/browse/c-Mini-Kegs-51")
+      root("https://www.wildbeerco.com/browse/c-Beers-17", false),
+      root("https://www.wildbeerco.com/browse/c-Mini-Kegs-51", true)
     )
   }
 }
