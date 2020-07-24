@@ -8,10 +8,9 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 import watch.craft.jsonld.Thing.Product
 import watch.craft.jsonld.jsonLdFrom
-import java.net.URI
 
 class WylamScraper : Scraper {
-  override val jobs = forRootUrls(ROOT_URL) { root ->
+  override val jobs = forRoots(ROOT) { root, _ ->
     root
       .selectMultipleFrom(".ec-grid .grid-product")
       .map { el ->
@@ -49,6 +48,6 @@ class WylamScraper : Scraper {
   }
 
   companion object {
-    private val ROOT_URL = URI("https://www.wylambrewery.co.uk/beer-store/")
+    private val ROOT = root("https://www.wylambrewery.co.uk/beer-store/")
   }
 }

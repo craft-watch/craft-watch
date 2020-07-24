@@ -9,7 +9,7 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class BrockleyScraper : Scraper {
-  override val jobs = forRootUrls(*ROOT_URLS) { root, format ->
+  override val jobs = forRoots(*ROOTS) { root, format ->
     root
       .selectMultipleFrom("product-item-root".hook())
       .map { el ->
@@ -53,10 +53,10 @@ class BrockleyScraper : Scraper {
   private fun String.hook() = "[data-hook=${this}]"
 
   companion object {
-    private val ROOT_URLS = arrayOf(
-      UrlAndContext("https://www.brockleybrewery.co.uk/online-shop?ALL%20PRODUCTS=BOTTLES", BOTTLE),
-      UrlAndContext("https://www.brockleybrewery.co.uk/online-shop?ALL%20PRODUCTS=CANS", CAN),
-      UrlAndContext("https://www.brockleybrewery.co.uk/online-shop?ALL%20PRODUCTS=5L%20MINI%20KEG%20%26%20CASK", KEG)
+    private val ROOTS = arrayOf(
+      root("https://www.brockleybrewery.co.uk/online-shop?ALL%20PRODUCTS=BOTTLES", BOTTLE),
+      root("https://www.brockleybrewery.co.uk/online-shop?ALL%20PRODUCTS=CANS", CAN),
+      root("https://www.brockleybrewery.co.uk/online-shop?ALL%20PRODUCTS=5L%20MINI%20KEG%20%26%20CASK", KEG)
     )
 
     private val BLACKLIST = listOf("pints")

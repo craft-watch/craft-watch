@@ -6,10 +6,9 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
-import java.net.URI
 
 class PressureDropScraper : Scraper {
-  override val jobs = forRootUrls(ROOT_URL) { root ->
+  override val jobs = forRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product-grid-item")
       .map { el ->
@@ -43,6 +42,6 @@ class PressureDropScraper : Scraper {
   }
 
   companion object {
-    private val ROOT_URL = URI("https://pressuredropbrewing.co.uk/collections/beers")
+    private val ROOT = root("https://pressuredropbrewing.co.uk/collections/beers")
   }
 }

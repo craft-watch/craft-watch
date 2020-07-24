@@ -5,10 +5,9 @@ import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.dsl.*
-import java.net.URI
 
 class BurningSkyScraper : Scraper {
-  override val jobs = forRootUrls(*ROOT_URLS) { root ->
+  override val jobs = forRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".products .item")
       .map { el ->
@@ -37,9 +36,9 @@ class BurningSkyScraper : Scraper {
   }
 
   companion object {
-    private val ROOT_URLS = arrayOf(
-      URI("https://www.burningskybeer.com/bottles/"),
-      URI("https://www.burningskybeer.com/cans/")
+    private val ROOTS = arrayOf(
+      root("https://www.burningskybeer.com/bottles/"),
+      root("https://www.burningskybeer.com/cans/")
     )
   }
 }

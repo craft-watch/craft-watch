@@ -8,10 +8,9 @@ import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 import watch.craft.shopify.shopifyItems
-import java.net.URI
 
 class BrickScraper : Scraper {
-  override val jobs = forPaginatedRootUrl(ROOT_URL) { root ->
+  override val jobs = forPaginatedRoots(ROOT) { root ->
     root
       .shopifyItems()
       .map { details ->
@@ -50,6 +49,6 @@ class BrickScraper : Scraper {
     .associate { it.textFrom("td:first-child").toLowerCase() to it.textFrom("td:last-child") }
 
   companion object {
-    private val ROOT_URL = URI("https://shop.brickbrewery.co.uk/collections/frontpage")
+    private val ROOT = root("https://shop.brickbrewery.co.uk/collections/frontpage")
   }
 }

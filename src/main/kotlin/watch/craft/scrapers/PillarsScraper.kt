@@ -8,10 +8,9 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.dsl.*
 import watch.craft.shopify.shopifyItems
-import java.net.URI
 
 class PillarsScraper : Scraper {
-  override val jobs = forRootUrls(ROOT_URL) { root ->
+  override val jobs = forRoots(ROOT) { root ->
     root
       .shopifyItems()
       .map { details ->
@@ -67,6 +66,6 @@ class PillarsScraper : Scraper {
   }
 
   companion object {
-    private val ROOT_URL = URI("https://shop.pillarsbrewery.com/collections/pillars-beers")
+    private val ROOT = root("https://shop.pillarsbrewery.com/collections/pillars-beers")
   }
 }

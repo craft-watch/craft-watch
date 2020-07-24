@@ -5,10 +5,9 @@ import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.dsl.*
-import java.net.URI
 
 class ThornbridgeScraper : Scraper {
-  override val jobs = forRootUrls(ROOT_URL) { root ->
+  override val jobs = forRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".grid-uniform > .grid-item")
       .map { el ->
@@ -44,6 +43,6 @@ class ThornbridgeScraper : Scraper {
 
   companion object {
     // TODO - URI("https://shop.thornbridgebrewery.co.uk/collections/smart-collection?view=list")
-    private val ROOT_URL = URI("https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers?view=list")
+    private val ROOT = root("https://shop.thornbridgebrewery.co.uk/collections/pick-and-mix-beers?view=list")
   }
 }

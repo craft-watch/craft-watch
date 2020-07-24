@@ -1,17 +1,20 @@
 package watch.craft.scrapers
 
 import org.jsoup.nodes.Document
-import watch.craft.Format
 import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.dsl.*
-import java.net.URI
+
+// TODO - update bougieness validation
+// TODO - mixed cases
+// TODO - ensure classify as keg
+// TODO - no <h4> summary for kegs
 
 class WildBeerScraper : Scraper {
-  override val jobs = forPaginatedRootUrl(ROOT_URL) { root ->
+  override val jobs = forPaginatedRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".itemSmall")
       .map { el ->
@@ -21,10 +24,10 @@ class WildBeerScraper : Scraper {
           val available = ".unavailableItemWrap" !in doc
 
           ScrapedItem(
-            name = title,
+            name = title.cleanse("\\d+L mini keg"),
             summary = doc.textFrom("h4"),
             desc = desc,
-            abv = el.abvFrom(".itemAlco"),
+            abv = desc.abvFrom(),
             available = available,
             offers = doc.extractOffers(
               desc,
@@ -61,7 +64,9 @@ class WildBeerScraper : Scraper {
   }
 
   companion object {
-    // TODO - keg pages, etc.
-    private val ROOT_URL = URI("https://www.wildbeerco.com/browse/c-Beers-17")
+    private val ROOTS = arrayOf(
+      root("https://www.wildbeerco.com/browse/c-Beers-17"),
+      root("https://www.wildbeerco.com/browse/c-Mini-Kegs-51")
+    )
   }
 }

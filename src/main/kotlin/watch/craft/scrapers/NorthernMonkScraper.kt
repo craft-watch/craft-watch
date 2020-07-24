@@ -6,10 +6,9 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
-import java.net.URI
 
 class NorthernMonkScraper : Scraper {
-  override val jobs = forPaginatedRootUrl(ROOT_URL) { root ->
+  override val jobs = forPaginatedRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".card")
       .map { el ->
@@ -63,7 +62,7 @@ class NorthernMonkScraper : Scraper {
   )
 
   companion object {
-    private val ROOT_URL = URI("https://northernmonkshop.com/collections/beer")
+    private val ROOT = root("https://northernmonkshop.com/collections/beer")
 
     private const val PACK_REGEX = "(\\d+) pack"
   }

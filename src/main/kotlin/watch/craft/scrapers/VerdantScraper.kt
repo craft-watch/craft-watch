@@ -6,10 +6,9 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
-import java.net.URI
 
 class VerdantScraper : Scraper {
-  override val jobs = forRootUrls(ROOT_URL) { root ->
+  override val jobs = forRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".collection-products .product")
       .map { el ->
@@ -44,7 +43,7 @@ class VerdantScraper : Scraper {
   }
 
   companion object {
-    private val ROOT_URL = URI("https://verdantbrewing.co/collections/beer-merchandise")
+    private val ROOT = root("https://verdantbrewing.co/collections/beer-merchandise")
 
     private val BLACKLIST = listOf("glass", "tee", "gift")
   }

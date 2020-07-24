@@ -9,10 +9,9 @@ import watch.craft.Scraper.Job.Leaf
 import watch.craft.Scraper.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
-import java.net.URI
 
 class RedWillowScraper : Scraper {
-  override val jobs = forRootUrls(ROOT_URL) { root ->
+  override val jobs = forRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".ProductList-grid .ProductList-item")
       .map { el ->
@@ -67,7 +66,7 @@ class RedWillowScraper : Scraper {
   }
 
   companion object {
-    private val ROOT_URL = URI("https://www.redwillowbrewery.com/shop")
+    private val ROOT = root("https://www.redwillowbrewery.com/shop")
 
     private val BLACKLIST = listOf("glassware")
   }
