@@ -306,6 +306,6 @@ class ScraperAdapterTest {
     private val ROOT_URL = URI("https://example.invalid")
     private val PAGE_2_URL = URI("https://example.invalid/2")
     private val URL_A = URI("https://example.invalid/a")
-    private val URL_B = URI("https://example.invalid/a")
+    private val URL_B = URI("https://example.invalid/b")
   }
 }
