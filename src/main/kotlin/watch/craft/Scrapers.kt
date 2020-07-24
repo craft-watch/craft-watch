@@ -18,6 +18,17 @@ val SCRAPERS = listOf(
     )
   ),
   entry(
+    BigDropScraper(),
+    Brewery(
+      id = "big-drop",
+      shortName = "Big Drop",
+      name = "Big Drop Brewing Co",
+      location = "Ipswich, Suffolk",
+      websiteUrl = URI("https://www.bigdropbrew.com/"),
+      twitterHandle = "bigdropbrewco"
+    )
+  ),
+  entry(
     BoxcarScraper(),
     Brewery(
       id = "boxcar",
