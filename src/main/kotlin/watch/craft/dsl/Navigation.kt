@@ -28,29 +28,28 @@ fun forPaginatedRoots(vararg roots: Root<Unit>, work: (Document) -> List<Job>) =
 fun <Context> root(url: String, context: Context) = Root(url.toUri(), context)
 
 fun <Context> forJsonRoots(vararg roots: Root<Context>, work: (Any, Context) -> List<Job>) =
-  roots.map { More(it.url, JsonWork { doc -> work(doc, it.context) }) }
+  roots.map { moreJson(it.url) { doc -> work(doc, it.context) } }
 
 fun <Context> forRoots(vararg roots: Root<Context>, work: (Document, Context) -> List<Job>) =
-  roots.map { More(it.url, HtmlWork { doc -> work(doc, it.context) }) }
+  roots.map { more(it.url) { doc -> work(doc, it.context) } }
 
 fun <Context> forPaginatedRoots(vararg roots: Root<Context>, work: (Document, Context) -> List<Job>) =
   roots.map { followPagination(it, work) }
 
 private fun <Context> followPagination(root: Root<Context>, work: (Document, Context) -> List<Job>): More =
-  More(root.url, HtmlWork { doc ->
+  more(root.url) { doc ->
     val next = doc.maybe { urlFrom("[rel=next]") }
     (if (next != null) {
       listOf(followPagination(root.copy(url = next), work))
     } else {
       emptyList()
     }) + work(doc, root.context)
-  })
+  }
 
-
-fun more(url: URI, work: (data: Document) -> List<Job>) = More(url, HtmlWork(work))
-fun moreJson(url: URI, work: (data: Any) -> List<Job>) = More(url, JsonWork(work))
-fun leaf(name: String, url: URI, work: (data: Document) -> ScrapedItem) = Leaf(name, url, HtmlWork(work))
-fun leafJson(name: String, url: URI, work: (data: Any) -> ScrapedItem) = Leaf(name, url, JsonWork(work))
+fun more(url: URI, work: (data: Document) -> List<Job>) = More(HtmlWork(url, work))
+fun moreJson(url: URI, work: (data: Any) -> List<Job>) = More(JsonWork(url, work))
+fun leaf(name: String, url: URI, work: (data: Document) -> ScrapedItem) = Leaf(name, HtmlWork(url, work))
+fun leafJson(name: String, url: URI, work: (data: Any) -> ScrapedItem) = Leaf(name, JsonWork(url, work))
 
 private fun <T> ((T) -> List<Job>).ignoreContext() = { content: T, _: Unit -> this(content) }
 

@@ -61,14 +61,14 @@ class ScraperAdapter(
 
     private suspend fun Job.execute(depth: Int): List<Result> {
       return when (this@execute) {
-        is More -> processGracefully(url, depth, work) { it }.executeAll(depth + 1)
-        is Leaf -> processGracefully(url, depth, work) {
+        is More -> processGracefully(depth, work) { it }.executeAll(depth + 1)
+        is Leaf -> processGracefully(depth, work) {
           numRawItems.incrementAndGet()
           listOf(
             Result(
               breweryId = breweryId,
               rawName = name,
-              url = url,
+              url = work.url,
               item = it
             )
           )
@@ -77,17 +77,16 @@ class ScraperAdapter(
     }
 
     private suspend fun <T, R> Job.processGracefully(
-      url: URI,
       depth: Int,
       work: Work<T>,
       block: (T) -> List<R>
     ) = try {
-      logger.info("Scraping${suffix()}: $url".prefixed())
+      logger.info("Scraping${suffix()}: ${work.url}".prefixed())
       validateDepth(depth)
       block(
         when (work) {
-          is JsonWork -> work.work(requestJson(url))
-          is HtmlWork -> work.work(requestHtml(url))
+          is JsonWork -> work.work(requestJson(work.url))
+          is HtmlWork -> work.work(requestHtml(work.url))
         }
       )
     } catch (e: Exception) {

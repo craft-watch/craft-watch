@@ -12,22 +12,28 @@ interface Scraper {
   val jobs: List<Job>
 
   sealed class Work<R> {
-    data class JsonWork<R>(val work: (data: Any) -> R) : Work<R>()
-    data class HtmlWork<R>(val work: (data: Document) -> R) : Work<R>()
+    abstract val url: URI
+
+    data class JsonWork<R>(
+      override val url: URI,
+      val work: (data: Any) -> R
+    ) : Work<R>()
+
+    data class HtmlWork<R>(
+      override val url: URI,
+      val work: (data: Document) -> R
+    ) : Work<R>()
   }
 
   sealed class Job {
     open val name: String? = null
-    abstract val url: URI
 
     data class More(
-      override val url: URI,
       val work: Work<List<Job>>
     ) : Job()
 
     data class Leaf(
       override val name: String,
-      override val url: URI,
       val work: Work<ScrapedItem>
     ) : Job()
   }
