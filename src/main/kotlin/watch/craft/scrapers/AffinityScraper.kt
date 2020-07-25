@@ -3,8 +3,8 @@ package watch.craft.scrapers
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.module.kotlin.convertValue
 import org.jsoup.Jsoup
-import watch.craft.Format
-import watch.craft.Format.*
+import watch.craft.Format.CAN
+import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Node.ScrapedItem

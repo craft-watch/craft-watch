@@ -26,9 +26,9 @@ class NavigationTest {
     fun `parses document`() {
       val block = mock<(Document) -> Node>()
       val retrieval = fromHtml(
-          name = "foo",
-          url = URI("https://example.invalid"),
-          block = block
+        name = "foo",
+        url = URI("https://example.invalid"),
+        block = block
       )
 
       retrieval.block("<html><head><title>Hello</title></head></html>".toByteArray())

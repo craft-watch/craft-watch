@@ -31,27 +31,27 @@ class WildBeerScraper : Scraper {
             available = available,
             offers = if (available) {
               doc.selectMultipleFrom(".itemDescription .sizeLabel")
-                        .map { label ->
-                          val sizeName = label.selectFrom(".sizeName")
-                          val priceNow = label.selectFrom(".priceNow")
-                          Offer(
-                            quantity = sizeName.maybe { quantityFrom() } ?: 1,
-                            totalPrice = priceNow.priceFrom(),
-                            sizeMl = sizeName.sizeMlFrom(),
-                            format = format
-                          )
-                        }.toSet()
+                .map { label ->
+                  val sizeName = label.selectFrom(".sizeName")
+                  val priceNow = label.selectFrom(".priceNow")
+                  Offer(
+                    quantity = sizeName.maybe { quantityFrom() } ?: 1,
+                    totalPrice = priceNow.priceFrom(),
+                    sizeMl = sizeName.sizeMlFrom(),
+                    format = format
+                  )
+                }.toSet()
             } else {
               setOf(
-                        Offer(
-                          quantity = 1,
-                          totalPrice = el.priceFrom(".priceStandard"),
-                          sizeMl = maybeAnyOf(
-                            { desc.sizeMlFrom() },
-                            { title.sizeMlFrom() }
-                          ),
-                          format = format
-                        )
+                Offer(
+                  quantity = 1,
+                  totalPrice = el.priceFrom(".priceStandard"),
+                  sizeMl = maybeAnyOf(
+                    { desc.sizeMlFrom() },
+                    { title.sizeMlFrom() }
+                  ),
+                  format = format
+                )
               )
             },
             thumbnailUrl = el.urlFrom(".imageInnerWrap img")

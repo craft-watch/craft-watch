@@ -45,9 +45,9 @@ class NorthernMonkScraper : Scraper {
             available = data.available,
             offers = setOf(
               Offer(
-                        quantity = rawName.maybe { quantityFrom() } ?: 1,
-                        totalPrice = data.price / 100.0,
-                        sizeMl = desc.maybe { sizeMlFrom() }
+                quantity = rawName.maybe { quantityFrom() } ?: 1,
+                totalPrice = data.price / 100.0,
+                sizeMl = desc.maybe { sizeMlFrom() }
               )
             ),
             thumbnailUrl = doc.urlFrom(".product__image.lazyload")
