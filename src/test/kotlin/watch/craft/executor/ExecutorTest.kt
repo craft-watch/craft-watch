@@ -7,9 +7,8 @@ import org.junit.jupiter.api.Test
 import watch.craft.Item
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+import watch.craft.Scraper.Node
+import watch.craft.Scraper.Node.*
 import watch.craft.ScraperEntry
 import watch.craft.network.Retriever
 import java.net.URI
@@ -22,8 +21,7 @@ class ExecutorTest {
     results = mock(),
     createRetriever = {
       object : Retriever {
-        override suspend fun retrieve(url: URI, suffix: String?, validate: (ByteArray) -> Unit) =
-          "<html><body><h1>Hello</h1></body></html>".toByteArray()
+        override suspend fun retrieve(url: URI, suffix: String?, validate: (ByteArray) -> Unit) = byteArrayOf()
       }
     },
     clock = Clock.fixed(NOW, ZoneId.systemDefault())
@@ -31,9 +29,9 @@ class ExecutorTest {
 
   @Test
   fun `scrapes products`() {
-    val scraper = scraper(jobs = listOf(
-      Leaf(name = "A", url = productUrl("a")) { product("Foo") },
-      Leaf(name = "B", url = productUrl("b")) { product("Bar") }
+    val scraper = scraper(listOf(
+      from(productUrl("a")) { product("Foo") },
+      from(productUrl("b")) { product("Bar") }
     ))
 
     assertEquals(
@@ -75,10 +73,10 @@ class ExecutorTest {
 
   @Test
   fun `continues after validation failure`() {
-    val scraper = scraper(jobs = listOf(
-      Leaf(name = "A", url = productUrl("a")) { product("Foo") },
-      Leaf(name = "B", url = productUrl("b")) { product("Foo").copy(name = "") },  // Invalid name
-      Leaf(name = "C", url = productUrl("c")) { product("Bar") }
+    val scraper = scraper(listOf(
+      from(productUrl("a")) { product("Foo") },
+      from(productUrl("b")) { product("Foo").copy(name = "") },  // Invalid name
+      from(productUrl("c")) { product("Bar") }
     ))
 
     assertEquals(
@@ -87,13 +85,21 @@ class ExecutorTest {
     )
   }
 
-  private fun scraper(jobs: List<Job>) = listOf(
+  private fun scraper(nodes: List<Node>) = listOf(
     ScraperEntry(
       scraper = object : Scraper {
-        override val jobs = jobs
+        override val root = Multiple(nodes)
       },
       brewery = mock { on { id } doReturn THIS_BREWERY_ID }
     )
+  )
+
+  private fun from(url: URI, block: (ByteArray) -> Node) = Retrieval(
+    null,
+    url,
+    suffix = ".xxx",
+    validate = { Unit },
+    block = block
   )
 
   companion object {

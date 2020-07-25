@@ -1,6 +1,5 @@
 package watch.craft
 
-import org.jsoup.nodes.Document
 import java.net.URI
 
 data class ScraperEntry(
@@ -9,32 +8,32 @@ data class ScraperEntry(
 )
 
 interface Scraper {
-  val jobs: List<Job>
+  val root: Node
 
-  sealed class Job {
-    open val name: String? = null
-    abstract val url: URI
+  sealed class Node {
+    data class Retrieval(
+      val name: String? = null,
+      val url: URI,
+      val suffix: String,
+      val validate: (data: ByteArray) -> Unit,  // TODO - reframe as "retryIf"
+      val block: (data: ByteArray) -> Node
+    ) : Node()
 
-    data class More(
-      override val url: URI,
-      val work: (doc: Document) -> List<Job>
-    ) : Job()
+    // TODO - eliminate
+    data class Multiple(
+      val nodes: List<Node>
+    ) : Node()
 
-    data class Leaf(
-      override val name: String,
-      override val url: URI,
-      val work: (doc: Document) -> ScrapedItem
-    ) : Job()
+    data class ScrapedItem(
+      val name: String,
+      val summary: String? = null,
+      val desc: String? = null,
+      val mixed: Boolean = false,
+      val offers: Set<Offer> = emptySet(),
+      val abv: Double? = null,
+      val available: Boolean,
+      val thumbnailUrl: URI,
+      val url: URI? = null   // Defaults to retrieval URL
+    ) : Node()
   }
-
-  data class ScrapedItem(
-    val name: String,
-    val summary: String? = null,
-    val desc: String? = null,
-    val mixed: Boolean = false,
-    val offers: Set<Offer> = emptySet(),
-    val abv: Double? = null,
-    val available: Boolean,
-    val thumbnailUrl: URI
-  )
 }

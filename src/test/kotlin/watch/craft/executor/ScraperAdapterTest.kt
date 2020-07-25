@@ -2,123 +2,135 @@ package watch.craft.executor
 
 import com.nhaarman.mockitokotlin2.*
 import kotlinx.coroutines.runBlocking
-import org.jsoup.nodes.Document
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import watch.craft.*
-import watch.craft.Scraper.Job
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.Job.More
-import watch.craft.Scraper.ScrapedItem
-import watch.craft.dsl.textFrom
+import watch.craft.Scraper.Node
+import watch.craft.Scraper.Node.*
 import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.network.Retriever
 import java.net.URI
 
 class ScraperAdapterTest {
   private val retriever = mock<Retriever> {
-    onBlocking { retrieve(any(), any(), any()) } doAnswer {
-      "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>".toByteArray()
-    }
+    onBlocking { retrieve(any(), any(), any()) } doAnswer { it.getArgument<URI>(0).toString().toByteArray() }
   }
 
   private val itemA = mock<ScrapedItem>()
   private val itemB = mock<ScrapedItem>()
 
-  @Test
-  fun `enriches item with results info`() {
-    val adapter = adapterWithSingleLeaf { itemA }
+  @Nested
+  inner class Plumbing {
+    @Test
+    fun `passes correct URLs and data around`() {
+      val validate = mock<(ByteArray) -> Unit>()
+      val block = mock<(ByteArray) -> ScrapedItem> {
+        on { invoke(any()) } doReturn itemA
+      }
 
-    assertEquals(
-      listOf(
-        Result(breweryId = BREWERY_ID, rawName = "A", url = URL_A, item = itemA)
-      ),
-      execute(adapter).entries
-    )
-  }
-
-  @Test
-  fun `passes correct URLs and HTML around`() {
-    val work = mock<(Document) -> ScrapedItem> {
-      on { invoke(any()) } doThrow SkipItemException("Emo town")
-    }
-
-    val adapter = adapter(
-      listOf(
-        Leaf(name = "A", url = URL_A, work = work)
+      execute(
+        adapter(
+          Retrieval(
+            null,
+            URL_A,
+            suffix = COOL_SUFFIX,
+            validate = validate,
+            block = block
+          )
+        )
       )
-    )
 
-    execute(adapter)
-
-    verifyBlocking(retriever) { retrieve(eq(URL_A), eq(".html"), any()) }
-    verify(work)(docWithHeaderMatching(URL_A.toString()))
+      verifyBlocking(retriever) { retrieve(URL_A, COOL_SUFFIX, validate) }
+      verify(block)(URL_A.toString().toByteArray())
+    }
   }
 
   @Nested
   inner class Traversal {
     @Test
-    fun `multiple flat items`() {
-      val adapter = adapter(listOf(
-        Leaf(name = "A", url = URL_A) { itemA },
-        Leaf(name = "A", url = URL_B) { itemB }
-      ))
+    fun `retrieval producing single item`() {
+      val adapter = adapter(
+        from(URL_A) { itemA }
+      )
 
-      assertEquals(listOf(itemA, itemB), execute(adapter).items())
+      assertEquals(
+        listOf(
+          Result(BREWERY_ID, URL_A, itemA)
+        ),
+        execute(adapter).entries
+      )
     }
 
     @Test
-    fun `non-leaf node`() {
-      val adapter = adapter(listOf(
-        More(url = ROOT_URL) {
-          listOf(
-            Leaf(name = "A", url = URL_A) { itemA },
-            Leaf(name = "A", url = URL_B) { itemB }
-          )
-        }
-      ))
+    fun `multiple retrievals producing single items`() {
+      val adapter = adapter(
+        multiple(
+          from(URL_A) { itemA },
+          from(URL_B) { itemB }
+        )
+      )
 
-      assertEquals(listOf(itemA, itemB), execute(adapter).items())
+      assertEquals(
+        listOf(
+          Result(BREWERY_ID, URL_A, itemA),
+          Result(BREWERY_ID, URL_B, itemB)
+        ),
+        execute(adapter).entries
+      )
     }
 
     @Test
-    fun `multiple non-leaf nodes`() {
-      val adapter = adapter(listOf(
-        More(url = ROOT_URL) {
-          listOf(
-            Leaf(name = "A", url = URL_A) { itemA },
-            More(url = PAGE_2_URL) {
-              listOf(
-                Leaf(name = "A", url = URL_B) { itemB }
-              )
+    fun `retrieval producing multiple items`() {
+      val adapter = adapter(
+        from(URL_A) { multiple(itemA, itemB) }
+      )
+
+      assertEquals(
+        listOf(
+          Result(BREWERY_ID, URL_A, itemA),
+          Result(BREWERY_ID, URL_A, itemB)      // Both associated with same source URL
+        ),
+        execute(adapter).entries
+      )
+    }
+
+    @Test
+    fun `more depth`() {
+      val adapter = adapter(
+        from(ROOT_URL) {
+          multiple(
+            from(URL_A) { itemA },
+            from(PAGE_2_URL) {
+              from(URL_B) { itemB }
             }
           )
         }
-      ))
+      )
 
-      assertEquals(listOf(itemA, itemB), execute(adapter).items())
+      assertEquals(
+        listOf(
+          Result(BREWERY_ID, URL_A, itemA),
+          Result(BREWERY_ID, URL_B, itemB)
+        ),
+        execute(adapter).entries
+      )
     }
   }
 
   @Nested
   inner class ErrorHandling {
     @Test
-    fun `fatal exception during retrieval kills everything`() {
-      retriever.stub {
-        onBlocking { retriever.retrieve(any(), any(), any()) } doThrow FatalScraperException("Uh oh")
-      }
-
-      val adapter = adapter(listOf(
-        More(url = ROOT_URL) {
-          listOf(
-            Leaf(name = "A", url = URL_A) { itemA },
-            Leaf(name = "A", url = URL_B) { itemB }
+    fun `fatal exception kills everything`() {
+      val adapter = adapter(
+        from(ROOT_URL) {
+          multiple(
+            from(URL_A) { throw FatalScraperException("Uh oh") },
+            from(URL_B) { itemB }
           )
         }
-      ))
+      )
 
       assertThrows<FatalScraperException> {
         execute(adapter)
@@ -126,83 +138,48 @@ class ScraperAdapterTest {
     }
 
     @Test
-    fun `non-fatal exception during retrieval kills everything`() {
-      retriever.stub {
-        onBlocking { retriever.retrieve(any(), any(), any()) } doThrow UnretrievableException("Uh oh")
-      }
-
-      val adapter = adapter(listOf(
-        More(url = ROOT_URL) {
-          listOf(
-            Leaf(name = "A", url = URL_A) { itemA },
-            Leaf(name = "A", url = URL_B) { itemB }
+    fun `non-fatal exception doesn't kill everything`() {
+      val adapter = adapter(
+        from(ROOT_URL) {
+          multiple(
+            from(URL_A) { throw UnretrievableException("Uh oh") },
+            from(URL_B) { itemB }
           )
         }
-      ))
+      )
 
-      assertEquals(emptyList<Item>(), execute(adapter).items())
+      assertEquals(listOf(itemB), execute(adapter).items())   // Other item is returned
     }
 
     @Test
-    fun `non-fatal exception during non-leaf scrape doesn't kill everything`() {
-      val adapter = adapter(listOf(
-        More(url = ROOT_URL) {
-          listOf(
-            Leaf(name = "A", url = URL_A) { itemA },
-            More(url = PAGE_2_URL) { throw MalformedInputException("Uh oh") }
+    fun `skip exception during work scrape doesn't kill everything`() {
+      val adapter = adapter(
+        from(ROOT_URL) {
+          multiple(
+            from(URL_A) { throw SkipItemException("Don't care") },
+            from(URL_B) { itemB }
           )
         }
-      ))
+      )
+
+      assertEquals(listOf(itemB), execute(adapter).items())    // Other item is returned
+    }
+
+    @Test
+    fun `going very deep is terminated, but doesn't kill everything`() {
+      var deepTree: Node = itemB
+      deepTree = from(URL_B) { deepTree }
+
+      val adapter = adapter(
+        from(ROOT_URL) {
+          multiple(
+            from(URL_A) { itemA },
+            deepTree
+          )
+        }
+      )
 
       assertEquals(listOf(itemA), execute(adapter).items())    // Other item is returned
-    }
-
-    @Test
-    fun `non-fatal exception during leaf scrape doesn't kill everything`() {
-      val adapter = adapter(listOf(
-        More(url = ROOT_URL) {
-          listOf(
-            Leaf(name = "A", url = URL_A) { throw MalformedInputException("Uh oh") },
-            Leaf(name = "A", url = URL_B) { itemB }
-          )
-        }
-      ))
-
-      assertEquals(listOf(itemB), execute(adapter).items())    // Other item is returned
-    }
-
-    @Test
-    fun `skip exception during leaf scrape doesn't kill everything`() {
-      val adapter = adapter(listOf(
-        More(url = ROOT_URL) {
-          listOf(
-            Leaf(name = "A", url = URL_A) { throw SkipItemException("Don't care") },
-            Leaf(name = "A", url = URL_B) { itemB }
-          )
-        }
-      ))
-
-      assertEquals(listOf(itemB), execute(adapter).items())    // Other item is returned
-    }
-
-    @Test
-    fun `re-visiting a page doesn't kill everything or cause an infinite loop`() {
-      val children = mutableListOf<Job>()
-      val infiniteLoop = More(url = ROOT_URL) {
-        children
-      }
-      children += infiniteLoop
-
-      val adapter = adapter(listOf(
-        More(url = ROOT_URL) {
-          listOf(
-            Leaf(name = "A", url = URL_A) { itemA },
-            infiniteLoop
-          )
-        }
-      ))
-
-      assertEquals(listOf(itemA), execute(adapter).items())    // Item still returned
     }
   }
 
@@ -212,7 +189,7 @@ class ScraperAdapterTest {
     fun `counts normal`() {
       val adapter = adapterWithSingleLeaf { itemA }
 
-      assertEquals(1, execute(adapter).stats.numRawItems)
+      assertEquals(1, execute(adapter).stats.numScraped)
     }
 
     @Test
@@ -251,61 +228,35 @@ class ScraperAdapterTest {
     }
   }
 
-  @Nested
-  inner class RetrieverValidation {
-    private val validate: (ByteArray) -> Unit
-
-    init {
-      // Capture the validate function
-      execute(adapterWithSingleLeaf { itemA })
-      val captor = argumentCaptor<(ByteArray) -> Unit>()
-      verifyBlocking(retriever, times(2)) { retrieve(any(), any(), captor.capture()) }
-      validate = captor.firstValue
-    }
-
-    @Test
-    fun `doesn't throw on valid HTML with title`() {
-      assertDoesNotThrow {
-        validate("<html><head><title>Hello</title></head></html>".toByteArray())
-      }
-    }
-
-    @Test
-    fun `throws on valid HTML without title`() {
-      assertThrows<MalformedInputException> {
-        validate("<html><head></head></html>".toByteArray())
-      }
-    }
-
-    @Test
-    fun `throws on invalid HTML`() {
-      assertThrows<MalformedInputException> {
-        validate("wat".toByteArray())
-      }
-    }
-  }
-
   private fun StatsWith<Result>.items() = entries.map { it.item }
 
   private fun execute(adapter: ScraperAdapter) = runBlocking { adapter.execute() }
 
-  private fun docWithHeaderMatching(header: String): Document = argForWhich { textFrom("h1") == header }
-
-  private fun adapterWithSingleLeaf(work: (Document) -> ScrapedItem) = adapter(listOf(
-    More(url = ROOT_URL) {
-      listOf(
-        Leaf(name = "A", url = URL_A, work = work)
+  private fun adapterWithSingleLeaf(block: (ByteArray) -> ScrapedItem) = adapter(
+    from(ROOT_URL) {
+      multiple(
+        from(URL_A, block)
       )
     }
-  ))
+  )
 
-  private fun adapter(jobs: List<Job>) = ScraperAdapter(
+  private fun adapter(node: Node) = ScraperAdapter(
     retriever,
     object : Scraper {
-      override val jobs = jobs
+      override val root = node
     },
     BREWERY_ID
   )
+
+  private fun from(url: URI, block: (ByteArray) -> Node) = Retrieval(
+    null,
+    url,
+    suffix = COOL_SUFFIX,
+    validate = { Unit },
+    block = block
+  )
+
+  private fun multiple(vararg nodes: Node) = Multiple(nodes.toList())
 
   companion object {
     private const val BREWERY_ID = "foo"
@@ -313,5 +264,6 @@ class ScraperAdapterTest {
     private val PAGE_2_URL = URI("https://example.invalid/2")
     private val URL_A = URI("https://example.invalid/a")
     private val URL_B = URI("https://example.invalid/b")
+    private const val COOL_SUFFIX = ".xxx"
   }
 }

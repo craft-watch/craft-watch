@@ -5,11 +5,34 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import watch.craft.BreweryStats
 import watch.craft.Offer
-import watch.craft.Scraper.ScrapedItem
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.executor.ScraperAdapter.Result
 import java.net.URI
 
 class ItemNormalisationTest {
+  @Test
+  fun `uses item URL if present`() {
+    val sourceUrl = URI("https://example.invalid/default")
+    val url = URI("https://example.invalid/override")
+
+    assertEquals(
+      url,
+      normalise(prototype.copy(url = url), sourceUrl)
+        .entries.single().url
+    )
+  }
+
+  @Test
+  fun `uses source URL if item URL not present`() {
+    val sourceUrl = URI("https://example.invalid/default")
+
+    assertEquals(
+      sourceUrl,
+      normalise(prototype, sourceUrl)
+        .entries.single().url
+    )
+  }
+
   @Test
   fun `trims name`() {
     assertEquals(
@@ -100,8 +123,7 @@ class ItemNormalisationTest {
     entries = listOf(
       Result(
         breweryId = "foo",
-        rawName = "",
-        url = url,
+        sourceUrl = url,
         item = item
       )
     ),

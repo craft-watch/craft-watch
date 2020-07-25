@@ -2,20 +2,20 @@ package watch.craft.scrapers
 
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 import java.net.URI
 
 class WanderScraper : Scraper {
-  override val jobs = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectFrom("product-list-wrapper".hook())  // Only first one, to avoid merch, etc.
       .selectMultipleFrom("product-list-grid-item".hook())
       .map { el ->
         val name = el.textFrom("product-item-name".hook())
 
-        Leaf(name, el.urlFrom("a")) { doc ->
+        fromHtml(name, el.urlFrom("a")) { doc ->
           val desc = doc.selectFrom("description".hook())
           val descText = desc.text()
 

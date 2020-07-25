@@ -2,14 +2,14 @@ package watch.craft.scrapers
 
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 import watch.craft.jsonld.Thing.Product
 import watch.craft.jsonld.jsonLdFrom
 
 class HowlingHopsScraper : Scraper {
-  override val jobs = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectFrom(".wc-block-handpicked-products") // Avoid apparel
       .selectMultipleFrom(".wc-block-grid__product")
@@ -17,7 +17,7 @@ class HowlingHopsScraper : Scraper {
         val a = el.selectFrom(".wc-block-grid__product-link")
         val rawName = el.textFrom(".wc-block-grid__product-title")
 
-        Leaf(rawName, a.urlFrom()) { doc ->
+        fromHtml(rawName, a.urlFrom()) { doc ->
           val desc = doc.textFrom(".woocommerce-product-details__short-description")
           val parts = extractVariableParts(desc)
           val product = doc.jsonLdFrom<Product>().single()

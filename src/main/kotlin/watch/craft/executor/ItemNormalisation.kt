@@ -14,7 +14,7 @@ fun StatsWith<Result>.normaliseToItems(): StatsWith<Item> {
     try {
       result.normaliseToItem()
     } catch (e: InvalidItemException) {
-      logger.warn("[${result.breweryId}] Invalid item [${result.rawName}]", e)
+      logger.warn("[${result.breweryId}] Invalid item [${result.item.name}]", e)
       numInvalid++
       null
     }
@@ -51,7 +51,7 @@ private fun Result.normaliseToItem() = Item(
   available = item.available,
   thumbnailUrl = item.thumbnailUrl
     .validate("absolute thumbnail URL") { it.isAbsolute },
-  url = url
+  url = (item.url ?: sourceUrl)
     .validate("absolute URL") { it.isAbsolute }
 )
 

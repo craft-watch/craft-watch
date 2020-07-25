@@ -5,19 +5,19 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import org.jsoup.nodes.Document
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class CraftyScraper : Scraper {
-  override val jobs = forPaginatedRoots(ROOT) { root ->
+  override val root = fromPaginatedRoots(ROOT) { root ->
     root
       .selectFrom("ul.products")  // Later sections are mostly overlapping
       .selectMultipleFrom(".product")
       .map { el ->
         val title = el.textFrom(".woocommerce-loop-product__title")
 
-        Leaf(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
+        fromHtml(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
           val mixed = doc.containsMatchFrom(".product_meta", "mixed")
           val desc = doc.formattedTextFrom(".et_pb_wc_description")
 

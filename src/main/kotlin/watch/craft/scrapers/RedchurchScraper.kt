@@ -1,21 +1,21 @@
 package watch.craft.scrapers
 
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 import watch.craft.shopify.extractShopifyOffers
 
 class RedchurchScraper : Scraper {
-  override val jobs = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product")
       .map { el ->
         val title = el.selectFrom(".product__title")
         val rawName = title.text()
 
-        Leaf(rawName, title.urlFrom("a")) { doc ->
+        fromHtml(rawName, title.urlFrom("a")) { doc ->
           val nameParts = rawName.extract(regex = "(Mixed Case - )?(.*)")
           val mixed = !nameParts[1].isBlank()
           val sizeMl = doc.maybe { sizeMlFrom() }

@@ -5,19 +5,19 @@ import org.jsoup.nodes.Document
 import watch.craft.Format.CAN
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class RoostersScraper : Scraper {
-  override val jobs = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".Main--products-list .ProductList-item")
       .map { el ->
         val title = el.textFrom(".ProductList-title")
 
-        Leaf(title, el.urlFrom(".ProductList-item-link")) { doc ->
+        fromHtml(title, el.urlFrom(".ProductList-item-link")) { doc ->
           if (title.containsWord("bag")) {
             throw SkipItemException("Bag-in-box options are too much hassle")
           }

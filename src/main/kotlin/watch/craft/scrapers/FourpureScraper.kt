@@ -6,20 +6,20 @@ import watch.craft.Format
 import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class FourpureScraper : Scraper {
-  override val jobs = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".itemsBrowse li")
       .map { el ->
         val a = el.selectFrom("a")
         val rawName = el.textFrom(".content h3")
 
-        Leaf(rawName, a.urlFrom()) { doc ->
+        fromHtml(rawName, a.urlFrom()) { doc ->
           if (el.title().containsMatch("pack")) {
             throw SkipItemException("Can't calculate price-per-can for packs")
           }

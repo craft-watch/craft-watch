@@ -3,17 +3,17 @@ package watch.craft.scrapers
 import watch.craft.Format.CAN
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class BurntMillScraper : Scraper {
-  override val jobs = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".ProductItem")
       .map { el ->
         val title = el.textFrom(".ProductItem__Title")
-        Leaf(title, el.urlFrom(".ProductItem__ImageWrapper")) { doc ->
+        fromHtml(title, el.urlFrom(".ProductItem__ImageWrapper")) { doc ->
           ScrapedItem(
             name = title
               .cleanse(

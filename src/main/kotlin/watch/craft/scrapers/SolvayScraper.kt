@@ -3,18 +3,18 @@ package watch.craft.scrapers
 import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class SolvayScraper : Scraper {
-  override val jobs = forRoots(*ROOTS) { root ->
+  override val root = fromHtmlRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".content .grid-item")
       .map { el ->
         val rawName = el.textFrom(".grid-title")
 
-        Leaf(rawName, el.urlFrom("a.grid-item-link")) { doc ->
+        fromHtml(rawName, el.urlFrom("a.grid-item-link")) { doc ->
           val nameParts = rawName.extract("(.*?)\\s+\\|\\s+(?:(.*?)\\s+\\d)?")
           val desc = doc.selectFrom(".ProductItem-details-excerpt")
           val mixed = rawName.containsMatch("mix")

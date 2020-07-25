@@ -5,19 +5,19 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import org.jsoup.nodes.Document
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class RedWillowScraper : Scraper {
-  override val jobs = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".ProductList-grid .ProductList-item")
       .map { el ->
         val rawName = el.textFrom(".ProductList-title")
 
-        Leaf(rawName, el.urlFrom("a.ProductList-item-link")) { doc ->
+        fromHtml(rawName, el.urlFrom("a.ProductList-item-link")) { doc ->
           if (BLACKLIST.any { rawName.containsMatch(it) }) {
             throw SkipItemException("Identified as non-beer")
           }

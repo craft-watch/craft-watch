@@ -3,19 +3,19 @@ package watch.craft.scrapers
 import watch.craft.Format.*
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class BrockleyScraper : Scraper {
-  override val jobs = forRoots(*ROOTS) { root, format ->
+  override val root = fromHtmlRoots(*ROOTS) { root, format ->
     root
       .selectMultipleFrom("product-item-root".hook())
       .map { el ->
         val title = el.textFrom("product-item-name".hook())
 
-        Leaf(title, el.urlFrom("product-item-container".hook())) { doc ->
+        fromHtml(title, el.urlFrom("product-item-container".hook())) { doc ->
           if (title.containsWord(*BLACKLIST.toTypedArray())) {
             throw SkipItemException("Can't deal with this")
           }

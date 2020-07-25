@@ -3,20 +3,20 @@ package watch.craft.scrapers
 import watch.craft.Format.BOTTLE
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 import kotlin.math.max
 
 class ForestRoadScraper : Scraper {
-  override val jobs = forRoots(*ROOTS) { root ->
+  override val root = fromHtmlRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".Main--products-list .ProductList-item")
       .map { el ->
         val title = el.textFrom(".ProductList-title")
 
-        Leaf(title, el.urlFrom("a.ProductList-item-link")) { doc ->
+        fromHtml(title, el.urlFrom("a.ProductList-item-link")) { doc ->
           if (title.containsMatch("subscription")) {
             throw SkipItemException("Subscriptions aren't something we can model")
           }

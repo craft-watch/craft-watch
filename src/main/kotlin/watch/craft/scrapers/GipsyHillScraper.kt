@@ -2,19 +2,19 @@ package watch.craft.scrapers
 
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class GipsyHillScraper : Scraper {
-  override val jobs = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product")
       .map { el ->
         val a = el.selectFrom(".woocommerce-LoopProduct-link")
         val rawName = a.textFrom(".woocommerce-loop-product__title")
 
-        Leaf(rawName, a.urlFrom()) { doc ->
+        fromHtml(rawName, a.urlFrom()) { doc ->
           val rawSummary = doc.textFrom(".summary")
           val numCans = doc.maybe { selectMultipleFrom(".woosb-title-inner") }
             ?.map { it.quantityFrom() }?.sum()
