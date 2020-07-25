@@ -8,7 +8,9 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import watch.craft.*
 import watch.craft.Scraper.Node
-import watch.craft.Scraper.Node.*
+import watch.craft.Scraper.Node.Retrieval
+import watch.craft.Scraper.Node.ScrapedItem
+import watch.craft.dsl.listify
 import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.network.Retriever
 import java.net.URI
@@ -26,8 +28,8 @@ class ScraperAdapterTest {
     @Test
     fun `passes correct URLs and data around`() {
       val validate = mock<(ByteArray) -> Unit>()
-      val block = mock<(ByteArray) -> ScrapedItem> {
-        on { invoke(any()) } doReturn itemA
+      val block = mock<(ByteArray) -> List<Node>> {
+        on { invoke(any()) } doReturn listOf(itemA)
       }
 
       execute(
@@ -52,7 +54,7 @@ class ScraperAdapterTest {
     @Test
     fun `retrieval producing single item`() {
       val adapter = adapter(
-        from(URL_A) { itemA }
+        from(URL_A) { listOf(itemA) }
       )
 
       assertEquals(
@@ -66,10 +68,8 @@ class ScraperAdapterTest {
     @Test
     fun `multiple retrievals producing single items`() {
       val adapter = adapter(
-        multiple(
-          from(URL_A) { itemA },
-          from(URL_B) { itemB }
-        )
+        from(URL_A) { listOf(itemA) },
+        from(URL_B) { listOf(itemB) }
       )
 
       assertEquals(
@@ -84,7 +84,7 @@ class ScraperAdapterTest {
     @Test
     fun `retrieval producing multiple items`() {
       val adapter = adapter(
-        from(URL_A) { multiple(itemA, itemB) }
+        from(URL_A) { listOf(itemA, itemB) }
       )
 
       assertEquals(
@@ -100,10 +100,10 @@ class ScraperAdapterTest {
     fun `more depth`() {
       val adapter = adapter(
         from(ROOT_URL) {
-          multiple(
-            from(URL_A) { itemA },
+          listOf(
+            from(URL_A) { listOf(itemA) },
             from(PAGE_2_URL) {
-              from(URL_B) { itemB }
+              listOf(from(URL_B) { listOf(itemB) })
             }
           )
         }
@@ -125,9 +125,9 @@ class ScraperAdapterTest {
     fun `fatal exception kills everything`() {
       val adapter = adapter(
         from(ROOT_URL) {
-          multiple(
+          listOf(
             from(URL_A) { throw FatalScraperException("Uh oh") },
-            from(URL_B) { itemB }
+            from(URL_B) { listOf(itemB) }
           )
         }
       )
@@ -141,9 +141,9 @@ class ScraperAdapterTest {
     fun `non-fatal exception doesn't kill everything`() {
       val adapter = adapter(
         from(ROOT_URL) {
-          multiple(
+          listOf(
             from(URL_A) { throw UnretrievableException("Uh oh") },
-            from(URL_B) { itemB }
+            from(URL_B) { listOf(itemB) }
           )
         }
       )
@@ -155,9 +155,9 @@ class ScraperAdapterTest {
     fun `skip exception during work scrape doesn't kill everything`() {
       val adapter = adapter(
         from(ROOT_URL) {
-          multiple(
+          listOf(
             from(URL_A) { throw SkipItemException("Don't care") },
-            from(URL_B) { itemB }
+            from(URL_B) { listOf(itemB) }
           )
         }
       )
@@ -168,12 +168,12 @@ class ScraperAdapterTest {
     @Test
     fun `going very deep is terminated, but doesn't kill everything`() {
       var deepTree: Node = itemB
-      deepTree = from(URL_B) { deepTree }
+      deepTree = from(URL_B) { listOf(deepTree) }
 
       val adapter = adapter(
         from(ROOT_URL) {
-          multiple(
-            from(URL_A) { itemA },
+          listOf(
+            from(URL_A) { listOf(itemA) },
             deepTree
           )
         }
@@ -234,29 +234,27 @@ class ScraperAdapterTest {
 
   private fun adapterWithSingleLeaf(block: (ByteArray) -> ScrapedItem) = adapter(
     from(ROOT_URL) {
-      multiple(
-        from(URL_A, block)
+      listOf(
+        from(URL_A, block.listify())
       )
     }
   )
 
-  private fun adapter(node: Node) = ScraperAdapter(
+  private fun adapter(vararg roots: Node) = ScraperAdapter(
     retriever,
     object : Scraper {
-      override val root = node
+      override val roots = roots.toList()
     },
     BREWERY_ID
   )
 
-  private fun from(url: URI, block: (ByteArray) -> Node) = Retrieval(
+  private fun from(url: URI, block: (ByteArray) -> List<Node>) = Retrieval(
     null,
     url,
     suffix = COOL_SUFFIX,
     validate = { Unit },
     block = block
   )
-
-  private fun multiple(vararg nodes: Node) = Multiple(nodes.toList())
 
   companion object {
     private const val BREWERY_ID = "foo"

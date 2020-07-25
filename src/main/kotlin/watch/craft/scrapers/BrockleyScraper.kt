@@ -9,7 +9,7 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class BrockleyScraper : Scraper {
-  override val root = fromHtmlRoots(*ROOTS) { root, format ->
+  override val roots = fromHtmlRoots(*ROOTS) { root, format ->
     root
       .selectMultipleFrom("product-item-root".hook())
       .map { el ->

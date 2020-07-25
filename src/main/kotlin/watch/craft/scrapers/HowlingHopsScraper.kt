@@ -9,7 +9,7 @@ import watch.craft.jsonld.Thing.Product
 import watch.craft.jsonld.jsonLdFrom
 
 class HowlingHopsScraper : Scraper {
-  override val root = fromHtmlRoots(ROOT) { root ->
+  override val roots = fromHtmlRoots(ROOT) { root ->
     root
       .selectFrom(".wc-block-handpicked-products") // Avoid apparel
       .selectMultipleFrom(".wc-block-grid__product")

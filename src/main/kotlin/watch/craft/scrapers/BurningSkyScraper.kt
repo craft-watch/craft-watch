@@ -7,7 +7,7 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class BurningSkyScraper : Scraper {
-  override val root = fromHtmlRoots(*ROOTS) { root ->
+  override val roots = fromHtmlRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".products .item")
       .map { el ->

@@ -8,7 +8,7 @@ import watch.craft.dsl.*
 import java.net.URI
 
 class WanderScraper : Scraper {
-  override val root = fromHtmlRoots(ROOT) { root ->
+  override val roots = fromHtmlRoots(ROOT) { root ->
     root
       .selectFrom("product-list-wrapper".hook())  // Only first one, to avoid merch, etc.
       .selectMultipleFrom("product-list-grid-item".hook())

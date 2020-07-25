@@ -8,7 +8,7 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class PressureDropScraper : Scraper {
-  override val root = fromHtmlRoots(ROOT) { root ->
+  override val roots = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product-grid-item")
       .map { el ->

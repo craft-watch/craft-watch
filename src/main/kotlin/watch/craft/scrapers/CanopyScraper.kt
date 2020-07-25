@@ -8,7 +8,7 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class CanopyScraper : Scraper {
-  override val root = fromHtmlRoots(ROOT) { root ->
+  override val roots = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".grid-uniform")
       .take(3)  // Avoid merch

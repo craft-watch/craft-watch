@@ -8,7 +8,7 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class NorthernMonkScraper : Scraper {
-  override val root = fromPaginatedRoots(ROOT) { root ->
+  override val roots = fromPaginatedRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".card")
       .map { el ->

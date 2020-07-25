@@ -8,7 +8,7 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class BurntMillScraper : Scraper {
-  override val root = fromHtmlRoots(ROOT) { root ->
+  override val roots = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".ProductItem")
       .map { el ->

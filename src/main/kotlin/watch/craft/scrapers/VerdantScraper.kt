@@ -8,7 +8,7 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class VerdantScraper : Scraper {
-  override val root = fromHtmlRoots(ROOT) { root ->
+  override val roots = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".collection-products .product")
       .map { el ->

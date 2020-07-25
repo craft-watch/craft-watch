@@ -10,7 +10,7 @@ import watch.craft.jsonld.Thing.Product
 import watch.craft.jsonld.jsonLdFrom
 
 class WylamScraper : Scraper {
-  override val root = fromHtmlRoots(ROOT) { root, _ ->
+  override val roots = fromHtmlRoots(ROOT) { root, _ ->
     root
       .selectMultipleFrom(".ec-grid .grid-product")
       .map { el ->

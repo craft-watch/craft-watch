@@ -7,7 +7,7 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class DeyaScraper : Scraper {
-  override val root = fromHtmlRoots(ROOT) { root ->
+  override val roots = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".products .product")
       .map { el ->

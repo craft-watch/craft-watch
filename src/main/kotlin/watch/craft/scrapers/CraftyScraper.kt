@@ -10,7 +10,7 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class CraftyScraper : Scraper {
-  override val root = fromPaginatedRoots(ROOT) { root ->
+  override val roots = fromPaginatedRoots(ROOT) { root ->
     root
       .selectFrom("ul.products")  // Later sections are mostly overlapping
       .selectMultipleFrom(".product")

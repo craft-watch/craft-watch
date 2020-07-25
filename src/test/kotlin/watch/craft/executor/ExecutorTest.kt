@@ -8,8 +8,10 @@ import watch.craft.Item
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Node
-import watch.craft.Scraper.Node.*
+import watch.craft.Scraper.Node.Retrieval
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.ScraperEntry
+import watch.craft.dsl.listify
 import watch.craft.network.Retriever
 import java.net.URI
 import java.time.Clock
@@ -88,7 +90,7 @@ class ExecutorTest {
   private fun scraper(nodes: List<Node>) = listOf(
     ScraperEntry(
       scraper = object : Scraper {
-        override val root = Multiple(nodes)
+        override val roots = nodes
       },
       brewery = mock { on { id } doReturn THIS_BREWERY_ID }
     )
@@ -99,7 +101,7 @@ class ExecutorTest {
     url,
     suffix = ".xxx",
     validate = { Unit },
-    block = block
+    block = block.listify()
   )
 
   companion object {

@@ -7,7 +7,7 @@ import watch.craft.dsl.*
 import watch.craft.shopify.extractShopifyOffers
 
 class OrbitScraper : Scraper {
-  override val root = fromPaginatedRoots(ROOT) { root ->
+  override val roots = fromPaginatedRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product-card")
       .map { el ->

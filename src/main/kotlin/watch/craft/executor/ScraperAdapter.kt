@@ -5,7 +5,8 @@ import kotlinx.coroutines.coroutineScope
 import mu.KotlinLogging
 import watch.craft.*
 import watch.craft.Scraper.Node
-import watch.craft.Scraper.Node.*
+import watch.craft.Scraper.Node.Retrieval
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.network.Retriever
 import java.net.URI
 import java.util.concurrent.atomic.AtomicInteger
@@ -24,7 +25,7 @@ class ScraperAdapter(
   private val logger = KotlinLogging.logger {}
 
   suspend fun execute() = with(Context()) {
-    val results = process(scraper.root)
+    val results = process(scraper.roots)
     StatsWith(
       results,
       BreweryStats(
@@ -51,12 +52,15 @@ class ScraperAdapter(
     fun sourcedAt(url: URI) = copy(sourceUrl = url, depth = depth + 1)
   }
 
-  private suspend fun Context.process(node: Node): List<Result> {
-    return when (node) {
-      is ScrapedItem -> processScrapedItem(node)
-      is Multiple -> processMultiple(node)
-      is Retrieval -> processWork(node)
-    }
+  private suspend fun Context.process(nodes: List<Node>) = coroutineScope {
+    nodes
+      .map { async { process(it) } }
+      .flatMap { it.await() }
+  }
+
+  private suspend fun Context.process(node: Node) = when (node) {
+    is ScrapedItem -> processScrapedItem(node)
+    is Retrieval -> processWork(node)
   }
 
   private fun Context.processScrapedItem(scrapedItem: ScrapedItem): List<Result> {
@@ -70,14 +74,8 @@ class ScraperAdapter(
     )
   }
 
-  private suspend fun Context.processMultiple(multiple: Multiple) = coroutineScope {
-    multiple.nodes
-      .map { async { process(it) } }
-      .flatMap { it.await() }
-  }
-
   private suspend fun Context.processWork(retrieval: Retrieval): List<Result> {
-    val node = try {
+    val nodes = try {
       logger.info("Scraping${retrieval.suffix()}: ${retrieval.url}".prefixed())
       validateDepth()   // TODO - put this somewhere more sensible?
       with(retrieval) { block(retriever.retrieve(url, suffix, validate)) }
@@ -86,7 +84,7 @@ class ScraperAdapter(
       return emptyList()
     }
 
-    return sourcedAt(retrieval.url).process(node)
+    return sourcedAt(retrieval.url).process(nodes)
   }
 
   private fun Context.validateDepth() {

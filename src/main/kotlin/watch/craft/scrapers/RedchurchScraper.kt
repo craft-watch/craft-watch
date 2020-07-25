@@ -8,7 +8,7 @@ import watch.craft.dsl.*
 import watch.craft.shopify.extractShopifyOffers
 
 class RedchurchScraper : Scraper {
-  override val root = fromHtmlRoots(ROOT) { root ->
+  override val roots = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product")
       .map { el ->

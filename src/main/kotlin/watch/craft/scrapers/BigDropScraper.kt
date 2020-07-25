@@ -8,7 +8,7 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class BigDropScraper : Scraper {
-  override val root = fromHtmlRoots(ROOT) { root: Document ->
+  override val roots = fromHtmlRoots(ROOT) { root: Document ->
     root
       .selectMultipleFrom(".products")
       .dropLast(1)  // Avoid merchandise

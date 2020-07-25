@@ -8,7 +8,7 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class SolvayScraper : Scraper {
-  override val root = fromHtmlRoots(*ROOTS) { root ->
+  override val roots = fromHtmlRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".content .grid-item")
       .map { el ->
