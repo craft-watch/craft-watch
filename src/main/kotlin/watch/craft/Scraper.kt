@@ -1,6 +1,7 @@
 package watch.craft
 
 import org.jsoup.nodes.Document
+import watch.craft.Scraper.Output.Multiple
 import java.net.URI
 
 data class ScraperEntry(
@@ -9,43 +10,39 @@ data class ScraperEntry(
 )
 
 interface Scraper {
-  val jobs: List<Job>
+  val seed: Output
 
-  sealed class Work<R> {
-    abstract val url: URI
+  sealed class Output {
+    sealed class Work : Output() {
+      abstract val url: URI
+      abstract val name: String?
 
-    data class JsonWork<R>(
-      override val url: URI,
-      val work: (data: Any) -> R
-    ) : Work<R>()
+      data class JsonWork(
+        override val url: URI,
+        override val name: String? = null,
+        val block: (data: Any) -> Output
+      ) : Work()
 
-    data class HtmlWork<R>(
-      override val url: URI,
-      val work: (data: Document) -> R
-    ) : Work<R>()
+      data class HtmlWork(
+        override val url: URI,
+        override val name: String? = null,
+        val block: (data: Document) -> Output
+      ) : Work()
+    }
+
+    data class Multiple(
+      val outputs: List<Output>
+    ) : Output()
+
+    data class ScrapedItem(
+      val name: String,
+      val summary: String? = null,
+      val desc: String? = null,
+      val mixed: Boolean = false,
+      val offers: Set<Offer> = emptySet(),
+      val abv: Double? = null,
+      val available: Boolean,
+      val thumbnailUrl: URI
+    ) : Output()
   }
-
-  sealed class Job {
-    open val name: String? = null
-
-    data class More(
-      val work: Work<List<Job>>
-    ) : Job()
-
-    data class Leaf(
-      override val name: String,
-      val work: Work<ScrapedItem>
-    ) : Job()
-  }
-
-  data class ScrapedItem(
-    val name: String,
-    val summary: String? = null,
-    val desc: String? = null,
-    val mixed: Boolean = false,
-    val offers: Set<Offer> = emptySet(),
-    val abv: Double? = null,
-    val available: Boolean,
-    val thumbnailUrl: URI
-  )
 }

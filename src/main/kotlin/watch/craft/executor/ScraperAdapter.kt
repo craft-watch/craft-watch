@@ -6,10 +6,9 @@ import kotlinx.coroutines.coroutineScope
 import mu.KotlinLogging
 import org.jsoup.Jsoup
 import watch.craft.*
-import watch.craft.Scraper.*
-import watch.craft.Scraper.Job.*
-import watch.craft.Scraper.Work.HtmlWork
-import watch.craft.Scraper.Work.JsonWork
+import watch.craft.Scraper.Output
+import watch.craft.Scraper.Output.*
+import watch.craft.Scraper.Output.Work.*
 import watch.craft.dsl.selectFrom
 import watch.craft.network.Retriever
 import watch.craft.utils.mapper
@@ -23,7 +22,6 @@ class ScraperAdapter(
 ) {
   data class Result(
     val breweryId: String,
-    val rawName: String,
     val url: URI,
     val item: ScrapedItem
   )
@@ -31,7 +29,7 @@ class ScraperAdapter(
   private val logger = KotlinLogging.logger {}
 
   suspend fun execute() = with(Context()) {
-    val results = scraper.jobs.executeAll()
+    val results = scraper.seed.process()
     StatsWith(
       results,
       BreweryStats(
@@ -53,45 +51,46 @@ class ScraperAdapter(
     val numUnretrievable = AtomicInteger()
     val numErrors = AtomicInteger()
 
-    suspend fun List<Job>.executeAll(depth: Int = 0) = coroutineScope {
-      this@executeAll
-        .map { async { it.execute(depth) } }
-        .flatMap { it.await() }
-    }
-
-    private suspend fun Job.execute(depth: Int): List<Result> {
-      return when (this@execute) {
-        is More -> processGracefully(depth, work) { it }.executeAll(depth + 1)
-        is Leaf -> processGracefully(depth, work) {
-          numRawItems.incrementAndGet()
-          listOf(
-            Result(
-              breweryId = breweryId,
-              rawName = name,
-              url = work.url,
-              item = it
-            )
-          )
-        }
+    suspend fun Output.process(depth: Int = 0): List<Result> {
+      return when (this) {
+        is ScrapedItem -> processScrapedItem()
+        is Multiple -> processMultiple(depth)
+        is Work -> processWork(depth)
       }
     }
 
-    private suspend fun <T, R> Job.processGracefully(
-      depth: Int,
-      work: Work<T>,
-      block: (T) -> List<R>
-    ) = try {
-      logger.info("Scraping${suffix()}: ${work.url}".prefixed())
-      validateDepth(depth)
-      block(
-        when (work) {
-          is JsonWork -> work.work(requestJson(work.url))
-          is HtmlWork -> work.work(requestHtml(work.url))
-        }
+    private fun ScrapedItem.processScrapedItem(): List<Result> {
+      numRawItems.incrementAndGet() // TODO - this needs to move to *before* we do the work
+
+      return listOf(
+        Result(
+          breweryId = breweryId,
+          url = url,
+          item = this
+        )
       )
+    }
+
+    private suspend fun Multiple.processMultiple(depth: Int) = coroutineScope {
+      outputs
+        .map { async { it.process(depth) } }
+        .flatMap { it.await() }
+    }
+
+    private suspend fun Work.processWork(depth: Int) = executeWork(depth)
+      ?.process(depth + 1)
+      ?: emptyList()
+
+    private suspend fun Work.executeWork(depth: Int) = try {
+      logger.info("Scraping${suffix()}: ${url}".prefixed())
+      validateDepth(depth)
+      when (this) {
+        is JsonWork -> block(requestJson(url))
+        is HtmlWork -> block(requestHtml(url))
+      }
     } catch (e: Exception) {
       handleException(e)
-      emptyList<R>()
+      null
     }
 
     private fun validateDepth(depth: Int) {
@@ -100,7 +99,7 @@ class ScraperAdapter(
       }
     }
 
-    private fun Job.handleException(e: Exception) {
+    private fun Work.handleException(e: Exception) {
       when (e) {
         is FatalScraperException -> throw e
         is SkipItemException -> trackAsInfo(numSkipped, "Skipping${suffix()} because: ${e.message}")
@@ -141,7 +140,7 @@ class ScraperAdapter(
     }
   }
 
-  private fun Job.suffix() = if (name != null) " [${name}]" else ""
+  private fun Work.suffix() = if (name != null) " [${name}]" else ""
 
   private fun String.prefixed() = "[$breweryId] ${this}"
 

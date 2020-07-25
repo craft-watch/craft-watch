@@ -14,7 +14,7 @@ fun StatsWith<Result>.normaliseToItems(): StatsWith<Item> {
     try {
       result.normaliseToItem()
     } catch (e: InvalidItemException) {
-      logger.warn("[${result.breweryId}] Invalid item [${result.rawName}]", e)
+      logger.warn("[${result.breweryId}] Invalid item [${result.item.name}]", e)
       numInvalid++
       null
     }
