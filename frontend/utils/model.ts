@@ -34,7 +34,7 @@ export interface Stats {
 
 export interface BreweryStats {
   breweryId: string;
-  numRawItems?: number;
+  numScraped?: number;
   numSkipped?: number;
   numMalformed?: number;
   numInvalid?: number;

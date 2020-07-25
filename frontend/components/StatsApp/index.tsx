@@ -33,7 +33,7 @@ const StatsApp = ({ inventory }: Props): JSX.Element => (
             </BreweryLink>
           )}
         />
-        <Column name="Raw" render={field(stats => stats.numRawItems, true)} />
+        <Column name="Scraped" render={field(stats => stats.numScraped, true)} />
         <Column name="Skipped" render={field(stats => stats.numSkipped)} />
         <Column name="Unretrievable" render={field(stats => stats.numUnretrievable)} />
         <Column name="Malformed" render={field(stats => stats.numMalformed)} />

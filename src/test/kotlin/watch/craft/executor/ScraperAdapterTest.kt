@@ -189,7 +189,7 @@ class ScraperAdapterTest {
     fun `counts normal`() {
       val adapter = adapterWithSingleLeaf { itemA }
 
-      assertEquals(1, execute(adapter).stats.numRawItems)
+      assertEquals(1, execute(adapter).stats.numScraped)
     }
 
     @Test

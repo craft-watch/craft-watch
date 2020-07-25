@@ -32,7 +32,7 @@ data class Stats(
 
 data class BreweryStats(
   val breweryId: String,
-  val numRawItems: Int? = 0,
+  val numScraped: Int? = 0,
   val numSkipped: Int? = 0,
   val numMalformed: Int? = 0,
   val numInvalid: Int? = 0,

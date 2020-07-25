@@ -29,7 +29,7 @@ class ScraperAdapter(
       results,
       BreweryStats(
         breweryId = breweryId,
-        numRawItems = numRawItems.toInt(),
+        numScraped = numRawItems.toInt(),
         numSkipped = numSkipped.toInt(),
         numMalformed = numMalformed.toInt(),
         numUnretrievable = numUnretrievable.toInt(),
@@ -60,8 +60,7 @@ class ScraperAdapter(
   }
 
   private fun Context.processScrapedItem(scrapedItem: ScrapedItem): List<Result> {
-    numRawItems.incrementAndGet() // TODO - this needs to move to *before* we do the work
-
+    numRawItems.incrementAndGet()
     return listOf(
       Result(
         breweryId = breweryId,
