@@ -108,6 +108,3 @@ fun fromJson(
 private val mapper = mapper()
 
 private fun <T> Array<T>.mapToMultiple(block: (T) -> Node) = Multiple(map(block))
-
-private fun <T> ((T) -> List<Node>).ignoreContext() = { content: T, _: Unit -> this(content) }
-
