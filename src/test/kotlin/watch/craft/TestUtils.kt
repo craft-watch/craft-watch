@@ -2,7 +2,7 @@ package watch.craft
 
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.fail
-import watch.craft.Scraper.ScrapedItem
+import watch.craft.Scraper.Output.ScrapedItem
 import watch.craft.executor.ScraperAdapter
 import java.net.URI
 

@@ -14,24 +14,24 @@ interface Scraper {
 
   sealed class Output {
     sealed class Work : Output() {
-      abstract val url: URI
       abstract val name: String?
+      abstract val url: URI
 
       data class JsonWork(
-        override val url: URI,
         override val name: String? = null,
+        override val url: URI,
         val block: (data: Any) -> Output
       ) : Work()
 
       data class HtmlWork(
-        override val url: URI,
         override val name: String? = null,
+        override val url: URI,
         val block: (data: Document) -> Output
       ) : Work()
     }
 
     data class Multiple(
-      val outputs: List<Output>
+      val outputs: List<Output> // TODO
     ) : Output()
 
     data class ScrapedItem(

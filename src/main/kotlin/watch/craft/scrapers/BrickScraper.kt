@@ -3,18 +3,17 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Element
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+import watch.craft.Scraper.Output.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 import watch.craft.shopify.shopifyItems
 
 class BrickScraper : Scraper {
-  override val jobs = forPaginatedRoots(ROOT) { root ->
+  override val seed = forPaginatedRoots(ROOT) { root ->
     root
       .shopifyItems()
       .map { details ->
-        leaf(details.title, details.url) { doc ->
+        work(details.title, details.url) { doc ->
           val desc = doc.selectFrom(".product-single__description")
           val mixed = details.title.containsMatch("mixed")
           val abv = desc.maybe { abvFrom() }

@@ -2,18 +2,18 @@ package watch.craft.scrapers
 
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Output.ScrapedItem
 import watch.craft.dsl.*
 
 class ThornbridgeScraper : Scraper {
-  override val jobs = forRoots(ROOT) { root ->
+  override val seed = forRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".grid-uniform > .grid-item")
       .map { el ->
         val rawName = el.textFrom(".h6")
 
-        leaf(rawName, el.urlFrom("a")) { doc ->
+        work(rawName, el.urlFrom("a")) { doc ->
           val abv = orSkip("No ABV in title, so assume it's not a beer") { rawName.abvFrom() }
 
           val parts = rawName.extract("(.*?)\\W+\\d.*%\\W+(.*)")

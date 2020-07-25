@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test
 import watch.craft.Item
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+import watch.craft.Scraper.Output
+import watch.craft.Scraper.Output.Multiple
+import watch.craft.Scraper.Output.ScrapedItem
 import watch.craft.ScraperEntry
-import watch.craft.dsl.leaf
+import watch.craft.dsl.work
 import watch.craft.network.Retriever
 import java.net.URI
 import java.time.Clock
@@ -32,9 +32,9 @@ class ExecutorTest {
 
   @Test
   fun `scrapes products`() {
-    val scraper = scraper(jobs = listOf(
-      leaf(name = "A", url = productUrl("a")) { product("Foo") },
-      leaf(name = "B", url = productUrl("b")) { product("Bar") }
+    val scraper = scraper(listOf(
+      work(name = "A", url = productUrl("a")) { product("Foo") },
+      work(name = "B", url = productUrl("b")) { product("Bar") }
     ))
 
     assertEquals(
@@ -76,10 +76,10 @@ class ExecutorTest {
 
   @Test
   fun `continues after validation failure`() {
-    val scraper = scraper(jobs = listOf(
-      leaf(name = "A", url = productUrl("a")) { product("Foo") },
-      leaf(name = "B", url = productUrl("b")) { product("Foo").copy(name = "") },  // Invalid name
-      leaf(name = "C", url = productUrl("c")) { product("Bar") }
+    val scraper = scraper(listOf(
+      work(name = "A", url = productUrl("a")) { product("Foo") },
+      work(name = "B", url = productUrl("b")) { product("Foo").copy(name = "") },  // Invalid name
+      work(name = "C", url = productUrl("c")) { product("Bar") }
     ))
 
     assertEquals(
@@ -88,10 +88,10 @@ class ExecutorTest {
     )
   }
 
-  private fun scraper(jobs: List<Job>) = listOf(
+  private fun scraper(outputs: List<Output>) = listOf(
     ScraperEntry(
       scraper = object : Scraper {
-        override val jobs = jobs
+        override val seed = Multiple(outputs)
       },
       brewery = mock { on { id } doReturn THIS_BREWERY_ID }
     )

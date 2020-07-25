@@ -2,18 +2,18 @@ package watch.craft.scrapers
 
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Output.ScrapedItem
 import watch.craft.dsl.*
 
 class BurningSkyScraper : Scraper {
-  override val jobs = forRoots(*ROOTS) { root ->
+  override val seed = forRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".products .item")
       .map { el ->
         val title = el.textFrom(".product-title")
 
-        leaf(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
+        work(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
 
           ScrapedItem(
             name = title.split(" - ")[0],

@@ -3,13 +3,12 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Document
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+import watch.craft.Scraper.Output.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class BigDropScraper : Scraper {
-  override val jobs = forRoots(ROOT) { root: Document ->
+  override val seed = forRoots(ROOT) { root: Document ->
     root
       .selectMultipleFrom(".products")
       .dropLast(1)  // Avoid merchandise
@@ -17,7 +16,7 @@ class BigDropScraper : Scraper {
       .map { el ->
         val title = el.textFrom(".title")
 
-        leaf(title, el.urlFrom("a")) { doc ->
+        work(title, el.urlFrom("a")) { doc ->
           if (title.containsWord(*BLACKLIST.toTypedArray())) {
             throw SkipItemException("Not a beer")
           }

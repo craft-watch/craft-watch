@@ -5,18 +5,18 @@ import org.jsoup.select.Elements
 import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Output.ScrapedItem
 import watch.craft.dsl.*
 
 class PurityScraper : Scraper {
-  override val jobs = forRoots(ROOT) { root ->
+  override val seed = forRoots(ROOT) { root ->
     root
       .extractNonMixedProducts()
       .map { el ->
         val title = el.textFrom(".woocommerce-loop-product__title")
 
-        leaf(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
+        work(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
           val desc = doc.formattedTextFrom(".elementor-widget-woocommerce-product-content")
 
           ScrapedItem(

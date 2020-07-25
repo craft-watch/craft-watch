@@ -4,17 +4,17 @@ import org.jsoup.nodes.Document
 import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Output.ScrapedItem
 import watch.craft.dsl.*
 
 class WildBeerScraper : Scraper {
-  override val jobs = forPaginatedRoots(*ROOTS) { root: Document, keg ->
+  override val seed = forPaginatedRoots(*ROOTS) { root: Document, keg ->
     root
       .selectMultipleFrom(".itemSmall")
       .map { el ->
         val title = el.textFrom(".itemSmallTitle")
-        leaf(title, el.urlFrom(".itemImageWrap a")) { doc ->
+        work(title, el.urlFrom(".itemImageWrap a")) { doc ->
           val desc = doc.formattedTextFrom(".productDescription")
           val available = ".unavailableItemWrap" !in doc
           val format = if (keg) KEG else desc.formatFrom(disallowed = listOf(KEG))

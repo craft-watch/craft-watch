@@ -1,19 +1,19 @@
 package watch.craft.scrapers
 
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Output.ScrapedItem
 import watch.craft.dsl.*
 import watch.craft.shopify.extractShopifyOffers
 
 class OrbitScraper : Scraper {
-  override val jobs = forPaginatedRoots(ROOT) { root ->
+  override val seed = forPaginatedRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product-card")
       .map { el ->
         val title = el.textFrom(".product-card__name")
 
-        leaf(title, el.urlFrom()) { doc ->
+        work(title, el.urlFrom()) { doc ->
           val desc = doc.formattedTextFrom(".product-single__description")
 
           // Remove all the dross

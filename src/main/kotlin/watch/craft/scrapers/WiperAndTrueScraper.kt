@@ -3,18 +3,18 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Element
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Output.ScrapedItem
 import watch.craft.dsl.*
 
 class WiperAndTrueScraper : Scraper {
-  override val jobs = forRoots(ROOT) { root ->
+  override val seed = forRoots(ROOT) { root ->
     root
       .selectMultipleFrom("#productList a.product")
       .map { el ->
         val rawName = el.textFrom(".product-title")
 
-        leaf(rawName, el.urlFrom()) { doc ->
+        work(rawName, el.urlFrom()) { doc ->
           val desc = doc.selectFrom(".product-excerpt")
           val parts = extractVariableParts(rawName, desc)
 

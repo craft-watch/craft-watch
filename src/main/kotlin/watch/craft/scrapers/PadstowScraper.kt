@@ -3,19 +3,19 @@ package watch.craft.scrapers
 import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Output.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class PadstowScraper : Scraper {
-  override val jobs = forRoots(*ROOTS) { root ->
+  override val seed = forRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".beer-container")
       .map { el ->
         val rawName = el.textFrom("h3")
 
-        leaf(rawName, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
+        work(rawName, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
           if (".stat" !in doc) {
             throw SkipItemException("Not an actual beer")
           }

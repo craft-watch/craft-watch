@@ -2,19 +2,19 @@ package watch.craft.scrapers
 
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Output.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class NorthernMonkScraper : Scraper {
-  override val jobs = forPaginatedRoots(ROOT) { root ->
+  override val seed = forPaginatedRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".card")
       .map { el ->
         val rawName = el.textFrom(".card__name").toTitleCase()
 
-        leaf(rawName, el.urlFrom(".card__wrapper")) { doc ->
+        work(rawName, el.urlFrom(".card__wrapper")) { doc ->
           val desc = doc.selectFrom(".product__description")
           val abv = desc.maybe { abvFrom() }
           val mixed = desc.children()

@@ -2,19 +2,19 @@ package watch.craft.scrapers
 
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Output.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class VerdantScraper : Scraper {
-  override val jobs = forRoots(ROOT) { root ->
+  override val seed = forRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".collection-products .product")
       .map { el ->
         val title = el.textFrom(".product__title")
 
-        leaf(title, el.urlFrom("a.product__img-wrapper")) { doc ->
+        work(title, el.urlFrom("a.product__img-wrapper")) { doc ->
           if (BLACKLIST.any { title.containsWord(it) }) {
             throw SkipItemException("Assuming not a beer")
           }

@@ -3,20 +3,20 @@ package watch.craft.scrapers
 import watch.craft.Format.CAN
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Output.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class PollysScraper : Scraper {
-  override val jobs = forRoots(ROOT) { root ->
+  override val seed = forRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product")
       .map { el ->
         val rawName = el.textFrom(".woocommerce-loop-product__title")
         val a = el.selectFrom(".woocommerce-loop-product__link")
 
-        leaf(rawName, a.urlFrom()) { doc ->
+        work(rawName, a.urlFrom()) { doc ->
           if (rawName.containsWord(*BLACKLIST.toTypedArray())) {
             throw SkipItemException("Not something we can deal with")
           }

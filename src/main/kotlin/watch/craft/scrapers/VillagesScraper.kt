@@ -4,19 +4,19 @@ import org.jsoup.nodes.Document
 import watch.craft.Format.CAN
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Job.Leaf
-import watch.craft.Scraper.ScrapedItem
+
+import watch.craft.Scraper.Output.ScrapedItem
 import watch.craft.dsl.*
 import watch.craft.jsonld.Thing.Product
 import watch.craft.jsonld.jsonLdFrom
 import watch.craft.shopify.shopifyItems
 
 class VillagesScraper : Scraper {
-  override val jobs = forRoots(ROOT) { root ->
+  override val seed = forRoots(ROOT) { root ->
     root
       .shopifyItems()
       .map { details ->
-        leaf(details.title, details.url) { doc ->
+        work(details.title, details.url) { doc ->
           val parts = doc.extractVariableParts(details.title)
 
           ScrapedItem(
