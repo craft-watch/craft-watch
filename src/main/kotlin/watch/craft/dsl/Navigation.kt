@@ -33,11 +33,11 @@ fun fromHtmlRoots(
   fromHtml(null, it.url) { data -> Multiple(block(data)) }
 }
 
-fun fromJsonRoots(
+inline fun <reified T> fromJsonRoots(
   vararg roots: Root<Unit>,
-  block: (Any) -> List<Node>
+  crossinline block: (T) -> List<Node>
 ) = roots.mapToMultiple {
-  fromJson(null, it.url) { data -> Multiple(block(data)) }
+  fromJson<T>(null, it.url) { data -> Multiple(block(data)) }
 }
 
 fun <Context> fromPaginatedRoots(
@@ -54,11 +54,11 @@ fun <Context> fromHtmlRoots(
   fromHtml(null, it.url) { data -> Multiple(block(data, it.context)) }
 }
 
-fun <Context> fromJsonRoots(
+inline fun <reified T, Context> fromJsonRoots(
   vararg roots: Root<Context>,
-  block: (Any, Context) -> List<Node>
+  crossinline block: (T, Context) -> List<Node>
 ) = roots.mapToMultiple {
-  fromJson(null, it.url) { data -> Multiple(block(data, it.context)) }
+  fromJson<T>(null, it.url) { data -> Multiple(block(data, it.context)) }
 }
 
 
@@ -93,18 +93,16 @@ fun fromHtml(
   block = { block(Jsoup.parse(String(it), url.toString())!!) }
 )
 
-fun fromJson(
+inline fun <reified T> fromJson(
   name: String? = null,
   url: URI,
-  block: (data: Any) -> Node
+  crossinline block: (data: T) -> Node
 ) = Retrieval(
   name,
   url,
   suffix = ".json",
   validate = { Unit },    // TODO
-  block = { block(mapper.readValue(it)) }
+  block = { block(mapper().readValue(it)) }
 )
 
-private val mapper = mapper()
-
-private fun <T> Array<T>.mapToMultiple(block: (T) -> Node) = Multiple(map(block))
+fun <T> Array<T>.mapToMultiple(block: (T) -> Node) = Multiple(map(block))
