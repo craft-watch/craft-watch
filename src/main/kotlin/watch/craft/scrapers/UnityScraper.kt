@@ -8,7 +8,7 @@ import watch.craft.dsl.*
 import watch.craft.shopify.shopifyItems
 
 class UnityScraper : Scraper {
-  override val root = fromHtmlRoots(ROOT) { root ->
+  override val roots = fromHtmlRoots(ROOT) { root ->
     root
       .shopifyItems()
       .map { details ->

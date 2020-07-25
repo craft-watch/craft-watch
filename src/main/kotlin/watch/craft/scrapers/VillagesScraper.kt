@@ -12,7 +12,7 @@ import watch.craft.jsonld.jsonLdFrom
 import watch.craft.shopify.shopifyItems
 
 class VillagesScraper : Scraper {
-  override val root = fromHtmlRoots(ROOT) { root ->
+  override val roots = fromHtmlRoots(ROOT) { root ->
     root
       .shopifyItems()
       .map { details ->

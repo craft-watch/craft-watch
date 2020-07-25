@@ -13,7 +13,7 @@ import watch.craft.shopify.ShopifyItemDetails
 import watch.craft.shopify.shopifyItems
 
 class WildCardScraper : Scraper {
-  override val root = fromHtmlRoots(ROOT) { root ->
+  override val roots = fromHtmlRoots(ROOT) { root ->
     root
       .shopifyItems()
       .map { details ->

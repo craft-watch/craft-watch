@@ -5,7 +5,6 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import watch.craft.MalformedInputException
 import watch.craft.Scraper.Node
-import watch.craft.Scraper.Node.Multiple
 import watch.craft.Scraper.Node.Retrieval
 import watch.craft.utils.mapper
 import java.net.URI
@@ -22,62 +21,58 @@ fun <Context> root(url: String, context: Context) = Root(url.toUri(), context)
 fun fromPaginatedRoots(
   vararg roots: Root<Unit>,
   block: (Document) -> List<Node>
-) = roots.mapToMultiple {
-  followPagination(it.url, block)
-}
+) = roots.map { followPagination(it.url, block) }
 
 fun fromHtmlRoots(
   vararg roots: Root<Unit>,
   block: (Document) -> List<Node>
-) = roots.mapToMultiple {
-  fromHtml(null, it.url) { data -> Multiple(block(data)) }
-}
+) = roots.map { multipleFromHtml(null, it.url, block) }
 
-inline fun <reified T> fromJsonRoots(
+inline fun <reified Data> fromJsonRoots(
   vararg roots: Root<Unit>,
-  crossinline block: (T) -> List<Node>
-) = roots.mapToMultiple {
-  fromJson<T>(null, it.url) { data -> Multiple(block(data)) }
-}
+  crossinline block: (Data) -> List<Node>
+) = roots.map { multipleFromJson(null, it.url, block) }
 
 fun <Context> fromPaginatedRoots(
   vararg roots: Root<Context>,
   block: (Document, Context) -> List<Node>
-) = roots.mapToMultiple {
-  followPagination(it.url) { data -> block(data, it.context) }
-}
+) = roots.map { followPagination(it.url, block.contextify(it.context)) }
 
 fun <Context> fromHtmlRoots(
   vararg roots: Root<Context>,
   block: (Document, Context) -> List<Node>
-) = roots.mapToMultiple {
-  fromHtml(null, it.url) { data -> Multiple(block(data, it.context)) }
-}
+) = roots.map { multipleFromHtml(null, it.url, block.contextify(it.context)) }
 
-inline fun <reified T, Context> fromJsonRoots(
+inline fun <reified Data, Context> fromJsonRoots(
   vararg roots: Root<Context>,
-  crossinline block: (T, Context) -> List<Node>
-) = roots.mapToMultiple {
-  fromJson<T>(null, it.url) { data -> Multiple(block(data, it.context)) }
-}
+  crossinline block: (Data, Context) -> List<Node>
+) = roots.map { multipleFromJson(null, it.url, block.contextify(it.context)) }
 
-
-// Primitives
 
 private fun followPagination(url: URI, block: (Document) -> List<Node>): Node =
-  fromHtml(null, url) { data ->
-    Multiple(
-      listOfNotNull(
-        data.maybe { urlFrom("[rel=next]") }
-          ?.let { followPagination(it, block) }
-      ) + block(data)
-    )
+  multipleFromHtml(null, url) { data ->
+    listOfNotNull(
+      data.maybe { urlFrom("[rel=next]") }
+        ?.let { followPagination(it, block) }
+    ) + block(data)
   }
 
 fun fromHtml(
   name: String? = null,
   url: URI,
   block: (data: Document) -> Node
+) = multipleFromHtml(name, url, block.listify())
+
+inline fun <reified Data> fromJson(
+  name: String? = null,
+  url: URI,
+  crossinline block: (data: Data) -> Node
+) = multipleFromJson(name, url, block.listify())
+
+fun multipleFromHtml(
+  name: String? = null,
+  url: URI,
+  block: (data: Document) -> List<Node>
 ) = Retrieval(
   name = name,
   url = url,
@@ -93,10 +88,10 @@ fun fromHtml(
   block = { block(Jsoup.parse(String(it), url.toString())!!) }
 )
 
-inline fun <reified T> fromJson(
+inline fun <reified Data> multipleFromJson(
   name: String? = null,
   url: URI,
-  crossinline block: (data: T) -> Node
+  crossinline block: (data: Data) -> List<Node>
 ) = Retrieval(
   name,
   url,
@@ -105,4 +100,8 @@ inline fun <reified T> fromJson(
   block = { block(mapper().readValue(it)) }
 )
 
-fun <T> Array<T>.mapToMultiple(block: (T) -> Node) = Multiple(map(block))
+inline fun <reified Data> ((Data) -> Node).listify() =
+  { data: Data -> listOf(this(data)) }
+
+inline fun <reified Data, Context> ((Data, Context) -> List<Node>).contextify(context: Context) =
+  { data: Data -> this(data, context) }

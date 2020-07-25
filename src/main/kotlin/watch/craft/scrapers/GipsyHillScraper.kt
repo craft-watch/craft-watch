@@ -7,7 +7,7 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class GipsyHillScraper : Scraper {
-  override val root = fromHtmlRoots(ROOT) { root ->
+  override val roots = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product")
       .map { el ->
@@ -25,7 +25,6 @@ class GipsyHillScraper : Scraper {
           val name = rawName.cleanse(" \\(.*\\)$")
 
           ScrapedItem(
-
             name = name,
             summary = if (mixed) null else style,
             desc = doc.maybe { formattedTextFrom(".description") },

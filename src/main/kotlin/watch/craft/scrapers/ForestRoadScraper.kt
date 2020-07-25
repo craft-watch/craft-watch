@@ -10,7 +10,7 @@ import watch.craft.dsl.*
 import kotlin.math.max
 
 class ForestRoadScraper : Scraper {
-  override val root = fromHtmlRoots(*ROOTS) { root ->
+  override val roots = fromHtmlRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".Main--products-list .ProductList-item")
       .map { el ->

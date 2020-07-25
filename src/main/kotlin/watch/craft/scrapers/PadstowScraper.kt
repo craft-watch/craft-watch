@@ -9,7 +9,7 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class PadstowScraper : Scraper {
-  override val root = fromHtmlRoots(*ROOTS) { root ->
+  override val roots = fromHtmlRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".beer-container")
       .map { el ->

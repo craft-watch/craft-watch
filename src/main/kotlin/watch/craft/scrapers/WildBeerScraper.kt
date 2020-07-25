@@ -9,7 +9,7 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class WildBeerScraper : Scraper {
-  override val root = fromPaginatedRoots(*ROOTS) { root: Document, keg ->
+  override val roots = fromPaginatedRoots(*ROOTS) { root: Document, keg ->
     root
       .selectMultipleFrom(".itemSmall")
       .map { el ->

@@ -8,11 +8,10 @@ import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
-import watch.craft.utils.mapper
 import java.net.URI
 
 class AffinityScraper : Scraper {
-  override val root = fromJsonRoots<Index>(JSON_ROOT) { index ->
+  override val roots = fromJsonRoots<Index>(JSON_ROOT) { index ->
     index.products
       .map { p ->
         fromJson<Product>(p.name, (JSON_ROOT.url.toString() + "/" + p.url).toUri()) { product ->

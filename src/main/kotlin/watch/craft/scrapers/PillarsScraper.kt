@@ -10,7 +10,7 @@ import watch.craft.dsl.*
 import watch.craft.shopify.shopifyItems
 
 class PillarsScraper : Scraper {
-  override val root = fromHtmlRoots(ROOT) { root ->
+  override val roots = fromHtmlRoots(ROOT) { root ->
     root
       .shopifyItems()
       .map { details ->

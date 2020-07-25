@@ -9,7 +9,7 @@ import watch.craft.dsl.*
 import watch.craft.shopify.shopifyItems
 
 class BrickScraper : Scraper {
-  override val root = fromPaginatedRoots(ROOT) { root ->
+  override val roots = fromPaginatedRoots(ROOT) { root ->
     root
       .shopifyItems()
       .map { details ->

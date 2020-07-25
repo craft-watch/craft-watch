@@ -9,7 +9,7 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class PollysScraper : Scraper {
-  override val root = fromHtmlRoots(ROOT) { root ->
+  override val roots = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product")
       .map { el ->

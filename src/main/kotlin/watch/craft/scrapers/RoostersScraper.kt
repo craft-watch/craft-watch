@@ -11,7 +11,7 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class RoostersScraper : Scraper {
-  override val root = fromHtmlRoots(ROOT) { root ->
+  override val roots = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".Main--products-list .ProductList-item")
       .map { el ->
