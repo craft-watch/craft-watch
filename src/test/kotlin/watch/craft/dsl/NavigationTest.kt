@@ -14,6 +14,38 @@ import watch.craft.Scraper.Node
 import java.net.URI
 
 class NavigationTest {
+  private data class Foo(
+    val a: Int,
+    val b: Int
+  )
+
+  @Nested
+  inner class Json {
+    @Test
+    fun `parses object`() {
+      val block = mock<(Foo) -> Node>()
+      val retrieval = fromJson(
+        name = "foo",
+        url = URI("https://example.invalid"),
+        block = block
+      )
+
+      retrieval.block(
+        """
+        {
+          "a": 123,
+          "b": 456
+        }
+      """.trimIndent().toByteArray()
+      )
+
+      argumentCaptor<Foo>().apply {
+        verify(block)(capture())
+        assertEquals(Foo(123, 456), firstValue)
+      }
+    }
+  }
+
   @Nested
   inner class Html {
     private val retrieval = fromHtml(

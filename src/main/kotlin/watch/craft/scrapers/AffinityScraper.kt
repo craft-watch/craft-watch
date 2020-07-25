@@ -1,7 +1,6 @@
 package watch.craft.scrapers
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.module.kotlin.convertValue
 import org.jsoup.Jsoup
 import watch.craft.Format.CAN
 import watch.craft.Format.KEG
@@ -13,15 +12,10 @@ import watch.craft.utils.mapper
 import java.net.URI
 
 class AffinityScraper : Scraper {
-  private val mapper = mapper()
-
-  override val root = fromJsonRoots(JSON_ROOT) { content: Any ->
-    val idx = mapper.convertValue<Index>(content)
-
-    idx.products
+  override val root = fromJsonRoots<Index>(JSON_ROOT) { index ->
+    index.products
       .map { p ->
-        fromJson(p.name, (JSON_ROOT.url.toString() + "/" + p.url).toUri()) { leaf ->
-          val product = mapper.convertValue<Product>(leaf)
+        fromJson<Product>(p.name, (JSON_ROOT.url.toString() + "/" + p.url).toUri()) { product ->
           val desc = Jsoup.parse(product.description) // HTML nested in JSON :/
           val abv = desc.orSkip("No ABV, so assume not a beer") { abvFrom() }
           val sizeMl = product.name.sizeMlFrom()
