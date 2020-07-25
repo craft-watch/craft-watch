@@ -29,7 +29,7 @@ class ScraperAdapter(
   private val logger = KotlinLogging.logger {}
 
   suspend fun execute() = with(Context()) {
-    val results = Yeah(0, null).process(scraper.seed)
+    val results = process(scraper.seed)
     StatsWith(
       results,
       BreweryStats(
@@ -43,80 +43,77 @@ class ScraperAdapter(
     )
   }
 
-  // TODO - merge context classes
-  private data class Yeah(
-    val depth: Int,
-    val sourceUrl: URI?
+  private data class Context(
+    val depth: Int = 0,
+    val sourceUrl: URI? = null,
+    // TODO - may be safer to return and reduce immutable instances of BreweryStats
+    val numRawItems: AtomicInteger = AtomicInteger(),
+    val numSkipped: AtomicInteger = AtomicInteger(),
+    val numMalformed: AtomicInteger = AtomicInteger(),
+    val numUnretrievable: AtomicInteger = AtomicInteger(),
+    val numErrors: AtomicInteger = AtomicInteger()
   ) {
     fun sourcedAt(url: URI) = copy(sourceUrl = url, depth = depth + 1)
   }
 
-  private inner class Context {
-    // TODO - may be safer to return and reduce immutable instances of BreweryStats
-    val numRawItems = AtomicInteger()
-    val numSkipped = AtomicInteger()
-    val numMalformed = AtomicInteger()
-    val numUnretrievable = AtomicInteger()
-    val numErrors = AtomicInteger()
-
-    suspend fun Yeah.process(output: Output): List<Result> {
-      return when (output) {
-        is ScrapedItem -> processScrapedItem(output)
-        is Multiple -> processMultiple(output)
-        is Work -> processWork(output)
-      }
+  private suspend fun Context.process(output: Output): List<Result> {
+    return when (output) {
+      is ScrapedItem -> processScrapedItem(output)
+      is Multiple -> processMultiple(output)
+      is Work -> processWork(output)
     }
+  }
 
-    private fun Yeah.processScrapedItem(scrapedItem: ScrapedItem): List<Result> {
-      numRawItems.incrementAndGet() // TODO - this needs to move to *before* we do the work
+  private fun Context.processScrapedItem(scrapedItem: ScrapedItem): List<Result> {
+    numRawItems.incrementAndGet() // TODO - this needs to move to *before* we do the work
 
-      return listOf(
-        Result(
-          breweryId = breweryId,
-          url = sourceUrl!!, // TODO - avoid the "!!"
-          item = scrapedItem
-        )
+    return listOf(
+      Result(
+        breweryId = breweryId,
+        url = sourceUrl!!, // TODO - avoid the "!!"
+        item = scrapedItem
       )
+    )
+  }
+
+  private suspend fun Context.processMultiple(multiple: Multiple) = coroutineScope {
+    multiple.outputs
+      .map { async { process(it) } }
+      .flatMap { it.await() }
+  }
+
+  private suspend fun Context.processWork(work: Work) = executeWork(work)
+    ?.let { sourcedAt(work.url).process(it) }
+    ?: emptyList()
+
+  private suspend fun Context.executeWork(work: Work) = try {
+    logger.info("Scraping${work.suffix()}: ${work.url}".prefixed())
+    validateDepth()
+    when (work) {
+      is JsonWork -> work.block(requestJson(work.url))
+      is HtmlWork -> work.block(requestHtml(work.url))
     }
+  } catch (e: Exception) {
+    handleException(work, e)
+    null
+  }
 
-    private suspend fun Yeah.processMultiple(multiple: Multiple) = coroutineScope {
-      multiple.outputs
-        .map { async { process(it) } }
-        .flatMap { it.await() }
+  private fun Context.validateDepth() {
+    if (depth >= MAX_DEPTH) {
+      throw MaxDepthExceededException("Max depth exceeded")
     }
+  }
 
-    private suspend fun Yeah.processWork(work: Work) = executeWork(work)
-      ?.let { sourcedAt(work.url).process(it) }
-      ?: emptyList()
-
-    private suspend fun Yeah.executeWork(work: Work) = try {
-      logger.info("Scraping${work.suffix()}: ${work.url}".prefixed())
-      validateDepth()
-      when (work) {
-        is JsonWork -> work.block(requestJson(work.url))
-        is HtmlWork -> work.block(requestHtml(work.url))
-      }
-    } catch (e: Exception) {
-      work.handleException(e)
-      null
-    }
-
-    private fun Yeah.validateDepth() {
-      if (depth >= MAX_DEPTH) {
-        throw MaxDepthExceededException("Max depth exceeded")
-      }
-    }
-
-    private fun Work.handleException(e: Exception) {
-      when (e) {
-        is FatalScraperException -> throw e
-        is SkipItemException -> trackAsInfo(numSkipped, "Skipping${suffix()} because: ${e.message}")
-        is MalformedInputException -> trackAsWarn(numMalformed, "Error while scraping${suffix()}", e)
-        is UnretrievableException -> trackAsWarn(numUnretrievable, "Couldn't retrieve page${suffix()}", e)
-        // Rare enough that no need for dedicated counter
-        is MaxDepthExceededException -> trackAsWarn(numErrors, "Max depth exceeded while scraping${suffix()}", e)
-        else -> trackAsWarn(numErrors, "Unexpected error while scraping${suffix()}", e)
-      }
+  private fun Context.handleException(work: Work, e: Exception) {
+    val suffix = work.suffix()
+    when (e) {
+      is FatalScraperException -> throw e
+      is SkipItemException -> trackAsInfo(numSkipped, "Skipping${suffix} because: ${e.message}")
+      is MalformedInputException -> trackAsWarn(numMalformed, "Error while scraping${suffix}", e)
+      is UnretrievableException -> trackAsWarn(numUnretrievable, "Couldn't retrieve page${suffix}", e)
+      // Rare enough that no need for dedicated counter
+      is MaxDepthExceededException -> trackAsWarn(numErrors, "Max depth exceeded while scraping${suffix}", e)
+      else -> trackAsWarn(numErrors, "Unexpected error while scraping${suffix}", e)
     }
   }
 
