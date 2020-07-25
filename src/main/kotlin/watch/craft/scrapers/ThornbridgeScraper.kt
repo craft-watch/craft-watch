@@ -3,11 +3,11 @@ package watch.craft.scrapers
 import watch.craft.Offer
 import watch.craft.Scraper
 
-import watch.craft.Scraper.Output.ScrapedItem
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class ThornbridgeScraper : Scraper {
-  override val seed = forRoots(ROOT) { root ->
+  override val root = forRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".grid-uniform > .grid-item")
       .map { el ->

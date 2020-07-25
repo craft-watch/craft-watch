@@ -3,12 +3,12 @@ package watch.craft.scrapers
 import watch.craft.Offer
 import watch.craft.Scraper
 
-import watch.craft.Scraper.Output.ScrapedItem
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class NorthernMonkScraper : Scraper {
-  override val seed = forPaginatedRoots(ROOT) { root ->
+  override val root = forPaginatedRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".card")
       .map { el ->

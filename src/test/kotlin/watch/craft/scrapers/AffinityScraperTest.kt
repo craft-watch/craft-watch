@@ -1,12 +1,7 @@
 package watch.craft.scrapers
 
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import watch.craft.*
-import watch.craft.Format.BOTTLE
-import watch.craft.Format.CAN
-import watch.craft.Scraper.Output.ScrapedItem
-import java.net.URI
 
 class AffinityScraperTest {
   companion object {

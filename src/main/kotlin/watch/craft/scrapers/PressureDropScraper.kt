@@ -3,12 +3,12 @@ package watch.craft.scrapers
 import watch.craft.Offer
 import watch.craft.Scraper
 
-import watch.craft.Scraper.Output.ScrapedItem
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class PressureDropScraper : Scraper {
-  override val seed = forRoots(ROOT) { root ->
+  override val root = forRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product-grid-item")
       .map { el ->

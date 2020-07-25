@@ -3,13 +3,13 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Element
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Output.ScrapedItem
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 import watch.craft.shopify.shopifyItems
 
 class BrickScraper : Scraper {
-  override val seed = forPaginatedRoots(ROOT) { root ->
+  override val root = forPaginatedRoots(ROOT) { root ->
     root
       .shopifyItems()
       .map { details ->

@@ -5,10 +5,8 @@ import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import watch.craft.Format.CAN
 import watch.craft.Offer
-import watch.craft.Scraper.Output.ScrapedItem
-import watch.craft.byName
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.executeScraper
-import watch.craft.noDesc
 import java.net.URI
 
 class VillagesScraperTest {

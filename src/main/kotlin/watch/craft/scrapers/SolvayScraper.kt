@@ -4,11 +4,11 @@ import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
 
-import watch.craft.Scraper.Output.ScrapedItem
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class SolvayScraper : Scraper {
-  override val seed = forRoots(*ROOTS) { root ->
+  override val root = forRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".content .grid-item")
       .map { el ->

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.module.kotlin.convertValue
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Output.ScrapedItem
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 import watch.craft.utils.mapper
 import java.net.URI
@@ -12,7 +12,7 @@ import java.net.URI
 class AffinityScraper : Scraper {
   private val mapper = mapper()
 
-  override val seed = forJsonRoots(JSON_ROOT) { content: Any ->
+  override val root = forJsonRoots(JSON_ROOT) { content: Any ->
     val idx = mapper.convertValue<Index>(content)
 
     idx.products

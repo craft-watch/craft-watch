@@ -6,11 +6,11 @@ import org.jsoup.nodes.Document
 import watch.craft.Offer
 import watch.craft.Scraper
 
-import watch.craft.Scraper.Output.ScrapedItem
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class CraftyScraper : Scraper {
-  override val seed = forPaginatedRoots(ROOT) { root ->
+  override val root = forPaginatedRoots(ROOT) { root ->
     root
       .selectFrom("ul.products")  // Later sections are mostly overlapping
       .selectMultipleFrom(".product")

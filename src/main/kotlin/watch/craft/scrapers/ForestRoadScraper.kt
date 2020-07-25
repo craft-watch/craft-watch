@@ -4,13 +4,13 @@ import watch.craft.Format.BOTTLE
 import watch.craft.Offer
 import watch.craft.Scraper
 
-import watch.craft.Scraper.Output.ScrapedItem
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 import kotlin.math.max
 
 class ForestRoadScraper : Scraper {
-  override val seed = forRoots(*ROOTS) { root ->
+  override val root = forRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".Main--products-list .ProductList-item")
       .map { el ->

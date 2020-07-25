@@ -2,12 +2,12 @@ package watch.craft.scrapers
 
 import watch.craft.Scraper
 
-import watch.craft.Scraper.Output.ScrapedItem
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 import watch.craft.shopify.extractShopifyOffers
 
 class OrbitScraper : Scraper {
-  override val seed = forPaginatedRoots(ROOT) { root ->
+  override val root = forPaginatedRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product-card")
       .map { el ->

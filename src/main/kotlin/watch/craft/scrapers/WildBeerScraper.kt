@@ -5,11 +5,11 @@ import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
 
-import watch.craft.Scraper.Output.ScrapedItem
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class WildBeerScraper : Scraper {
-  override val seed = forPaginatedRoots(*ROOTS) { root: Document, keg ->
+  override val root = forPaginatedRoots(*ROOTS) { root: Document, keg ->
     root
       .selectMultipleFrom(".itemSmall")
       .map { el ->

@@ -2,13 +2,13 @@ package watch.craft.scrapers
 
 import watch.craft.Scraper
 
-import watch.craft.Scraper.Output.ScrapedItem
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 import watch.craft.shopify.extractShopifyOffers
 
 class RedchurchScraper : Scraper {
-  override val seed = forRoots(ROOT) { root ->
+  override val root = forRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product")
       .map { el ->

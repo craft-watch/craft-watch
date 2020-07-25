@@ -4,12 +4,12 @@ import watch.craft.Format.*
 import watch.craft.Offer
 import watch.craft.Scraper
 
-import watch.craft.Scraper.Output.ScrapedItem
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class BrockleyScraper : Scraper {
-  override val seed = forRoots(*ROOTS) { root, format ->
+  override val root = forRoots(*ROOTS) { root, format ->
     root
       .selectMultipleFrom("product-item-root".hook())
       .map { el ->

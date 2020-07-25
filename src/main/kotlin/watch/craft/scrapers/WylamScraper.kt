@@ -3,14 +3,14 @@ package watch.craft.scrapers
 import watch.craft.Offer
 import watch.craft.Scraper
 
-import watch.craft.Scraper.Output.ScrapedItem
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 import watch.craft.jsonld.Thing.Product
 import watch.craft.jsonld.jsonLdFrom
 
 class WylamScraper : Scraper {
-  override val seed = forRoots(ROOT) { root, _ ->
+  override val root = forRoots(ROOT) { root, _ ->
     root
       .selectMultipleFrom(".ec-grid .grid-product")
       .map { el ->

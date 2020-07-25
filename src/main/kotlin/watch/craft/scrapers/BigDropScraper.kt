@@ -3,12 +3,12 @@ package watch.craft.scrapers
 import org.jsoup.nodes.Document
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Output.ScrapedItem
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class BigDropScraper : Scraper {
-  override val seed = forRoots(ROOT) { root: Document ->
+  override val root = forRoots(ROOT) { root: Document ->
     root
       .selectMultipleFrom(".products")
       .dropLast(1)  // Avoid merchandise

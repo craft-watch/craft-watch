@@ -6,9 +6,9 @@ import kotlinx.coroutines.coroutineScope
 import mu.KotlinLogging
 import org.jsoup.Jsoup
 import watch.craft.*
-import watch.craft.Scraper.Output
-import watch.craft.Scraper.Output.*
-import watch.craft.Scraper.Output.Work.*
+import watch.craft.Scraper.Node
+import watch.craft.Scraper.Node.*
+import watch.craft.Scraper.Node.Work.*
 import watch.craft.dsl.selectFrom
 import watch.craft.network.Retriever
 import watch.craft.utils.mapper
@@ -29,7 +29,7 @@ class ScraperAdapter(
   private val logger = KotlinLogging.logger {}
 
   suspend fun execute() = with(Context()) {
-    val results = process(scraper.seed)
+    val results = process(scraper.root)
     StatsWith(
       results,
       BreweryStats(
@@ -56,11 +56,11 @@ class ScraperAdapter(
     fun sourcedAt(url: URI) = copy(sourceUrl = url, depth = depth + 1)
   }
 
-  private suspend fun Context.process(output: Output): List<Result> {
-    return when (output) {
-      is ScrapedItem -> processScrapedItem(output)
-      is Multiple -> processMultiple(output)
-      is Work -> processWork(output)
+  private suspend fun Context.process(node: Node): List<Result> {
+    return when (node) {
+      is ScrapedItem -> processScrapedItem(node)
+      is Multiple -> processMultiple(node)
+      is Work -> processWork(node)
     }
   }
 
@@ -77,13 +77,13 @@ class ScraperAdapter(
   }
 
   private suspend fun Context.processMultiple(multiple: Multiple) = coroutineScope {
-    multiple.outputs
+    multiple.nodes
       .map { async { process(it) } }
       .flatMap { it.await() }
   }
 
   private suspend fun Context.processWork(work: Work): List<Result> {
-    val output = try {
+    val node = try {
       logger.info("Scraping${work.suffix()}: ${work.url}".prefixed())
       validateDepth()   // TODO - put this somewhere more sensible?
       when (work) {
@@ -95,7 +95,7 @@ class ScraperAdapter(
       return emptyList()
     }
 
-    return sourcedAt(work.url).process(output)
+    return sourcedAt(work.url).process(node)
   }
 
   private fun Context.validateDepth() {

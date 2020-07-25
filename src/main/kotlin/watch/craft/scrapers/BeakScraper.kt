@@ -2,11 +2,11 @@ package watch.craft.scrapers
 
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Output.ScrapedItem
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class BeakScraper : Scraper {
-  override val seed = forRoots(ROOT) { root ->
+  override val root = forRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".collection .product_thumb")
       .map { el ->

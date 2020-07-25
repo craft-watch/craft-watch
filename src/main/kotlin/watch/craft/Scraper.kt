@@ -1,7 +1,6 @@
 package watch.craft
 
 import org.jsoup.nodes.Document
-import watch.craft.Scraper.Output.Multiple
 import java.net.URI
 
 data class ScraperEntry(
@@ -10,29 +9,29 @@ data class ScraperEntry(
 )
 
 interface Scraper {
-  val seed: Output
+  val root: Node
 
-  sealed class Output {
-    sealed class Work : Output() {
+  sealed class Node {
+    sealed class Work : Node() {
       abstract val name: String?
       abstract val url: URI
 
       data class JsonWork(
         override val name: String? = null,
         override val url: URI,
-        val block: (data: Any) -> Output
+        val block: (data: Any) -> Node
       ) : Work()
 
       data class HtmlWork(
         override val name: String? = null,
         override val url: URI,
-        val block: (data: Document) -> Output
+        val block: (data: Document) -> Node
       ) : Work()
     }
 
     data class Multiple(
-      val outputs: List<Output> // TODO
-    ) : Output()
+      val nodes: List<Node> // TODO
+    ) : Node()
 
     data class ScrapedItem(
       val name: String,
@@ -43,6 +42,6 @@ interface Scraper {
       val abv: Double? = null,
       val available: Boolean,
       val thumbnailUrl: URI
-    ) : Output()
+    ) : Node()
   }
 }

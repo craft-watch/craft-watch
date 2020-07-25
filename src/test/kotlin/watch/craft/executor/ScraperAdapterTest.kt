@@ -9,9 +9,9 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import watch.craft.*
-import watch.craft.Scraper.Output
-import watch.craft.Scraper.Output.Multiple
-import watch.craft.Scraper.Output.ScrapedItem
+import watch.craft.Scraper.Node
+import watch.craft.Scraper.Node.Multiple
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.textFrom
 import watch.craft.dsl.work
 import watch.craft.executor.ScraperAdapter.Result
@@ -187,7 +187,7 @@ class ScraperAdapterTest {
 
     @Test
     fun `re-visiting a page doesn't kill everything or cause an infinite loop`() {
-      val children = mutableListOf<Output>()
+      val children = mutableListOf<Node>()
       val infiniteLoop = work(ROOT_URL) { children }
       children += infiniteLoop
 
@@ -297,10 +297,10 @@ class ScraperAdapterTest {
     }
   ))
 
-  private fun adapter(outputs: List<Output>) = ScraperAdapter(
+  private fun adapter(outputs: List<Node>) = ScraperAdapter(
     retriever,
     object : Scraper {
-      override val seed = Multiple(outputs)
+      override val root = Multiple(outputs)
     },
     BREWERY_ID
   )

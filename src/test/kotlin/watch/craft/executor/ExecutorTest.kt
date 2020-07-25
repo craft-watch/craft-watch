@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test
 import watch.craft.Item
 import watch.craft.Offer
 import watch.craft.Scraper
-import watch.craft.Scraper.Output
-import watch.craft.Scraper.Output.Multiple
-import watch.craft.Scraper.Output.ScrapedItem
+import watch.craft.Scraper.Node
+import watch.craft.Scraper.Node.Multiple
+import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.ScraperEntry
 import watch.craft.dsl.work
 import watch.craft.network.Retriever
@@ -88,10 +88,10 @@ class ExecutorTest {
     )
   }
 
-  private fun scraper(outputs: List<Output>) = listOf(
+  private fun scraper(outputs: List<Node>) = listOf(
     ScraperEntry(
       scraper = object : Scraper {
-        override val seed = Multiple(outputs)
+        override val root = Multiple(outputs)
       },
       brewery = mock { on { id } doReturn THIS_BREWERY_ID }
     )
