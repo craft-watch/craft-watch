@@ -7,14 +7,14 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class InnisAndGunnScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".itemsBrowse .itemWrap")
       .map { el ->
         val a = el.selectFrom("h2 a")
         val rawName = a.textFrom()
 
-        work(rawName, a.urlFrom()) { doc ->
+        fromHtml(rawName, a.urlFrom()) { doc ->
           val volume = el.selectFrom(".itemVolume")
 
           ScrapedItem(

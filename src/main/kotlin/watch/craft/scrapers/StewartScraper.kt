@@ -7,13 +7,13 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class StewartScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom("#browse li .itemWrap")
       .map { el ->
         val a = el.selectFrom("h2 a")
 
-        work(a.text(), a.urlFrom()) { doc ->
+        fromHtml(a.text(), a.urlFrom()) { doc ->
 
           ScrapedItem(
             thumbnailUrl = el.urlFrom(".imageInnerWrap img"),

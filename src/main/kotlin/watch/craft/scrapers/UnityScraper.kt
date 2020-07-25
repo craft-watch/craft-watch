@@ -8,12 +8,12 @@ import watch.craft.dsl.*
 import watch.craft.shopify.shopifyItems
 
 class UnityScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .shopifyItems()
       .map { details ->
 
-        work(details.title, details.url) { doc ->
+        fromHtml(details.title, details.url) { doc ->
           val desc = doc.formattedTextFrom(".product-single__description")
 
           ScrapedItem(

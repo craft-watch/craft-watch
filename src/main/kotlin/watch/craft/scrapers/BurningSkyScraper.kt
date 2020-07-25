@@ -7,13 +7,13 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class BurningSkyScraper : Scraper {
-  override val root = forRoots(*ROOTS) { root ->
+  override val root = fromHtmlRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".products .item")
       .map { el ->
         val title = el.textFrom(".product-title")
 
-        work(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
+        fromHtml(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
 
           ScrapedItem(
             name = title.split(" - ")[0],

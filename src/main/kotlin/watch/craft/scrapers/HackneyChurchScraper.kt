@@ -7,13 +7,13 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class HackneyChurchScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom("#Collection .hcbc-collection-grid-item")
       .map { el ->
         val rawName = el.textFrom(".grid-view-item__title")
 
-        work(rawName, el.urlFrom("a.grid-view-item__link")) { doc ->
+        fromHtml(rawName, el.urlFrom("a.grid-view-item__link")) { doc ->
           val price = el.selectFrom(".price")
           val desc = doc.formattedTextFrom(".hcbc-product-description")
           val allQuantities = desc.collectFromLines { quantityFrom() }

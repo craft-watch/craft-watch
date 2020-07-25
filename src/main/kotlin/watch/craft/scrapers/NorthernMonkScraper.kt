@@ -8,13 +8,13 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class NorthernMonkScraper : Scraper {
-  override val root = forPaginatedRoots(ROOT) { root ->
+  override val root = fromPaginatedRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".card")
       .map { el ->
         val rawName = el.textFrom(".card__name").toTitleCase()
 
-        work(rawName, el.urlFrom(".card__wrapper")) { doc ->
+        fromHtml(rawName, el.urlFrom(".card__wrapper")) { doc ->
           val desc = doc.selectFrom(".product__description")
           val abv = desc.maybe { abvFrom() }
           val mixed = desc.children()
@@ -45,9 +45,9 @@ class NorthernMonkScraper : Scraper {
             available = data.available,
             offers = setOf(
               Offer(
-                quantity = rawName.maybe { quantityFrom() } ?: 1,
-                totalPrice = data.price / 100.0,
-                sizeMl = desc.maybe { sizeMlFrom() }
+                        quantity = rawName.maybe { quantityFrom() } ?: 1,
+                        totalPrice = data.price / 100.0,
+                        sizeMl = desc.maybe { sizeMlFrom() }
               )
             ),
             thumbnailUrl = doc.urlFrom(".product__image.lazyload")

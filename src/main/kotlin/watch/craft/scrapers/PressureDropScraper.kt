@@ -8,14 +8,14 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class PressureDropScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product-grid-item")
       .map { el ->
         val a = el.selectFrom(".grid__image")
         val rawName = el.textFrom(".f--title")
 
-        work(rawName, a.urlFrom()) { doc ->
+        fromHtml(rawName, a.urlFrom()) { doc ->
           val itemText = doc.text()
           val parts = doc.extractFrom(".product__title", "^(.*?)\\s*(-\\s*(.*?))?$")
 

@@ -12,12 +12,12 @@ import java.net.URI
 class AffinityScraper : Scraper {
   private val mapper = mapper()
 
-  override val root = forJsonRoots(JSON_ROOT) { content: Any ->
+  override val root = fromJsonRoots(JSON_ROOT) { content: Any ->
     val idx = mapper.convertValue<Index>(content)
 
     idx.products
       .map { p ->
-        work(p.name, (JSON_ROOT.url.toString() + "/" + p.url).toUri()) { leaf ->
+        fromJson(p.name, (JSON_ROOT.url.toString() + "/" + p.url).toUri()) { leaf ->
           val product = mapper.convertValue<Product>(leaf)
 
           ScrapedItem(

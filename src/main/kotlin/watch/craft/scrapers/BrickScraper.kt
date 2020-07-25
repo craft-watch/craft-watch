@@ -9,11 +9,11 @@ import watch.craft.dsl.*
 import watch.craft.shopify.shopifyItems
 
 class BrickScraper : Scraper {
-  override val root = forPaginatedRoots(ROOT) { root ->
+  override val root = fromPaginatedRoots(ROOT) { root ->
     root
       .shopifyItems()
       .map { details ->
-        work(details.title, details.url) { doc ->
+        fromHtml(details.title, details.url) { doc ->
           val desc = doc.selectFrom(".product-single__description")
           val mixed = details.title.containsMatch("mixed")
           val abv = desc.maybe { abvFrom() }
@@ -32,10 +32,10 @@ class BrickScraper : Scraper {
             available = details.available,
             offers = setOf(
               Offer(
-                quantity = details.title.maybe { quantityFrom() } ?: 1,
-                totalPrice = details.price,
-                sizeMl = desc.maybe { sizeMlFrom() },
-                format = desc.formatFrom()
+                        quantity = details.title.maybe { quantityFrom() } ?: 1,
+                        totalPrice = details.price,
+                        sizeMl = desc.maybe { sizeMlFrom() },
+                        format = desc.formatFrom()
               )
             ),
             thumbnailUrl = details.thumbnailUrl

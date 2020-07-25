@@ -9,13 +9,13 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class BrockleyScraper : Scraper {
-  override val root = forRoots(*ROOTS) { root, format ->
+  override val root = fromHtmlRoots(*ROOTS) { root, format ->
     root
       .selectMultipleFrom("product-item-root".hook())
       .map { el ->
         val title = el.textFrom("product-item-name".hook())
 
-        work(title, el.urlFrom("product-item-container".hook())) { doc ->
+        fromHtml(title, el.urlFrom("product-item-container".hook())) { doc ->
           if (title.containsWord(*BLACKLIST.toTypedArray())) {
             throw SkipItemException("Can't deal with this")
           }

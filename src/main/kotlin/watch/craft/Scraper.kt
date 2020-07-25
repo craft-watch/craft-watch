@@ -1,6 +1,5 @@
 package watch.craft
 
-import org.jsoup.nodes.Document
 import java.net.URI
 
 data class ScraperEntry(
@@ -12,22 +11,13 @@ interface Scraper {
   val root: Node
 
   sealed class Node {
-    sealed class Work : Node() {
-      abstract val name: String?
-      abstract val url: URI
-
-      data class JsonWork(
-        override val name: String? = null,
-        override val url: URI,
-        val block: (data: Any) -> Node
-      ) : Work()
-
-      data class HtmlWork(
-        override val name: String? = null,
-        override val url: URI,
-        val block: (data: Document) -> Node
-      ) : Work()
-    }
+    data class Work(
+      val name: String? = null,
+      val url: URI,
+      val suffix: String,
+      val validate: (data: ByteArray) -> Unit,
+      val block: (data: ByteArray) -> Node
+    ) : Node()
 
     data class Multiple(
       val nodes: List<Node> // TODO

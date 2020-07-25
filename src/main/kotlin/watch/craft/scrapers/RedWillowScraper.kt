@@ -11,13 +11,13 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class RedWillowScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".ProductList-grid .ProductList-item")
       .map { el ->
         val rawName = el.textFrom(".ProductList-title")
 
-        work(rawName, el.urlFrom("a.ProductList-item-link")) { doc ->
+        fromHtml(rawName, el.urlFrom("a.ProductList-item-link")) { doc ->
           if (BLACKLIST.any { rawName.containsMatch(it) }) {
             throw SkipItemException("Identified as non-beer")
           }

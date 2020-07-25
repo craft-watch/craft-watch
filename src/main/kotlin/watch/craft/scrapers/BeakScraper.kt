@@ -6,14 +6,14 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class BeakScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".collection .product_thumb")
       .map { el ->
         val a = el.selectFrom("a")
         val rawName = a.textFrom("p")
 
-        work(rawName, a.urlFrom()) { doc ->
+        fromHtml(rawName, a.urlFrom()) { doc ->
           val desc = doc.selectFrom(".product_description")
           val allTheText = "${rawName}\n${desc.text()}"
 

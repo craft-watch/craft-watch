@@ -7,14 +7,14 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class CloudwaterScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product-collection .grid-item")
       .map { el ->
         val a = el.selectFrom("a.product-title")
         val nameLines = a.formattedTextFrom().split("\n")
 
-        work(nameLines[0], a.urlFrom()) { doc ->
+        fromHtml(nameLines[0], a.urlFrom()) { doc ->
           val desc = doc.formattedTextFrom(".short-description")
           val allNumItems = desc.collectFromLines { quantityFrom() }
           val mixed = allNumItems.size > 1

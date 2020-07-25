@@ -9,12 +9,12 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class WildBeerScraper : Scraper {
-  override val root = forPaginatedRoots(*ROOTS) { root: Document, keg ->
+  override val root = fromPaginatedRoots(*ROOTS) { root: Document, keg ->
     root
       .selectMultipleFrom(".itemSmall")
       .map { el ->
         val title = el.textFrom(".itemSmallTitle")
-        work(title, el.urlFrom(".itemImageWrap a")) { doc ->
+        fromHtml(title, el.urlFrom(".itemImageWrap a")) { doc ->
           val desc = doc.formattedTextFrom(".productDescription")
           val available = ".unavailableItemWrap" !in doc
           val format = if (keg) KEG else desc.formatFrom(disallowed = listOf(KEG))
@@ -31,27 +31,27 @@ class WildBeerScraper : Scraper {
             available = available,
             offers = if (available) {
               doc.selectMultipleFrom(".itemDescription .sizeLabel")
-                .map { label ->
-                  val sizeName = label.selectFrom(".sizeName")
-                  val priceNow = label.selectFrom(".priceNow")
-                  Offer(
-                    quantity = sizeName.maybe { quantityFrom() } ?: 1,
-                    totalPrice = priceNow.priceFrom(),
-                    sizeMl = sizeName.sizeMlFrom(),
-                    format = format
-                  )
-                }.toSet()
+                        .map { label ->
+                          val sizeName = label.selectFrom(".sizeName")
+                          val priceNow = label.selectFrom(".priceNow")
+                          Offer(
+                            quantity = sizeName.maybe { quantityFrom() } ?: 1,
+                            totalPrice = priceNow.priceFrom(),
+                            sizeMl = sizeName.sizeMlFrom(),
+                            format = format
+                          )
+                        }.toSet()
             } else {
               setOf(
-                Offer(
-                  quantity = 1,
-                  totalPrice = el.priceFrom(".priceStandard"),
-                  sizeMl = maybeAnyOf(
-                    { desc.sizeMlFrom() },
-                    { title.sizeMlFrom() }
-                  ),
-                  format = format
-                )
+                        Offer(
+                          quantity = 1,
+                          totalPrice = el.priceFrom(".priceStandard"),
+                          sizeMl = maybeAnyOf(
+                            { desc.sizeMlFrom() },
+                            { title.sizeMlFrom() }
+                          ),
+                          format = format
+                        )
               )
             },
             thumbnailUrl = el.urlFrom(".imageInnerWrap img")

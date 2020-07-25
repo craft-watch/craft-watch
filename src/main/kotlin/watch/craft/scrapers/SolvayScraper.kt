@@ -8,13 +8,13 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class SolvayScraper : Scraper {
-  override val root = forRoots(*ROOTS) { root ->
+  override val root = fromHtmlRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".content .grid-item")
       .map { el ->
         val rawName = el.textFrom(".grid-title")
 
-        work(rawName, el.urlFrom("a.grid-item-link")) { doc ->
+        fromHtml(rawName, el.urlFrom("a.grid-item-link")) { doc ->
           val nameParts = rawName.extract("(.*?)\\s+\\|\\s+(?:(.*?)\\s+\\d)?")
           val desc = doc.selectFrom(".ProductItem-details-excerpt")
           val mixed = rawName.containsMatch("mix")

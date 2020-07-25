@@ -12,14 +12,14 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class FourpureScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".itemsBrowse li")
       .map { el ->
         val a = el.selectFrom("a")
         val rawName = el.textFrom(".content h3")
 
-        work(rawName, a.urlFrom()) { doc ->
+        fromHtml(rawName, a.urlFrom()) { doc ->
           if (el.title().containsMatch("pack")) {
             throw SkipItemException("Can't calculate price-per-can for packs")
           }

@@ -10,11 +10,11 @@ import watch.craft.dsl.*
 import watch.craft.shopify.shopifyItems
 
 class PillarsScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .shopifyItems()
       .map { details ->
-        work(details.title, details.url) { doc ->
+        fromHtml(details.title, details.url) { doc ->
           val titleParts = extractTitleParts(details.title)
           val descParts = doc.orSkip("Couldn't find style or ABV") {
             extractFrom(".product-single__description", "STYLE:\\s+(.+?)\\s+ABV:\\s+(\\d\\.\\d+)%")

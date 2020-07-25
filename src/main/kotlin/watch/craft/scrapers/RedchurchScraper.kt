@@ -8,14 +8,14 @@ import watch.craft.dsl.*
 import watch.craft.shopify.extractShopifyOffers
 
 class RedchurchScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product")
       .map { el ->
         val title = el.selectFrom(".product__title")
         val rawName = title.text()
 
-        work(rawName, title.urlFrom("a")) { doc ->
+        fromHtml(rawName, title.urlFrom("a")) { doc ->
           val nameParts = rawName.extract(regex = "(Mixed Case - )?(.*)")
           val mixed = !nameParts[1].isBlank()
           val sizeMl = doc.maybe { sizeMlFrom() }

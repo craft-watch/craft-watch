@@ -9,13 +9,13 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class PadstowScraper : Scraper {
-  override val root = forRoots(*ROOTS) { root ->
+  override val root = fromHtmlRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".beer-container")
       .map { el ->
         val rawName = el.textFrom("h3")
 
-        work(rawName, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
+        fromHtml(rawName, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
           if (".stat" !in doc) {
             throw SkipItemException("Not an actual beer")
           }

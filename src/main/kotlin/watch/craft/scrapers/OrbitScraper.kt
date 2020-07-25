@@ -7,13 +7,13 @@ import watch.craft.dsl.*
 import watch.craft.shopify.extractShopifyOffers
 
 class OrbitScraper : Scraper {
-  override val root = forPaginatedRoots(ROOT) { root ->
+  override val root = fromPaginatedRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product-card")
       .map { el ->
         val title = el.textFrom(".product-card__name")
 
-        work(title, el.urlFrom()) { doc ->
+        fromHtml(title, el.urlFrom()) { doc ->
           val desc = doc.formattedTextFrom(".product-single__description")
 
           // Remove all the dross

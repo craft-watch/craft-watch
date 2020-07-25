@@ -10,14 +10,14 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class CraftyScraper : Scraper {
-  override val root = forPaginatedRoots(ROOT) { root ->
+  override val root = fromPaginatedRoots(ROOT) { root ->
     root
       .selectFrom("ul.products")  // Later sections are mostly overlapping
       .selectMultipleFrom(".product")
       .map { el ->
         val title = el.textFrom(".woocommerce-loop-product__title")
 
-        work(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
+        fromHtml(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
           val mixed = doc.containsMatchFrom(".product_meta", "mixed")
           val desc = doc.formattedTextFrom(".et_pb_wc_description")
 

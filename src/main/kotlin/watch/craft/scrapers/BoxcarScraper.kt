@@ -7,11 +7,11 @@ import watch.craft.dsl.*
 import watch.craft.shopify.shopifyItems
 
 class BoxcarScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .shopifyItems()
       .map { details ->
-        work(details.title, details.url) { doc ->
+        fromHtml(details.title, details.url) { doc ->
           val parts = details.title.extract("^(.*?) // (.*?)% *(.*?)? //")
 
           ScrapedItem(

@@ -2,7 +2,6 @@ package watch.craft.executor
 
 import com.nhaarman.mockitokotlin2.*
 import kotlinx.coroutines.runBlocking
-import org.jsoup.nodes.Document
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -10,19 +9,14 @@ import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import watch.craft.*
 import watch.craft.Scraper.Node
-import watch.craft.Scraper.Node.Multiple
-import watch.craft.Scraper.Node.ScrapedItem
-import watch.craft.dsl.textFrom
-import watch.craft.dsl.work
+import watch.craft.Scraper.Node.*
 import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.network.Retriever
 import java.net.URI
 
 class ScraperAdapterTest {
   private val retriever = mock<Retriever> {
-    onBlocking { retrieve(any(), any(), any()) } doAnswer {
-      "<html><body><h1>${it.getArgument<URI>(0)}</h1></body></html>".toByteArray()
-    }
+    onBlocking { retrieve(any(), any(), any()) } doAnswer { it.getArgument<URI>(0).toString().toByteArray() }
   }
 
   private val itemA = mock<ScrapedItem>()
@@ -30,7 +24,7 @@ class ScraperAdapterTest {
 
   @Test
   fun `enriches item with results info`() {
-    val adapter = adapterWithSinglework { itemA }
+    val adapter = adapterWithSingleLeaf { itemA }
 
     assertEquals(
       listOf(
@@ -41,21 +35,21 @@ class ScraperAdapterTest {
   }
 
   @Test
-  fun `passes correct URLs and HTML around`() {
-    val work = mock<(Document) -> ScrapedItem> {
+  fun `passes correct URLs and data around`() {
+    val block = mock<(ByteArray) -> ScrapedItem> {
       on { invoke(any()) } doThrow SkipItemException("Emo town")
     }
 
     val adapter = adapter(
       listOf(
-        work(name = "A", url = URL_A, block = work)
+        from(URL_A, block)
       )
     )
 
     execute(adapter)
 
-    verifyBlocking(retriever) { retrieve(eq(URL_A), eq(".html"), any()) }
-    verify(work)(docWithHeaderMatching(URL_A.toString()))
+    verifyBlocking(retriever) { retrieve(eq(URL_A), eq(COOL_SUFFIX), any()) }
+    verify(block)(URL_A.toString().toByteArray())
   }
 
   @Nested
@@ -63,8 +57,8 @@ class ScraperAdapterTest {
     @Test
     fun `multiple flat items`() {
       val adapter = adapter(listOf(
-        work(name = "A", url = URL_A) { itemA },
-        work(name = "A", url = URL_B) { itemB }
+        from(URL_A) { itemA },
+        from(URL_B) { itemB }
       ))
 
       assertEquals(listOf(itemA, itemB), execute(adapter).items())
@@ -73,10 +67,10 @@ class ScraperAdapterTest {
     @Test
     fun `non-work node`() {
       val adapter = adapter(listOf(
-        work(ROOT_URL) {
+        fromMultiple(ROOT_URL) {
           listOf(
-            work(name = "A", url = URL_A) { itemA },
-            work(name = "A", url = URL_B) { itemB }
+            from(URL_A) { itemA },
+            from(URL_B) { itemB }
           )
         }
       ))
@@ -87,12 +81,12 @@ class ScraperAdapterTest {
     @Test
     fun `multiple non-work nodes`() {
       val adapter = adapter(listOf(
-        work(ROOT_URL) {
+        fromMultiple(ROOT_URL) {
           listOf(
-            work(name = "A", url = URL_A) { itemA },
-            work(PAGE_2_URL) {
+            from(URL_A) { itemA },
+            fromMultiple(PAGE_2_URL) {
               listOf(
-                work(name = "A", url = URL_B) { itemB }
+                from(URL_B) { itemB }
               )
             }
           )
@@ -112,10 +106,10 @@ class ScraperAdapterTest {
       }
 
       val adapter = adapter(listOf(
-        work(ROOT_URL) {
+        fromMultiple(ROOT_URL) {
           listOf(
-            work(name = "A", url = URL_A) { itemA },
-            work(name = "A", url = URL_B) { itemB }
+            from(URL_A) { itemA },
+            from(URL_B) { itemB }
           )
         }
       ))
@@ -132,10 +126,10 @@ class ScraperAdapterTest {
       }
 
       val adapter = adapter(listOf(
-        work(ROOT_URL) {
+        fromMultiple(ROOT_URL) {
           listOf(
-            work(name = "A", url = URL_A) { itemA },
-            work(name = "A", url = URL_B) { itemB }
+            from(URL_A) { itemA },
+            from(URL_B) { itemB }
           )
         }
       ))
@@ -146,10 +140,10 @@ class ScraperAdapterTest {
     @Test
     fun `non-fatal exception during non-work scrape doesn't kill everything`() {
       val adapter = adapter(listOf(
-        work(ROOT_URL) {
+        fromMultiple(ROOT_URL) {
           listOf(
-            work(name = "A", url = URL_A) { itemA },
-            work(PAGE_2_URL) { throw MalformedInputException("Uh oh") }
+            from(URL_A) { itemA },
+            fromMultiple(PAGE_2_URL) { throw MalformedInputException("Uh oh") }
           )
         }
       ))
@@ -160,10 +154,10 @@ class ScraperAdapterTest {
     @Test
     fun `non-fatal exception during work scrape doesn't kill everything`() {
       val adapter = adapter(listOf(
-        work(ROOT_URL) {
+        fromMultiple(ROOT_URL) {
           listOf(
-            work(name = "A", url = URL_A) { throw MalformedInputException("Uh oh") },
-            work(name = "A", url = URL_B) { itemB }
+            from(URL_A) { throw MalformedInputException("Uh oh") },
+            from(URL_B) { itemB }
           )
         }
       ))
@@ -174,10 +168,10 @@ class ScraperAdapterTest {
     @Test
     fun `skip exception during work scrape doesn't kill everything`() {
       val adapter = adapter(listOf(
-        work(ROOT_URL) {
+        fromMultiple(ROOT_URL) {
           listOf(
-            work(name = "A", url = URL_A) { throw SkipItemException("Don't care") },
-            work(name = "A", url = URL_B) { itemB }
+            from(URL_A) { throw SkipItemException("Don't care") },
+            from(URL_B) { itemB }
           )
         }
       ))
@@ -188,13 +182,13 @@ class ScraperAdapterTest {
     @Test
     fun `re-visiting a page doesn't kill everything or cause an infinite loop`() {
       val children = mutableListOf<Node>()
-      val infiniteLoop = work(ROOT_URL) { children }
+      val infiniteLoop = fromMultiple(ROOT_URL) { children }
       children += infiniteLoop
 
       val adapter = adapter(listOf(
-        work(ROOT_URL) {
+        fromMultiple(ROOT_URL) {
           listOf(
-            work(name = "A", url = URL_A) { itemA },
+            from(URL_A) { itemA },
             infiniteLoop
           )
         }
@@ -208,42 +202,42 @@ class ScraperAdapterTest {
   inner class Stats {
     @Test
     fun `counts normal`() {
-      val adapter = adapterWithSinglework { itemA }
+      val adapter = adapterWithSingleLeaf { itemA }
 
       assertEquals(1, execute(adapter).stats.numRawItems)
     }
 
     @Test
     fun `counts malformed`() {
-      val adapter = adapterWithSinglework { throw MalformedInputException("Don't care") }
+      val adapter = adapterWithSingleLeaf { throw MalformedInputException("Don't care") }
 
       assertEquals(1, execute(adapter).stats.numMalformed)
     }
 
     @Test
     fun `counts unretrievable`() {
-      val adapter = adapterWithSinglework { throw UnretrievableException("Don't care") }
+      val adapter = adapterWithSingleLeaf { throw UnretrievableException("Don't care") }
 
       assertEquals(1, execute(adapter).stats.numUnretrievable)
     }
 
     @Test
     fun `counts errors`() {
-      val adapter = adapterWithSinglework { throw RuntimeException("Don't care") }
+      val adapter = adapterWithSingleLeaf { throw RuntimeException("Don't care") }
 
       assertEquals(1, execute(adapter).stats.numErrors)
     }
 
     @Test
     fun `counts max-depth-exceeded as error`() {
-      val adapter = adapterWithSinglework { throw MaxDepthExceededException("Don't care") }
+      val adapter = adapterWithSingleLeaf { throw MaxDepthExceededException("Don't care") }
 
       assertEquals(1, execute(adapter).stats.numErrors)
     }
 
     @Test
     fun `counts skipped`() {
-      val adapter = adapterWithSinglework { throw SkipItemException("Don't care") }
+      val adapter = adapterWithSingleLeaf { throw SkipItemException("Don't care") }
 
       assertEquals(1, execute(adapter).stats.numSkipped)
     }
@@ -255,7 +249,7 @@ class ScraperAdapterTest {
 
     init {
       // Capture the validate function
-      execute(adapterWithSinglework { itemA })
+      execute(adapterWithSingleLeaf { itemA })
       val captor = argumentCaptor<(ByteArray) -> Unit>()
       verifyBlocking(retriever, times(2)) { retrieve(any(), any(), captor.capture()) }
       validate = captor.firstValue
@@ -287,12 +281,10 @@ class ScraperAdapterTest {
 
   private fun execute(adapter: ScraperAdapter) = runBlocking { adapter.execute() }
 
-  private fun docWithHeaderMatching(header: String): Document = argForWhich { textFrom("h1") == header }
-
-  private fun adapterWithSinglework(work: (Document) -> ScrapedItem) = adapter(listOf(
-    work(ROOT_URL) {
+  private fun adapterWithSingleLeaf(block: (ByteArray) -> ScrapedItem) = adapter(listOf(
+    fromMultiple(ROOT_URL) {
       listOf(
-        work(name = "A", url = URL_A, block = work)
+        from(URL_A, block)
       )
     }
   ))
@@ -305,11 +297,22 @@ class ScraperAdapterTest {
     BREWERY_ID
   )
 
+  private fun fromMultiple(url: URI, block: (ByteArray) -> List<Node>) = from(url) { Multiple(block(it)) }
+
+  private fun from(url: URI, block: (ByteArray) -> Node) = Work(
+    null,
+    url,
+    suffix = COOL_SUFFIX,
+    validate = { Unit },
+    block = block
+  )
+
   companion object {
     private const val BREWERY_ID = "foo"
     private val ROOT_URL = URI("https://example.invalid")
     private val PAGE_2_URL = URI("https://example.invalid/2")
     private val URL_A = URI("https://example.invalid/a")
     private val URL_B = URI("https://example.invalid/b")
+    private const val COOL_SUFFIX = ".xxx"
   }
 }

@@ -8,12 +8,12 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class BurntMillScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".ProductItem")
       .map { el ->
         val title = el.textFrom(".ProductItem__Title")
-        work(title, el.urlFrom(".ProductItem__ImageWrapper")) { doc ->
+        fromHtml(title, el.urlFrom(".ProductItem__ImageWrapper")) { doc ->
           ScrapedItem(
             name = title
               .cleanse(

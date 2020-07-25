@@ -9,13 +9,13 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class FivePointsScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom("#browse li .itemWrap")
       .map { el ->
         val a = el.selectFrom("h2 a")
 
-        work(a.text(), a.urlFrom()) { doc ->
+        fromHtml(a.text(), a.urlFrom()) { doc ->
           val title = doc.maybe { selectFrom(".itemTitle .small") }
           val parts = title?.maybe {
             extractFrom(regex = "(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+((\\d+)\\s+x\\s+)?")

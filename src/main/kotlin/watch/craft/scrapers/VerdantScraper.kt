@@ -8,13 +8,13 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class VerdantScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".collection-products .product")
       .map { el ->
         val title = el.textFrom(".product__title")
 
-        work(title, el.urlFrom("a.product__img-wrapper")) { doc ->
+        fromHtml(title, el.urlFrom("a.product__img-wrapper")) { doc ->
           if (BLACKLIST.any { title.containsWord(it) }) {
             throw SkipItemException("Assuming not a beer")
           }

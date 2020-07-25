@@ -1,17 +1,12 @@
 package watch.craft.executor
 
-import com.fasterxml.jackson.module.kotlin.readValue
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import mu.KotlinLogging
-import org.jsoup.Jsoup
 import watch.craft.*
 import watch.craft.Scraper.Node
 import watch.craft.Scraper.Node.*
-import watch.craft.Scraper.Node.Work.*
-import watch.craft.dsl.selectFrom
 import watch.craft.network.Retriever
-import watch.craft.utils.mapper
 import java.net.URI
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -86,10 +81,7 @@ class ScraperAdapter(
     val node = try {
       logger.info("Scraping${work.suffix()}: ${work.url}".prefixed())
       validateDepth()   // TODO - put this somewhere more sensible?
-      when (work) {
-        is JsonWork -> work.block(requestJson(work.url))
-        is HtmlWork -> work.block(requestHtml(work.url))
-      }
+      work.block(retriever.retrieve(work.url, work.suffix, work.validate))
     } catch (e: Exception) {
       handleException(work, e)
       return emptyList()
@@ -125,24 +117,6 @@ class ScraperAdapter(
   private fun trackAsWarn(counter: AtomicInteger, msg: String, cause: Exception? = null) {
     counter.incrementAndGet()
     logger.warn(msg.prefixed(), cause)
-  }
-
-  private suspend fun requestJson(url: URI) = mapper().readValue<Any>(
-    String(retriever.retrieve(url, ".json") { Unit })  // TODO - validation
-  )
-
-  private suspend fun requestHtml(url: URI) = Jsoup.parse(
-    String(retriever.retrieve(url, ".html", ::validateHtml)),
-    url.toString()
-  )!!
-
-  // Enough to handle e.g. Wander Beyond serving up random Wix placeholder pages
-  private fun validateHtml(content: ByteArray) {
-    try {
-      Jsoup.parse(String(content)).selectFrom("title")
-    } catch (e: Exception) {
-      throw MalformedInputException("Can't extract <title>", e)
-    }
   }
 
   private fun Work.suffix() = if (name != null) " [${name}]" else ""

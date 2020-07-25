@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import watch.craft.Offer
 import watch.craft.Scraper.Node.ScrapedItem
+import watch.craft.byName
 import watch.craft.executeScraper
+import watch.craft.noDesc
 import java.net.URI
 
 class InnisAndGunnScraperTest {

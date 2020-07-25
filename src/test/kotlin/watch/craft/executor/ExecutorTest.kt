@@ -11,7 +11,7 @@ import watch.craft.Scraper.Node
 import watch.craft.Scraper.Node.Multiple
 import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.ScraperEntry
-import watch.craft.dsl.work
+import watch.craft.dsl.fromJson
 import watch.craft.network.Retriever
 import java.net.URI
 import java.time.Clock
@@ -33,8 +33,8 @@ class ExecutorTest {
   @Test
   fun `scrapes products`() {
     val scraper = scraper(listOf(
-      work(name = "A", url = productUrl("a")) { product("Foo") },
-      work(name = "B", url = productUrl("b")) { product("Bar") }
+      fromJson(name = "A", url = productUrl("a")) { product("Foo") },
+      fromJson(name = "B", url = productUrl("b")) { product("Bar") }
     ))
 
     assertEquals(
@@ -77,9 +77,9 @@ class ExecutorTest {
   @Test
   fun `continues after validation failure`() {
     val scraper = scraper(listOf(
-      work(name = "A", url = productUrl("a")) { product("Foo") },
-      work(name = "B", url = productUrl("b")) { product("Foo").copy(name = "") },  // Invalid name
-      work(name = "C", url = productUrl("c")) { product("Bar") }
+      fromJson(name = "A", url = productUrl("a")) { product("Foo") },
+      fromJson(name = "B", url = productUrl("b")) { product("Foo").copy(name = "") },  // Invalid name
+      fromJson(name = "C", url = productUrl("c")) { product("Bar") }
     ))
 
     assertEquals(

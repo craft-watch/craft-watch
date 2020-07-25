@@ -7,13 +7,13 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class ThornbridgeScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".grid-uniform > .grid-item")
       .map { el ->
         val rawName = el.textFrom(".h6")
 
-        work(rawName, el.urlFrom("a")) { doc ->
+        fromHtml(rawName, el.urlFrom("a")) { doc ->
           val abv = orSkip("No ABV in title, so assume it's not a beer") { rawName.abvFrom() }
 
           val parts = rawName.extract("(.*?)\\W+\\d.*%\\W+(.*)")

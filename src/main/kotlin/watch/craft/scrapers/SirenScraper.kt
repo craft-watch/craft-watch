@@ -9,14 +9,14 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class SirenScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".itemsBrowse .itemWrap")
       .map { el ->
         val itemName = el.selectFrom(".itemName")
         val rawName = itemName.text()
 
-        work(rawName, itemName.urlFrom("a")) { doc ->
+        fromHtml(rawName, itemName.urlFrom("a")) { doc ->
           if (rawName.containsMatch("Mixed")) {
             throw SkipItemException("Can't deal with mixed cases yet")    // TODO
           }

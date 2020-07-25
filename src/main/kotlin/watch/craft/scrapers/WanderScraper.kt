@@ -8,14 +8,14 @@ import watch.craft.dsl.*
 import java.net.URI
 
 class WanderScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectFrom("product-list-wrapper".hook())  // Only first one, to avoid merch, etc.
       .selectMultipleFrom("product-list-grid-item".hook())
       .map { el ->
         val name = el.textFrom("product-item-name".hook())
 
-        work(name, el.urlFrom("a")) { doc ->
+        fromHtml(name, el.urlFrom("a")) { doc ->
           val desc = doc.selectFrom("description".hook())
           val descText = desc.text()
 

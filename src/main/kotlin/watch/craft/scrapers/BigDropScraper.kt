@@ -8,7 +8,7 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class BigDropScraper : Scraper {
-  override val root = forRoots(ROOT) { root: Document ->
+  override val root = fromHtmlRoots(ROOT) { root: Document ->
     root
       .selectMultipleFrom(".products")
       .dropLast(1)  // Avoid merchandise
@@ -16,7 +16,7 @@ class BigDropScraper : Scraper {
       .map { el ->
         val title = el.textFrom(".title")
 
-        work(title, el.urlFrom("a")) { doc ->
+        fromHtml(title, el.urlFrom("a")) { doc ->
           if (title.containsWord(*BLACKLIST.toTypedArray())) {
             throw SkipItemException("Not a beer")
           }

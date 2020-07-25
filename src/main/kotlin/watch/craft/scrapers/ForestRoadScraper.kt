@@ -10,13 +10,13 @@ import watch.craft.dsl.*
 import kotlin.math.max
 
 class ForestRoadScraper : Scraper {
-  override val root = forRoots(*ROOTS) { root ->
+  override val root = fromHtmlRoots(*ROOTS) { root ->
     root
       .selectMultipleFrom(".Main--products-list .ProductList-item")
       .map { el ->
         val title = el.textFrom(".ProductList-title")
 
-        work(title, el.urlFrom("a.ProductList-item-link")) { doc ->
+        fromHtml(title, el.urlFrom("a.ProductList-item-link")) { doc ->
           if (title.containsMatch("subscription")) {
             throw SkipItemException("Subscriptions aren't something we can model")
           }

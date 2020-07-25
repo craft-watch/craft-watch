@@ -11,13 +11,13 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class RoostersScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".Main--products-list .ProductList-item")
       .map { el ->
         val title = el.textFrom(".ProductList-title")
 
-        work(title, el.urlFrom(".ProductList-item-link")) { doc ->
+        fromHtml(title, el.urlFrom(".ProductList-item-link")) { doc ->
           if (title.containsWord("bag")) {
             throw SkipItemException("Bag-in-box options are too much hassle")
           }

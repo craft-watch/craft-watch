@@ -9,13 +9,13 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class MarbleScraper : Scraper {
-  override val root = forRoots(ROOT) { root ->
+  override val root = fromHtmlRoots(ROOT) { root ->
     root
       .selectMultipleFrom(".product")
       .map { el ->
         val name = el.textFrom(".woocommerce-loop-product__title")
 
-        work(name, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
+        fromHtml(name, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
           val attributes = doc.extractAttributes()
           val volumeDetails = attributes.extractVolumeDetails()
 
