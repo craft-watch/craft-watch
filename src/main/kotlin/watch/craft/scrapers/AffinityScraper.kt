@@ -2,6 +2,9 @@ package watch.craft.scrapers
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.module.kotlin.convertValue
+import org.jsoup.Jsoup
+import watch.craft.Format
+import watch.craft.Format.*
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Node.ScrapedItem
@@ -19,21 +22,30 @@ class AffinityScraper : Scraper {
       .map { p ->
         fromJson(p.name, (JSON_ROOT.url.toString() + "/" + p.url).toUri()) { leaf ->
           val product = mapper.convertValue<Product>(leaf)
+          val desc = Jsoup.parse(product.description) // HTML nested in JSON :/
+          val abv = desc.orSkip("No ABV, so assume not a beer") { abvFrom() }
+          val sizeMl = product.name.sizeMlFrom()
 
           ScrapedItem(
-            name = product.name,
-            desc = product.description,
-            abv = product.description.abvFrom(),
+            name = product.name.cleanse(
+              "[(].*[)]",
+              "\\d+ml",
+              "\\d+ litre",
+              "keg"
+            ),
+            desc = desc.textFrom(),
+            abv = abv,
             available = true,
             offers = product.variants.map { v ->
               Offer(
-                quantity = v.optionsValues.quantity?.extract("\\d+")?.intFrom(0) ?: 1,
+                quantity = v.optionsValues.quantity?.maybe { extract("\\d+").intFrom(0) } ?: 1,
                 totalPrice = v.price,
-                sizeMl = product.name.sizeMlFrom(),
-                format = product.name.maybe { formatFrom(fullProse = false) }
+                sizeMl = sizeMl,
+                format = if (sizeMl >= 1000) KEG else CAN
               )
             }.toSet(),
-            thumbnailUrl = product.images.first().url
+            thumbnailUrl = product.images.first().url,
+            url = (HTML_ROOT.toString() + p.url).toUri()
           )
         }
       }
@@ -71,5 +83,6 @@ class AffinityScraper : Scraper {
 
   companion object {
     private val JSON_ROOT = root("https://affinitybrewco.com/____webshop/v1/affinitybrewco.com/products")
+    private val HTML_ROOT = URI("https://affinitybrewco.com/shop.html#!/products/")
   }
 }

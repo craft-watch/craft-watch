@@ -51,7 +51,7 @@ private fun Result.normaliseToItem() = Item(
   available = item.available,
   thumbnailUrl = item.thumbnailUrl
     .validate("absolute thumbnail URL") { it.isAbsolute },
-  url = url
+  url = (item.url ?: sourceUrl)
     .validate("absolute URL") { it.isAbsolute }
 )
 

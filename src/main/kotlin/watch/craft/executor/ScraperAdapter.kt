@@ -17,7 +17,7 @@ class ScraperAdapter(
 ) {
   data class Result(
     val breweryId: String,
-    val url: URI,
+    val sourceUrl: URI,
     val item: ScrapedItem
   )
 
@@ -64,7 +64,7 @@ class ScraperAdapter(
     return listOf(
       Result(
         breweryId = breweryId,
-        url = sourceUrl!!, // TODO - avoid the "!!"
+        sourceUrl = sourceUrl!!, // TODO - avoid the "!!"
         item = scrapedItem
       )
     )

@@ -11,6 +11,29 @@ import java.net.URI
 
 class ItemNormalisationTest {
   @Test
+  fun `uses item URL if present`() {
+    val sourceUrl = URI("https://example.invalid/default")
+    val url = URI("https://example.invalid/override")
+
+    assertEquals(
+      url,
+      normalise(prototype.copy(url = url), sourceUrl)
+        .entries.single().url
+    )
+  }
+
+  @Test
+  fun `uses source URL if item URL not present`() {
+    val sourceUrl = URI("https://example.invalid/default")
+
+    assertEquals(
+      sourceUrl,
+      normalise(prototype, sourceUrl)
+        .entries.single().url
+    )
+  }
+
+  @Test
   fun `trims name`() {
     assertEquals(
       "Padded Lager",
@@ -100,7 +123,7 @@ class ItemNormalisationTest {
     entries = listOf(
       Result(
         breweryId = "foo",
-        url = url,
+        sourceUrl = url,
         item = item
       )
     ),

@@ -1,56 +1,75 @@
 package watch.craft.scrapers
 
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import watch.craft.*
+import watch.craft.Format.CAN
+import watch.craft.Format.KEG
+import watch.craft.Scraper.Node.ScrapedItem
+import watch.craft.dsl.containsMatch
+import java.net.URI
 
 class AffinityScraperTest {
   companion object {
-    private val ITEMS = executeScraper(AffinityScraper(), dateString = null)
+    private val ITEMS = executeScraper(AffinityScraper(), dateString = "2020-07-25")
   }
 
   @Test
   fun `finds all the beers`() {
-    ITEMS.display()
-//    assertEquals(12, ITEMS.size)
+    assertEquals(9, ITEMS.size)
   }
 
-//  @Test
-//  fun `extracts beer details`() {
-//    assertEquals(
-//      ScrapedItem(
-//        name = "Pine Trail",
-//        summary = "Pale Ale",
-//        abv = 0.5,
-//        offers = setOf(
-//          Offer(quantity = 4, totalPrice = 6.40, sizeMl = 330, format = CAN),
-//          Offer(quantity = 12, totalPrice = 21.00, sizeMl = 330, format = BOTTLE)
-//        ),
-//        available = true,
-//        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0348/1675/3803/products/shop-can-set-pale_300x.jpg")
-//      ),
-//      ITEMS.byName("Pine Trail").noDesc()
-//    )
-//  }
-//
-//  @Test
-//  fun `extracts description`() {
-//    assertNotNull(ITEMS.byName("Pine Trail").desc)
-//  }
-//
-//  @Test
-//  fun `identifies sold-out and falls back to basic price info`() {
-//    val item = ITEMS.byName("BST")
-//
-//    assertFalse(item.available)
-//    assertEquals(
-//      Offer(quantity = 12, totalPrice = 19.00, sizeMl = 330, format = BOTTLE),
-//      item.onlyOffer()
-//    )
-//  }
-//
-//  @Test
-//  fun `identifies mixed`() {
-//    assertTrue(ITEMS.byName("Big Drop Brewing").mixed)
-//  }
+  @Test
+  fun `extracts beer details`() {
+    assertEquals(
+      ScrapedItem(
+        name = "Paper Mountains",
+        abv = 6.7,
+        offers = setOf(
+          Offer(quantity = 1, totalPrice = 5.00, sizeMl = 440, format = CAN)
+        ),
+        available = true,
+        thumbnailUrl = URI("https://affinitybrewco.com/____impro/1/webshopmedia/papermountains-1589800014579.jpg"),
+        url = URI("https://affinitybrewco.com/shop.html#!/products/paper-mountains-440ml")
+      ),
+      ITEMS.byName("Paper Mountains").noDesc()
+    )
+  }
+
+  @Test
+  fun `extracts description and cleanses HTML tags`() {
+    val item = ITEMS.byName("Paper Mountains")
+
+    assertNotNull(item.desc)
+    assertFalse(item.desc!!.containsMatch("<.*>"))
+  }
+
+  @Test
+  fun `multiple offers`() {
+    assertEquals(
+      setOf(
+        Offer(quantity = 1, totalPrice = 4.50, sizeMl = 440, format = CAN),
+        Offer(quantity = 6, totalPrice = 25.00, sizeMl = 440, format = CAN)
+      ),
+      ITEMS.byName("Crumble").offers
+    )
+  }
+
+  @Test
+  fun `ignores non-beers`() {
+    assertFalse(ITEMS.any { it.name.contains("shirt", ignoreCase = true) })
+  }
+
+  @Test
+  fun `removes nonsense from names`() {
+    assertFalse(ITEMS.any { it.name.contains("keg", ignoreCase = true) })
+    assertFalse(ITEMS.any { it.name.contains("new", ignoreCase = true) })
+    assertFalse(ITEMS.any { it.name.contains("\\d".toRegex()) })
+  }
+
+  @Test
+  fun `identifies kegs`() {
+    assertFalse(ITEMS.flatMap { it.offers }.any { it.sizeMl == 5000 && it.format != KEG })
+  }
 }
 

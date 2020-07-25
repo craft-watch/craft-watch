@@ -32,7 +32,8 @@ interface Scraper {
       val offers: Set<Offer> = emptySet(),
       val abv: Double? = null,
       val available: Boolean,
-      val thumbnailUrl: URI
+      val thumbnailUrl: URI,
+      val url: URI? = null   // Defaults to retrieval URL
     ) : Node()
   }
 }
