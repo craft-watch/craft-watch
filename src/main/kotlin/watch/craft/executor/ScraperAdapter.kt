@@ -82,20 +82,20 @@ class ScraperAdapter(
       .flatMap { it.await() }
   }
 
-  private suspend fun Context.processWork(work: Work) = executeWork(work)
-    ?.let { sourcedAt(work.url).process(it) }
-    ?: emptyList()
-
-  private suspend fun Context.executeWork(work: Work) = try {
-    logger.info("Scraping${work.suffix()}: ${work.url}".prefixed())
-    validateDepth()
-    when (work) {
-      is JsonWork -> work.block(requestJson(work.url))
-      is HtmlWork -> work.block(requestHtml(work.url))
+  private suspend fun Context.processWork(work: Work): List<Result> {
+    val output = try {
+      logger.info("Scraping${work.suffix()}: ${work.url}".prefixed())
+      validateDepth()   // TODO - put this somewhere more sensible?
+      when (work) {
+        is JsonWork -> work.block(requestJson(work.url))
+        is HtmlWork -> work.block(requestHtml(work.url))
+      }
+    } catch (e: Exception) {
+      handleException(work, e)
+      return emptyList()
     }
-  } catch (e: Exception) {
-    handleException(work, e)
-    null
+
+    return sourcedAt(work.url).process(output)
   }
 
   private fun Context.validateDepth() {
