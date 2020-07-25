@@ -16,7 +16,7 @@ import java.net.URI
 class NavigationTest {
   @Nested
   inner class Html {
-    private val retrieval = fromJson(
+    private val retrieval = fromHtml(
       name = "foo",
       url = URI("https://example.invalid"),
       block = { mock() }
