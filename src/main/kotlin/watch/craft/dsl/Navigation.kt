@@ -6,7 +6,7 @@ import org.jsoup.nodes.Document
 import watch.craft.MalformedInputException
 import watch.craft.Scraper.Node
 import watch.craft.Scraper.Node.Multiple
-import watch.craft.Scraper.Node.Work
+import watch.craft.Scraper.Node.Retrieval
 import watch.craft.utils.mapper
 import java.net.URI
 
@@ -78,7 +78,7 @@ fun fromHtml(
   name: String? = null,
   url: URI,
   block: (data: Document) -> Node
-) = Work(
+) = Retrieval(
   name = name,
   url = url,
   suffix = ".html",
@@ -97,7 +97,7 @@ fun fromJson(
   name: String? = null,
   url: URI,
   block: (data: Any) -> Node
-) = Work(
+) = Retrieval(
   name,
   url,
   suffix = ".json",

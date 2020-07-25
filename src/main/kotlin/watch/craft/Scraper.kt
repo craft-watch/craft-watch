@@ -11,16 +11,17 @@ interface Scraper {
   val root: Node
 
   sealed class Node {
-    data class Work(
+    data class Retrieval(
       val name: String? = null,
       val url: URI,
       val suffix: String,
-      val validate: (data: ByteArray) -> Unit,
+      val validate: (data: ByteArray) -> Unit,  // TODO - reframe as "retryIf"
       val block: (data: ByteArray) -> Node
     ) : Node()
 
+    // TODO - eliminate
     data class Multiple(
-      val nodes: List<Node> // TODO
+      val nodes: List<Node>
     ) : Node()
 
     data class ScrapedItem(

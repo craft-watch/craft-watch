@@ -16,7 +16,7 @@ import java.net.URI
 class NavigationTest {
   @Nested
   inner class Html {
-    private val work = fromJson(
+    private val retrieval = fromJson(
       name = "foo",
       url = URI("https://example.invalid"),
       block = { mock() }
@@ -25,13 +25,13 @@ class NavigationTest {
     @Test
     fun `parses document`() {
       val block = mock<(Document) -> Node>()
-      val work = fromHtml(
+      val retrieval = fromHtml(
           name = "foo",
           url = URI("https://example.invalid"),
           block = block
       )
 
-      work.block("<html><head><title>Hello</title></head></html>".toByteArray())
+      retrieval.block("<html><head><title>Hello</title></head></html>".toByteArray())
 
       argumentCaptor<Document>().apply {
         verify(block)(capture())
@@ -42,21 +42,21 @@ class NavigationTest {
     @Test
     fun `doesn't throw on valid HTML with title`() {
       assertDoesNotThrow {
-        work.validate("<html><head><title>Hello</title></head></html>".toByteArray())
+        retrieval.validate("<html><head><title>Hello</title></head></html>".toByteArray())
       }
     }
 
     @Test
     fun `throws on valid HTML without title`() {
       assertThrows<MalformedInputException> {
-        work.validate("<html><head></head></html>".toByteArray())
+        retrieval.validate("<html><head></head></html>".toByteArray())
       }
     }
 
     @Test
     fun `throws on invalid HTML`() {
       assertThrows<MalformedInputException> {
-        work.validate("wat".toByteArray())
+        retrieval.validate("wat".toByteArray())
       }
     }
   }

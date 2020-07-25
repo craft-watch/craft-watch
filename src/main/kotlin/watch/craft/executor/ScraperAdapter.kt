@@ -55,7 +55,7 @@ class ScraperAdapter(
     return when (node) {
       is ScrapedItem -> processScrapedItem(node)
       is Multiple -> processMultiple(node)
-      is Work -> processWork(node)
+      is Retrieval -> processRetrieval(node)
     }
   }
 
@@ -77,17 +77,17 @@ class ScraperAdapter(
       .flatMap { it.await() }
   }
 
-  private suspend fun Context.processWork(work: Work): List<Result> {
+  private suspend fun Context.processRetrieval(retrieval: Retrieval): List<Result> {
     val node = try {
-      logger.info("Scraping${work.suffix()}: ${work.url}".prefixed())
+      logger.info("Scraping${retrieval.suffix()}: ${retrieval.url}".prefixed())
       validateDepth()   // TODO - put this somewhere more sensible?
-      work.block(retriever.retrieve(work.url, work.suffix, work.validate))
+      retrieval.block(retriever.retrieve(retrieval.url, retrieval.suffix, retrieval.validate))
     } catch (e: Exception) {
-      handleException(work, e)
+      handleException(retrieval, e)
       return emptyList()
     }
 
-    return sourcedAt(work.url).process(node)
+    return sourcedAt(retrieval.url).process(node)
   }
 
   private fun Context.validateDepth() {
@@ -96,8 +96,8 @@ class ScraperAdapter(
     }
   }
 
-  private fun Context.handleException(work: Work, e: Exception) {
-    val suffix = work.suffix()
+  private fun Context.handleException(retrieval: Retrieval, e: Exception) {
+    val suffix = retrieval.suffix()
     when (e) {
       is FatalScraperException -> throw e
       is SkipItemException -> trackAsInfo(numSkipped, "Skipping${suffix} because: ${e.message}")
@@ -119,7 +119,7 @@ class ScraperAdapter(
     logger.warn(msg.prefixed(), cause)
   }
 
-  private fun Work.suffix() = if (name != null) " [${name}]" else ""
+  private fun Retrieval.suffix() = if (name != null) " [${name}]" else ""
 
   private fun String.prefixed() = "[$breweryId] ${this}"
 
