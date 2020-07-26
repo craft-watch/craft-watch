@@ -16,8 +16,12 @@ interface Scraper {
       val url: URI,
       val suffix: String,
       val validate: (data: ByteArray) -> Unit,  // TODO - reframe as "retryIf"
-      val block: (data: ByteArray) -> List<Node>
-    ) : Node()
+      val block: RetrievalContext.() -> List<Node>
+    ) : Node() {
+      interface RetrievalContext {
+        val data: ByteArray
+      }
+    }
 
     data class ScrapedItem(
       val name: String,

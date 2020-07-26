@@ -11,7 +11,6 @@ import watch.craft.Scraper.Node
 import watch.craft.Scraper.Node.Retrieval
 import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.ScraperEntry
-import watch.craft.dsl.listify
 import watch.craft.network.Retriever
 import java.net.URI
 import java.time.Clock
@@ -101,7 +100,7 @@ class ExecutorTest {
     url,
     suffix = ".xxx",
     validate = { Unit },
-    block = block.listify()
+    block = { listOf(block(data)) }
   )
 
   companion object {

@@ -39,7 +39,7 @@ class ScraperAdapterTest {
             URL_A,
             suffix = COOL_SUFFIX,
             validate = validate,
-            block = block
+            block = { block(data) }
           )
         )
       )
@@ -253,7 +253,7 @@ class ScraperAdapterTest {
     url,
     suffix = COOL_SUFFIX,
     validate = { Unit },
-    block = block
+    block = { block(data) }
   )
 
   companion object {

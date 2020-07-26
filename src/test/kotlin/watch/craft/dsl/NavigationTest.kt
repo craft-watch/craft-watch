@@ -11,6 +11,8 @@ import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import watch.craft.MalformedInputException
 import watch.craft.Scraper.Node
+import watch.craft.Scraper.Node.Retrieval
+import watch.craft.Scraper.Node.Retrieval.RetrievalContext
 import java.net.URI
 
 class NavigationTest {
@@ -30,14 +32,7 @@ class NavigationTest {
         block = block
       )
 
-      retrieval.block(
-        """
-        {
-          "a": 123,
-          "b": 456
-        }
-      """.trimIndent().toByteArray()
-      )
+      execute(retrieval, """{ "a": 123, "b": 456 }""")
 
       argumentCaptor<Foo>().apply {
         verify(block)(capture())
@@ -63,7 +58,7 @@ class NavigationTest {
         block = block
       )
 
-      retrieval.block("<html><head><title>Hello</title></head></html>".toByteArray())
+      execute(retrieval, "<html><head><title>Hello</title></head></html>")
 
       argumentCaptor<Document>().apply {
         verify(block)(capture())
@@ -91,5 +86,11 @@ class NavigationTest {
         retrieval.validate("wat".toByteArray())
       }
     }
+  }
+
+  private fun execute(retrieval: Retrieval, data: String) {
+    retrieval.block(object : RetrievalContext {
+      override val data = data.toByteArray()
+    })
   }
 }
