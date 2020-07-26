@@ -18,6 +18,17 @@ val SCRAPERS = listOf(
     )
   ),
   entry(
+    AnspachAndHobdayScraper(),
+    Brewery(
+      id = "anspach-and-hobday",
+      shortName = "Anspach & Hobday",
+      name = "Anspach & Hobday",
+      location = "Bermondsey, London",
+      websiteUrl = URI("https://www.anspachandhobday.com/"),
+      twitterHandle = "AnspachHobday"
+    )
+  ),
+  entry(
     BeakScraper(),
     Brewery(
       id = "beak",
