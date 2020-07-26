@@ -6,7 +6,6 @@ import mu.KotlinLogging
 import watch.craft.*
 import watch.craft.Scraper.Node
 import watch.craft.Scraper.Node.Retrieval
-import watch.craft.Scraper.Node.Retrieval.RetrievalContext
 import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.network.Retriever
 import watch.craft.utils.memoize
@@ -81,14 +80,7 @@ class ScraperAdapter(
       val nodes = try {
         logger.info("Scraping${suffix()}: ${url}".prefixed())
         validateDepth()   // TODO - put this somewhere more sensible?
-
-        // TODO - do we really need memoization here?
-        val context = object : RetrievalContext {
-          private val memoized = memoize { retriever.retrieve(url, suffix, validate) }
-          override suspend fun data() = memoized()
-        }
-
-        context.block()
+        block(memoize { retriever.retrieve(url, suffix, validate) })
       } catch (e: Exception) {
         handleException(retrieval, e)
         return emptyList()

@@ -4,14 +4,12 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
 
-fun <T : Any> memoize(f: suspend () -> T): suspend() -> T {
+fun <T : Any> memoize(f: suspend () -> T): suspend () -> T {
   val mutex = Mutex()
   var data: T? = null
   return {
     mutex.withLock {
-      if (data == null) {
-        data = f()
-      }
+      data = data ?: f()
       data!!
     }
   }

@@ -6,7 +6,6 @@ import org.jsoup.nodes.Document
 import watch.craft.MalformedInputException
 import watch.craft.Scraper.Node
 import watch.craft.Scraper.Node.Retrieval
-import watch.craft.Scraper.Node.Retrieval.RetrievalContext
 import watch.craft.utils.mapper
 import watch.craft.utils.memoize
 import java.net.URI
@@ -34,7 +33,7 @@ fun fromHtmlRoots(
 
 inline fun <reified Data : Any> fromJsonRoots(
   vararg roots: Root<Unit>,
-  crossinline block: suspend (Grab<Data>) -> List<Node>
+  noinline block: suspend (Grab<Data>) -> List<Node>
 ) = roots.map { multipleFromJson(null, it.url, block) }
 
 fun <Context> fromPaginatedRoots(
@@ -49,9 +48,8 @@ fun <Context> fromHtmlRoots(
 
 inline fun <reified Data : Any, Context> fromJsonRoots(
   vararg roots: Root<Context>,
-  crossinline block: suspend (Grab<Data>, Context) -> List<Node>
+  noinline block: suspend (Grab<Data>, Context) -> List<Node>
 ) = roots.map { multipleFromJson(null, it.url, block.contextify(it.context)) }
-
 
 private fun followPagination(url: URI, block: suspend (Grab<Document>) -> List<Node>): Node =
   multipleFromHtml(null, url) { data ->
@@ -70,7 +68,7 @@ fun fromHtml(
 inline fun <reified Data : Any> fromJson(
   name: String? = null,
   url: URI,
-  crossinline block: suspend (Grab<Data>) -> Node
+  noinline block: suspend (Grab<Data>) -> Node
 ) = multipleFromJson(name, url, block.listify())
 
 fun multipleFromHtml(
@@ -89,35 +87,27 @@ fun multipleFromHtml(
       throw MalformedInputException("Can't extract <title>", e)
     }
   },
-  block = block.withMemoizedTransform { Jsoup.parse(String(it), url.toString())!! }
+  block = block.memoizedTransform { Jsoup.parse(String(it), url.toString())!! }
 )
 
 inline fun <reified Data : Any> multipleFromJson(
   name: String? = null,
   url: URI,
-  crossinline block: suspend (Grab<Data>) -> List<Node>
+  noinline block: suspend (Grab<Data>) -> List<Node>
 ) = Retrieval(
   name,
   url,
   suffix = ".json",
   validate = { Unit },    // TODO
-  block = block.withMemoizedTransform { mapper().readValue(it) }
+  block = block.memoizedTransform { mapper().readValue(it) }
 )
 
-inline fun <Data : Any>
-  (suspend (Grab<Data>) -> List<Node>).withMemoizedTransform(
-  crossinline transform: (ByteArray) -> Data
-): suspend RetrievalContext.() -> List<Node> = {
-  val memoized = memoize { transform(data()) }
-  this@withMemoizedTransform(memoized)
-}
+fun <Raw, Data : Any, R>
+  (suspend (Grab<Data>) -> R).memoizedTransform(transform: (Raw) -> Data): suspend (Grab<Raw>) -> R =
+  { data -> this(memoize { transform(data()) }) }
 
-inline fun <Data : Any>
-  (suspend (Data) -> Node).listify()
-  : suspend (Data) -> List<Node> =
-  { data: Data -> listOf(this(data)) }
+fun <Data, R>
+  (suspend (Grab<Data>) -> R).listify(): suspend (Grab<Data>) -> List<R> = { listOf(this(it)) }
 
-inline fun <reified Data : Any, Context>
-  (suspend (Grab<Data>, Context) -> List<Node>).contextify(context: Context)
-  : suspend (Grab<Data>) -> List<Node> =
-  { data -> this(data, context) }
+fun <Data, Context, R>
+  (suspend (Grab<Data>, Context) -> R).contextify(context: Context): suspend (Grab<Data>) -> R = { this(it, context) }

@@ -31,7 +31,8 @@ class MarbleScraper : Scraper {
               "\\d+$"
             ).toTitleCase(),
             summary = if (mixed) null else style,
-            desc = doc().maybe { formattedTextFrom(".woocommerce-product-details__short-description") }?.ifBlank { null },
+            desc = doc().maybe { formattedTextFrom(".woocommerce-product-details__short-description") }
+              ?.ifBlank { null },
             mixed = mixed,
             abv = attributes.grab("ABV").maybe { abvFrom(noPercent = true) },
             available = ".out-of-stock" !in doc(),

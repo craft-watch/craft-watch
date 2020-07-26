@@ -100,7 +100,7 @@ class ExecutorTest {
     url,
     suffix = ".xxx",
     validate = { Unit },
-    block = { listOf(block(data())) }
+    block = { data -> listOf(block(data())) }
   )
 
   companion object {
