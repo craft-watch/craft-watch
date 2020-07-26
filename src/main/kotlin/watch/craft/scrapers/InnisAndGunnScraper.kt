@@ -8,7 +8,7 @@ import watch.craft.dsl.*
 
 class InnisAndGunnScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".itemsBrowse .itemWrap")
       .map { el ->
         val a = el.selectFrom("h2 a")
@@ -19,8 +19,8 @@ class InnisAndGunnScraper : Scraper {
 
           ScrapedItem(
             name = rawName.extract("[^\\d]+").stringFrom(0),
-            summary = doc.textFrom(".itemTitle h4"),
-            desc = doc.formattedTextFrom(".productDescription .desc"),
+            summary = doc().textFrom(".itemTitle h4"),
+            desc = doc().formattedTextFrom(".productDescription .desc"),
             abv = el.abvFrom(".alcoInfo"),
             available = true,
             offers = setOf(

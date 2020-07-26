@@ -8,7 +8,7 @@ import watch.craft.dsl.*
 
 class BurningSkyScraper : Scraper {
   override val roots = fromHtmlRoots(*ROOTS) { root ->
-    root
+    root()
       .selectMultipleFrom(".products .item")
       .map { el ->
         val title = el.textFrom(".product-title")
@@ -18,18 +18,18 @@ class BurningSkyScraper : Scraper {
           ScrapedItem(
             name = title.split(" - ")[0],
             summary = null,
-            desc = doc.formattedTextFrom(".summary p"),   // Only take the first paragraph
+            desc = doc().formattedTextFrom(".summary p"),   // Only take the first paragraph
             abv = title.abvFrom(),
             available = ".out-of-stock" !in el,
             offers = setOf(
               Offer(
                 quantity = 1,
                 totalPrice = el.priceFrom(".price"),
-                sizeMl = doc.sizeMlFrom(".custom-attributes"),
-                format = doc.formatFrom(".product_meta")
+                sizeMl = doc().sizeMlFrom(".custom-attributes"),
+                format = doc().formatFrom(".product_meta")
               )
             ),
-            thumbnailUrl = doc.urlFrom(".woocommerce-product-gallery__image img")
+            thumbnailUrl = doc().urlFrom(".woocommerce-product-gallery__image img")
           )
         }
       }

@@ -12,7 +12,7 @@ import watch.craft.dsl.*
 
 class RoostersScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".Main--products-list .ProductList-item")
       .map { el ->
         val title = el.textFrom(".ProductList-title")
@@ -22,7 +22,7 @@ class RoostersScraper : Scraper {
             throw SkipItemException("Bag-in-box options are too much hassle")
           }
 
-          val desc = doc.formattedTextFrom(".ProductItem-details-excerpt")
+          val desc = doc().formattedTextFrom(".ProductItem-details-excerpt")
           val mixed = title.containsMatch("mix")
 
           ScrapedItem(
@@ -34,7 +34,7 @@ class RoostersScraper : Scraper {
             mixed = mixed,
             abv = if (mixed) null else desc.abvFrom(),
             available = true,
-            offers = doc.extractOffers(desc).toSet(),
+            offers = doc().extractOffers(desc).toSet(),
             thumbnailUrl = el.urlFrom("img.ProductList-image")
           )
         }

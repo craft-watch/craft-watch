@@ -10,11 +10,11 @@ import watch.craft.shopify.shopifyItems
 
 class BrickScraper : Scraper {
   override val roots = fromPaginatedRoots(ROOT) { root ->
-    root
+    root()
       .shopifyItems()
       .map { details ->
         fromHtml(details.title, details.url) { doc ->
-          val desc = doc.selectFrom(".product-single__description")
+          val desc = doc().selectFrom(".product-single__description")
           val mixed = details.title.containsMatch("mixed")
           val abv = desc.maybe { abvFrom() }
           if (!mixed && abv == null) {

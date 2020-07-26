@@ -7,14 +7,14 @@ import watch.craft.dsl.*
 
 class BeakScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".collection .product_thumb")
       .map { el ->
         val a = el.selectFrom("a")
         val rawName = a.textFrom("p")
 
         fromHtml(rawName, a.urlFrom()) { doc ->
-          val desc = doc.selectFrom(".product_description")
+          val desc = doc().selectFrom(".product_description")
           val allTheText = "${rawName}\n${desc.text()}"
 
           ScrapedItem(

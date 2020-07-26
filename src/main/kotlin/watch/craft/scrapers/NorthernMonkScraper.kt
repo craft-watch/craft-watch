@@ -9,13 +9,13 @@ import watch.craft.dsl.*
 
 class NorthernMonkScraper : Scraper {
   override val roots = fromPaginatedRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".card")
       .map { el ->
         val rawName = el.textFrom(".card__name").toTitleCase()
 
         fromHtml(rawName, el.urlFrom(".card__wrapper")) { doc ->
-          val desc = doc.selectFrom(".product__description")
+          val desc = doc().selectFrom(".product__description")
           val abv = desc.maybe { abvFrom() }
           val mixed = desc.children()
             .count { it.text().containsMatch("\\d+\\s+x") } > 1
@@ -30,7 +30,7 @@ class NorthernMonkScraper : Scraper {
             .split("™")
             .map { it.trim() }
 
-          val data = doc.jsonFrom<Data>("script[type=application/json][data-product-json]")
+          val data = doc().jsonFrom<Data>("script[type=application/json][data-product-json]")
 
           ScrapedItem(
             name = nameParts[0],
@@ -50,7 +50,7 @@ class NorthernMonkScraper : Scraper {
                 sizeMl = desc.maybe { sizeMlFrom() }
               )
             ),
-            thumbnailUrl = doc.urlFrom(".product__image.lazyload")
+            thumbnailUrl = doc().urlFrom(".product__image.lazyload")
           )
         }
       }

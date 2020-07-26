@@ -8,6 +8,7 @@ import watch.craft.Scraper.Node
 import watch.craft.Scraper.Node.Retrieval
 import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.network.Retriever
+import watch.craft.utils.memoize
 import java.net.URI
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -75,16 +76,18 @@ class ScraperAdapter(
   }
 
   private suspend fun Context.processWork(retrieval: Retrieval): List<Result> {
-    val nodes = try {
-      logger.info("Scraping${retrieval.suffix()}: ${retrieval.url}".prefixed())
-      validateDepth()   // TODO - put this somewhere more sensible?
-      with(retrieval) { block(retriever.retrieve(url, suffix, validate)) }
-    } catch (e: Exception) {
-      handleException(retrieval, e)
-      return emptyList()
-    }
+    with(retrieval) {
+      val nodes = try {
+        logger.info("Scraping${suffix()}: ${url}".prefixed())
+        validateDepth()   // TODO - put this somewhere more sensible?
+        block(memoize { retriever.retrieve(url, suffix, validate) })
+      } catch (e: Exception) {
+        handleException(retrieval, e)
+        return emptyList()
+      }
 
-    return sourcedAt(retrieval.url).process(nodes)
+      return sourcedAt(url).process(nodes)
+    }
   }
 
   private fun Context.validateDepth() {

@@ -10,7 +10,7 @@ import watch.craft.dsl.*
 
 class PollysScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".product")
       .map { el ->
         val rawName = el.textFrom(".woocommerce-loop-product__title")
@@ -26,13 +26,13 @@ class PollysScraper : Scraper {
           ScrapedItem(
             name = parts.stringFrom(1),
             summary = parts.stringFrom(2),
-            desc = doc.formattedTextFrom("#tab-description"),
+            desc = doc().formattedTextFrom("#tab-description"),
             mixed = false,
             abv = rawName.abvFrom(),
-            available = ".out-of-stock" !in doc,
+            available = ".out-of-stock" !in doc(),
             offers = setOf(
               Offer(
-                totalPrice = doc.priceFrom("#main .woocommerce-Price-amount"),
+                totalPrice = doc().priceFrom("#main .woocommerce-Price-amount"),
                 sizeMl = POLLYS_CAN_SIZE_ML,
                 format = CAN
               )

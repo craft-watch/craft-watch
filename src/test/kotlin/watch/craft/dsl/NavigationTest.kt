@@ -1,17 +1,17 @@
 package watch.craft.dsl
 
-import com.nhaarman.mockitokotlin2.argumentCaptor
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.*
+import kotlinx.coroutines.runBlocking
 import org.jsoup.nodes.Document
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import watch.craft.MalformedInputException
 import watch.craft.Scraper.Node
+import watch.craft.Scraper.Node.Retrieval
 import java.net.URI
+
 
 class NavigationTest {
   private data class Foo(
@@ -21,49 +21,79 @@ class NavigationTest {
 
   @Nested
   inner class Json {
+    private val goodJson = """{ "a": 123, "b": 456 }"""
+
+    @Test
+    fun lazy() {
+      // No invocations
+      val retrieval = createRetrieval { mock() }
+      val source = mockSource(goodJson)
+
+      execute(retrieval, source)
+
+      verify(source, never())()
+    }
+
+    @Test
+    fun memoizes() {
+      // Invokes twice
+      val retrieval = createRetrieval { foo -> foo(); foo(); mock() }
+      val source = mockSource(goodJson)
+
+      execute(retrieval, source)
+
+      verify(source, times(1))()
+    }
+
     @Test
     fun `parses object`() {
       val block = mock<(Foo) -> Node>()
-      val retrieval = fromJson(
-        name = "foo",
-        url = URI("https://example.invalid"),
-        block = block
-      )
+      val retrieval = createRetrieval { foo -> block(foo()) }
 
-      retrieval.block(
-        """
-        {
-          "a": 123,
-          "b": 456
-        }
-      """.trimIndent().toByteArray()
-      )
+      execute(retrieval, mockSource(goodJson))
 
       argumentCaptor<Foo>().apply {
         verify(block)(capture())
         assertEquals(Foo(123, 456), firstValue)
       }
     }
+
+    private fun createRetrieval(block: suspend (Grab<Foo>) -> Node) =
+      fromJson("foo", URI("https://example.invalid"), block)
   }
 
   @Nested
   inner class Html {
-    private val retrieval = fromHtml(
-      name = "foo",
-      url = URI("https://example.invalid"),
-      block = { mock() }
-    )
+    private val goodHtml = "<html><head><title>Hello</title></head></html>"
+
+    @Test
+    fun lazy() {
+      // No invocations
+      val retrieval = createRetrieval { mock() }
+      val source = mockSource(goodHtml)
+
+      execute(retrieval, source)
+
+      verify(source, never())()
+    }
+
+    @Test
+    fun memoizes() {
+      // Invokes twice
+      val retrieval = createRetrieval { doc -> doc(); doc(); mock() }
+      val source = mockSource(goodHtml)
+
+      execute(retrieval, source)
+
+      verify(source, times(1))()
+    }
 
     @Test
     fun `parses document`() {
       val block = mock<(Document) -> Node>()
-      val retrieval = fromHtml(
-        name = "foo",
-        url = URI("https://example.invalid"),
-        block = block
-      )
+      val retrieval = createRetrieval { data -> block(data()) }
 
-      retrieval.block("<html><head><title>Hello</title></head></html>".toByteArray())
+      execute(retrieval, mockSource(goodHtml))
 
       argumentCaptor<Document>().apply {
         verify(block)(capture())
@@ -72,24 +102,28 @@ class NavigationTest {
     }
 
     @Test
-    fun `doesn't throw on valid HTML with title`() {
-      assertDoesNotThrow {
-        retrieval.validate("<html><head><title>Hello</title></head></html>".toByteArray())
-      }
-    }
-
-    @Test
     fun `throws on valid HTML without title`() {
       assertThrows<MalformedInputException> {
-        retrieval.validate("<html><head></head></html>".toByteArray())
+        createRetrieval { mock() }.validate("<html><head></head></html>".toByteArray())
       }
     }
 
     @Test
     fun `throws on invalid HTML`() {
       assertThrows<MalformedInputException> {
-        retrieval.validate("wat".toByteArray())
+        createRetrieval { mock() }.validate("wat".toByteArray())
       }
     }
+
+    private fun createRetrieval(block: suspend (Grab<Document>) -> Node) =
+      fromHtml("foo", URI("https://example.invalid"), block)
   }
+
+  private fun execute(retrieval: Retrieval, data: () -> String) {
+    runBlocking {
+      retrieval.block { data().toByteArray() }
+    }
+  }
+
+  private fun mockSource(content: String) = mock<() -> String> { on { invoke() } doReturn content }
 }

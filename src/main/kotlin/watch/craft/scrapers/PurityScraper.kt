@@ -11,13 +11,13 @@ import watch.craft.dsl.*
 
 class PurityScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .extractNonMixedProducts()
       .map { el ->
         val title = el.textFrom(".woocommerce-loop-product__title")
 
         fromHtml(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
-          val desc = doc.formattedTextFrom(".elementor-widget-woocommerce-product-content")
+          val desc = doc().formattedTextFrom(".elementor-widget-woocommerce-product-content")
 
           ScrapedItem(
             name = title.cleanse("(mini cask|polypin)$", "^purity"),
@@ -25,7 +25,7 @@ class PurityScraper : Scraper {
             desc = desc,
             abv = desc.collectFromLines { abvFrom() }.min(),
             available = true,
-            offers = doc.extractOffers(title, desc).toSet(),
+            offers = doc().extractOffers(title, desc).toSet(),
             thumbnailUrl = el.attrFrom(".attachment-woocommerce_thumbnail", "data-lazy-src").toUri()
           )
         }

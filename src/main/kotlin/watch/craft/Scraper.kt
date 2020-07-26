@@ -16,7 +16,7 @@ interface Scraper {
       val url: URI,
       val suffix: String,
       val validate: (data: ByteArray) -> Unit,  // TODO - reframe as "retryIf"
-      val block: (data: ByteArray) -> List<Node>
+      val block: suspend (suspend () -> ByteArray) -> List<Node>
     ) : Node()
 
     data class ScrapedItem(

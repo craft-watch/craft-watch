@@ -12,7 +12,7 @@ import watch.craft.dsl.*
 
 class RedWillowScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".ProductList-grid .ProductList-item")
       .map { el ->
         val rawName = el.textFrom(".ProductList-title")
@@ -22,7 +22,7 @@ class RedWillowScraper : Scraper {
             throw SkipItemException("Identified as non-beer")
           }
 
-          val desc = doc.formattedTextFrom(".ProductItem-details-excerpt")
+          val desc = doc().formattedTextFrom(".ProductItem-details-excerpt")
           val sizeMl = (rawName + "\n" + desc).maybe { sizeMlFrom() }
 
           ScrapedItem(
@@ -32,8 +32,8 @@ class RedWillowScraper : Scraper {
             mixed = rawName.containsMatch("mixed"),
             abv = rawName.maybe { abvFrom() },
             available = true,
-            offers = doc.extractOffers().map { it.copy(sizeMl = sizeMl) }.toSet(),
-            thumbnailUrl = doc.extractSmallThumbnail()
+            offers = doc().extractOffers().map { it.copy(sizeMl = sizeMl) }.toSet(),
+            thumbnailUrl = doc().extractSmallThumbnail()
           )
         }
       }

@@ -8,15 +8,15 @@ import watch.craft.dsl.*
 
 class GipsyHillScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".product")
       .map { el ->
         val a = el.selectFrom(".woocommerce-LoopProduct-link")
         val rawName = a.textFrom(".woocommerce-loop-product__title")
 
         fromHtml(rawName, a.urlFrom()) { doc ->
-          val rawSummary = doc.textFrom(".summary")
-          val numCans = doc.maybe { selectMultipleFrom(".woosb-title-inner") }
+          val rawSummary = doc().textFrom(".summary")
+          val numCans = doc().maybe { selectMultipleFrom(".woosb-title-inner") }
             ?.map { it.quantityFrom() }?.sum()
             ?: 1
           val style = rawSummary.maybe { extract("Style: (.*) ABV")[1] }
@@ -27,7 +27,7 @@ class GipsyHillScraper : Scraper {
           ScrapedItem(
             name = name,
             summary = if (mixed) null else style,
-            desc = doc.maybe { formattedTextFrom(".description") },
+            desc = doc().maybe { formattedTextFrom(".description") },
             mixed = mixed,
             available = true, // TODO
             abv = if (mixed) null else rawSummary.maybe { abvFrom(prefix = "ABV: ", noPercent = true) },

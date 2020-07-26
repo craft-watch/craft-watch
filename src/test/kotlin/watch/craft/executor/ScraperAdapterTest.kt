@@ -10,7 +10,6 @@ import watch.craft.*
 import watch.craft.Scraper.Node
 import watch.craft.Scraper.Node.Retrieval
 import watch.craft.Scraper.Node.ScrapedItem
-import watch.craft.dsl.listify
 import watch.craft.executor.ScraperAdapter.Result
 import watch.craft.network.Retriever
 import java.net.URI
@@ -39,13 +38,30 @@ class ScraperAdapterTest {
             URL_A,
             suffix = COOL_SUFFIX,
             validate = validate,
-            block = block
+            block = { data -> block(data()) }
           )
         )
       )
 
       verifyBlocking(retriever) { retrieve(URL_A, COOL_SUFFIX, validate) }
       verify(block)(URL_A.toString().toByteArray())
+    }
+
+    @Test
+    fun lazy() {
+      execute(
+        adapter(
+          Retrieval(
+            null,
+            URL_A,
+            suffix = COOL_SUFFIX,
+            validate = { },
+            block = { listOf(itemA) }  // No data invocations
+          )
+        )
+      )
+
+      verifyBlocking(retriever, never()) { retrieve(any(), any(), any()) }
     }
   }
 
@@ -235,7 +251,7 @@ class ScraperAdapterTest {
   private fun adapterWithSingleLeaf(block: (ByteArray) -> ScrapedItem) = adapter(
     from(ROOT_URL) {
       listOf(
-        from(URL_A, block.listify())
+        from(URL_A) { data -> listOf(block(data)) }
       )
     }
   )
@@ -253,7 +269,7 @@ class ScraperAdapterTest {
     url,
     suffix = COOL_SUFFIX,
     validate = { Unit },
-    block = block
+    block = { data -> block(data()) }
   )
 
   companion object {

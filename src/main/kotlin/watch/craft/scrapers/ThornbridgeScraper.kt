@@ -8,7 +8,7 @@ import watch.craft.dsl.*
 
 class ThornbridgeScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".grid-uniform > .grid-item")
       .map { el ->
         val rawName = el.textFrom(".h6")
@@ -17,12 +17,12 @@ class ThornbridgeScraper : Scraper {
           val abv = orSkip("No ABV in title, so assume it's not a beer") { rawName.abvFrom() }
 
           val parts = rawName.extract("(.*?)\\W+\\d.*%\\W+(.*)")
-          val desc = doc.selectFrom(".product-description")
+          val desc = doc().selectFrom(".product-description")
 
           // TODO - identify mixed packs
 
           ScrapedItem(
-            thumbnailUrl = doc.urlFrom(".product__image-wrapper img"),
+            thumbnailUrl = doc().urlFrom(".product__image-wrapper img"),
             name = parts[1].cleanse(" (bottle|can)$"),
             summary = parts[2],
             desc = desc.formattedTextFrom(),

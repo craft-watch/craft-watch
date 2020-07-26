@@ -13,16 +13,16 @@ import watch.craft.shopify.shopifyItems
 
 class VillagesScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .shopifyItems()
       .map { details ->
         fromHtml(details.title, details.url) { doc ->
-          val parts = doc.extractVariableParts(details.title)
+          val parts = doc().extractVariableParts(details.title)
 
           ScrapedItem(
             name = parts.name.toTitleCase(),
             summary = parts.summary,
-            desc = doc.maybe { formattedTextFrom(".product-single__description") },
+            desc = doc().maybe { formattedTextFrom(".product-single__description") },
             mixed = parts.mixed,
             abv = parts.abv,
             available = details.available,

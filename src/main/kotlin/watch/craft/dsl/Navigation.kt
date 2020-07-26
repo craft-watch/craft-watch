@@ -7,6 +7,7 @@ import watch.craft.MalformedInputException
 import watch.craft.Scraper.Node
 import watch.craft.Scraper.Node.Retrieval
 import watch.craft.utils.mapper
+import watch.craft.utils.memoize
 import java.net.URI
 
 data class Root<Context>(
@@ -14,45 +15,46 @@ data class Root<Context>(
   val context: Context
 )
 
+typealias Grab<Data> = suspend () -> Data
+
 fun root(url: String) = root(url, Unit)
 
 fun <Context> root(url: String, context: Context) = Root(url.toUri(), context)
 
 fun fromPaginatedRoots(
   vararg roots: Root<Unit>,
-  block: (Document) -> List<Node>
+  block: suspend (Grab<Document>) -> List<Node>
 ) = roots.map { followPagination(it.url, block) }
 
 fun fromHtmlRoots(
   vararg roots: Root<Unit>,
-  block: (Document) -> List<Node>
+  block: suspend (Grab<Document>) -> List<Node>
 ) = roots.map { multipleFromHtml(null, it.url, block) }
 
-inline fun <reified Data> fromJsonRoots(
+inline fun <reified Data : Any> fromJsonRoots(
   vararg roots: Root<Unit>,
-  crossinline block: (Data) -> List<Node>
+  noinline block: suspend (Grab<Data>) -> List<Node>
 ) = roots.map { multipleFromJson(null, it.url, block) }
 
 fun <Context> fromPaginatedRoots(
   vararg roots: Root<Context>,
-  block: (Document, Context) -> List<Node>
+  block: suspend (Grab<Document>, Context) -> List<Node>
 ) = roots.map { followPagination(it.url, block.contextify(it.context)) }
 
 fun <Context> fromHtmlRoots(
   vararg roots: Root<Context>,
-  block: (Document, Context) -> List<Node>
+  block: suspend (Grab<Document>, Context) -> List<Node>
 ) = roots.map { multipleFromHtml(null, it.url, block.contextify(it.context)) }
 
-inline fun <reified Data, Context> fromJsonRoots(
+inline fun <reified Data : Any, Context> fromJsonRoots(
   vararg roots: Root<Context>,
-  crossinline block: (Data, Context) -> List<Node>
+  noinline block: suspend (Grab<Data>, Context) -> List<Node>
 ) = roots.map { multipleFromJson(null, it.url, block.contextify(it.context)) }
 
-
-private fun followPagination(url: URI, block: (Document) -> List<Node>): Node =
+private fun followPagination(url: URI, block: suspend (Grab<Document>) -> List<Node>): Node =
   multipleFromHtml(null, url) { data ->
     listOfNotNull(
-      data.maybe { urlFrom("[rel=next]") }
+      data().maybe { urlFrom("[rel=next]") }
         ?.let { followPagination(it, block) }
     ) + block(data)
   }
@@ -60,19 +62,19 @@ private fun followPagination(url: URI, block: (Document) -> List<Node>): Node =
 fun fromHtml(
   name: String? = null,
   url: URI,
-  block: (data: Document) -> Node
+  block: suspend (Grab<Document>) -> Node
 ) = multipleFromHtml(name, url, block.listify())
 
-inline fun <reified Data> fromJson(
+inline fun <reified Data : Any> fromJson(
   name: String? = null,
   url: URI,
-  crossinline block: (data: Data) -> Node
+  noinline block: suspend (Grab<Data>) -> Node
 ) = multipleFromJson(name, url, block.listify())
 
 fun multipleFromHtml(
   name: String? = null,
   url: URI,
-  block: (data: Document) -> List<Node>
+  block: suspend (Grab<Document>) -> List<Node>
 ) = Retrieval(
   name = name,
   url = url,
@@ -85,23 +87,27 @@ fun multipleFromHtml(
       throw MalformedInputException("Can't extract <title>", e)
     }
   },
-  block = { block(Jsoup.parse(String(it), url.toString())!!) }
+  block = block.memoizedTransform { Jsoup.parse(String(it), url.toString())!! }
 )
 
-inline fun <reified Data> multipleFromJson(
+inline fun <reified Data : Any> multipleFromJson(
   name: String? = null,
   url: URI,
-  crossinline block: (data: Data) -> List<Node>
+  noinline block: suspend (Grab<Data>) -> List<Node>
 ) = Retrieval(
   name,
   url,
   suffix = ".json",
   validate = { Unit },    // TODO
-  block = { block(mapper().readValue(it)) }
+  block = block.memoizedTransform { mapper().readValue(it) }
 )
 
-inline fun <reified Data> ((Data) -> Node).listify() =
-  { data: Data -> listOf(this(data)) }
+fun <Raw, Data : Any, R>
+  (suspend (Grab<Data>) -> R).memoizedTransform(transform: (Raw) -> Data): suspend (Grab<Raw>) -> R =
+  { data -> this(memoize { transform(data()) }) }
 
-inline fun <reified Data, Context> ((Data, Context) -> List<Node>).contextify(context: Context) =
-  { data: Data -> this(data, context) }
+fun <Data, R>
+  (suspend (Grab<Data>) -> R).listify(): suspend (Grab<Data>) -> List<R> = { listOf(this(it)) }
+
+fun <Data, Context, R>
+  (suspend (Grab<Data>, Context) -> R).contextify(context: Context): suspend (Grab<Data>) -> R = { this(it, context) }

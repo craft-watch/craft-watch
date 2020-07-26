@@ -8,7 +8,7 @@ import watch.craft.shopify.shopifyItems
 
 class BoxcarScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .shopifyItems()
       .map { details ->
         fromHtml(details.title, details.url) { doc ->
@@ -19,7 +19,7 @@ class BoxcarScraper : Scraper {
             name = parts[1],
             abv = parts[2].toDouble(),
             summary = parts[3].ifBlank { null },
-            desc = doc.maybe { formattedTextFrom(".product-single__description") }
+            desc = doc().maybe { formattedTextFrom(".product-single__description") }
               ?.cleanse("^DESCRIPTION"),
             available = details.available,
             offers = setOf(

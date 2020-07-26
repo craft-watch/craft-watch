@@ -10,13 +10,13 @@ import watch.craft.dsl.*
 
 class FivePointsScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom("#browse li .itemWrap")
       .map { el ->
         val a = el.selectFrom("h2 a")
 
         fromHtml(a.text(), a.urlFrom()) { doc ->
-          val title = doc.maybe { selectFrom(".itemTitle .small") }
+          val title = doc().maybe { selectFrom(".itemTitle .small") }
           val parts = title?.maybe {
             extractFrom(regex = "(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+((\\d+)\\s+x\\s+)?")
           } ?: throw SkipItemException("Could not extract details")
@@ -25,9 +25,9 @@ class FivePointsScraper : Scraper {
           ScrapedItem(
             name = a.extractFrom(regex = "([^(]+)").stringFrom(1).toTitleCase(),
             summary = parts[1],
-            desc = doc.formattedTextFrom(".about"),
+            desc = doc().formattedTextFrom(".about"),
             abv = parts[2].toDouble(),
-            available = ".unavailableItemWrap" !in doc,
+            available = ".unavailableItemWrap" !in doc(),
             offers = setOf(
               Offer(
                 quantity = parts[5].ifBlank { "1" }.toInt(),

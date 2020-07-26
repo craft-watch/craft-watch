@@ -9,7 +9,7 @@ import watch.craft.dsl.*
 
 class BurntMillScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".ProductItem")
       .map { el ->
         val title = el.textFrom(".ProductItem__Title")
@@ -24,7 +24,7 @@ class BurntMillScraper : Scraper {
               )
               .toTitleCase(),
             summary = null,
-            desc = doc.formattedTextFrom(".ProductMeta__Description"),
+            desc = doc().formattedTextFrom(".ProductMeta__Description"),
             abv = title.abvFrom(),
             available = el.maybe { textFrom(".ProductItem__Label") } != "Sold out",
             offers = setOf(

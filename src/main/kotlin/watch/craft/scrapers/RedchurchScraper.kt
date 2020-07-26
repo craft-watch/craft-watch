@@ -9,7 +9,7 @@ import watch.craft.shopify.extractShopifyOffers
 
 class RedchurchScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".product")
       .map { el ->
         val title = el.selectFrom(".product__title")
@@ -18,21 +18,21 @@ class RedchurchScraper : Scraper {
         fromHtml(rawName, title.urlFrom("a")) { doc ->
           val nameParts = rawName.extract(regex = "(Mixed Case - )?(.*)")
           val mixed = !nameParts[1].isBlank()
-          val sizeMl = doc.maybe { sizeMlFrom() }
-          val abv = doc.maybe { abvFrom() }
+          val sizeMl = doc().maybe { sizeMlFrom() }
+          val abv = doc().maybe { abvFrom() }
 
           if (!mixed && sizeMl == null && abv == null) {
             throw SkipItemException("Can't identify ABV or size for non-mixed case, so assume it's not a beer")
           }
 
           ScrapedItem(
-            thumbnailUrl = doc.urlFrom(".product-single__photo"),
+            thumbnailUrl = doc().urlFrom(".product-single__photo"),
             name = nameParts[2],
-            desc = doc.maybe { formattedTextFrom(".product-single__description") },
+            desc = doc().maybe { formattedTextFrom(".product-single__description") },
             mixed = mixed,
             abv = abv,
             available = ".sold-out-text" !in el,
-            offers = doc.orSkip("Don't know how to identify number of items") {
+            offers = doc().orSkip("Don't know how to identify number of items") {
               extractShopifyOffers(sizeMl)
             }
           )

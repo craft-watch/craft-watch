@@ -11,15 +11,15 @@ import watch.craft.dsl.*
 
 class CraftyScraper : Scraper {
   override val roots = fromPaginatedRoots(ROOT) { root ->
-    root
+    root()
       .selectFrom("ul.products")  // Later sections are mostly overlapping
       .selectMultipleFrom(".product")
       .map { el ->
         val title = el.textFrom(".woocommerce-loop-product__title")
 
         fromHtml(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
-          val mixed = doc.containsMatchFrom(".product_meta", "mixed")
-          val desc = doc.formattedTextFrom(".et_pb_wc_description")
+          val mixed = doc().containsMatchFrom(".product_meta", "mixed")
+          val desc = doc().formattedTextFrom(".et_pb_wc_description")
 
           ScrapedItem(
             name = title.cleanse("[(].*[)]", "\\s–\\s.*"),
@@ -28,7 +28,7 @@ class CraftyScraper : Scraper {
             mixed = mixed,
             abv = if (mixed) null else desc.abvFrom(),
             available = ".woosticker_sold" !in el,
-            offers = doc.extractOffers(desc, mixed).toSet(),
+            offers = doc().extractOffers(desc, mixed).toSet(),
             thumbnailUrl = el.urlFrom(".attachment-woocommerce_thumbnail")
           )
         }
