@@ -7,7 +7,7 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class AnspachAndHobdayScraper : Scraper {
-  override val roots = fromHtmlRoots(*ROOTS) { root, keg ->
+  override val roots = fromHtmlRoots(*ROOTS) { root ->
     root()
       .selectMultipleFrom(".product")
       .map { el ->
