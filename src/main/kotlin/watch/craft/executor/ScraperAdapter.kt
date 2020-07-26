@@ -9,6 +9,7 @@ import watch.craft.Scraper.Node.Retrieval
 import watch.craft.Scraper.Node.Retrieval.RetrievalContext
 import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.network.Retriever
+import watch.craft.utils.memoize
 import java.net.URI
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -81,10 +82,10 @@ class ScraperAdapter(
         logger.info("Scraping${suffix()}: ${url}".prefixed())
         validateDepth()   // TODO - put this somewhere more sensible?
 
-        // TODO - make lazy
-        val data = retriever.retrieve(url, suffix, validate)
+        // TODO - do we really need memoization here?
         val context = object : RetrievalContext {
-          override val data = data
+          private val memoized = memoize { retriever.retrieve(url, suffix, validate) }
+          override suspend fun data() = memoized()
         }
 
         context.block()

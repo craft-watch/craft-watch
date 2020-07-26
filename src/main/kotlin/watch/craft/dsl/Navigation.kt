@@ -85,7 +85,7 @@ fun multipleFromHtml(
       throw MalformedInputException("Can't extract <title>", e)
     }
   },
-  block = { block(Jsoup.parse(String(data), url.toString())!!) }
+  block = { block(Jsoup.parse(String(data()), url.toString())!!) }
 )
 
 inline fun <reified Data> multipleFromJson(
@@ -97,7 +97,7 @@ inline fun <reified Data> multipleFromJson(
   url,
   suffix = ".json",
   validate = { Unit },    // TODO
-  block = { block(mapper().readValue(data)) }
+  block = { block(mapper().readValue(data())) }
 )
 
 inline fun <reified Data> ((Data) -> Node).listify() =

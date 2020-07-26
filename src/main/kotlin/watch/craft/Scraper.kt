@@ -16,10 +16,10 @@ interface Scraper {
       val url: URI,
       val suffix: String,
       val validate: (data: ByteArray) -> Unit,  // TODO - reframe as "retryIf"
-      val block: RetrievalContext.() -> List<Node>
+      val block: suspend RetrievalContext.() -> List<Node>
     ) : Node() {
       interface RetrievalContext {
-        val data: ByteArray
+        suspend fun data(): ByteArray
       }
     }
 

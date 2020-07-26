@@ -3,6 +3,7 @@ package watch.craft.dsl
 import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
+import kotlinx.coroutines.runBlocking
 import org.jsoup.nodes.Document
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Nested
@@ -89,8 +90,10 @@ class NavigationTest {
   }
 
   private fun execute(retrieval: Retrieval, data: String) {
-    retrieval.block(object : RetrievalContext {
-      override val data = data.toByteArray()
-    })
+    runBlocking {
+      retrieval.block(object : RetrievalContext {
+        override suspend fun data() = data.toByteArray()
+      })
+    }
   }
 }
