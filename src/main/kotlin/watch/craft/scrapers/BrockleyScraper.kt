@@ -10,7 +10,7 @@ import watch.craft.dsl.*
 
 class BrockleyScraper : Scraper {
   override val roots = fromHtmlRoots(*ROOTS) { root, format ->
-    root
+    root()
       .selectMultipleFrom("product-item-root".hook())
       .map { el ->
         val title = el.textFrom("product-item-name".hook())
@@ -20,7 +20,7 @@ class BrockleyScraper : Scraper {
             throw SkipItemException("Can't deal with this")
           }
 
-          val desc = doc.formattedTextFrom("description".hook())
+          val desc = doc().formattedTextFrom("description".hook())
 
           ScrapedItem(
             name = title.cleanse(
@@ -37,7 +37,7 @@ class BrockleyScraper : Scraper {
             offers = setOf(
               Offer(
                 quantity = if (format == KEG) 1 else title.quantityFrom("case of (\\d+)"),
-                totalPrice = doc.priceFrom("formatted-primary-price".hook()),
+                totalPrice = doc().priceFrom("formatted-primary-price".hook()),
                 sizeMl = title.maybe { sizeMlFrom() },
                 format = format
               )

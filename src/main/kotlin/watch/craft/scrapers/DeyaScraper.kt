@@ -8,13 +8,13 @@ import watch.craft.dsl.*
 
 class DeyaScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".products .product")
       .map { el ->
         val title = el.textFrom(".woocommerce-loop-product__title")
 
         fromHtml(title, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
-          val desc = doc.formattedTextFrom(".woocommerce-product-details__short-description")
+          val desc = doc().formattedTextFrom(".woocommerce-product-details__short-description")
           val mixed = title.containsMatch("mix")
 
           ScrapedItem(

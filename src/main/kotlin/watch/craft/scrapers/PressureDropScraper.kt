@@ -9,15 +9,15 @@ import watch.craft.dsl.*
 
 class PressureDropScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".product-grid-item")
       .map { el ->
         val a = el.selectFrom(".grid__image")
         val rawName = el.textFrom(".f--title")
 
         fromHtml(rawName, a.urlFrom()) { doc ->
-          val itemText = doc.text()
-          val parts = doc.extractFrom(".product__title", "^(.*?)\\s*(-\\s*(.*?))?$")
+          val itemText = doc().text()
+          val parts = doc().extractFrom(".product__title", "^(.*?)\\s*(-\\s*(.*?))?$")
 
           if (parts[1].containsMatch("box")) {
             throw SkipItemException("Don't know how to identify number of cans for boxes")
@@ -27,12 +27,12 @@ class PressureDropScraper : Scraper {
             thumbnailUrl = a.urlFrom("noscript img"),
             name = parts[1],
             summary = parts[3].ifBlank { null },
-            desc = doc.maybe { formattedTextFrom(".product-description") },
+            desc = doc().maybe { formattedTextFrom(".product-description") },
             abv = itemText.maybe { abvFrom() },
             available = true,
             offers = setOf(
               Offer(
-                totalPrice = doc.priceFrom(".ProductPrice"),
+                totalPrice = doc().priceFrom(".ProductPrice"),
                 sizeMl = itemText.maybe { sizeMlFrom() }
               )
             )

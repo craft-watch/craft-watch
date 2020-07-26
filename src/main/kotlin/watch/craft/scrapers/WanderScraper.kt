@@ -9,14 +9,14 @@ import java.net.URI
 
 class WanderScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectFrom("product-list-wrapper".hook())  // Only first one, to avoid merch, etc.
       .selectMultipleFrom("product-list-grid-item".hook())
       .map { el ->
         val name = el.textFrom("product-item-name".hook())
 
         fromHtml(name, el.urlFrom("a")) { doc ->
-          val desc = doc.selectFrom("description".hook())
+          val desc = doc().selectFrom("description".hook())
           val descText = desc.text()
 
           val mixed = name.containsMatch("mixed")
@@ -36,7 +36,7 @@ class WanderScraper : Scraper {
             offers = setOf(
               Offer(
                 quantity = descText.maybe { quantityFrom() } ?: 1,
-                totalPrice = doc.priceFrom("product-price-wrapper".hook()),
+                totalPrice = doc().priceFrom("product-price-wrapper".hook()),
                 sizeMl = descText.sizeMlFrom()
               )
             ),

@@ -14,11 +14,11 @@ import watch.craft.shopify.shopifyItems
 
 class WildCardScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .shopifyItems()
       .map { details ->
         fromHtml(details.title, details.url) { doc ->
-          val desc = doc.formattedTextFrom(".product-single__description")
+          val desc = doc().formattedTextFrom(".product-single__description")
           val mixed = details.title.containsWord("mixed", "box")
 
           ScrapedItem(
@@ -33,7 +33,7 @@ class WildCardScraper : Scraper {
               { details.title.abvFrom() }
             ),
             available = details.available,
-            offers = doc.extractOffers(details, desc).toSet(),
+            offers = doc().extractOffers(details, desc).toSet(),
             thumbnailUrl = details.thumbnailUrl
           )
         }

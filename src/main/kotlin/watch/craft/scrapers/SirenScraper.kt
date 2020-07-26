@@ -10,7 +10,7 @@ import watch.craft.dsl.*
 
 class SirenScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".itemsBrowse .itemWrap")
       .map { el ->
         val itemName = el.selectFrom(".itemName")
@@ -21,7 +21,7 @@ class SirenScraper : Scraper {
             throw SkipItemException("Can't deal with mixed cases yet")    // TODO
           }
 
-          val detailsText = doc.textFrom(".itemTitle .small")
+          val detailsText = doc().textFrom(".itemTitle .small")
           if (detailsText.containsMatch("Mixed")) {
             throw SkipItemException("Can't deal with mixed cases yet")    // TODO
           }
@@ -32,10 +32,10 @@ class SirenScraper : Scraper {
           ScrapedItem(
             name = rawName.cleanse("(\\d+)L Mini Keg - "),
             summary = if (keg) null else details[1],
-            desc = doc.formattedTextFrom(".about"),
+            desc = doc().formattedTextFrom(".about"),
             mixed = false,
             abv = details[2].toDouble(),
-            available = ".unavailableItemWrap" !in doc,
+            available = ".unavailableItemWrap" !in doc(),
             offers = setOf(
               Offer(
                 totalPrice = el.priceFrom(".itemPriceWrap"),

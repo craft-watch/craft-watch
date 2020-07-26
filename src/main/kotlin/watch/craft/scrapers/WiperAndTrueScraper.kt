@@ -9,13 +9,13 @@ import watch.craft.dsl.*
 
 class WiperAndTrueScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom("#productList a.product")
       .map { el ->
         val rawName = el.textFrom(".product-title")
 
         fromHtml(rawName, el.urlFrom()) { doc ->
-          val desc = doc.selectFrom(".product-excerpt")
+          val desc = doc().selectFrom(".product-excerpt")
           val parts = extractVariableParts(rawName, desc)
 
           ScrapedItem(

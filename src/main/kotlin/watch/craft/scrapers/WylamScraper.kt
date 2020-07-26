@@ -11,14 +11,14 @@ import watch.craft.jsonld.jsonLdFrom
 
 class WylamScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root, _ ->
-    root
+    root()
       .selectMultipleFrom(".ec-grid .grid-product")
       .map { el ->
         val a = el.selectFrom(".grid-product__title")
         val rawName = a.text()
 
         fromHtml(rawName, a.urlFrom()) { doc ->
-          val product = doc.jsonLdFrom<Product>().single()
+          val product = doc().jsonLdFrom<Product>().single()
           val abv = rawName.maybe { abvFrom() }
           val numItems = rawName.maybe { quantityFrom() }
 
@@ -31,7 +31,7 @@ class WylamScraper : Scraper {
           ScrapedItem(
             name = nameParts[1].trim(),
             summary = nameParts[2].trim().ifBlank { null },
-            desc = doc.formattedTextFrom(".product-details__product-description"),
+            desc = doc().formattedTextFrom(".product-details__product-description"),
             abv = abv,
             available = product.offers.single().availability == "http://schema.org/InStock",
             offers = setOf(

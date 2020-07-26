@@ -10,13 +10,13 @@ import watch.craft.dsl.*
 
 class MarbleScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".product")
       .map { el ->
         val name = el.textFrom(".woocommerce-loop-product__title")
 
         fromHtml(name, el.urlFrom(".woocommerce-LoopProduct-link")) { doc ->
-          val attributes = doc.extractAttributes()
+          val attributes = doc().extractAttributes()
           val volumeDetails = attributes.extractVolumeDetails()
 
           val style = attributes.maybe { grab("Style") }
@@ -31,14 +31,14 @@ class MarbleScraper : Scraper {
               "\\d+$"
             ).toTitleCase(),
             summary = if (mixed) null else style,
-            desc = doc.maybe { formattedTextFrom(".woocommerce-product-details__short-description") }?.ifBlank { null },
+            desc = doc().maybe { formattedTextFrom(".woocommerce-product-details__short-description") }?.ifBlank { null },
             mixed = mixed,
             abv = attributes.grab("ABV").maybe { abvFrom(noPercent = true) },
-            available = ".out-of-stock" !in doc,
+            available = ".out-of-stock" !in doc(),
             offers = setOf(
               Offer(
                 quantity = volumeDetails.numItems,
-                totalPrice = doc.priceFrom(".price"),
+                totalPrice = doc().priceFrom(".price"),
                 format = if (keg) KEG else null,
                 sizeMl = volumeDetails.sizeMl
               )

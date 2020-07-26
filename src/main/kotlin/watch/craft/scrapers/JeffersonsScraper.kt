@@ -8,13 +8,13 @@ import watch.craft.dsl.*
 
 class JeffersonsScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".grid--view-items .grid__item")
       .map { el ->
         val rawName = el.textFrom(".grid-view-item__title")
 
         fromHtml(rawName, el.urlFrom(".grid-view-item__link")) { doc ->
-          val desc = doc.formattedTextFrom(".product-single__description")
+          val desc = doc().formattedTextFrom(".product-single__description")
           val abv = desc.orSkip("No ABV found, so assume not a beer") { abvFrom() }
           val parts = rawName.extract("(.*?)\\s*-\\s*([\\w\\s]+)")
 

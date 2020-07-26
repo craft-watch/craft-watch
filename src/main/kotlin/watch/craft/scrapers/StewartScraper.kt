@@ -8,7 +8,7 @@ import watch.craft.dsl.*
 
 class StewartScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom("#browse li .itemWrap")
       .map { el ->
         val a = el.selectFrom("h2 a")
@@ -19,12 +19,12 @@ class StewartScraper : Scraper {
             thumbnailUrl = el.urlFrom(".imageInnerWrap img"),
             name = removeSizeSuffix(a.text()),
             summary = el.maybe { textFrom(".itemStyle") },
-            abv = doc.orSkip("Couldn't find ABV") { abvFrom(".alco") },
+            abv = doc().orSkip("Couldn't find ABV") { abvFrom(".alco") },
             available = true,
             offers = setOf(
               Offer(
-                totalPrice = doc.priceFrom(".priceNow"),
-                sizeMl = doc.orSkip("Couldn't find size") { sizeMlFrom(".volume") }
+                totalPrice = doc().priceFrom(".priceNow"),
+                sizeMl = doc().orSkip("Couldn't find size") { sizeMlFrom(".volume") }
               )
             )
           )

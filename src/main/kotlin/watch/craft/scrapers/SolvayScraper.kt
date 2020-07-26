@@ -9,14 +9,14 @@ import watch.craft.dsl.*
 
 class SolvayScraper : Scraper {
   override val roots = fromHtmlRoots(*ROOTS) { root ->
-    root
+    root()
       .selectMultipleFrom(".content .grid-item")
       .map { el ->
         val rawName = el.textFrom(".grid-title")
 
         fromHtml(rawName, el.urlFrom("a.grid-item-link")) { doc ->
           val nameParts = rawName.extract("(.*?)\\s+\\|\\s+(?:(.*?)\\s+\\d)?")
-          val desc = doc.selectFrom(".ProductItem-details-excerpt")
+          val desc = doc().selectFrom(".ProductItem-details-excerpt")
           val mixed = rawName.containsMatch("mix")
 
           ScrapedItem(
@@ -35,7 +35,7 @@ class SolvayScraper : Scraper {
               )
             ),
             // Request a smaller image
-            thumbnailUrl = doc.urlFrom("img.ProductItem-gallery-slides-item-image") { "$it?format=200w" }
+            thumbnailUrl = doc().urlFrom("img.ProductItem-gallery-slides-item-image") { "$it?format=200w" }
           )
         }
       }

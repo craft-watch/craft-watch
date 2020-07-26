@@ -13,7 +13,7 @@ import watch.craft.dsl.*
 
 class FourpureScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".itemsBrowse li")
       .map { el ->
         val a = el.selectFrom("a")
@@ -24,11 +24,11 @@ class FourpureScraper : Scraper {
             throw SkipItemException("Can't calculate price-per-can for packs")
           }
 
-          val parts = extractVariableParts(doc)
+          val parts = doc().extractVariableParts()
           ScrapedItem(
             name = parts.name,
-            desc = doc.maybe { formattedTextFrom(".productDetailsWrap .innerContent") },
-            abv = doc.extractFrom(".brewSheet", "Alcohol By Volume: (\\d+(\\.\\d+)?)").doubleFrom(1),
+            desc = doc().maybe { formattedTextFrom(".productDetailsWrap .innerContent") },
+            abv = doc().extractFrom(".brewSheet", "Alcohol By Volume: (\\d+(\\.\\d+)?)").doubleFrom(1),
             available = true,
             offers = setOf(
               Offer(
@@ -49,8 +49,8 @@ class FourpureScraper : Scraper {
     val format: Format? = null
   )
 
-  private fun extractVariableParts(itemDoc: Document): VariableParts {
-    val title = itemDoc.textFrom(".itemTitle h1")
+  private fun Document.extractVariableParts(): VariableParts {
+    val title = textFrom(".itemTitle h1")
     return if (title.containsMatch("minikeg")) {
       VariableParts(
         name = title.extract("([^\\d]+) ")[1],
@@ -60,7 +60,7 @@ class FourpureScraper : Scraper {
     } else {
       VariableParts(
         name = title.extract("([^\\d]+)( \\d+ml)?")[1],  // Strip size in title
-        sizeMl = itemDoc.sizeMlFrom(".quickBuy")
+        sizeMl = sizeMlFrom(".quickBuy")
       )
     }
   }

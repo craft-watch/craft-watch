@@ -11,12 +11,12 @@ import watch.craft.shopify.shopifyItems
 
 class PillarsScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .shopifyItems()
       .map { details ->
         fromHtml(details.title, details.url) { doc ->
           val titleParts = extractTitleParts(details.title)
-          val descParts = doc.orSkip("Couldn't find style or ABV") {
+          val descParts = doc().orSkip("Couldn't find style or ABV") {
             extractFrom(".product-single__description", "STYLE:\\s+(.+?)\\s+ABV:\\s+(\\d\\.\\d+)%")
           }  // If we don't see these fields, assume we're not looking at a beer product
 
@@ -26,7 +26,7 @@ class PillarsScraper : Scraper {
             thumbnailUrl = details.thumbnailUrl,
             name = titleParts.name,
             summary = descParts[1].toTitleCase(),
-            desc = doc.maybe { formattedTextFrom(".product-single__description") },
+            desc = doc().maybe { formattedTextFrom(".product-single__description") },
             mixed = mixed,
             abv = if (mixed) null else descParts[2].toDouble(),
             available = details.available,

@@ -9,7 +9,7 @@ import watch.craft.dsl.*
 
 class CanopyScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".grid-uniform")
       .take(3)  // Avoid merch
       .flatMap { it.selectMultipleFrom(".grid__item") }
@@ -28,13 +28,13 @@ class CanopyScraper : Scraper {
             thumbnailUrl = el.urlFrom(".grid__image img"),
             name = parts[1],
             summary = null,
-            desc = doc.maybe { formattedTextFrom(".product-description") },
+            desc = doc().maybe { formattedTextFrom(".product-description") },
             available = !(el.text().containsMatch("sold out")),
             abv = if (parts[2].isBlank()) null else parts[2].toDouble(),
             offers = setOf(
               Offer(
                 totalPrice = el.extractFrom(regex = "£(\\d+\\.\\d+)")[1].toDouble(),
-                sizeMl = doc.sizeMlFrom()
+                sizeMl = doc().sizeMlFrom()
               )
             )
           )

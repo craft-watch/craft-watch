@@ -11,7 +11,7 @@ import kotlin.math.max
 
 class ForestRoadScraper : Scraper {
   override val roots = fromHtmlRoots(*ROOTS) { root ->
-    root
+    root()
       .selectMultipleFrom(".Main--products-list .ProductList-item")
       .map { el ->
         val title = el.textFrom(".ProductList-title")
@@ -21,7 +21,7 @@ class ForestRoadScraper : Scraper {
             throw SkipItemException("Subscriptions aren't something we can model")
           }
 
-          val desc = doc.formattedTextFrom(".ProductItem-details-excerpt").toTitleCase()
+          val desc = doc().formattedTextFrom(".ProductItem-details-excerpt").toTitleCase()
           val descLines = desc.split("\n")
           val mixed = title.containsMatch("mixed")
 

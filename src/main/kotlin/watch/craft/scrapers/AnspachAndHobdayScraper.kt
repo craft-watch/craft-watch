@@ -7,15 +7,15 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class AnspachAndHobdayScraper : Scraper {
-  override val roots = fromHtmlRoots(*ROOTS) { root: Document, keg ->
-    root
+  override val roots = fromHtmlRoots(*ROOTS) { root, keg ->
+    root()
       .selectMultipleFrom(".product")
       .map { el ->
         val title = el.textFrom(".product-title")
         fromHtml(title, el.urlFrom()) { doc ->
           val abv = title.orSkip("No ABV, so assume not a beer") { abvFrom() }
           val parts = title.cleanse(".*:").split(" - ")
-          val desc = doc.formattedTextFrom(".product-excerpt")
+          val desc = doc().formattedTextFrom(".product-excerpt")
 
           ScrapedItem(
             name = if (parts.size > 2) parts[1] else parts[0],
@@ -23,7 +23,7 @@ class AnspachAndHobdayScraper : Scraper {
             desc = desc,
             abv = abv,
             available = ".sold-out" !in el,
-            offers = doc.extractOffers(desc).toSet(),
+            offers = doc().extractOffers(desc).toSet(),
             thumbnailUrl = el.urlFrom("img") { "$it?format=200w" }
           )
         }

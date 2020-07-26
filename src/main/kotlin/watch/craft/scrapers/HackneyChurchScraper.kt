@@ -8,14 +8,14 @@ import watch.craft.dsl.*
 
 class HackneyChurchScraper : Scraper {
   override val roots = fromHtmlRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom("#Collection .hcbc-collection-grid-item")
       .map { el ->
         val rawName = el.textFrom(".grid-view-item__title")
 
         fromHtml(rawName, el.urlFrom("a.grid-view-item__link")) { doc ->
           val price = el.selectFrom(".price")
-          val desc = doc.formattedTextFrom(".hcbc-product-description")
+          val desc = doc().formattedTextFrom(".hcbc-product-description")
           val allQuantities = desc.collectFromLines { quantityFrom() }
           val distinctSizes = desc.collectFromLines { sizeMlFrom() }.distinct()
 

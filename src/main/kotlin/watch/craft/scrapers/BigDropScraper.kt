@@ -8,8 +8,8 @@ import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class BigDropScraper : Scraper {
-  override val roots = fromHtmlRoots(ROOT) { root: Document ->
-    root
+  override val roots = fromHtmlRoots(ROOT) { root ->
+    root()
       .selectMultipleFrom(".products")
       .dropLast(1)  // Avoid merchandise
       .flatMap { it.selectMultipleFrom(".thumbnail") }
@@ -22,7 +22,7 @@ class BigDropScraper : Scraper {
           }
 
           val parts = title.split(" - ")
-          val desc = doc.formattedTextFrom(".description")
+          val desc = doc().formattedTextFrom(".description")
           val basicPrice = el.attrFrom("meta[itemprop=price]", "content").priceFrom()
 
           ScrapedItem(
@@ -32,7 +32,7 @@ class BigDropScraper : Scraper {
             mixed = title.containsWord("sampler"),
             abv = BIG_DROP_ABV,
             available = ".sold_out" !in el,
-            offers = doc.extractOffers(desc, basicPrice).toSet(),
+            offers = doc().extractOffers(desc, basicPrice).toSet(),
             thumbnailUrl = el.urlFrom("img", preference = "src")
           )
         }

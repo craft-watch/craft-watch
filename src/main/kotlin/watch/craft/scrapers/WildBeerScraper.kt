@@ -1,22 +1,20 @@
 package watch.craft.scrapers
 
-import org.jsoup.nodes.Document
 import watch.craft.Format.KEG
 import watch.craft.Offer
 import watch.craft.Scraper
-
 import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class WildBeerScraper : Scraper {
-  override val roots = fromPaginatedRoots(*ROOTS) { root: Document, keg ->
-    root
+  override val roots = fromPaginatedRoots(*ROOTS) { root, keg ->
+    root()
       .selectMultipleFrom(".itemSmall")
       .map { el ->
         val title = el.textFrom(".itemSmallTitle")
         fromHtml(title, el.urlFrom(".itemImageWrap a")) { doc ->
-          val desc = doc.formattedTextFrom(".productDescription")
-          val available = ".unavailableItemWrap" !in doc
+          val desc = doc().formattedTextFrom(".productDescription")
+          val available = ".unavailableItemWrap" !in doc()
           val format = if (keg) KEG else desc.formatFrom(disallowed = listOf(KEG))
 
           ScrapedItem(
@@ -24,13 +22,13 @@ class WildBeerScraper : Scraper {
             summary = if (keg) {
               desc.split("\n")[0].split("-")[0]
             } else {
-              doc.textFrom("h4")
+              doc().textFrom("h4")
             },
             desc = desc,
             abv = desc.abvFrom(),
             available = available,
             offers = if (available) {
-              doc.selectMultipleFrom(".itemDescription .sizeLabel")
+              doc().selectMultipleFrom(".itemDescription .sizeLabel")
                 .map { label ->
                   val sizeName = label.selectFrom(".sizeName")
                   val priceNow = label.selectFrom(".priceNow")

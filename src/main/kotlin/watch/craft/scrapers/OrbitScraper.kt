@@ -8,13 +8,13 @@ import watch.craft.shopify.extractShopifyOffers
 
 class OrbitScraper : Scraper {
   override val roots = fromPaginatedRoots(ROOT) { root ->
-    root
+    root()
       .selectMultipleFrom(".product-card")
       .map { el ->
         val title = el.textFrom(".product-card__name")
 
         fromHtml(title, el.urlFrom()) { doc ->
-          val desc = doc.formattedTextFrom(".product-single__description")
+          val desc = doc().formattedTextFrom(".product-single__description")
 
           // Remove all the dross
           val name = title
@@ -31,7 +31,7 @@ class OrbitScraper : Scraper {
             mixed = title.containsMatch("mixed"),
             abv = title.maybe { abvFrom() },
             available = ".product-card__availability" !in el,
-            offers = doc.orSkip("Can't extract offers, so assume not a beer") {
+            offers = doc().orSkip("Can't extract offers, so assume not a beer") {
               extractShopifyOffers(desc.maybe { sizeMlFrom() })
             },
             thumbnailUrl = el.urlFrom("noscript img.product-card__image")
