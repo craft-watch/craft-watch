@@ -1,23 +1,22 @@
 package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
+import watch.craft.*
 import watch.craft.Format.CAN
-import watch.craft.Offer
 import watch.craft.Scraper.Node.ScrapedItem
-import watch.craft.byName
-import watch.craft.executeScraper
-import watch.craft.noDesc
+import watch.craft.dsl.containsWord
 import java.net.URI
 
 class BurntMillScraperTest {
   companion object {
-    private val ITEMS = executeScraper(BurntMillScraper(), dateString = "2020-07-23")
+    private val ITEMS = executeScraper(BurntMillScraper(), dateString = "2020-08-02")
   }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(8, ITEMS.size)
+    assertEquals(9, ITEMS.size)
   }
 
   @Test
@@ -42,15 +41,24 @@ class BurntMillScraperTest {
   }
 
   @Test
+  @Disabled
   fun `identifies sold-out`() {
     assertFalse(ITEMS.byName("The Weight Of Brunch").available)
+  }
+
+  @Test
+  fun `identifies mixed`() {
+    val item = ITEMS.byName("IPA Multipack")
+
+    assertTrue(item.mixed)
+    assertTrue(item.onlyOffer().quantity > 1)
   }
 
   @Test
   fun `cleans up names`() {
     assertFalse(ITEMS.any { it.name.contains("%") })
     assertFalse(ITEMS.any { it.name.contains("ml", ignoreCase = true) })
-    assertFalse(ITEMS.any { it.name.contains("pack", ignoreCase = true) })
+    assertFalse(ITEMS.any { it.name.containsWord("pack") })
   }
 }
 
