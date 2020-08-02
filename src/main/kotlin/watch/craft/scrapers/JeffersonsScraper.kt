@@ -16,11 +16,11 @@ class JeffersonsScraper : Scraper {
         fromHtml(rawName, el.urlFrom(".grid-view-item__link")) { doc ->
           val desc = doc().formattedTextFrom(".product-single__description")
           val abv = desc.orSkip("No ABV found, so assume not a beer") { abvFrom() }
-          val parts = rawName.extract("(.*?)\\s*-\\s*([\\w\\s]+)")
+          val parts = rawName.split(" - ")
 
           ScrapedItem(
-            name = parts.stringFrom(1),
-            summary = parts.stringFrom(2),
+            name = parts.stringFrom(0).cleanse("[(].*[)]"),
+            summary = parts.stringFrom(1).cleanse(",.*"),
             desc = desc,
             abv = abv,
             available = true,
@@ -28,7 +28,8 @@ class JeffersonsScraper : Scraper {
               Offer(
                 quantity = desc.quantityFrom(),
                 totalPrice = el.priceFrom(".product-price__price"),
-                sizeMl = desc.sizeMlFrom()
+                sizeMl = desc.sizeMlFrom(),
+                format = desc.formatFrom()
               )
             ),
             thumbnailUrl = el.urlFrom(".grid-view-item__image")
