@@ -11,12 +11,12 @@ import java.net.URI
 
 class OrbitScraperTest {
   companion object {
-    private val ITEMS = executeScraper(OrbitScraper(), dateString = "2020-07-18")
+    private val ITEMS = executeScraper(OrbitScraper(), dateString = "2020-08-02")
   }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(13, ITEMS.size)
+    assertEquals(16, ITEMS.size)
   }
 
   @Test
@@ -30,7 +30,7 @@ class OrbitScraperTest {
           Offer(quantity = 24, totalPrice = 54.00, sizeMl = 330)
         ),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/1235/9817/products/IvoAmazon_480x480.jpg")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0360/1235/9817/products/IvoAmazon_250x250@2x.jpg")
       ),
       ITEMS.byName("Ivo Pale Ale").noDesc()
     )
@@ -48,7 +48,7 @@ class OrbitScraperTest {
 
   @Test
   fun `identifies sold-out`() {
-    assertFalse(ITEMS.byName("Hefeweizen").available)
+    assertFalse(ITEMS.byName("Dead Wax London Porter").available)
   }
 
   @Test
