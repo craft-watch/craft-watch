@@ -1,16 +1,12 @@
 package watch.craft.executor
 
-import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import watch.craft.Item
-import watch.craft.Offer
-import watch.craft.Scraper
+import watch.craft.*
 import watch.craft.Scraper.Node
 import watch.craft.Scraper.Node.Retrieval
 import watch.craft.Scraper.Node.ScrapedItem
-import watch.craft.ScraperEntry
 import watch.craft.network.Retriever
 import java.net.URI
 import java.time.Clock
@@ -91,7 +87,13 @@ class ExecutorTest {
       scraper = object : Scraper {
         override val roots = nodes
       },
-      brewery = mock { on { id } doReturn THIS_BREWERY_ID }
+      brewery = Brewery(
+        id = THIS_BREWERY_ID,
+        shortName = "",
+        name = "",
+        location = "",
+        websiteUrl = URI("https://example.invalid")
+      )
     )
   )
 
@@ -117,6 +119,6 @@ class ExecutorTest {
       thumbnailUrl = URI("https://example.invalid/assets/${name}.jpg")
     )
 
-    private fun productUrl(suffix: String) = URI("https://eaxmple.invalid/${suffix}")
+    private fun productUrl(suffix: String) = URI("https://example.invalid/${suffix}")
   }
 }
