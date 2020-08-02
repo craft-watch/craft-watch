@@ -16,8 +16,8 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import watch.craft.MalformedInputException
 import watch.craft.UnretrievableException
+import watch.craft.network.NetworkRetriever.Config
 import java.net.URI
-
 
 class NetworkRetrieverTest {
   private val server = WireMockServer(options().dynamicPort())
@@ -49,7 +49,28 @@ class NetworkRetrieverTest {
   fun `fails immediately and throws on network error`() {
     server.stubFor(
       get(urlEqualTo("/"))
-        .willReturn(aResponse().withStatus(429))
+        .willReturn(aResponse().withStatus(404))
+    )
+
+    assertThrows<UnretrievableException> { retrieve() }
+    assertEquals(1, server.allServeEvents.size)
+  }
+
+  @Test
+  fun `returns response body on 404 if configured to ignore 404s`() {
+    server.stubFor(
+      get(urlEqualTo("/"))
+        .willReturn(aResponse().withStatus(404).withBody(NICE_DATA))
+    )
+
+    assertArrayEquals(NICE_DATA, retrieve(STANDARD_CONFIG.copy(failOn404 = false)))
+  }
+
+  @Test
+  fun `fails immediately on non-404 if configured to ignore 404s`() {
+    server.stubFor(
+      get(urlEqualTo("/"))
+        .willReturn(aResponse().withStatus(429).withBody(NICE_DATA))
     )
 
     assertThrows<UnretrievableException> { retrieve() }
@@ -69,15 +90,16 @@ class NetworkRetrieverTest {
     assertEquals(5, server.allServeEvents.size)
   }
 
-  private fun retrieve() = createRetriever().use { retriever ->
-    runBlocking {
-      retriever.retrieve(URI("http://localhost:${server.port()}"), validate = validate)
+  private fun retrieve(config: Config = STANDARD_CONFIG) =
+    NetworkRetriever(config).use { retriever ->
+      runBlocking {
+        retriever.retrieve(URI("http://localhost:${server.port()}"), validate = validate)
+      }
     }
-  }
-
-  private fun createRetriever() = NetworkRetriever("Yeah", rateLimitPeriodMillis = 50)
 
   companion object {
     private val NICE_DATA = byteArrayOf(1, 2, 3, 4, 5, 6, 7, 8)
+
+    private val STANDARD_CONFIG = Config(id = "Yeah", rateLimitPeriodMillis = 50)
   }
 }

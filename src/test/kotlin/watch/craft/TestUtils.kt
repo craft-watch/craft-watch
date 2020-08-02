@@ -12,7 +12,7 @@ fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE) = runBlo
   validateNonLiveOnCi(dateString)
   val id = findBreweryId(scraper)
   ScraperAdapter(
-    StorageStructure(dateString).createRetriever(id),
+    StorageStructure(dateString).createRetriever(id, scraper.failOn404),
     scraper,
     id
   ).execute().entries.map { it.item }

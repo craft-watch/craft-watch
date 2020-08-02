@@ -20,7 +20,7 @@ import java.time.ZoneId
 class ExecutorTest {
   private val executor = Executor(
     results = mock(),
-    createRetriever = {
+    createRetriever = { _, _ ->
       object : Retriever {
         override suspend fun retrieve(url: URI, suffix: String?, validate: (ByteArray) -> Unit) = byteArrayOf()
       }

@@ -4,7 +4,11 @@ import io.ktor.client.HttpClient
 import io.ktor.client.engine.apache.Apache
 import io.ktor.client.features.UserAgent
 import io.ktor.client.request.get
+import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.readBytes
+import io.ktor.http.HttpStatusCode.Companion.NotFound
 import io.ktor.http.Url
+import io.ktor.http.isSuccess
 import io.ktor.util.KtorExperimentalAPI
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
@@ -16,11 +20,14 @@ import watch.craft.network.NetworkRetriever.Response.Success
 import java.io.IOException
 import java.net.URI
 
-class NetworkRetriever(
-  private val id: String,
-  private val rateLimitPeriodMillis: Int = RATE_LIMIT_PERIOD_MILLIS
-) : Retriever {
+class NetworkRetriever(private val config: Config) : Retriever {
   private val logger = KotlinLogging.logger {}
+
+  data class Config(
+    val id: String,
+    val rateLimitPeriodMillis: Int = RATE_LIMIT_PERIOD_MILLIS,
+    val failOn404: Boolean = true
+  )
 
   private data class Request(
     val url: URI,
@@ -39,13 +46,13 @@ class NetworkRetriever(
   // coroutine handling requests over a channel.
   init {
     GlobalScope.launch {
-      logger.info("[${id}] Opening client")
+      logger.info("[${config.id}] Opening client")
       createClient().use { client ->
         for (msg in channel) {
           msg.response.complete(client.process(msg))
         }
       }
-      logger.info("[${id}] Client closed")
+      logger.info("[${config.id}] Client closed")
     }
   }
 
@@ -54,9 +61,14 @@ class NetworkRetriever(
     var exception: Exception? = null
     repeat(MAX_RETRIES) {
       val response = try {
-        val raw: ByteArray = get(Url(msg.url.toString()))
-        msg.validate(raw)
-        Success(raw)
+        val r: HttpResponse = get(Url(msg.url.toString()))
+        if (r.status.isSuccess() || (!config.failOn404 && r.status == NotFound)) {
+          val raw = r.readBytes()
+          msg.validate(raw)
+          Success(raw)
+        } else {
+          Failure(RuntimeException("Response status code: ${r.status}"))
+        }
       } catch (e: IOException) {
         exception = e
         null
@@ -69,7 +81,7 @@ class NetworkRetriever(
         Failure(e)  // No idea what other exceptions Ktor throws, so surface as an immediate failure
       }
 
-      delay(rateLimitPeriodMillis.toLong())
+      delay(config.rateLimitPeriodMillis.toLong())
       if (response != null) {
         return response
       }

@@ -5,6 +5,7 @@ import mu.KotlinLogging
 import watch.craft.network.CachingRetriever
 import watch.craft.network.FailingRetriever
 import watch.craft.network.NetworkRetriever
+import watch.craft.network.NetworkRetriever.Config
 import watch.craft.network.Retriever
 import watch.craft.storage.*
 import watch.craft.utils.ZONE_OFFSET
@@ -37,11 +38,11 @@ class StorageStructure(
   @VisibleForTesting
   suspend fun downloads(id: String) = SubObjectStore(store, "${DOWNLOADS_DIR}/${id}").targetDir()
 
-  val createRetriever: suspend (String) -> Retriever = { id ->
+  val createRetriever: suspend (String, Boolean) -> Retriever = { id, failOn404 ->
     CachingRetriever(
       downloads(id),
       if (live) {
-        NetworkRetriever(id)
+        NetworkRetriever(Config(id = id, failOn404 = failOn404))
       } else {
         FailingRetriever()
       }

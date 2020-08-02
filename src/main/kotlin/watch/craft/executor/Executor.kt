@@ -9,7 +9,7 @@ import java.time.Clock
 
 class Executor(
   private val results: ResultsManager,
-  private val createRetriever: suspend (name: String) -> Retriever,
+  private val createRetriever: suspend (name: String, failOn404: Boolean) -> Retriever,
   private val clock: Clock = Clock.systemUTC()
 ) {
   fun scrape(scrapers: Collection<ScraperEntry>) = Context(scrapers).scrape()
@@ -47,7 +47,7 @@ class Executor(
         .map { it.await() }
     }
 
-    private suspend fun ScraperEntry.execute() = createRetriever(brewery.id).use {
+    private suspend fun ScraperEntry.execute() = createRetriever(brewery.id, scraper.failOn404).use {
       ScraperAdapter(it, scraper, brewery.id).execute()
     }
 
