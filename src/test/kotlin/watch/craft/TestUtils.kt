@@ -18,12 +18,6 @@ fun executeScraper(scraper: Scraper, dateString: String? = GOLDEN_DATE) = runBlo
   ).execute().entries.map { it.item }
 }
 
-private fun validateNonLiveOnCi(dateString: String?) {
-  if (dateString == null && System.getenv("CI") != null) {
-    throw RuntimeException("Shouldn't be running live tests on CI")
-  }
-}
-
 private fun findBreweryId(scraper: Scraper) = SCRAPERS.find { it.scraper.javaClass == scraper.javaClass }
   ?.brewery?.id
   ?: throw RuntimeException("Can't find scraper entry")
@@ -34,7 +28,20 @@ fun ScrapedItem.noDesc() = copy(desc = null)    // Makes it easier to test item 
 
 fun ScrapedItem.onlyOffer() = offers.single()
 
-fun List<ScrapedItem>.display() = forEach { println(it.noDesc()) }
+fun List<ScrapedItem>.display() {
+  if (runningOnCi) {
+    throw RuntimeException("Shouldn't be displaying on CI")
+  }
+  forEach { println(it.noDesc()) }
+}
+
+private fun validateNonLiveOnCi(dateString: String?) {
+  if (dateString == null && runningOnCi) {
+    throw RuntimeException("Shouldn't be running live tests on CI")
+  }
+}
+
+private val runningOnCi = System.getenv("CI") != null
 
 val PROTOTYPE_ITEM = Item(
   breweryId = "",

@@ -3,16 +3,14 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import watch.craft.Offer
+import watch.craft.*
+import watch.craft.Format.CAN
 import watch.craft.Scraper.Node.ScrapedItem
-import watch.craft.byName
-import watch.craft.executeScraper
-import watch.craft.noDesc
 import java.net.URI
 
 class HowlingHopsScraperTest {
   companion object {
-    private val ITEMS = executeScraper(HowlingHopsScraper())
+    private val ITEMS = executeScraper(HowlingHopsScraper(), dateString = "2020-08-02")
   }
 
   @Test
@@ -27,7 +25,7 @@ class HowlingHopsScraperTest {
         name = "Push Push",
         summary = "DDH Pale Ale",
         offers = setOf(
-          Offer(quantity = 4, totalPrice = 16.00, sizeMl = 440)
+          Offer(quantity = 4, totalPrice = 15.00, sizeMl = 440, format = CAN)
         ),
         abv = 5.8,
         available = true,
@@ -39,7 +37,7 @@ class HowlingHopsScraperTest {
 
   @Test
   fun `identifies mixed cases`() {
-    assertTrue(ITEMS.byName("NEW 12 Beer Mega Pack").mixed)
+    assertTrue(ITEMS.byName("Mixed Case with Branded Glass").mixed)
   }
 
   @Test
