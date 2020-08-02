@@ -20,8 +20,8 @@ class CanopyScraper : Scraper {
         fromHtml(title, a.urlFrom()) { doc ->
           val parts = a.extractFrom(regex = "([^\\d]+) (\\d+(\\.\\d+)?)?")
 
-          if (title.containsMatch("box|pack")) {
-            throw SkipItemException("Can't extract number of cans for packs")
+          if (title.containsWord(*BLACKLIST.toTypedArray())) {
+            throw SkipItemException("Can't extract number of cans")
           }
 
           ScrapedItem(
@@ -44,5 +44,7 @@ class CanopyScraper : Scraper {
 
   companion object {
     private val ROOT = root("https://shop.canopybeer.com/")
+
+    private val BLACKLIST = listOf("box", "pack", "club")
   }
 }
