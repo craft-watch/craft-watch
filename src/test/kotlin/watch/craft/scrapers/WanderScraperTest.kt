@@ -8,12 +8,12 @@ import java.net.URI
 
 class WanderScraperTest {
   companion object {
-    private val ITEMS = executeScraper(WanderScraper())
+    private val ITEMS = executeScraper(WanderScraper(), dateString = "2020-08-02")
   }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(15, ITEMS.size)
+    assertEquals(16, ITEMS.size)
   }
 
   @Test
