@@ -17,9 +17,7 @@ class PollysScraper : Scraper {
         val a = el.selectFrom(".woocommerce-loop-product__link")
 
         fromHtml(rawName, a.urlFrom()) { doc ->
-          if (rawName.containsWord(*BLACKLIST.toTypedArray())) {
-            throw SkipItemException("Not something we can deal with")
-          }
+          rawName.skipIfOnBlacklist(*BLACKLIST)
 
           val parts = rawName.extract("(.*) – (.*) (\\S+%)")
 
@@ -48,6 +46,6 @@ class PollysScraper : Scraper {
 
     private const val POLLYS_CAN_SIZE_ML = 440
 
-    private val BLACKLIST = listOf("mix", "glass")
+    private val BLACKLIST = arrayOf("mix", "glass")
   }
 }

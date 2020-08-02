@@ -15,9 +15,8 @@ class VerdantScraper : Scraper {
         val title = el.textFrom(".product__title")
 
         fromHtml(title, el.urlFrom("a.product__img-wrapper")) { doc ->
-          if (BLACKLIST.any { title.containsWord(it) }) {
-            throw SkipItemException("Assuming not a beer")
-          }
+          title.skipIfOnBlacklist(*BLACKLIST)
+
           val mixed = title.containsMatch("mixed")
           val subtitle = doc().textFrom(".product__subtitle")
           val titleParts = title.extract("([^\\d]+)\\s+(\\d+) pack")
@@ -45,6 +44,6 @@ class VerdantScraper : Scraper {
   companion object {
     private val ROOT = root("https://verdantbrewing.co/collections/beer-merchandise")
 
-    private val BLACKLIST = listOf("glass", "tee", "gift")
+    private val BLACKLIST = arrayOf("glass", "tee", "gift")
   }
 }

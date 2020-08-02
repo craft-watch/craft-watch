@@ -16,9 +16,7 @@ class BrockleyScraper : Scraper {
         val title = el.textFrom("product-item-name".hook())
 
         fromHtml(title, el.urlFrom("product-item-container".hook())) { doc ->
-          if (title.containsWord(*BLACKLIST.toTypedArray())) {
-            throw SkipItemException("Can't deal with this")
-          }
+          title.skipIfOnBlacklist(*BLACKLIST)
 
           val desc = doc().formattedTextFrom("description".hook())
 
@@ -59,6 +57,6 @@ class BrockleyScraper : Scraper {
       root("https://www.brockleybrewery.co.uk/online-shop?ALL%20PRODUCTS=5L%20MINI%20KEG%20%26%20CASK", KEG)
     )
 
-    private val BLACKLIST = listOf("pints")
+    private val BLACKLIST = arrayOf("pints")
   }
 }
