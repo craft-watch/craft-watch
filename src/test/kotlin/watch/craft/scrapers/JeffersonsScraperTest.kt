@@ -4,12 +4,13 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import watch.craft.*
+import watch.craft.Format.CAN
 import watch.craft.Scraper.Node.ScrapedItem
 import java.net.URI
 
 class JeffersonsScraperTest {
   companion object {
-    private val ITEMS = executeScraper(JeffersonsScraper())
+    private val ITEMS = executeScraper(JeffersonsScraper(), dateString = "2020-08-02")
   }
 
   @Test
@@ -21,22 +22,22 @@ class JeffersonsScraperTest {
   fun `extracts beer details`() {
     assertEquals(
       ScrapedItem(
-        name = "Birthday No.3",
-        summary = "New England Pale",
+        name = "The Brightside",
+        summary = "Hazy Pale",
         abv = 5.4,
         offers = setOf(
-          Offer(totalPrice = 22.50, quantity = 6, sizeMl = 440)
+          Offer(totalPrice = 16.80, quantity = 6, sizeMl = 330, format = CAN)
         ),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/2172/2447/products/BirthdayNo.3_200x.jpg")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/2172/2447/products/TheBrightside_Can_200x.jpg")
       ),
-      ITEMS.first { it.name == "Birthday No.3" && it.onlyOffer().quantity == 6 }.noDesc()
+      ITEMS.first { it.name == "The Brightside" && it.onlyOffer().quantity == 6 }.noDesc()
     )
   }
 
   @Test
   fun `extracts description`() {
-    assertNotNull(ITEMS.byName("Birthday No.3").desc)
+    assertNotNull(ITEMS.byName("The Brightside").desc)
   }
 }
 
