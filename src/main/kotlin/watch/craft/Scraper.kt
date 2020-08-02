@@ -8,6 +8,7 @@ data class ScraperEntry(
 )
 
 interface Scraper {
+  val failOn404: Boolean get() = true
   val roots: List<Node>
 
   sealed class Node {

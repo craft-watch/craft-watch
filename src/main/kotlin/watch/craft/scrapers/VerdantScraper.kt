@@ -2,9 +2,7 @@ package watch.craft.scrapers
 
 import watch.craft.Offer
 import watch.craft.Scraper
-
 import watch.craft.Scraper.Node.ScrapedItem
-import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class VerdantScraper : Scraper {

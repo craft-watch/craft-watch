@@ -238,6 +238,17 @@ val SCRAPERS = listOf(
     )
   ),
   entry(
+    MadSquirrelScraper(),
+    Brewery(
+      id = "mad-squirrel",
+      shortName = "Mad Squirrel",
+      name = "Mad Squirrel Brewery",
+      location = "Potten End, Hertfordshire",
+      websiteUrl = URI("https://www.madsquirrelbrew.co.uk/"),
+      twitterHandle = "madsquirrelbrew"
+    )
+  ),
+  entry(
     MarbleScraper(),
     Brewery(
       id = "marble",
