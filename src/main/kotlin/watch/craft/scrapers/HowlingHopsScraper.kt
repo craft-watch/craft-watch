@@ -1,5 +1,6 @@
 package watch.craft.scrapers
 
+import watch.craft.Format
 import watch.craft.Offer
 import watch.craft.Scraper
 
@@ -15,11 +16,11 @@ class HowlingHopsScraper : Scraper {
       .selectMultipleFrom(".wc-block-grid__product")
       .map { el ->
         val a = el.selectFrom(".wc-block-grid__product-link")
-        val rawName = el.textFrom(".wc-block-grid__product-title")
+        val title = el.textFrom(".wc-block-grid__product-title")
 
-        fromHtml(rawName, a.urlFrom()) { doc ->
+        fromHtml(title, a.urlFrom()) { doc ->
           val desc = doc().textFrom(".woocommerce-product-details__short-description")
-          val parts = extractVariableParts(desc)
+          val parts = extractVariableParts(title, desc)
           val product = doc().jsonLdFrom<Product>().single()
           val available = product.offers.any { it.availability == "http://schema.org/InStock" }
 
@@ -30,12 +31,13 @@ class HowlingHopsScraper : Scraper {
             desc = doc().maybe { formattedTextFrom(".woocommerce-product-details__short-description") },
             mixed = parts.mixed,
             available = available,
-            abv = parts.abv,
+            abv = if (parts.mixed) null else desc.abvFrom(),
             offers = setOf(
               Offer(
-                quantity = parts.numCans,
+                quantity = desc.quantityFrom(),
                 totalPrice = el.priceFrom(":not(del) > .woocommerce-Price-amount"),
-                sizeMl = desc.sizeMlFrom()
+                sizeMl = desc.sizeMlFrom(),
+                format = STANDARD_FORMAT
               )
             )
 
@@ -47,26 +49,19 @@ class HowlingHopsScraper : Scraper {
   private data class VariableParts(
     val name: String,
     val summary: String? = null,
-    val abv: Double? = null,
-    val numCans: Int,
     val mixed: Boolean = false
   )
 
-  private fun extractVariableParts(desc: String): VariableParts {
-    val parts = desc.maybe { extract("([^/]*?) / ([^/]*?) / (\\d+) (?:.*?) / (\\d+(\\.\\d+)?)% ABV") }
+  private fun extractVariableParts(title: String, desc: String): VariableParts {
+    val parts = desc.maybe { extract("([^/]*?) / ([^/]*?) /") }
     return if (parts != null) {
       VariableParts(
         name = parts[1],
-        summary = parts[2],
-        abv = parts[4].toDouble(),
-        numCans = parts[3].toInt()
+        summary = parts[2]
       )
     } else {
-      val betterParts = desc.extract("(.*?) (\\d+) x")
-      val numCans = betterParts[2].toInt()
       VariableParts(
-        name = betterParts[1],
-        numCans = numCans,
+        name = title.cleanse(".*:", "\\d+\\s*x\\s*\\d+\\s*ml"),
         mixed = true
       )
     }
@@ -74,5 +69,7 @@ class HowlingHopsScraper : Scraper {
 
   companion object {
     private val ROOT = root("https://www.howlinghops.co.uk/shop")
+
+    private val STANDARD_FORMAT = Format.CAN
   }
 }
