@@ -1,5 +1,6 @@
 package watch.craft.scrapers
 
+import watch.craft.Format
 import watch.craft.Offer
 import watch.craft.Scraper
 
@@ -45,9 +46,10 @@ class NorthernMonkScraper : Scraper {
             available = data.available,
             offers = setOf(
               Offer(
-                quantity = rawName.maybe { quantityFrom() } ?: 1,
+                quantity = rawName.maybe { quantityFrom("(\\d+) case") } ?: 1,
                 totalPrice = data.price / 100.0,
-                sizeMl = desc.maybe { sizeMlFrom() }
+                sizeMl = desc.maybe { sizeMlFrom() },
+                format = STANDARD_NORTHERN_MONK_FORMAT
               )
             ),
             thumbnailUrl = doc().urlFrom(".product__image.lazyload")
@@ -65,5 +67,7 @@ class NorthernMonkScraper : Scraper {
     private val ROOT = root("https://northernmonkshop.com/collections/beer")
 
     private const val PACK_REGEX = "(\\d+) pack"
+
+    private val STANDARD_NORTHERN_MONK_FORMAT = Format.CAN
   }
 }
