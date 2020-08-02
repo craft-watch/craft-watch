@@ -18,6 +18,7 @@ class Executor(
     private val now = clock.instant()
     private val categoriser = Categoriser(CATEGORY_KEYWORDS)
     private val newalyser = Newalyser(results, now)
+    private val overrider = Overrider()
 
     fun scrape(): Inventory {
       val breweryItems = executeAllInParallel()
@@ -25,7 +26,8 @@ class Executor(
 
       val breweries = scrapers
         .map { it.brewery }
-        .map { newalyser.enrich(it) }
+        .map(newalyser::enrich)
+        .map(overrider::enrich)
 
       return Inventory(
         metadata = Metadata(
