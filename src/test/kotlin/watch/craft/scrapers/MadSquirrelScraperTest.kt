@@ -15,10 +15,9 @@ class MadSquirrelScraperTest {
     private val ITEMS = executeScraper(MadSquirrelScraper(), dateString = "2020-08-02")
   }
 
-
   @Test
   fun `finds all the beers`() {
-    assertEquals(11, ITEMS.size)
+    assertEquals(15, ITEMS.size)
   }
 
   @Test
