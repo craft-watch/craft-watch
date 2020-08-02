@@ -27,27 +27,12 @@ class ResultsManager(private val structure: StorageStructure) {
     structure.results.list().map { Instant.from(formatter.parse(it)) }.sorted()
   }
 
-  // TODO - simplify this on 2020-08-02
   suspend fun readMinimalHistoricalResult(timestamp: Instant): MinimalInventory {
     val minimal = mapper.readValue<MinimalInventory>(dir(timestamp).read(INVENTORY_FILENAME))
-    return if (minimal.version == 1) {
-      minimal
-    } else {
-      minimal.normaliseToV1()
+    return when (minimal.version) {
+      1 -> minimal
+      else -> throw FatalScraperException("Unsupported version: ${minimal.version}")
     }
-  }
-
-  private fun MinimalInventory.normaliseToV1(): MinimalInventory {
-    val scrapers = SCRAPERS.associate { it.brewery.shortName to it.brewery.id }
-    return copy(items = items.mapNotNull { item ->
-      val actualId = scrapers[item.breweryId]
-      if (actualId != null) {
-        item.copy(breweryId = actualId)
-      } else {
-        logger.info("Rejecting unknown brewery: ${item.breweryId}")
-        null
-      }
-    })
   }
 
   private fun dir(timestamp: Instant) = SubObjectStore(structure.results, formatter.format(timestamp))
