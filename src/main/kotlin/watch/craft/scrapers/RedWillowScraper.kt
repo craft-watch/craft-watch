@@ -5,9 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import org.jsoup.nodes.Document
 import watch.craft.Offer
 import watch.craft.Scraper
-
 import watch.craft.Scraper.Node.ScrapedItem
-import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class RedWillowScraper : Scraper {
