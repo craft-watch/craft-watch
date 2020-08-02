@@ -4,7 +4,6 @@ import org.jsoup.nodes.Document
 import watch.craft.Offer
 import watch.craft.Scraper
 import watch.craft.Scraper.Node.ScrapedItem
-import watch.craft.SkipItemException
 import watch.craft.dsl.*
 
 class BigDropScraper : Scraper {
@@ -17,9 +16,7 @@ class BigDropScraper : Scraper {
         val title = el.textFrom(".title")
 
         fromHtml(title, el.urlFrom("a")) { doc ->
-          if (title.containsWord(*BLACKLIST.toTypedArray())) {
-            throw SkipItemException("Not a beer")
-          }
+          title.skipIfOnBlacklist(*BLACKLIST)
 
           val parts = title.split(" - ")
           val desc = doc().formattedTextFrom(".description")
@@ -81,6 +78,6 @@ class BigDropScraper : Scraper {
 
     private const val BIG_DROP_ABV = 0.5
 
-    private val BLACKLIST = listOf("towel")   // Really wtf
+    private val BLACKLIST = arrayOf("towel")   // Really wtf
   }
 }

@@ -24,7 +24,7 @@ class SolvayScraper : Scraper {
             summary = if (mixed) null else nameParts[2],
             desc = desc.formattedTextFrom(),
             mixed = mixed,
-            abv = if (mixed) null else rawName.abvFrom(),
+            abv = if (mixed) null else desc.abvFrom(),
             available = true,
             offers = setOf(
               Offer(

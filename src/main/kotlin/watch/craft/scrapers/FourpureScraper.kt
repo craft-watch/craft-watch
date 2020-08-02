@@ -45,8 +45,8 @@ class FourpureScraper : Scraper {
 
   private data class VariableParts(
     val name: String,
-    val sizeMl: Int,
-    val format: Format? = null
+    val sizeMl: Int? = null,
+    val format: Format
   )
 
   private fun Document.extractVariableParts(): VariableParts {
@@ -60,7 +60,8 @@ class FourpureScraper : Scraper {
     } else {
       VariableParts(
         name = title.extract("([^\\d]+)( \\d+ml)?")[1],  // Strip size in title
-        sizeMl = sizeMlFrom(".quickBuy")
+        sizeMl = maybe { sizeMlFrom(".quickBuy") },
+        format = STANDARD_FOURPURE_FORMAT
       )
     }
   }
@@ -69,5 +70,7 @@ class FourpureScraper : Scraper {
 
   companion object {
     private val ROOT = root("https://www.fourpure.com/browse/c-Our-Beers-5/")
+
+    private val STANDARD_FOURPURE_FORMAT = Format.CAN
   }
 }

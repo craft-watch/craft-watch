@@ -18,9 +18,7 @@ class RedWillowScraper : Scraper {
         val rawName = el.textFrom(".ProductList-title")
 
         fromHtml(rawName, el.urlFrom("a.ProductList-item-link")) { doc ->
-          if (BLACKLIST.any { rawName.containsMatch(it) }) {
-            throw SkipItemException("Identified as non-beer")
-          }
+          rawName.skipIfOnBlacklist(*BLACKLIST)
 
           val desc = doc().formattedTextFrom(".ProductItem-details-excerpt")
           val sizeMl = (rawName + "\n" + desc).maybe { sizeMlFrom() }
@@ -68,6 +66,6 @@ class RedWillowScraper : Scraper {
   companion object {
     private val ROOT = root("https://www.redwillowbrewery.com/shop")
 
-    private val BLACKLIST = listOf("glassware")
+    private val BLACKLIST = arrayOf("glassware")
   }
 }

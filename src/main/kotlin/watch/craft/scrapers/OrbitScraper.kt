@@ -11,9 +11,9 @@ class OrbitScraper : Scraper {
     root()
       .selectMultipleFrom(".product-card")
       .map { el ->
-        val title = el.textFrom(".product-card__name")
+        val title = el.textFrom(".product-card__title")
 
-        fromHtml(title, el.urlFrom()) { doc ->
+        fromHtml(title, el.urlFrom("a")) { doc ->
           val desc = doc().formattedTextFrom(".product-single__description")
 
           // Remove all the dross
@@ -30,11 +30,11 @@ class OrbitScraper : Scraper {
             desc = desc,
             mixed = title.containsMatch("mixed"),
             abv = title.maybe { abvFrom() },
-            available = ".product-card__availability" !in el,
+            available = ".price--sold-out" !in el,
             offers = doc().orSkip("Can't extract offers, so assume not a beer") {
               extractShopifyOffers(desc.maybe { sizeMlFrom() })
             },
-            thumbnailUrl = el.urlFrom("noscript img.product-card__image")
+            thumbnailUrl = el.urlFrom("noscript img")
           )
         }
       }

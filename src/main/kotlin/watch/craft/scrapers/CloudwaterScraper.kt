@@ -15,6 +15,8 @@ class CloudwaterScraper : Scraper {
         val nameLines = a.formattedTextFrom().split("\n")
 
         fromHtml(nameLines[0], a.urlFrom()) { doc ->
+          a.textFrom().skipIfOnBlacklist("event")
+
           val desc = doc().formattedTextFrom(".short-description")
           val allNumItems = desc.collectFromLines { quantityFrom() }
           val mixed = allNumItems.size > 1

@@ -3,45 +3,47 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import watch.craft.*
+import watch.craft.Format.CAN
 import watch.craft.Scraper.Node.ScrapedItem
 import java.net.URI
 import kotlin.text.RegexOption.IGNORE_CASE
 
 class NorthernMonkScraperTest {
   companion object {
-    private val ITEMS = executeScraper(NorthernMonkScraper())
+    private val ITEMS = executeScraper(NorthernMonkScraper(), dateString = "2020-08-02")
   }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(17, ITEMS.size)
+    assertEquals(29, ITEMS.size)
   }
 
   @Test
   fun `extracts beer details`() {
     assertEquals(
       ScrapedItem(
-        name = "Great Northern Lager",
-        abv = 4.3,
+        name = "Faith",
+        summary = "Hazy Pale Ale",
+        abv = 5.4,
         offers = setOf(
-          Offer(totalPrice = 3.00, sizeMl = 440)
+          Offer(totalPrice = 3.10, sizeMl = 440, format = CAN)
         ),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/2213/3151/products/2020-NMBC_Great-Northern-Lager-29_200x.jpg")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/2213/3151/products/FAITH_2020_200x.jpg")
       ),
-      ITEMS.first { it.name == "Great Northern Lager" && it.onlyOffer().quantity == 1 }.noDesc()
+      ITEMS.first { it.name == "Faith" && it.onlyOffer().quantity == 1 }.noDesc()
     )
   }
 
   @Test
   fun `extracts description`() {
-    assertNotNull(ITEMS.byName("Retro Faith").desc)
+    assertNotNull(ITEMS.byName("Faith").desc)
   }
 
   @Test
   fun `extracts summaries from various places`() {
     assertEquals("Gluten Free IPA", ITEMS.byName("Origin").summary)   // Extracted from after "TM"
-    assertEquals("Hazy Pale Ale", ITEMS.byName("Retro Faith").summary)  // Extracted from after "//"
+    assertEquals("Hazy Pale Ale", ITEMS.byName("Faith").summary)  // Extracted from after "//"
   }
 
   @Test
@@ -56,7 +58,7 @@ class NorthernMonkScraperTest {
 
   @Test
   fun `identifies sold-out`() {
-    assertFalse(ITEMS.byName("Retro Faith").available)
+    assertFalse(ITEMS.byName("Heathen").available)
   }
 
   @Test
@@ -67,6 +69,11 @@ class NorthernMonkScraperTest {
   @Test
   fun `no nonsense in names`() {
     assertFalse(ITEMS.any { it.name.contains("//|pack|™".toRegex(IGNORE_CASE)) })
+  }
+
+  @Test
+  fun `identifies quantities for non-standard pattern`() {
+    assertEquals(24, ITEMS.byName("Striding Edge Hazy Light IPA").onlyOffer().quantity)
   }
 }
 

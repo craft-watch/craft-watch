@@ -3,6 +3,7 @@ package watch.craft.scrapers
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import watch.craft.*
+import watch.craft.Format.CAN
 import watch.craft.Format.KEG
 import watch.craft.Scraper.Node.ScrapedItem
 import java.net.URI
@@ -34,7 +35,7 @@ class FourpureScraperTest {
       ScrapedItem(
         name = "Basecamp",
         offers = setOf(
-          Offer(totalPrice = 2.00, sizeMl = 330)
+          Offer(totalPrice = 2.00, sizeMl = 330, format = CAN)
         ),
         abv = 4.7,
         available = true,

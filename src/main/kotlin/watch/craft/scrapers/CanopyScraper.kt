@@ -18,11 +18,9 @@ class CanopyScraper : Scraper {
         val title = el.textFrom(".product__title")
 
         fromHtml(title, a.urlFrom()) { doc ->
-          val parts = a.extractFrom(regex = "([^\\d]+) (\\d+(\\.\\d+)?)?")
+          title.skipIfOnBlacklist(*BLACKLIST)
 
-          if (title.containsMatch("box|pack")) {
-            throw SkipItemException("Can't extract number of cans for packs")
-          }
+          val parts = a.extractFrom(regex = "([^\\d]+) (\\d+(\\.\\d+)?)?")
 
           ScrapedItem(
             thumbnailUrl = el.urlFrom(".grid__image img"),
@@ -44,5 +42,8 @@ class CanopyScraper : Scraper {
 
   companion object {
     private val ROOT = root("https://shop.canopybeer.com/")
+
+    // Can't extract number of cans from these
+    private val BLACKLIST = arrayOf("box", "pack", "club")
   }
 }

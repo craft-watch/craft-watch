@@ -4,8 +4,15 @@ import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import watch.craft.MalformedInputException
+import watch.craft.SkipItemException
 import java.net.URI
 import java.net.URISyntaxException
+
+fun String.skipIfOnBlacklist(vararg blacklist: String) {
+  if (containsWord(*blacklist)) {
+    throw SkipItemException("Contains blacklisted term ${blacklist.toList()}")
+  }
+}
 
 inline fun <reified T : Any> String.jsonFrom() = try {
   jacksonObjectMapper()
