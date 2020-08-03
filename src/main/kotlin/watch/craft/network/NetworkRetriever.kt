@@ -5,6 +5,8 @@ import io.ktor.client.engine.apache.Apache
 import io.ktor.client.features.UserAgent
 import io.ktor.client.request.get
 import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.HttpStatement
+import io.ktor.client.statement.close
 import io.ktor.client.statement.readBytes
 import io.ktor.http.HttpStatusCode.Companion.NotFound
 import io.ktor.http.Url
@@ -57,17 +59,17 @@ class NetworkRetriever(private val config: Config) : Retriever {
   }
 
   private suspend fun HttpClient.process(msg: Request): Response {
-    logger.info("${msg.url}: processing network request")
     var exception: Exception? = null
     repeat(MAX_RETRIES) {
       val response = try {
-        val r: HttpResponse = get(Url(msg.url.toString()))
-        if (r.status.isSuccess() || (!config.failOn404 && r.status == NotFound)) {
-          val raw = r.readBytes()
-          msg.validate(raw)
-          Success(raw)
-        } else {
-          Failure(RuntimeException("Response status code: ${r.status}"))
+        get<HttpStatement>(Url(msg.url.toString())).execute { r ->
+          if (r.status.isSuccess() || (!config.failOn404 && r.status == NotFound)) {
+            val raw = r.readBytes()
+            msg.validate(raw)
+            Success(raw)
+          } else {
+            Failure(RuntimeException("Response status code: ${r.status}"))
+          }
         }
       } catch (e: IOException) {
         exception = e
