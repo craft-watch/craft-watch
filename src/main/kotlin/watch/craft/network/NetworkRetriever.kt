@@ -1,24 +1,18 @@
 package watch.craft.network
 
-import io.ktor.client.HttpClient
-import io.ktor.client.engine.apache.Apache
-import io.ktor.client.features.UserAgent
-import io.ktor.client.request.get
-import io.ktor.client.statement.HttpResponse
-import io.ktor.client.statement.readBytes
-import io.ktor.http.HttpStatusCode.Companion.NotFound
-import io.ktor.http.Url
-import io.ktor.http.isSuccess
-import io.ktor.util.KtorExperimentalAPI
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import mu.KotlinLogging
 import watch.craft.MalformedInputException
 import watch.craft.UnretrievableException
+import watch.craft.executor.onIoThread
 import watch.craft.network.NetworkRetriever.Response.Failure
 import watch.craft.network.NetworkRetriever.Response.Success
 import java.io.IOException
 import java.net.URI
+import java.net.http.HttpClient
+import java.net.http.HttpRequest
+import java.net.http.HttpResponse.BodyHandlers
 
 class NetworkRetriever(private val config: Config) : Retriever {
   private val logger = KotlinLogging.logger {}
@@ -40,34 +34,35 @@ class NetworkRetriever(private val config: Config) : Retriever {
     data class Failure(val cause: Exception) : Response()
   }
 
+  private val client = HttpClient.newBuilder().build()
   private val channel = Channel<Request>()
 
-  // I don't trust Ktor's "concurrency" configuration, so manually limit concurrency by having a single
-  // coroutine handling requests over a channel.
+  // Manually limit concurrency by having a single coroutine handling requests over a channel.
   init {
+    logger.info("[${config.id}] Creating message loop")
     GlobalScope.launch {
-      logger.info("[${config.id}] Opening client")
-      createClient().use { client ->
-        for (msg in channel) {
-          msg.response.complete(client.process(msg))
-        }
+      for (msg in channel) {
+        msg.response.complete(process(msg))
       }
-      logger.info("[${config.id}] Client closed")
     }
+    logger.info("[${config.id}] Closed message loop")
   }
 
-  private suspend fun HttpClient.process(msg: Request): Response {
+  private suspend fun process(msg: Request): Response {
     logger.info("${msg.url}: processing network request")
     var exception: Exception? = null
     repeat(MAX_RETRIES) {
       val response = try {
-        val r: HttpResponse = get(Url(msg.url.toString()))
-        if (r.status.isSuccess() || (!config.failOn404 && r.status == NotFound)) {
-          val raw = r.readBytes()
-          msg.validate(raw)
-          Success(raw)
+        val request = HttpRequest.newBuilder()
+          .uri(msg.url)
+          .setHeader("User-Agent", USER_AGENT)
+          .build()
+        val response = onIoThread { client.send(request, BodyHandlers.ofByteArray()) }
+        if (response.statusCode() in 200..299 || (!config.failOn404 && response.statusCode() == 404)) {
+          msg.validate(response.body())
+          Success(response.body())
         } else {
-          Failure(RuntimeException("Response status code: ${r.status}"))
+          Failure(RuntimeException("Response status code: ${response.statusCode()}"))
         }
       } catch (e: IOException) {
         exception = e
@@ -114,14 +109,8 @@ class NetworkRetriever(private val config: Config) : Retriever {
     channel.close()
   }
 
-  @OptIn(KtorExperimentalAPI::class)
-  private fun createClient() = HttpClient(Apache) {
-    install(UserAgent) {
-      agent = "CraftWatch Bot (https://craft.watch)"
-    }
-  }
-
   companion object {
+    private const val USER_AGENT = "CraftWatch Bot (https://craft.watch)"
     private const val RATE_LIMIT_PERIOD_MILLIS = 3000
     private const val MAX_RETRIES = 5
   }
