@@ -2,15 +2,9 @@ package watch.craft.network
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.apache.Apache
-import io.ktor.client.features.UserAgent
+import io.ktor.client.features.*
 import io.ktor.client.request.get
-import io.ktor.client.statement.HttpResponse
-import io.ktor.client.statement.HttpStatement
-import io.ktor.client.statement.close
-import io.ktor.client.statement.readBytes
-import io.ktor.http.HttpStatusCode.Companion.NotFound
 import io.ktor.http.Url
-import io.ktor.http.isSuccess
 import io.ktor.util.KtorExperimentalAPI
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
@@ -62,15 +56,9 @@ class NetworkRetriever(private val config: Config) : Retriever {
     var exception: Exception? = null
     repeat(MAX_RETRIES) {
       val response = try {
-        get<HttpStatement>(Url(msg.url.toString())).execute { r ->
-          if (r.status.isSuccess() || (!config.failOn404 && r.status == NotFound)) {
-            val raw = r.readBytes()
-            msg.validate(raw)
-            Success(raw)
-          } else {
-            Failure(RuntimeException("Response status code: ${r.status}"))
-          }
-        }
+        val raw: ByteArray = get(Url(msg.url.toString()))
+        msg.validate(raw)
+        Success(raw)
       } catch (e: IOException) {
         exception = e
         null
@@ -120,6 +108,19 @@ class NetworkRetriever(private val config: Config) : Retriever {
   private fun createClient() = HttpClient(Apache) {
     install(UserAgent) {
       agent = "CraftWatch Bot (https://craft.watch)"
+    }
+
+    HttpResponseValidator {
+      validateResponse { response ->
+        val statusCode = response.status.value
+        when {
+          (statusCode == 404) && !config.failOn404 -> return@validateResponse
+          statusCode in 300..399 -> throw RedirectResponseException(response)
+          statusCode in 400..499 -> throw ClientRequestException(response)
+          statusCode in 500..599 -> throw ServerResponseException(response)
+          statusCode >= 600 -> throw ResponseException(response)
+        }
+      }
     }
   }
 
