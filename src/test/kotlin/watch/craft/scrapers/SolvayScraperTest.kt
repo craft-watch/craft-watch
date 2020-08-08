@@ -9,12 +9,12 @@ import java.net.URI
 
 class SolvayScraperTest {
   companion object {
-    private val ITEMS = executeScraper(SolvayScraper())
+    private val ITEMS = executeScraper(SolvayScraper(), dateString = "2020-08-08")
   }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(8, ITEMS.size)
+    assertEquals(10, ITEMS.size)
   }
 
   @Test
@@ -55,6 +55,13 @@ class SolvayScraperTest {
 
     assertFalse(items.isEmpty())
     assertTrue(items.all { it.onlyOffer().sizeMl!! >= 1000 })
+  }
+
+  @Test
+  fun `cleans up names and summaries`() {
+    fun String.containsBadness() = contains("|") || contains("%")
+
+    assertFalse(ITEMS.any { it.name.containsBadness() || (it.summary?.containsBadness() ?: false) })
   }
 }
 
