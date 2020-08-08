@@ -10,12 +10,12 @@ import java.net.URI
 
 class SirenScraperTest {
   companion object {
-    private val ITEMS = executeScraper(SirenScraper())
+    private val ITEMS = executeScraper(SirenScraper(), dateString = "2020-08-08")
   }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(21, ITEMS.size)
+    assertEquals(29, ITEMS.size)
   }
 
   @Test

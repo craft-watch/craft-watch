@@ -36,7 +36,11 @@ fun String.sizeMlFrom() = maybeAnyOf(
   { (extract("$DOUBLE_REGEX\\s*l(?:\\W|$)").doubleFrom(1) * 1000).toInt() }
 ) ?: throw MalformedInputException("Can't extract size")
 
-fun Element.formatFrom(cssQuery: String = ":root", fullProse: Boolean = true) = textFrom(cssQuery).formatFrom(fullProse)
+fun Element.formatFrom(
+  cssQuery: String = ":root",
+  fullProse: Boolean = true,
+  disallowed: List<Format> = emptyList()
+) = textFrom(cssQuery).formatFrom(fullProse, disallowed)
 fun String.formatFrom(
   fullProse: Boolean = true,
   disallowed: List<Format> = emptyList()
