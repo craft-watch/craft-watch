@@ -39,13 +39,13 @@ class NetworkRetriever(private val config: Config) : Retriever {
 
   // Manually limit concurrency by having a single coroutine handling requests over a channel.
   init {
-    logger.info("[${config.id}] Creating message loop")
     GlobalScope.launch {
+      logger.info("[${config.id}] Creating retriever message loop")
       for (msg in channel) {
         msg.response.complete(process(msg))
       }
+      logger.info("[${config.id}] Closed retriever message loop")
     }
-    logger.info("[${config.id}] Closed message loop")
   }
 
   private suspend fun process(msg: Request): Response {
