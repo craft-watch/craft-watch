@@ -1,47 +1,56 @@
 package watch.craft.scrapers
 
-import watch.craft.Format.BOTTLE
 import watch.craft.Offer
 import watch.craft.Scraper
-
 import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.SkipItemException
 import watch.craft.dsl.*
-import kotlin.math.max
+import watch.craft.jsonld.Thing.Product
+import watch.craft.jsonld.jsonLdFrom
 
 class ForestRoadScraper : Scraper {
   override val roots = fromHtmlRoots(*ROOTS) { root ->
     root()
-      .selectMultipleFrom(".Main--products-list .ProductList-item")
+      .selectMultipleFrom("#Collection .grid__item")
       .map { el ->
-        val title = el.textFrom(".ProductList-title")
+        val title = el.textFrom(".grid-view-item__title")
 
-        fromHtml(title, el.urlFrom("a.ProductList-item-link")) { doc ->
+        fromHtml(title, el.urlFrom("a")) { doc ->
           if (title.containsMatch("subscription")) {
             throw SkipItemException("Subscriptions aren't something we can model")
           }
 
-          val desc = doc().formattedTextFrom(".ProductItem-details-excerpt").toTitleCase()
-          val descLines = desc.split("\n")
+          val desc = doc().formattedTextFrom(".product-single__description")
+          val sizeMl = maybeAnyOf(
+            { desc.sizeMlFrom() },
+            { title.sizeMlFrom() }
+          )
           val mixed = title.containsMatch("mixed")
 
           ScrapedItem(
-            name = title.cleanse("[(].*[)]", "cans").toTitleCase(),
-            summary = if (descLines[0].containsMatch("@")) null else descLines[0], // Filter out nonsense
+            name = title.cleanse(
+              " - .*",
+              "[(].*[)]",
+              "\\d+ pack"
+            ).toTitleCase(),
             desc = desc,
             mixed = mixed,
-            abv = if (mixed) null else desc.orSkip("No ABV, so assume not a beer") { abvFrom() },
-            available = true,
-            offers = setOf(
-              Offer(
-                quantity = title.maybe { quantityFrom() }
-                  ?: max(1, desc.collectFromLines { quantityFrom() }.sum()),
-                totalPrice = el.priceFrom(".product-price"),
-                sizeMl = title.maybe { sizeMlFrom() } ?: desc.maybe { sizeMlFrom() },
-                format = title.formatFrom() ?: BOTTLE
-              )
-            ),
-            thumbnailUrl = el.urlFrom("img.ProductList-image")
+            abv = if (mixed) null else desc.abvFrom(),
+            available = ".product-price__sold-out" !in el,
+            offers = doc().jsonLdFrom<Product>().single()
+              .offers
+              .map { offer ->
+                Offer(
+                  quantity = offer.itemOffered!!.name.maybe { quantityFrom() }
+                    ?: title.maybe { quantityFrom() }
+                    ?: 1,
+                  totalPrice = offer.price,
+                  sizeMl = sizeMl,
+                  format = title.formatFrom(fullProse = false)
+                )
+              }
+              .toSet(),
+            thumbnailUrl = el.urlFrom("img")
           )
         }
       }
@@ -49,8 +58,7 @@ class ForestRoadScraper : Scraper {
 
   companion object {
     private val ROOTS = arrayOf(
-      root("https://www.forestroad.co.uk/shop?category=BEER"),
-      root("https://www.forestroad.co.uk/shop?category=SPECIAL")
+      root("https://forest-road.myshopify.com/collections/frontpage")
     )
   }
 }

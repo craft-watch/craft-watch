@@ -7,44 +7,39 @@ import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
 
 class GipsyHillScraper : Scraper {
-  override val roots = fromHtmlRoots(ROOT) { root ->
+  override val roots = fromHtmlRoots(*ROOTS) { root ->
     root()
-      .selectMultipleFrom(".product")
+      .selectMultipleFrom(".ProductCard")
       .map { el ->
-        val a = el.selectFrom(".woocommerce-LoopProduct-link")
-        val rawName = a.textFrom(".woocommerce-loop-product__title")
+        val title = el.textFrom(".ProductCard__title")
 
-        fromHtml(rawName, a.urlFrom()) { doc ->
-          val rawSummary = doc().textFrom(".summary")
-          val numCans = doc().maybe { selectMultipleFrom(".woosb-title-inner") }
-            ?.map { it.quantityFrom() }?.sum()
-            ?: 1
-          val style = rawSummary.maybe { extract("Style: (.*) ABV")[1] }
-          val mixed = style in listOf("Various", "Mixed")
-
-          val name = rawName.cleanse(" \\(.*\\)$")
-
+        fromHtml(title, el.urlFrom(".ProductCard__link")) { doc ->
           ScrapedItem(
-            name = name,
-            summary = if (mixed) null else style,
-            desc = doc().maybe { formattedTextFrom(".description") },
-            mixed = mixed,
-            available = true, // TODO
-            abv = if (mixed) null else rawSummary.maybe { abvFrom(prefix = "ABV: ", noPercent = true) },
+            name = title,
+            summary = el.textFrom(".ProductCard__style"),
+            desc = doc().maybe { formattedTextFrom(".PDPInformation__content") },
+            mixed = false,
+            available = !el.containsMatchFrom(".Button", "sold out"),
+            abv = el.abvFrom(".ProductCard__abv"),
             offers = setOf(
               Offer(
-                quantity = numCans,
-                totalPrice = el.priceFrom(".woocommerce-Price-amount"),
-                sizeMl = rawSummary.maybe { sizeMlFrom() }
+                quantity = 1,
+                totalPrice = doc().priceFrom(".ProductPrice"),
+                sizeMl = doc().sizeMlFrom(".PackSizes__list"),
+                format = doc().formatFrom(".PDPInformation__table", fullProse = false)
               )
             ),
-            thumbnailUrl = a.urlFrom(".attachment-woocommerce_thumbnail")
+            thumbnailUrl = el.urlFrom("img.Image")
           )
         }
       }
   }
 
   companion object {
-    private val ROOT = root("https://gipsyhillbrew.com")
+    // We don't bother with multi-packs, because the prices are no better
+    private val ROOTS = arrayOf(
+      root("https://gipsyhillbrew.com/products/core-beers"),
+      root("https://gipsyhillbrew.com/products/specials")
+    )
   }
 }

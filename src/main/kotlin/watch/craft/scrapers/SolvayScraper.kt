@@ -6,6 +6,7 @@ import watch.craft.Scraper
 
 import watch.craft.Scraper.Node.ScrapedItem
 import watch.craft.dsl.*
+import kotlin.math.max
 
 class SolvayScraper : Scraper {
   override val roots = fromHtmlRoots(*ROOTS) { root ->
@@ -15,20 +16,21 @@ class SolvayScraper : Scraper {
         val rawName = el.textFrom(".grid-title")
 
         fromHtml(rawName, el.urlFrom("a.grid-item-link")) { doc ->
-          val nameParts = rawName.extract("(.*?)\\s+\\|\\s+(?:(.*?)\\s+\\d)?")
-          val desc = doc().selectFrom(".ProductItem-details-excerpt")
-          val mixed = rawName.containsMatch("mix")
+          val nameParts = rawName.split(" | ")
+          val desc = doc().selectFrom(".ProductItem-details-excerpt").formattedTextFrom()
+          val descQuantities = desc.collectFromLines { quantityFrom() }
+          val mixed = rawName.containsMatch("mix") || descQuantities.size > 1
 
           ScrapedItem(
-            name = nameParts[1],
-            summary = if (mixed) null else nameParts[2],
-            desc = desc.formattedTextFrom(),
+            name = nameParts[0],
+            summary = if (nameParts.size > 1) nameParts[1].cleanse("\\S+%") else null,
+            desc = desc,
             mixed = mixed,
             abv = if (mixed) null else desc.abvFrom(),
             available = true,
             offers = setOf(
               Offer(
-                quantity = rawName.maybe { quantityFrom() } ?: 1,
+                quantity = rawName.maybe { quantityFrom() } ?: max(descQuantities.sum(), 1),
                 totalPrice = el.priceFrom(".product-price"),
                 format = if (rawName.containsMatch("keg")) KEG else null,
                 sizeMl = if (mixed) null else desc.sizeMlFrom()

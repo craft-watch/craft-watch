@@ -21,26 +21,26 @@ class SirenScraper : Scraper {
             throw SkipItemException("Can't deal with mixed cases yet")    // TODO
           }
 
-          val detailsText = doc().textFrom(".itemTitle .small")
-          if (detailsText.containsMatch("Mixed")) {
+          val details = doc().textFrom(".itemTitle .small")
+          if (details.containsMatch("Mixed")) {
             throw SkipItemException("Can't deal with mixed cases yet")    // TODO
           }
-          val details = detailsText.extract("(.*?)\\s+\\|\\s+(\\d+(\\.\\d+)?)%\\s+\\|\\s+(\\d+)")
 
           val keg = rawName.containsMatch("Mini Keg")
 
           ScrapedItem(
             name = rawName.cleanse("(\\d+)L Mini Keg - "),
-            summary = if (keg) null else details[1],
+            summary = if (keg) null else details.split(" | ")[0],
             desc = doc().formattedTextFrom(".about"),
             mixed = false,
-            abv = details[2].toDouble(),
+            abv = details.abvFrom(),
             available = ".unavailableItemWrap" !in doc(),
             offers = setOf(
               Offer(
                 totalPrice = el.priceFrom(".itemPriceWrap"),
                 format = if (keg) KEG else null,
-                sizeMl = if (keg) 5000 else details[4].toInt()
+                sizeMl = ("$details ml").maybe { sizeMlFrom() },  // Size at end doesn't always have unit
+                quantity = details.maybe { quantityFrom() } ?: 1
               )
             ),
             thumbnailUrl = el.urlFrom(".imageInnerWrap img")

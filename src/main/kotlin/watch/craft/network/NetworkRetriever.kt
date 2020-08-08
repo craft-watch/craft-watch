@@ -11,6 +11,7 @@ import watch.craft.network.NetworkRetriever.Response.Success
 import java.io.IOException
 import java.net.URI
 import java.net.http.HttpClient
+import java.net.http.HttpClient.Redirect
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse.BodyHandlers
 
@@ -34,18 +35,21 @@ class NetworkRetriever(private val config: Config) : Retriever {
     data class Failure(val cause: Exception) : Response()
   }
 
-  private val client = HttpClient.newBuilder().build()
+  private val client = HttpClient
+    .newBuilder()
+    .followRedirects(Redirect.NORMAL)
+    .build()
   private val channel = Channel<Request>()
 
   // Manually limit concurrency by having a single coroutine handling requests over a channel.
   init {
-    logger.info("[${config.id}] Creating message loop")
     GlobalScope.launch {
+      logger.info("[${config.id}] Creating retriever message loop")
       for (msg in channel) {
         msg.response.complete(process(msg))
       }
+      logger.info("[${config.id}] Closed retriever message loop")
     }
-    logger.info("[${config.id}] Closed message loop")
   }
 
   private suspend fun process(msg: Request): Response {

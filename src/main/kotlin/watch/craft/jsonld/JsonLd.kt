@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.core.JsonProcessingException
+import com.fasterxml.jackson.core.json.JsonReadFeature.ALLOW_UNESCAPED_CONTROL_CHARS
 import com.fasterxml.jackson.databind.*
 import com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES
 import com.fasterxml.jackson.databind.deser.ContextualDeserializer
@@ -41,6 +42,7 @@ inline fun <reified T : Any> Document.jsonLdFrom(): List<T> {
 
 fun jsonLdMapper() = jacksonObjectMapper()
   .disable(FAIL_ON_UNKNOWN_PROPERTIES)
+  .enable(ALLOW_UNESCAPED_CONTROL_CHARS.mappedFeature())
   .registerModule(
     SimpleModule().addDeserializer(List::class.java, ListDeserializer())
   )!!
@@ -73,7 +75,7 @@ private class ListDeserializer(
 sealed class Thing {
   data class Product(
     val name: String,
-    val description: String,
+    val description: String? = null,
     val offers: List<Offer> = emptyList(),
     val model: List<ProductModel> = emptyList()
   ) : Thing()
@@ -88,7 +90,8 @@ sealed class Thing {
     val name: String? = null,
     val sku: String? = null,
     val price: Double,
-    val availability: String
+    val availability: String,
+    val itemOffered: Product? = null
   ) : Thing()
 
   data class PropertyValue(
