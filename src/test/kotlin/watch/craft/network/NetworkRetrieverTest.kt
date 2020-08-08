@@ -43,6 +43,20 @@ class NetworkRetrieverTest {
     assertArrayEquals(NICE_DATA, retrieve())
   }
 
+  @Test
+  fun `follows redirects`() {
+    server.stubFor(
+      get(urlEqualTo("/"))
+        .willReturn(temporaryRedirect("/alternate"))
+    )
+    server.stubFor(
+      get(urlEqualTo("/alternate"))
+        .willReturn(aResponse().withBody(NICE_DATA))
+    )
+
+    assertArrayEquals(NICE_DATA, retrieve())
+  }
+
   // TODO - add coverage for timeouts, etc.
 
   @Test
