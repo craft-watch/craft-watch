@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
-class WriteThroughObjectStoreTest {
+class ObjectStoresTest {
   private val first = mock<ObjectStore>()
   private val second = mock<ObjectStore>()
-  private val store = WriteThroughObjectStore(first, second)
+  private val store = first.backedBy(second)
 
   @Test
   fun `writes to both stores in appropriate order`() {

@@ -83,7 +83,7 @@ class StorageStructureTest {
   private fun createStructure(forceDownload: Boolean) = StorageStructure(
     dateString = "2020-01-01",
     forceDownload = forceDownload,
-    firstLevelStore = firstLevel,
-    secondLevelStore = secondLevel
+    localStore = firstLevel,
+    remoteStore = secondLevel
   )
 }

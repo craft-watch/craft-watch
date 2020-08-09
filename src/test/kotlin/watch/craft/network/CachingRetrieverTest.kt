@@ -7,13 +7,13 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import watch.craft.storage.FileDoesntExistException
 import watch.craft.storage.FileExistsException
-import watch.craft.storage.SubObjectStore
+import watch.craft.storage.ObjectStore
 import watch.craft.utils.sha1
 import java.net.URI
 
 // TODO - test suffix
 class CachingRetrieverTest {
-  private val store = mock<SubObjectStore>()
+  private val store = mock<ObjectStore>()
   private val delegate = mock<Retriever>()
   private val retriever = CachingRetriever(store, delegate)
 

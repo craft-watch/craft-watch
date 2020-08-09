@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAlias
 import com.fasterxml.jackson.module.kotlin.readValue
 import kotlinx.coroutines.runBlocking
 import mu.KotlinLogging
-import watch.craft.storage.SubObjectStore
+import watch.craft.storage.resolve
 import watch.craft.utils.mapper
 import java.time.Instant
 import java.time.ZoneOffset
@@ -35,7 +35,7 @@ class ResultsManager(private val structure: StorageStructure) {
     }
   }
 
-  private fun dir(timestamp: Instant) = SubObjectStore(structure.results, formatter.format(timestamp))
+  private fun dir(timestamp: Instant) = structure.results.resolve(formatter.format(timestamp))
 
   // TODO - log actual stats once we trust them
   private fun Inventory.logStats() {

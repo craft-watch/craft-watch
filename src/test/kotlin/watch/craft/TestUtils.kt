@@ -41,8 +41,6 @@ private fun validateNonLiveOnCi(dateString: String?) {
   }
 }
 
-private val runningOnCi = System.getenv("CI") != null
-
 val PROTOTYPE_ITEM = Item(
   breweryId = "",
   name = "",
