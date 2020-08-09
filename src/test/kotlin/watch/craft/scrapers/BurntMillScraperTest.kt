@@ -1,7 +1,6 @@
 package watch.craft.scrapers
 
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import watch.craft.*
 import watch.craft.Format.CAN
@@ -11,47 +10,46 @@ import java.net.URI
 
 class BurntMillScraperTest {
   companion object {
-    private val ITEMS = executeScraper(BurntMillScraper(), dateString = "2020-08-02")
+    private val ITEMS = executeScraper(BurntMillScraper(), dateString = "2020-08-08")
   }
 
   @Test
   fun `finds all the beers`() {
-    assertEquals(9, ITEMS.size)
+    assertEquals(6, ITEMS.size)
   }
 
   @Test
   fun `extracts beer details`() {
     assertEquals(
       ScrapedItem(
-        name = "Strata Fog IPA",
-        abv = 6.2,
+        name = "Bitter Lake",
+        abv = 5.5,
         offers = setOf(
-          Offer(quantity = 1, totalPrice = 4.55, sizeMl = 440, format = CAN)
+          Offer(quantity = 1, totalPrice = 3.95, sizeMl = 440, format = CAN)
         ),
         available = true,
-        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0276/1054/6273/products/vGKdDTxbSgK8b3ij0vTQ_StrataFog_200x.jpg")
+        thumbnailUrl = URI("https://cdn.shopify.com/s/files/1/0276/1054/6273/products/aqEjZMAOTKG71KB9qL3D_bitterlake_200x.jpg")
       ),
-      ITEMS.byName("Strata Fog IPA").noDesc()
+      ITEMS.byName("Bitter Lake").noDesc()
     )
   }
 
   @Test
   fun `extracts description`() {
-    assertNotNull(ITEMS.byName("Strata Fog IPA").desc)
+    assertNotNull(ITEMS.byName("Bitter Lake").desc)
   }
 
   @Test
-  @Disabled
   fun `identifies sold-out`() {
-    assertFalse(ITEMS.byName("The Weight Of Brunch").available)
+    assertFalse(ITEMS.byName("Pintle Pale Ale").available)
   }
 
   @Test
   fun `identifies mixed`() {
-    val item = ITEMS.byName("IPA Multipack")
+    val item = ITEMS.byName("Pale Ale Mixed")
 
     assertTrue(item.mixed)
-    assertTrue(item.onlyOffer().quantity > 1)
+    assertTrue(item.onlyOffer().quantity == 12)
   }
 
   @Test
