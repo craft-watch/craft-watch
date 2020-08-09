@@ -24,13 +24,9 @@ private fun baselineInventory(
   now: Instant
 ): MinimalInventory? {
   val startOfDay = LocalDate.ofInstant(now, ZONE_OFFSET).atStartOfDay().toInstant(ZONE_OFFSET)
-
   return results.listHistoricalResults()
-    .filter { it < startOfDay }   // From yesterday or before
-    .reversed()
-    .asSequence()
-    .map { runBlocking { results.readMinimalHistoricalResult(it) } }
-    .firstOrNull { it.metadata.ciBranch == CANONICAL_BRANCH }
+    .lastOrNull { it < startOfDay }
+    ?.let { runBlocking { results.readMinimalHistoricalResult(it) } }
 }
 
 private fun MinimalInventory.extractStats(ids: List<String>) = if (stats == null) {
@@ -44,5 +40,3 @@ private fun MinimalInventory.extractStats(ids: List<String>) = if (stats == null
     }
   )
 }
-
-private const val CANONICAL_BRANCH = "master"

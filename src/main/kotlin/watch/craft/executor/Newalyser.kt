@@ -59,7 +59,6 @@ class Newalyser(
     this@collateInventory
       .map { instant ->
         async {
-          logger.info("Collating old inventory from: ${instant}")
           results.readMinimalHistoricalResult(instant).items.map { item -> item to instant }
         }
       }

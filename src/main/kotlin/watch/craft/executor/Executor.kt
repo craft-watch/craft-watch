@@ -32,7 +32,7 @@ class Executor(
       return Inventory(
         metadata = Metadata(
           capturedAt = now,
-          ciBranch = System.getenv("CIRCLE_BRANCH")
+          ciBranch = ciBranch
         ),
         stats = Stats(
           breweries = breweryItems.map { it.stats }

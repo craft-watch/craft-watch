@@ -7,38 +7,38 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
-class WriteThroughObjectStoreTest {
-  private val first = mock<ObjectStore>()
-  private val second = mock<ObjectStore>()
-  private val store = WriteThroughObjectStore(first, second)
+class ObjectStoresTest {
+  private val front = mock<ObjectStore>()
+  private val back = mock<ObjectStore>()
+  private val store = back.frontedBy(front)
 
   @Test
   fun `writes to both stores in appropriate order`() {
     write()
 
-    inOrder(first, second) {
-      verifyBlocking(second) { write(NICE_KEY, NICE_DATA) }
-      verifyBlocking(first) { write(NICE_KEY, NICE_DATA) }
+    inOrder(front, back) {
+      verifyBlocking(back) { write(NICE_KEY, NICE_DATA) }
+      verifyBlocking(front) { write(NICE_KEY, NICE_DATA) }
     }
   }
 
   @Test
   fun `still writes to first store if already present in second`() {
-    second.stub {
+    back.stub {
       onBlocking { write(any(), any()) } doThrow FileExistsException("oh")
     }
 
     write()
 
-    verifyBlocking(first) { write(NICE_KEY, NICE_DATA) }
+    verifyBlocking(front) { write(NICE_KEY, NICE_DATA) }
   }
 
   @Test
   fun `throws if already present in both`() {
-    first.stub {
+    front.stub {
       onBlocking { write(any(), any()) } doThrow FileExistsException("oh")
     }
-    second.stub {
+    back.stub {
       onBlocking { write(any(), any()) } doThrow FileExistsException("oh")
     }
 
@@ -47,37 +47,37 @@ class WriteThroughObjectStoreTest {
 
   @Test
   fun `reads from first-level store and not from second if present in first`() {
-    first.stub {
+    front.stub {
       onBlocking { read(NICE_KEY) } doReturn NICE_DATA
     }
 
     val ret = read()
 
     assertArrayEquals(NICE_DATA, ret)
-    verifyBlocking(second, never()) { read(any()) }
+    verifyBlocking(back, never()) { read(any()) }
   }
 
   @Test
   fun `reads and copies from second-level store if not present in first`() {
-    first.stub {
+    front.stub {
       onBlocking { read(NICE_KEY) } doThrow FileDoesntExistException("oh")
     }
-    second.stub {
+    back.stub {
       onBlocking { read(NICE_KEY) } doReturn NICE_DATA
     }
 
     val ret = read()
 
     assertArrayEquals(NICE_DATA, ret)
-    verifyBlocking(first) { write(NICE_KEY, NICE_DATA) }
+    verifyBlocking(front) { write(NICE_KEY, NICE_DATA) }
   }
 
   @Test
   fun `propagates exception if not found in either`() {
-    first.stub {
+    front.stub {
       onBlocking { read(NICE_KEY) } doThrow FileDoesntExistException("oh")
     }
-    second.stub {
+    back.stub {
       onBlocking { read(NICE_KEY) } doThrow FileDoesntExistException("oh")
     }
 
@@ -86,13 +86,13 @@ class WriteThroughObjectStoreTest {
 
   @Test
   fun `don't throw if data unexpectedly appears in first-level store when we try to copy it`() {
-    first.stub {
+    front.stub {
       onBlocking { read(NICE_KEY) } doThrow FileDoesntExistException("oh")
     }
-    first.stub {
+    front.stub {
       onBlocking { write(any(), any()) } doThrow FileExistsException("oh")
     }
-    second.stub {
+    back.stub {
       onBlocking { read(NICE_KEY) } doReturn NICE_DATA
     }
 

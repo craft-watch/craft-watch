@@ -1,7 +1,6 @@
 package watch.craft
 
 import com.google.common.annotations.VisibleForTesting
-import mu.KotlinLogging
 import watch.craft.network.CachingRetriever
 import watch.craft.network.FailingRetriever
 import watch.craft.network.NetworkRetriever
@@ -16,10 +15,9 @@ import java.time.format.DateTimeFormatter
 class StorageStructure(
   dateString: String? = null,
   private val forceDownload: Boolean = false,
-  firstLevelStore: ObjectStore = LocalObjectStore(LOCAL_STORAGE_DIR),
-  secondLevelStore: ObjectStore = GcsObjectStore(GCS_BUCKET)
+  private val localStore: ObjectStore = LocalObjectStore(LOCAL_STORAGE_DIR),
+  private val remoteStore: ObjectStore = GcsObjectStore(GCS_BUCKET)
 ) {
-  private val logger = KotlinLogging.logger {}
   private val live = dateString == null
 
   private val instant = if (live) {
@@ -28,15 +26,16 @@ class StorageStructure(
     LocalDate.parse(dateString).atStartOfDay(ZONE_OFFSET).toInstant()
   }
 
-  private val store: ObjectStore = WriteThroughObjectStore(
-    firstLevel = firstLevelStore,
-    secondLevel = secondLevelStore
-  )
-
-  val results: ObjectStore = SubObjectStore(store, RESULTS_DIRNAME)
+  val results = remoteStore
+    .run { if (runningOnCanonicalCiBranch) this else readOnly() }
+    .frontedBy(localStore)
+    .resolve(RESULTS_DIRNAME)
 
   @VisibleForTesting
-  suspend fun downloads(id: String) = SubObjectStore(store, "${DOWNLOADS_DIR}/${id}").targetDir()
+  suspend fun downloads(id: String) = remoteStore
+    .frontedBy(localStore)
+    .resolve("${DOWNLOADS_DIR}/${id}")
+    .targetDir()
 
   val createRetriever: suspend (String, Boolean) -> Retriever = { id, failOn404 ->
     CachingRetriever(
@@ -70,7 +69,7 @@ class StorageStructure(
       }
     }
 
-    return SubObjectStore(this, subdir)
+    return resolve(subdir)
   }
 
   companion object {
