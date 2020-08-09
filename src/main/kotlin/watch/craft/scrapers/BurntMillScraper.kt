@@ -15,15 +15,14 @@ class BurntMillScraper : Scraper {
         val title = el.textFrom(".ProductItem__Title")
         fromHtml(title, el.urlFrom(".ProductItem__ImageWrapper")) { doc ->
           val desc = doc().formattedTextFrom(".ProductMeta__Description")
-          val quantities = desc.collectFromLines { quantityFrom() }
-          val mixed = quantities.size > 1
+          val mixed = title.containsWord("mixed")
 
           ScrapedItem(
             name = title
               .cleanse(
                 "\\d+ml",
                 "\\S+%",
-                "\\d+ pack\\s+-\\s+",
+                "\\d+ pack",
                 "\\s+-\\s+.*"
               )
               .toTitleCase(),
@@ -34,7 +33,7 @@ class BurntMillScraper : Scraper {
             available = el.maybe { textFrom(".ProductItem__Label") } != "Sold out",
             offers = setOf(
               Offer(
-                quantity = if (mixed) quantities.sum() else title.maybe { quantityFrom() } ?: 1,
+                quantity = title.maybe { quantityFrom() } ?: 1,
                 totalPrice = el.priceFrom(".ProductItem__Price"),
                 sizeMl = title.maybe { sizeMlFrom() },
                 format = STANDARD_FORMAT
