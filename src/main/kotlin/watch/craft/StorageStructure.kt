@@ -26,13 +26,14 @@ class StorageStructure(
     LocalDate.parse(dateString).atStartOfDay(ZONE_OFFSET).toInstant()
   }
 
-  val results = localStore
-    .backedBy(if (runningOnCanonicalCiBranch) remoteStore else remoteStore.readOnly())
+  val results = remoteStore
+    .run { if (runningOnCanonicalCiBranch) this else readOnly() }
+    .frontedBy(localStore)
     .resolve(RESULTS_DIRNAME)
 
   @VisibleForTesting
-  suspend fun downloads(id: String) = localStore
-    .backedBy(remoteStore)
+  suspend fun downloads(id: String) = remoteStore
+    .frontedBy(localStore)
     .resolve("${DOWNLOADS_DIR}/${id}")
     .targetDir()
 

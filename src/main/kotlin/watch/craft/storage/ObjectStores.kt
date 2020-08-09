@@ -12,25 +12,25 @@ fun ObjectStore.resolve(relative: String) = object : ObjectStore {
   private fun fqk(key: String) = "${relative}/${key}"
 }
 
-fun ObjectStore.backedBy(backer: ObjectStore) = object : ObjectStore {
+fun ObjectStore.frontedBy(front: ObjectStore) = object : ObjectStore {
   override suspend fun write(key: String, content: ByteArray) {
-    backer.writeGracefully(
+    this@frontedBy.writeGracefully(
       key,
       content
-    )  // Do this first, so we never end up with stuff in the primary that isn't in secondary
-    this@backedBy.write(key, content)  // Allow this to throw
+    )  // Do this first, so we never end up with stuff in the front storage that isn't in backing
+    front.write(key, content)  // Allow this to throw
   }
 
   override suspend fun read(key: String) = try {
-    this@backedBy.read(key)
+    front.read(key)
   } catch (e: FileDoesntExistException) {
-    val content = backer.read(key)
-    this@backedBy.writeGracefully(key, content)  // Race conditions are anticipated due to concurrent writers
+    val content = this@frontedBy.read(key)
+    front.writeGracefully(key, content)  // Race conditions are anticipated due to concurrent writers
     content
   }
 
-  // We go straight to second-level storage as source of truth
-  override suspend fun list(key: String) = backer.list(key)
+  // We go straight to backing storage as source of truth
+  override suspend fun list(key: String) = this@frontedBy.list(key)
 
   private suspend fun ObjectStore.writeGracefully(key: String, content: ByteArray) {
     try {

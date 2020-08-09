@@ -24,8 +24,9 @@ private fun baselineInventory(
   now: Instant
 ): MinimalInventory? {
   val startOfDay = LocalDate.ofInstant(now, ZONE_OFFSET).atStartOfDay().toInstant(ZONE_OFFSET)
-  val mostRecent = results.listHistoricalResults().last { it < startOfDay }  // From yesterday or before
-  return runBlocking { results.readMinimalHistoricalResult(mostRecent) }
+  return results.listHistoricalResults()
+    .lastOrNull { it < startOfDay }
+    ?.let { runBlocking { results.readMinimalHistoricalResult(it) } }
 }
 
 private fun MinimalInventory.extractStats(ids: List<String>) = if (stats == null) {
