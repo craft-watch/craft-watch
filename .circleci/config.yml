@@ -19,22 +19,22 @@ workflows:
             branches:
               only: master
 
-  daily_scrape:
-    triggers:
-      - schedule:
-          cron: "45 08 * * *"
-          filters:
-            branches:
-              only: master
-
-    jobs:
-      - run_backend
-      - build_frontend:
-          requires:
-            - run_backend
-      - deploy:
-          requires:
-            - build_frontend
+#  daily_scrape:
+#    triggers:
+#      - schedule:
+#          cron: "45 08 * * *"
+#          filters:
+#            branches:
+#              only: master
+#
+#    jobs:
+#      - run_backend
+#      - build_frontend:
+#          requires:
+#            - run_backend
+#      - deploy:
+#          requires:
+#            - build_frontend
 
 
 commands:
